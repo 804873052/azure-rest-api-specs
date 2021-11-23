@@ -52,8 +52,6 @@ input-file:
 ### Tag: package-2021-11-01-preview
 
 ```yaml $(tag) == 'package-2021-11-01-preview'
-version: 2021-11-01-preview
-version-with-underscores: 2021_11_01_preview
 input-file:
   - Microsoft.AutonomousDevelopmentPlatform/preview/2021-11-01-preview/adp.json
 ```
