@@ -462,7 +462,9 @@
             "description": "The next partition key to query for.",
             "required": true,
             "type": "string",
-            "enum": [],
+            "enum": [
+              ""
+            ],
             "x-ms-enum": {
               "name": "nextPartitionKey",
               "modelAsString": true
@@ -475,7 +477,7 @@
             "required": true,
             "type": "string",
             "enum": [
-              " "
+              ""
             ],
             "x-ms-enum": {
               "name": "nextRowKey",
