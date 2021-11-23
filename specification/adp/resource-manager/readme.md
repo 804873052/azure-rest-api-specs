@@ -24,7 +24,7 @@ For other options on installation see [Installing AutoRest](https://aka.ms/autor
 
 These are the global settings for the adp.
 
-```yaml
+``` yaml
 title: AdpManagementClient
 openapi-type: arm
 openapi-subtype: rpaas
