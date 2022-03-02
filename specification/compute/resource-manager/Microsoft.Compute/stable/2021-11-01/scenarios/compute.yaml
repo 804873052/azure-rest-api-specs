@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=/home/me/workspace/azure-rest-api-specs/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: AvailabilitySets
+    description: Microsoft.Compute/AvailabilitySets
+    steps:
+      - step: Generate_Unique_Name
+        armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
+
+      - step: AvailabilitySets_CreateOrUpdate
+        exampleFile: ../examples/compute/CreateAnAvailabilitySet.json
