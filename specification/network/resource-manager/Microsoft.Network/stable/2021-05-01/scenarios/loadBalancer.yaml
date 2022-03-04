@@ -1,0 +1,36 @@
+scope: ResourceGroup
+
+variables:
+  virtualNetworkName: scenarios_vn
+
+prepareSteps:
+  - step: Generate_Unique_Name
+    armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
+
+scenarios:
+  - scenario:  LoadBalancers
+    description: Microsoft.Network/loadBalancers
+    steps:
+      - step: VirtualNetwork_BeginCreateOrUpdat
+        exampleFile: ../examples/VirtualNetworkCreate.json
+
+      - step: Subnets_BeginCreateOrUpdate
+        exampleFile: ../examples/SubnetCreate.json
+        outputVariables:
+          subnetID:
+            fromResponse: /id
+
+      - step: LoadBalancer_Create
+        exampleFile: ../examples/LoadBalancerCreate.json
+        resourceUpdate:
+          - replace: /properties/frontendIPConfigurations/0/properties/subnet/id
+            value: $(subnetID)
+
+      - step: LoadBalancer_Get
+        exampleFile: ../examples/LoadBalancerGet.json
+
+      - step: LoadBalancer_List
+        exampleFile: ../examples/LoadBalancerList.json
+
+      - step: LoadBalancer_Delete
+        exampleFile: ../examples/LoadBalancerDelete.json

@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=/home/me/workspace/azure-rest-api-specs/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+prepareSteps:
+  - step: Generate_Unique_Name
+    armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
+
+scenarios:
+  - scenario: PublicIpAddress
+    description: Microsoft.Network/publicIPAddresses
+    steps:
+      - step: PublicIpAddress_CreateDefaults
+        exampleFile: ../examples/PublicIpAddressCreateDefaults.json
+
+      - step: PublicIpAddress_CreateDns
+        exampleFile: ../examples/PublicIpAddressCreateDns.json
+
+      - step: PublicIpAddress_CreateCustomziedValues
+        exampleFile: ../examples/PublicIpAddressCreateCustomizedValues.json
+
+      - step: PublicIpAddress_Get
+        exampleFile: ../examples/PublicIpAddressGet.json
+
+      - step: PublicIpAddress_List
+        exampleFile: ../examples/PublicIpAddressList.json
+
+      - step: PublicIpAddress_ListAll
+        exampleFile: ../examples/PublicIpAddressListAll.json
+
+      - step: PublicIpAddress_UpdateTags
+        exampleFile: ../examples/PublicIpAddressUpdateTags.json
+
+      - step: PublicIpAddress_Delete
+        exampleFile: ../examples/PublicIpAddressDelete.json
