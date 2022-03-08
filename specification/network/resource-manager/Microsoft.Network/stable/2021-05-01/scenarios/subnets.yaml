@@ -1,11 +1,6 @@
 # yaml-language-server: $schema=/home/me/workspace/azure-rest-api-specs/documentation/api-scenario/references/v1.2/schema.json
 scope: ResourceGroup
 
-
-variables:
-  virtualNetworkName: scenarios_vn
-  subNetName: scenarios_subnet
-
 prepareSteps:
   - step: Generate_Unique_Name
     armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
@@ -13,6 +8,9 @@ prepareSteps:
 scenarios:
   - scenario: Subnets
     description: Microsoft.Network/Subnet
+    variables:
+      virtualNetworkName: scenarios_vn
+      subnetName: scenarios_subnet
     steps:
       - step: VirtualNetwork_BeginCreateOrUpdat
         exampleFile: ../examples/VirtualNetworkCreate.json

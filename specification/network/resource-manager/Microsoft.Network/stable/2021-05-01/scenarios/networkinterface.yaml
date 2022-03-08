@@ -12,22 +12,12 @@ scenarios:
   - scenario: VritualNetworkInterface
     description: Microsoft.Network/Interface
     steps:
-#       create virtual network and subnet
-      - step: VirtualNetwork_BeginCreateOrUpdat
-        exampleFile: ../examples/VirtualNetworkCreate.json
-      - step: Subnets_BeginCreateOrUpdate
-        exampleFile: ../examples/SubnetCreate.json
+      - step: VirtualNetworks_CreateWithSubnet
+        exampleFile: ../examples/VirtualNetworkCreateSubnet.json
         outputVariables:
           subnetID:
-            fromResponse: /id
-
-#        failed
-#      - step: VirtualNetworks_CreateWithSubnet
-#        exampleFile: ../examples/VirtualNetworkCreateSubnet.json
-#        outputVariables:
-#          subnetID:
-#            type: string
-#            fromResponse: /properties/subnets/0/id
+            type: string
+            fromResponse: /properties/subnets/0/id
 
       - step: PublicIpAddress_CreateDefaults
         exampleFile: ../examples/PublicIpAddressCreateDefaults.json

@@ -1,8 +1,5 @@
 scope: ResourceGroup
 
-variables:
-  virtualNetworkName: scenarios_vn
-
 prepareSteps:
   - step: Generate_Unique_Name
     armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
@@ -11,14 +8,11 @@ scenarios:
   - scenario:  LoadBalancers
     description: Microsoft.Network/loadBalancers
     steps:
-      - step: VirtualNetwork_BeginCreateOrUpdat
-        exampleFile: ../examples/VirtualNetworkCreate.json
-
-      - step: Subnets_BeginCreateOrUpdate
-        exampleFile: ../examples/SubnetCreate.json
+      - step: VirtualNetworks_CreateWithSubnet
+        exampleFile: ../examples/VirtualNetworkCreateSubnet.json
         outputVariables:
           subnetID:
-            fromResponse: /id
+            fromResponse: /properties/subnets/0/id
 
       - step: LoadBalancer_Create
         exampleFile: ../examples/LoadBalancerCreate.json

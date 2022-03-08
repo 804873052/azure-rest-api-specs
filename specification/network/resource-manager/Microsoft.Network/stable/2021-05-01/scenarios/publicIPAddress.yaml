@@ -8,6 +8,8 @@ prepareSteps:
 scenarios:
   - scenario: PublicIpAddress
     description: Microsoft.Network/publicIPAddresses
+    variables:
+      publicIPName: test-ip
     steps:
       - step: PublicIpAddress_CreateDefaults
         exampleFile: ../examples/PublicIpAddressCreateDefaults.json
@@ -15,11 +17,11 @@ scenarios:
       - step: PublicIpAddress_CreateDns
         exampleFile: ../examples/PublicIpAddressCreateDns.json
 
-      - step: PublicIpAddress_CreateCustomziedValues
-        exampleFile: ../examples/PublicIpAddressCreateCustomizedValues.json
-
       - step: PublicIpAddress_Get
         exampleFile: ../examples/PublicIpAddressGet.json
+        requestUpdate:
+          - replace: /publicIpAddressName
+            value: $(publicIPName)
 
       - step: PublicIpAddress_List
         exampleFile: ../examples/PublicIpAddressList.json
