@@ -7,17 +7,11 @@ scenarios:
       - step: ResourceGroup_CalculateTemplateHash
         exampleFile: ../examples/CalculateTemplateHash.json
 
-      - step: PostDeploymentWhatIfOnManagementGroup
-        exampleFile: ../examples/PostDeploymentWhatIfOnManagementGroup.json
+      - step: PutDeploymentResourceGroup
+        exampleFile: ../examples/PutDeploymentResourceGroup.json
 
-      - step: PostDeploymentWhatIfOnResourceGroup
-        exampleFile: ../examples/PostDeploymentWhatIfOnResourceGroup.json
-
-      - step: PostDeploymentWhatIfOnSubscription
-        exampleFile: ../examples/PostDeploymentWhatIfOnSubscription.json
-      
-      - step: PostDeploymentWhatIfOnTenant
-        exampleFile: ../examples/PostDeploymentWhatIfOnTenant.json
+      - step: PutDeploymentWithOnErrorDeploymentLastSuccessful
+        exampleFile: ../examples/PutDeploymentWithOnErrorDeploymentLastSuccessful.json
 
       - step: PutDeploymentAtManagementGroup
         exampleFile: ../examples/PutDeploymentAtManagementGroup.json
@@ -27,18 +21,25 @@ scenarios:
 
       - step: PutDeploymentAtTenant
         exampleFile: ../examples/PutDeploymentAtTenant.json
+        
+      # create deployment 
+      # - step: PutDeploymentResourceGroupTemplateSpecsWithId
+      #   exampleFile: ../examples/PutDeploymentResourceGroupTemplateSpecsWithId.json
 
-      - step: PutDeploymentResourceGroup
-        exampleFile: ../examples/PutDeploymentResourceGroup.json
+      # - step: PutDeploymentSubscriptionTemplateSpecsWithId
+      #   exampleFile: ../examples/PutDeploymentSubscriptionTemplateSpecsWithId.json
 
-      - step: PutDeploymentResourceGroupTemplateSpecsWithId
-        exampleFile: ../examples/PutDeploymentResourceGroupTemplateSpecsWithId.json
+      # - step: PutDeploymentWithOnErrorDeploymentSpecificDeployment
+      #   exampleFile: ../examples/PutDeploymentWithOnErrorDeploymentSpecificDeployment.json
 
-      - step: PutDeploymentSubscriptionTemplateSpecsWithId
-        exampleFile: ../examples/PutDeploymentSubscriptionTemplateSpecsWithId.json
-      
-      - step: PutDeploymentWithOnErrorDeploymentLastSuccessful
-        exampleFile: ../examples/PutDeploymentWithOnErrorDeploymentLastSuccessful.json
+      - step: PostDeploymentWhatIfOnSubscription
+        exampleFile: ../examples/PostDeploymentWhatIfOnSubscription.json
 
-      - step: PutDeploymentWithOnErrorDeploymentSpecificDeployment
-        exampleFile: ../examples/PutDeploymentWithOnErrorDeploymentSpecificDeployment.json
+      - step: PostDeploymentWhatIfOnResourceGroup
+        exampleFile: ../examples/PostDeploymentWhatIfOnResourceGroup.json
+
+      - step: PostDeploymentWhatIfOnTenant
+        exampleFile: ../examples/PostDeploymentWhatIfOnTenant.json
+
+      - step: PostDeploymentWhatIfOnManagementGroup
+        exampleFile: ../examples/PostDeploymentWhatIfOnManagementGroup.json

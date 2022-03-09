@@ -13,8 +13,9 @@ scenarios:
       - step: ResourceGroup_ExportResourceGroupWithFiltering
         exampleFile: ../examples/ExportResourceGroupWithFiltering.json
 
-      - step: ResourceGroup_ForceDeleteVMsAndVMSSInResourceGroup
-        exampleFile: ../examples/ForceDeleteVMsAndVMSSInResourceGroup.json
-
       - step: ResourceGroup_ForceDeleteVMsInResourceGroup
         exampleFile: ../examples/ForceDeleteVMsInResourceGroup.json
+
+      - step: ResourceGroup_ForceDeleteVMsAndVMSSInResourceGroup
+        exampleFile: ../examples/ForceDeleteVMsAndVMSSInResourceGroup.json
+        
