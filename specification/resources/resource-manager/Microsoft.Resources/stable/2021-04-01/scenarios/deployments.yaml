@@ -7,20 +7,24 @@ scenarios:
       - step: ResourceGroup_CalculateTemplateHash
         exampleFile: ../examples/CalculateTemplateHash.json
 
-      - step: PutDeploymentResourceGroup
+      - step: Deployments_Create
         exampleFile: ../examples/PutDeploymentResourceGroup.json
+        requestUpdate:
+          - remove: /parameters/properties/templateLink/queryString
+          - replace: /parameters/properties/templateLink/uri
+            value: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
 
-      - step: PutDeploymentWithOnErrorDeploymentLastSuccessful
-        exampleFile: ../examples/PutDeploymentWithOnErrorDeploymentLastSuccessful.json
-
-      - step: PutDeploymentAtManagementGroup
-        exampleFile: ../examples/PutDeploymentAtManagementGroup.json
-
-      - step: PutDeploymentAtScope
-        exampleFile: ../examples/PutDeploymentAtScope.json
-
-      - step: PutDeploymentAtTenant
-        exampleFile: ../examples/PutDeploymentAtTenant.json
+#      - step: PutDeploymentWithOnErrorDeploymentLastSuccessful
+#        exampleFile: ../examples/PutDeploymentWithOnErrorDeploymentLastSuccessful.json
+#
+#      - step: PutDeploymentAtManagementGroup
+#        exampleFile: ../examples/PutDeploymentAtManagementGroup.json
+#
+#      - step: PutDeploymentAtScope
+#        exampleFile: ../examples/PutDeploymentAtScope.json
+#
+#      - step: PutDeploymentAtTenant
+#        exampleFile: ../examples/PutDeploymentAtTenant.json
         
       # create deployment 
       # - step: PutDeploymentResourceGroupTemplateSpecsWithId
@@ -32,14 +36,20 @@ scenarios:
       # - step: PutDeploymentWithOnErrorDeploymentSpecificDeployment
       #   exampleFile: ../examples/PutDeploymentWithOnErrorDeploymentSpecificDeployment.json
 
-      - step: PostDeploymentWhatIfOnSubscription
-        exampleFile: ../examples/PostDeploymentWhatIfOnSubscription.json
+#      - step: PostDeploymentWhatIfOnSubscription
+#        exampleFile: ../examples/PostDeploymentWhatIfOnSubscription.json
 
-      - step: PostDeploymentWhatIfOnResourceGroup
+      - step: Deployments_WhatIf
         exampleFile: ../examples/PostDeploymentWhatIfOnResourceGroup.json
+        requestUpdate:
+#          - remove: /parameters/properties/templateLink
+          - replace: /parameters/properties/templateLink
+            value: {}
+          - add: /parameters/properties/templateLink/uri
+            value: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
 
-      - step: PostDeploymentWhatIfOnTenant
-        exampleFile: ../examples/PostDeploymentWhatIfOnTenant.json
-
-      - step: PostDeploymentWhatIfOnManagementGroup
-        exampleFile: ../examples/PostDeploymentWhatIfOnManagementGroup.json
+#      - step: PostDeploymentWhatIfOnTenant
+#        exampleFile: ../examples/PostDeploymentWhatIfOnTenant.json
+#
+#      - step: PostDeploymentWhatIfOnManagementGroup
+#        exampleFile: ../examples/PostDeploymentWhatIfOnManagementGroup.json

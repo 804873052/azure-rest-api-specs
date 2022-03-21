@@ -6,26 +6,14 @@ scenarios:
     variables:
       rgName: my-scenairos-group
     steps:
-      - step: ResourceGroup_Create
-        exampleFile: ../examples/CreateResourceGroup.json
-        updateRequest:
-          - replace: /resourceGroupName
-            value: $(rgName)
+#      - step: ResourceGroup_Create
+#        exampleFile: ../examples/CreateResourceGroup.json
 
       - step: ResourceGroup_ExportResourceGroup
         exampleFile: ../examples/ExportResourceGroup.json
-        updateRequest:
-          - replace: /resourceGroupName
-            value: $(rgName)
 
       - step: ResourceGroup_ExportResourceGroupWithFiltering
         exampleFile: ../examples/ExportResourceGroupWithFiltering.json
-        updateRequest:
-          - replace: /resourceGroupName
-            value: $(rgName)
 
-      - step: ResourceGroup_ForceDeleteVMsInResourceGroup
-        exampleFile: ../examples/ForceDeleteVMsInResourceGroup.json
-        updateRequest:
-          - replace: /resourceGroupName
-            value: $(rgName)
+#      - step: ResourceGroup_ForceDeleteVMsInResourceGroup
+#        exampleFile: ../examples/ForceDeleteVMsInResourceGroup.json
