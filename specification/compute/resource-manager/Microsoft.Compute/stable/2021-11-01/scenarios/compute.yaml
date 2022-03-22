@@ -1,12 +1,46 @@
 # yaml-language-server: $schema=/home/me/workspace/azure-rest-api-specs/documentation/api-scenario/references/v1.2/schema.json
 scope: ResourceGroup
 
-scenarios:
-  - scenario: AvailabilitySets
-    description: Microsoft.Compute/AvailabilitySets
-    steps:
-      - step: Generate_Unique_Name
-        armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
+variables:
+  subnetID:
+    type: string
+  publicIPID:
+    type: string
 
-      - step: AvailabilitySets_CreateOrUpdate
-        exampleFile: ../examples/compute/CreateAnAvailabilitySet.json
+prepareSteps:
+  - step: Generate_Unique_Name
+    armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
+
+scenarios:
+#  - scenario: AvailabilitySets
+#    description: Microsoft.Compute/AvailabilitySets
+#    steps:
+#      - step: Generate_Unique_Name
+#        armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
+#
+#      - step: AvailabilitySets_CreateOrUpdate
+#        exampleFile: ../examples/compute/CreateAnAvailabilitySet.json
+
+  - scenario: VirtualMachine
+    description: Microsoft.Compute/virtualMachines CRUD
+#    variables:
+#      subnetID:
+#        type: string
+#      publicIPID:
+#        type: string
+#      nicID:
+#        type: string
+    steps:
+      - step: NetworkAndSubnet_Create
+        armTemplate: peArmTemplate/Create_Network_And_Subnet.json
+      - step: PublicIpAddress_Create
+        armTemplate: peArmTemplate/Create_PublicIpAddress.json
+      - step: NetworkInterface_Create
+        armTemplate: peArmTemplate/Create_NetworkInterface.json
+
+      - step: VirtualMachine_Create
+        exampleFile: ../examples/compute/CreateAWindowsVmWithPatchSettingAssessmentModeOfImageDefault.json
+        resourceUpdate:
+          - replace: /properties/networkProfile/networkInterfaces/0/id
+            value: $(nicID)
+
