@@ -4,7 +4,7 @@
   "parameters": {
     "name": {
       "type": "string",
-      "defaultValue": "template_publicIpAddress",
+      "defaultValue": "template_nic",
       "metadata": {
         "description": "Name of Application Insights resource."
       }

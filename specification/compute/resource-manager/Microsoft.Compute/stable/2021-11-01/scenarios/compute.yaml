@@ -43,4 +43,17 @@ scenarios:
         resourceUpdate:
           - replace: /properties/networkProfile/networkInterfaces/0/id
             value: $(nicID)
+          - replace: /properties/osProfile/adminUsername
+            value: goscenario
+          - replace: /properties/osProfile/adminPassword
+            value: QWE!@#123
+      - step: VirtualMachine_Get
+        exampleFile: ../examples/compute/GetVirtualMachine.json
+      - step: VirtualMachine_List
+        exampleFile: ../examples/compute/VirtualMachines_List_MinimumSet_Gen.json
+      - step: VirtualMachine_ListAll
+        exampleFile: ../examples/compute/VirtualMachines_ListAll_MinimumSet_Gen.json
+      - step: VirtualMachine_Delete
+        exampleFile: ../examples/compute/ForceDeleteVirtualMachine.json
+
 
