@@ -42,7 +42,7 @@
   ],
   "outputs": {
     "nicID": {
-      "value": "[reference(resourceId('Microsoft.Network/networkInterfaces', parameters('name')), '2021-05-01').ID]",
+      "value": "[resourceId('Microsoft.Network/networkInterfaces', parameters('name'))]",
       "type": "string"
     }
   }

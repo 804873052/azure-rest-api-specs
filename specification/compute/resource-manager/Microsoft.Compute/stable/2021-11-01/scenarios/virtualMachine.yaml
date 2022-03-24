@@ -12,15 +12,6 @@ prepareSteps:
     armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
 
 scenarios:
-#  - scenario: AvailabilitySets
-#    description: Microsoft.Compute/AvailabilitySets
-#    steps:
-#      - step: Generate_Unique_Name
-#        armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
-#
-#      - step: AvailabilitySets_CreateOrUpdate
-#        exampleFile: ../examples/compute/CreateAnAvailabilitySet.json
-
   - scenario: VirtualMachine
     description: Microsoft.Compute/virtualMachines CRUD
 #    variables:
