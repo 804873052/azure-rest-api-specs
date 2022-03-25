@@ -15,7 +15,7 @@
   },
   "resources": [
     {
-      "name": "[parameters('vaultName')]/[parameters('name')]",
+      "name": "[concat(parameters('vaultName'),'/',parameters('name'))]",
       "type": "Microsoft.KeyVault/vaults/keys",
       "location": "eastus",
       "apiVersion": "2021-10-01",

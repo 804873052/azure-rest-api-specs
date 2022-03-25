@@ -9,6 +9,10 @@
         "description": "Name of Application Insights resource."
       }
     },
+    "keyName": {
+      "type": "string",
+      "defaultValue": "scenariokey"
+    },
     "azureTenantId": {
       "type": "string"
     }
@@ -81,12 +85,27 @@
         "enabledForDiskEncryption": true,
         "enabledForTemplateDeployment": true,
         "publicNetworkAccess": "Enabled"
-      }
+      },
+      "resources": [
+        {
+          "name": "[parameters('keyName')]",
+          "type": "keys",
+          "location": "eastus",
+          "apiVersion": "2021-10-01",
+          "properties": {
+            "kty": "RSA"
+          }
+        }
+      ]
     }
   ],
   "outputs": {
     "vaultID": {
       "value": "[resourceId('Microsoft.KeyVault/vaults', parameters('name'))]",
+      "type": "string"
+    },
+    "keyUri": {
+      "value": "[resourceId('Microsoft.KeyVault/vaults/keys', parameters('keyName')).KeyURIWithVersion]",
       "type": "string"
     }
 }
