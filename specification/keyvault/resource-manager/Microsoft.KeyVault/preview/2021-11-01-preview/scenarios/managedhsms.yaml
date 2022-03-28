@@ -1,0 +1,47 @@
+scope: ResourceGroup
+
+variables:
+  azureTenantId:
+    type: string
+  azureObjectId:
+    type: string
+  name: scenarioManagedHsms
+
+prepareSteps:
+  - step: Generate_Unique_Name
+    armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
+
+scenarios:
+  - scenario: ManagedHsms
+    description: Microsoft.KeyVault/managedHSMs CRUD
+#    variables:
+#      name: scenarioManagedHsms
+    steps:
+      - step: ManagedHsms_Create
+        exampleFile: ../examples/ManagedHsm_CreateOrUpdate.json
+        resourceUpdate:
+          - replace: /properties/tenantId
+            value: $(azureTenantId)
+          - replace: /properties/initialAdminObjectIds/0
+            value: $(azureObjectId)
+      - step: ManagedHsms_Update
+        exampleFile: ../examples/ManagedHsm_Update.json
+      - step: ManagedHsms_Get
+        exampleFile: ../examples/ManagedHsm_Get.json
+      - step: ManagedHsms_ListBySubscription
+        exampleFile: ../examples/ManagedHsm_ListBySubscription.json
+      - step: ManagedHsms_ListByResourceGroup
+        exampleFile: ../examples/ManagedHsm_ListByResourceGroup.json
+      - step: ManagedHsms_Delete
+        exampleFile: ../examples/ManagedHsm_Delete.json
+      - step: ManagedHsms_GetDeleted
+        exampleFile: ../examples/DeletedManagedHsm_Get.json
+      - step: ManagedHsms_ListDeleted
+        exampleFile: ../examples/DeletedManagedHsm_List.json
+
+cleanUpSteps:
+  - step: ManagedHsms_PrugeDeleted
+    exampleFile: ../examples/DeletedManagedHsm_Purge.json
+#    requestUpdate:
+#      - replace: /name
+#        value: $(name)
