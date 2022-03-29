@@ -54,10 +54,13 @@ scenarios:
         exampleFile: ../examples/getKey.json
       - step: Key_List
         exampleFile: ../examples/listKeys.json
-      - step: Key_GetVersion
-        exampleFile: ../examples/getKeyVersion.json
-      - step: Key_ListVersion
-        exampleFile: ../examples/listKeyVersions.json
+#      - step: Key_ListVersion
+#        exampleFile: ../examples/listKeyVersions.json
+#        outputVariables:
+#          keyVersion:
+#            fromResponse: /value/0/name
+#      - step: Key_GetVersion
+#        exampleFile: ../examples/getKeyVersion.json
 
   - scenario: Secret
     description: Microsoft.KeyVault/vaults/secrets CRUD

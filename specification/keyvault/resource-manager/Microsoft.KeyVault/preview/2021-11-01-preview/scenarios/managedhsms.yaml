@@ -14,8 +14,6 @@ prepareSteps:
 scenarios:
   - scenario: ManagedHsms
     description: Microsoft.KeyVault/managedHSMs CRUD
-#    variables:
-#      name: scenarioManagedHsms
     steps:
       - step: ManagedHsms_Create
         exampleFile: ../examples/ManagedHsm_CreateOrUpdate.json
@@ -38,10 +36,5 @@ scenarios:
         exampleFile: ../examples/DeletedManagedHsm_Get.json
       - step: ManagedHsms_ListDeleted
         exampleFile: ../examples/DeletedManagedHsm_List.json
-
-cleanUpSteps:
-  - step: ManagedHsms_PrugeDeleted
-    exampleFile: ../examples/DeletedManagedHsm_Purge.json
-#    requestUpdate:
-#      - replace: /name
-#        value: $(name)
+      - step: ManagedHsms_PrugeDeleted
+        exampleFile: ../examples/DeletedManagedHsm_Purge.json
