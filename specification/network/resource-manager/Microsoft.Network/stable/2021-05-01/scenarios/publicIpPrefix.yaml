@@ -30,8 +30,8 @@ scenarios:
             value: IPv6
           - replace: /sku/tier
             value: Regional
-#          - add: /properties/publicIPPrefix/id
-#            value: $(pip)
+          - add: /properties/publicIPPrefix/id
+            value: $(pip)
       - step: PublicIpPrefix_CreateIPv6
         exampleFile: ../examples/PublicIpPrefixCreateCustomizedValues.json
         requestUpdate:
