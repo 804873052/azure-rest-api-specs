@@ -1,18 +1,14 @@
 scope: ResourceGroup
 
-prepareSteps:
-  - step: Generate_Unique_Name
-    armTemplate: ./peArmTemplate/Generate_Unique_name_template.json
-
 scenarios:
   - scenario: PublicIpPrefix
     description: Microsoft.Network/publicIPPrefixes
     steps:
       - step: PublicIpPrefix_Create
         exampleFile: ../examples/PublicIpPrefixCreateDefaults.json
-        outputVariables:
-          pip:
-            fromResponse: /id
+#        outputVariables:
+#          pip:
+#            fromResponse: /id
       - step: PublicIpPrefix_UpdateTags
         exampleFile: ../examples/PublicIpPrefixUpdateTags.json
       - step: PublicIpPrefix_Get
@@ -21,26 +17,26 @@ scenarios:
         exampleFile: ../examples/PublicIpPrefixList.json
       - step: PublicIpPrefix_ListAll
         exampleFile: ../examples/PublicIpPrefixListAll.json
-      - step: PublicIpAddress_Create
-        exampleFile: ../examples/PublicIpAddressCreateCustomizedValues.json
-        resouceUpdate:
-          - replace: /properties/idleTimeoutInMinutes
-            value: 20
-          - replace: /properties/publicIPAddressVersion
-            value: IPv6
-          - replace: /sku/tier
-            value: Regional
-          - add: /properties/publicIPPrefix/id
-            value: $(pip)
-      - step: PublicIpPrefix_CreateIPv6
-        exampleFile: ../examples/PublicIpPrefixCreateCustomizedValues.json
-        requestUpdate:
-          - replace: /publicIpPrefixName
-            value: go_scenario_pipv6
-        resourceUpdate:
-          - replace: /properties/publicIPAddressVersion
-            value: IPv6
-          - replace: /properties/prefixLength
-            value: 127
+#      - step: PublicIpAddress_Create
+#        exampleFile: ../examples/PublicIpAddressCreateCustomizedValues.json
+#        resouceUpdate:
+#          - replace: /properties/idleTimeoutInMinutes
+#            value: 20
+#          - replace: /properties/publicIPAddressVersion
+#            value: IPv6
+#          - replace: /sku/tier
+#            value: Regional
+#          - add: /properties/publicIPPrefix/id
+#            value: $(pip)
+#      - step: PublicIpPrefix_CreateIPv6
+#        exampleFile: ../examples/PublicIpPrefixCreateCustomizedValues.json
+#        requestUpdate:
+#          - replace: /publicIpPrefixName
+#            value: go_scenario_pipv6
+#        resourceUpdate:
+#          - replace: /properties/publicIPAddressVersion
+#            value: IPv6
+#          - replace: /properties/prefixLength
+#            value: 127
       - step: PublicIpPrefix_Delete
         exampleFile: ../examples/PublicIpPrefixDelete.json
