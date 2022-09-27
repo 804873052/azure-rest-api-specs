@@ -2031,6 +2031,7 @@
       "x-ms-external": true
     },
     "RedisCreateProperties": {
+      "type": "object",
       "properties": {
         "sku": {
           "$ref": "#/definitions/Sku",
