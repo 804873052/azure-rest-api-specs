@@ -1,0 +1,25 @@
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  policyName:
+    type: string
+    prefix: policyname
+
+scenarios:
+  - scenario: privateLinkForAzureAd
+    description: microsoft.aadiam/privateLinkForAzureAd
+    steps:
+      - step: privateLinkForAzureAd_Create
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyCreate.json
+      - step: privateLinkForAzureAd_ListBySubscription
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyListBySubscription.json
+      - step: privateLinkForAzureAd_List
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyList.json
+      - step: privateLinkForAzureAd_Get
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyGet.json
+      - step: privateLinkForAzureAd_Update
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyUpdate.json
+      - step: privateLinkForAzureAd_Delete
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyDelete.json

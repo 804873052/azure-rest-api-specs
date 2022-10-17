@@ -1,0 +1,40 @@
+scope: ResourceGroup
+variables:
+  policyName:
+    type: string
+    prefix: policyname
+  privateEndpointConnectionName:
+    type: string
+    prefix: privateend
+scenarios:
+  - steps:
+      - step: privateLinkForAzureAd_Create
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyCreate.json
+      - step: privateLinkForAzureAd_ListBySubscription
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyListBySubscription.json
+      - step: privateLinkForAzureAd_List
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyList.json
+      - step: privateLinkForAzureAd_Get
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyGet.json
+      - step: privateLinkForAzureAd_Update
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyUpdate.json
+
+      - step: PrivateEndpointConnections_Create
+        exampleFile: ..\examples\AzureADPrivateEndpointConnectionsCreate.json
+      - step: PrivateEndpointConnections_ListByPolicyName
+        exampleFile: ..\examples\AzureADPrivateEndpointConnectionsList.json
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\AzureADPrivateEndpointConnectionsGet.json
+      - step: PrivateLinkResources_ListByPrivateLinkPolicy
+        exampleFile: ..\examples\AzureADPrivateLinkResourceListGet.json
+      - variables:
+          groupName:
+            type: string
+            prefix: groupname
+        step: PrivateLinkResources_Get
+        exampleFile: ..\examples\AzureADPrivateLinkResourceGet.json
+        
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\AzureADPrivateEndpointConnectionsDelete.json
+      - step: privateLinkForAzureAd_Delete
+        exampleFile: ..\examples\AzureADPrivateLinkPolicyDelete.json
