@@ -1,0 +1,104 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  galleryName:
+    type: string
+    prefix: gallerynam
+  galleryImageName:
+    type: string
+    prefix: galleryima
+  galleryApplicationName:
+    type: string
+    prefix: galleryapp
+    
+prepareSteps:
+  - step: Galleries_CreateOrUpdate
+    exampleFile: ../examples/galleryExamples/Gallery_Create.json
+
+scenarios:
+  - scenario: Galleries
+    description: Microsoft.Compute/galleries/{galleryName}
+    steps:
+      - step: Galleries_List
+        exampleFile: ../examples/galleryExamples/Gallery_ListBySubscription.json
+      - step: Galleries_ListByResourceGroup
+        exampleFile: ../examples/galleryExamples/Gallery_ListByResourceGroup.json
+      - step: Galleries_Get
+        exampleFile: ../examples/galleryExamples/Gallery_Get.json
+      - step: Galleries_Update
+        exampleFile: ../examples/galleryExamples/Gallery_Update.json
+
+  - scenario: GalleryImages
+    description: Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}
+    steps:
+      - step: GalleryImages_CreateOrUpdate
+        exampleFile: ../examples/galleryExamples/GalleryImage_Create.json
+      - step: GalleryImages_ListByGallery
+        exampleFile: ../examples/galleryExamples/GalleryImage_ListByGallery.json
+      - step: GalleryImages_Get
+        exampleFile: ../examples/galleryExamples/GalleryImage_Get.json
+      - step: GalleryImages_Update
+        # exampleFile: ../examples/galleryExamples/GalleryImage_Update.json
+        operationId: GalleryImages_Update
+        parameters:
+          galleryImage: 
+            tags:
+              - "galleryImageKey": "galleryImageValue"
+      - step: GalleryImages_Delete
+        exampleFile: ../examples/galleryExamples/GalleryImage_Delete.json
+
+
+  - scenario: GalleryApplications
+    description: Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}
+    steps:
+      - step: GalleryApplications_CreateOrUpdate
+        exampleFile: ../examples/galleryExamples/GalleryApplication_Create.json
+      - step: GalleryApplications_ListByGallery
+        exampleFile: ../examples/galleryExamples/GalleryApplication_ListByGallery.json
+      - step: GalleryApplications_Get
+        exampleFile: ../examples/galleryExamples/GalleryApplication_Get.json
+      - step: GalleryApplications_Update
+        exampleFile: ../examples/galleryExamples/GalleryApplication_Update.json
+      - step: GalleryApplications_Delete
+        exampleFile: ../examples/galleryExamples/GalleryApplication_Delete.json
+
+#   - scenario: GalleryImageVersions
+#     description: Microsoft.Compute/galleries/{galleryName}/images/{galleryImageName}/versions/{galleryImageVersionName}
+#     steps:
+#       - step: GalleryImageVersions_CreateOrUpdate
+#         exampleFile: ../examples/galleryExamples/GalleryImageVersion_Create.json
+#       - step: GalleryImageVersions_ListByGalleryImage
+#         exampleFile: ../examples/galleryExamples/GalleryImageVersion_ListByGalleryImage.json
+#       - step: GalleryImageVersions_Get
+#         exampleFile: ../examples/galleryExamples/GalleryImageVersion_Get.json
+#       - step: GalleryImageVersions_Update
+#         exampleFile: ../examples/galleryExamples/GalleryImageVersion_Update.json
+#       - step: GalleryImageVersions_Delete
+#         exampleFile: ../examples/galleryExamples/GalleryImageVersion_Delete.json
+
+#   - scenario: GalleryApplicationVersions
+#     description: Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}
+#     steps:
+#       - step: GalleryApplicationVersions_CreateOrUpdate
+#         exampleFile: ../examples/galleryExamples/GalleryApplicationVersion_Create.json
+#       - step: GalleryApplicationVersions_ListByGalleryApplication
+#         exampleFile: ../examples/galleryExamples/GalleryApplicationVersion_ListByGalleryApplication.json
+#       - step: GalleryApplicationVersions_Get
+#         exampleFile: ../examples/galleryExamples/GalleryApplicationVersion_Get.json
+#       - step: GalleryApplicationVersions_Update
+#         exampleFile: ../examples/galleryExamples/GalleryApplicationVersion_Update.json
+#       - step: GalleryApplicationVersions_Delete
+#         exampleFile: ../examples/galleryExamples/GalleryApplicationVersion_Delete.json
+# # need public
+#   - scenario: GallerySharingProfile
+#     description: Microsoft.Compute/galleries/{galleryName}/share
+#     steps:
+#       - step: GallerySharingProfile_Update
+#         exampleFile: ../examples/galleryExamples/Gallery_AddToSharingProfile.json
+
+# Can not delete resource before nested resources are deleted
+# cleanUpSteps:
+#   - step: Galleries_Delete
+#     exampleFile: ../examples/galleryExamples/Gallery_Delete.json

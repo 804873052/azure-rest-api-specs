@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  sshPublicKeyName:
+    type: string
+    prefix: sshpublick
+
+scenarios:
+  - scenario: SshPublicKeys
+    description: Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}
+    steps:
+      - step: SshPublicKeys_Create
+        exampleFile: ../examples/sshPublicKeyExamples/SshPublicKey_Create.json
+        requestUpdate:
+          - remove: /parameters/properties
+      - step: SshPublicKeys_ListBySubscription
+        exampleFile: ../examples/sshPublicKeyExamples/SshPublicKeys_ListBySubscription_MaximumSet_Gen.json
+      - step: SshPublicKeys_ListByResourceGroup
+        exampleFile: ../examples/sshPublicKeyExamples/SshPublicKeys_ListByResourceGroup_MaximumSet_Gen.json
+      - step: SshPublicKeys_Get
+        exampleFile: ../examples/sshPublicKeyExamples/SshPublicKey_Get.json
+      - step: SshPublicKeys_Update
+        exampleFile: ../examples/sshPublicKeyExamples/SshPublicKeys_Update_MaximumSet_Gen.json
+        requestUpdate:
+          - remove: /parameters/properties
+      - step: SshPublicKeys_GenerateKeyPair
+        exampleFile: ../examples/sshPublicKeyExamples/SshPublicKeys_GenerateKeyPair.json
+      - step: SshPublicKeys_Delete
+        exampleFile: ../examples/sshPublicKeyExamples/SshPublicKeys_Delete_MaximumSet_Gen.json

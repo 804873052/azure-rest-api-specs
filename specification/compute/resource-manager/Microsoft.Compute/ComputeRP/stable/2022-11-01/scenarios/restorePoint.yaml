@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  restorePointCollectionName:
+    type: string
+    prefix: restorepoi
+  location:
+    type: string
+  vmName:
+    type: string
+    prefix: vmnamerp
+  virtualNetworksName: 
+    type: string
+    prefix: vmvnetrp
+  networkInterfaceName:
+    type: string
+    prefix: vmnicrp
+  adminPassword:
+    type: string
+  adminUsername:
+    type: string
+    prefix: rp
+
+
+prepareSteps:
+  - step: Create_NetworkInterface
+    armTemplate: templates/Create_NetworkInterface.json
+  - step: VirtualMachines_CreateOrUpdate
+    exampleFile: ../examples/virtualMachineExamples/VirtualMachine_Create_WithPasswordAuthentication.json
+    requestUpdate:
+      - replace: /parameters/properties/osProfile/adminUsername
+        value: $(adminUsername)
+      - replace: /parameters/properties/osProfile/adminPassword
+        value: $(adminPassword)
+      - replace: /parameters/properties/networkProfile/networkInterfaces/0/id
+        value: $(networkInterfaceId)
+    outputVariables:
+      virtaulMachineId:
+        type: string
+        fromResponse: /id
+  - step: RestorePointCollections_CreateOrUpdate
+    exampleFile: ../examples/restorePointExamples/RestorePointCollection_CreateOrUpdate.json
+    requestUpdate:
+      - replace: /parameters/properties/source/id
+        value: $(virtaulMachineId)
+    
+
+scenarios:
+  - scenario: RestorePointCollections
+    description: Microsoft.Compute/restorePointCollections
+    steps:
+      - step: RestorePointCollections_ListAll
+        exampleFile: ../examples/restorePointExamples/RestorePointCollection_ListBySubscription.json
+      - step: RestorePointCollections_List
+        exampleFile: ../examples/restorePointExamples/RestorePointCollection_ListByResourceGroup.json
+      - step: RestorePointCollections_Get
+        exampleFile: ../examples/restorePointExamples/RestorePointCollection_Get.json
+
+  - scenario: RestorePoints
+    description: Microsoft.Compute/restorePointCollections/restorePoints
+    variables:
+      restorePointName:
+        type: string
+        prefix: restorepoi
+    steps:
+      - step: RestorePoints_Create
+        exampleFile: ../examples/restorePointExamples/RestorePoint_Create.json
+        requestUpdate:
+          - remove: /parameters/properties
+      - step: RestorePoints_Get
+        exampleFile: ../examples/restorePointExamples/RestorePoint_Get.json
+      - step: RestorePoints_Delete
+        exampleFile: ../examples/restorePointExamples/RestorePoints_Delete_MaximumSet_Gen.json
+
+cleanUpSteps:
+  - step: RestorePointCollections_Update
+    exampleFile: ../examples/restorePointExamples/RestorePointCollections_Update_MinimumSet_Gen.json
+  - step: RestorePointCollections_Delete
+    exampleFile: ../examples/restorePointExamples/RestorePointCollections_Delete_MaximumSet_Gen.json

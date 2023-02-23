@@ -1,0 +1,65 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworksName": {
+            "type": "string"
+        },
+        "networkInterfaceName":{
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('virtualNetworksName')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "location": "[parameters('location')]",
+            "apiVersion": "2021-05-01",
+            "properties": {
+              "addressSpace": {
+                "addressPrefixes": [
+                  "10.0.0.0/16"
+                ]
+              },
+              "subnets": [
+                {
+                  "name": "default",
+                  "properties": {
+                    "addressPrefix": "10.0.0.0/24"
+                  }
+                }
+              ]
+            }
+        },
+        {
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworksName'))]"
+            ],
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2021-08-01",
+            "name": "[parameters('networkInterfaceName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "Ipv4config",
+                        "properties": {
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworksName'), 'default')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+        "networkInterfaceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
+        }
+    }
+}

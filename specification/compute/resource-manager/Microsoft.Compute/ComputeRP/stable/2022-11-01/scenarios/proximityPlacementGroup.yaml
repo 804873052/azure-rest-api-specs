@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  proximityPlacementGroupName:
+    type: string
+    prefix: proximityp
+
+scenarios:
+  - scenario: ProximityPlacementGroups
+    description: Microsoft.Compute/proximityPlacementGroups
+    steps:
+      - step: ProximityPlacementGroups_CreateOrUpdate
+        exampleFile: ../examples/proximityPlacementGroupExamples/ProximityPlacementGroup_CreateOrUpdate.json
+      - step: ProximityPlacementGroups_ListBySubscription
+        exampleFile: ../examples/proximityPlacementGroupExamples/ProximityPlacementGroup_ListBySubscription.json
+      - step: ProximityPlacementGroups_ListByResourceGroup
+        exampleFile: ../examples/proximityPlacementGroupExamples/ProximityPlacementGroup_ListByResourceGroup.json
+      - step: ProximityPlacementGroups_Get
+        exampleFile: ../examples/proximityPlacementGroupExamples/ProximityPlacementGroup_Get.json
+      - step: ProximityPlacementGroups_Update
+        exampleFile: ../examples/proximityPlacementGroupExamples/ProximityPlacementGroup_Patch.json
+      - step: ProximityPlacementGroups_Delete
+        exampleFile: ../examples/proximityPlacementGroupExamples/ProximityPlacementGroup_Delete.json

@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+scenarios:
+  - scenario: VirtualMachineExtensionImages
+    description: Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types
+    variables:
+      publisherName:
+        type: string
+        value: Microsoft.Compute
+      typeParam:
+        type: string
+        value: CustomScriptExtension
+      version:
+        type: string
+        value: "1.9"
+    steps:
+      - step: VirtualMachineExtensionImages_ListTypes
+        exampleFile: ../examples/virtualMachineExtensionImageExamples/VirtualMachineExtensionImages_ListTypes_MaximumSet_Gen.json
+      - step: VirtualMachineExtensionImages_ListVersions
+        operationId: VirtualMachineExtensionImages_ListVersions
+        parameters:
+          type: $(typeParam)
+      - step: VirtualMachineExtensionImages_Get
+        exampleFile: ../examples/virtualMachineExtensionImageExamples/VirtualMachineExtensionImages_Get_MaximumSet_Gen.json
+        requestUpdate:
+          - replace: /type
+            value: $(typeParam)
+            

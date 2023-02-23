@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  snapshotName:
+    type: string
+    prefix: snapshotna
+  location:
+    type: string
+
+scenarios:
+  - scenario: Snapshots
+    description: Microsoft.Compute/snapshots/{snapshotName}
+    steps:
+      - step: Snapshots_CreateOrUpdate
+        # exampleFile: ../examples/snapshotExamples/Snapshot_Create_FromAnExistingSnapshot.json
+        operationId: Snapshots_CreateOrUpdate
+        parameters:
+          snapshot: 
+            location: $(location)
+            properties:
+              diskSizeGB: 10
+              creationData:
+                createOption: Empty
+
+      - step: Snapshots_List
+        exampleFile: ../examples/snapshotExamples/Snapshot_ListBySubscription.json
+      - step: Snapshots_ListByResourceGroup
+        exampleFile: ../examples/snapshotExamples/Snapshot_ListByResourceGroup.json
+      - step: Snapshots_Get
+        exampleFile: ../examples/snapshotExamples/Snapshot_Get.json
+      - step: Snapshots_Update
+        exampleFile: ../examples/snapshotExamples/Snapshot_Update.json
+      - step: Snapshots_GrantAccess
+        exampleFile: ../examples/snapshotExamples/Snapshot_BeginGetAccess.json
+      - step: Snapshots_RevokeAccess
+        exampleFile: ../examples/snapshotExamples/Snapshot_EndGetAccess.json
+      - step: Snapshots_Delete
+        exampleFile: ../examples/snapshotExamples/Snapshot_Delete.json

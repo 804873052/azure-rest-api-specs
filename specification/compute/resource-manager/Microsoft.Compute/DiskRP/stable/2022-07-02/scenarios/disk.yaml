@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  diskName:
+    type: string
+    prefix: diskname
+
+scenarios:
+  - scenario: Disks
+    description: Microsoft.Compute/disks/{diskName}
+    steps:
+      - step: Disks_CreateOrUpdate
+        exampleFile: ../examples/diskExamples/Disk_Create_Empty.json
+      - step: Disks_List
+        exampleFile: ../examples/diskExamples/Disk_ListBySubscription.json
+      - step: Disks_ListByResourceGroup
+        exampleFile: ../examples/diskExamples/Disk_ListByResourceGroup.json
+      - step: Disks_Get
+        exampleFile: ../examples/diskExamples/Disk_Get.json
+      - step: Disks_Update
+        exampleFile: ../examples/diskExamples/Disk_Update_RemoveDiskAccess.json
+      - step: Disks_GrantAccess
+        exampleFile: ../examples/diskExamples/Disk_BeginGetAccess.json
+      - step: Disks_RevokeAccess
+        exampleFile: ../examples/diskExamples/Disk_EndGetAccess.json
+      - step: Disks_Delete
+        exampleFile: ../examples/diskExamples/Disk_Delete.json

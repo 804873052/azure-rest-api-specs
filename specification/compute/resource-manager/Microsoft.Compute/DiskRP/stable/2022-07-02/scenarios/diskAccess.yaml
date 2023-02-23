@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  diskAccessName:
+    type: string
+    prefix: diskaccess
+
+scenarios:
+  - scenario: DiskAccesses
+    description: Microsoft.Compute/diskAccesses/{diskAccessName}
+    steps:
+      - step: DiskAccesses_CreateOrUpdate
+        exampleFile: ../examples/diskAccessExamples/DiskAccess_Create.json
+      - step: DiskAccesses_List
+        exampleFile: ../examples/diskAccessExamples/DiskAccess_ListBySubscription.json
+      - step: DiskAccesses_ListPrivateEndpointConnections
+        exampleFile: ../examples/diskAccessExamples/DiskAccessPrivateEndpointConnection_ListByDiskAccess.json
+      - step: DiskAccesses_GetPrivateLinkResources
+        exampleFile: ../examples/diskAccessExamples/DiskAccessPrivateLinkResources_Get.json
+      - step: DiskAccesses_ListByResourceGroup
+        exampleFile: ../examples/diskAccessExamples/DiskAccess_ListByResourceGroup.json
+      - step: DiskAccesses_Get
+        exampleFile: ../examples/diskAccessExamples/DiskAccess_Get.json
+      - step: DiskAccesses_Update
+        exampleFile: ../examples/diskAccessExamples/DiskAccess_Update.json
+
+# private endpoint connection
+      # - step: DiskAccesses_UpdateAPrivateEndpointConnection
+      #   exampleFile: ../examples/diskAccessExamples/DiskAccessPrivateEndpointConnection_Approve.json
+      # - step: DiskAccesses_GetAPrivateEndpointConnection
+      #   exampleFile: ../examples/diskAccessExamples/DiskAccessPrivateEndpointConnection_Get.json
+      # - step: DiskAccesses_DeleteAPrivateEndpointConnection
+      #   exampleFile: ../examples/diskAccessExamples/DiskAccessPrivateEndpointConnection_Delete.json
+
+      - step: DiskAccesses_Delete
+        exampleFile: ../examples/diskAccessExamples/DiskAccess_Delete.json

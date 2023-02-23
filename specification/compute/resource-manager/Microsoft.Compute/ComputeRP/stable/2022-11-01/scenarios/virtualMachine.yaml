@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  vmName:
+    type: string
+    prefix: vmname
+  virtualNetworksName: 
+    type: string
+    prefix: vmvnet
+  networkInterfaceName:
+    type: string
+    prefix: vmnic
+  adminPassword:
+    type: string
+  adminUsername:
+    type: string
+    prefix: vmuserna
+
+prepareSteps:
+  - step: Create_NetworkInterface
+    armTemplate: templates/Create_NetworkInterface.json
+  - step: VirtualMachines_CreateOrUpdate
+    exampleFile: ../examples/virtualMachineExamples/VirtualMachine_Create_WithPasswordAuthentication.json
+    requestUpdate:
+      - replace: /parameters/properties/osProfile/adminUsername
+        value: $(adminUsername)
+      - replace: /parameters/properties/osProfile/adminPassword
+        value: $(adminPassword)
+      - replace: /parameters/properties/networkProfile/networkInterfaces/0/id
+        value: $(networkInterfaceId)
+
+scenarios: 
+  # - scenario: VirtualMachineExtensions # fail
+  #   description: Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}
+  #   variables:
+  #     vmExtensionName:
+  #       type: string
+  #       prefix: vmextension
+  #   steps:
+  #     - step: VirtualMachineExtensions_CreateOrUpdate
+  #       exampleFile: ../examples/virtualMachineExamples/VirtualMachineExtensions_CreateOrUpdate_MinimumSet_Gen.json
+  #     - step: VirtualMachineExtensions_List
+  #       exampleFile: ../examples/virtualMachineExamples/VirtualMachineExtensions_List_MinimumSet_Gen.json
+  #     - step: VirtualMachineExtensions_Get
+  #       exampleFile: ../examples/virtualMachineExamples/VirtualMachineExtensions_Get_MinimumSet_Gen.json
+  #     - step: VirtualMachineExtensions_Update
+  #       exampleFile: ../examples/virtualMachineExamples/VirtualMachineExtensions_Update.json
+  #     - step: VirtualMachineExtensions_Delete
+  #       exampleFile: ../examples/virtualMachineExamples/VirtualMachineExtensions_Delete_MinimumSet_Gen.json
+
+  - scenario: VirtualMachines
+    description: Microsoft.Compute/virtualMachines/{vmName}
+    steps:
+      - step: VirtualMachines_ListByLocation
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachines_ListBySubscription_ByLocation.json
+      - step: VirtualMachines_InstanceView
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachine_Get_InstanceView.json
+      - step: VirtualMachines_ListAll
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachines_ListAll_MinimumSet_Gen.json
+      - step: VirtualMachines_List
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachines_List_MinimumSet_Gen.json
+      - step: VirtualMachines_Get
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachine_Get.json
+      - step: VirtualMachines_ListAvailableSizes
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachines_ListAvailableVmSizes.json
+      - step: VirtualMachines_Update
+        # exampleFile: ../examples/virtualMachineExamples/VirtualMachine_Update_DetachDataDiskUsingToBeDetachedProperty.json
+        operationId: VirtualMachines_Update
+        parameters:
+          parameters:
+            tags:
+              - virtaulMachine: vmupdate
+      - step: VirtualMachines_InstallPatches # 比较耗时
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachine_InstallPatches.json
+        requestUpdate:
+          - remove: /installPatchesInput/windowsParameters/maxPatchPublishDate
+        
+      - step: VirtualMachines_Deallocate
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachines_Deallocate_MinimumSet_Gen.json
+      - step: VirtualMachines_Start
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachines_Start_MinimumSet_Gen.json
+      - step: VirtualMachines_AssessPatches # 耗时
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachine_AssessPatches.json
+      - step: VirtualMachines_Restart
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachines_Restart_MinimumSet_Gen.json
+      - step: VirtualMachines_Reapply
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachine_Reapply.json
+      - step: VirtualMachines_RunCommand
+        exampleFile: ../examples/runCommandExamples/VirtualMachineRunCommand.json
+      - step: VirtualMachines_Redeploy
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachines_Redeploy_MinimumSet_Gen.json
+      - step: VirtualMachines_PowerOff
+        exampleFile: ../examples/virtualMachineExamples/VirtualMachines_PowerOff_MinimumSet_Gen.json
+
+cleanUpSteps:
+  - step: VirtualMachines_Delete
+    exampleFile: ../examples/virtualMachineExamples/VirtualMachine_Delete_Force.json

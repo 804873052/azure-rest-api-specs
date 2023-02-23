@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+scenarios:
+  - scenario: VirtualMachineImages
+    description: Microsoft.Compute/locations/publishers
+    variables:
+      publisherName:
+        type: string
+        value: MicrosoftWindowsDesktop
+      offer:
+        type: string
+        value: office-365
+      skus:
+        type: string
+        value: win11-22h2-avd-m365
+      version:
+        type: string
+        value: 22621.1105.230110
+    steps:
+      - step: VirtualMachineImages_ListPublishers
+        exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImages_ListPublishers_MaximumSet_Gen.json
+      - step: VirtualMachineImages_ListOffers
+        exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImages_ListOffers_MaximumSet_Gen.json
+      - step: VirtualMachineImages_ListSkus
+        exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImages_ListSkus_MaximumSet_Gen.json
+      - step: VirtualMachineImages_List
+        exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImages_List_MinimumSet_Gen.json
+      - step: VirtualMachineImages_Get
+        exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImages_Get_MaximumSet_Gen.json
+
+# what is EdgeZone
+  # - scenario: VirtualMachineImagesEdgeZone
+  #   description: Microsoft.Compute/locations/edgeZones
+  #   steps:
+  #     - step: VirtualMachineImages_ListByEdgeZone # The available edge zones in location 'eastus' are ''."
+  #       exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImagesEdgeZone_ListByEdgeZone_MaximumSet_Gen.json
+  #     - step: VirtualMachineImagesEdgeZone_ListPublishers
+  #       exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImagesEdgeZone_ListPublishers_MaximumSet_Gen.json
+  #     - step: VirtualMachineImagesEdgeZone_ListOffers
+  #       exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImagesEdgeZone_ListOffers_MaximumSet_Gen.json
+  #     - step: VirtualMachineImagesEdgeZone_ListSkus
+  #       exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImagesEdgeZone_ListSkus_MaximumSet_Gen.json
+  #     - step: VirtualMachineImagesEdgeZone_List
+  #       exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImagesEdgeZone_List_MaximumSet_Gen.json
+  #     - step: VirtualMachineImagesEdgeZone_Get
+  #       exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImagesEdgeZone_Get_MaximumSet_Gen.json
+  #     - step: VirtualMachineImages_ListByEdgeZone
+  #       exampleFile: ../examples/virtualMachineImageExamples/VirtualMachineImagesEdgeZone_ListByEdgeZone_MaximumSet_Gen.json

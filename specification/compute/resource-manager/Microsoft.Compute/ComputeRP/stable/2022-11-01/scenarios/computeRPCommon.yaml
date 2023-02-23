@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+scenarios:
+  - scenario: Operations
+    description: Microsoft.Compute/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ../examples/computeRPCommonExamples/Operations_List_MaximumSet_Gen.json
+
+  - scenario: Usage
+    description: Microsoft.Compute/locations/{location}/usages
+    steps:
+      - step: Usage_List
+        exampleFile: ../examples/computeRPCommonExamples/Usage_List_MaximumSet_Gen.json
+
+  - scenario: VirtualMachineSizes
+    description: Microsoft.Compute/locations/{location}/vmSizes
+    steps:
+      - step: VirtualMachineSizes_List
+        exampleFile: ../examples/computeRPCommonExamples/VirtualMachineSizes_List_MaximumSet_Gen.json

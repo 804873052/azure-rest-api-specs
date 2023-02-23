@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  hostGroupName:
+    type: string
+    prefix: hostgroupn
+
+prepareSteps:
+  - step: DedicatedHostGroups_CreateOrUpdate
+    exampleFile: ../examples/dedicatedHostExamples/DedicatedHostGroup_CreateOrUpdate.json
+
+scenarios:
+  - scenario: DedicatedHostGroups
+    description: Microsoft.Compute/hostGroups
+    steps:
+      - step: DedicatedHostGroups_ListBySubscription
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHostGroups_ListBySubscription_MinimumSet_Gen.json
+      - step: DedicatedHostGroups_ListByResourceGroup
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHostGroups_ListByResourceGroup_MinimumSet_Gen.json
+      - step: DedicatedHostGroups_Get
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHostGroup_Get.json
+      - step: DedicatedHostGroups_Update
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHostGroups_Update_MinimumSet_Gen.json
+
+  - scenario: DedicatedHosts
+    description: Microsoft.Compute/hostGroups/hosts
+    variables:
+      hostName:
+        type: string
+        prefix: hostname
+    steps:
+      - step: DedicatedHosts_CreateOrUpdate
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHost_CreateOrUpdate.json
+      - step: DedicatedHosts_ListByHostGroup
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHosts_ListByHostGroup_MinimumSet_Gen.json
+      - step: DedicatedHosts_Get
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHost_Get.json
+      - step: DedicatedHosts_Update
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHosts_Update_MinimumSet_Gen.json
+      - step: DedicatedHosts_Restart
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHost_Restart.json
+      - step: DedicatedHosts_Delete
+        exampleFile: ../examples/dedicatedHostExamples/DedicatedHosts_Delete_MinimumSet_Gen.json
+        

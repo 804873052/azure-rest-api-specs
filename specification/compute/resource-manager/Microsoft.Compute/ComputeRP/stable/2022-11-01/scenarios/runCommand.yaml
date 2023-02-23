@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  vmName:
+    type: string
+    prefix: vmcommand
+  vmScaleSetName:
+    type: string
+    prefix: vmscalesetcommand
+
+  location:
+    type: string
+  virtualNetworksName: 
+    type: string
+    prefix: vmvnetrc
+  networkInterfaceName:
+    type: string
+    prefix: vmnicrc
+  adminPassword:
+    type: string
+  adminUsername:
+    type: string
+    prefix: rc
+  virtualNetworkSubnetName:
+    type: string
+    prefix: vmssvnetnarc
+
+prepareSteps:
+  - step: Create_NetworkInterface
+    armTemplate: templates/Create_NetworkInterface.json
+  - step: VirtualMachines_CreateOrUpdate
+    exampleFile: ../examples/virtualMachineExamples/VirtualMachine_Create_WithPasswordAuthentication.json
+    requestUpdate:
+      - replace: /parameters/properties/osProfile/adminUsername
+        value: $(adminUsername)
+      - replace: /parameters/properties/osProfile/adminPassword
+        value: $(adminPassword)
+      - replace: /parameters/properties/networkProfile/networkInterfaces/0/id
+        value: $(networkInterfaceId)
+
+  - step: Create_NetworkAndSubnet
+    armTemplate: ./templates/Create_NetworkAndSubnet.json
+  - step: VirtualMachineScaleSets_CreateOrUpdate
+    exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Create_WithPasswordAuthentication.json
+    requestUpdate:
+      - replace: /parameters/properties/virtualMachineProfile/osProfile/computerNamePrefix
+        value: vmss
+      - replace: /parameters/properties/virtualMachineProfile/osProfile/adminUsername
+        value: $(adminUsername)
+      - replace: /parameters/properties/virtualMachineProfile/osProfile/adminPassword
+        value: $(adminPassword)
+      - replace: /parameters/properties/virtualMachineProfile/networkProfile/networkInterfaceConfigurations/0/properties/ipConfigurations/0/properties/subnet/id
+        value: $(subnetId)
+
+
+scenarios:
+  - scenario: VirtualMachineRunCommands
+    description: Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}
+    variables:
+      runCommandName:
+        type: string
+        prefix: vmruncommand
+    steps:
+      - step: VirtualMachineRunCommands_CreateOrUpdate
+        exampleFile: ../examples/runCommandExamples/VirtualMachineRunCommand_CreateOrUpdate.json
+      - step: VirtualMachineRunCommands_List
+        exampleFile: ../examples/runCommandExamples/RunCommand_List.json
+      - step: VirtualMachineRunCommands_Get
+        exampleFile: ../examples/runCommandExamples/RunCommand_Get.json
+      - step: VirtualMachineRunCommands_ListByVirtualMachine
+        exampleFile: ../examples/runCommandExamples/VirtualMachineRunCommand_List.json
+      - step: VirtualMachineRunCommands_GetByVirtualMachine
+        exampleFile: ../examples/runCommandExamples/VirtualMachineRunCommand_Get.json
+      - step: VirtualMachineRunCommands_Update
+        exampleFile: ../examples/runCommandExamples/VirtualMachineRunCommand_Update.json
+      - step: VirtualMachines_RunCommand
+        exampleFile: ../examples/runCommandExamples/VirtualMachineRunCommand.json
+      - step: VirtualMachineRunCommands_Delete
+        exampleFile: ../examples/runCommandExamples/VirtualMachineRunCommand_Delete.json
+
+  - scenario: VirtualMachineScaleSetVMRunCommands
+    description: Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}
+    variables:
+      runCommandName:
+        type: string
+        prefix: vmssruncommand
+    steps:
+      - step: VirtualMachineScaleSetVMRunCommands_CreateOrUpdate
+        exampleFile: ../examples/runCommandExamples/VirtualMachineScaleSetVMRunCommand_CreateOrUpdate.json
+      - step: VirtualMachineScaleSetVMRunCommands_List
+        exampleFile: ../examples/runCommandExamples/VirtualMachineScaleSetVMRunCommand_List.json
+      - step: VirtualMachineScaleSetVMRunCommands_Get
+        exampleFile: ../examples/runCommandExamples/VirtualMachineScaleSetVMRunCommand_Get.json
+      - step: VirtualMachineScaleSetVMRunCommands_Update
+        exampleFile: ../examples/runCommandExamples/VirtualMachineScaleSetVMRunCommand_Update.json
+      - step: VirtualMachineScaleSetVMs_RunCommand
+        exampleFile: ../examples/runCommandExamples/VirtualMachineScaleSetVMRunCommand.json
+      - step: VirtualMachineScaleSetVMRunCommands_Delete
+        exampleFile: ../examples/runCommandExamples/VirtualMachineScaleSetVMRunCommand_Delete.json

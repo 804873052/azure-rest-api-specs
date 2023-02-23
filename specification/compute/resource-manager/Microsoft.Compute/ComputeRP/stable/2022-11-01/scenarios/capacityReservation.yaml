@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  capacityReservationGroupName:
+    type: string
+    prefix: capacityre
+
+prepareSteps:
+  - step: CapacityReservationGroups_CreateOrUpdate
+    exampleFile: ../examples/capacityReservationExamples/CapacityReservationGroup_CreateOrUpdate.json
+
+scenarios:
+  - scenario: CapacityReservationGroups
+    description: Microsoft.Compute/capacityReservationGroups
+    steps:
+      - step: CapacityReservationGroups_ListBySubscription
+        exampleFile: ../examples/capacityReservationExamples/CapacityReservationGroup_ListBySubscription.json
+      - step: CapacityReservationGroups_ListByResourceGroup
+        exampleFile: ../examples/capacityReservationExamples/CapacityReservationGroup_ListByResourceGroup.json
+      - step: CapacityReservationGroups_Get
+        exampleFile: ../examples/capacityReservationExamples/CapacityReservationGroup_Get.json
+      - step: CapacityReservationGroups_Update
+        exampleFile: ../examples/capacityReservationExamples/CapacityReservationGroup_Update_MinimumSet_Gen.json
+
+# fail...
+  # - scenario: CapacityReservation
+  #   description: Microsoft.Compute/capacityReservationGroups/capacityReservations
+  #   variables:
+  #     capacityReservationName:
+  #       type: string
+  #       prefix: capacityre
+  #   steps:
+  #     - step: CapacityReservations_CreateOrUpdate
+  #       exampleFile: ../examples/capacityReservationExamples/CapacityReservation_CreateOrUpdate.json
+  #     - step: CapacityReservations_ListByCapacityReservationGroup
+  #       exampleFile: ../examples/capacityReservationExamples/CapacityReservation_ListByReservationGroup.json
+  #     - step: CapacityReservations_Get
+  #       exampleFile: ../examples/capacityReservationExamples/CapacityReservation_Get.json
+  #     - step: CapacityReservations_Update
+  #       exampleFile: ../examples/capacityReservationExamples/CapacityReservation_Update_MinimumSet_Gen.json
+  #     - step: CapacityReservations_Delete
+  #       exampleFile: ../examples/capacityReservationExamples/CapacityReservation_Delete_MinimumSet_Gen.json
+
+cleanUpSteps:
+  - step: CapacityReservationGroups_Delete
+    exampleFile: ../examples/capacityReservationExamples/CapacityReservationGroup_Delete_MinimumSet_Gen.json

@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+scenarios:
+  - scenario: AvailabilitySets
+    description: Microsoft.Compute/availabilitySets
+    variables:
+      availabilitySetName:
+        type: string
+        prefix: availabili
+    steps:
+      - step: AvailabilitySets_CreateOrUpdate
+        exampleFile: ../examples/availabilitySetExamples/AvailabilitySet_Create.json
+      - step: AvailabilitySets_ListBySubscription
+        exampleFile: ../examples/availabilitySetExamples/AvailabilitySet_ListBySubscription.json
+        requestUpdate:
+          - remove: /$expand
+      - step: AvailabilitySets_List
+        exampleFile: ../examples/availabilitySetExamples/AvailabilitySets_List_MaximumSet_Gen.json
+      - step: AvailabilitySets_Get
+        exampleFile: ../examples/availabilitySetExamples/AvailabilitySets_Get_MaximumSet_Gen.json
+      - step: AvailabilitySets_ListAvailableSizes
+        exampleFile: ../examples/availabilitySetExamples/AvailabilitySets_ListAvailableSizes_MaximumSet_Gen.json
+      - step: AvailabilitySets_Update
+        exampleFile: ../examples/availabilitySetExamples/AvailabilitySets_Update_MinimumSet_Gen.json
+      - step: AvailabilitySets_Delete
+        exampleFile: ../examples/availabilitySetExamples/AvailabilitySets_Delete_MaximumSet_Gen.json
+      

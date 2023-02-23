@@ -1,0 +1,192 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+scope: ResourceGroup
+
+variables:
+  vmScaleSetName:
+    type: string
+    prefix: vmscaleset
+  vmssExtensionName:
+    type: string
+    prefix: vmssextens
+  location:
+    type: string
+  adminPassword:
+    type: string
+  adminUsername:
+    type: string
+    prefix: vmuserna
+  virtualNetworkSubnetName:
+    type: string
+    prefix: vmssvnetna
+
+prepareSteps:
+  - step: Create_NetworkAndSubnet
+    armTemplate: ./templates/Create_NetworkAndSubnet.json
+  - step: VirtualMachineScaleSets_CreateOrUpdate
+    exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Create_WithPasswordAuthentication.json
+    requestUpdate:
+      - replace: /parameters/properties/virtualMachineProfile/osProfile/computerNamePrefix
+        value: vmss
+      - replace: /parameters/properties/virtualMachineProfile/osProfile/adminUsername
+        value: $(adminUsername)
+      - replace: /parameters/properties/virtualMachineProfile/osProfile/adminPassword
+        value: $(adminPassword)
+      - replace: /parameters/properties/virtualMachineProfile/networkProfile/networkInterfaceConfigurations/0/properties/ipConfigurations/0/properties/subnet/id
+        value: $(subnetId)
+      # - replace: /parameters/sku/capactiy
+      #   value: 1 
+
+scenarios:
+  - scenario: VirtualMachineScaleSets
+    description: Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}
+    steps:
+      - step: VirtualMachineScaleSets_ListByLocation
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_ListBySubscription_ByLocation.json
+      - step: VirtualMachineScaleSets_GetInstanceView
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_GetInstanceView_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_GetOSUpgradeHistory
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_GetOSUpgradeHistory_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_ListAll
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_ListAll_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_Get
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Get_AutoPlacedOnDedicatedHostGroup.json
+      - step: VirtualMachineScaleSets_List
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_List_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_ListSkus
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_ListSkus_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_Update
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_Update_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_Redeploy
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_Redeploy_MinimumSet_Gen.json
+      # - step: VirtualMachineScaleSets_PerformMaintenance # this VM is not eligible
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_PerformMaintenance_MinimumSet_Gen.json
+      # - step: VirtualMachineScaleSets_ForceRecoveryServiceFabricPlatformUpdateDomainWalk #not contain the service fabric extension
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_ForceRecoveryServiceFabricPlatformUpdateDomainWalk_MinimumSet_Gen.json
+      # - step: VirtualMachineScaleSets_ConvertToSinglePlacementGroup # the Virtual Machine Scale Set have the property singlePlacementGroup set to False
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_ConvertToSinglePlacementGroup_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_Deallocate
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_Deallocate_MinimumSet_Gen.json
+      # - step: VirtualMachineScaleSets_SetOrchestrationServiceState # OrchestrationService AutomaticRepairs is disabled
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_SetOrchestrationServiceState_MinimumSet_Gen.json
+
+      - step: VirtualMachineScaleSets_Start
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_Start_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_Reimage
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_Reimage_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_Restart
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_Restart_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSets_ReimageAll
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_ReimageAll_MinimumSet_Gen.json
+
+
+      # - step: VirtualMachineScaleSets_DeleteInstances
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_DeleteInstances_MinimumSet_Gen.json
+      # - step: VirtualMachineScaleSets_UpdateInstances
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_UpdateInstances_MinimumSet_Gen.json
+
+  - scenario: VirtualMachineScaleSetVMs
+    description: Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}
+    variables:
+      instanceId:
+        type: string
+        value: "0"
+    steps:
+      # - step: VirtualMachineScaleSetVMs_Update 
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_Update_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSetVMs_List
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_List_MinimumSet_Gen.json
+        requestUpdate:
+          - replace: /virtualMachineScaleSetName
+            value: $(vmScaleSetName)
+      - step: VirtualMachineScaleSetVMs_Get
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVM_Get_WithUserData.json
+      - step: VirtualMachineScaleSetVMs_GetInstanceView
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVM_Get_InstanceViewAutoPlacedOnDedicatedHostGroup.json
+      # - step: VirtualMachineScaleSetVMs_ReimageAll
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_ReimageAll_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSetVMs_Redeploy
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_Redeploy_MinimumSet_Gen.json
+      # - step: VirtualMachineScaleSetVMs_RetrieveBootDiagnosticsData #Diagnostics is not enabled
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVM_RetrieveBootDiagnosticsData.json
+      - step: VirtualMachineScaleSetVMs_Start
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_Start_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSetVMs_Restart
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_Restart_MinimumSet_Gen.json
+      # - step: VirtualMachineScaleSetVMs_SimulateEviction # Operation 'simulateEviction' is allowed only for Spot Virtual Machines
+        # exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVM_SimulateEviction.json
+      # - step: VirtualMachineScaleSetVMs_PerformMaintenance # not allowed
+      #   exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_PerformMaintenance_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSetVMs_Deallocate
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_Deallocate_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSetVMs_Reimage
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_Reimage_MinimumSet_Gen.json
+      # - step: VirtualMachineScaleSetVMs_RunCommand // vm is run
+      #   exampleFile: ../examples/runCommandExamples/VirtualMachineScaleSetVMRunCommand.json
+      - step: VirtualMachineScaleSetVMs_PowerOff
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMs_PowerOff_MinimumSet_Gen.json
+      - step: VirtualMachineScaleSetVMs_Delete
+        exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVM_Delete_Force.json
+
+
+# waiting test
+  # - scenario: VirtualMachineScaleSetExtensions
+  #   description: Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}
+  #   steps:
+  #     - step: VirtualMachineScaleSetExtensions_CreateOrUpdate
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtensions_CreateOrUpdate_MinimumSet_Gen.json
+  #     - step: VirtualMachineScaleSetExtensions_List
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtensions_List_MinimumSet_Gen.json
+  #     - step: VirtualMachineScaleSetExtensions_Get
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtensions_Get_MinimumSet_Gen.json
+  #     - step: VirtualMachineScaleSetExtensions_Update
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtensions_Update_MinimumSet_Gen.json
+  #     - step: VirtualMachineScaleSetExtensions_Delete
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtensions_Delete_MinimumSet_Gen.json
+
+
+  # - scenario: VirtualMachineScaleSetVMExtensions
+  #   description: Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}
+  #   steps:
+  #     - step: VirtualMachineScaleSetVMExtensions_CreateOrUpdate
+  #       # exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMExtensions_Create.json
+  #       operationId: VirtualMachineScaleSetVMExtensions_CreateOrUpdate
+  #       parameters:
+  #         vmExtensionName: myVMExtension
+  #         extensionParameters:
+  #           properties:
+  #             autoUpgradeMinorVersion: true
+  #             publisher: Microsoft.Compute
+  #             type: CustomScriptExtension
+  #             typeHandlerVersion: 1.9
+  #             settings:
+  #               UserName: "xyz@microsoft.com"
+  #     - step: VirtualMachineScaleSetVMExtensions_List
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMExtensions_List.json
+  #     - step: VirtualMachineScaleSetVMExtensions_Get
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMExtensions_Get.json
+  #     - step: VirtualMachineScaleSetVMExtensions_Update
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMExtensions_Update.json
+  #     - step: VirtualMachineScaleSetVMExtensions_Delete
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVMExtensions_Delete.json
+
+# 可能超级耗时
+  # - scenario: VirtualMachineScaleSetRollingUpgrades
+  #   description: Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade
+  #   steps:
+  #     - step: VirtualMachineScaleSetRollingUpgrades_StartExtensionUpgrade
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtension_RollingUpgrade.json
+  #     - step: VirtualMachineScaleSetRollingUpgrades_StartOSUpgrade
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetRollingUpgrades_StartOSUpgrade_MinimumSet_Gen.json
+  #     - step: VirtualMachineScaleSetRollingUpgrades_Cancel
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetRollingUpgrades_Cancel_MinimumSet_Gen.json
+  #     - step: VirtualMachineScaleSetRollingUpgrades_GetLatest
+  #       exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetRollingUpgrades_GetLatest_MinimumSet_Gen.json
+
+cleanUpSteps:
+  - step: VirtualMachineScaleSets_PowerOff
+    exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_PowerOff_MinimumSet_Gen.json
+  - step: VirtualMachineScaleSets_Delete
+    exampleFile: ../examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Delete_Force.json
+
+
