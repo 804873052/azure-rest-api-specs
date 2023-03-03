@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkManagerName:
+    type: string
+    prefix: networkmanagergp
+  networkGroupName:
+    type: string
+    prefix: networkgro
+  staticMemberName:
+    type: string
+    prefix: staticmemberna
+
+prepareSteps:
+  - step: NetworkManagers_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerPut.json
+    requestUpdate:
+      - add: /parameters/location
+        value: $(location)
+      - replace: /parameters/properties/networkManagerScopes/subscriptions/0
+        value: /subscriptions/$(subscriptionId)
+      - remove: /parameters/properties/networkManagerScopes/managementGroups
+  - step: NetworkGroups_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerGroupPut.json
+
+scenarios:
+  - scenario: NetworkGroups
+    description: Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}
+    steps:
+      - step: NetworkGroups_List
+        exampleFile: ..\examples\NetworkManagerGroupList.json
+      - step: NetworkGroups_Get
+        exampleFile: ..\examples\NetworkManagerGroupGet.json
+
+  - scenario: StaticMembers
+    description: Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}/staticMembers/{staticMemberName}
+    variables:
+      virtualNetworkName:
+        type: string
+        prefix: networkgrovet
+    steps:
+      - step: VirtualNetworks_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkCreate.json
+        outputVariables:
+          virutalNetworkId:
+            type: string
+            fromResponse: /id
+      - step: StaticMembers_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerStaticMemberPut.json
+        requestUpdate:
+          - replace: /parameters/properties/resourceId
+            value: $(virutalNetworkId)
+      - step: StaticMembers_List
+        exampleFile: ..\examples\NetworkManagerStaticMemberList.json
+      - step: StaticMembers_Get
+        exampleFile: ..\examples\NetworkManagerStaticMemberGet.json
+      - step: StaticMembers_Delete
+        exampleFile: ..\examples\NetworkManagerStaticMemberDelete.json
+    
+cleanUpSteps:
+  - step: NetworkGroups_Delete
+    exampleFile: ..\examples\NetworkManagerGroupDelete.json

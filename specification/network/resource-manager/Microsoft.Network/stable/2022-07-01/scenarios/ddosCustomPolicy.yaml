@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  ddosCustomPolicyName:
+    type: string
+    prefix: ddoscustom
+
+scenarios:
+  - scenario:  DdosCustomPolicies
+    description: Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}
+    steps:
+      - step: DdosCustomPolicies_CreateOrUpdate
+        exampleFile: ..\examples\DdosCustomPolicyCreate.json
+      - step: DdosCustomPolicies_Get
+        exampleFile: ..\examples\DdosCustomPolicyGet.json
+      - step: DdosCustomPolicies_UpdateTags
+        exampleFile: ..\examples\DdosCustomPolicyUpdateTags.json
+      - step: DdosCustomPolicies_Delete
+        exampleFile: ..\examples\DdosCustomPolicyDelete.json

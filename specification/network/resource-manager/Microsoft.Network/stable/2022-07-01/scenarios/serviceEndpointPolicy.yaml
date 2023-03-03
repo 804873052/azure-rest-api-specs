@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serviceEndpointPolicyName:
+    type: string
+    prefix: serviceend
+
+prepareSteps:
+  - step: ServiceEndpointPolicies_CreateOrUpdate
+    exampleFile: ..\examples\ServiceEndpointPolicyCreate.json
+
+scenarios:
+  - scenario: ServiceEndpointPolicies
+    description: Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}
+    steps:
+      - step: ServiceEndpointPolicies_List
+        exampleFile: ..\examples\ServiceEndpointPolicyListAll.json
+      - step: ServiceEndpointPolicies_ListByResourceGroup
+        exampleFile: ..\examples\ServiceEndpointPolicyList.json
+      - step: ServiceEndpointPolicies_Get
+        exampleFile: ..\examples\ServiceEndpointPolicyGet.json
+      - step: ServiceEndpointPolicies_UpdateTags
+        exampleFile: ..\examples\ServiceEndpointPolicyUpdateTags.json
+
+  - scenario:  ServiceEndpointPolicyDefinitions
+    description: Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}
+    variables:
+      serviceEndpointPolicyDefinitionName:
+        type: string
+        prefix: serviceend
+    steps:
+      - step: ServiceEndpointPolicyDefinitions_CreateOrUpdate
+        exampleFile: ..\examples\ServiceEndpointPolicyDefinitionCreate.json
+        requestUpdate:
+          - remove: /ServiceEndpointPolicyDefinitions/properties/serviceResources
+          - add: /ServiceEndpointPolicyDefinitions/properties/serviceResources
+            value: [
+              /subscriptions/$(subscriptionId)
+            ]
+      - step: ServiceEndpointPolicyDefinitions_ListByResourceGroup
+        exampleFile: ..\examples\ServiceEndpointPolicyDefinitionList.json
+      - step: ServiceEndpointPolicyDefinitions_Get
+        exampleFile: ..\examples\ServiceEndpointPolicyDefinitionGet.json
+      - step: ServiceEndpointPolicyDefinitions_Delete
+        exampleFile: ..\examples\ServiceEndpointPolicyDefinitionDelete.json
+
+cleanUpSteps:
+  - step: ServiceEndpointPolicies_Delete
+    exampleFile: ..\examples\ServiceEndpointPolicyDelete.json

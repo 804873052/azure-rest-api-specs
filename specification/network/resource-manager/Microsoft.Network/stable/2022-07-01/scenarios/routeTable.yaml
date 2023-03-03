@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  routeTableName:
+    type: string
+    prefix: routetable
+
+prepareSteps:
+  - step: RouteTables_CreateOrUpdate
+    exampleFile: ..\examples\RouteTableCreate.json
+
+scenarios:
+  - scenario: RouteTables
+    description: Microsoft.Network/routeTables/{routeTableName}
+    steps:
+      - step: RouteTables_ListAll
+        exampleFile: ..\examples\RouteTableListAll.json
+      - step: RouteTables_List
+        exampleFile: ..\examples\RouteTableList.json
+      - step: RouteTables_Get
+        exampleFile: ..\examples\RouteTableGet.json
+      - step: RouteTables_UpdateTags
+        exampleFile: ..\examples\RouteTableUpdateTags.json
+
+  - scenario: Routes
+    description: Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}
+    variables:
+      routeName:
+        type: string
+        prefix: routename
+    steps:
+      - step: Routes_CreateOrUpdate
+        exampleFile: ..\examples\RouteTableRouteCreate.json
+      - step: Routes_List
+        exampleFile: ..\examples\RouteTableRouteList.json
+      - step: Routes_Get
+        exampleFile: ..\examples\RouteTableRouteGet.json
+      - step: Routes_Delete
+        exampleFile: ..\examples\RouteTableRouteDelete.json
+
+cleanUpSteps:
+  - step: RouteTables_Delete
+    exampleFile: ..\examples\RouteTableDelete.json
+        

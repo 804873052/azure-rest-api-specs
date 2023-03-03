@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  virtualNetworkName:
+    type: string
+    prefix: virtualnet
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ..\examples\VirtualNetworkCreate.json
+
+scenarios:
+  - scenario: VirtualNetworks
+    description: Microsoft.Network/virtualNetworks/{virtualNetworkName}
+    steps:
+      - step: VirtualNetworks_ListAll
+        exampleFile: ..\examples\VirtualNetworkListAll.json
+      - step: VirtualNetworks_List
+        exampleFile: ..\examples\VirtualNetworkList.json
+      - step: VirtualNetworks_Get
+        exampleFile: ..\examples\VirtualNetworkGet.json
+      # - step: VirtualNetworks_CheckIPAddressAvailability # don't kown app
+      #   exampleFile: ..\examples\VirtualNetworkCheckIPAddressAvailability.json
+      - step: VirtualNetworks_ListUsage
+        exampleFile: ..\examples\VirtualNetworkListUsage.json
+      - step: VirtualNetworks_UpdateTags
+        exampleFile: ..\examples\VirtualNetworkUpdateTags.json
+      - step: VirtualNetworks_ListDdosProtectionStatus
+        exampleFile: ..\examples\VirtualNetworkGetDdosProtectionStatus.json
+
+  - scenario: Subnets
+    description: Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+    variables:
+      subnetName:
+        type: string
+        prefix: subnetname
+    steps:
+      - step: Subnets_CreateOrUpdate
+        exampleFile: ..\examples\SubnetCreate.json
+      - step: Subnets_List
+        exampleFile: ..\examples\SubnetList.json
+      - step: Subnets_Get
+        exampleFile: ..\examples\SubnetGet.json
+      # - step: Subnets_PrepareNetworkPolicies # not registered
+      #   exampleFile: ..\examples\SubnetPrepareNetworkPolicies.json
+      # - step: Subnets_UnprepareNetworkPolicies
+      #   exampleFile: ..\examples\SubnetUnprepareNetworkPolicies.json
+      # - step: ResourceNavigationLinks_List
+      #   exampleFile: ..\examples\VirtualNetworkGetResourceNavigationLinks.json
+      # - step: ServiceAssociationLinks_List
+      #   exampleFile: ..\examples\VirtualNetworkGetServiceAssociationLinks.json
+      - step: Subnets_Delete
+        exampleFile: ..\examples\SubnetDelete.json
+
+  - scenario: VirtualNetworkPeerings
+    description: Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}
+    variables:
+      virtualNetworkPeeringName:
+        type: string
+        prefix: virtualnet
+      peerVirtualNetwork:
+        type: string
+        prefix: peervirtualnet
+    steps:
+      - step: VirtualNetworks_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkCreate.json
+        requestUpdate:
+          - replace: /virtualNetworkName
+            value: $(peerVirtualNetwork)
+          - replace: /parameters/properties/addressSpace/addressPrefixes/0
+            value: 11.0.0.0/16
+        outputVariables:
+          virtualNetworkSecondId:
+            type: string
+            fromResponse: /id
+      - step: VirtualNetworkPeerings_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkPeeringCreate.json
+        requestUpdate:
+          - replace: /VirtualNetworkPeeringParameters/properties/remoteVirtualNetwork/id
+            value: $(virtualNetworkSecondId)
+      - step: VirtualNetworkPeerings_List
+        exampleFile: ..\examples\VirtualNetworkPeeringList.json
+      - step: VirtualNetworkPeerings_Get
+        exampleFile: ..\examples\VirtualNetworkPeeringGet.json
+      - step: VirtualNetworkPeerings_Delete
+        exampleFile: ..\examples\VirtualNetworkPeeringDelete.json
+
+cleanUpSteps:
+  - step: VirtualNetworks_Delete
+    exampleFile: ..\examples\VirtualNetworkDelete.json

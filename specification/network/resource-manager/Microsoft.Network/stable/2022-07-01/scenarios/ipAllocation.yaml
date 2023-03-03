@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  ipAllocationName:
+    type: string
+    prefix: ipallocati
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ..\examples\VirtualNetworkCreate.json
+    outputVariables:
+      virtualNetworkId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario:  IpAllocations
+    description: Microsoft.Network/IpAllocations/{ipAllocationName}
+    steps:
+      - step: IpAllocations_CreateOrUpdate
+        exampleFile: ..\examples\IpAllocationCreate.json
+        requestUpdate:
+          - replace: /parameters/properties/allocationTags/VNetID
+            value: $(virtualNetworkId)
+        
+      - step: IpAllocations_List
+        exampleFile: ..\examples\IpAllocationList.json
+      - step: IpAllocations_ListByResourceGroup
+        exampleFile: ..\examples\IpAllocationListByResourceGroup.json
+      - step: IpAllocations_Get
+        exampleFile: ..\examples\IpAllocationGet.json
+      - step: IpAllocations_UpdateTags
+        exampleFile: ..\examples\IpAllocationUpdateTags.json
+      - step: IpAllocations_Delete
+        exampleFile: ..\examples\IpAllocationDelete.json

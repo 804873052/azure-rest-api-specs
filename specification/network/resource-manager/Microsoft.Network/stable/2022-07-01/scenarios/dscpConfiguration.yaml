@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  dscpConfigurationName:
+    type: string
+    prefix: dscpconfig
+
+scenarios:
+  - scenario:  DscpConfiguration
+    description: Microsoft.Network/dscpConfigurations/{dscpConfigurationName}
+    steps:
+      - step: DscpConfiguration_CreateOrUpdate
+        exampleFile: ..\examples\DscpConfigurationCreate.json
+      - step: DscpConfiguration_ListAll
+        exampleFile: ..\examples\DscpConfigurationListAll.json
+      - step: DscpConfiguration_List
+        exampleFile: ..\examples\DscpConfigurationList.json
+      - step: DscpConfiguration_Get
+        exampleFile: ..\examples\DscpConfigurationGet.json
+      - step: DscpConfiguration_Delete
+        exampleFile: ..\examples\DscpConfigurationDelete.json

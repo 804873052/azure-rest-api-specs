@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  circuitName:
+    type: string
+    prefix: circuitnam
+  peeringName: AzurePrivatePeering
+  connectionName:
+    type: string
+    prefix: connerc
+
+prepareSteps:
+  - step: ExpressRouteCircuits_CreateOrUpdate
+    exampleFile: ..\examples\ExpressRouteCircuitCreate.json
+  - step: ExpressRouteCircuitPeerings_CreateOrUpdate
+    exampleFile: ..\examples\ExpressRouteCircuitPeeringCreate.json
+
+scenarios:
+  - scenario:  ExpressRouteCircuits
+    description: Microsoft.Network/expressRouteCircuits/{circuitName}
+    steps:
+      - step: ExpressRouteCircuits_ListAll
+        exampleFile: ..\examples\ExpressRouteCircuitListBySubscription.json
+      - step: ExpressRouteCircuits_List
+        exampleFile: ..\examples\ExpressRouteCircuitListByResourceGroup.json
+      - step: ExpressRouteCircuits_Get
+        exampleFile: ..\examples\ExpressRouteCircuitGet.json
+      - step: ExpressRouteCircuits_GetStats
+        exampleFile: ..\examples\ExpressRouteCircuitStats.json
+      - step: ExpressRouteCircuits_UpdateTags
+        exampleFile: ..\examples\ExpressRouteCircuitUpdateTags.json
+      
+      # - step: ExpressRouteCircuits_ListArpTable
+      #   exampleFile: ..\examples\ExpressRouteCircuitARPTableList.json
+      # - step: ExpressRouteCircuits_ListRoutesTable
+      #   exampleFile: ..\examples\ExpressRouteCircuitRouteTableList.json
+      # - step: ExpressRouteCircuits_ListRoutesTableSummary
+      #   exampleFile: ..\examples\ExpressRouteCircuitRouteTableSummaryList.json
+
+      - step: ExpressRouteCircuits_GetPeeringStats
+        exampleFile: ..\examples\ExpressRouteCircuitPeeringStats.json
+
+  - scenario:  ExpressRouteCircuitPeerings
+    description: Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}
+    steps:
+      - step: ExpressRouteCircuitPeerings_List
+        exampleFile: ..\examples\ExpressRouteCircuitPeeringList.json
+      - step: ExpressRouteCircuitPeerings_Get
+        exampleFile: ..\examples\ExpressRouteCircuitPeeringGet.json
+
+# InternalServerError
+  # - scenario:  ExpressRouteCircuitConnections
+  #   description: Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections/{connectionName}
+  #   steps:
+  #     - step: ExpressRouteCircuitConnections_CreateOrUpdate
+  #       exampleFile: ..\examples\ExpressRouteCircuitConnectionCreate.json
+  #     - step: ExpressRouteCircuitConnections_List
+  #       exampleFile: ..\examples\ExpressRouteCircuitConnectionList.json
+  #     - step: ExpressRouteCircuitConnections_Get
+  #       exampleFile: ..\examples\ExpressRouteCircuitConnectionGet.json
+
+  #     - step: PeerExpressRouteCircuitConnections_List
+  #       exampleFile: ..\examples\PeerExpressRouteCircuitConnectionList.json
+  #     - step: PeerExpressRouteCircuitConnections_Get
+  #       exampleFile: ..\examples\PeerExpressRouteCircuitConnectionGet.json
+
+  #     - step: ExpressRouteCircuitConnections_Delete
+  #       exampleFile: ..\examples\ExpressRouteCircuitConnectionDelete.json
+
+  - scenario:  ExpressRouteCircuitAuthorizations
+    description: Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}
+    variables:
+      authorizationName: ercauthorization
+    steps:
+      - step: ExpressRouteCircuitAuthorizations_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteCircuitAuthorizationCreate.json
+      - step: ExpressRouteCircuitAuthorizations_List
+        exampleFile: ..\examples\ExpressRouteCircuitAuthorizationList.json
+      - step: ExpressRouteCircuitAuthorizations_Get
+        exampleFile: ..\examples\ExpressRouteCircuitAuthorizationGet.json
+      - step: ExpressRouteCircuitAuthorizations_Delete
+        exampleFile: ..\examples\ExpressRouteCircuitAuthorizationDelete.json
+
+
+  - scenario:  ExpressRouteServiceProviders
+    description: Microsoft.Network/expressRouteServiceProviders
+    steps:
+      - step: ExpressRouteServiceProviders_List
+        exampleFile: ..\examples\ExpressRouteProviderList.json
+
+cleanUpSteps:
+  - step: ExpressRouteCircuitPeerings_Delete
+    exampleFile: ..\examples\ExpressRouteCircuitPeeringDelete.json
+  - step: ExpressRouteCircuits_Delete
+    exampleFile: ..\examples\ExpressRouteCircuitDelete.json

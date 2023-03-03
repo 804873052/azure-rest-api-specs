@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  tapName:
+    type: string
+    prefix: tapname
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ../examples/VirtualNetworkCreateSubnet.json
+    outputVariables:
+      subnetId:
+        type: string
+        fromResponse: /properties/subnets/0/id
+  - step: NetworkInterfaces_CreateOrUpdate
+    exampleFile: ../examples/NetworkInterfaceCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/ipConfigurations/0/properties/subnet/id
+        value: $(subnetId)
+      - remove: /parameters/properties/ipConfigurations/0/properties/publicIPAddress
+      - remove: /parameters/properties/disableTcpStateTracking
+    outputVariables:
+      networkInterfaceIpConfigId:
+        type: string
+        fromResponse: /properties/ipConfigurations/0/id
+
+scenarios:
+  - scenario: VirtualNetworkTaps
+    description: Microsoft.Network/virtualNetworkTaps/{tapName}
+    steps:
+      - step: VirtualNetworkTaps_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkTapCreate.json
+        requestUpdate:
+          - replace: /parameters/properties/destinationNetworkInterfaceIPConfiguration/id
+            value: $(networkInterfaceIpConfigId)
+
+      - step: VirtualNetworkTaps_ListAll
+        exampleFile: ..\examples\VirtualNetworkTapListAll.json
+      - step: VirtualNetworkTaps_ListByResourceGroup
+        exampleFile: ..\examples\VirtualNetworkTapList.json
+      - step: VirtualNetworkTaps_Get
+        exampleFile: ..\examples\VirtualNetworkTapGet.json
+      - step: VirtualNetworkTaps_UpdateTags
+        exampleFile: ..\examples\VirtualNetworkTapUpdateTags.json
+      - step: VirtualNetworkTaps_Delete
+        exampleFile: ..\examples\VirtualNetworkTapDelete.json

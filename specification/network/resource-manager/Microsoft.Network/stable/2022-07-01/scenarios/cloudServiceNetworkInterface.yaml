@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+      - step: NetworkInterfaces_ListCloudServiceNetworkInterfaces
+        exampleFile: ..\examples\CloudServiceNetworkInterfaceList.json
+      - step: NetworkInterfaces_ListCloudServiceRoleInstanceNetworkInterfaces
+        exampleFile: ..\examples\CloudServiceRoleInstanceNetworkInterfaceList.json
+      - step: NetworkInterfaces_GetCloudServiceNetworkInterface
+        exampleFile: ..\examples\CloudServiceNetworkInterfaceGet.json

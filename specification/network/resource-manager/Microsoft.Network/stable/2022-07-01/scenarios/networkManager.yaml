@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  subscriptionId:
+    type: string
+  networkManagerName:
+    type: string
+    prefix: networkman
+
+scenarios:
+  - scenario: NetworkManagers
+    description: Microsoft.Network/networkManagers/{networkManagerName}
+    steps:
+      - step: NetworkManagers_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerPut.json
+        requestUpdate:
+          - add: /parameters/location
+            value: $(location)
+          - replace: /parameters/properties/networkManagerScopes/subscriptions/0
+            value: /subscriptions/$(subscriptionId)
+          - remove: /parameters/properties/networkManagerScopes/managementGroups
+        # operationId: NetworkManagers_CreateOrUpdate
+        # parameters:
+        #   parameters:
+        #     location: $(location)
+        #     properties:
+        #       description: My Test Network Manager
+        #       networkManagerScopeAccesses:
+        #         - Connectivity
+        #       networkManagerScopes:
+        #         subscriptions: 
+        #           - /subscriptions/$(subscriptionId)
+      - step: NetworkManagers_ListBySubscription
+        exampleFile: ..\examples\NetworkManagerListAll.json
+      - step: NetworkManagers_List
+        exampleFile: ..\examples\NetworkManagerList.json
+      - step: NetworkManagers_Get
+        exampleFile: ..\examples\NetworkManagerGet.json
+      - step: NetworkManagers_Patch
+        exampleFile: ..\examples\NetworkManagerPatch.json
+      - step: NetworkManagerCommits_Post
+        exampleFile: ..\examples\NetworkManagerCommitPost.json
+        requestUpdate:
+          - replace: /parameters/targetLocations/0
+            value: eastus
+          - replace: /parameters/commitType
+            value: Connectivity
+          - remove: /parameters/configurationIds
+        # operationId: NetworkManagerCommits_Post
+        # parameters:
+        #   resourceGroupName:
+        #   networkManagerName:
+        #   parameters:
+        #     commitType: Connectivity
+        #     targetLocations:
+        #       - eastus
+      - step: NetworkManagerDeploymentStatus_List
+        exampleFile: ..\examples\NetworkManagerDeploymentStatusList.json
+        requestUpdate:
+          - replace: /parameters/deploymentTypes/1
+            value: SecurityAdmin
+          - remove: /parameters/skipToken
+      - step: ListActiveConnectivityConfigurations
+        exampleFile: ..\examples\NetworkManagerActiveConnectivityConfigurationsList.json
+        requestUpdate:
+          - remove: /parameters/skipToken
+      - step: ListActiveSecurityAdminRules
+        exampleFile: ..\examples\NetworkManagerActiveSecurityAdminRulesList.json
+        requestUpdate:
+          - remove: /parameters/skipToken
+      - step: NetworkManagers_Delete
+        exampleFile: ..\examples\NetworkManagerDelete.json
+        requestUpdate:
+          - replace: /force
+            value: true
+        
+

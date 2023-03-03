@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  ipGroupsName:
+    type: string
+    prefix: ipgroupsna
+
+scenarios:
+  - scenario:  IpGroups
+    description: Microsoft.Network/ipGroups/{ipGroupsName}
+    steps:
+      - step: IpGroups_CreateOrUpdate
+        exampleFile: ..\examples\IpGroupsCreate.json
+      - step: IpGroups_List
+        exampleFile: ..\examples\IpGroupsListBySubscription.json
+      - step: IpGroups_ListByResourceGroup
+        exampleFile: ..\examples\IpGroupsListByResourceGroup.json
+      - step: IpGroups_Get
+        exampleFile: ..\examples\IpGroupsGet.json
+      - step: IpGroups_UpdateGroups
+        exampleFile: ..\examples\IpGroupsUpdateTags.json
+      - step: IpGroups_Delete
+        exampleFile: ..\examples\IpGroupsDelete.json

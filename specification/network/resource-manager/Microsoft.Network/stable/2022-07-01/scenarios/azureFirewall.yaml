@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  azureFirewallName:
+    type: string
+    prefix: azurefirew
+
+# An error occurred
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ..\examples\VirtualNetworkCreateSubnet.json
+    requestUpdate:
+      - replace: /parameters/properties/subnets/0/name
+        value: AzureFirewallSubnet
+    outputVariables:
+      subnetId:
+        type: string
+        fromResponse: /properties/subnets/0/id
+  - step: PublicIPAddresses_CreateOrUpdate
+    exampleFile: ..\examples\PublicIpAddressCreateCustomizedValues.json
+    outputVariables:
+      publicIpAddressId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario:  AzureFirewalls
+    description: Microsoft.Network/azureFirewalls/{azureFirewallName}
+    steps:
+      - step: AzureFirewalls_CreateOrUpdate
+        exampleFile: ..\examples\AzureFirewallPut.json
+        requestUpdate:
+          - replace: /parameters/properties/ipConfigurations/0/properties/subnet/id
+            value: $(subnetId)
+          - replace: /parameters/properties/ipConfigurations/0/properties/publicIPAddress/id
+            value: $(publicIpAddressId)
+        
+
+      - step: AzureFirewalls_ListAll
+        exampleFile: ..\examples\AzureFirewallListBySubscription.json
+      - step: AzureFirewalls_List
+        exampleFile: ..\examples\AzureFirewallListByResourceGroup.json
+      - step: AzureFirewalls_Get
+        exampleFile: ..\examples\AzureFirewallGet.json
+      - step: AzureFirewalls_UpdateTags
+        exampleFile: ..\examples\AzureFirewallUpdateTags.json
+      - step: AzureFirewalls_ListLearnedPrefixes
+        exampleFile: ..\examples\AzureFirewallListLearnedIPPrefixes.json
+      - step: AzureFirewalls_Delete
+        exampleFile: ..\examples\AzureFirewallDelete.json

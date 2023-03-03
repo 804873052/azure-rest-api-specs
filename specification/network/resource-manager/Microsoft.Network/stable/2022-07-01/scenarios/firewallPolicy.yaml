@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location: 
+    type: string
+  firewallPolicyName:
+    type: string
+    prefix: firewallpo
+  ruleCollectionGroupName:
+    type: string
+    prefix: rulecollec
+
+prepareSteps:
+  - step: FirewallPolicies_CreateOrUpdate
+    # exampleFile: ..\examples\FirewallPolicyPut.json
+    operationId: FirewallPolicies_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        properties:
+          sku:
+            tier: Premium
+
+scenarios:
+  - scenario:  FirewallPolicies
+    description: Microsoft.Network/firewallPolicies/{firewallPolicyName}
+    steps:
+      - step: FirewallPolicies_ListAll
+        exampleFile: ..\examples\FirewallPolicyListBySubscription.json
+      - step: FirewallPolicies_List
+        exampleFile: ..\examples\FirewallPolicyListByResourceGroup.json
+      - step: FirewallPolicies_Get
+        exampleFile: ..\examples\FirewallPolicyGet.json
+      - step: FirewallPolicies_UpdateTags
+        exampleFile: ..\examples\FirewallPolicyPatch.json
+
+  - scenario:  FirewallPolicyRuleCollectionGroups
+    description: Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}
+    steps:
+      - step: FirewallPolicyRuleCollectionGroups_CreateOrUpdate
+        # exampleFile: ..\examples\FirewallPolicyRuleCollectionGroupPut.json
+        operationId: FirewallPolicyRuleCollectionGroups_CreateOrUpdate
+        parameters:
+          parameters:
+            properties:
+              priority: 100
+              ruleCollections:
+                - name: Example-Filter-Rule-Collection
+                  priority: 100
+                  ruleCollectionType: FirewallPolicyFilterRuleCollection
+      - step: FirewallPolicyRuleCollectionGroups_List
+        exampleFile: ..\examples\FirewallPolicyRuleCollectionGroupList.json
+      - step: FirewallPolicyRuleCollectionGroups_Get
+        exampleFile: ..\examples\FirewallPolicyRuleCollectionGroupGet.json
+      - step: FirewallPolicyRuleCollectionGroups_Delete
+        exampleFile: ..\examples\FirewallPolicyRuleCollectionGroupDelete.json
+
+  # - scenario:  FirewallPolicyIdpsSignaturesOverrides
+  #   description: Microsoft.Network/firewallPolicies/{firewallPolicyName}/signatureOverrides
+  #   steps:
+  #     - step: FirewallPolicyIdpsSignaturesOverrides_Put
+  #       exampleFile: ..\examples\FirewallPolicySignatureOverridesPut.json
+  #     - step: FirewallPolicyIdpsSignaturesOverrides_List
+  #       exampleFile: ..\examples\FirewallPolicySignatureOverridesList.json
+  #     - step: FirewallPolicyIdpsSignaturesOverrides_Get
+  #       exampleFile: ..\examples\FirewallPolicySignatureOverridesGet.json
+  #     - step: FirewallPolicyIdpsSignaturesOverrides_Patch
+  #       exampleFile: ..\examples\FirewallPolicySignatureOverridesPatch.json
+
+  #     - step: FirewallPolicyIdpsSignatures_List
+  #       exampleFile: ..\examples\FirewallPolicyQuerySignatureOverrides.json
+  #     - step: FirewallPolicyIdpsSignaturesFilterValues_List
+  #       exampleFile: ..\examples\FirewallPolicyQuerySignatureOverridesFilterValues.json
+
+cleanUpSteps:
+  - step: FirewallPolicies_Delete
+    exampleFile: ..\examples\FirewallPolicyDelete.json

@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  publicIpAddressName:
+    type: string
+    prefix: publicipad
+
+scenarios:
+  - scenario: PublicIPAddresses
+    description: Microsoft.Network/publicIPAddresses/{publicIpAddressName}
+    steps:
+      - step: PublicIPAddresses_CreateOrUpdate
+        exampleFile: ..\examples\PublicIpAddressCreateDefaults.json
+      - step: PublicIPAddresses_ListAll
+        exampleFile: ..\examples\PublicIpAddressListAll.json
+      - step: PublicIPAddresses_List
+        exampleFile: ..\examples\PublicIpAddressList.json
+      - step: PublicIPAddresses_Get
+        exampleFile: ..\examples\PublicIpAddressGet.json
+
+# 应该放在对应的cloudService and virtualMachine
+      # - step: PublicIPAddresses_ListCloudServicePublicIPAddresses
+      #   exampleFile: ..\examples\CloudServicePublicIpListAll.json
+      # - step: PublicIPAddresses_GetCloudServicePublicIPAddress
+      #   exampleFile: ..\examples\CloudServicePublicIpGet.json
+      # - step: PublicIPAddresses_ListVirtualMachineScaleSetPublicIPAddresses
+      #   exampleFile: ..\examples\VmssPublicIpListAll.json
+      # - step: PublicIPAddresses_ListVirtualMachineScaleSetVMPublicIPAddresses
+      #   exampleFile: ..\examples\VmssVmPublicIpList.json
+      # - step: PublicIPAddresses_GetVirtualMachineScaleSetPublicIPAddress
+      #   exampleFile: ..\examples\VmssPublicIpGet.json
+      # - step: PublicIPAddresses_ListCloudServiceRoleInstancePublicIPAddresses
+      #   exampleFile: ..\examples\CloudServiceRoleInstancePublicIpList.json
+
+      - step: PublicIPAddresses_UpdateTags
+        exampleFile: ..\examples\PublicIpAddressUpdateTags.json
+      # - step: PublicIPAddresses_DdosProtectionStatus
+      #   exampleFile: ..\examples\PublicIpAddressGetDdosProtectionStatus.json
+      - step: PublicIPAddresses_Delete
+        exampleFile: ..\examples\PublicIpAddressDelete.json

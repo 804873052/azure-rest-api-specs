@@ -1,0 +1,99 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkInterfaceName:
+    type: string
+    prefix: networkint
+  virtualNetworkName:
+    type: string
+    prefix: vnetinterfacena
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ../examples/VirtualNetworkCreateSubnet.json
+    outputVariables:
+      subnetId:
+        type: string
+        fromResponse: /properties/subnets/0/id
+
+scenarios:
+  - scenario: NetworkInterfaces
+    description: Microsoft.Network/networkInterfaces/{networkInterfaceName}
+    steps:
+      - step: NetworkInterfaces_CreateOrUpdate
+        exampleFile: ../examples/NetworkInterfaceCreate.json
+        requestUpdate:
+          - replace: /parameters/properties/ipConfigurations/0/properties/subnet/id
+            value: $(subnetId)
+          - remove: /parameters/properties/ipConfigurations/0/properties/publicIPAddress
+          - remove: /parameters/properties/disableTcpStateTracking
+      - step: NetworkInterfaces_Get
+        exampleFile: ../examples/NetworkInterfaceGet.json
+      - step: NetworkInterfaces_UpdateTags
+        exampleFile: ../examples/NetworkInterfaceUpdateTags.json
+      - step: NetworkInterfaces_ListAll
+        exampleFile: ../examples/NetworkInterfaceListAll.json
+      - step: NetworkInterfaces_List
+        exampleFile: ../examples/NetworkInterfaceList.json
+      - step: NetworkInterfaceIPConfigurations_List
+        exampleFile: ../examples/NetworkInterfaceIPConfigurationList.json
+      - step: NetworkInterfaceIPConfigurations_Get
+        exampleFile: ../examples/NetworkInterfaceIPConfigurationGet.json
+      - step: NetworkInterfaceLoadBalancers_List
+        exampleFile: ../examples/NetworkInterfaceLoadBalancerList.json
+      - step: NetworkInterfaces_Delete
+        exampleFile: ../examples/NetworkInterfaceDelete.json
+
+# attached to a running virtual machine
+      # - step: NetworkInterfaces_GetEffectiveRouteTable
+      #   exampleFile: ../examples/NetworkInterfaceEffectiveRouteTableList.json
+      # - step: NetworkInterfaces_ListEffectiveNetworkSecurityGroups
+      #   exampleFile: ../examples/NetworkInterfaceEffectiveNSGList.json
+
+
+
+# /////////////////////////////////////////
+# viratualMachine
+      # - step: NetworkInterfaces_ListVirtualMachineScaleSetNetworkInterfaces
+      #   exampleFile: ..\examples\VmssNetworkInterfaceList.json
+      # - step: NetworkInterfaces_ListVirtualMachineScaleSetVMNetworkInterfaces
+      #   exampleFile: ..\examples\VmssVmNetworkInterfaceList.json
+      # - step: NetworkInterfaces_GetVirtualMachineScaleSetNetworkInterface
+      #   exampleFile: ..\examples\VmssNetworkInterfaceGet.json
+      # - step: NetworkInterfaces_ListVirtualMachineScaleSetIpConfigurations
+      #   exampleFile: ..\examples\VmssNetworkInterfaceIpConfigList.json
+      # - step: NetworkInterfaces_GetVirtualMachineScaleSetIpConfiguration
+      #   exampleFile: ..\examples\VmssNetworkInterfaceIpConfigGet.json
+
+# cloudService
+      # - step: NetworkInterfaces_ListCloudServiceNetworkInterfaces
+      #   exampleFile: ..\examples\CloudServiceNetworkInterfaceList.json
+      # - step: NetworkInterfaces_ListCloudServiceRoleInstanceNetworkInterfaces
+      #   exampleFile: ..\examples\CloudServiceRoleInstanceNetworkInterfaceList.json
+      # - step: NetworkInterfaces_GetCloudServiceNetworkInterface
+      #   exampleFile: ..\examples\CloudServiceNetworkInterfaceGet.json
+# ////////
+
+
+# not registered
+  # - scenario: NetworkInterfaceTapConfigurations
+  #   description: Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}
+  #   steps:
+  #     - step: VirtualNetworkTaps_CreateOrUpdate
+  #       exampleFile: ..\examples\VirtualNetworkTapCreate.json
+  #       outputVariables:
+  #         virtualNetworkTapId:
+  #           type: string
+  #           fromResponse: /id
+  #     - step: NetworkInterfaceTapConfigurations_CreateOrUpdate
+  #       exampleFile: ../examples/NetworkInterfaceTapConfigurationCreate.json
+  #       requestUpdate:
+  #         - replace: /tapConfigurationParameters/properties/virtualNetworkTap/id
+  #           value: $(virtualNetworkTapId)
+  #     - step: NetworkInterfaceTapConfigurations_Get
+  #       exampleFile: ../examples/NetworkInterfaceTapConfigurationGet.json
+  #     - step: NetworkInterfaceTapConfigurations_List
+  #       exampleFile: ../examples/NetworkInterfaceTapConfigurationList.json
+  #     - step: NetworkInterfaceTapConfigurations_Delete
+  #       exampleFile: ../examples/NetworkInterfaceTapConfigurationDelete.json

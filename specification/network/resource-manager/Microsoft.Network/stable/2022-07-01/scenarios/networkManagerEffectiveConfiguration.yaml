@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+
+#  放在 virtualNetwork中
+scenarios:
+  - scenario: ListNetworkManagerEffectiveConnectivityConfigurations
+    description: virtualNetworks/{virtualNetworkName}
+    steps:
+
+      - step: ListNetworkManagerEffectiveConnectivityConfigurations
+        exampleFile: ..\examples\NetworkManagerEffectiveConnectivityConfigurationsList.json
+      - step: ListNetworkManagerEffectiveSecurityAdminRules
+        exampleFile: ..\examples\NetworkManagerEffectiveSecurityAdminRulesList.json

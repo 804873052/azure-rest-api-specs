@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  publicIpPrefixName:
+    type: string
+    prefix: publicippr
+
+scenarios:
+  - scenario: PublicIPPrefixes
+    description: Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}
+    steps:
+      - step: PublicIPPrefixes_CreateOrUpdate
+        exampleFile: ..\examples\PublicIpPrefixCreateDefaults.json
+      - step: PublicIPPrefixes_ListAll
+        exampleFile: ..\examples\PublicIpPrefixListAll.json
+      - step: PublicIPPrefixes_List
+        exampleFile: ..\examples\PublicIpPrefixList.json
+      - step: PublicIPPrefixes_Get
+        exampleFile: ..\examples\PublicIpPrefixGet.json
+      - step: PublicIPPrefixes_UpdateTags
+        exampleFile: ..\examples\PublicIpPrefixUpdateTags.json
+      - step: PublicIPPrefixes_Delete
+        exampleFile: ..\examples\PublicIpPrefixDelete.json

@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  crossConnectionName:
+    type: string
+    prefix: ercrossconne
+  peeringName: AzurePrivatePeering
+
+prepareSteps:
+  - step: ExpressRouteCrossConnections_CreateOrUpdate
+    exampleFile: ..\examples\ExpressRouteCrossConnectionUpdate.json
+
+scenarios:
+  - scenario:  ExpressRouteCrossConnections
+    description: Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}
+    steps:
+      - step: ExpressRouteCrossConnections_List
+        exampleFile: ..\examples\ExpressRouteCrossConnectionList.json
+      - step: ExpressRouteCrossConnections_ListByResourceGroup
+        exampleFile: ..\examples\ExpressRouteCrossConnectionListByResourceGroup.json
+      - step: ExpressRouteCrossConnections_Get
+        exampleFile: ..\examples\ExpressRouteCrossConnectionGet.json
+      - step: ExpressRouteCrossConnections_UpdateTags
+        exampleFile: ..\examples\ExpressRouteCrossConnectionUpdateTags.json
+
+      - step: ExpressRouteCrossConnections_ListArpTable
+        exampleFile: ..\examples\ExpressRouteCrossConnectionsArpTable.json
+      - step: ExpressRouteCrossConnections_ListRoutesTable
+        exampleFile: ..\examples\ExpressRouteCrossConnectionsRouteTable.json
+      - step: ExpressRouteCrossConnections_ListRoutesTableSummary
+        exampleFile: ..\examples\ExpressRouteCrossConnectionsRouteTableSummary.json
+
+
+  - scenario:  ExpressRouteCrossConnectionPeerings
+    description: Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings/{peeringName}
+    steps:
+      - step: ExpressRouteCrossConnectionPeerings_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteCrossConnectionBgpPeeringCreate.json
+      - step: ExpressRouteCrossConnectionPeerings_List
+        exampleFile: ..\examples\ExpressRouteCrossConnectionBgpPeeringList.json
+      - step: ExpressRouteCrossConnectionPeerings_Get
+        exampleFile: ..\examples\ExpressRouteCrossConnectionBgpPeeringGet.json
+      - step: ExpressRouteCrossConnectionPeerings_Delete
+        exampleFile: ..\examples\ExpressRouteCrossConnectionBgpPeeringDelete.json

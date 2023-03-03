@@ -1,0 +1,411 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  virtualWANName:
+    type: string
+    prefix: virtualwan
+  vpnSiteName:
+    type: string
+    prefix: vpnsitenam
+  vpnServerConfigurationName:
+    type: string
+    prefix: vpnserverc
+  virtualHubName:
+    type: string
+    prefix: virtualhub
+  gatewayName:
+    type: string
+    prefix: gatewaynam
+
+prepareSteps:
+  - step: VirtualWans_CreateOrUpdate
+    exampleFile: ..\examples\VirtualWANPut.json
+    requestUpdate:
+      - replace: /WANParameters/properties/type
+        value: Standard
+    outputVariables:
+      virtualWanId:
+        type: string
+        fromResponse: /id
+  - step: VpnSites_CreateOrUpdate
+    exampleFile: ..\examples\VpnSitePut.json
+    requestUpdate:
+      - replace: /VpnSiteParameters/properties/virtualWan/id
+        value: $(virtualWanId)
+      - remove: /VpnSiteParameters/properties/vpnSiteLinks/0/properties/fqdn
+  - step: VirtualHubs_CreateOrUpdate
+    exampleFile: ..\examples\VirtualHubPut.json
+    requestUpdate:
+      - replace: /virtualHubParameters/properties/virtualWan/id
+        value: $(virtualWanId)
+      - replace: /virtualHubParameters/properties/sku
+        value: Standard
+    outputVariables:
+      virtualHubId:
+        type: string
+        fromResponse: /id
+
+  # - step: VpnGateways_CreateOrUpdate
+  #   exampleFile: ..\examples\VpnGatewayPut.json
+
+scenarios:
+ # pass
+  - scenario: VirtualWans
+    description: Microsoft.Network/virtualWans/{VirtualWANName}
+    steps:
+      - step: VirtualWans_List
+        exampleFile: ..\examples\VirtualWANList.json
+      - step: VirtualWans_ListByResourceGroup
+        exampleFile: ..\examples\VirtualWANListByResourceGroup.json
+      - step: VirtualWans_Get
+        exampleFile: ..\examples\VirtualWANGet.json
+      - step: VirtualWans_UpdateTags
+        exampleFile: ..\examples\VirtualWANUpdateTags.json
+
+      # - step: VpnSitesConfiguration_Download
+      #   exampleFile: ..\examples\VpnSitesConfigurationDownload.json
+      # - step: SupportedSecurityProviders
+      #   exampleFile: ..\examples\VirtualWanSupportedSecurityProviders.json
+      # - step: VpnServerConfigurationsAssociatedWithVirtualWan_List
+      #   exampleFile: ..\examples\GetVirtualWanVpnServerConfigurations.json
+      # - step: generatevirtualwanvpnserverconfigurationvpnprofile  #Unsupported step
+      #   exampleFile: ..\examples\GenerateVirtualWanVpnServerConfigurationVpnProfile.json
+
+
+# pass
+  - scenario: VpnSites
+    description: Microsoft.Network/vpnSites/{vpnSiteName}
+    steps:
+      - step: VpnSites_List
+        exampleFile: ..\examples\VpnSiteList.json
+      - step: VpnSites_ListByResourceGroup
+        exampleFile: ..\examples\VpnSiteListByResourceGroup.json
+      - step: VpnSites_Get
+        exampleFile: ..\examples\VpnSiteGet.json
+      - step: VpnSites_UpdateTags
+        exampleFile: ..\examples\VpnSiteUpdateTags.json
+      - step: VpnSiteLinks_ListByVpnSite
+        exampleFile: ..\examples\VpnSiteLinkListByVpnSite.json
+        outputVariables:
+          vpnSiteLinkName:
+            type: string
+            fromResponse: /value/0/name
+      - step: VpnSiteLinks_Get
+        exampleFile: ..\examples\VpnSiteLinkGet.json
+        requestUpdate:
+          - replace: /vpnSiteLinkName
+            value: $(vpnSiteLinkName)
+
+        
+
+# cred
+  # - scenario: VpnServerConfigurations
+  #   description: Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}
+  #   steps:
+  #     - step: VpnServerConfigurations_CreateOrUpdate
+  #       exampleFile: ..\examples\VpnServerConfigurationPut.json
+  #     - step: VpnServerConfigurations_List
+  #       exampleFile: ..\examples\VpnServerConfigurationList.json
+  #     - step: VpnServerConfigurations_ListByResourceGroup
+  #       exampleFile: ..\examples\VpnServerConfigurationListByResourceGroup.json
+  #     - step: VpnServerConfigurations_Get
+  #       exampleFile: ..\examples\VpnServerConfigurationGet.json
+  #     - step: VpnServerConfigurations_UpdateTags
+  #       exampleFile: ..\examples\VpnServerConfigurationUpdateTags.json
+  #     - step: VpnServerConfigurations_Delete
+  #       exampleFile: ..\examples\VpnServerConfigurationDelete.json
+
+  # - scenario: ConfigurationPolicyGroups
+  #   description: Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}/configurationPolicyGroups/{configurationPolicyGroupName}
+  #   variables:
+  #     configurationPolicyGroupName:
+  #       type: string
+  #       prefix: configurat
+  #   steps:
+  #     - step: ConfigurationPolicyGroups_CreateOrUpdate
+  #       exampleFile: ..\examples\ConfigurationPolicyGroupPut.json
+  #     - step: ConfigurationPolicyGroups_Get
+  #       exampleFile: ..\examples\ConfigurationPolicyGroupGet.json
+  #     - step: configurationPolicyGroups_ListByVpnServerConfiguration
+  #       exampleFile: ..\examples\ConfigurationPolicyGroupListByVpnServerConfiguration.json
+  #     - step: ConfigurationPolicyGroups_Delete
+  #       exampleFile: ..\examples\ConfigurationPolicyGroupDelete.json
+
+# pass
+  - scenario: VirtualHubs
+    description: Microsoft.Network/virtualHubs/{virtualHubName}
+    steps:
+      - step: VirtualHubs_List
+        exampleFile: ..\examples\VirtualHubList.json
+      - step: VirtualHubs_ListByResourceGroup
+        exampleFile: ..\examples\VirtualHubListByResourceGroup.json
+      - step: VirtualHubs_Get
+        exampleFile: ..\examples\VirtualHubGet.json
+      - step: VirtualHubs_UpdateTags
+        exampleFile: ..\examples\VirtualHubUpdateTags.json
+
+      # fail
+      # - step: VirtualHubs_GetInboundRoutes
+      #   exampleFile: ..\examples\GetInboundRoutes.json
+      # - step: VirtualHubs_GetOutboundRoutes
+      #   exampleFile: ..\examples\GetOutboundRoutes.json
+      # - step: VirtualHubs_GetEffectiveVirtualHubRoutes
+      #   exampleFile: ..\examples\EffectiveRoutesListForVirtualHub.json
+
+# pass
+  - scenario: RouteMaps
+    description: Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps/{routeMapName}
+    variables:
+      routeMapName:
+        type: string
+        prefix: routemapna
+    steps:
+      - step: RouteMaps_CreateOrUpdate
+        exampleFile: ..\examples\RouteMapPut.json
+      - step: RouteMaps_List
+        exampleFile: ..\examples\RouteMapList.json
+      - step: RouteMaps_Get
+        exampleFile: ..\examples\RouteMapGet.json
+      - step: RouteMaps_Delete
+        exampleFile: ..\examples\RouteMapDelete.json
+
+# fail
+  # - scenario: HubVirtualNetworkConnections
+  #   description: Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections/{connectionName}
+  #   variables:
+  #     connectionName:
+  #       type: string
+  #       prefix: hubvnetconn
+  #   steps:
+  #     - step: HubVirtualNetworkConnections_CreateOrUpdate
+  #       exampleFile: ..\examples\HubVirtualNetworkConnectionPut.json
+  #     - step: HubVirtualNetworkConnections_List
+  #       exampleFile: ..\examples\HubVirtualNetworkConnectionList.json
+  #     - step: HubVirtualNetworkConnections_Get
+  #       exampleFile: ..\examples\HubVirtualNetworkConnectionGet.json
+  #     - step: HubVirtualNetworkConnections_Delete
+  #       exampleFile: ..\examples\HubVirtualNetworkConnectionDelete.json
+
+  # - scenario: VirtualHubRouteTableV2s
+  #   description: Microsoft.Network/virtualHubs/{virtualHubName}/routeTables/{routeTableName}
+  #   steps:
+  #     - step: VirtualHubRouteTableV2s_CreateOrUpdate
+  #       exampleFile: ..\examples\VirtualHubRouteTableV2Put.json
+  #     - step: VirtualHubRouteTableV2s_List
+  #       exampleFile: ..\examples\VirtualHubRouteTableV2List.json
+  #     - step: VirtualHubRouteTableV2s_Get
+  #       exampleFile: ..\examples\VirtualHubRouteTableV2Get.json
+  #     - step: VirtualHubRouteTableV2s_Delete
+  #       exampleFile: ..\examples\VirtualHubRouteTableV2Delete.json
+
+# fail need HubVirtualNetworkConnections
+  # - scenario:  VirtualHubBgpConnection
+  #   description: Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{connectionName}
+  #   steps:
+  #     - step: VirtualHubBgpConnection_CreateOrUpdate
+  #       exampleFile: ..\examples\VirtualHubBgpConnectionPut.json
+  #     - step: VirtualHubBgpConnection_Get
+  #       exampleFile: ..\examples\VirtualHubBgpConnectionGet.json
+
+  #     - step: VirtualHubBgpConnections_ListAdvertisedRoutes
+  #       exampleFile: ..\examples\VirtualRouterPeerListAdvertisedRoute.json
+  #     - step: VirtualHubBgpConnections_ListLearnedRoutes
+  #       exampleFile: ..\examples\VirtualRouterPeerListLearnedRoute.json
+  #     - step: VirtualHubBgpConnections_List
+  #       exampleFile: ..\examples\VirtualHubBgpConnectionList.json
+
+  #     - step: VirtualHubBgpConnection_Delete
+  #       exampleFile: ..\examples\VirtualHubBgpConnectionDelete.json
+
+ 
+# fail
+  # - scenario:  VirtualHubIpConfiguration
+  #   description: Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations/{ipConfigName}
+  #   steps:
+  #     - step: VirtualNetworks_CreateOrUpdate
+  #       exampleFile: ..\examples\VirtualNetworkCreateSubnet.json
+  #       outputVariables:
+  #         subnetId:
+  #           type: string
+  #           fromResponse: /properties/subnets/0/id
+  #     - step: VirtualHubIpConfiguration_CreateOrUpdate
+  #       exampleFile: ..\examples\VirtualHubIpConfigurationPut.json
+  #       requestUpdate:
+  #         - replace: /parameters/properties/subnet/id
+  #           value: $(subnetId)
+  #     - step: VirtualHubIpConfiguration_List
+  #       exampleFile: ..\examples\VirtualHubIpConfigurationList.json
+  #     - step: VirtualHubIpConfiguration_Get
+  #       exampleFile: ..\examples\VirtualHubIpConfigurationGet.json
+  #     - step: VirtualHubIpConfiguration_Delete
+  #       exampleFile: ..\examples\VirtualHubIpConfigurationDelete.json
+
+# pass
+  - scenario:  HubRouteTables
+    description: Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables/{routeTableName}
+    steps:
+      - step: HubRouteTables_CreateOrUpdate
+        exampleFile: ..\examples\HubRouteTablePut.json
+        requestUpdate:
+          - remove: /routeTableParameters/properties/routes
+      - step: HubRouteTables_List
+        exampleFile: ..\examples\HubRouteTableList.json
+      - step: HubRouteTables_Get
+        exampleFile: ..\examples\HubRouteTableGet.json
+      - step: HubRouteTables_Delete
+        exampleFile: ..\examples\HubRouteTableDelete.json
+
+# pass
+  - scenario:  RoutingIntent
+    description: Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}
+    steps:
+      - step: RoutingIntent_CreateOrUpdate
+        exampleFile: ..\examples\RoutingIntentPut.json
+        requestUpdate:
+          - remove: /routingIntentParameters/properties
+      - step: RoutingIntent_List
+        exampleFile: ..\examples\RoutingIntentList.json
+      - step: RoutingIntent_Get
+        exampleFile: ..\examples\RoutingIntentGet.json
+      - step: RoutingIntent_Delete
+        exampleFile: ..\examples\RoutingIntentDelete.json
+
+
+  # - scenario: VpnGateways # 耗时
+  #   description: Microsoft.Network/vpnGateways/{gatewayName}
+  #   steps:
+
+  #     - step: VpnGateways_List
+  #       exampleFile: ..\examples\VpnGatewayList.json
+  #     - step: VpnGateways_ListByResourceGroup
+  #       exampleFile: ..\examples\VpnGatewayListByResourceGroup.json
+  #     - step: VpnGateways_Get
+  #       exampleFile: ..\examples\VpnGatewayGet.json
+  #     - step: VpnGateways_UpdateTags
+  #       exampleFile: ..\examples\VpnGatewayUpdateTags.json
+  #     - step: VpnGateways_Reset
+  #       exampleFile: ..\examples\VpnGatewayReset.json
+  #     - step: VpnGateways_StartPacketCapture
+  #       exampleFile: ..\examples\VpnGatewayStartPacketCapture.json
+  #     - step: VpnGateways_StopPacketCapture
+  #       exampleFile: ..\examples\VpnGatewayStopPacketCapture.json
+        # - step: VpnGateways_Delete
+        #   exampleFile: ..\examples\VpnGatewayDelete.json
+
+  # - scenario: VpnLinkConnections
+  #   description: Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/resetconnection
+  #   steps:
+  #     - step: VpnLinkConnections_ListByVpnConnection
+  #       exampleFile: ..\examples\VpnSiteLinkConnectionList.json
+  #     - step: VpnLinkConnections_GetIkeSas
+  #       exampleFile: ..\examples\VpnSiteLinkConnectionGetIkeSas.json
+  #     - step: VpnLinkConnections_ResetConnection
+  #       exampleFile: ..\examples\VpnSiteLinkConnectionReset.json
+
+  #     - step: VpnSiteLinkConnections_Get
+  #       exampleFile: ..\examples\VpnSiteLinkConnectionGet.json
+
+  # - scenario: VpnConnections
+  #   description: Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}
+  #   steps:
+  #     - step: VpnConnections_CreateOrUpdate
+  #       exampleFile: ..\examples\VpnConnectionPut.json
+  #     - step: VpnConnections_ListByVpnGateway
+  #       exampleFile: ..\examples\VpnConnectionList.json
+  #     - step: VpnConnections_Get
+  #       exampleFile: ..\examples\VpnConnectionGet.json
+  #     - step: VpnConnections_StartPacketCapture
+  #       exampleFile: ..\examples\VpnConnectionStartPacketCapture.json
+  #     - step: VpnConnections_StopPacketCapture
+  #       exampleFile: ..\examples\VpnConnectionStopPacketCapture.json
+  #     - step: VpnConnections_Delete
+  #       exampleFile: ..\examples\VpnConnectionDelete.json
+
+  # - scenario: NatRules
+  #   description: Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}
+  #   steps:
+  #     - step: NatRules_CreateOrUpdate
+  #       exampleFile: ..\examples\NatRulePut.json
+  #     - step: NatRules_ListByVpnGateway
+  #       exampleFile: ..\examples\NatRuleList.json
+  #     - step: NatRules_Get
+  #       exampleFile: ..\examples\NatRuleGet.json
+  #     - step: NatRules_Delete
+  #       exampleFile: ..\examples\NatRuleDelete.json
+
+  # - scenario: P2sVpnGateways
+  #   description: Microsoft.Network/p2svpnGateways/{gatewayName}
+  #   steps:
+  #     - step: P2sVpnGateways_CreateOrUpdate
+  #       exampleFile: ..\examples\P2SVpnGatewayPut.json
+  #     - step: P2sVpnGateways_List
+  #       exampleFile: ..\examples\P2SVpnGatewayList.json
+  #     - step: P2sVpnGateways_ListByResourceGroup
+  #       exampleFile: ..\examples\P2SVpnGatewayListByResourceGroup.json
+  #     - step: P2sVpnGateways_Get
+  #       exampleFile: ..\examples\P2SVpnGatewayGet.json
+  #     - step: P2sVpnGateways_UpdateTags
+  #       exampleFile: ..\examples\P2SVpnGatewayUpdateTags.json
+  #     - step: P2sVpnGateways_GenerateVpnProfile
+  #       exampleFile: ..\examples\P2SVpnGatewayGenerateVpnProfile.json
+  #     - step: P2sVpnGateways_GetP2sVpnConnectionHealth
+  #       exampleFile: ..\examples\P2SVpnGatewayGetConnectionHealth.json
+  #     - step: P2sVpnGateways_GetP2sVpnConnectionHealthDetailed
+  #       exampleFile: ..\examples\P2SVpnGatewayGetConnectionHealthDetailed.json
+  #     - variables:
+  #         p2sVpnGatewayName:
+  #           type: string
+  #           prefix: p2svpngate
+  #       step: P2sVpnGateways_DisconnectP2sVpnConnections
+  #       exampleFile: ..\examples\P2sVpnGatewaysDisconnectP2sVpnConnections.json
+
+  #     - step: P2SVpnGateways_Reset
+  #       exampleFile: ..\examples\P2SVpnGatewayReset.json
+
+  #     - step: P2sVpnGateways_Delete
+  #       exampleFile: ..\examples\P2SVpnGatewayDelete.json
+
+# pass
+  # - scenario: ExpressRouteGateways # 耗时
+  #   description: Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}
+  #   variables:
+  #     expressRouteGatewayName:
+  #       type: string
+  #       prefix: expressrou
+  #   steps:
+  #     - step: ExpressRouteGateways_CreateOrUpdate
+  #       exampleFile: ..\examples\ExpressRouteGatewayCreate.json
+  #       requestUpdate:
+  #         - replace: /putExpressRouteGatewayParameters/properties/virtualHub/id
+  #           value: $(virtualHubId)
+  #     - step: ExpressRouteGateways_ListBySubscription
+  #       exampleFile: ..\examples\ExpressRouteGatewayListBySubscription.json
+  #     - step: ExpressRouteGateways_ListByResourceGroup
+  #       exampleFile: ..\examples\ExpressRouteGatewayListByResourceGroup.json
+  #     - step: ExpressRouteGateways_Get
+  #       exampleFile: ..\examples\ExpressRouteGatewayGet.json
+  #     - step: ExpressRouteGateways_UpdateTags
+  #       exampleFile: ..\examples\ExpressRouteGatewayUpdateTags.json
+  #     - step: ExpressRouteGateways_Delete
+  #       exampleFile: ..\examples\ExpressRouteGatewayDelete.json
+
+  # - scenario: ExpressRouteConnections
+  #   description: Microsoft.Network/expressRouteGateways/{expressRouteGatewayName}/expressRouteConnections/{connectionName}
+  #   steps:
+  #     - step: ExpressRouteConnections_CreateOrUpdate
+  #       exampleFile: ..\examples\ExpressRouteConnectionCreate.json
+  #     - step: ExpressRouteConnections_List
+  #       exampleFile: ..\examples\ExpressRouteConnectionList.json
+  #     - step: ExpressRouteConnections_Get
+  #       exampleFile: ..\examples\ExpressRouteConnectionGet.json
+  #     - step: ExpressRouteConnections_Delete
+  #       exampleFile: ..\examples\ExpressRouteConnectionDelete.json
+
+cleanUpSteps:
+  # - step: VirtualHubs_Delete # Deletion is not supported
+  #   exampleFile: ..\examples\VirtualHubDelete.json
+  - step: VpnSites_Delete
+    exampleFile: ..\examples\VpnSiteDelete.json
+  - step: VirtualWans_Delete
+    exampleFile: ..\examples\VirtualWANDelete.json

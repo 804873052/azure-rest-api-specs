@@ -1,0 +1,1528 @@
+scope: ResourceGroup
+variables:
+  networkWatcherName:
+    type: string
+    prefix: networkwat
+  virtualHubName:
+    type: string
+    prefix: virtualhub
+  gatewayName:
+    type: string
+    prefix: gatewaynam
+  connectionName:
+    type: string
+    prefix: connection
+  virtualNetworkGatewayName:
+    type: string
+    prefix: virtualnet
+  circuitName:
+    type: string
+    prefix: circuitnam
+  peeringName:
+    type: string
+    prefix: peeringnam
+  loadBalancerName:
+    type: string
+    prefix: loadbalanc
+  networkInterfaceName:
+    type: string
+    prefix: networkint
+  virtualNetworkName:
+    type: string
+    prefix: virtualnet
+  firewallPolicyName:
+    type: string
+    prefix: firewallpo
+  routeTableName:
+    type: string
+    prefix: routetable
+  applicationGatewayName:
+    type: string
+    prefix: applicatio
+  virtualNetworkGatewayConnectionName:
+    type: string
+    prefix: virtualnet
+  expressRoutePortName:
+    type: string
+    prefix: expressrou
+  crossConnectionName:
+    type: string
+    prefix: crossconne
+  networkSecurityGroupName:
+    type: string
+    prefix: networksec
+  bastionHostName:
+    type: string
+    prefix: bastionhos
+  networkVirtualApplianceName:
+    type: string
+    prefix: networkvir
+  routeFilterName:
+    type: string
+    prefix: routefilte
+  serviceEndpointPolicyName:
+    type: string
+    prefix: serviceend
+  vpnServerConfigurationName:
+    type: string
+    prefix: vpnserverc
+  expressRouteGatewayName:
+    type: string
+    prefix: expressrou
+  virtualMachineScaleSetName:
+    type: string
+    prefix: virtualmac
+  publicIpAddressName:
+    type: string
+    prefix: publicipad
+  connectionMonitorName:
+    type: string
+    prefix: connection
+  privateEndpointName:
+    type: string
+    prefix: privateend
+  serviceName:
+    type: string
+    prefix: servicenam
+  subnetName:
+    type: string
+    prefix: subnetname
+  virtualRouterName:
+    type: string
+    prefix: virtualrou
+  cloudServiceName:
+    type: string
+    prefix: cloudservi
+  ipConfigurationName:
+    type: string
+    prefix: ipconfigur
+  authorizationName:
+    type: string
+    prefix: authorizat
+  devicePath:
+    type: string
+    prefix: devicepath
+  networkManagerName:
+    type: string
+    prefix: networkman
+  natRuleName:
+    type: string
+    prefix: natrulenam
+  vpnSiteName:
+    type: string
+    prefix: vpnsitenam
+  virtualmachineIndex:
+    type: string
+    prefix: virtualmac
+  azureFirewallName:
+    type: string
+    prefix: azurefirew
+  packetCaptureName:
+    type: string
+    prefix: packetcapt
+  applicationSecurityGroupName:
+    type: string
+    prefix: applicatio
+  roleInstanceName:
+    type: string
+    prefix: roleinstan
+  groupName:
+    type: string
+    prefix: groupname
+  customIpPrefixName:
+    type: string
+    prefix: customippr
+  ddosCustomPolicyName:
+    type: string
+    prefix: ddoscustom
+  ddosProtectionPlanName:
+    type: string
+    prefix: ddosprotec
+  ipAllocationName:
+    type: string
+    prefix: ipallocati
+  ipGroupsName:
+    type: string
+    prefix: ipgroupsna
+  natGatewayName:
+    type: string
+    prefix: natgateway
+  networkProfileName:
+    type: string
+    prefix: networkpro
+  flowLogName:
+    type: string
+    prefix: flowlognam
+  publicIpPrefixName:
+    type: string
+    prefix: publicippr
+  securityPartnerProviderName:
+    type: string
+    prefix: securitypa
+  localNetworkGatewayName:
+    type: string
+    prefix: localnetwo
+  tapName:
+    type: string
+    prefix: tapname
+  VirtualWANName:
+    type: string
+    prefix: virtualwan
+  virtualWANName:
+    type: string
+    prefix: virtualwan
+  resourceName:
+    type: string
+    prefix: resourcena
+  dscpConfigurationName:
+    type: string
+    prefix: dscpconfig
+  ruleCollectionGroupName:
+    type: string
+    prefix: rulecollec
+  backendAddressPoolName:
+    type: string
+    prefix: backendadd
+  inboundNatRuleName:
+    type: string
+    prefix: inboundnat
+  tapConfigurationName:
+    type: string
+    prefix: tapconfigu
+  securityRuleName:
+    type: string
+    prefix: securityru
+  siteName:
+    type: string
+    prefix: sitename
+  privateDnsZoneGroupName:
+    type: string
+    prefix: privatedns
+  peConnectionName:
+    type: string
+    prefix: peconnecti
+  ruleName:
+    type: string
+    prefix: rulename
+  routeName:
+    type: string
+    prefix: routename
+  serviceEndpointPolicyDefinitionName:
+    type: string
+    prefix: serviceend
+  virtualNetworkPeeringName:
+    type: string
+    prefix: virtualnet
+  configurationPolicyGroupName:
+    type: string
+    prefix: configurat
+  routeMapName:
+    type: string
+    prefix: routemapna
+  linkConnectionName:
+    type: string
+    prefix: linkconnec
+  ipConfigName:
+    type: string
+    prefix: ipconfigna
+  routingIntentName:
+    type: string
+    prefix: routingint
+  policyName:
+    type: string
+    prefix: policyname
+  singletonResource:
+    type: string
+    prefix: singletonr
+  vpnConnectionName:
+    type: string
+    prefix: vpnconnect
+  hubName:
+    type: string
+    prefix: hubname
+scenarios:
+  - steps:
+      - step: MYtest
+        exampleFile: ..\examples\Test.json
+
+      - step: NetworkManagers_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerPut.json
+      - step: NetworkManagers_ListBySubscription
+        exampleFile: ..\examples\NetworkManagerListAll.json
+      - step: NetworkManagers_List
+        exampleFile: ..\examples\NetworkManagerList.json
+      - step: NetworkManagers_Get
+        exampleFile: ..\examples\NetworkManagerGet.json
+      - step: NetworkManagers_Patch
+        exampleFile: ..\examples\NetworkManagerPatch.json
+
+      - step: NetworkWatchers_CreateOrUpdate
+        exampleFile: ..\examples\NetworkWatcherCreate.json
+      - step: NetworkWatchers_ListAll
+        exampleFile: ..\examples\NetworkWatcherListAll.json
+      - step: NetworkWatchers_List
+        exampleFile: ..\examples\NetworkWatcherList.json
+      - step: NetworkWatchers_Get
+        exampleFile: ..\examples\NetworkWatcherGet.json
+      - step: NetworkWatchers_UpdateTags
+        exampleFile: ..\examples\NetworkWatcherUpdateTags.json
+      - step: NetworkWatchers_GetAzureReachabilityReport
+        exampleFile: ..\examples\NetworkWatcherAzureReachabilityReportGet.json
+      - step: NetworkWatchers_GetNetworkConfigurationDiagnostic
+        exampleFile: ..\examples\NetworkWatcherNetworkConfigurationDiagnostic.json
+      - step: NetworkWatchers_GetFlowLogStatus
+        exampleFile: ..\examples\NetworkWatcherFlowLogStatusQuery.json
+      - step: NetworkWatchers_GetTroubleshootingResult
+        exampleFile: ..\examples\NetworkWatcherTroubleshootResultQuery.json
+      - step: NetworkWatchers_GetNextHop
+        exampleFile: ..\examples\NetworkWatcherNextHopGet.json
+      - step: NetworkWatchers_SetFlowLogConfiguration
+        exampleFile: ..\examples\NetworkWatcherFlowLogConfigure.json
+      - step: NetworkWatchers_CheckConnectivity
+        exampleFile: ..\examples\NetworkWatcherConnectivityCheck.json
+      - step: NetworkWatchers_VerifyIPFlow
+        exampleFile: ..\examples\NetworkWatcherIpFlowVerify.json
+      - step: NetworkWatchers_ListAvailableProviders
+        exampleFile: ..\examples\NetworkWatcherAvailableProvidersListGet.json
+      - step: NetworkWatchers_GetVMSecurityRules
+        exampleFile: ..\examples\NetworkWatcherSecurityGroupViewGet.json
+      - step: NetworkWatchers_GetTopology
+        exampleFile: ..\examples\NetworkWatcherTopologyGet.json
+      - step: NetworkWatchers_GetTroubleshooting
+        exampleFile: ..\examples\NetworkWatcherTroubleshootGet.json
+
+      - step: VirtualHubs_CreateOrUpdate
+        exampleFile: ..\examples\VirtualHubPut.json
+      - step: VirtualHubs_List
+        exampleFile: ..\examples\VirtualHubList.json
+      - step: VirtualHubs_ListByResourceGroup
+        exampleFile: ..\examples\VirtualHubListByResourceGroup.json
+      - step: VirtualHubs_Get
+        exampleFile: ..\examples\VirtualHubGet.json
+      - step: VirtualHubs_UpdateTags
+        exampleFile: ..\examples\VirtualHubUpdateTags.json
+      - step: VirtualHubs_GetInboundRoutes
+        exampleFile: ..\examples\GetInboundRoutes.json
+      - step: VirtualHubs_GetOutboundRoutes
+        exampleFile: ..\examples\GetOutboundRoutes.json
+      - step: VirtualHubs_GetEffectiveVirtualHubRoutes
+        exampleFile: ..\examples\EffectiveRoutesListForVirtualHub.json
+
+      - step: LoadBalancers_CreateOrUpdate
+        exampleFile: ..\examples\LoadBalancerCreate.json
+      - step: LoadBalancers_ListAll
+        exampleFile: ..\examples\LoadBalancerListAll.json
+      - step: LoadBalancers_List
+        exampleFile: ..\examples\LoadBalancerList.json
+      - step: LoadBalancers_Get
+        exampleFile: ..\examples\LoadBalancerGet.json
+      - step: LoadBalancers_UpdateTags
+        exampleFile: ..\examples\LoadBalancerUpdateTags.json
+      - step: LoadBalancers_SwapPublicIpAddresses
+        exampleFile: ..\examples\LoadBalancersSwapPublicIpAddresses.json
+      - variables:
+          backendPoolName:
+            type: string
+            prefix: backendpoo
+        step: LoadBalancers_ListInboundNatRulePortMappings
+        exampleFile: ..\examples\QueryInboundNatRulePortMapping.json
+
+      - step: VirtualNetworkGateways_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkGatewayUpdate.json
+      - step: VirtualNetworkGateways_List
+        exampleFile: ..\examples\VirtualNetworkGatewayList.json
+      - step: VirtualNetworkGateways_Get
+        exampleFile: ..\examples\VirtualNetworkGatewayGet.json
+      - step: VirtualNetworkGateways_ListConnections
+        exampleFile: ..\examples\VirtualNetworkGatewaysListConnections.json
+      - step: VirtualNetworkGateways_UpdateTags
+        exampleFile: ..\examples\VirtualNetworkGatewayUpdateTags.json
+      - step: VirtualNetworkGateways_DisconnectVirtualNetworkGatewayVpnConnections
+        exampleFile: ..\examples\VirtualNetworkGatewaysDisconnectP2sVpnConnections.json
+      - step: VirtualNetworkGateways_Generatevpnclientpackage
+        exampleFile: ..\examples\VirtualNetworkGatewayGenerateVpnClientPackage.json
+      - step: VirtualNetworkGateways_StopPacketCapture
+        exampleFile: ..\examples\VirtualNetworkGatewayStopPacketCapture.json
+      - step: VirtualNetworkGateways_Reset
+        exampleFile: ..\examples\VirtualNetworkGatewayReset.json
+      - step: VirtualNetworkGateways_GenerateVpnProfile
+        exampleFile: ..\examples\VirtualNetworkGatewayGenerateVpnProfile.json
+      - step: VirtualNetworkGateways_GetAdvertisedRoutes
+        exampleFile: ..\examples\VirtualNetworkGatewayGetAdvertisedRoutes.json
+      - step: VirtualNetworkGateways_ResetVpnClientSharedKey
+        exampleFile: ..\examples\VirtualNetworkGatewayResetVpnClientSharedKey.json
+      - step: VirtualNetworkGateways_SupportedVpnDevices
+        exampleFile: ..\examples\VirtualNetworkGatewaySupportedVpnDevice.json
+      - step: VirtualNetworkGateways_SetVpnclientIpsecParameters
+        exampleFile: ..\examples\VirtualNetworkGatewaySetVpnClientIpsecParameters.json
+      - step: VirtualNetworkGateways_StartPacketCapture
+        exampleFile: ..\examples\VirtualNetworkGatewayStartPacketCapture.json
+      - step: VirtualNetworkGateways_GetBgpPeerStatus
+        exampleFile: ..\examples\VirtualNetworkGatewayGetBGPPeerStatus.json
+      - step: VirtualNetworkGateways_GetVpnclientConnectionHealth
+        exampleFile: ..\examples\VirtualNetworkGatewayGetVpnclientConnectionHealth.json
+      - step: VirtualNetworkGateways_GetVpnProfilePackageUrl
+        exampleFile: ..\examples\VirtualNetworkGatewayGetVpnProfilePackageUrl.json
+      - step: VirtualNetworkGateways_GetVpnclientIpsecParameters
+        exampleFile: ..\examples\VirtualNetworkGatewayGetVpnClientIpsecParameters.json
+      - step: VirtualNetworkGateways_GetLearnedRoutes
+        exampleFile: ..\examples\VirtualNetworkGatewayLearnedRoutes.json
+
+      - step: ExpressRouteCircuits_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteCircuitCreate.json
+      - step: ExpressRouteCircuits_ListAll
+        exampleFile: ..\examples\ExpressRouteCircuitListBySubscription.json
+      - step: ExpressRouteCircuits_List
+        exampleFile: ..\examples\ExpressRouteCircuitListByResourceGroup.json
+      - step: ExpressRouteCircuits_Get
+        exampleFile: ..\examples\ExpressRouteCircuitGet.json
+      - step: ExpressRouteCircuits_GetStats
+        exampleFile: ..\examples\ExpressRouteCircuitStats.json
+      - step: ExpressRouteCircuits_UpdateTags
+        exampleFile: ..\examples\ExpressRouteCircuitUpdateTags.json
+
+      - step: VpnGateways_CreateOrUpdate
+        exampleFile: ..\examples\VpnGatewayPut.json
+      - step: VpnGateways_List
+        exampleFile: ..\examples\VpnGatewayList.json
+      - step: VpnGateways_ListByResourceGroup
+        exampleFile: ..\examples\VpnGatewayListByResourceGroup.json
+      - step: VpnGateways_Get
+        exampleFile: ..\examples\VpnGatewayGet.json
+      - step: VpnGateways_UpdateTags
+        exampleFile: ..\examples\VpnGatewayUpdateTags.json
+      - step: VpnGateways_Reset
+        exampleFile: ..\examples\VpnGatewayReset.json
+      - step: VpnGateways_StartPacketCapture
+        exampleFile: ..\examples\VpnGatewayStartPacketCapture.json
+      - step: VpnGateways_StopPacketCapture
+        exampleFile: ..\examples\VpnGatewayStopPacketCapture.json
+        
+      - step: VirtualNetworks_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkCreate.json
+      - step: VirtualNetworks_ListAll
+        exampleFile: ..\examples\VirtualNetworkListAll.json
+      - step: VirtualNetworks_List
+        exampleFile: ..\examples\VirtualNetworkList.json
+      - step: VirtualNetworks_Get
+        exampleFile: ..\examples\VirtualNetworkGet.json
+      - step: VirtualNetworks_CheckIPAddressAvailability
+        exampleFile: ..\examples\VirtualNetworkCheckIPAddressAvailability.json
+      - step: VirtualNetworks_ListUsage
+        exampleFile: ..\examples\VirtualNetworkListUsage.json
+      - step: VirtualNetworks_UpdateTags
+        exampleFile: ..\examples\VirtualNetworkUpdateTags.json
+      - step: VirtualNetworks_ListDdosProtectionStatus
+        exampleFile: ..\examples\VirtualNetworkGetDdosProtectionStatus.json
+      - step: FirewallPolicies_CreateOrUpdate
+        exampleFile: ..\examples\FirewallPolicyPut.json
+      - step: FirewallPolicies_ListAll
+        exampleFile: ..\examples\FirewallPolicyListBySubscription.json
+      - step: FirewallPolicies_List
+        exampleFile: ..\examples\FirewallPolicyListByResourceGroup.json
+      - step: FirewallPolicies_Get
+        exampleFile: ..\examples\FirewallPolicyGet.json
+      - step: FirewallPolicies_UpdateTags
+        exampleFile: ..\examples\FirewallPolicyPatch.json
+      - step: ApplicationGateways_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationGatewayCreate.json
+      - step: ApplicationGateways_ListAvailableRequestHeaders
+        exampleFile: ..\examples\ApplicationGatewayAvailableRequestHeadersGet.json
+      - step: ApplicationGateways_ListAvailableResponseHeaders
+        exampleFile: ..\examples\ApplicationGatewayAvailableResponseHeadersGet.json
+      - step: ApplicationGateways_ListAvailableServerVariables
+        exampleFile: ..\examples\ApplicationGatewayAvailableServerVariablesGet.json
+      - step: ApplicationGateways_ListAvailableSslOptions
+        exampleFile: ..\examples\ApplicationGatewayAvailableSslOptionsGet.json
+      - step: ApplicationGateways_ListAvailableSslPredefinedPolicies
+        exampleFile: >-
+          ..\examples\ApplicationGatewayAvailableSslOptionsPredefinedPoliciesGet.json
+      - step: ApplicationGateways_ListAvailableWafRuleSets
+        exampleFile: ..\examples\ApplicationGatewayAvailableWafRuleSetsGet.json
+      - step: ApplicationGateways_List
+        exampleFile: ..\examples\ApplicationGatewayList.json
+      - step: ApplicationGateways_Get
+        exampleFile: ..\examples\ApplicationGatewayGet.json
+      - step: ApplicationGateways_ListAll
+        exampleFile: ..\examples\ApplicationGatewayListAll.json
+      - variables:
+          predefinedPolicyName:
+            type: string
+            prefix: predefined
+        step: ApplicationGateways_GetSslPredefinedPolicy
+        exampleFile: >-
+          ..\examples\ApplicationGatewayAvailableSslOptionsPredefinedPolicyGet.json
+      - step: ApplicationGateways_UpdateTags
+        exampleFile: ..\examples\ApplicationGatewayUpdateTags.json
+      - step: ApplicationGateways_Stop
+        exampleFile: ..\examples\ApplicationGatewayStop.json
+      - step: ApplicationGateways_BackendHealth
+        exampleFile: ..\examples\ApplicationGatewayBackendHealthGet.json
+      - step: ApplicationGateways_BackendHealthOnDemand
+        exampleFile: ..\examples\ApplicationGatewayBackendHealthTest.json
+      - step: ApplicationGateways_Start
+        exampleFile: ..\examples\ApplicationGatewayStart.json
+      - step: ExpressRouteCircuitPeerings_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteCircuitPeeringCreate.json
+      - step: ExpressRouteCircuitPeerings_List
+        exampleFile: ..\examples\ExpressRouteCircuitPeeringList.json
+      - step: ExpressRouteCircuitPeerings_Get
+        exampleFile: ..\examples\ExpressRouteCircuitPeeringGet.json
+      - step: ExpressRoutePorts_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRoutePortCreate.json
+      - step: ExpressRoutePorts_List
+        exampleFile: ..\examples\ExpressRoutePortList.json
+      - step: ExpressRoutePorts_ListByResourceGroup
+        exampleFile: ..\examples\ExpressRoutePortListByResourceGroup.json
+      - step: ExpressRoutePorts_Get
+        exampleFile: ..\examples\ExpressRoutePortGet.json
+      - step: ExpressRoutePorts_UpdateTags
+        exampleFile: ..\examples\ExpressRoutePortUpdateTags.json
+      - step: ExpressRoutePorts_GenerateLOA
+        exampleFile: ..\examples\GenerateExpressRoutePortsLOA.json
+      - step: VirtualNetworkGatewayConnections_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionCreate.json
+      - step: VirtualNetworkGatewayConnections_List
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionsList.json
+      - step: VirtualNetworkGatewayConnections_Get
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionGet.json
+      - step: VirtualNetworkGatewayConnections_GetSharedKey
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionGetSharedKey.json
+      - step: VirtualNetworkGatewayConnections_UpdateTags
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionUpdateTags.json
+      - step: VirtualNetworkGatewayConnections_GetIkeSas
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionGetIkeSas.json
+      - step: VirtualNetworkGatewayConnections_ResetSharedKey
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionResetSharedKey.json
+      - step: VirtualNetworkGatewayConnections_StopPacketCapture
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionStopPacketCapture.json
+      - step: VirtualNetworkGatewayConnections_StartPacketCapture
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionStartPacketCapture.json
+      - step: VirtualNetworkGatewayConnections_ResetConnection
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionReset.json
+      - step: NetworkSecurityGroups_CreateOrUpdate
+        exampleFile: ..\examples\NetworkSecurityGroupCreate.json
+      - step: NetworkSecurityGroups_ListAll
+        exampleFile: ..\examples\NetworkSecurityGroupListAll.json
+      - step: NetworkSecurityGroups_List
+        exampleFile: ..\examples\NetworkSecurityGroupList.json
+      - step: NetworkSecurityGroups_Get
+        exampleFile: ..\examples\NetworkSecurityGroupGet.json
+      - step: NetworkSecurityGroups_UpdateTags
+        exampleFile: ..\examples\NetworkSecurityGroupUpdateTags.json
+      - step: SecurityAdminConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerSecurityAdminConfigurationPut.json
+      - step: SecurityAdminConfigurations_List
+        exampleFile: ..\examples\NetworkManagerSecurityAdminConfigurationList.json
+      - step: SecurityAdminConfigurations_Get
+        exampleFile: ..\examples\NetworkManagerSecurityAdminConfigurationGet.json
+
+      - step: ExpressRouteCrossConnections_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteCrossConnectionUpdate.json
+      - step: ExpressRouteCrossConnections_List
+        exampleFile: ..\examples\ExpressRouteCrossConnectionList.json
+      - step: ExpressRouteCrossConnections_ListByResourceGroup
+        exampleFile: ..\examples\ExpressRouteCrossConnectionListByResourceGroup.json
+      - step: ExpressRouteCrossConnections_Get
+        exampleFile: ..\examples\ExpressRouteCrossConnectionGet.json
+      - step: ExpressRouteCrossConnections_UpdateTags
+        exampleFile: ..\examples\ExpressRouteCrossConnectionUpdateTags.json
+
+      - step: VpnConnections_CreateOrUpdate
+        exampleFile: ..\examples\VpnConnectionPut.json
+      - step: VpnConnections_ListByVpnGateway
+        exampleFile: ..\examples\VpnConnectionList.json
+      - step: VpnConnections_Get
+        exampleFile: ..\examples\VpnConnectionGet.json
+      - step: VpnConnections_StartPacketCapture
+        exampleFile: ..\examples\VpnConnectionStartPacketCapture.json
+      - step: VpnConnections_StopPacketCapture
+        exampleFile: ..\examples\VpnConnectionStopPacketCapture.json
+      - step: NetworkVirtualAppliances_CreateOrUpdate
+        exampleFile: ..\examples\NetworkVirtualAppliancePut.json
+      - step: NetworkVirtualAppliances_List
+        exampleFile: ..\examples\NetworkVirtualApplianceListBySubscription.json
+      - step: NetworkVirtualAppliances_ListByResourceGroup
+        exampleFile: ..\examples\NetworkVirtualApplianceListByResourceGroup.json
+      - step: NetworkVirtualAppliances_Get
+        exampleFile: ..\examples\NetworkVirtualApplianceGet.json
+      - step: NetworkVirtualAppliances_UpdateTags
+        exampleFile: ..\examples\NetworkVirtualApplianceUpdateTags.json
+      - step: BastionHosts_CreateOrUpdate
+        exampleFile: ..\examples\BastionHostPut.json
+      - step: BastionHosts_List
+        exampleFile: ..\examples\BastionHostListBySubscription.json
+      - step: BastionHosts_ListByResourceGroup
+        exampleFile: ..\examples\BastionHostListByResourceGroup.json
+      - step: BastionHosts_Get
+        exampleFile: ..\examples\BastionHostGet.json
+      - step: BastionHosts_UpdateTags
+        exampleFile: ..\examples\BastionHostPatch.json
+      - step: ServiceEndpointPolicies_CreateOrUpdate
+        exampleFile: ..\examples\ServiceEndpointPolicyCreate.json
+      - step: ServiceEndpointPolicies_List
+        exampleFile: ..\examples\ServiceEndpointPolicyListAll.json
+      - step: ServiceEndpointPolicies_ListByResourceGroup
+        exampleFile: ..\examples\ServiceEndpointPolicyList.json
+      - step: ServiceEndpointPolicies_Get
+        exampleFile: ..\examples\ServiceEndpointPolicyGet.json
+      - step: ServiceEndpointPolicies_UpdateTags
+        exampleFile: ..\examples\ServiceEndpointPolicyUpdateTags.json
+      - step: RouteTables_CreateOrUpdate
+        exampleFile: ..\examples\RouteTableCreate.json
+      - step: RouteTables_ListAll
+        exampleFile: ..\examples\RouteTableListAll.json
+      - step: RouteTables_List
+        exampleFile: ..\examples\RouteTableList.json
+      - step: RouteTables_Get
+        exampleFile: ..\examples\RouteTableGet.json
+      - step: RouteTables_UpdateTags
+        exampleFile: ..\examples\RouteTableUpdateTags.json
+      - step: RouteFilters_CreateOrUpdate
+        exampleFile: ..\examples\RouteFilterCreate.json
+      - step: RouteFilters_List
+        exampleFile: ..\examples\RouteFilterList.json
+      - step: RouteFilters_ListByResourceGroup
+        exampleFile: ..\examples\RouteFilterListByResourceGroup.json
+      - step: RouteFilters_Get
+        exampleFile: ..\examples\RouteFilterGet.json
+      - step: RouteFilters_UpdateTags
+        exampleFile: ..\examples\RouteFilterUpdateTags.json
+      - step: VirtualWans_CreateOrUpdate
+        exampleFile: ..\examples\VirtualWANPut.json
+      - step: VirtualWans_List
+        exampleFile: ..\examples\VirtualWANList.json
+      - step: VirtualWans_ListByResourceGroup
+        exampleFile: ..\examples\VirtualWANListByResourceGroup.json
+      - step: VirtualWans_Get
+        exampleFile: ..\examples\VirtualWANGet.json
+      - step: VirtualWans_UpdateTags
+        exampleFile: ..\examples\VirtualWANUpdateTags.json
+      - step: VpnServerConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\VpnServerConfigurationPut.json
+      - step: VpnServerConfigurations_List
+        exampleFile: ..\examples\VpnServerConfigurationList.json
+      - step: VpnServerConfigurations_ListByResourceGroup
+        exampleFile: ..\examples\VpnServerConfigurationListByResourceGroup.json
+      - step: VpnServerConfigurations_Get
+        exampleFile: ..\examples\VpnServerConfigurationGet.json
+      - step: VpnServerConfigurations_UpdateTags
+        exampleFile: ..\examples\VpnServerConfigurationUpdateTags.json
+      - step: P2sVpnGateways_CreateOrUpdate
+        exampleFile: ..\examples\P2SVpnGatewayPut.json
+      - step: P2sVpnGateways_List
+        exampleFile: ..\examples\P2SVpnGatewayList.json
+      - step: P2sVpnGateways_ListByResourceGroup
+        exampleFile: ..\examples\P2SVpnGatewayListByResourceGroup.json
+      - step: P2sVpnGateways_Get
+        exampleFile: ..\examples\P2SVpnGatewayGet.json
+      - step: P2sVpnGateways_UpdateTags
+        exampleFile: ..\examples\P2SVpnGatewayUpdateTags.json
+      - step: P2sVpnGateways_GenerateVpnProfile
+        exampleFile: ..\examples\P2SVpnGatewayGenerateVpnProfile.json
+      - step: P2sVpnGateways_GetP2sVpnConnectionHealth
+        exampleFile: ..\examples\P2SVpnGatewayGetConnectionHealth.json
+      - step: P2sVpnGateways_GetP2sVpnConnectionHealthDetailed
+        exampleFile: ..\examples\P2SVpnGatewayGetConnectionHealthDetailed.json
+      - variables:
+          p2sVpnGatewayName:
+            type: string
+            prefix: p2svpngate
+        step: P2sVpnGateways_DisconnectP2sVpnConnections
+        exampleFile: ..\examples\P2sVpnGatewaysDisconnectP2sVpnConnections.json
+      - step: ExpressRouteGateways_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteGatewayCreate.json
+      - step: ExpressRouteGateways_ListBySubscription
+        exampleFile: ..\examples\ExpressRouteGatewayListBySubscription.json
+      - step: ExpressRouteGateways_ListByResourceGroup
+        exampleFile: ..\examples\ExpressRouteGatewayListByResourceGroup.json
+      - step: ExpressRouteGateways_Get
+        exampleFile: ..\examples\ExpressRouteGatewayGet.json
+      - step: ExpressRouteGateways_UpdateTags
+        exampleFile: ..\examples\ExpressRouteGatewayUpdateTags.json
+      - step: AdminRuleCollections_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerAdminRuleCollectionPut.json
+      - variables:
+          configurationName:
+            type: string
+            prefix: configurat
+        step: AdminRuleCollections_List
+        exampleFile: ..\examples\NetworkManagerAdminRuleCollectionList.json
+      - step: AdminRuleCollections_Get
+        exampleFile: ..\examples\NetworkManagerAdminRuleCollectionGet.json
+      - step: Subnets_CreateOrUpdate
+        exampleFile: ..\examples\SubnetCreate.json
+      - step: Subnets_List
+        exampleFile: ..\examples\SubnetList.json
+      - step: Subnets_Get
+        exampleFile: ..\examples\SubnetGet.json
+      - step: Subnets_PrepareNetworkPolicies
+        exampleFile: ..\examples\SubnetPrepareNetworkPolicies.json
+      - step: Subnets_UnprepareNetworkPolicies
+        exampleFile: ..\examples\SubnetUnprepareNetworkPolicies.json
+      - step: ConnectionMonitors_CreateOrUpdate
+        exampleFile: ..\examples\NetworkWatcherConnectionMonitorCreate.json
+      - step: ConnectionMonitors_List
+        exampleFile: ..\examples\NetworkWatcherConnectionMonitorList.json
+      - step: ConnectionMonitors_Get
+        exampleFile: ..\examples\NetworkWatcherConnectionMonitorGet.json
+      - step: ConnectionMonitors_UpdateTags
+        exampleFile: ..\examples\NetworkWatcherConnectionMonitorUpdateTags.json
+      - step: ConnectionMonitors_Query
+        exampleFile: ..\examples\NetworkWatcherConnectionMonitorQuery.json
+      - step: ConnectionMonitors_Stop
+        exampleFile: ..\examples\NetworkWatcherConnectionMonitorStop.json
+      - step: ConnectionMonitors_Start
+        exampleFile: ..\examples\NetworkWatcherConnectionMonitorStart.json
+      - step: PrivateEndpoints_CreateOrUpdate
+        exampleFile: ..\examples\PrivateEndpointCreate.json
+      - step: PrivateEndpoints_ListBySubscription
+        exampleFile: ..\examples\PrivateEndpointListAll.json
+      - step: PrivateEndpoints_List
+        exampleFile: ..\examples\PrivateEndpointList.json
+      - step: PrivateEndpoints_Get
+        exampleFile: ..\examples\PrivateEndpointGet.json
+      - step: VirtualRouters_CreateOrUpdate
+        exampleFile: ..\examples\VirtualRouterPut.json
+      - step: VirtualRouters_List
+        exampleFile: ..\examples\VirtualRouterListBySubscription.json
+      - step: VirtualRouters_ListByResourceGroup
+        exampleFile: ..\examples\VirtualRouterListByResourceGroup.json
+      - step: VirtualRouters_Get
+        exampleFile: ..\examples\VirtualRouterGet.json
+      - step: NetworkGroups_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerGroupPut.json
+      - step: NetworkGroups_List
+        exampleFile: ..\examples\NetworkManagerGroupList.json
+      - step: NetworkGroups_Get
+        exampleFile: ..\examples\NetworkManagerGroupGet.json
+      - step: VpnSites_CreateOrUpdate
+        exampleFile: ..\examples\VpnSitePut.json
+      - step: VpnSites_List
+        exampleFile: ..\examples\VpnSiteList.json
+      - step: VpnSites_ListByResourceGroup
+        exampleFile: ..\examples\VpnSiteListByResourceGroup.json
+      - step: VpnSites_Get
+        exampleFile: ..\examples\VpnSiteGet.json
+      - step: VpnSites_UpdateTags
+        exampleFile: ..\examples\VpnSiteUpdateTags.json
+      - step: PrivateLinkServices_CreateOrUpdate
+        exampleFile: ..\examples\PrivateLinkServiceCreate.json
+      - step: PrivateLinkServices_ListAutoApprovedPrivateLinkServices
+        exampleFile: ..\examples\AutoApprovedPrivateLinkServicesGet.json
+      - step: PrivateLinkServices_ListBySubscription
+        exampleFile: ..\examples\PrivateLinkServiceListAll.json
+      - step: PrivateLinkServices_ListAutoApprovedPrivateLinkServicesByResourceGroup
+        exampleFile: ..\examples\AutoApprovedPrivateLinkServicesResourceGroupGet.json
+      - step: PrivateLinkServices_List
+        exampleFile: ..\examples\PrivateLinkServiceList.json
+      - step: PrivateLinkServices_Get
+        exampleFile: ..\examples\PrivateLinkServiceGet.json
+      - step: PrivateLinkServices_ListPrivateEndpointConnections
+        exampleFile: ..\examples\PrivateLinkServiceListPrivateEndpointConnection.json
+      - step: PrivateLinkServices_CheckPrivateLinkServiceVisibilityByResourceGroup
+        exampleFile: ..\examples\CheckPrivateLinkServiceVisibilityByResourceGroup.json
+      - step: PrivateLinkServices_CheckPrivateLinkServiceVisibility
+        exampleFile: ..\examples\CheckPrivateLinkServiceVisibility.json
+      - step: ExpressRouteCrossConnectionPeerings_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteCrossConnectionBgpPeeringCreate.json
+      - step: ExpressRouteCrossConnectionPeerings_List
+        exampleFile: ..\examples\ExpressRouteCrossConnectionBgpPeeringList.json
+      - step: ExpressRouteCrossConnectionPeerings_Get
+        exampleFile: ..\examples\ExpressRouteCrossConnectionBgpPeeringGet.json
+      - step: PacketCaptures_Create
+        exampleFile: ..\examples\NetworkWatcherPacketCaptureCreate.json
+      - step: PacketCaptures_List
+        exampleFile: ..\examples\NetworkWatcherPacketCapturesList.json
+      - step: PacketCaptures_Get
+        exampleFile: ..\examples\NetworkWatcherPacketCaptureGet.json
+      - step: PacketCaptures_GetStatus
+        exampleFile: ..\examples\NetworkWatcherPacketCaptureQueryStatus.json
+      - step: PacketCaptures_Stop
+        exampleFile: ..\examples\NetworkWatcherPacketCaptureStop.json
+      - step: PublicIPAddresses_CreateOrUpdate
+        exampleFile: ..\examples\PublicIpAddressCreateDefaults.json
+      - step: PublicIPAddresses_ListAll
+        exampleFile: ..\examples\PublicIpAddressListAll.json
+      - step: PublicIPAddresses_ListCloudServicePublicIPAddresses
+        exampleFile: ..\examples\CloudServicePublicIpListAll.json
+      - step: PublicIPAddresses_GetCloudServicePublicIPAddress
+        exampleFile: ..\examples\CloudServicePublicIpGet.json
+      - step: PublicIPAddresses_List
+        exampleFile: ..\examples\PublicIpAddressList.json
+      - step: PublicIPAddresses_Get
+        exampleFile: ..\examples\PublicIpAddressGet.json
+      - step: PublicIPAddresses_ListVirtualMachineScaleSetPublicIPAddresses
+        exampleFile: ..\examples\VmssPublicIpListAll.json
+      - step: PublicIPAddresses_ListVirtualMachineScaleSetVMPublicIPAddresses
+        exampleFile: ..\examples\VmssVmPublicIpList.json
+      - step: PublicIPAddresses_GetVirtualMachineScaleSetPublicIPAddress
+        exampleFile: ..\examples\VmssPublicIpGet.json
+      - step: PublicIPAddresses_ListCloudServiceRoleInstancePublicIPAddresses
+        exampleFile: ..\examples\CloudServiceRoleInstancePublicIpList.json
+      - step: PublicIPAddresses_UpdateTags
+        exampleFile: ..\examples\PublicIpAddressUpdateTags.json
+      - step: PublicIPAddresses_DdosProtectionStatus
+        exampleFile: ..\examples\PublicIpAddressGetDdosProtectionStatus.json
+      - step: AzureFirewalls_CreateOrUpdate
+        exampleFile: ..\examples\AzureFirewallPut.json
+      - step: AzureFirewalls_ListAll
+        exampleFile: ..\examples\AzureFirewallListBySubscription.json
+      - step: AzureFirewalls_List
+        exampleFile: ..\examples\AzureFirewallListByResourceGroup.json
+      - step: AzureFirewalls_Get
+        exampleFile: ..\examples\AzureFirewallGet.json
+      - step: AzureFirewalls_UpdateTags
+        exampleFile: ..\examples\AzureFirewallUpdateTags.json
+      - step: AzureFirewalls_ListLearnedPrefixes
+        exampleFile: ..\examples\AzureFirewallListLearnedIPPrefixes.json
+      - step: PublicIPPrefixes_CreateOrUpdate
+        exampleFile: ..\examples\PublicIpPrefixCreateDefaults.json
+      - step: PublicIPPrefixes_ListAll
+        exampleFile: ..\examples\PublicIpPrefixListAll.json
+      - step: PublicIPPrefixes_List
+        exampleFile: ..\examples\PublicIpPrefixList.json
+      - step: PublicIPPrefixes_Get
+        exampleFile: ..\examples\PublicIpPrefixGet.json
+      - step: PublicIPPrefixes_UpdateTags
+        exampleFile: ..\examples\PublicIpPrefixUpdateTags.json
+      - step: DdosProtectionPlans_CreateOrUpdate
+        exampleFile: ..\examples\DdosProtectionPlanCreate.json
+      - step: DdosProtectionPlans_List
+        exampleFile: ..\examples\DdosProtectionPlanListAll.json
+      - step: DdosProtectionPlans_ListByResourceGroup
+        exampleFile: ..\examples\DdosProtectionPlanList.json
+      - step: DdosProtectionPlans_Get
+        exampleFile: ..\examples\DdosProtectionPlanGet.json
+      - step: DdosProtectionPlans_UpdateTags
+        exampleFile: ..\examples\DdosProtectionPlanUpdateTags.json
+      - step: FlowLogs_CreateOrUpdate
+        exampleFile: ..\examples\NetworkWatcherFlowLogCreate.json
+      - step: FlowLogs_List
+        exampleFile: ..\examples\NetworkWatcherFlowLogList.json
+      - step: FlowLogs_Get
+        exampleFile: ..\examples\NetworkWatcherFlowLogGet.json
+      - step: FlowLogs_UpdateTags
+        exampleFile: ..\examples\NetworkWatcherFlowLogUpdateTags.json
+      - step: DdosCustomPolicies_CreateOrUpdate
+        exampleFile: ..\examples\DdosCustomPolicyCreate.json
+      - step: DdosCustomPolicies_Get
+        exampleFile: ..\examples\DdosCustomPolicyGet.json
+      - step: DdosCustomPolicies_UpdateTags
+        exampleFile: ..\examples\DdosCustomPolicyUpdateTags.json
+
+      - step: CustomIPPrefixes_CreateOrUpdate
+        exampleFile: ..\examples\CustomIpPrefixCreateCustomizedValues.json
+      - step: CustomIPPrefixes_ListAll
+        exampleFile: ..\examples\CustomIpPrefixListAll.json
+      - step: CustomIPPrefixes_List
+        exampleFile: ..\examples\CustomIpPrefixList.json
+      - step: CustomIPPrefixes_Get
+        exampleFile: ..\examples\CustomIpPrefixGet.json
+      - step: CustomIPPrefixes_UpdateTags
+        exampleFile: ..\examples\CustomIpPrefixUpdateTags.json
+
+      - step: NatGateways_CreateOrUpdate
+        exampleFile: ..\examples\NatGatewayCreateOrUpdate.json
+      - step: NatGateways_ListAll
+        exampleFile: ..\examples\NatGatewayListAll.json
+      - step: NatGateways_Get
+        exampleFile: ..\examples\NatGatewayGet.json
+      - step: NatGateways_List
+        exampleFile: ..\examples\NatGatewayList.json
+      - step: NatGateways_UpdateTags
+        exampleFile: ..\examples\NatGatewayUpdateTags.json
+      - step: SecurityPartnerProviders_CreateOrUpdate
+        exampleFile: ..\examples\SecurityPartnerProviderPut.json
+      - step: SecurityPartnerProviders_List
+        exampleFile: ..\examples\SecurityPartnerProviderListBySubscription.json
+      - step: SecurityPartnerProviders_ListByResourceGroup
+        exampleFile: ..\examples\SecurityPartnerProviderListByResourceGroup.json
+      - step: SecurityPartnerProviders_Get
+        exampleFile: ..\examples\SecurityPartnerProviderGet.json
+      - step: SecurityPartnerProviders_UpdateTags
+        exampleFile: ..\examples\SecurityPartnerProviderUpdateTags.json
+      - step: LocalNetworkGateways_CreateOrUpdate
+        exampleFile: ..\examples\LocalNetworkGatewayCreate.json
+      - step: LocalNetworkGateways_List
+        exampleFile: ..\examples\LocalNetworkGatewayList.json
+      - step: LocalNetworkGateways_Get
+        exampleFile: ..\examples\LocalNetworkGatewayGet.json
+      - step: LocalNetworkGateways_UpdateTags
+        exampleFile: ..\examples\LocalNetworkGatewayUpdateTags.json
+
+      - step: ApplicationSecurityGroups_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationSecurityGroupCreate.json
+      - step: ApplicationSecurityGroups_ListAll
+        exampleFile: ..\examples\ApplicationSecurityGroupListAll.json
+      - step: ApplicationSecurityGroups_List
+        exampleFile: ..\examples\ApplicationSecurityGroupList.json
+      - step: ApplicationSecurityGroups_Get
+        exampleFile: ..\examples\ApplicationSecurityGroupGet.json
+      - step: ApplicationSecurityGroups_UpdateTags
+        exampleFile: ..\examples\ApplicationSecurityGroupUpdateTags.json
+
+      - step: NetworkProfiles_CreateOrUpdate
+        exampleFile: ..\examples\NetworkProfileCreateConfigOnly.json
+      - step: NetworkProfiles_ListAll
+        exampleFile: ..\examples\NetworkProfileListAll.json
+      - step: NetworkProfiles_List
+        exampleFile: ..\examples\NetworkProfileList.json
+      - step: NetworkProfiles_Get
+        exampleFile: ..\examples\NetworkProfileGetConfigOnly.json
+      - step: NetworkProfiles_UpdateTags
+        exampleFile: ..\examples\NetworkProfileUpdateTags.json
+
+      - step: IpAllocations_CreateOrUpdate
+        exampleFile: ..\examples\IpAllocationCreate.json
+      - step: IpAllocations_List
+        exampleFile: ..\examples\IpAllocationList.json
+      - step: IpAllocations_ListByResourceGroup
+        exampleFile: ..\examples\IpAllocationListByResourceGroup.json
+      - step: IpAllocations_Get
+        exampleFile: ..\examples\IpAllocationGet.json
+      - step: IpAllocations_UpdateTags
+        exampleFile: ..\examples\IpAllocationUpdateTags.json
+
+      - step: IpGroups_CreateOrUpdate
+        exampleFile: ..\examples\IpGroupsCreate.json
+      - step: IpGroups_List
+        exampleFile: ..\examples\IpGroupsListBySubscription.json
+      - step: IpGroups_ListByResourceGroup
+        exampleFile: ..\examples\IpGroupsListByResourceGroup.json
+      - step: IpGroups_Get
+        exampleFile: ..\examples\IpGroupsGet.json
+      - step: IpGroups_UpdateGroups
+        exampleFile: ..\examples\IpGroupsUpdateTags.json
+
+      - step: VirtualNetworkTaps_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkTapCreate.json
+      - step: VirtualNetworkTaps_ListAll
+        exampleFile: ..\examples\VirtualNetworkTapListAll.json
+      - step: VirtualNetworkTaps_ListByResourceGroup
+        exampleFile: ..\examples\VirtualNetworkTapList.json
+      - step: VirtualNetworkTaps_Get
+        exampleFile: ..\examples\VirtualNetworkTapGet.json
+      - step: VirtualNetworkTaps_UpdateTags
+        exampleFile: ..\examples\VirtualNetworkTapUpdateTags.json
+      - step: VirtualHubIpConfiguration_CreateOrUpdate
+        exampleFile: ..\examples\VirtualHubIpConfigurationPut.json
+      - step: VirtualHubIpConfiguration_List
+        exampleFile: ..\examples\VirtualHubIpConfigurationList.json
+      - step: VirtualHubIpConfiguration_Get
+        exampleFile: ..\examples\VirtualHubIpConfigurationGet.json
+      - step: ExpressRoutePortAuthorizations_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRoutePortAuthorizationCreate.json
+      - step: ExpressRoutePortAuthorizations_List
+        exampleFile: ..\examples\ExpressRoutePortAuthorizationList.json
+      - step: ExpressRoutePortAuthorizations_Get
+        exampleFile: ..\examples\ExpressRoutePortAuthorizationGet.json
+      - step: ConfigurationPolicyGroups_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationPolicyGroupPut.json
+      - step: ConfigurationPolicyGroups_Get
+        exampleFile: ..\examples\ConfigurationPolicyGroupGet.json
+      - step: RouteMaps_CreateOrUpdate
+        exampleFile: ..\examples\RouteMapPut.json
+      - step: RouteMaps_List
+        exampleFile: ..\examples\RouteMapList.json
+      - step: RouteMaps_Get
+        exampleFile: ..\examples\RouteMapGet.json
+      - step: VirtualNetworkGatewayNatRules_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkGatewayNatRulePut.json
+      - step: VirtualNetworkGatewayNatRules_ListByVirtualNetworkGateway
+        exampleFile: ..\examples\VirtualNetworkGatewayNatRuleList.json
+      - step: VirtualNetworkGatewayNatRules_Get
+        exampleFile: ..\examples\VirtualNetworkGatewayNatRuleGet.json
+      - step: SecurityRules_CreateOrUpdate
+        exampleFile: ..\examples\NetworkSecurityGroupRuleCreate.json
+      - step: SecurityRules_List
+        exampleFile: ..\examples\NetworkSecurityGroupRuleList.json
+      - step: SecurityRules_Get
+        exampleFile: ..\examples\NetworkSecurityGroupRuleGet.json
+      - step: PrivateDnsZoneGroups_CreateOrUpdate
+        exampleFile: ..\examples\PrivateEndpointDnsZoneGroupCreate.json
+      - step: PrivateDnsZoneGroups_List
+        exampleFile: ..\examples\PrivateEndpointDnsZoneGroupList.json
+      - step: PrivateDnsZoneGroups_Get
+        exampleFile: ..\examples\PrivateEndpointDnsZoneGroupGet.json
+      - step: VirtualApplianceSites_CreateOrUpdate
+        exampleFile: ..\examples\NetworkVirtualApplianceSitePut.json
+      - step: VirtualApplianceSites_List
+        exampleFile: ..\examples\NetworkVirtualApplianceSiteList.json
+      - step: VirtualApplianceSites_Get
+        exampleFile: ..\examples\NetworkVirtualApplianceSiteGet.json
+      - step: LoadBalancerBackendAddressPools_CreateOrUpdate
+        exampleFile: ..\examples\LBBackendAddressPoolWithBackendAddressesPut.json
+      - step: LoadBalancerBackendAddressPools_List
+        exampleFile: ..\examples\LoadBalancerBackendAddressPoolList.json
+      - step: LoadBalancerBackendAddressPools_Get
+        exampleFile: ..\examples\LoadBalancerBackendAddressPoolGet.json
+      - step: VirtualNetworkPeerings_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkPeeringCreate.json
+      - step: VirtualNetworkPeerings_List
+        exampleFile: ..\examples\VirtualNetworkPeeringList.json
+      - step: VirtualNetworkPeerings_Get
+        exampleFile: ..\examples\VirtualNetworkPeeringGet.json
+      - step: ExpressRouteConnections_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteConnectionCreate.json
+      - step: ExpressRouteConnections_List
+        exampleFile: ..\examples\ExpressRouteConnectionList.json
+      - step: ExpressRouteConnections_Get
+        exampleFile: ..\examples\ExpressRouteConnectionGet.json
+      - step: ScopeConnections_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerScopeConnectionPut.json
+      - step: ScopeConnections_List
+        exampleFile: ..\examples\NetworkManagerScopeConnectionList.json
+      - step: ScopeConnections_Get
+        exampleFile: ..\examples\NetworkManagerScopeConnectionGet.json
+      - step: AdminRules_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerAdminRulePut.json
+      - step: AdminRules_List
+        exampleFile: ..\examples\NetworkManagerAdminRuleList.json
+      - step: AdminRules_Get
+        exampleFile: ..\examples\NetworkManagerAdminRuleGet.json
+      - step: ApplicationGatewayPrivateEndpointConnections_Update
+        exampleFile: ..\examples\ApplicationGatewayPrivateEndpointConnectionUpdate.json
+      - step: ApplicationGatewayPrivateEndpointConnections_List
+        exampleFile: ..\examples\ApplicationGatewayPrivateEndpointConnectionList.json
+      - step: ApplicationGatewayPrivateEndpointConnections_Get
+        exampleFile: ..\examples\ApplicationGatewayPrivateEndpointConnectionGet.json
+      - step: RoutingIntent_CreateOrUpdate
+        exampleFile: ..\examples\RoutingIntentPut.json
+      - step: RoutingIntent_List
+        exampleFile: ..\examples\RoutingIntentList.json
+      - step: RoutingIntent_Get
+        exampleFile: ..\examples\RoutingIntentGet.json
+      - step: PrivateLinkServices_UpdatePrivateEndpointConnection
+        exampleFile: ..\examples\PrivateLinkServiceUpdatePrivateEndpointConnection.json
+      - step: PrivateLinkServices_GetPrivateEndpointConnection
+        exampleFile: ..\examples\PrivateLinkServiceGetPrivateEndpointConnection.json
+      - step: HubVirtualNetworkConnections_CreateOrUpdate
+        exampleFile: ..\examples\HubVirtualNetworkConnectionPut.json
+      - step: HubVirtualNetworkConnections_List
+        exampleFile: ..\examples\HubVirtualNetworkConnectionList.json
+      - step: HubVirtualNetworkConnections_Get
+        exampleFile: ..\examples\HubVirtualNetworkConnectionGet.json
+      - step: StaticMembers_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerStaticMemberPut.json
+      - variables:
+          networkGroupName:
+            type: string
+            prefix: networkgro
+        step: StaticMembers_List
+        exampleFile: ..\examples\NetworkManagerStaticMemberList.json
+      - step: StaticMembers_Get
+        exampleFile: ..\examples\NetworkManagerStaticMemberGet.json
+      - step: ExpressRouteCircuitAuthorizations_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteCircuitAuthorizationCreate.json
+      - step: ExpressRouteCircuitAuthorizations_List
+        exampleFile: ..\examples\ExpressRouteCircuitAuthorizationList.json
+      - step: ExpressRouteCircuitAuthorizations_Get
+        exampleFile: ..\examples\ExpressRouteCircuitAuthorizationGet.json
+      - step: ConnectivityConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerConnectivityConfigurationPut.json
+      - step: ConnectivityConfigurations_List
+        exampleFile: ..\examples\NetworkManagerConnectivityConfigurationList.json
+      - step: ConnectivityConfigurations_Get
+        exampleFile: ..\examples\NetworkManagerConnectivityConfigurationGet.json
+      - step: ManagementGroupNetworkManagerConnections_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerConnectionManagementGroupPut.json
+      - variables:
+          managementGroupId:
+            type: string
+            prefix: management
+        step: ManagementGroupNetworkManagerConnections_List
+        exampleFile: ..\examples\NetworkManagerConnectionManagementGroupList.json
+      - step: ManagementGroupNetworkManagerConnections_Get
+        exampleFile: ..\examples\NetworkManagerConnectionManagementGroupGet.json
+      - step: HubRouteTables_CreateOrUpdate
+        exampleFile: ..\examples\HubRouteTablePut.json
+      - step: HubRouteTables_List
+        exampleFile: ..\examples\HubRouteTableList.json
+      - step: HubRouteTables_Get
+        exampleFile: ..\examples\HubRouteTableGet.json
+      - step: RouteFilterRules_CreateOrUpdate
+        exampleFile: ..\examples\RouteFilterRuleCreate.json
+      - step: RouteFilterRules_ListByRouteFilter
+        exampleFile: ..\examples\RouteFilterRuleListByRouteFilter.json
+      - step: RouteFilterRules_Get
+        exampleFile: ..\examples\RouteFilterRuleGet.json
+      - step: DscpConfiguration_CreateOrUpdate
+        exampleFile: ..\examples\DscpConfigurationCreate.json
+      - step: DscpConfiguration_ListAll
+        exampleFile: ..\examples\DscpConfigurationListAll.json
+      - step: DscpConfiguration_List
+        exampleFile: ..\examples\DscpConfigurationList.json
+      - step: DscpConfiguration_Get
+        exampleFile: ..\examples\DscpConfigurationGet.json
+      - step: Routes_CreateOrUpdate
+        exampleFile: ..\examples\RouteTableRouteCreate.json
+      - step: Routes_List
+        exampleFile: ..\examples\RouteTableRouteList.json
+      - step: Routes_Get
+        exampleFile: ..\examples\RouteTableRouteGet.json
+      - step: InboundNatRules_CreateOrUpdate
+        exampleFile: ..\examples\InboundNatRuleCreate.json
+      - step: InboundNatRules_List
+        exampleFile: ..\examples\InboundNatRuleList.json
+      - step: InboundNatRules_Get
+        exampleFile: ..\examples\InboundNatRuleGet.json
+      - step: NatRules_CreateOrUpdate
+        exampleFile: ..\examples\NatRulePut.json
+      - step: NatRules_ListByVpnGateway
+        exampleFile: ..\examples\NatRuleList.json
+      - step: NatRules_Get
+        exampleFile: ..\examples\NatRuleGet.json
+      - step: VirtualHubRouteTableV2s_CreateOrUpdate
+        exampleFile: ..\examples\VirtualHubRouteTableV2Put.json
+      - step: VirtualHubRouteTableV2s_List
+        exampleFile: ..\examples\VirtualHubRouteTableV2List.json
+      - step: VirtualHubRouteTableV2s_Get
+        exampleFile: ..\examples\VirtualHubRouteTableV2Get.json
+      - step: FirewallPolicyRuleCollectionGroups_CreateOrUpdate
+        exampleFile: ..\examples\FirewallPolicyRuleCollectionGroupPut.json
+      - step: FirewallPolicyRuleCollectionGroups_List
+        exampleFile: ..\examples\FirewallPolicyRuleCollectionGroupList.json
+      - step: FirewallPolicyRuleCollectionGroups_Get
+        exampleFile: ..\examples\FirewallPolicyRuleCollectionGroupGet.json
+      - step: VirtualRouterPeerings_CreateOrUpdate
+        exampleFile: ..\examples\VirtualRouterPeeringPut.json
+      - step: VirtualRouterPeerings_List
+        exampleFile: ..\examples\VirtualRouterPeeringList.json
+      - step: VirtualRouterPeerings_Get
+        exampleFile: ..\examples\VirtualRouterPeeringGet.json
+      - step: SubscriptionNetworkManagerConnections_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerConnectionSubscriptionPut.json
+      - step: SubscriptionNetworkManagerConnections_List
+        exampleFile: ..\examples\NetworkManagerConnectionSubscriptionList.json
+      - step: SubscriptionNetworkManagerConnections_Get
+        exampleFile: ..\examples\NetworkManagerConnectionSubscriptionGet.json
+      - step: VirtualHubBgpConnection_CreateOrUpdate
+        exampleFile: ..\examples\VirtualHubBgpConnectionPut.json
+      - step: VirtualHubBgpConnection_Get
+        exampleFile: ..\examples\VirtualHubBgpConnectionGet.json
+      - step: ServiceEndpointPolicyDefinitions_CreateOrUpdate
+        exampleFile: ..\examples\ServiceEndpointPolicyDefinitionCreate.json
+      - step: ServiceEndpointPolicyDefinitions_ListByResourceGroup
+        exampleFile: ..\examples\ServiceEndpointPolicyDefinitionList.json
+      - step: ServiceEndpointPolicyDefinitions_Get
+        exampleFile: ..\examples\ServiceEndpointPolicyDefinitionGet.json
+      - step: ExpressRouteCircuitConnections_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRouteCircuitConnectionCreate.json
+      - step: ExpressRouteCircuitConnections_List
+        exampleFile: ..\examples\ExpressRouteCircuitConnectionList.json
+      - step: ExpressRouteCircuitConnections_Get
+        exampleFile: ..\examples\ExpressRouteCircuitConnectionGet.json
+      - step: VirtualNetworkGatewayConnections_SetSharedKey
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionSetSharedKey.json
+      - step: FirewallPolicyIdpsSignaturesOverrides_Put
+        exampleFile: ..\examples\FirewallPolicySignatureOverridesPut.json
+      - step: FirewallPolicyIdpsSignaturesOverrides_List
+        exampleFile: ..\examples\FirewallPolicySignatureOverridesList.json
+      - step: FirewallPolicyIdpsSignaturesOverrides_Get
+        exampleFile: ..\examples\FirewallPolicySignatureOverridesGet.json
+      - step: FirewallPolicyIdpsSignaturesOverrides_Patch
+        exampleFile: ..\examples\FirewallPolicySignatureOverridesPatch.json
+      - step: VipSwap_Create
+        exampleFile: ..\examples\CloudServiceSwapPut.json
+      - step: VipSwap_List
+        exampleFile: ..\examples\CloudServiceSwapList.json
+      - step: VipSwap_Get
+        exampleFile: ..\examples\CloudServiceSwapGet.json
+      - variables:
+          ruleCollectionName:
+            type: string
+            prefix: rulecollec
+        step: InboundSecurityRule_CreateOrUpdate
+        exampleFile: ..\examples\InboundSecurityRulePut.json
+      - step: Operations_List
+        exampleFile: ..\examples\OperationList.json
+      - step: ExpressRoutePortsLocations_List
+        exampleFile: ..\examples\ExpressRoutePortsLocationList.json
+      - variables:
+          locationName:
+            type: string
+            prefix: locationna
+        step: ExpressRoutePortsLocations_Get
+        exampleFile: ..\examples\ExpressRoutePortsLocationGet.json
+      - step: AzureFirewallFqdnTags_ListAll
+        exampleFile: ..\examples\AzureFirewallFqdnTagsListBySubscription.json
+      - step: WebCategories_ListBySubscription
+        exampleFile: ..\examples\AzureWebCategoriesListBySubscription.json
+      - variables:
+          name:
+            type: string
+            prefix: name
+        step: WebCategories_Get
+        exampleFile: ..\examples\AzureWebCategoryGet.json
+      - step: BgpServiceCommunities_List
+        exampleFile: ..\examples\ServiceCommunityList.json
+      - step: ExpressRouteProviderPortsLocation_List
+        exampleFile: ..\examples\expressRouteProviderPortList.json
+      - variables:
+          providerport:
+            type: string
+            prefix: providerpo
+        step: ExpressRouteProviderPort
+        exampleFile: ..\examples\expressRouteProviderPort.json
+      - step: ExpressRouteServiceProviders_List
+        exampleFile: ..\examples\ExpressRouteProviderList.json
+      - step: CheckDnsNameAvailability
+        exampleFile: ..\examples\CheckDnsNameAvailability.json
+      - step: ApplicationGatewayWafDynamicManifests_Get
+        exampleFile: ..\examples\GetApplicationGatewayWafDynamicManifests.json
+      - step: ApplicationGatewayWafDynamicManifestsDefault_Get
+        exampleFile: ..\examples\GetApplicationGatewayWafDynamicManifestsDefault.json
+      - step: AvailableDelegations_List
+        exampleFile: ..\examples\AvailableDelegationsSubscriptionGet.json
+      - step: AvailablePrivateEndpointTypes_List
+        exampleFile: ..\examples\AvailablePrivateEndpointTypesGet.json
+      - step: AvailableServiceAliases_List
+        exampleFile: ..\examples\AvailableServiceAliasesList.json
+      - step: ServiceTagInformation_List
+        exampleFile: ..\examples\ServiceTagInformationListResult.json
+      - step: ServiceTags_List
+        exampleFile: ..\examples\ServiceTagsList.json
+      - step: Usages_List
+        exampleFile: ..\examples\UsageList.json
+      - step: AvailableEndpointServices_List
+        exampleFile: ..\examples\EndpointServicesList.json
+      - step: VirtualApplianceSkus_List
+        exampleFile: ..\examples\NetworkVirtualApplianceSkuList.json
+      - variables:
+          skuName:
+            type: string
+            prefix: skuname
+        step: VirtualApplianceSkus_Get
+        exampleFile: ..\examples\NetworkVirtualApplianceSkuGet.json
+
+# CloudServiceNetworkInterfaces
+      - step: NetworkInterfaces_ListCloudServiceNetworkInterfaces
+        exampleFile: ..\examples\CloudServiceNetworkInterfaceList.json
+      - step: NetworkInterfaces_ListCloudServiceRoleInstanceNetworkInterfaces
+        exampleFile: ..\examples\CloudServiceRoleInstanceNetworkInterfaceList.json
+      - step: NetworkInterfaces_GetCloudServiceNetworkInterface
+        exampleFile: ..\examples\CloudServiceNetworkInterfaceGet.json
+
+      - step: ExpressRouteLinks_List
+        exampleFile: ..\examples\ExpressRouteLinkList.json
+      - variables:
+          linkName:
+            type: string
+            prefix: linkname
+        step: ExpressRouteLinks_Get
+        exampleFile: ..\examples\ExpressRouteLinkGet.json
+      - step: ApplicationGatewayPrivateLinkResources_List
+        exampleFile: ..\examples\ApplicationGatewayPrivateLinkResourceList.json
+      - step: PutBastionShareableLink
+        exampleFile: ..\examples\BastionShareableLinkCreate.json
+      - step: DeleteBastionShareableLink
+        exampleFile: ..\examples\BastionShareableLinkDelete.json
+      - step: DisconnectActiveSessions
+        exampleFile: ..\examples\BastionSessionDelete.json
+      - step: GetActiveSessions
+        exampleFile: ..\examples\BastionSessionsList.json
+      - step: GetBastionShareableLink
+        exampleFile: ..\examples\BastionShareableLinkGet.json
+      - step: VirtualNetworkGateways_VpnDeviceConfigurationScript
+        exampleFile: ..\examples\VirtualNetworkGatewayVpnDeviceConfigurationScript.json
+      - step: ExpressRouteCircuits_ListArpTable
+        exampleFile: ..\examples\ExpressRouteCircuitARPTableList.json
+      - step: PeerExpressRouteCircuitConnections_List
+        exampleFile: ..\examples\PeerExpressRouteCircuitConnectionList.json
+      - step: PeerExpressRouteCircuitConnections_Get
+        exampleFile: ..\examples\PeerExpressRouteCircuitConnectionGet.json
+      - step: ExpressRouteCircuits_ListRoutesTable
+        exampleFile: ..\examples\ExpressRouteCircuitRouteTableList.json
+      - step: ExpressRouteCircuits_ListRoutesTableSummary
+        exampleFile: ..\examples\ExpressRouteCircuitRouteTableSummaryList.json
+      - step: ExpressRouteCircuits_GetPeeringStats
+        exampleFile: ..\examples\ExpressRouteCircuitPeeringStats.json
+
+      - step: ExpressRouteCrossConnections_ListArpTable
+        exampleFile: ..\examples\ExpressRouteCrossConnectionsArpTable.json
+      - step: ExpressRouteCrossConnections_ListRoutesTable
+        exampleFile: ..\examples\ExpressRouteCrossConnectionsRouteTable.json
+      - step: ExpressRouteCrossConnections_ListRoutesTableSummary
+        exampleFile: ..\examples\ExpressRouteCrossConnectionsRouteTableSummary.json
+
+      - step: FirewallPolicyIdpsSignaturesFilterValues_List
+        exampleFile: ..\examples\FirewallPolicyQuerySignatureOverridesFilterValues.json
+      - step: FirewallPolicyIdpsSignatures_List
+        exampleFile: ..\examples\FirewallPolicyQuerySignatureOverrides.json
+      - step: LoadBalancerFrontendIPConfigurations_List
+        exampleFile: ..\examples\LoadBalancerFrontendIPConfigurationList.json
+      - variables:
+          frontendIPConfigurationName:
+            type: string
+            prefix: frontendip
+        step: LoadBalancerFrontendIPConfigurations_Get
+        exampleFile: ..\examples\LoadBalancerFrontendIPConfigurationGet.json
+      - step: LoadBalancerLoadBalancingRules_List
+        exampleFile: ..\examples\LoadBalancerLoadBalancingRuleList.json
+      - variables:
+          loadBalancingRuleName:
+            type: string
+            prefix: loadbalanc
+        step: LoadBalancerLoadBalancingRules_Get
+        exampleFile: ..\examples\LoadBalancerLoadBalancingRuleGet.json
+      - step: LoadBalancerNetworkInterfaces_List
+        exampleFile: ..\examples\LoadBalancerNetworkInterfaceListVmss.json
+      - step: LoadBalancerOutboundRules_List
+        exampleFile: ..\examples\LoadBalancerOutboundRuleList.json
+      - variables:
+          outboundRuleName:
+            type: string
+            prefix: outboundru
+        step: LoadBalancerOutboundRules_Get
+        exampleFile: ..\examples\LoadBalancerOutboundRuleGet.json
+      - step: LoadBalancerProbes_List
+        exampleFile: ..\examples\LoadBalancerProbeList.json
+      - variables:
+          probeName:
+            type: string
+            prefix: probename
+        step: LoadBalancerProbes_Get
+        exampleFile: ..\examples\LoadBalancerProbeGet.json
+      - step: AvailableResourceGroupDelegations_List
+        exampleFile: ..\examples\AvailableDelegationsResourceGroupGet.json
+      - step: AvailablePrivateEndpointTypes_ListByResourceGroup
+        exampleFile: ..\examples\AvailablePrivateEndpointTypesResourceGroupGet.json
+      - step: AvailableServiceAliases_ListByResourceGroup
+        exampleFile: ..\examples\AvailableServiceAliasesListByResourceGroup.json
+      - step: NetworkManagerCommits_Post
+        exampleFile: ..\examples\NetworkManagerCommitPost.json
+      - step: ListActiveConnectivityConfigurations
+        exampleFile: ..\examples\NetworkManagerActiveConnectivityConfigurationsList.json
+      - step: ListActiveSecurityAdminRules
+        exampleFile: ..\examples\NetworkManagerActiveSecurityAdminRulesList.json
+      - step: NetworkManagerDeploymentStatus_List
+        exampleFile: ..\examples\NetworkManagerDeploymentStatusList.json
+      - step: DefaultSecurityRules_List
+        exampleFile: ..\examples\DefaultSecurityRuleList.json
+      - variables:
+          defaultSecurityRuleName:
+            type: string
+            prefix: defaultsec
+        step: DefaultSecurityRules_Get
+        exampleFile: ..\examples\DefaultSecurityRuleGet.json
+      - step: P2SVpnGateways_Reset
+        exampleFile: ..\examples\P2SVpnGatewayReset.json
+      - step: VirtualHubBgpConnections_ListAdvertisedRoutes
+        exampleFile: ..\examples\VirtualRouterPeerListAdvertisedRoute.json
+      - step: VirtualHubBgpConnections_ListLearnedRoutes
+        exampleFile: ..\examples\VirtualRouterPeerListLearnedRoute.json
+      - step: VirtualHubBgpConnections_List
+        exampleFile: ..\examples\VirtualHubBgpConnectionList.json
+      - step: ListNetworkManagerEffectiveConnectivityConfigurations
+        exampleFile: ..\examples\NetworkManagerEffectiveConnectivityConfigurationsList.json
+      - step: ListNetworkManagerEffectiveSecurityAdminRules
+        exampleFile: ..\examples\NetworkManagerEffectiveSecurityAdminRulesList.json
+      - step: ResourceNavigationLinks_List
+        exampleFile: ..\examples\VirtualNetworkGetResourceNavigationLinks.json
+      - step: ServiceAssociationLinks_List
+        exampleFile: ..\examples\VirtualNetworkGetServiceAssociationLinks.json
+      - step: generatevirtualwanvpnserverconfigurationvpnprofile
+        exampleFile: ..\examples\GenerateVirtualWanVpnServerConfigurationVpnProfile.json
+      - step: SupportedSecurityProviders
+        exampleFile: ..\examples\VirtualWanSupportedSecurityProviders.json
+      - step: VpnSitesConfiguration_Download
+        exampleFile: ..\examples\VpnSitesConfigurationDownload.json
+      - step: VpnServerConfigurationsAssociatedWithVirtualWan_List
+        exampleFile: ..\examples\GetVirtualWanVpnServerConfigurations.json
+      - step: VpnLinkConnections_ListByVpnConnection
+        exampleFile: ..\examples\VpnSiteLinkConnectionList.json
+      - step: VpnSiteLinkConnections_Get
+        exampleFile: ..\examples\VpnSiteLinkConnectionGet.json
+      - step: VpnLinkConnections_GetIkeSas
+        exampleFile: ..\examples\VpnSiteLinkConnectionGetIkeSas.json
+      - step: VpnLinkConnections_ResetConnection
+        exampleFile: ..\examples\VpnSiteLinkConnectionReset.json
+      - step: configurationPolicyGroups_ListByVpnServerConfiguration
+        exampleFile: ..\examples\ConfigurationPolicyGroupListByVpnServerConfiguration.json
+      - step: VpnSiteLinks_ListByVpnSite
+        exampleFile: ..\examples\VpnSiteLinkListByVpnSite.json
+      - variables:
+          vpnSiteLinkName:
+            type: string
+            prefix: vpnsitelin
+        step: VpnSiteLinks_Get
+        exampleFile: ..\examples\VpnSiteLinkGet.json
+      - step: NetworkInterfaces_ListVirtualMachineScaleSetNetworkInterfaces
+        exampleFile: ..\examples\VmssNetworkInterfaceList.json
+      - step: NetworkInterfaces_ListVirtualMachineScaleSetVMNetworkInterfaces
+        exampleFile: ..\examples\VmssVmNetworkInterfaceList.json
+      - step: NetworkInterfaces_GetVirtualMachineScaleSetNetworkInterface
+        exampleFile: ..\examples\VmssNetworkInterfaceGet.json
+      - step: NetworkInterfaces_ListVirtualMachineScaleSetIpConfigurations
+        exampleFile: ..\examples\VmssNetworkInterfaceIpConfigList.json
+      - step: NetworkInterfaces_GetVirtualMachineScaleSetIpConfiguration
+        exampleFile: ..\examples\VmssNetworkInterfaceIpConfigGet.json
+      - step: ExpressRouteCircuitConnections_Delete
+        exampleFile: ..\examples\ExpressRouteCircuitConnectionDelete.json
+      - step: ServiceEndpointPolicyDefinitions_Delete
+        exampleFile: ..\examples\ServiceEndpointPolicyDefinitionDelete.json
+      - step: VirtualHubBgpConnection_Delete
+        exampleFile: ..\examples\VirtualHubBgpConnectionDelete.json
+      - step: SubscriptionNetworkManagerConnections_Delete
+        exampleFile: ..\examples\NetworkManagerConnectionSubscriptionDelete.json
+      - step: VirtualRouterPeerings_Delete
+        exampleFile: ..\examples\VirtualRouterPeeringDelete.json
+      - step: FirewallPolicyRuleCollectionGroups_Delete
+        exampleFile: ..\examples\FirewallPolicyRuleCollectionGroupDelete.json
+      - step: VirtualHubRouteTableV2s_Delete
+        exampleFile: ..\examples\VirtualHubRouteTableV2Delete.json
+      - step: NatRules_Delete
+        exampleFile: ..\examples\NatRuleDelete.json
+      - step: InboundNatRules_Delete
+        exampleFile: ..\examples\InboundNatRuleDelete.json
+      - step: Routes_Delete
+        exampleFile: ..\examples\RouteTableRouteDelete.json
+      - step: DscpConfiguration_Delete
+        exampleFile: ..\examples\DscpConfigurationDelete.json
+      - step: RouteFilterRules_Delete
+        exampleFile: ..\examples\RouteFilterRuleDelete.json
+      - step: HubRouteTables_Delete
+        exampleFile: ..\examples\HubRouteTableDelete.json
+      - step: ManagementGroupNetworkManagerConnections_Delete
+        exampleFile: ..\examples\NetworkManagerConnectionManagementGroupDelete.json
+      - step: ConnectivityConfigurations_Delete
+        exampleFile: ..\examples\NetworkManagerConnectivityConfigurationDelete.json
+      - step: ExpressRouteCircuitAuthorizations_Delete
+        exampleFile: ..\examples\ExpressRouteCircuitAuthorizationDelete.json
+      - step: StaticMembers_Delete
+        exampleFile: ..\examples\NetworkManagerStaticMemberDelete.json
+      - step: HubVirtualNetworkConnections_Delete
+        exampleFile: ..\examples\HubVirtualNetworkConnectionDelete.json
+      - step: PrivateLinkServices_DeletePrivateEndpointConnection
+        exampleFile: ..\examples\PrivateLinkServiceDeletePrivateEndpointConnection.json
+      - step: RoutingIntent_Delete
+        exampleFile: ..\examples\RoutingIntentDelete.json
+      - step: ApplicationGatewayPrivateEndpointConnections_Delete
+        exampleFile: ..\examples\ApplicationGatewayPrivateEndpointConnectionDelete.json
+      - step: AdminRules_Delete
+        exampleFile: ..\examples\NetworkManagerAdminRuleDelete.json
+      - step: ScopeConnections_Delete
+        exampleFile: ..\examples\NetworkManagerScopeConnectionDelete.json
+      - step: ExpressRouteConnections_Delete
+        exampleFile: ..\examples\ExpressRouteConnectionDelete.json
+      - step: VirtualNetworkPeerings_Delete
+        exampleFile: ..\examples\VirtualNetworkPeeringDelete.json
+      - step: LoadBalancerBackendAddressPools_Delete
+        exampleFile: ..\examples\LoadBalancerBackendAddressPoolDelete.json
+      - step: VirtualApplianceSites_Delete
+        exampleFile: ..\examples\NetworkVirtualApplianceSiteDelete.json
+      - step: PrivateDnsZoneGroups_Delete
+        exampleFile: ..\examples\PrivateEndpointDnsZoneGroupDelete.json
+      - step: SecurityRules_Delete
+        exampleFile: ..\examples\NetworkSecurityGroupRuleDelete.json
+      - step: VirtualNetworkGatewayNatRules_Delete
+        exampleFile: ..\examples\VirtualNetworkGatewayNatRuleDelete.json
+      - step: RouteMaps_Delete
+        exampleFile: ..\examples\RouteMapDelete.json
+      - step: ConfigurationPolicyGroups_Delete
+        exampleFile: ..\examples\ConfigurationPolicyGroupDelete.json
+      - step: ExpressRoutePortAuthorizations_Delete
+        exampleFile: ..\examples\ExpressRoutePortAuthorizationDelete.json
+      - step: VirtualHubIpConfiguration_Delete
+        exampleFile: ..\examples\VirtualHubIpConfigurationDelete.json
+      - step: VirtualNetworkTaps_Delete
+        exampleFile: ..\examples\VirtualNetworkTapDelete.json
+      - step: IpGroups_Delete
+        exampleFile: ..\examples\IpGroupsDelete.json
+      - step: IpAllocations_Delete
+        exampleFile: ..\examples\IpAllocationDelete.json
+      - step: NetworkProfiles_Delete
+        exampleFile: ..\examples\NetworkProfileDelete.json
+      - step: ApplicationSecurityGroups_Delete
+        exampleFile: ..\examples\ApplicationSecurityGroupDelete.json
+      - step: LocalNetworkGateways_Delete
+        exampleFile: ..\examples\LocalNetworkGatewayDelete.json
+      - step: SecurityPartnerProviders_Delete
+        exampleFile: ..\examples\SecurityPartnerProviderDelete.json
+      - step: NatGateways_Delete
+        exampleFile: ..\examples\NatGatewayDelete.json
+      - step: CustomIPPrefixes_Delete
+        exampleFile: ..\examples\CustomIpPrefixDelete.json
+      - step: DdosCustomPolicies_Delete
+        exampleFile: ..\examples\DdosCustomPolicyDelete.json
+      - step: FlowLogs_Delete
+        exampleFile: ..\examples\NetworkWatcherFlowLogDelete.json
+      - step: DdosProtectionPlans_Delete
+        exampleFile: ..\examples\DdosProtectionPlanDelete.json
+      - step: PublicIPPrefixes_Delete
+        exampleFile: ..\examples\PublicIpPrefixDelete.json
+      - step: AzureFirewalls_Delete
+        exampleFile: ..\examples\AzureFirewallDelete.json
+      - step: PublicIPAddresses_Delete
+        exampleFile: ..\examples\PublicIpAddressDelete.json
+      - step: PacketCaptures_Delete
+        exampleFile: ..\examples\NetworkWatcherPacketCaptureDelete.json
+      - step: ExpressRouteCrossConnectionPeerings_Delete
+        exampleFile: ..\examples\ExpressRouteCrossConnectionBgpPeeringDelete.json
+      - step: PrivateLinkServices_Delete
+        exampleFile: ..\examples\PrivateLinkServiceDelete.json
+      - step: VpnSites_Delete
+        exampleFile: ..\examples\VpnSiteDelete.json
+      - step: NetworkGroups_Delete
+        exampleFile: ..\examples\NetworkManagerGroupDelete.json
+      - step: VirtualRouters_Delete
+        exampleFile: ..\examples\VirtualRouterDelete.json
+      - step: PrivateEndpoints_Delete
+        exampleFile: ..\examples\PrivateEndpointDelete.json
+      - step: ConnectionMonitors_Delete
+        exampleFile: ..\examples\NetworkWatcherConnectionMonitorDelete.json
+      - step: Subnets_Delete
+        exampleFile: ..\examples\SubnetDelete.json
+      - step: AdminRuleCollections_Delete
+        exampleFile: ..\examples\NetworkManagerAdminRuleCollectionDelete.json
+      - step: ExpressRouteGateways_Delete
+        exampleFile: ..\examples\ExpressRouteGatewayDelete.json
+      - step: P2sVpnGateways_Delete
+        exampleFile: ..\examples\P2SVpnGatewayDelete.json
+      - step: VpnServerConfigurations_Delete
+        exampleFile: ..\examples\VpnServerConfigurationDelete.json
+      - step: VirtualWans_Delete
+        exampleFile: ..\examples\VirtualWANDelete.json
+      - step: RouteFilters_Delete
+        exampleFile: ..\examples\RouteFilterDelete.json
+      - step: RouteTables_Delete
+        exampleFile: ..\examples\RouteTableDelete.json
+      - step: ServiceEndpointPolicies_Delete
+        exampleFile: ..\examples\ServiceEndpointPolicyDelete.json
+      - step: BastionHosts_Delete
+        exampleFile: ..\examples\BastionHostDelete.json
+      - step: NetworkVirtualAppliances_Delete
+        exampleFile: ..\examples\NetworkVirtualApplianceDelete.json
+      - step: VpnConnections_Delete
+        exampleFile: ..\examples\VpnConnectionDelete.json
+      - step: SecurityAdminConfigurations_Delete
+        exampleFile: ..\examples\NetworkManagerSecurityAdminConfigurationDelete.json
+      - step: NetworkSecurityGroups_Delete
+        exampleFile: ..\examples\NetworkSecurityGroupDelete.json
+      - step: VirtualNetworkGatewayConnections_Delete
+        exampleFile: ..\examples\VirtualNetworkGatewayConnectionDelete.json
+      - step: ExpressRoutePorts_Delete
+        exampleFile: ..\examples\ExpressRoutePortDelete.json
+      - step: ExpressRouteCircuitPeerings_Delete
+        exampleFile: ..\examples\ExpressRouteCircuitPeeringDelete.json
+      - step: ApplicationGateways_Delete
+        exampleFile: ..\examples\ApplicationGatewayDelete.json
+      - step: FirewallPolicies_Delete
+        exampleFile: ..\examples\FirewallPolicyDelete.json
+      - step: VirtualNetworks_Delete
+        exampleFile: ..\examples\VirtualNetworkDelete.json
+      - step: VpnGateways_Delete
+        exampleFile: ..\examples\VpnGatewayDelete.json
+      - step: ExpressRouteCircuits_Delete
+        exampleFile: ..\examples\ExpressRouteCircuitDelete.json
+      - step: VirtualNetworkGateways_Delete
+        exampleFile: ..\examples\VirtualNetworkGatewayDelete.json
+      - step: LoadBalancers_Delete
+        exampleFile: ..\examples\LoadBalancerDelete.json
+      - step: VirtualHubs_Delete
+        exampleFile: ..\examples\VirtualHubDelete.json
+      - step: NetworkWatchers_Delete
+        exampleFile: ..\examples\NetworkWatcherDelete.json
+      - step: NetworkManagers_Delete
+        exampleFile: ..\examples\NetworkManagerDelete.json

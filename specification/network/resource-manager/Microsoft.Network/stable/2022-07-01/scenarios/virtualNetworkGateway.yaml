@@ -1,0 +1,179 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  virtualNetworkGatewayName:
+    type: string
+    prefix: virtualnetgateway
+  virtualNetworkName:
+    type: string
+    prefix: virtualnetgateway
+  publicIpAddressName:
+    type: string
+    prefix: publicipadgateway
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ..\examples\VirtualNetworkCreateSubnet.json
+    requestUpdate:
+      - replace: /parameters/properties/subnets/0/name
+        value: GatewaySubnet
+    
+    outputVariables:
+      subnetId:
+        type: string
+        fromResponse: /properties/subnets/0/id
+  - step: PublicIPAddresses_CreateOrUpdate
+    exampleFile: ..\examples\PublicIpAddressCreateDefaults.json
+    outputVariables:
+      publicIpAddressId:
+        type: string
+        fromResponse: /id
+  - step: VirtualNetworkGateways_CreateOrUpdate
+    # exampleFile: ..\examples\VirtualNetworkGatewayUpdate.json
+    # requestUpdate:
+    #   - replace: /parameters/properties/ipConfigurations/0/properties/subnet/id
+    #     value: $(subnetId)
+    #   - replace: /parameters/properties/ipConfigurations/0/properties/publicIPAddress/id
+    #     value: $(publicIpAddressId)
+    operationId: VirtualNetworkGateways_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        properties:
+          gatewayType: Vpn
+          vpnType: RouteBased
+          ipConfigurations:
+            - name: gwipconfig1
+              properties:
+                privateIPAllocationMethod: Dynamic
+                subnet: 
+                  id: $(subnetId)
+                publicIPAddress:
+                  id: $(publicIpAddressId) 
+      
+
+scenarios:
+  - scenario: VirtualNetworkGateways
+    description: Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}
+    steps:
+      - step: VirtualNetworkGateways_List
+        exampleFile: ..\examples\VirtualNetworkGatewayList.json
+      - step: VirtualNetworkGateways_Get
+        exampleFile: ..\examples\VirtualNetworkGatewayGet.json
+      - step: VirtualNetworkGateways_ListConnections
+        exampleFile: ..\examples\VirtualNetworkGatewaysListConnections.json
+      - step: VirtualNetworkGateways_UpdateTags
+        exampleFile: ..\examples\VirtualNetworkGatewayUpdateTags.json
+      - step: VirtualNetworkGateways_Delete
+        exampleFile: ..\examples\VirtualNetworkGatewayDelete.json
+        
+      # - step: VirtualNetworkGateways_DisconnectVirtualNetworkGatewayVpnConnections # Vpn client addresspool is not specified
+      #   exampleFile: ..\examples\VirtualNetworkGatewaysDisconnectP2sVpnConnections.json
+      # - step: VirtualNetworkGateways_Generatevpnclientpackage
+      #   exampleFile: ..\examples\VirtualNetworkGatewayGenerateVpnClientPackage.json
+
+      # not test
+      # - step: VirtualNetworkGateways_StopPacketCapture
+      #   exampleFile: ..\examples\VirtualNetworkGatewayStopPacketCapture.json
+      # - step: VirtualNetworkGateways_Reset
+      #   exampleFile: ..\examples\VirtualNetworkGatewayReset.json
+      # - step: VirtualNetworkGateways_GenerateVpnProfile
+      #   exampleFile: ..\examples\VirtualNetworkGatewayGenerateVpnProfile.json
+      # - step: VirtualNetworkGateways_GetAdvertisedRoutes
+      #   exampleFile: ..\examples\VirtualNetworkGatewayGetAdvertisedRoutes.json
+      # - step: VirtualNetworkGateways_ResetVpnClientSharedKey
+      #   exampleFile: ..\examples\VirtualNetworkGatewayResetVpnClientSharedKey.json
+      # - step: VirtualNetworkGateways_SupportedVpnDevices
+      #   exampleFile: ..\examples\VirtualNetworkGatewaySupportedVpnDevice.json
+      # - step: VirtualNetworkGateways_SetVpnclientIpsecParameters
+      #   exampleFile: ..\examples\VirtualNetworkGatewaySetVpnClientIpsecParameters.json
+      # - step: VirtualNetworkGateways_StartPacketCapture
+      #   exampleFile: ..\examples\VirtualNetworkGatewayStartPacketCapture.json
+      # - step: VirtualNetworkGateways_GetBgpPeerStatus
+      #   exampleFile: ..\examples\VirtualNetworkGatewayGetBGPPeerStatus.json
+      # - step: VirtualNetworkGateways_GetVpnclientConnectionHealth
+      #   exampleFile: ..\examples\VirtualNetworkGatewayGetVpnclientConnectionHealth.json
+      # - step: VirtualNetworkGateways_GetVpnProfilePackageUrl
+      #   exampleFile: ..\examples\VirtualNetworkGatewayGetVpnProfilePackageUrl.json
+      # - step: VirtualNetworkGateways_GetVpnclientIpsecParameters
+      #   exampleFile: ..\examples\VirtualNetworkGatewayGetVpnClientIpsecParameters.json
+      # - step: VirtualNetworkGateways_GetLearnedRoutes
+      #   exampleFile: ..\examples\VirtualNetworkGatewayLearnedRoutes.json
+
+      # - step: VirtualNetworkGateways_VpnDeviceConfigurationScript
+      #   exampleFile: ..\examples\VirtualNetworkGatewayVpnDeviceConfigurationScript.json
+
+
+  # - scenario: VirtualNetworkGatewayConnections
+  #   description: Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}
+  #   variables:
+  #     virtualNetworkGatewayConnectionName:
+  #       type: string
+  #       prefix: virtualnet
+  #   steps:
+  #     - step: VirtualNetworkGatewayConnections_CreateOrUpdate
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionCreate.json
+  #     - step: VirtualNetworkGatewayConnections_List
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionsList.json
+  #     - step: VirtualNetworkGatewayConnections_Get
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionGet.json
+  #     - step: VirtualNetworkGatewayConnections_GetSharedKey
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionGetSharedKey.json
+  #     - step: VirtualNetworkGatewayConnections_UpdateTags
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionUpdateTags.json
+  #     - step: VirtualNetworkGatewayConnections_GetIkeSas
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionGetIkeSas.json
+  #     - step: VirtualNetworkGatewayConnections_ResetSharedKey
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionResetSharedKey.json
+  #     - step: VirtualNetworkGatewayConnections_StopPacketCapture
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionStopPacketCapture.json
+  #     - step: VirtualNetworkGatewayConnections_StartPacketCapture
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionStartPacketCapture.json
+  #     - step: VirtualNetworkGatewayConnections_ResetConnection
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionReset.json
+
+  #     - step: VirtualNetworkGatewayConnections_SetSharedKey
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionSetSharedKey.json
+
+  #     - step: VirtualNetworkGatewayConnections_Delete
+  #       exampleFile: ..\examples\VirtualNetworkGatewayConnectionDelete.json
+
+
+  - scenario: LocalNetworkGateways
+    description: Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}
+    variables:
+      localNetworkGatewayName:
+        type: string
+        prefix: localnetwo
+    steps:
+      - step: LocalNetworkGateways_CreateOrUpdate
+        exampleFile: ..\examples\LocalNetworkGatewayCreate.json
+        requestUpdate:
+          - remove: /parameters/properties/fqdn
+      - step: LocalNetworkGateways_List
+        exampleFile: ..\examples\LocalNetworkGatewayList.json
+      - step: LocalNetworkGateways_Get
+        exampleFile: ..\examples\LocalNetworkGatewayGet.json
+      - step: LocalNetworkGateways_UpdateTags
+        exampleFile: ..\examples\LocalNetworkGatewayUpdateTags.json
+      - step: LocalNetworkGateways_Delete
+        exampleFile: ..\examples\LocalNetworkGatewayDelete.json
+
+# GatewayNatRuleOnlyAllowsSinglePort
+  # - scenario: VirtualNetworkGatewayNatRules
+  #   description: Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules/{natRuleName}
+  #   variables:
+  #     natRuleName:
+  #       type: string
+  #       prefix: natrulenam
+  #   steps:
+  #     - step: VirtualNetworkGatewayNatRules_CreateOrUpdate
+  #       exampleFile: ..\examples\VirtualNetworkGatewayNatRulePut.json
+  #     - step: VirtualNetworkGatewayNatRules_ListByVirtualNetworkGateway
+  #       exampleFile: ..\examples\VirtualNetworkGatewayNatRuleList.json
+  #     - step: VirtualNetworkGatewayNatRules_Get
+  #       exampleFile: ..\examples\VirtualNetworkGatewayNatRuleGet.json
+  #     - step: VirtualNetworkGatewayNatRules_Delete
+  #       exampleFile: ..\examples\VirtualNetworkGatewayNatRuleDelete.json
+    

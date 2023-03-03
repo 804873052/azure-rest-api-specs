@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario:  ApplicationGatewayWafDynamicManifests
+    description: Microsoft.Network/locations/{location}/applicationGatewayWafDynamicManifests
+    steps:
+      # - step: ApplicationGatewayWafDynamicManifestsDefault_Get # No HTTP resource was found that matches the request URI
+      #   exampleFile: ..\examples\GetApplicationGatewayWafDynamicManifestsDefault.json
+      - step: ApplicationGatewayWafDynamicManifests_Get
+        exampleFile: ..\examples\GetApplicationGatewayWafDynamicManifests.json

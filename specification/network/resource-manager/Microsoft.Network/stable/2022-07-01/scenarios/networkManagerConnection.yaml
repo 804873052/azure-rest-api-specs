@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkManagerName:
+    type: string
+    prefix: networkmanagerconn
+  networkManagerConnectionName:
+    type: string
+    prefix: netmanagerconnsub
+
+prepareSteps:
+  - step: NetworkManagers_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerPut.json
+    requestUpdate:
+      - add: /parameters/location
+        value: $(location)
+      - replace: /parameters/properties/networkManagerScopes/subscriptions/0
+        value: /subscriptions/$(subscriptionId)
+      - remove: /parameters/properties/networkManagerScopes/managementGroups
+    outputVariables:
+      networkManagerId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: SubscriptionNetworkManagerConnections
+    description: Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}
+    steps:
+      - step: SubscriptionNetworkManagerConnections_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerConnectionSubscriptionPut.json
+        requestUpdate:
+          - replace: /parameters/properties/networkManagerId
+            value: $(networkManagerId)
+      - step: SubscriptionNetworkManagerConnections_List
+        exampleFile: ..\examples\NetworkManagerConnectionSubscriptionList.json
+      - step: SubscriptionNetworkManagerConnections_Get
+        exampleFile: ..\examples\NetworkManagerConnectionSubscriptionGet.json
+      - step: SubscriptionNetworkManagerConnections_Delete
+        exampleFile: ..\examples\NetworkManagerConnectionSubscriptionDelete.json
+
+
+# not have authorization 
+  # - scenario: ManagementGroupNetworkManagerConnections
+  #   description: Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}
+  #   variables:
+  #     networkManagerConnectionName:
+  #       type: string
+  #       prefix: netmanagerconngroup
+  #   steps:
+
+  #     - step: NetworkGroups_CreateOrUpdate
+  #       exampleFile: ..\examples\NetworkManagerGroupPut.json
+
+  #     - step: ManagementGroupNetworkManagerConnections_CreateOrUpdate
+  #       exampleFile: ..\examples\NetworkManagerConnectionManagementGroupPut.json
+  #     - step: ManagementGroupNetworkManagerConnections_List
+  #       exampleFile: ..\examples\NetworkManagerConnectionManagementGroupList.json
+  #     - step: ManagementGroupNetworkManagerConnections_Get
+  #       exampleFile: ..\examples\NetworkManagerConnectionManagementGroupGet.json
+  #     - step: ManagementGroupNetworkManagerConnections_Delete
+  #       exampleFile: ..\examples\NetworkManagerConnectionManagementGroupDelete.json

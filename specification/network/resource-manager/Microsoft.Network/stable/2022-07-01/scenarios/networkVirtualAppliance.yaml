@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkVirtualApplianceName:
+    type: string
+    prefix: networkvir
+  siteName:
+    type: string
+    prefix: sitename
+  virtualWANName:
+    type: string
+    prefix: virtualwannva
+  virtualHubName:
+    type: string
+    prefix: virtualhubnva
+
+prepareSteps:
+  - step: VirtualWans_CreateOrUpdate
+    exampleFile: ..\examples\VirtualWANPut.json
+    outputVariables:
+      virtualWanId:
+        type: string
+        fromResponse: /id
+  - step: VirtualHubs_CreateOrUpdate
+    exampleFile: ..\examples\VirtualHubPut.json
+    requestUpdate:
+      - replace: /virtualHubParameters/properties/virtualWan/id
+        value: $(virtualWanId)
+    outputVariables:
+      virtualHubId:
+        type: string
+        fromResponse: /id
+  - step: NetworkVirtualAppliances_CreateOrUpdate
+    exampleFile: ..\examples\NetworkVirtualAppliancePut.json
+    requestUpdate:
+      - replace: /parameters/properties/virtualHub/id
+        value: $(virtualHubId)
+    
+
+scenarios:
+  - scenario: NetworkVirtualAppliances
+    description: Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}
+    steps:
+      - step: NetworkVirtualAppliances_List
+        exampleFile: ..\examples\NetworkVirtualApplianceListBySubscription.json
+      - step: NetworkVirtualAppliances_ListByResourceGroup
+        exampleFile: ..\examples\NetworkVirtualApplianceListByResourceGroup.json
+      - step: NetworkVirtualAppliances_Get
+        exampleFile: ..\examples\NetworkVirtualApplianceGet.json
+      - step: NetworkVirtualAppliances_UpdateTags
+        exampleFile: ..\examples\NetworkVirtualApplianceUpdateTags.json
+
+
+  - scenario: VirtualApplianceSites
+    description: Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}
+    steps:
+      - step: VirtualApplianceSites_CreateOrUpdate
+        exampleFile: ..\examples\NetworkVirtualApplianceSitePut.json
+      - step: VirtualApplianceSites_List
+        exampleFile: ..\examples\NetworkVirtualApplianceSiteList.json
+      - step: VirtualApplianceSites_Get
+        exampleFile: ..\examples\NetworkVirtualApplianceSiteGet.json
+      - step: VirtualApplianceSites_Delete
+        exampleFile: ..\examples\NetworkVirtualApplianceSiteDelete.json
+
+  - scenario: VirtualApplianceSkus
+    description: Microsoft.Network/networkVirtualApplianceSkus
+    steps:
+      - step: VirtualApplianceSkus_List
+        exampleFile: ..\examples\NetworkVirtualApplianceSkuList.json
+      - step: VirtualApplianceSkus_Get
+        exampleFile: ..\examples\NetworkVirtualApplianceSkuGet.json
+
+
+  - scenario: InboundSecurityRule
+    description: Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/inboundSecurityRules/{ruleCollectionName}
+    variables:
+      ruleCollectionName:
+        type: string
+        prefix: rulecollec
+    steps:
+      - step: InboundSecurityRule_CreateOrUpdate
+        exampleFile: ..\examples\InboundSecurityRulePut.json
+
+
+cleanUpSteps:
+  - step: NetworkVirtualAppliances_Delete
+    exampleFile: ..\examples\NetworkVirtualApplianceDelete.json

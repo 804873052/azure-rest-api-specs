@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  customIpPrefixName:
+    type: string
+    prefix: customippr
+
+scenarios:
+  - scenario:  CustomIPPrefixes
+    description: Microsoft.Network/customIpPrefixes/{customIpPrefixName}
+    steps:
+      - step: CustomIPPrefixes_CreateOrUpdate
+        exampleFile: ..\examples\CustomIpPrefixCreateCustomizedValues.json
+      - step: CustomIPPrefixes_ListAll
+        exampleFile: ..\examples\CustomIpPrefixListAll.json
+      - step: CustomIPPrefixes_List
+        exampleFile: ..\examples\CustomIpPrefixList.json
+      - step: CustomIPPrefixes_Get
+        exampleFile: ..\examples\CustomIpPrefixGet.json
+      - step: CustomIPPrefixes_UpdateTags
+        exampleFile: ..\examples\CustomIpPrefixUpdateTags.json
+
+      # - step: CustomIPPrefixes_Delete # not deprovisioned
+      #   exampleFile: ..\examples\CustomIpPrefixDelete.json

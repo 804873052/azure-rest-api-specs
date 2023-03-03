@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkProfileName:
+    type: string
+    prefix: networkpro
+  virtualNetworkName:
+    type: string
+    prefix: vnetprofilena
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ../examples/VirtualNetworkCreateSubnet.json
+    outputVariables:
+      subnetId:
+        type: string
+        fromResponse: /properties/subnets/0/id
+
+scenarios:
+  - scenario: NetworkProfiles
+    description: Microsoft.Network/networkProfiles/{networkProfileName}
+    steps:
+      - step: NetworkProfiles_CreateOrUpdate
+        exampleFile: ..\examples\NetworkProfileCreateConfigOnly.json
+        requestUpdate:
+          - replace: /parameters/properties/containerNetworkInterfaceConfigurations/0/properties/ipConfigurations/0/properties/subnet/id
+            value: $(subnetId)
+      - step: NetworkProfiles_ListAll
+        exampleFile: ..\examples\NetworkProfileListAll.json
+      - step: NetworkProfiles_List
+        exampleFile: ..\examples\NetworkProfileList.json
+      - step: NetworkProfiles_Get
+        exampleFile: ..\examples\NetworkProfileGetConfigOnly.json
+      - step: NetworkProfiles_UpdateTags
+        exampleFile: ..\examples\NetworkProfileUpdateTags.json
+      - step: NetworkProfiles_Delete
+        exampleFile: ..\examples\NetworkProfileDelete.json

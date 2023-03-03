@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  privateEndpointName:
+    type: string
+    prefix: privateend
+
+prepareSteps:
+  - step: PrivateEndpoints_CreateOrUpdate
+    exampleFile: ..\examples\PrivateEndpointCreate.json
+
+scenarios:
+  - scenario: PrivateEndpoints
+    description: Microsoft.Network/privateEndpoints/{privateEndpointName}
+    steps:
+      - step: PrivateEndpoints_ListBySubscription
+        exampleFile: ..\examples\PrivateEndpointListAll.json
+      - step: PrivateEndpoints_List
+        exampleFile: ..\examples\PrivateEndpointList.json
+      - step: PrivateEndpoints_Get
+        exampleFile: ..\examples\PrivateEndpointGet.json
+
+  - scenario: AvailablePrivateEndpointTypes
+    description: Microsoft.Network/locations/{location}/availablePrivateEndpointTypes
+    steps:
+      - step: AvailablePrivateEndpointTypes_List
+        exampleFile: ..\examples\AvailablePrivateEndpointTypesGet.json
+      - step: AvailablePrivateEndpointTypes_ListByResourceGroup
+        exampleFile: ..\examples\AvailablePrivateEndpointTypesResourceGroupGet.json
+
+  - scenario: PrivateDnsZoneGroups
+    description: Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}
+    variables:
+      privateDnsZoneGroupName:
+        type: string
+        prefix: privatedns
+    steps:
+      - step: PrivateDnsZoneGroups_CreateOrUpdate
+        exampleFile: ..\examples\PrivateEndpointDnsZoneGroupCreate.json
+      - step: PrivateDnsZoneGroups_List
+        exampleFile: ..\examples\PrivateEndpointDnsZoneGroupList.json
+      - step: PrivateDnsZoneGroups_Get
+        exampleFile: ..\examples\PrivateEndpointDnsZoneGroupGet.json
+      - step: PrivateDnsZoneGroups_Delete
+        exampleFile: ..\examples\PrivateEndpointDnsZoneGroupDelete.json
+
+cleanUpSteps:
+  - step: PrivateEndpoints_Delete
+    exampleFile: ..\examples\PrivateEndpointDelete.json

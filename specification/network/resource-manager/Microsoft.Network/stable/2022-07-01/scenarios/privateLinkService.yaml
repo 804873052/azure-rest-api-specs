@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serviceName:
+    type: string
+    prefix: privatelinkservicenam
+  virtualNetworkName:
+    type: string
+    prefix: virtualnetpls
+  loadBalancerName:
+    type: string
+    prefix: loadbalancpls
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ..\examples\VirtualNetworkCreateSubnet.json
+    outputVariables:
+      subnetId:
+        type: string
+        fromResponse: /properties/subnets/0/id
+  - step: LoadBalancers_CreateOrUpdate
+    # exampleFile: ..\examples\LoadBalancerCreate.json
+    operationId: LoadBalancers_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        sku:
+          name: Standard
+        properties:
+          frontendIPConfigurations:
+            - name: frontendipconf
+              properties:
+                subnet:
+                  id: $(subnetId)
+    outputVariables:
+      frontendIPConfigurationId:
+        type: string
+        fromResponse: /properties/frontendIPConfigurations/0/id
+
+
+scenarios:
+  - scenario: PrivateLinkServices
+    description: Microsoft.Network/privateLinkServices/{serviceName}
+    steps:
+      - step: PrivateLinkServices_CreateOrUpdate
+        exampleFile: ..\examples\PrivateLinkServiceCreate.json
+        requestUpdate:
+          - replace: /parameters/properties/loadBalancerFrontendIpConfigurations/0/id
+            value: $(frontendIPConfigurationId)
+        
+
+      - step: PrivateLinkServices_ListAutoApprovedPrivateLinkServices
+        exampleFile: ..\examples\AutoApprovedPrivateLinkServicesGet.json
+      - step: PrivateLinkServices_ListBySubscription
+        exampleFile: ..\examples\PrivateLinkServiceListAll.json
+      - step: PrivateLinkServices_ListAutoApprovedPrivateLinkServicesByResourceGroup
+        exampleFile: ..\examples\AutoApprovedPrivateLinkServicesResourceGroupGet.json
+      - step: PrivateLinkServices_List
+        exampleFile: ..\examples\PrivateLinkServiceList.json
+      - step: PrivateLinkServices_Get
+        exampleFile: ..\examples\PrivateLinkServiceGet.json
+      - step: PrivateLinkServices_ListPrivateEndpointConnections
+        exampleFile: ..\examples\PrivateLinkServiceListPrivateEndpointConnection.json
+      - step: PrivateLinkServices_CheckPrivateLinkServiceVisibilityByResourceGroup
+        exampleFile: ..\examples\CheckPrivateLinkServiceVisibilityByResourceGroup.json
+      - step: PrivateLinkServices_CheckPrivateLinkServiceVisibility
+        exampleFile: ..\examples\CheckPrivateLinkServiceVisibility.json
+
+      - step: PrivateLinkServices_UpdatePrivateEndpointConnection
+        exampleFile: ..\examples\PrivateLinkServiceUpdatePrivateEndpointConnection.json
+      - step: PrivateLinkServices_GetPrivateEndpointConnection
+        exampleFile: ..\examples\PrivateLinkServiceGetPrivateEndpointConnection.json
+
+      - step: PrivateLinkServices_DeletePrivateEndpointConnection
+        exampleFile: ..\examples\PrivateLinkServiceDeletePrivateEndpointConnection.json
+
+      - step: PrivateLinkServices_Delete
+        exampleFile: ..\examples\PrivateLinkServiceDelete.json

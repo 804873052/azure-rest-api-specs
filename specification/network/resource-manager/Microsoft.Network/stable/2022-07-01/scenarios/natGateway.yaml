@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  natGatewayName:
+    type: string
+    prefix: natgateway
+
+scenarios:
+  - scenario: NatGateways
+    description: Microsoft.Network/natGateways/{natGatewayName}
+    steps:
+      - step: NatGateways_CreateOrUpdate
+        # exampleFile: ..\examples\NatGatewayCreateOrUpdate.json
+        operationId: NatGateways_CreateOrUpdate
+        parameters:
+          parameters:
+            location: $(location)
+            sku: 
+              name: Standard
+      - step: NatGateways_ListAll
+        exampleFile: ..\examples\NatGatewayListAll.json
+      - step: NatGateways_Get
+        exampleFile: ..\examples\NatGatewayGet.json
+      - step: NatGateways_List
+        exampleFile: ..\examples\NatGatewayList.json
+      - step: NatGateways_UpdateTags
+        exampleFile: ..\examples\NatGatewayUpdateTags.json
+      - step: NatGateways_Delete
+        exampleFile: ..\examples\NatGatewayDelete.json

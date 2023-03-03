@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkManagerName:
+    type: string
+    prefix: networkmancc
+  configurationName:
+    type: string
+    prefix: connectivityconf
+  networkGroupName:
+    type: string
+    prefix: networkgroconeconfig
+
+prepareSteps:
+  - step: NetworkManagers_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerPut.json
+    requestUpdate:
+      - add: /parameters/location
+        value: $(location)
+      - replace: /parameters/properties/networkManagerScopes/subscriptions/0
+        value: /subscriptions/$(subscriptionId)
+      - remove: /parameters/properties/networkManagerScopes/managementGroups
+  - step: NetworkGroups_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerGroupPut.json
+    outputVariables:
+      networkGroupId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: ConnectivityConfigurations
+    description: Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations/{configurationName}
+    steps:
+      - step: ConnectivityConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerConnectivityConfigurationPut.json
+        requestUpdate:
+          - replace: /connectivityConfiguration/properties/appliesToGroups/0/networkGroupId
+            value: $(networkGroupId)
+          - replace: /connectivityConfiguration/properties/connectivityTopology
+            value: Mesh
+          - remove: /connectivityConfiguration/properties/hubs
+        # operationId: ConnectivityConfigurations_CreateOrUpdate
+        # parameters:
+        #   connectivityConfiguration:
+        #     properties:
+        #       description: Sample Configuration
+        #       connectivityTopology: Mesh
+        #       appliesToGroups:
+        #         - networkGroupId: $(networkGroupId)
+        #           useHubGateway: True
+        #           groupConnectivity: None
+        #           isGlobal: False
+      - step: ConnectivityConfigurations_List
+        exampleFile: ..\examples\NetworkManagerConnectivityConfigurationList.json
+      - step: ConnectivityConfigurations_Get
+        exampleFile: ..\examples\NetworkManagerConnectivityConfigurationGet.json
+      - step: ConnectivityConfigurations_Delete
+        exampleFile: ..\examples\NetworkManagerConnectivityConfigurationDelete.json

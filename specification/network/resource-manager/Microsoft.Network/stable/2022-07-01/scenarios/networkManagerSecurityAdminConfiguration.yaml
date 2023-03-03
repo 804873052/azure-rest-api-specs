@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkManagerName:
+    type: string
+    prefix: networkmanagersecurity
+  configurationName:
+    type: string
+    prefix: configurationsecurity
+  ruleCollectionName:
+    type: string
+    prefix: rulecollec
+  ruleName:
+    type: string
+    prefix: rulename
+  networkGroupName:
+    type: string
+    prefix: networkgrosecurity
+
+prepareSteps:
+  - step: NetworkManagers_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerPut.json
+    requestUpdate:
+      - add: /parameters/location
+        value: $(location)
+      - replace: /parameters/properties/networkManagerScopes/subscriptions/0
+        value: /subscriptions/$(subscriptionId)
+      - replace: /parameters/properties/networkManagerScopeAccesses/0
+        value: SecurityAdmin
+      - remove: /parameters/properties/networkManagerScopes/managementGroups
+
+  - step: NetworkGroups_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerGroupPut.json
+    outputVariables:
+      networkGroupId:
+        type: string
+        fromResponse: /id
+  - step: SecurityAdminConfigurations_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerSecurityAdminConfigurationPut.json
+  - step: AdminRuleCollections_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerAdminRuleCollectionPut.json
+    requestUpdate:
+      - replace: /ruleCollection/properties/appliesToGroups/0/networkGroupId
+        value: $(networkGroupId)
+
+scenarios:
+  - scenario: SecurityAdminConfigurations
+    description: Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}
+    steps:
+      - step: SecurityAdminConfigurations_List
+        exampleFile: ..\examples\NetworkManagerSecurityAdminConfigurationList.json
+      - step: SecurityAdminConfigurations_Get
+        exampleFile: ..\examples\NetworkManagerSecurityAdminConfigurationGet.json
+
+  - scenario: AdminRuleCollections
+    description: Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}
+    steps:
+      - step: AdminRuleCollections_List
+        exampleFile: ..\examples\NetworkManagerAdminRuleCollectionList.json
+      - step: AdminRuleCollections_Get
+        exampleFile: ..\examples\NetworkManagerAdminRuleCollectionGet.json
+
+  - scenario: AdminRules
+    description: Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}
+    steps:
+      - step: AdminRules_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerAdminRulePut.json
+      - step: AdminRules_List
+        exampleFile: ..\examples\NetworkManagerAdminRuleList.json
+      - step: AdminRules_Get
+        exampleFile: ..\examples\NetworkManagerAdminRuleGet.json
+      - step: AdminRules_Delete
+        exampleFile: ..\examples\NetworkManagerAdminRuleDelete.json
+
+cleanUpSteps:
+  - step: AdminRuleCollections_Delete
+    exampleFile: ..\examples\NetworkManagerAdminRuleCollectionDelete.json
+  - step: SecurityAdminConfigurations_Delete
+    exampleFile: ..\examples\NetworkManagerSecurityAdminConfigurationDelete.json

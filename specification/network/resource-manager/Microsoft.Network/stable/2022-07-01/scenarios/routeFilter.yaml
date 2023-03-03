@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  routeFilterName:
+    type: string
+    prefix: routefilte
+
+prepareSteps:
+  - step: RouteFilters_CreateOrUpdate
+    exampleFile: ..\examples\RouteFilterCreate.json
+
+scenarios:
+  - scenario: RouteFilters
+    description: Microsoft.Network/routeFilters/{routeFilterName}
+    steps:
+      - step: RouteFilters_List
+        exampleFile: ..\examples\RouteFilterList.json
+      - step: RouteFilters_ListByResourceGroup
+        exampleFile: ..\examples\RouteFilterListByResourceGroup.json
+      - step: RouteFilters_Get
+        exampleFile: ..\examples\RouteFilterGet.json
+      - step: RouteFilters_UpdateTags
+        exampleFile: ..\examples\RouteFilterUpdateTags.json
+
+  - scenario: RouteFilterRules
+    description: Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules/{ruleName}
+    variables:
+      ruleName:
+        type: string
+        prefix: routefilterrulena
+    steps:
+      - step: RouteFilterRules_CreateOrUpdate
+        exampleFile: ..\examples\RouteFilterRuleCreate.json
+      - step: RouteFilterRules_ListByRouteFilter
+        exampleFile: ..\examples\RouteFilterRuleListByRouteFilter.json
+      - step: RouteFilterRules_Get
+        exampleFile: ..\examples\RouteFilterRuleGet.json
+      - step: RouteFilterRules_Delete
+        exampleFile: ..\examples\RouteFilterRuleDelete.json
+
+
+cleanUpSteps:
+  - step: RouteFilters_Delete
+    exampleFile: ..\examples\RouteFilterDelete.json

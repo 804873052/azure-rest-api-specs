@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  applicationSecurityGroupName:
+    type: string
+    prefix: applicatio
+
+scenarios:
+  - scenario:  ApplicationSecurityGroups
+    description: Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}
+    steps:
+      - step: ApplicationSecurityGroups_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationSecurityGroupCreate.json
+      - step: ApplicationSecurityGroups_ListAll
+        exampleFile: ..\examples\ApplicationSecurityGroupListAll.json
+      - step: ApplicationSecurityGroups_List
+        exampleFile: ..\examples\ApplicationSecurityGroupList.json
+      - step: ApplicationSecurityGroups_Get
+        exampleFile: ..\examples\ApplicationSecurityGroupGet.json
+      - step: ApplicationSecurityGroups_UpdateTags
+        exampleFile: ..\examples\ApplicationSecurityGroupUpdateTags.json
+      - step: ApplicationSecurityGroups_Delete
+        exampleFile: ..\examples\ApplicationSecurityGroupDelete.json

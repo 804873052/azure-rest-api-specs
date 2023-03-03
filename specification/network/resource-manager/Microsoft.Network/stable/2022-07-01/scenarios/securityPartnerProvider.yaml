@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  securityPartnerProviderName:
+    type: string
+    prefix: securitypa
+
+scenarios:
+  - scenario: SecurityPartnerProviders
+    description: Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}
+    steps:
+      - step: SecurityPartnerProviders_CreateOrUpdate
+        exampleFile: ..\examples\SecurityPartnerProviderPut.json
+      - step: SecurityPartnerProviders_List
+        exampleFile: ..\examples\SecurityPartnerProviderListBySubscription.json
+      - step: SecurityPartnerProviders_ListByResourceGroup
+        exampleFile: ..\examples\SecurityPartnerProviderListByResourceGroup.json
+      - step: SecurityPartnerProviders_Get
+        exampleFile: ..\examples\SecurityPartnerProviderGet.json
+      - step: SecurityPartnerProviders_UpdateTags
+        exampleFile: ..\examples\SecurityPartnerProviderUpdateTags.json
+      - step: SecurityPartnerProviders_Delete
+        exampleFile: ..\examples\SecurityPartnerProviderDelete.json

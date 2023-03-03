@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkSecurityGroupName:
+    type: string
+    prefix: networksec
+  securityRuleName:
+    type: string
+    prefix: securityru
+
+prepareSteps:
+  - step: NetworkSecurityGroups_CreateOrUpdate
+    exampleFile: ..\examples\NetworkSecurityGroupCreate.json
+
+scenarios:
+  - scenario: NetworkSecurityGroups
+    description: Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}
+    steps:
+      - step: NetworkSecurityGroups_ListAll
+        exampleFile: ..\examples\NetworkSecurityGroupListAll.json
+      - step: NetworkSecurityGroups_List
+        exampleFile: ..\examples\NetworkSecurityGroupList.json
+      - step: NetworkSecurityGroups_Get
+        exampleFile: ..\examples\NetworkSecurityGroupGet.json
+      - step: NetworkSecurityGroups_UpdateTags
+        exampleFile: ..\examples\NetworkSecurityGroupUpdateTags.json
+
+
+  - scenario: SecurityRules
+    description: Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}
+    steps:
+      - step: SecurityRules_CreateOrUpdate
+        exampleFile: ..\examples\NetworkSecurityGroupRuleCreate.json
+      - step: SecurityRules_List
+        exampleFile: ..\examples\NetworkSecurityGroupRuleList.json
+      - step: SecurityRules_Get
+        exampleFile: ..\examples\NetworkSecurityGroupRuleGet.json
+
+      - step: DefaultSecurityRules_List
+        exampleFile: ..\examples\DefaultSecurityRuleList.json
+        outputVariables:
+          defaultSecurityRuleName:
+            type: string
+            fromResponse: /value/0/name
+      - step: DefaultSecurityRules_Get
+        exampleFile: ..\examples\DefaultSecurityRuleGet.json
+        requestUpdate:
+          - replace: /defaultSecurityRuleName
+            value: $(defaultSecurityRuleName)
+
+      - step: SecurityRules_Delete
+        exampleFile: ..\examples\NetworkSecurityGroupRuleDelete.json
+
+cleanUpSteps:
+  - step: NetworkSecurityGroups_Delete
+    exampleFile: ..\examples\NetworkSecurityGroupDelete.json

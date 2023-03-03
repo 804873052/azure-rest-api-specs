@@ -1,0 +1,152 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  loadBalancerName:
+    type: string
+    prefix: loadbalanc
+  backendAddressPoolName:
+    type: string
+    prefix: backendadd
+  inboundNatRuleName:
+    type: string
+    prefix: inboundnat
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ..\examples\VirtualNetworkCreateSubnet.json
+    outputVariables:
+      subnetId:
+        type: string
+        fromResponse: /properties/subnets/0/id
+  - step: LoadBalancers_CreateOrUpdate
+    # exampleFile: ..\examples\LoadBalancerCreate.json
+    operationId: LoadBalancers_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        sku:
+          name: Standard
+        properties:
+          frontendIPConfigurations:
+            - name: frontendipconf
+              properties:
+                subnet:
+                  id: $(subnetId)
+    outputVariables:
+      frontendIPConfigurationId:
+        type: string
+        fromResponse: /properties/frontendIPConfigurations/0/id
+
+
+  # - step: PublicIPAddresses_CreateOrUpdate
+  #   exampleFile: ..\examples\PublicIpAddressCreateDefaults.json
+  #   outputVariables:
+  #     publicIPAddressId:
+  #       type: string
+  #       fromResponse: /id
+
+scenarios:
+  - scenario: LoadBalancers
+    description: Microsoft.Network/loadBalancers/{loadBalancerName}
+    steps:
+      - step: LoadBalancers_ListAll
+        exampleFile: ..\examples\LoadBalancerListAll.json
+      - step: LoadBalancers_List
+        exampleFile: ..\examples\LoadBalancerList.json
+      - step: LoadBalancers_Get
+        exampleFile: ..\examples\LoadBalancerGet.json
+      - step: LoadBalancers_UpdateTags
+        exampleFile: ..\examples\LoadBalancerUpdateTags.json
+
+      # - step: LoadBalancers_SwapPublicIpAddresses
+      #   exampleFile: ..\examples\LoadBalancersSwapPublicIpAddresses.json
+      #   requestUpdate:
+      #     - replace: /parameters/frontendIPConfigurations/0/id
+      #       value: $(frontendIPConfigurationId)
+      #     - replace: /parameters/frontendIPConfigurations/0/properties/publicIPAddress/id
+      #       value: $(publicIPAddressId)
+      #     - remove: /parameters/frontendIPConfigurations/1
+      # - step: LoadBalancers_ListInboundNatRulePortMappings
+      #   exampleFile: ..\examples\QueryInboundNatRulePortMapping.json
+
+
+
+  - scenario: LoadBalancerBackendAddressPools
+    description: Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}
+    steps:
+      - step: LoadBalancerBackendAddressPools_CreateOrUpdate
+        exampleFile: ..\examples\LBBackendAddressPoolWithBackendAddressesPut.json
+        requestUpdate:
+          - remove: /parameters/properties/loadBalancerBackendAddresses
+      - step: LoadBalancerBackendAddressPools_List
+        exampleFile: ..\examples\LoadBalancerBackendAddressPoolList.json
+      - step: LoadBalancerBackendAddressPools_Get
+        exampleFile: ..\examples\LoadBalancerBackendAddressPoolGet.json
+      - step: LoadBalancerBackendAddressPools_Delete
+        exampleFile: ..\examples\LoadBalancerBackendAddressPoolDelete.json
+
+  - scenario: LoadBalancerFrontendIPConfigurations
+    description: Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations
+    steps:
+      - step: LoadBalancerFrontendIPConfigurations_List
+        exampleFile: ..\examples\LoadBalancerFrontendIPConfigurationList.json
+      - step: LoadBalancerFrontendIPConfigurations_Get
+        exampleFile: ..\examples\LoadBalancerFrontendIPConfigurationGet.json
+        requestUpdate:
+          - replace: /frontendIPConfigurationName
+            value: frontendipconf
+        
+
+  - scenario: InboundNatRules
+    description: Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}
+    steps:
+      - step: InboundNatRules_CreateOrUpdate
+        exampleFile: ..\examples\InboundNatRuleCreate.json
+        requestUpdate:
+          - replace: /inboundNatRuleParameters/properties/frontendIPConfiguration/id
+            value: $(frontendIPConfigurationId)
+      - step: InboundNatRules_List
+        exampleFile: ..\examples\InboundNatRuleList.json
+      - step: InboundNatRules_Get
+        exampleFile: ..\examples\InboundNatRuleGet.json
+      - step: InboundNatRules_Delete
+        exampleFile: ..\examples\InboundNatRuleDelete.json
+
+  - scenario: LoadBalancerLoadBalancingRules
+    description: Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules
+    steps:
+      - step: LoadBalancerLoadBalancingRules_List
+        exampleFile: ..\examples\LoadBalancerLoadBalancingRuleList.json
+      # - step: LoadBalancerLoadBalancingRules_Get
+      #   exampleFile: ..\examples\LoadBalancerLoadBalancingRuleGet.json
+
+
+  - scenario: LoadBalancerOutboundRules
+    description: Microsoft.Network/loadBalancers/{loadBalancerName}/outboundRules
+    steps:
+      - step: LoadBalancerOutboundRules_List
+        exampleFile: ..\examples\LoadBalancerOutboundRuleList.json
+      # - step: LoadBalancerOutboundRules_Get
+      #   exampleFile: ..\examples\LoadBalancerOutboundRuleGet.json
+
+  - scenario: LoadBalancerNetworkInterfaces
+    description: Microsoft.Network/loadBalancers/{loadBalancerName}/networkInterfaces
+    steps:
+      - step: LoadBalancerNetworkInterfaces_List
+        exampleFile: ..\examples\LoadBalancerNetworkInterfaceListVmss.json
+
+  - scenario: LoadBalancerProbes
+    description: Microsoft.Network/loadBalancers/{loadBalancerName}/probes
+    steps:
+      - step: LoadBalancerProbes_List
+        exampleFile: ..\examples\LoadBalancerProbeList.json
+      # - step: LoadBalancerProbes_Get
+      #   exampleFile: ..\examples\LoadBalancerProbeGet.json
+
+      
+cleanUpSteps:
+  - step: LoadBalancers_Delete
+    exampleFile: ..\examples\LoadBalancerDelete.json

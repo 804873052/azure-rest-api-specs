@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  ddosProtectionPlanName:
+    type: string
+    prefix: ddosprotec
+
+scenarios:
+  - scenario:  DdosProtectionPlans
+    description: Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}
+    steps:
+      - step: DdosProtectionPlans_CreateOrUpdate
+        exampleFile: ..\examples\DdosProtectionPlanCreate.json
+      - step: DdosProtectionPlans_List
+        exampleFile: ..\examples\DdosProtectionPlanListAll.json
+      - step: DdosProtectionPlans_ListByResourceGroup
+        exampleFile: ..\examples\DdosProtectionPlanList.json
+      - step: DdosProtectionPlans_Get
+        exampleFile: ..\examples\DdosProtectionPlanGet.json
+      - step: DdosProtectionPlans_UpdateTags
+        exampleFile: ..\examples\DdosProtectionPlanUpdateTags.json
+      - step: DdosProtectionPlans_Delete
+        exampleFile: ..\examples\DdosProtectionPlanDelete.json

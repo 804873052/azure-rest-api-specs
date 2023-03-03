@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  resourceName:
+    type: string
+    prefix: resourcenavipswap
+  singletonResource:
+    type: string
+    prefix: singletonr
+
+scenarios:
+  - scenario:  VipSwap
+    description: Microsoft.Compute/cloudServices/{resourceName}/providers/Microsoft.Network/cloudServiceSlots/{singletonResource}
+    steps:
+      - step: VipSwap_Create
+        exampleFile: ..\examples\CloudServiceSwapPut.json
+      - step: VipSwap_List
+        exampleFile: ..\examples\CloudServiceSwapList.json
+      - step: VipSwap_Get
+        exampleFile: ..\examples\CloudServiceSwapGet.json

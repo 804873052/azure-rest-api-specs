@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario:  ExpressRouteProviderPort
+    description: Microsoft.Network/expressRouteProviderPorts
+    steps:
+      - step: ExpressRouteProviderPortsLocation_List
+        exampleFile: ..\examples\expressRouteProviderPortList.json
+      - step: ExpressRouteProviderPort
+        exampleFile: ..\examples\expressRouteProviderPort.json

@@ -1,0 +1,127 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  applicationGatewayName:
+    type: string
+    prefix: applicatio
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ..\examples\VirtualNetworkCreateSubnet.json
+    outputVariables:
+      subnetId:
+        type: string
+        fromResponse: /properties/subnets/0/id
+
+  - step: PublicIPAddresses_CreateOrUpdate
+    exampleFile: ..\examples\PublicIpAddressCreateDefaults.json
+    outputVariables:
+      publicIpAddressId:
+        type: string
+        fromResponse: /id
+
+  - step: ApplicationGateways_CreateOrUpdate
+    exampleFile: ..\examples\ApplicationGatewayCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/gatewayIPConfigurations/0/properties/subnet/id
+        value: $(subnetId)
+      - replace: /parameters/properties/frontendIPConfigurations/0/properties/publicIPAddress/id
+        value: $(publicIpAddressId)
+
+    # operationId: ApplicationGateways_CreateOrUpdate
+    # parameters:
+    #   parameters:
+    #     location: $(location)
+    #     identity: 
+    #       type: UserAssigned
+    #       userAssignedIdentities:
+    #         /subscriptions/$(subscriptionId)/resourceGroups/$(resourceGroupName)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1: {}
+    #     properties:
+    #       sku:
+    #         name: Standard_v2
+    #         tier: Standard_v2
+    #         capacity: 3
+    #       gatewayIPConfigurations:
+    #         - name: appgwipc
+    #           properties:
+    #             subnet:
+    #               id: $(subnetId)
+    #       frontendIPConfigurations:
+    #         - name: appgwfip
+    #           properties:
+    #             publicIPAddress:
+    #               id: $(publicIpAddressId)
+    #       frontendPorts:
+    #         - name: appgwfp
+    #           properties:
+    #             port: 443
+    #         - name: appgwfp80
+    #           properties:
+    #             port: 80
+    #       backendAddressPools:
+    #         - name: appgwpool
+    #           properties:
+    #             backendAddresses:
+    #               - ipAddress: 10.0.1.1
+scenarios:
+  - scenario:  ApplicationGateways
+    description: Microsoft.Network/applicationGateways/{applicationGatewayName}
+    steps:
+      - step: ApplicationGateways_ListAvailableRequestHeaders
+        exampleFile: ..\examples\ApplicationGatewayAvailableRequestHeadersGet.json
+      - step: ApplicationGateways_ListAvailableResponseHeaders
+        exampleFile: ..\examples\ApplicationGatewayAvailableResponseHeadersGet.json
+      - step: ApplicationGateways_ListAvailableServerVariables
+        exampleFile: ..\examples\ApplicationGatewayAvailableServerVariablesGet.json
+      - step: ApplicationGateways_ListAvailableSslOptions
+        exampleFile: ..\examples\ApplicationGatewayAvailableSslOptionsGet.json
+      - step: ApplicationGateways_ListAvailableSslPredefinedPolicies
+        exampleFile: ..\examples\ApplicationGatewayAvailableSslOptionsPredefinedPoliciesGet.json
+      - step: ApplicationGateways_ListAvailableWafRuleSets
+        exampleFile: ..\examples\ApplicationGatewayAvailableWafRuleSetsGet.json
+      - step: ApplicationGateways_List
+        exampleFile: ..\examples\ApplicationGatewayList.json
+      - step: ApplicationGateways_Get
+        exampleFile: ..\examples\ApplicationGatewayGet.json
+      - step: ApplicationGateways_ListAll
+        exampleFile: ..\examples\ApplicationGatewayListAll.json
+      - step: ApplicationGateways_GetSslPredefinedPolicy
+        exampleFile: ..\examples\ApplicationGatewayAvailableSslOptionsPredefinedPolicyGet.json
+      - step: ApplicationGateways_UpdateTags
+        exampleFile: ..\examples\ApplicationGatewayUpdateTags.json
+      - step: ApplicationGateways_BackendHealth
+        exampleFile: ..\examples\ApplicationGatewayBackendHealthGet.json
+      - step: ApplicationGateways_BackendHealthOnDemand
+        exampleFile: ..\examples\ApplicationGatewayBackendHealthTest.json
+      - step: ApplicationGateways_Start
+        exampleFile: ..\examples\ApplicationGatewayStart.json
+
+  - scenario:  ApplicationGatewayPrivateLinkResources
+    description: Microsoft.Network/applicationGateways/{applicationGatewayName}/privateLinkResources
+    steps:
+      - step: ApplicationGatewayPrivateLinkResources_List
+        exampleFile: ..\examples\ApplicationGatewayPrivateLinkResourceList.json
+
+# private connection
+  # - scenario:  ApplicationGatewayPrivateEndpointConnections
+  #   description: Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}
+  #   variables:
+  #     connectionName: applicationconn
+  #   steps:
+  #     - step: ApplicationGatewayPrivateEndpointConnections_Update
+  #       exampleFile: ..\examples\ApplicationGatewayPrivateEndpointConnectionUpdate.json
+  #     - step: ApplicationGatewayPrivateEndpointConnections_List
+  #       exampleFile: ..\examples\ApplicationGatewayPrivateEndpointConnectionList.json
+  #     - step: ApplicationGatewayPrivateEndpointConnections_Get
+  #       exampleFile: ..\examples\ApplicationGatewayPrivateEndpointConnectionGet.json
+  #     - step: ApplicationGatewayPrivateEndpointConnections_Delete
+  #       exampleFile: ..\examples\ApplicationGatewayPrivateEndpointConnectionDelete.json
+
+cleanUpSteps:
+  - step: ApplicationGateways_Stop
+    exampleFile: ..\examples\ApplicationGatewayStop.json
+  - step: ApplicationGateways_Delete
+    exampleFile: ..\examples\ApplicationGatewayDelete.json

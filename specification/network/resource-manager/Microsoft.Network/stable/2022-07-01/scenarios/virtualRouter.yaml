@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  virtualRouterName:
+    type: string
+    prefix: virtualrou
+
+prepareSteps:
+  - step: VirtualRouters_CreateOrUpdate
+    exampleFile: ..\examples\VirtualRouterPut.json
+
+scenarios:
+  - scenario: VirtualRouters
+    description: Microsoft.Network/virtualRouters/{virtualRouterName}
+    steps:
+      - step: VirtualRouters_List
+        exampleFile: ..\examples\VirtualRouterListBySubscription.json
+      - step: VirtualRouters_ListByResourceGroup
+        exampleFile: ..\examples\VirtualRouterListByResourceGroup.json
+      - step: VirtualRouters_Get
+        exampleFile: ..\examples\VirtualRouterGet.json
+
+  - scenario: VirtualRouterPeerings
+    description: Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}
+    variables:
+      peeringName:
+        type: string
+        prefix: vrpeeringnam
+    steps:
+      - step: VirtualRouterPeerings_CreateOrUpdate
+        exampleFile: ..\examples\VirtualRouterPeeringPut.json
+      - step: VirtualRouterPeerings_List
+        exampleFile: ..\examples\VirtualRouterPeeringList.json
+      - step: VirtualRouterPeerings_Get
+        exampleFile: ..\examples\VirtualRouterPeeringGet.json
+      - step: VirtualRouterPeerings_Delete
+        exampleFile: ..\examples\VirtualRouterPeeringDelete.json
+
+cleanUpSteps:
+  - step: VirtualRouters_Delete
+    exampleFile: ..\examples\VirtualRouterDelete.json

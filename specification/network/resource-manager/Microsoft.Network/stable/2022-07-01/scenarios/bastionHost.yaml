@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  bastionHostName:
+    type: string
+    prefix: bastionhos
+
+prepareSteps:
+  - step: VirtualNetworks_CreateOrUpdate
+    exampleFile: ..\examples\VirtualNetworkCreateSubnet.json
+    requestUpdate:
+      - replace: /parameters/properties/subnets/0/name
+        value: AzureBastionSubnet
+    outputVariables:
+      subnetId:
+        type: string
+        fromResponse: /properties/subnets/0/id
+  - step: PublicIPAddresses_CreateOrUpdate
+    exampleFile: ..\examples\PublicIpAddressCreateCustomizedValues.json
+    requestUpdate:
+      - replace: /parameters/sku/tier
+        value: Regional
+    outputVariables:
+      publicIpAddressId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario:  BastionHosts
+    description: Microsoft.Network/bastionHosts/{bastionHostName}
+    steps:
+      - step: BastionHosts_CreateOrUpdate
+        exampleFile: ..\examples\BastionHostPut.json
+        requestUpdate:
+          - add: /parameters/location
+            value: $(location)
+          - replace: /parameters/properties/ipConfigurations/0/properties/subnet/id
+            value: $(subnetId)
+          - replace: /parameters/properties/ipConfigurations/0/properties/publicIPAddress/id
+            value: $(publicIpAddressId)
+      - step: BastionHosts_List
+        exampleFile: ..\examples\BastionHostListBySubscription.json
+      - step: BastionHosts_ListByResourceGroup
+        exampleFile: ..\examples\BastionHostListByResourceGroup.json
+      - step: BastionHosts_Get
+        exampleFile: ..\examples\BastionHostGet.json
+      - step: BastionHosts_UpdateTags
+        exampleFile: ..\examples\BastionHostPatch.json
+
+
+# need vm
+# generate bug
+      # - step: PutBastionShareableLink
+      #   exampleFile: ..\examples\BastionShareableLinkCreate.json
+      # - step: GetBastionShareableLink
+      #   exampleFile: ..\examples\BastionShareableLinkGet.json
+      # - step: DeleteBastionShareableLink
+      #   exampleFile: ..\examples\BastionShareableLinkDelete.json
+      # - step: GetActiveSessions
+      #   exampleFile: ..\examples\BastionSessionsList.json
+      # - step: DisconnectActiveSessions
+      #   exampleFile: ..\examples\BastionSessionDelete.json
+
+      - step: BastionHosts_Delete
+        exampleFile: ..\examples\BastionHostDelete.json

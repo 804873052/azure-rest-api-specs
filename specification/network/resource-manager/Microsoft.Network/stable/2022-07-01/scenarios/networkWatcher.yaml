@@ -1,0 +1,116 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkWatcherName:
+    type: string
+    prefix: networkwat
+
+prepareSteps:
+  - step: NetworkWatchers_CreateOrUpdate
+    exampleFile: ..\examples\NetworkWatcherCreate.json
+
+scenarios:
+  - scenario: NetworkWatchers
+    description: Microsoft.Network/networkWatchers/{networkWatcherName}
+    steps:
+      - step: NetworkWatchers_ListAll
+        exampleFile: ..\examples\NetworkWatcherListAll.json
+      - step: NetworkWatchers_List
+        exampleFile: ..\examples\NetworkWatcherList.json
+      - step: NetworkWatchers_Get
+        exampleFile: ..\examples\NetworkWatcherGet.json
+      - step: NetworkWatchers_UpdateTags
+        exampleFile: ..\examples\NetworkWatcherUpdateTags.json
+        
+      # - step: NetworkWatchers_GetAzureReachabilityReport
+      #   exampleFile: ..\examples\NetworkWatcherAzureReachabilityReportGet.json
+      # - step: NetworkWatchers_GetNetworkConfigurationDiagnostic
+      #   exampleFile: ..\examples\NetworkWatcherNetworkConfigurationDiagnostic.json
+      # - step: NetworkWatchers_GetFlowLogStatus
+      #   exampleFile: ..\examples\NetworkWatcherFlowLogStatusQuery.json
+      # - step: NetworkWatchers_GetTroubleshootingResult
+      #   exampleFile: ..\examples\NetworkWatcherTroubleshootResultQuery.json
+      # - step: NetworkWatchers_GetNextHop
+      #   exampleFile: ..\examples\NetworkWatcherNextHopGet.json
+      # - step: NetworkWatchers_SetFlowLogConfiguration
+      #   exampleFile: ..\examples\NetworkWatcherFlowLogConfigure.json
+      # - step: NetworkWatchers_CheckConnectivity
+      #   exampleFile: ..\examples\NetworkWatcherConnectivityCheck.json
+      # - step: NetworkWatchers_VerifyIPFlow
+      #   exampleFile: ..\examples\NetworkWatcherIpFlowVerify.json
+      # - step: NetworkWatchers_ListAvailableProviders
+      #   exampleFile: ..\examples\NetworkWatcherAvailableProvidersListGet.json
+      # - step: NetworkWatchers_GetVMSecurityRules
+      #   exampleFile: ..\examples\NetworkWatcherSecurityGroupViewGet.json
+      # - step: NetworkWatchers_GetTopology
+      #   exampleFile: ..\examples\NetworkWatcherTopologyGet.json
+      # - step: NetworkWatchers_GetTroubleshooting
+      #   exampleFile: ..\examples\NetworkWatcherTroubleshootGet.json
+
+  # - scenario: PacketCapture
+  #   description: Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}
+  #   variables:
+  #     packetCaptureName:
+  #       type: string
+  #       prefix: packetcapt
+  #   steps:
+  #     - step: PacketCaptures_Create
+  #       exampleFile: ..\examples\NetworkWatcherPacketCaptureCreate.json
+  #     - step: PacketCaptures_List
+  #       exampleFile: ..\examples\NetworkWatcherPacketCapturesList.json
+  #     - step: PacketCaptures_Get
+  #       exampleFile: ..\examples\NetworkWatcherPacketCaptureGet.json
+  #     - step: PacketCaptures_GetStatus
+  #       exampleFile: ..\examples\NetworkWatcherPacketCaptureQueryStatus.json
+  #     - step: PacketCaptures_Stop
+  #       exampleFile: ..\examples\NetworkWatcherPacketCaptureStop.json
+  #     - step: PacketCaptures_Delete
+  #       exampleFile: ..\examples\NetworkWatcherPacketCaptureDelete.json
+
+  # - scenario: ConnectionMonitors
+  #   description: Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}
+  #   variables:
+  #     connectionMonitorName:
+  #       type: string
+  #       prefix: connection
+  #   steps:
+  #     - step: ConnectionMonitors_CreateOrUpdate
+  #       exampleFile: ..\examples\NetworkWatcherConnectionMonitorCreate.json
+  #     - step: ConnectionMonitors_List
+  #       exampleFile: ..\examples\NetworkWatcherConnectionMonitorList.json
+  #     - step: ConnectionMonitors_Get
+  #       exampleFile: ..\examples\NetworkWatcherConnectionMonitorGet.json
+  #     - step: ConnectionMonitors_UpdateTags
+  #       exampleFile: ..\examples\NetworkWatcherConnectionMonitorUpdateTags.json
+  #     - step: ConnectionMonitors_Query
+  #       exampleFile: ..\examples\NetworkWatcherConnectionMonitorQuery.json
+  #     - step: ConnectionMonitors_Stop
+  #       exampleFile: ..\examples\NetworkWatcherConnectionMonitorStop.json
+  #     - step: ConnectionMonitors_Start
+  #       exampleFile: ..\examples\NetworkWatcherConnectionMonitorStart.json
+  #     - step: ConnectionMonitors_Delete
+  #       exampleFile: ..\examples\NetworkWatcherConnectionMonitorDelete.json
+
+  # - scenario: FlowLogs
+  #   description: Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}
+  #   variables:
+  #     flowLogName:
+  #       type: string
+  #       prefix: flowlognam
+  #   steps:
+  #     - step: FlowLogs_CreateOrUpdate
+  #       exampleFile: ..\examples\NetworkWatcherFlowLogCreate.json
+  #     - step: FlowLogs_List
+  #       exampleFile: ..\examples\NetworkWatcherFlowLogList.json
+  #     - step: FlowLogs_Get
+  #       exampleFile: ..\examples\NetworkWatcherFlowLogGet.json
+  #     - step: FlowLogs_UpdateTags
+  #       exampleFile: ..\examples\NetworkWatcherFlowLogUpdateTags.json
+  #     - step: FlowLogs_Delete
+  #       exampleFile: ..\examples\NetworkWatcherFlowLogDelete.json
+
+
+cleanUpSteps:
+  - step: NetworkWatchers_Delete
+    exampleFile: ..\examples\NetworkWatcherDelete.json

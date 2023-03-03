@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkManagerName:
+    type: string
+    prefix: networkmanagerscopeconn
+  scopeConnectionName:
+    type: string
+    prefix: scopeconnectionna
+
+prepareSteps:
+  - step: NetworkManagers_CreateOrUpdate
+    exampleFile: ..\examples\NetworkManagerPut.json
+    requestUpdate:
+      - add: /parameters/location
+        value: $(location)
+      - replace: /parameters/properties/networkManagerScopes/subscriptions/0
+        value: /subscriptions/$(subscriptionId)
+      - remove: /parameters/properties/networkManagerScopes/managementGroups
+
+scenarios:
+  - scenario: ScopeConnections
+    description: Microsoft.Network/networkManagers/{networkManagerName}/scopeConnections/{scopeConnectionName}
+    steps:
+      - step: ScopeConnections_CreateOrUpdate
+        exampleFile: ..\examples\NetworkManagerScopeConnectionPut.json
+      - step: ScopeConnections_List
+        exampleFile: ..\examples\NetworkManagerScopeConnectionList.json
+      - step: ScopeConnections_Get
+        exampleFile: ..\examples\NetworkManagerScopeConnectionGet.json
+      - step: ScopeConnections_Delete
+        exampleFile: ..\examples\NetworkManagerScopeConnectionDelete.json

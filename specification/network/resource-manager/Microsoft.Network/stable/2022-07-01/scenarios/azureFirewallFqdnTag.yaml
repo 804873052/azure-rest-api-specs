@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario:  AzureFirewallFqdnTags
+    description: Microsoft.Network/azureFirewallFqdnTags
+    steps:
+      - step: AzureFirewallFqdnTags_ListAll
+        exampleFile: ..\examples\AzureFirewallFqdnTagsListBySubscription.json

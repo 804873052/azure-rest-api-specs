@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  policyName:
+    type: string
+    prefix: wafpolicyname
+
+scenarios:
+  - scenario: WebApplicationFirewallPolicies
+    description: Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}
+    steps:
+      - step: WebApplicationFirewallPolicies_CreateOrUpdate
+        # exampleFile: ../examples/WafPolicyCreateOrUpdate.json
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        parameters:
+          parameters:
+            location: $(location)
+            properties: 
+              managedRules:
+                managedRuleSets:
+                  - ruleSetType: OWASP
+                    ruleSetVersion: 3.2
+                    ruleGroupOverrides:
+                      - ruleGroupName: REQUEST-931-APPLICATION-ATTACK-RFI
+                        rules:
+                          - ruleId: 931120
+                            state: Enabled
+                            action: Log
+      - step: WebApplicationFirewallPolicies_List
+        exampleFile: ../examples/WafListPolicies.json
+      - step: WebApplicationFirewallPolicies_ListAll
+        exampleFile: ../examples/WafListAllPolicies.json
+      - step: WebApplicationFirewallPolicies_Get
+        exampleFile: ../examples/WafPolicyGet.json
+      - step: WebApplicationFirewallPolicies_Delete
+        exampleFile: ../examples/WafPolicyDelete.json
+

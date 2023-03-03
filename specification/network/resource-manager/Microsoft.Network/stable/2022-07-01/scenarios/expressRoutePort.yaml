@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  expressRoutePortName:
+    type: string
+    prefix: expressrouport
+  authorizationName:
+    type: string
+    prefix: authorizaterport
+
+prepareSteps:
+  - step: ExpressRoutePorts_CreateOrUpdate
+    exampleFile: ..\examples\ExpressRoutePortCreate.json
+
+scenarios:
+  - scenario:  ExpressRoutePortsLocations
+    description: Microsoft.Network/ExpressRoutePortsLocations
+    
+    steps:
+      - step: ExpressRoutePortsLocations_List
+        exampleFile: ..\examples\ExpressRoutePortsLocationList.json
+      - step: ExpressRoutePortsLocations_Get
+        exampleFile: ..\examples\ExpressRoutePortsLocationGet.json
+
+  - scenario:  ExpressRoutePorts
+    description: Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}
+    steps:
+      - step: ExpressRoutePorts_List
+        exampleFile: ..\examples\ExpressRoutePortList.json
+      - step: ExpressRoutePorts_ListByResourceGroup
+        exampleFile: ..\examples\ExpressRoutePortListByResourceGroup.json
+      - step: ExpressRoutePorts_Get
+        exampleFile: ..\examples\ExpressRoutePortGet.json
+      - step: ExpressRoutePorts_UpdateTags
+        exampleFile: ..\examples\ExpressRoutePortUpdateTags.json
+      - step: ExpressRoutePorts_GenerateLOA
+        exampleFile: ..\examples\GenerateExpressRoutePortsLOA.json
+
+  - scenario:  ExpressRouteLinks
+    description: Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links/{linkName}
+    steps:
+      - step: ExpressRouteLinks_List
+        exampleFile: ..\examples\ExpressRouteLinkList.json
+      - step: ExpressRouteLinks_Get
+        exampleFile: ..\examples\ExpressRouteLinkGet.json
+
+  - scenario:  ExpressRoutePortAuthorizations
+    description: Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}
+    steps:
+      - step: ExpressRoutePortAuthorizations_CreateOrUpdate
+        exampleFile: ..\examples\ExpressRoutePortAuthorizationCreate.json
+      - step: ExpressRoutePortAuthorizations_List
+        exampleFile: ..\examples\ExpressRoutePortAuthorizationList.json
+      - step: ExpressRoutePortAuthorizations_Get
+        exampleFile: ..\examples\ExpressRoutePortAuthorizationGet.json
+      - step: ExpressRoutePortAuthorizations_Delete
+        exampleFile: ..\examples\ExpressRoutePortAuthorizationDelete.json
+
+cleanUpSteps:
+  - step: ExpressRoutePorts_Delete
+    exampleFile: ..\examples\ExpressRoutePortDelete.json
