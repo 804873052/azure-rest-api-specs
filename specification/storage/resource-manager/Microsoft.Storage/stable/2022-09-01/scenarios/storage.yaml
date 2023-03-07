@@ -1,0 +1,234 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  accountName: accountnam
+  location:
+    type: string
+
+prepareSteps:
+  - step: StorageAccounts_CheckNameAvailability
+    exampleFile: ..\examples\StorageAccountCheckNameAvailability.json
+  - step: StorageAccount_Create
+    exampleFile: ../examples/StorageAccountCreate.json
+    requestUpdate:
+      - replace: /parameters/kind
+        value: StorageV2
+      - remove: /parameters/extendedLocation
+    outputVariables:
+      storageAccountId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: StorageAccounts #
+    description: Microsoft.Storage/storageAccounts/{accountName}
+    steps:
+      - step: StorageAccounts_List
+        exampleFile: ..\examples\StorageAccountList.json
+      - step: StorageAccounts_ListByResourceGroup
+        exampleFile: ..\examples\StorageAccountListByResourceGroup.json
+      - step: StorageAccounts_GetProperties
+        exampleFile: ..\examples\StorageAccountGetProperties.json
+      - step: StorageAccounts_Update
+        # exampleFile: ..\examples\StorageAccountUpdate.json
+        operationId: StorageAccounts_Update
+        parameters:
+          tags:
+            storageKey: storageValue
+      # - step: StorageAccounts_RestoreBlobRanges # restorePolicy is not supported for the account
+      #   exampleFile: ..\examples\BlobRangesRestore.json
+      - step: StorageAccounts_RevokeUserDelegationKeys
+        exampleFile: ..\examples\StorageAccountRevokeUserDelegationKeys.json
+
+      - step: StorageAccounts_ListServiceSAS
+        exampleFile: ..\examples\StorageAccountListServiceSAS.json
+      - step: StorageAccounts_ListKeys
+        exampleFile: ..\examples\StorageAccountListKeys.json
+      - step: StorageAccounts_RegenerateKey
+        exampleFile: ..\examples\StorageAccountRegenerateKey.json
+      - step: StorageAccounts_ListAccountSAS
+        exampleFile: ..\examples\StorageAccountListAccountSAS.json
+        requestUpdate:
+          - remove: /parameters/signedStart
+
+      # - step: StorageAccounts_AbortHierarchicalNamespaceMigration # migration, need second account
+      #   exampleFile: ..\examples\StorageAccountAbortHierarchicalNamespaceMigration.json
+      # - step: StorageAccounts_Failover # need StorageAccounts_AbortHierarchicalNamespaceMigration
+      #   exampleFile: ..\examples\StorageAccountFailover.json
+      # - step: StorageAccounts_HierarchicalNamespaceMigration # HnsOnMigration is not supported for the account
+      #   exampleFile: ..\examples\StorageAccountHierarchicalNamespaceMigration.json
+
+  - scenario: Operations
+    description: Microsoft.Storage/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+  - scenario: Skus
+    description: Microsoft.Storage/skus
+    steps:
+      - step: Skus_List
+        exampleFile: ..\examples\SKUList.json
+
+  - scenario: Usages
+    description: Microsoft.Storage/locations/{location}/usages
+    steps:
+      - step: Usages_ListByLocation
+        exampleFile: ..\examples\StorageAccountListLocationUsage.json
+
+# pass
+  - scenario: ManagementPolicies
+    description: Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}
+    steps:
+      - step: ManagementPolicies_CreateOrUpdate
+        exampleFile: ..\examples\StorageAccountSetManagementPolicy.json
+      - step: ManagementPolicies_Get
+        exampleFile: ..\examples\StorageAccountGetManagementPolicy.json
+      - step: ManagementPolicies_Delete
+        exampleFile: ..\examples\StorageAccountDeleteManagementPolicy.json
+
+# fail Destination-> container
+  - scenario: BlobInventoryPolicies # Pass
+    description: Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}
+    variables:
+      containerName: myblob
+    steps:
+      - step: BlobContainers_Create
+        exampleFile: ..\examples\BlobContainersPut.json
+        requestUpdate:
+          - replace: /containerName
+            value: $(containerName)
+      - step: BlobInventoryPolicies_CreateOrUpdate
+        # exampleFile: ..\examples\StorageAccountSetBlobInventoryPolicy.json
+        operationId: BlobInventoryPolicies_CreateOrUpdate
+        parameters:
+          blobInventoryPolicyName: default
+          properties:
+            properties:
+              policy:
+                enabled: true
+                type: Inventory
+                rules:
+                  - name: inventoryPolicyRule1
+                    enabled: true
+                    destination: $(containerName)
+                    definition:
+                      objectType: Blob
+                      format: Csv
+                      schedule: Daily
+                      filters:
+                        blobTypes:
+                          - blockBlob
+                      schemaFields:
+                        - Name
+                        - Last-Modified
+                        - ETag
+                        - LeaseStatus
+                        - LeaseState
+                        - LeaseDuration
+                        - Metadata
+      - step: BlobInventoryPolicies_List
+        exampleFile: ..\examples\StorageAccountListBlobInventoryPolicy.json
+      - step: BlobInventoryPolicies_Get
+        exampleFile: ..\examples\StorageAccountGetBlobInventoryPolicy.json
+      - step: BlobInventoryPolicies_Delete
+        exampleFile: ..\examples\StorageAccountDeleteBlobInventoryPolicy.json
+
+# need create privateEndpoint
+  - scenario: PrivateEndpointConnections #
+    description: Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}
+    variables:
+      containerName: mypeblob
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: PrivateEndpointConnections_List
+        exampleFile: ..\examples\StorageAccountListPrivateEndpointConnections.json
+        outputVariables: 
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_Put
+        exampleFile: ..\examples\StorageAccountPutPrivateEndpointConnection.json
+        requestUpdate:
+          - replace: /properties/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\StorageAccountGetPrivateEndpointConnection.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\StorageAccountDeletePrivateEndpointConnection.json
+
+  - scenario: PrivateLinkResources
+    description: Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources
+    steps:
+      - step: PrivateLinkResources_ListByStorageAccount
+        exampleFile: ..\examples\StorageAccountListPrivateLinkResources.json
+
+# Required feature Versioning is disabled 
+  # - scenario: ObjectReplicationPolicies # Required feature Change Feed is disabled
+  #   description: Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}
+  #   variables:
+  #     objectReplicationPolicyId:
+  #       type: string
+  #       prefix: objectrepl
+  #   steps:
+  #     - step: ObjectReplicationPolicies_CreateOrUpdate
+  #       exampleFile: ..\examples\StorageAccountCreateObjectReplicationPolicyOnDestination.json
+  #     - step: ObjectReplicationPolicies_List
+  #       exampleFile: ..\examples\StorageAccountListObjectReplicationPolicies.json
+  #     - step: ObjectReplicationPolicies_Get
+  #       exampleFile: ..\examples\StorageAccountGetObjectReplicationPolicy.json
+  #     - step: ObjectReplicationPolicies_Delete
+  #       exampleFile: ..\examples\StorageAccountDeleteObjectReplicationPolicy.json
+
+# pass
+  - scenario: LocalUsers
+    description: Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}
+    variables:
+      username: storageuser
+    steps:
+      - step: LocalUsers_CreateOrUpdate
+        exampleFile: ..\examples\LocalUserCreate.json
+      - step: LocalUsers_List
+        exampleFile: ..\examples\LocalUsersList.json
+      - step: LocalUsers_Get
+        exampleFile: ..\examples\LocalUserGet.json
+      - step: LocalUsers_ListKeys
+        exampleFile: ..\examples\LocalUserListKeys.json
+      - step: LocalUsers_RegeneratePassword
+        exampleFile: ..\examples\LocalUserRegeneratePassword.json
+      - step: LocalUsers_Delete
+        exampleFile: ..\examples\LocalUserDelete.json
+
+# pass
+  - scenario: EncryptionScopes
+    description: Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}
+    variables:
+      encryptionScopeName:
+        type: string
+        prefix: encryption
+    steps:
+      - step: EncryptionScopes_Put
+        exampleFile: ..\examples\StorageAccountPutEncryptionScope.json
+      - step: EncryptionScopes_List
+        exampleFile: ..\examples\StorageAccountEncryptionScopeList.json
+      - step: EncryptionScopes_Get
+        exampleFile: ..\examples\StorageAccountGetEncryptionScope.json
+      - step: EncryptionScopes_Patch
+        exampleFile: ..\examples\StorageAccountPatchEncryptionScope.json
+        requestUpdate:
+          - remove: /encryptionScope/properties
+        # operationId: EncryptionScopes_Patch
+
+cleanUpSteps:
+  - step: StorageAccounts_Delete
+    exampleFile: ..\examples\StorageAccountDelete.json
+  - step: DeletedAccounts_List
+    exampleFile: ..\examples\DeletedAccountList.json
+  - step: DeletedAccounts_Get
+    exampleFile: ..\examples\DeletedAccountGet.json
+    requestUpdate:
+      - replace: /deletedAccountName
+        value: $(accountName)
+    

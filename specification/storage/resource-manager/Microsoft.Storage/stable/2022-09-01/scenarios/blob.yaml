@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  accountName: blobaccountnam
+
+prepareSteps:
+  - step: StorageAccount_Create
+    exampleFile: ../examples/StorageAccountCreate.json
+    requestUpdate:
+      - replace: /parameters/kind
+        value: StorageV2
+      - remove: /parameters/extendedLocation
+
+scenarios:
+# pass
+  - scenario: BlobServices
+    description: Microsoft.Storage/storageAccounts/{accountName}/blobServices/{BlobServicesName}
+    steps:
+      - step: BlobServices_SetServiceProperties
+        exampleFile: ..\examples\BlobServicesPut.json
+        requestUpdate:
+          - remove: /parameters/properties
+        # operationId: BlobServices_SetServiceProperties
+        # parameters:
+        #   FileServicesName: default
+      - step: BlobServices_List
+        exampleFile: ..\examples\BlobServicesList.json
+      - step: BlobServices_GetServiceProperties
+        exampleFile: ..\examples\BlobServicesGet.json
+
+# pass
+  - scenario: BlobContainers
+    description: Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}
+    variables:
+      containerName: containerna
+    steps:
+      - step: BlobContainers_Create
+        exampleFile: ..\examples\BlobContainersPut.json
+      - step: BlobContainers_List
+        exampleFile: ..\examples\BlobContainersList.json
+      - step: BlobContainers_Get
+        exampleFile: ..\examples\BlobContainersGet.json
+      - step: BlobContainers_Update
+        exampleFile: ..\examples\BlobContainersPatch.json
+        requestUpdate:
+          - remove: /blobContainer/properties/publicAccess
+      # - step: BlobContainers_ObjectLevelWorm # ImmutableStorageWithVersioning is not supported for the account
+      #   exampleFile: ..\examples\ObjectLevelWormContainerMigration.json
+      - step: BlobContainers_Lease # 有点可怕
+        exampleFile: ..\examples\BlobContainersLease_Acquire.json
+      - step: BlobContainers_Lease_Break
+        exampleFile: ..\examples\BlobContainersLease_Acquire.json
+        requestUpdate:
+          - replace: /parameters/action
+            value: Break
+      - step: BlobContainers_SetLegalHold
+        exampleFile: ..\examples\BlobContainersSetLegalHold.json
+      - step: BlobContainers_ClearLegalHold
+        exampleFile: ..\examples\BlobContainersClearLegalHold.json
+        
+# 后面在测 pass
+      - step: BlobContainers_CreateOrUpdateImmutabilityPolicy
+        exampleFile: ..\examples\BlobContainersPutImmutabilityPolicy.json
+        outputVariables:
+         etag:
+           type: string
+           fromResponse: /etag
+      - step: BlobContainers_GetImmutabilityPolicy
+        exampleFile: ..\examples\BlobContainersGetImmutabilityPolicy.json
+      # - step: BlobContainers_ExtendImmutabilityPolicy # ifMatch
+      #   exampleFile: ..\examples\BlobContainersExtendImmutabilityPolicy.json
+      # - step: BlobContainers_LockImmutabilityPolicy 
+      #   exampleFile: ..\examples\BlobContainersLockImmutabilityPolicy.json
+      - step: BlobContainers_DeleteImmutabilityPolicy
+        exampleFile: ..\examples\BlobContainersDeleteImmutabilityPolicy.json
+        requestUpdate:
+          - replace: /If-Match
+            value: $(etag)
+      - step: BlobContainers_Delete
+        exampleFile: ..\examples\BlobContainersDelete.json

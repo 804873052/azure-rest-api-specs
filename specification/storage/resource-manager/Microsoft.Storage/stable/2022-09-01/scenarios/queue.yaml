@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  accountName: queueaccountnam
+
+prepareSteps:
+  - step: StorageAccount_Create
+    exampleFile: ../examples/StorageAccountCreate.json
+    requestUpdate:
+      - replace: /parameters/kind
+        value: StorageV2
+      - remove: /parameters/extendedLocation
+
+scenarios:
+  - scenario: QueueServices
+    description: Microsoft.Storage/storageAccounts/{accountName}/queueServices/{queueServiceName}
+    steps:
+      - step: QueueServices_SetServiceProperties
+        exampleFile: ..\examples\QueueServicesPut.json
+        requestUpdate:
+          - remove: /parameters/properties
+        # operationId: QueueServices_SetServiceProperties
+        # parameters:
+        #   FileServicesName: default
+      - step: QueueServices_List
+        exampleFile: ..\examples\QueueServicesList.json
+      - step: QueueServices_GetServiceProperties
+        exampleFile: ..\examples\QueueServicesGet.json
+
+# pass
+  - scenario: Queue
+    description: Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}
+    variables:
+      queueName: queuename
+    steps:
+      - step: Queue_Create
+        exampleFile: ..\examples\QueueOperationPut.json
+      - step: Queue_List
+        exampleFile: ..\examples\QueueOperationList.json
+      - step: Queue_Get
+        exampleFile: ..\examples\QueueOperationGet.json
+      - step: Queue_Update
+        exampleFile: ..\examples\QueueOperationPatch.json
+      - step: Queue_Delete
+        exampleFile: ..\examples\QueueOperationDelete.json

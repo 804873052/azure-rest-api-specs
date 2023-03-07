@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  accountName: fileaccountnam
+
+prepareSteps:
+  - step: StorageAccount_Create
+    exampleFile: ../examples/StorageAccountCreate.json
+    requestUpdate:
+      - replace: /parameters/kind
+        value: StorageV2
+      - remove: /parameters/extendedLocation
+
+scenarios:
+  - scenario: FileServices
+    description: Microsoft.Storage/storageAccounts/{accountName}/fileServices/{FileServicesName}
+    steps:
+      - step: FileServices_SetServiceProperties
+        exampleFile: ..\examples\FileServicesPut.json
+        requestUpdate:
+          - remove: /parameters/properties
+        
+        # operationId: FileServices_SetServiceProperties
+        # parameters:
+        #   FileServicesName: default
+        #   parameters:
+        #     properties:
+
+      - step: FileServices_List
+        exampleFile: ..\examples\FileServicesList.json
+      - step: FileServices_GetServiceProperties
+        exampleFile: ..\examples\FileServicesGet.json
+
+# pass
+  - scenario: FileShares
+    description: Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}
+    variables:
+      shareName: sharename
+    steps:
+      - step: FileShares_Create
+        exampleFile: ..\examples\FileSharesPut.json
+      - step: FileShares_List
+        exampleFile: ..\examples\FileSharesList.json
+      - step: FileShares_Get
+        exampleFile: ..\examples\FileSharesGet.json
+      - step: FileShares_Update
+        exampleFile: ..\examples\FileSharesPatch.json
+      - step: FileShares_Lease # There is currently a lease on the file share and no lease ID was specified in the request
+        exampleFile: ..\examples\FileSharesLease_Acquire.json
+      - step: FileShares_Lease_Break # There is currently a lease on the file share and no lease ID was specified in the request
+        exampleFile: ..\examples\FileSharesLease_Acquire.json
+        requestUpdate:
+          - replace: /parameters/action
+            value: Break
+      # - step: FileShares_Restore # 500
+      #   exampleFile: ..\examples\FileSharesRestore.json
+      - step: FileShares_Delete
+        exampleFile: ..\examples\FileSharesDelete.json
