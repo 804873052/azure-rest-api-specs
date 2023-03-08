@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  azureTenantId:
+    type: string
+  azureObjectId:
+    type: string
+  name:
+    type: string
+    prefix: managedhsmna
+
+prepareSteps:
+  - step: ManagedHsms_CheckMhsmNameAvailability
+    exampleFile: ..\examples\ManagedHsm_checkMhsmNameAvailability.json
+    requestUpdate:
+      - replace: /mhsmName/name
+        value: $(name)
+  - step: ManagedHsms_CreateOrUpdate # Pool creation is blocked for tenant
+    exampleFile: ..\examples\ManagedHsm_CreateOrUpdate.json
+    requestUpdate:
+      - replace: /parameters/properties/tenantId
+        value: $(azureTenantId)
+
+scenarios:
+  - scenario: ManagedHsms
+    description: Microsoft.KeyVault/managedHSMs/{name}
+    steps:
+      - step: ManagedHsms_ListByResourceGroup
+        exampleFile: ..\examples\ManagedHsm_ListByResourceGroup.json
+      - step: ManagedHsms_Get
+        exampleFile: ..\examples\ManagedHsm_Get.json
+      - step: ManagedHsms_ListBySubscription
+        exampleFile: ..\examples\ManagedHsm_ListBySubscription.json
+      - step: ManagedHsms_Update
+        exampleFile: ..\examples\ManagedHsm_Update.json
+
+  - scenario: MHSMPrivateEndpointConnections
+    description: Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: MHSMPrivateEndpointConnections_Put
+        exampleFile: ..\examples\ManagedHsm_putPrivateEndpointConnection.json
+      - step: MHSMPrivateEndpointConnections_ListByResource
+        exampleFile: ..\examples\ManagedHsm_ListPrivateEndpointConnectionsByResource.json
+      - step: MHSMPrivateEndpointConnections_Get
+        exampleFile: ..\examples\ManagedHsm_getPrivateEndpointConnection.json
+      - step: MHSMPrivateLinkResources_ListByMHSMResource
+        exampleFile: ..\examples\ManagedHsm_listPrivateLinkResources.json
+      - step: MHSMPrivateEndpointConnections_Delete
+        exampleFile: ..\examples\ManagedHsm_deletePrivateEndpointConnection.json
+
+cleanUpSteps:
+  - step: ManagedHsms_Delete
+    exampleFile: ..\examples\ManagedHsm_Delete.json
+  - step: ManagedHsms_ListDeleted
+    exampleFile: ..\examples\DeletedManagedHsm_List.json
+  - step: ManagedHsms_GetDeleted
+    exampleFile: ..\examples\DeletedManagedHsm_Get.json
+  - step: ManagedHsms_PurgeDeleted
+    exampleFile: ..\examples\DeletedManagedHsm_Purge.json

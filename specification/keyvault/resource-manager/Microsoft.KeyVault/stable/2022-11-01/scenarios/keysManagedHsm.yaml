@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  azureTenantId:
+    type: string
+  azureObjectId:
+    type: string
+  name:
+    type: string
+    prefix: managedhsmna
+
+prepareSteps:
+  - step: ManagedHsms_CreateOrUpdate
+    exampleFile: ..\examples\ManagedHsm_CreateOrUpdate.json
+    requestUpdate:
+      - replace: /parameters/properties/tenantId
+        value: $(azureTenantId)
+
+scenarios:
+  - scenario: ManagedHsmKeys
+    description: Microsoft.KeyVault/managedHSMs/{name}/keys/{keyName}
+    variables:
+      keyName:
+        type: string
+        prefix: managehsmkeyna
+    steps:
+      - step: ManagedHsmKeys_CreateIfNotExist
+        exampleFile: ..\examples\managedHsmCreateKey.json
+      - step: ManagedHsmKeys_List
+        exampleFile: ..\examples\managedHsmListKeys.json
+      - step: ManagedHsmKeys_Get
+        exampleFile: ..\examples\managedHsmGetKey.json
+      - step: ManagedHsmKeys_ListVersions
+        exampleFile: ..\examples\managedHsmListKeyVersions.json
+      - step: ManagedHsmKeys_GetVersion
+        exampleFile: ..\examples\managedHsmGetKeyVersion.json
+
+cleanUpSteps:
+  - step: ManagedHsms_Delete
+    exampleFile: ..\examples\ManagedHsm_Delete.json
+  - step: ManagedHsms_PurgeDeleted
+    exampleFile: ..\examples\DeletedManagedHsm_Purge.json

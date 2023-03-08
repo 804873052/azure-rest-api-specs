@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  azureTenantId:
+    type: string
+  azureObjectId:
+    type: string
+  vaultName:
+    type: string
+    prefix: vaultname
+
+prepareSteps:
+  - step: Vaults_CreateOrUpdate
+    exampleFile: ..\examples\createVault.json
+    requestUpdate:
+      - replace: /parameters/properties/tenantId
+        value: $(azureTenantId)
+      - replace: /parameters/properties/accessPolicies/0/tenantId
+        value: $(azureTenantId)
+      - replace: /parameters/properties/accessPolicies/0/objectId
+        value: $(azureObjectId)
+
+# pass
+scenarios:
+  - scenario: Keys
+    description: Microsoft.KeyVault/vaults/{vaultName}/keys/{keyName}
+    variables:
+      keyName:
+        type: string
+        prefix: keyname
+    steps:
+      - step: Keys_CreateIfNotExist
+        exampleFile: ..\examples\createKey.json
+      - step: Keys_List
+        exampleFile: ..\examples\listKeys.json
+      - step: Keys_Get
+        exampleFile: ..\examples\getKey.json
+      - step: Keys_ListVersions
+        exampleFile: ..\examples\listKeyVersions.json
+      - step: Keys_GetVersion
+        exampleFile: ..\examples\getKeyVersion.json
+
+cleanUpSteps:
+  - step: Vaults_Delete
+    exampleFile: ..\examples\deleteVault.json
+  - step: Vaults_PurgeDeleted
+    exampleFile: ..\examples\purgeDeletedVault.json

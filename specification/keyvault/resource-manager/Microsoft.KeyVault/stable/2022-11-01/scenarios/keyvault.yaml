@@ -1,0 +1,86 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  azureTenantId:
+    type: string
+  azureObjectId:
+    type: string
+  vaultName:
+    type: string
+    prefix: vaultname
+
+prepareSteps:
+  - step: Vaults_CheckNameAvailability
+    exampleFile: ..\examples\checkVaultNameAvailability.json
+    requestUpdate:
+      - replace: /vaultName/name
+        value: $(vaultName)
+    
+  - step: Vaults_CreateOrUpdate
+    exampleFile: ..\examples\createVault.json
+    requestUpdate:
+      - replace: /parameters/properties/tenantId
+        value: $(azureTenantId)
+      - replace: /parameters/properties/accessPolicies/0/tenantId
+        value: $(azureTenantId)
+      - replace: /parameters/properties/accessPolicies/0/objectId
+        value: $(azureObjectId)
+    outputVariables:
+      vaultId:
+        type: string
+        fromResponse: /id
+
+# pass
+scenarios:
+  - scenario: Vaults
+    description: Microsoft.KeyVault/vaults/{vaultName}
+    steps:
+      - step: Vaults_List
+        exampleFile: ..\examples\listVault.json
+      - step: Vaults_ListBySubscription
+        exampleFile: ..\examples\listVaultBySubscription.json
+      - step: Vaults_ListByResourceGroup
+        exampleFile: ..\examples\listVaultByResourceGroup.json
+      - step: Vaults_Get
+        exampleFile: ..\examples\getVault.json
+      - step: Vaults_Update
+        exampleFile: ..\examples\updateVault.json
+
+      # - step: Vaults_UpdateAccessPolicy # 生成失败
+      #   exampleFile: ..\examples\updateAccessPoliciesAdd.json
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.KeyVault/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: PrivateEndpointConnections_ListByResource
+        exampleFile: ..\examples\listPrivateEndpointConnection.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_Put
+        exampleFile: ..\examples\putPrivateEndpointConnection.json
+        requestUpdate:
+          - replace: /properties/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\getPrivateEndpointConnection.json
+      - step: PrivateLinkResources_ListByVault
+        exampleFile: ..\examples\listPrivateLinkResources.json
+      # - step: PrivateEndpointConnections_Delete # approval status is 'Rejected' and provisioning state is 'Updating'.
+      #   exampleFile: ..\examples\deletePrivateEndpointConnection.json
+
+cleanUpSteps:
+  - step: Vaults_Delete
+    exampleFile: ..\examples\deleteVault.json
+  - step: Vaults_ListDeleted
+    exampleFile: ..\examples\listDeletedVaults.json
+  - step: Vaults_GetDeleted
+    exampleFile: ..\examples\getDeletedVault.json
+  - step: Vaults_PurgeDeleted
+    exampleFile: ..\examples\purgeDeletedVault.json

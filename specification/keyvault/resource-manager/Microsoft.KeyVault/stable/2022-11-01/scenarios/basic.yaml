@@ -1,0 +1,120 @@
+scope: ResourceGroup
+variables:
+  vaultName:
+    type: string
+    prefix: vaultname
+  name:
+    type: string
+    prefix: name
+  keyName:
+    type: string
+    prefix: keyname
+  privateEndpointConnectionName:
+    type: string
+    prefix: privateend
+  secretName:
+    type: string
+    prefix: secretname
+  keyVersion:
+    type: string
+    prefix: keyversion
+scenarios:
+  - steps:
+      - step: Vaults_CheckNameAvailability
+        exampleFile: ..\examples\checkVaultNameAvailability.json
+      - step: Vaults_CreateOrUpdate
+        exampleFile: ..\examples\createVault.json
+      - step: Vaults_ListDeleted
+        exampleFile: ..\examples\listDeletedVaults.json
+      - step: Vaults_GetDeleted
+        exampleFile: ..\examples\getDeletedVault.json
+      - step: Vaults_List
+        exampleFile: ..\examples\listVault.json
+      - step: Vaults_ListBySubscription
+        exampleFile: ..\examples\listVaultBySubscription.json
+      - step: Vaults_ListByResourceGroup
+        exampleFile: ..\examples\listVaultByResourceGroup.json
+      - step: Vaults_Get
+        exampleFile: ..\examples\getVault.json
+      - step: Vaults_Update
+        exampleFile: ..\examples\updateVault.json
+      - step: Vaults_PurgeDeleted
+        exampleFile: ..\examples\purgeDeletedVault.json
+      - step: ManagedHsms_CreateOrUpdate
+        exampleFile: ..\examples\ManagedHsm_CreateOrUpdate.json
+      - step: ManagedHsms_ListDeleted
+        exampleFile: ..\examples\DeletedManagedHsm_List.json
+      - step: ManagedHsms_ListByResourceGroup
+        exampleFile: ..\examples\ManagedHsm_ListByResourceGroup.json
+      - step: ManagedHsms_Get
+        exampleFile: ..\examples\ManagedHsm_Get.json
+      - step: ManagedHsms_GetDeleted
+        exampleFile: ..\examples\DeletedManagedHsm_Get.json
+      - step: ManagedHsms_ListBySubscription
+        exampleFile: ..\examples\ManagedHsm_ListBySubscription.json
+      - step: ManagedHsms_Update
+        exampleFile: ..\examples\ManagedHsm_Update.json
+      - step: ManagedHsms_PurgeDeleted
+        exampleFile: ..\examples\DeletedManagedHsm_Purge.json
+      - step: ManagedHsms_CheckMhsmNameAvailability
+        exampleFile: ..\examples\ManagedHsm_checkMhsmNameAvailability.json
+      - step: Keys_CreateIfNotExist
+        exampleFile: ..\examples\createKey.json
+      - step: Keys_List
+        exampleFile: ..\examples\listKeys.json
+      - step: Keys_Get
+        exampleFile: ..\examples\getKey.json
+      - step: Keys_ListVersions
+        exampleFile: ..\examples\listKeyVersions.json
+      - step: Keys_GetVersion
+        exampleFile: ..\examples\getKeyVersion.json
+      - step: ManagedHsmKeys_CreateIfNotExist
+        exampleFile: ..\examples\managedHsmCreateKey.json
+      - step: ManagedHsmKeys_List
+        exampleFile: ..\examples\managedHsmListKeys.json
+      - step: ManagedHsmKeys_Get
+        exampleFile: ..\examples\managedHsmGetKey.json
+      - step: ManagedHsmKeys_ListVersions
+        exampleFile: ..\examples\managedHsmListKeyVersions.json
+      - step: ManagedHsmKeys_GetVersion
+        exampleFile: ..\examples\managedHsmGetKeyVersion.json
+      - step: Secrets_CreateOrUpdate
+        exampleFile: ..\examples\createSecret.json
+      - step: Secrets_List
+        exampleFile: ..\examples\listSecrets.json
+      - step: Secrets_Get
+        exampleFile: ..\examples\getSecret.json
+      - step: Secrets_Update
+        exampleFile: ..\examples\updateSecret.json
+      - step: PrivateEndpointConnections_Put
+        exampleFile: ..\examples\putPrivateEndpointConnection.json
+      - step: PrivateEndpointConnections_ListByResource
+        exampleFile: ..\examples\listPrivateEndpointConnection.json
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\getPrivateEndpointConnection.json
+      - step: MHSMPrivateEndpointConnections_Put
+        exampleFile: ..\examples\ManagedHsm_putPrivateEndpointConnection.json
+      - step: MHSMPrivateEndpointConnections_ListByResource
+        exampleFile: ..\examples\ManagedHsm_ListPrivateEndpointConnectionsByResource.json
+      - step: MHSMPrivateEndpointConnections_Get
+        exampleFile: ..\examples\ManagedHsm_getPrivateEndpointConnection.json
+      # - variables:
+      #     operationKind:
+      #       type: string
+      #       prefix: operationk
+      #   step: Vaults_UpdateAccessPolicy
+      #   exampleFile: ..\examples\updateAccessPoliciesAdd.json
+      - step: Operations_List
+        exampleFile: ..\examples\listOperations.json
+      - step: MHSMPrivateLinkResources_ListByMHSMResource
+        exampleFile: ..\examples\ManagedHsm_listPrivateLinkResources.json
+      - step: PrivateLinkResources_ListByVault
+        exampleFile: ..\examples\listPrivateLinkResources.json
+      - step: MHSMPrivateEndpointConnections_Delete
+        exampleFile: ..\examples\ManagedHsm_deletePrivateEndpointConnection.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\deletePrivateEndpointConnection.json
+      - step: ManagedHsms_Delete
+        exampleFile: ..\examples\ManagedHsm_Delete.json
+      - step: Vaults_Delete
+        exampleFile: ..\examples\deleteVault.json
