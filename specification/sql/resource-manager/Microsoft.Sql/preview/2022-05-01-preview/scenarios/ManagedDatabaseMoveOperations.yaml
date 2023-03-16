@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# not declared in new version
+scenarios:
+  # - scenario: ManagedDatabaseMoveOperations
+  #   description: Microsoft.Sql/locations/{locationName}/managedDatabaseMoveOperationResults
+  #   steps:
+  #     - step: ManagedDatabaseMoveOperations_ListByLocation
+  #       exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseMoveOperationResultList.json
+  #     - step: ManagedDatabaseMoveOperations_Get
+  #       exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseMoveOperationResultGet.json

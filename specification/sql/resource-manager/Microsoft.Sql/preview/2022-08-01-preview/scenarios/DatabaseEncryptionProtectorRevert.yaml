@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: DatabaseEncryptionProtectors
+    description: Microsoft.Sql/servers/{serverName}/databases/{databaseName}/encryptionProtector/{encryptionProtectorName}
+    steps:
+      - operationId: DatabaseEncryptionProtectors_Revalidate
+        exampleFile: ..\examples\DatabaseEncryptionProtectorRevalidate.json
+      - operationId: DatabaseEncryptionProtectors_Revert
+        exampleFile: ..\examples\DatabaseEncryptionProtectorRevert.json

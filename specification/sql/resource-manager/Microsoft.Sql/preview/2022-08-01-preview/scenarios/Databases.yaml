@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  adminPassword:
+    type: secureString
+  serverName:
+    type: string
+    prefix: serverna
+  databaseName:
+    type: string
+    prefix: database
+
+prepareSteps:
+  - step: Servers_CreateOrUpdate
+    exampleFile: ..\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+      - remove: /parameters/properties/administrators
+
+scenarios:
+  - scenario: Databases
+    description: Microsoft.Sql/servers/{serverName}/databases/{databaseName}
+    steps:
+      - step: Databases_CreateOrUpdate
+        exampleFile: ..\examples\CreateDatabaseDefaultMode.json
+      - step: Databases_ListByServer
+        exampleFile: ..\examples\ListVCoreDatabasesByServer.json
+      - step: Databases_Get
+        exampleFile: ..\examples\GetVCoreDatabaseDefaultEnclave.json
+
+      - step: Databases_ListMetricDefinitions
+        exampleFile: ..\..\..\stable\2014-04-01\examples\DatabaseMetricsDefinitionsList.json
+        # operationId: Databases_ListMetricDefinitions
+      - step: Databases_ListMetrics
+        exampleFile: ..\..\..\stable\2014-04-01\examples\DatabaseMetricsListWithFilter.json
+        # operationId: Databases_ListMetrics
+      - step: Databases_ListInaccessibleByServer
+        exampleFile: ..\examples\ListVCoreInaccessibleDatabasesByServer.json
+      - step: Databases_Update
+        # exampleFile: ..\examples\PatchDatabaseDefaultEnclave.json
+        operationId: Databases_Update
+        parameters:
+          parameters:
+            tags: 
+              databaseKey: databaseValue
+      - step: Databases_Failover
+        exampleFile: ..\examples\FailoverDatabase.json
+
+# This feature is not available for the selected database's edition
+      # - step: Databases_UpgradeDataWarehouse
+      #   exampleFile: ..\examples\UpgradeDataWarehouse.json
+      # - step: Databases_Resume
+      #   exampleFile: ..\examples\ResumeDatabase.json
+      # - step: Databases_Pause
+      #   exampleFile: ..\examples\PauseDatabase.json
+
+      # - step: Databases_Export # storageKey
+      #   exampleFile: ..\examples\ExportDatabase.json
+      # - step: Databases_Import
+      #   exampleFile: ..\examples\ImportDatabase.json
+
+
+      - step: Databases_ListByElasticPool
+        exampleFile: ..\examples\ListDatabasesByElasticPool.json
+
+  - scenario: TransparentDataEncryptions
+    description: Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}
+    variables:
+      tdeName:
+        type: string
+        prefix: tdename
+    steps:
+      - step: TransparentDataEncryptions_CreateOrUpdate
+        exampleFile: ..\examples\TransparentDataEncryptionUpdate.json
+      - step: TransparentDataEncryptions_ListByDatabase
+        exampleFile: ..\examples\TransparentDataEncryptionList.json
+      - step: TransparentDataEncryptions_Get
+        exampleFile: ..\examples\TransparentDataEncryptionGet.json
+
+cleanUpSteps:
+  - step: Databases_Rename
+    exampleFile: ..\examples\RenameDatabase.json
+  - step: Databases_Delete
+    exampleFile: ..\examples\DeleteDatabase.json
+    requestUpdate:
+      - replace: /databaseName
+        value: concat(new,$(databaseName))

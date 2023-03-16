@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ServerCommunicationLinks
+    description: Microsoft.Sql/servers/{serverName}/communicationLinks/{communicationLinkName}
+    variables:
+      communicationLinkName:
+        type: string
+        prefix: communic
+    steps:
+      - operationId: ServerCommunicationLinks_CreateOrUpdate
+        exampleFile: .\examples\ServerCommunicationLinkCreateOrUpdate.json
+      - operationId: ServerCommunicationLinks_ListByServer
+        exampleFile: .\examples\ServerCommunicationLinkList.json
+      - operationId: ServerCommunicationLinks_Get
+        exampleFile: .\examples\ServerCommunicationLinkGet.json
+      - operationId: ServerCommunicationLinks_Delete
+        exampleFile: .\examples\ServerCommunicationLinkDelete.json

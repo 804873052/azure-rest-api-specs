@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: GeoBackupPolicies
+    description: Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}
+    variables:
+      geoBackupPolicyName:
+        type: string
+        prefix: geobacku
+    steps:
+
+# to databases
+      - operationId: Databases_ListMetrics
+        exampleFile: ..\..\..\stable\2014-04-01\examples\DatabaseMetricsListWithFilter.json
+      - operationId: Databases_ListMetricDefinitions
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\DatabaseMetricsDefinitionsList.json
+
+
+# to elastic pools
+      - operationId: ElasticPools_ListMetrics
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\ElasticPoolMetricsListWithFilter.json
+      - operationId: ElasticPools_ListMetricDefinitions
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\ElasticPoolMetricsDefinitionsList.json

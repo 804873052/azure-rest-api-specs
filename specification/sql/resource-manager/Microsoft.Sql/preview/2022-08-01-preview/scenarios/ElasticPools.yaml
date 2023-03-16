@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  adminPassword:
+    type: secureString
+  serverName:
+    type: string
+    prefix: serverna
+
+prepareSteps:
+  - step: Servers_CreateOrUpdate
+    exampleFile: ..\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+      - remove: /parameters/properties/administrators
+
+scenarios:
+  - scenario: TransparentDataEncryptions
+    description: Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}
+    variables:
+      elasticPoolName:
+        type: string
+        prefix: elasticp
+    steps:
+      - step: ElasticPools_CreateOrUpdate
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolCreateOrUpdateMin.json
+      - step: ElasticPools_ListByServer
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolListByServer.json
+      - step: ElasticPools_Get
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolGet.json
+
+      - step: ElasticPools_ListMetricDefinitions # lower code
+        exampleFile: ..\..\..\stable\2014-04-01\examples\ElasticPoolMetricsDefinitionsList.json
+      - step: ElasticPools_ListMetrics
+        exampleFile: ..\..\..\stable\2014-04-01\examples\ElasticPoolMetricsListWithFilter.json
+
+      - step: ElasticPools_Update
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolUpdateMin.json
+      - step: ElasticPools_Failover # internal error
+        exampleFile: ..\..\2021-08-01-preview\examples\FailoverElasticPool.json
+      - step: ElasticPools_Delete
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolDelete.json
+    

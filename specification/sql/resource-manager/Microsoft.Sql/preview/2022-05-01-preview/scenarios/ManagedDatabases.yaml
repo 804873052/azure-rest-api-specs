@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ManagedDatabases
+    description: Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}
+    variables:
+      databaseName:
+        type: string
+        prefix: midatabase
+    steps:
+      - operationId: ManagedDatabases_CreateOrUpdate
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseCreateMin.json
+      - operationId: ManagedDatabases_ListByInstance
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\ManagedDatabaseListByManagedInstance.json
+      - operationId: ManagedDatabases_Get
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseGet.json
+      - operationId: ManagedDatabases_ListInaccessibleByInstance
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\InaccessibleManagedDatabaseListByManagedInstance.json
+      - operationId: ManagedDatabases_Update
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseUpdateMin.json
+      - operationId: ManagedDatabases_CompleteMove
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseCompleteMove.json
+      - operationId: ManagedDatabases_CompleteRestore
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\ManagedDatabaseCompleteExternalRestore.json
+      - operationId: ManagedDatabases_StartMove
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseStartMoveMin.json
+      - operationId: ManagedDatabases_CancelMove
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseCancelMove.json
+      - operationId: ManagedDatabases_Delete
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseDelete.json

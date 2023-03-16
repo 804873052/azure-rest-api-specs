@@ -1,0 +1,15 @@
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ManagedDatabaseTransparentDataEncryption
+    description: Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/transparentDataEncryption/{tdeName}
+    steps:
+      - operationId: ManagedDatabaseTransparentDataEncryption_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedTransparentDataEncryptionUpdate.json
+      - operationId: ManagedDatabaseTransparentDataEncryption_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedTransparentDataEncryptionList.json
+      - operationId: ManagedDatabaseTransparentDataEncryption_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedTransparentDataEncryptionGet.json

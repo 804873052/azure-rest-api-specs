@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: TransparentDataEncryptions
+    description: Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}
+    variables:
+      tdeName:
+        type: string
+        prefix: tdename
+    steps:
+      - operationId: TransparentDataEncryptions_CreateOrUpdate
+        exampleFile: ..\examples\TransparentDataEncryptionUpdate.json
+      - operationId: TransparentDataEncryptions_ListByDatabase
+        exampleFile: ..\examples\TransparentDataEncryptionList.json
+      - operationId: TransparentDataEncryptions_Get
+        exampleFile: ..\examples\TransparentDataEncryptionGet.json

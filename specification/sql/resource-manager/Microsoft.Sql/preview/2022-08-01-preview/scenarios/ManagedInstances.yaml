@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  adminPassword:
+    type: secureString
+  virtualNetworksName:
+    type: string
+    prefix: managedinstancevnet
+
+prepareSteps:
+  - step: Create_VirtualNetworkAndSubnet
+    armTemplate: ./templates/Create_VirtualNetworkAndSubnet.json
+
+# Deploying Managed Instance is a long running operation taking up to 6 hours to complete.
+scenarios:
+  - scenario: ManagedInstances
+    description: Microsoft.Sql/managedInstances/{managedInstanceName}
+    variables:
+      managedInstanceName:
+        type: string
+        prefix: managedi
+    steps:
+      - step: ManagedInstances_CreateOrUpdate
+        exampleFile: ..\examples\ManagedInstanceCreateMin.json
+        requestUpdate:
+          - replace: /parameters/properties/administratorLoginPassword
+            value: $(adminPassword)
+          - replace: /parameters/properties/subnetId
+            value: $(subnetId)
+
+      - step: ManagedInstances_List
+        exampleFile: ..\examples\ManagedInstanceList.json
+
+      - step: ManagedInstances_ListByManagedInstance
+        exampleFile: ..\examples\ManagedInstanceTopQueriesListMin.json
+      - step: ManagedInstances_ListByResourceGroup
+        exampleFile: ..\examples\ManagedInstanceListByResourceGroup.json
+      - step: ManagedInstances_Get
+        exampleFile: ..\examples\ManagedInstanceGet.json
+      - step: ManagedInstances_Update
+        exampleFile: ..\examples\ManagedInstanceUpdateMin.json
+
+      - step: ManagedInstances_Failover
+        exampleFile: ..\examples\FailoverManagedInstance.json
+
+# new operation
+      # - step: ManagedInstances_ListOutboundNetworkDependenciesByManagedInstance
+      #   exampleFile: ..\examples\ListOutboundNetworkDependenciesByManagedInstance.json
+      # - step: ManagedInstances_Stop
+      #   exampleFile: ..\examples\StopManagedInstance.json
+      # - step: ManagedInstances_Start
+      #   exampleFile: ..\examples\StartManagedInstance.json
+
+      - step: ManagedInstances_ListByInstancePool
+        exampleFile: ..\examples\ManagedInstanceListByInstancePool.json
+
+      - step: ManagedInstances_Delete
+        exampleFile: ..\examples\ManagedInstanceDelete.json

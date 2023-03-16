@@ -1,0 +1,16 @@
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ServerDevOpsAuditSettings
+    description: Microsoft.Sql/servers/{serverName}/devOpsAuditingSettings/{devOpsAuditingSettingsName}
+    variables:
+      devOpsAuditingSettingsName:
+        type: string
+        prefix: devopsau
+    steps:
+      - operationId: ServerDevOpsAuditSettings_CreateOrUpdate
+        exampleFile: ..\..\2022-02-01-preview\examples\ServerDevOpsAuditCreateMin.json
+      - operationId: ServerDevOpsAuditSettings_ListByServer
+        exampleFile: ..\..\2022-02-01-preview\examples\ServerDevOpsAuditList.json
+      - operationId: ServerDevOpsAuditSettings_Get
+        exampleFile: ..\..\2022-02-01-preview\examples\ServerDevOpsAuditGet.json

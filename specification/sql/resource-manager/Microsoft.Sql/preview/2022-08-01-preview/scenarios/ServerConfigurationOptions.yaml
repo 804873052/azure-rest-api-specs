@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ServerConfigurationOptions
+    description: Microsoft.Sql/managedInstances/{managedInstanceName}/serverConfigurationOptions/{serverConfigurationOptionName}
+    variables:
+      serverConfigurationOptionName:
+        type: string
+        prefix: serverco
+    steps:
+      - operationId: ServerConfigurationOptions_CreateOrUpdate
+        exampleFile: ..\examples\ServerConfigurationOptionUpdate.json
+      - operationId: ServerConfigurationOptions_ListByManagedInstance
+        exampleFile: ..\examples\ServerConfigurationOptionList.json
+      - operationId: ServerConfigurationOptions_Get
+        exampleFile: ..\examples\ServerConfigurationOptionGet.json

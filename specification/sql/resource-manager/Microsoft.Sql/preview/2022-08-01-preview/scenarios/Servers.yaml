@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  adminPassword:
+    type: secureString
+  serverName:
+    type: string
+    prefix: serverna
+
+prepareSteps:
+  - step: Servers_CheckNameAvailability
+    exampleFile: ..\examples\CheckNameAvailabilityServerAlreadyExists.json
+    requestUpdate:
+      - replace: /parameters/name
+        value: $(serverName)
+  - step: Servers_CreateOrUpdate
+    exampleFile: ..\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+      - remove: /parameters/properties/administrators
+
+scenarios:
+  - scenario: Servers
+    description: Microsoft.Sql/servers/{serverName}
+    steps:
+      - step: Servers_List
+        exampleFile: ..\examples\ServerList.json
+      - step: Servers_ListByResourceGroup
+        exampleFile: ..\examples\ServerListByResourceGroup.json
+      - step: Servers_Get
+        exampleFile: ..\examples\ServerGet.json
+      - step: Servers_Update
+        # exampleFile: ..\examples\ServerUpdate.json
+        operationId: Servers_Update
+        parameters:
+          parameters:
+            tags:
+              sqlKey: sqlValue
+      # - step: Servers_ImportDatabase # need storage
+      #   exampleFile: ..\examples\ImportNewDatabase.json
+      # - step: Servers_RefreshStatus # new operation
+      #   exampleFile: ..\examples\RefreshExternalGovernanceStatus.json
+
+# not found
+  # - scenario: RecoverableDatabases
+  #   description: Microsoft.Sql/servers/{serverName}/recoverableDatabases
+  #   steps:
+  #     - step: RecoverableDatabases_ListByServer
+  #       exampleFile: ..\examples\RecoverableDatabaseList.json
+  #     - step: RecoverableDatabases_Get
+  #       exampleFile: ..\examples\RecoverableDatabaseGet.json
+
+# not found
+  # - scenario: RestorableDroppedDatabases
+  #   description: Microsoft.Sql/servers/{serverName}/restorableDroppedDatabases
+  #   steps:
+  #     - step: RestorableDroppedDatabases_ListByServer
+  #       exampleFile: ..\examples\ListRestorableDroppedDatabasesByServer.json
+  #     - step: RestorableDroppedDatabases_Get
+  #       exampleFile: ..\examples\GetRestorableDroppedDatabase.json
+
+cleanUpSteps:
+  - step: Servers_Delete
+    exampleFile: ..\examples\ServerDelete.json

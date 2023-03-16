@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# need secondary and primary managedInstance
+scenarios:
+  - scenario: InstanceFailoverGroups
+    description: Microsoft.Sql/locations/{locationName}/instanceFailoverGroups/{failoverGroupName}
+    variables:
+      failoverGroupName:
+        type: string
+        prefix: failover
+    steps:
+      - step: InstanceFailoverGroups_CreateOrUpdate
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupCreateOrUpdate.json
+      - step: InstanceFailoverGroups_ListByLocation
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupList.json
+      - step: InstanceFailoverGroups_Get
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupGet.json
+      - step: InstanceFailoverGroups_Failover
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupFailover.json
+      - step: InstanceFailoverGroups_ForceFailoverAllowDataLoss
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupForceFailoverAllowDataLoss.json
+      - step: InstanceFailoverGroups_Delete
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupDelete.json

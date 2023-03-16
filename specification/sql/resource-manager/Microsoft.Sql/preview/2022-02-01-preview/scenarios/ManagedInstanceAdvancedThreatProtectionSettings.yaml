@@ -1,0 +1,15 @@
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ManagedInstanceAdvancedThreatProtectionSettings
+    description: Microsoft.Sql/managedInstances/{managedInstanceName}/advancedThreatProtectionSettings/{advancedThreatProtectionName}
+    steps:
+      - operationId: ManagedInstanceAdvancedThreatProtectionSettings_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ManagedInstanceAdvancedThreatProtectionSettingsCreateMin.json
+      - operationId: ManagedInstanceAdvancedThreatProtectionSettings_ListByInstance
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ManagedInstanceAdvancedThreatProtectionSettingsListByInstance.json
+      - operationId: ManagedInstanceAdvancedThreatProtectionSettings_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ManagedInstanceAdvancedThreatProtectionSettingsGet.json

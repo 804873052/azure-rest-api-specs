@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: StartStopManagedInstanceSchedules
+    description: Microsoft.Sql/managedInstances/{managedInstanceName}/startStopSchedules/{startStopScheduleName}
+    variables:
+      startStopScheduleName:
+        type: string
+        prefix: startsto
+    steps:
+      - operationId: StartStopManagedInstanceSchedules_CreateOrUpdate
+        exampleFile: ..\examples\StartStopManagedInstanceScheduleCreateOrUpdateMax.json
+      - operationId: StartStopManagedInstanceSchedules_ListByInstance
+        exampleFile: ..\examples\StartStopManagedInstanceScheduleList.json
+      - operationId: StartStopManagedInstanceSchedules_Get
+        exampleFile: ..\examples\StartStopManagedInstanceScheduleGet.json
+      - operationId: StartStopManagedInstanceSchedules_Delete
+        exampleFile: ..\examples\StartStopManagedInstanceScheduleDelete.json

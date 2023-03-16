@@ -1,0 +1,21 @@
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ReplicationLinks
+    description: Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/transparentDataEncryption/{tdeName}
+    steps:
+      - operationId: ReplicationLinks_ListByDatabase
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkListByDatabase.json
+
+      - operationId: ReplicationLinks_Get
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkGet.json
+      - operationId: ReplicationLinks_Failover
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkFailover.json
+      - operationId: ReplicationLinks_FailoverAllowDataLoss
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ReplicationLinkFailoverAllowDataLoss.json
+      - operationId: ReplicationLinks_ListByServer
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkListByServer.json
+
+      - operationId: ReplicationLinks_Delete
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkDelete.json

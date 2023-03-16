@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: GeoBackupPolicies
+    description: Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies/{geoBackupPolicyName}
+    variables:
+      geoBackupPolicyName:
+        type: string
+        prefix: geobacku
+    steps:
+      - operationId: GeoBackupPolicies_CreateOrUpdate
+        exampleFile: .\examples\GeoBackupPoliciesCreateOrUpdate.json
+      - operationId: GeoBackupPolicies_ListByDatabase
+        exampleFile: .\examples\GeoBackupPoliciesList.json
+      - operationId: GeoBackupPolicies_Get
+        exampleFile: .\examples\GeoBackupPoliciesGet.json

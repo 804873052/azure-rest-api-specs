@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# not create operation
+scenarios:
+  - scenario: VirtualClusters
+    description: Microsoft.Sql/virtualClusters/{virtualClusterName}
+    variables:
+      virtualClusterName:
+        type: string
+        prefix: virtualc
+    steps:
+      - step: VirtualClusters_Update
+        exampleFile: ..\..\2022-05-01-preview\examples\VirtualClusterUpdate.json
+      - step: VirtualClusters_UpdateDnsServers
+        exampleFile: ..\..\2022-05-01-preview\examples\UpdateVirtualClusterDnsServers.json
+      - step: VirtualClusters_List
+        exampleFile: ..\..\2022-05-01-preview\examples\VirtualClusterList.json
+      - step: VirtualClusters_ListByResourceGroup
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\VirtualClusterListByResourceGroup.json
+      - step: VirtualClusters_Get
+        exampleFile: ..\..\2022-05-01-preview\examples\VirtualClusterGet.json
+      - step: VirtualClusters_Delete
+        exampleFile: ..\..\2022-05-01-preview\examples\VirtualClusterDelete.json

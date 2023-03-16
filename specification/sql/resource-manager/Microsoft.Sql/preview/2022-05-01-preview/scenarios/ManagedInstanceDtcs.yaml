@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ManagedInstanceDtcs
+    description: Microsoft.Sql/managedInstances/{managedInstanceName}/dtc/{dtcName}
+    steps:
+      - operationId: ManagedInstanceDtcs_CreateOrUpdate
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedInstanceDtcUpdateMax.json
+      - operationId: ManagedInstanceDtcs_ListByManagedInstance
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedInstanceDtcList.json
+      - operationId: ManagedInstanceDtcs_Get
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedInstanceDtcGet.json

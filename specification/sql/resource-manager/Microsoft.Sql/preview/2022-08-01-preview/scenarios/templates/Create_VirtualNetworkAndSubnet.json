@@ -1,0 +1,49 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "virtualNetworksName": {
+        "type": "string"
+      },
+      "location": {
+        "type": "string"
+      }
+    },
+    "resources": [
+      {
+        "name": "[parameters('virtualNetworksName')]",
+        "type": "Microsoft.Network/virtualNetworks",
+        "location": "[parameters('location')]",
+        "apiVersion": "2021-05-01",
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/16"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "default",
+              "properties": {
+                "addressPrefix": "10.0.0.0/24",
+                "delegations": [
+                    {
+                        "name": "myDelegation",
+                        "properties": {
+                            "serviceName": "Microsoft.Sql/managedInstances"
+                        }
+                    }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "outputs": {
+      "subnetId": {
+        "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworksName'), 'default')]",
+        "type": "string"
+      }
+    }
+  }

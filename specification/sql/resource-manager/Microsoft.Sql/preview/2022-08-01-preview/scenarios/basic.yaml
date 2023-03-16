@@ -1,0 +1,1494 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+  databaseName:
+    type: string
+    prefix: database
+  managedInstanceName:
+    type: string
+    prefix: managedi
+  vulnerabilityAssessmentName:
+    type: string
+    prefix: vulnerab
+  locationName:
+    type: string
+    prefix: location
+  jobAgentName:
+    type: string
+    prefix: jobagent
+  jobName:
+    type: string
+    prefix: jobname
+  schemaName:
+    type: string
+    prefix: schemana
+  baselineName:
+    type: string
+    prefix: baseline
+  tableName:
+    type: string
+    prefix: tablenam
+  syncGroupName:
+    type: string
+    prefix: syncgrou
+  policyName:
+    type: string
+    prefix: policyna
+  elasticPoolName:
+    type: string
+    prefix: elasticp
+  columnName:
+    type: string
+    prefix: columnna
+  ruleId:
+    type: string
+    prefix: ruleid
+  scanId:
+    type: string
+    prefix: scanid
+  longTermRetentionServerName:
+    type: string
+    prefix: longterm
+  backupName:
+    type: string
+    prefix: backupna
+  failoverGroupName:
+    type: string
+    prefix: failover
+  longTermRetentionDatabaseName:
+    type: string
+    prefix: longterm
+  sensitivityLabelSource:
+    type: string
+    prefix: sensitiv
+  securityAlertPolicyName:
+    type: string
+    prefix: security
+  encryptionProtectorName:
+    type: string
+    prefix: encrypti
+  jobExecutionId:
+    type: string
+    prefix: jobexecu
+  dnsAliasName:
+    type: string
+    prefix: dnsalias
+  blobAuditingPolicyName:
+    type: string
+    prefix: blobaudi
+  advancedThreatProtectionName:
+    type: string
+    prefix: advanced
+  advisorName:
+    type: string
+    prefix: advisorn
+  stepName:
+    type: string
+    prefix: stepname
+  workloadGroupName:
+    type: string
+    prefix: workload
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  instancePoolName:
+    type: string
+    prefix: instance
+  administratorName:
+    type: string
+    prefix: administ
+  authenticationName:
+    type: string
+    prefix: authenti
+  keyName:
+    type: string
+    prefix: keyname
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  restorableDroppedDatabaseId:
+    type: string
+    prefix: restorab
+  syncMemberName:
+    type: string
+    prefix: syncmemb
+  ledgerDigestUploads:
+    type: string
+    prefix: ledgerdi
+  operationId:
+    type: string
+    prefix: operatio
+  syncAgentName:
+    type: string
+    prefix: syncagen
+  dataMaskingPolicyName:
+    type: string
+    prefix: datamask
+  tdeName:
+    type: string
+    prefix: tdename
+  distributedAvailabilityGroupName:
+    type: string
+    prefix: distribu
+  linkId:
+    type: string
+    prefix: linkid
+  virtualClusterName:
+    type: string
+    prefix: virtualc
+  communicationLinkName:
+    type: string
+    prefix: communic
+  credentialName:
+    type: string
+    prefix: credenti
+  jobVersion:
+    type: int
+    value: 22
+  targetGroupName:
+    type: string
+    prefix: targetgr
+  serverTrustGroupName:
+    type: string
+    prefix: servertr
+  virtualNetworkRuleName:
+    type: string
+    prefix: virtualn
+  workloadClassifierName:
+    type: string
+    prefix: workload
+  outboundRuleFqdn:
+    type: string
+    prefix: outbound
+  certificateName:
+    type: string
+    prefix: certific
+  startStopScheduleName:
+    type: string
+    prefix: startsto
+  geoBackupPolicyName:
+    type: string
+    prefix: geobacku
+  recommendedActionName:
+    type: string
+    prefix: recommen
+  deletedServerName:
+    type: string
+    prefix: deleteds
+  queryId:
+    type: string
+    prefix: queryid
+  groupName:
+    type: string
+    prefix: groupnam
+  restorePointName:
+    type: string
+    prefix: restorep
+  devOpsAuditingSettingsName:
+    type: string
+    prefix: devopsau
+  extensionName:
+    type: string
+    prefix: extensio
+  connectionPolicyName:
+    type: string
+    prefix: connecti
+  scanResultId:
+    type: string
+    prefix: scanresu
+  dtcName:
+    type: string
+    prefix: dtcname
+  serverConfigurationOptionName:
+    type: string
+    prefix: serverco
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Servers_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailabilityServerAlreadyExists.json
+      - operationId: Servers_CreateOrUpdate
+        exampleFile: ..\examples\ServerCreate.json
+      - operationId: Servers_List
+        exampleFile: ..\examples\ServerList.json
+      - operationId: Servers_ListByResourceGroup
+        exampleFile: ..\examples\ServerListByResourceGroup.json
+      - operationId: Servers_Get
+        exampleFile: ..\examples\ServerGet.json
+      - operationId: Servers_Update
+        exampleFile: ..\examples\ServerUpdate.json
+      - operationId: Servers_ImportDatabase
+        exampleFile: ..\examples\ImportNewDatabase.json
+      - operationId: Servers_RefreshStatus
+        exampleFile: ..\examples\RefreshExternalGovernanceStatus.json
+      - operationId: ManagedInstances_CreateOrUpdate
+        exampleFile: ..\examples\ManagedInstanceCreateMin.json
+      - operationId: ManagedInstances_List
+        exampleFile: ..\examples\ManagedInstanceList.json
+      - operationId: ManagedInstances_ListOutboundNetworkDependenciesByManagedInstance
+        exampleFile: ..\examples\ListOutboundNetworkDependenciesByManagedInstance.json
+      - operationId: ManagedInstances_ListByManagedInstance
+        exampleFile: ..\examples\ManagedInstanceTopQueriesListMin.json
+      - operationId: ManagedInstances_ListByResourceGroup
+        exampleFile: ..\examples\ManagedInstanceListByResourceGroup.json
+      - operationId: ManagedInstances_Get
+        exampleFile: ..\examples\ManagedInstanceGet.json
+      - operationId: ManagedInstances_Update
+        exampleFile: ..\examples\ManagedInstanceUpdateMin.json
+      - operationId: ManagedInstances_Stop
+        exampleFile: ..\examples\StopManagedInstance.json
+      - operationId: ManagedInstances_Failover
+        exampleFile: ..\examples\FailoverManagedInstance.json
+      - operationId: ManagedInstances_Start
+        exampleFile: ..\examples\StartManagedInstance.json
+      - operationId: Databases_CreateOrUpdate
+        exampleFile: ..\examples\CreateDatabaseDefaultMode.json
+      - operationId: Databases_ListByServer
+        exampleFile: ..\examples\ListVCoreDatabasesByServer.json
+      - operationId: Databases_Get
+        exampleFile: ..\examples\GetVCoreDatabaseDefaultEnclave.json
+      - operationId: Databases_ListMetricDefinitions
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\DatabaseMetricsDefinitionsList.json
+      - operationId: Databases_ListMetrics
+        exampleFile: ..\..\..\stable\2014-04-01\examples\DatabaseMetricsListWithFilter.json
+      - operationId: Databases_ListInaccessibleByServer
+        exampleFile: ..\examples\ListVCoreInaccessibleDatabasesByServer.json
+      - operationId: Databases_Update
+        exampleFile: ..\examples\PatchDatabaseDefaultEnclave.json
+      - operationId: Databases_UpgradeDataWarehouse
+        exampleFile: ..\examples\UpgradeDataWarehouse.json
+      - operationId: Databases_Resume
+        exampleFile: ..\examples\ResumeDatabase.json
+      - operationId: Databases_Export
+        exampleFile: ..\examples\ExportDatabase.json
+      - operationId: Databases_Failover
+        exampleFile: ..\examples\FailoverDatabase.json
+      - operationId: Databases_Pause
+        exampleFile: ..\examples\PauseDatabase.json
+      - operationId: Databases_Rename
+        exampleFile: ..\examples\RenameDatabase.json
+      - operationId: Databases_Import
+        exampleFile: ..\examples\ImportDatabase.json
+      - operationId: ManagedDatabases_CreateOrUpdate
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseCreateMin.json
+      - operationId: ManagedDatabases_ListByInstance
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\ManagedDatabaseListByManagedInstance.json
+      - operationId: ManagedDatabases_Get
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseGet.json
+      - operationId: ManagedDatabases_ListInaccessibleByInstance
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\InaccessibleManagedDatabaseListByManagedInstance.json
+      - operationId: ManagedDatabases_Update
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseUpdateMin.json
+      - operationId: ManagedDatabases_CompleteMove
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseCompleteMove.json
+      - operationId: ManagedDatabases_CompleteRestore
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\ManagedDatabaseCompleteExternalRestore.json
+      - operationId: ManagedDatabases_StartMove
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseStartMoveMin.json
+      - operationId: ManagedDatabases_CancelMove
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseCancelMove.json
+      - operationId: JobAgents_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\CreateOrUpdateJobAgent.json
+      - operationId: JobAgents_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobAgentsByServer.json
+      - operationId: JobAgents_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJobAgent.json
+      - operationId: JobAgents_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\UpdateJobAgent.json
+      - operationId: Jobs_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\CreateOrUpdateJobMin.json
+      - operationId: Jobs_ListByAgent
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobsByAgent.json
+      - operationId: Jobs_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJob.json
+      - operationId: SyncGroups_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupCreate.json
+      - operationId: SyncGroups_ListSyncDatabaseIds
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupGetSyncDatabaseId.json
+      - operationId: SyncGroups_ListByDatabase
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupListByDatabase.json
+      - operationId: SyncGroups_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupGet.json
+      - operationId: SyncGroups_ListHubSchemas
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupGetHubSchema.json
+      - operationId: SyncGroups_ListLogs
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupGetLog.json
+      - operationId: SyncGroups_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupPatch.json
+      - operationId: SyncGroups_RefreshHubSchema
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupRefreshHubSchema.json
+      - operationId: SyncGroups_TriggerSync
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupTriggerSync.json
+      - operationId: SyncGroups_CancelSync
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupCancelSync.json
+      - operationId: SqlVulnerabilityAssessmentsSettings_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentCreate.json
+      - operationId: SqlVulnerabilityAssessmentsSettings_ListByServer
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentListByServer.json
+      - operationId: SqlVulnerabilityAssessmentsSettings_Get
+        exampleFile: ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentGet.json
+      - operationId: ElasticPools_CreateOrUpdate
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolCreateOrUpdateMin.json
+      - operationId: ElasticPools_ListByServer
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolListByServer.json
+      - operationId: ElasticPools_Get
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolGet.json
+      - operationId: ElasticPools_ListMetricDefinitions
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\ElasticPoolMetricsDefinitionsList.json
+      - operationId: ElasticPools_ListMetrics
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\ElasticPoolMetricsListWithFilter.json
+      - operationId: ElasticPools_Update
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolUpdateMin.json
+      - operationId: ElasticPools_Failover
+        exampleFile: ..\..\2021-08-01-preview\examples\FailoverElasticPool.json
+      - operationId: DatabaseVulnerabilityAssessments_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentCreateContainerSasKeyMin.json
+      - operationId: DatabaseVulnerabilityAssessments_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentListByDatabase.json
+      - operationId: DatabaseVulnerabilityAssessments_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentGet.json
+      - operationId: ManagedDatabaseVulnerabilityAssessments_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentCreateMin.json
+      - operationId: ManagedDatabaseVulnerabilityAssessments_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentListByDatabase.json
+      - operationId: ManagedDatabaseVulnerabilityAssessments_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentGet.json
+      - operationId: JobExecutions_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\CreateOrUpdateJobExecution.json
+      - operationId: JobExecutions_ListByAgent
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobExecutionsByAgent.json
+      - operationId: JobExecutions_ListByJob
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobExecutionsByJob.json
+      - operationId: JobExecutions_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJobExecution.json
+      - operationId: JobExecutions_Cancel
+        exampleFile: ..\..\2020-11-01-preview\examples\CancelJobExecution.json
+      - operationId: JobExecutions_Create
+        exampleFile: ..\..\2020-11-01-preview\examples\CreateJobExecution.json
+      - operationId: WorkloadGroups_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\CreateOrUpdateWorkloadGroupMin.json
+      - operationId: WorkloadGroups_ListByDatabase
+        exampleFile: ..\..\2020-11-01-preview\examples\GetWorkloadGroupList.json
+      - operationId: WorkloadGroups_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetWorkloadGroup.json
+      - operationId: SyncMembers_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncMemberCreate.json
+      - operationId: SyncMembers_ListBySyncGroup
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncMemberListBySyncGroup.json
+      - operationId: SyncMembers_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncMemberGet.json
+      - operationId: SyncMembers_ListMemberSchemas
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncMemberGetSchema.json
+      - operationId: SyncMembers_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncMemberPatch.json
+      - operationId: SyncMembers_RefreshMemberSchema
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncMemberRefreshSchema.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentBaselines_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentBaselineAdd.json
+      - operationId: >-
+          DatabaseSqlVulnerabilityAssessmentBaselines_ListBySqlVulnerabilityAssessment
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessment.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentBaselines_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentBaselineGet.json
+      - operationId: InstancePools_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\CreateOrUpdateInstancePoolMax.json
+      - operationId: InstancePools_List
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ListInstancePoolsBySubscriptionId.json
+      - operationId: InstancePools_ListByResourceGroup
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ListInstancePoolsByResourceGroup.json
+      - operationId: InstancePools_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetInstancePool.json
+      - operationId: InstancePools_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\PatchInstancePool.json
+      - operationId: SqlVulnerabilityAssessmentBaselines_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentBaselineAdd.json
+      - operationId: FailoverGroups_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\FailoverGroupCreateOrUpdate.json
+      - operationId: FailoverGroups_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\FailoverGroupList.json
+      - operationId: FailoverGroups_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\FailoverGroupGet.json
+      - operationId: FailoverGroups_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\FailoverGroupUpdate.json
+      - operationId: FailoverGroups_Failover
+        exampleFile: ..\..\2020-11-01-preview\examples\FailoverGroupFailover.json
+      - operationId: FailoverGroups_ForceFailoverAllowDataLoss
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\FailoverGroupForceFailoverAllowDataLoss.json
+      - operationId: SyncAgents_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncAgentCreate.json
+      - operationId: SyncAgents_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncAgentListByServer.json
+      - operationId: SyncAgents_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncAgentGet.json
+      - operationId: SyncAgents_ListLinkedDatabases
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncAgentGetLinkedDatabases.json
+      - operationId: SyncAgents_GenerateKey
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncAgentGenerateKey.json
+      - operationId: SensitivityLabels_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\ColumnSensitivityLabelCreateMax.json
+      - operationId: SensitivityLabels_ListCurrentByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\SensitivityLabelsListByDatabaseWithSourceCurrent.json
+      - operationId: SensitivityLabels_ListRecommendedByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\SensitivityLabelsListByDatabaseWithSourceRecommended.json
+      - operationId: SensitivityLabels_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ColumnSensitivityLabelGet.json
+      - operationId: SensitivityLabels_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\SensitivityLabelsCurrentUpdate.json
+      - operationId: SensitivityLabels_DisableRecommendation
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\RecommendedColumnSensitivityLabelDisable.json
+      - operationId: SensitivityLabels_EnableRecommendation
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\RecommendedColumnSensitivityLabelEnable.json
+      - operationId: InstanceFailoverGroups_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\InstanceFailoverGroupCreateOrUpdate.json
+      - operationId: InstanceFailoverGroups_ListByLocation
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupList.json
+      - operationId: InstanceFailoverGroups_Get
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupGet.json
+      - operationId: InstanceFailoverGroups_Failover
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupFailover.json
+      - operationId: InstanceFailoverGroups_ForceFailoverAllowDataLoss
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\InstanceFailoverGroupForceFailoverAllowDataLoss.json
+      - operationId: ManagedDatabaseSensitivityLabels_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseColumnSensitivityLabelCreate.json
+      - operationId: ManagedDatabaseSensitivityLabels_ListCurrentByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseSensitivityLabelsListByDatabaseCurrent.json
+      - operationId: ManagedDatabaseSensitivityLabels_ListRecommendedByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseSensitivityLabelsListByDatabaseRecommended.json
+      - operationId: ManagedDatabaseSensitivityLabels_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseColumnSensitivityLabelGet.json
+      - operationId: ManagedDatabaseSensitivityLabels_Update
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseSensitivityLabelsCurrentUpdate.json
+      - operationId: ManagedDatabaseSensitivityLabels_DisableRecommendation
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseRecommendedColumnSensitivityLabelDisable.json
+      - operationId: ManagedDatabaseSensitivityLabels_EnableRecommendation
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseRecommendedColumnSensitivityLabelEnable.json
+      - operationId: ServerDnsAliases_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerDnsAliasCreateOrUpdate.json
+      - operationId: ServerDnsAliases_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerDnsAliasList.json
+      - operationId: ServerDnsAliases_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerDnsAliasGet.json
+      - operationId: ServerDnsAliases_Acquire
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerDnsAliasAcquire.json
+      - operationId: DataMaskingPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\DataMaskingPolicyCreateOrUpdateMax.json
+      - operationId: DataMaskingPolicies_Get
+        exampleFile: ..\..\..\stable\2014-04-01\examples\DataMaskingPolicyGet.json
+      - operationId: DistributedAvailabilityGroups_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\DistributedAvailabilityGroupsCreate.json
+      - operationId: DistributedAvailabilityGroups_ListByInstance
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\DistributedAvailabilityGroupsListByInstance.json
+      - operationId: DistributedAvailabilityGroups_Get
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\DistributedAvailabilityGroupsGet.json
+      - operationId: DistributedAvailabilityGroups_Update
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\DistributedAvailabilityGroupsUpdate.json
+      - operationId: FirewallRules_Replace
+        exampleFile: ..\..\2020-11-01-preview\examples\FirewallRuleReplace.json
+      - operationId: FirewallRules_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\FirewallRuleList.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\FirewallRuleGet.json
+      - operationId: ManagedServerDnsAliases_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\ManagedServerDnsAliasCreateOrUpdate.json
+      - operationId: ManagedServerDnsAliases_ListByManagedInstance
+        exampleFile: ..\..\2021-11-01-preview\examples\ManagedServerDnsAliasList.json
+      - operationId: ManagedServerDnsAliases_Get
+        exampleFile: ..\..\2021-11-01-preview\examples\ManagedServerDnsAliasGet.json
+      - operationId: ManagedServerDnsAliases_Acquire
+        exampleFile: ..\..\2021-11-01-preview\examples\ManagedServerDnsAliasAcquire.json
+      - operationId: ServerCommunicationLinks_CreateOrUpdate
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\ServerCommunicationLinkCreateOrUpdate.json
+      - operationId: ServerCommunicationLinks_ListByServer
+        exampleFile: ..\..\..\stable\2014-04-01\examples\ServerCommunicationLinkList.json
+      - operationId: ServerCommunicationLinks_Get
+        exampleFile: ..\..\..\stable\2014-04-01\examples\ServerCommunicationLinkGet.json
+      - operationId: ManagedLedgerDigestUploads_CreateOrUpdate
+        exampleFile: ..\examples\ManagedLedgerDigestUploadsEnable.json
+      - operationId: ManagedLedgerDigestUploads_ListByDatabase
+        exampleFile: ..\examples\ManagedLedgerDigestUploadsList.json
+      - operationId: ManagedLedgerDigestUploads_Get
+        exampleFile: ..\examples\ManagedLedgerDigestUploadsGet.json
+      - operationId: ManagedLedgerDigestUploads_Disable
+        exampleFile: ..\examples\ManagedLedgerDigestUploadsDisable.json
+      - operationId: ManagedInstanceAzureADOnlyAuthentications_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceAzureADOnlyAuthCreateOrUpdate.json
+      - operationId: ManagedInstanceAzureADOnlyAuthentications_ListByInstance
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceAzureADOnlyAuthListByInstance.json
+      - operationId: ManagedInstanceAzureADOnlyAuthentications_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceAzureADOnlyAuthGet.json
+      - operationId: DatabaseVulnerabilityAssessmentRuleBaselines_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentRuleBaselineCreate.json
+      - operationId: DatabaseVulnerabilityAssessmentRuleBaselines_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentRuleBaselineGet.json
+      - operationId: JobTargetGroups_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\CreateOrUpdateJobTargetGroupMin.json
+      - operationId: JobTargetGroups_ListByAgent
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobTargetGroups.json
+      - operationId: JobTargetGroups_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJobTargetGroup.json
+      - operationId: EncryptionProtectors_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\EncryptionProtectorCreateOrUpdateKeyVault.json
+      - operationId: EncryptionProtectors_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\EncryptionProtectorList.json
+      - operationId: EncryptionProtectors_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\EncryptionProtectorGet.json
+      - operationId: EncryptionProtectors_Revalidate
+        exampleFile: ..\..\2020-11-01-preview\examples\EncryptionProtectorRevalidate.json
+      - operationId: SqlVulnerabilityAssessmentRuleBaseline_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentRuleBaselineCreate.json
+      - operationId: SqlVulnerabilityAssessmentRuleBaseline_ListByBaseline
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentRuleBaselineListByBaseline.json
+      - operationId: SqlVulnerabilityAssessmentRuleBaseline_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentRuleBaselineGet.json
+      - operationId: ManagedDatabaseVulnerabilityAssessmentRuleBaselines_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentRuleBaselineCreate.json
+      - operationId: ManagedDatabaseVulnerabilityAssessmentRuleBaselines_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentRuleBaselineGet.json
+      - operationId: LedgerDigestUploads_CreateOrUpdate
+        exampleFile: ..\..\2021-02-01-preview\examples\LedgerDigestUploadsEnable.json
+      - operationId: LedgerDigestUploads_ListByDatabase
+        exampleFile: ..\..\2021-02-01-preview\examples\LedgerDigestUploadsList.json
+      - operationId: LedgerDigestUploads_Get
+        exampleFile: ..\..\2021-02-01-preview\examples\LedgerDigestUploadsGet.json
+      - operationId: LedgerDigestUploads_Disable
+        exampleFile: ..\..\2021-02-01-preview\examples\LedgerDigestUploadsDisable.json
+      - operationId: ManagedInstanceAdministrators_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceAdministratorCreate.json
+      - operationId: ManagedInstanceAdministrators_ListByInstance
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceAdministratorListByInstance.json
+      - operationId: ManagedInstanceAdministrators_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedInstanceAdministratorGet.json
+      - operationId: ManagedBackupShortTermRetentionPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\UpdateManagedShortTermRetentionPolicy.json
+      - operationId: ManagedBackupShortTermRetentionPolicies_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\GetListManagedShortTermRetentionPolicy.json
+      - operationId: ManagedBackupShortTermRetentionPolicies_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\GetManagedShortTermRetentionPolicy.json
+      - operationId: ManagedBackupShortTermRetentionPolicies_Update
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\UpdateManagedShortTermRetentionPolicy.json
+      - operationId: JobSteps_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\CreateOrUpdateJobStepMin.json
+      - operationId: JobSteps_ListByJob
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobStepsByJob.json
+      - operationId: JobSteps_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJobStepByJob.json
+      - operationId: JobSteps_ListByVersion
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobStepsByVersion.json
+      - operationId: JobSteps_GetByVersion
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJobStepByVersion.json
+      - operationId: VirtualNetworkRules_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\VirtualNetworkRulesCreateOrUpdate.json
+      - operationId: VirtualNetworkRules_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\VirtualNetworkRulesList.json
+      - operationId: VirtualNetworkRules_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\VirtualNetworkRulesGet.json
+      - operationId: ServerVulnerabilityAssessments_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ServerVulnerabilityAssessmentCreateContainerSasKeyMin.json
+      - operationId: ServerVulnerabilityAssessments_ListByServer
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ServerVulnerabilityAssessmentListByServer.json
+      - operationId: ServerVulnerabilityAssessments_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ServerVulnerabilityAssessmentGet.json
+      - operationId: ManagedInstanceVulnerabilityAssessments_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceVulnerabilityAssessmentCreateContainerSasKeyMin.json
+      - operationId: ManagedInstanceVulnerabilityAssessments_ListByInstance
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceVulnerabilityAssessmentListByInstance.json
+      - operationId: ManagedInstanceVulnerabilityAssessments_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceVulnerabilityAssessmentGet.json
+      - operationId: JobCredentials_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\CreateOrUpdateJobCredential.json
+      - operationId: JobCredentials_ListByAgent
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobCredentialsByAgent.json
+      - operationId: JobCredentials_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJobCredential.json
+      - operationId: ServerTrustGroups_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerTrustGroupCreate.json
+      - operationId: ServerTrustGroups_ListByLocation
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerTrustGroupList.json
+      - operationId: ServerTrustGroups_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerTrustGroupGet.json
+      - operationId: ServerTrustGroups_ListByInstance
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ServerTrustGroupListByManagedInstance.json
+      - operationId: BackupShortTermRetentionPolicies_CreateOrUpdate
+        exampleFile: ..\..\2021-02-01-preview\examples\UpdateShortTermRetentionPolicy.json
+      - operationId: BackupShortTermRetentionPolicies_ListByDatabase
+        exampleFile: >-
+          ..\..\2021-02-01-preview\examples\ListShortTermRetentionPoliciesByDatabase.json
+      - operationId: BackupShortTermRetentionPolicies_Get
+        exampleFile: ..\..\2021-02-01-preview\examples\GetShortTermRetentionPolicy.json
+      - operationId: BackupShortTermRetentionPolicies_Update
+        exampleFile: ..\..\2021-02-01-preview\examples\UpdateShortTermRetentionPolicy.json
+      - operationId: ServerAzureADAdministrators_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\AdministratorCreateOrUpdate.json
+      - operationId: ServerAzureADAdministrators_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\AdministratorList.json
+      - operationId: ServerAzureADAdministrators_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\AdministratorGet.json
+      - operationId: StartStopManagedInstanceSchedules_CreateOrUpdate
+        exampleFile: ..\examples\StartStopManagedInstanceScheduleCreateOrUpdateMax.json
+      - operationId: StartStopManagedInstanceSchedules_ListByInstance
+        exampleFile: ..\examples\StartStopManagedInstanceScheduleList.json
+      - operationId: StartStopManagedInstanceSchedules_Get
+        exampleFile: ..\examples\StartStopManagedInstanceScheduleGet.json
+      - operationId: ServerKeys_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerKeyCreateOrUpdate.json
+      - operationId: ServerKeys_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerKeyList.json
+      - operationId: ServerKeys_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerKeyGet.json
+      - operationId: ServerTrustCertificates_CreateOrUpdate
+        exampleFile: ..\..\2021-11-01-preview\examples\ServerTrustCertificatesCreate.json
+      - operationId: ServerTrustCertificates_ListByInstance
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\ServerTrustCertificatesListByInstance.json
+      - operationId: ServerTrustCertificates_Get
+        exampleFile: ..\..\2021-11-01-preview\examples\ServerTrustCertificatesGet.json
+      - operationId: OutboundFirewallRules_CreateOrUpdate
+        exampleFile: ..\..\2021-02-01-preview\examples\OutboundFirewallRuleCreate.json
+      - operationId: OutboundFirewallRules_ListByServer
+        exampleFile: ..\..\2021-02-01-preview\examples\OutboundFirewallRuleList.json
+      - operationId: OutboundFirewallRules_Get
+        exampleFile: ..\..\2021-02-01-preview\examples\OutboundFirewallRuleGet.json
+      - operationId: >-
+          ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\UpdateManagedShortTermRetentionPolicyRestorableDropped.json
+      - operationId: >-
+          ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies_ListByRestorableDroppedDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\GetListManagedShortTermRetentionPolicyRestorableDropped.json
+      - operationId: ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\GetManagedShortTermRetentionPolicyRestorableDropped.json
+      - operationId: >-
+          ManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicies_Update
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\UpdateManagedShortTermRetentionPolicyRestorableDropped.json
+      - operationId: IPv6FirewallRules_CreateOrUpdate
+        exampleFile: ..\..\2021-11-01-preview\examples\IPv6FirewallRuleCreate.json
+      - operationId: IPv6FirewallRules_ListByServer
+        exampleFile: ..\..\2021-11-01-preview\examples\IPv6FirewallRuleList.json
+      - operationId: IPv6FirewallRules_Get
+        exampleFile: ..\..\2021-11-01-preview\examples\IPv6FirewallRuleGet.json
+      - operationId: ManagedInstancePrivateEndpointConnections_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstancePrivateEndpointConnectionUpdate.json
+      - operationId: ManagedInstancePrivateEndpointConnections_ListByManagedInstance
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstancePrivateEndpointConnectionList.json
+      - operationId: ManagedInstancePrivateEndpointConnections_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstancePrivateEndpointConnectionGet.json
+      - operationId: ManagedInstanceKeys_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceKeyCreateOrUpdate.json
+      - operationId: ManagedInstanceKeys_ListByInstance
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedInstanceKeyList.json
+      - operationId: ManagedInstanceKeys_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedInstanceKeyGet.json
+      - operationId: ServerAzureADOnlyAuthentications_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\AzureADOnlyAuthCreateOrUpdate.json
+      - operationId: ServerAzureADOnlyAuthentications_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\AzureADOnlyAuthList.json
+      - operationId: ServerAzureADOnlyAuthentications_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\AzureADOnlyAuthGet.json
+      - operationId: WorkloadClassifiers_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\CreateOrUpdateWorkloadClassifierMin.json
+      - operationId: WorkloadClassifiers_ListByWorkloadGroup
+        exampleFile: ..\..\2020-11-01-preview\examples\GetWorkloadClassifierList.json
+      - operationId: WorkloadClassifiers_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetWorkloadClassifier.json
+      - operationId: ManagedInstanceEncryptionProtectors_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceEncryptionProtectorCreateOrUpdateKeyVault.json
+      - operationId: ManagedInstanceEncryptionProtectors_ListByInstance
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceEncryptionProtectorList.json
+      - operationId: ManagedInstanceEncryptionProtectors_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceEncryptionProtectorGet.json
+      - operationId: ManagedInstanceEncryptionProtectors_Revalidate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceEncryptionProtectorRevalidate.json
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\PrivateEndpointConnectionUpdate.json
+      - operationId: PrivateEndpointConnections_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\PrivateEndpointConnectionList.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\PrivateEndpointConnectionGet.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentRuleBaselines_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentRuleBaselineCreate.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentRuleBaselines_ListByBaseline
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentRuleBaselineListByBaseline.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentRuleBaselines_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentRuleBaselineGet.json
+      - operationId: DatabaseSecurityAlertPolicies_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseSecurityAlertCreateMin.json
+      - operationId: DatabaseSecurityAlertPolicies_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseSecurityAlertListByDatabase.json
+      - operationId: DatabaseSecurityAlertPolicies_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseSecurityAlertGet.json
+      - operationId: ServerDevOpsAuditSettings_CreateOrUpdate
+        exampleFile: ..\..\2022-02-01-preview\examples\ServerDevOpsAuditCreateMin.json
+      - operationId: ServerDevOpsAuditSettings_ListByServer
+        exampleFile: ..\..\2022-02-01-preview\examples\ServerDevOpsAuditList.json
+      - operationId: ServerDevOpsAuditSettings_Get
+        exampleFile: ..\..\2022-02-01-preview\examples\ServerDevOpsAuditGet.json
+      - operationId: DatabaseExtensions_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2021-02-01-preview\examples\CreateOrUpdateDatabaseExtensions.json
+      - operationId: DatabaseExtensions_ListByDatabase
+        exampleFile: ..\..\2021-02-01-preview\examples\ListDatabaseExtensions.json
+      - operationId: DatabaseExtensions_Get
+        exampleFile: ..\..\2021-02-01-preview\examples\GetDatabaseExtensions.json
+      - operationId: ManagedInstanceAdvancedThreatProtectionSettings_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ManagedInstanceAdvancedThreatProtectionSettingsCreateMin.json
+      - operationId: ManagedInstanceAdvancedThreatProtectionSettings_ListByInstance
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ManagedInstanceAdvancedThreatProtectionSettingsListByInstance.json
+      - operationId: ManagedInstanceAdvancedThreatProtectionSettings_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ManagedInstanceAdvancedThreatProtectionSettingsGet.json
+      - operationId: LongTermRetentionPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\LongTermRetentionPolicyCreateOrUpdate.json
+      - operationId: LongTermRetentionPolicies_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\LongTermRetentionPolicyListByDatabase.json
+      - operationId: LongTermRetentionPolicies_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\LongTermRetentionPolicyGet.json
+      - operationId: TransparentDataEncryptions_CreateOrUpdate
+        exampleFile: ..\examples\TransparentDataEncryptionUpdate.json
+      - operationId: TransparentDataEncryptions_ListByDatabase
+        exampleFile: ..\examples\TransparentDataEncryptionList.json
+      - operationId: TransparentDataEncryptions_Get
+        exampleFile: ..\examples\TransparentDataEncryptionGet.json
+      - operationId: ManagedInstanceDtcs_CreateOrUpdate
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedInstanceDtcUpdateMax.json
+      - operationId: ManagedInstanceDtcs_ListByManagedInstance
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedInstanceDtcList.json
+      - operationId: ManagedInstanceDtcs_Get
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedInstanceDtcGet.json
+      - operationId: ServerConnectionPolicies_CreateOrUpdate
+        exampleFile: ..\..\2021-05-01-preview\examples\ServerConnectionPoliciesUpdate.json
+      - operationId: ServerConnectionPolicies_ListByServer
+        exampleFile: ..\..\2021-05-01-preview\examples\ServerConnectionPoliciesList.json
+      - operationId: ServerConnectionPolicies_Get
+        exampleFile: ..\..\2021-05-01-preview\examples\ServerConnectionPoliciesGet.json
+      - operationId: ServerSecurityAlertPolicies_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerSecurityAlertsCreateMin.json
+      - operationId: ServerSecurityAlertPolicies_ListByServer
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ServerSecurityAlertsListByServer.json
+      - operationId: ServerSecurityAlertPolicies_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerSecurityAlertsGet.json
+      - operationId: ManagedInstanceLongTermRetentionPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceLongTermRetentionPolicyCreateOrUpdate.json
+      - operationId: ManagedInstanceLongTermRetentionPolicies_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceLongTermRetentionPolicyListByDatabase.json
+      - operationId: ManagedInstanceLongTermRetentionPolicies_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceLongTermRetentionPolicyGet.json
+      - operationId: ExtendedServerBlobAuditingPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\ExtendedServerBlobAuditingCreateMin.json
+      - operationId: ExtendedServerBlobAuditingPolicies_ListByServer
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\ServerExtendedAuditingSettingsList.json
+      - operationId: ExtendedServerBlobAuditingPolicies_Get
+        exampleFile: ..\..\2021-11-01-preview\examples\ExtendedServerBlobAuditingGet.json
+      - operationId: ExtendedDatabaseBlobAuditingPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\ExtendedDatabaseBlobAuditingCreateMin.json
+      - operationId: ExtendedDatabaseBlobAuditingPolicies_ListByDatabase
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\DatabaseExtendedAuditingSettingsList.json
+      - operationId: ExtendedDatabaseBlobAuditingPolicies_Get
+        exampleFile: ..\..\2021-11-01-preview\examples\ExtendedDatabaseBlobAuditingGet.json
+      - operationId: ManagedDatabaseSecurityAlertPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseSecurityAlertCreateMin.json
+      - operationId: ManagedDatabaseSecurityAlertPolicies_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseSecurityAlertListByDatabase.json
+      - operationId: ManagedDatabaseSecurityAlertPolicies_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedDatabaseSecurityAlertGet.json
+      - operationId: DatabaseBlobAuditingPolicies_CreateOrUpdate
+        exampleFile: ..\..\2021-11-01-preview\examples\DatabaseBlobAuditingCreateMin.json
+      - operationId: DatabaseBlobAuditingPolicies_ListByDatabase
+        exampleFile: ..\..\2021-11-01-preview\examples\DatabaseAuditingSettingsList.json
+      - operationId: DatabaseBlobAuditingPolicies_Get
+        exampleFile: ..\..\2021-11-01-preview\examples\DatabaseBlobAuditingGet.json
+      - operationId: GeoBackupPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\GeoBackupPoliciesCreateOrUpdate.json
+      - operationId: GeoBackupPolicies_ListByDatabase
+        exampleFile: ..\..\..\stable\2014-04-01\examples\GeoBackupPoliciesList.json
+      - operationId: GeoBackupPolicies_Get
+        exampleFile: ..\..\..\stable\2014-04-01\examples\GeoBackupPoliciesGet.json
+      - operationId: ServerConfigurationOptions_CreateOrUpdate
+        exampleFile: ..\examples\ServerConfigurationOptionUpdate.json
+      - operationId: ServerConfigurationOptions_ListByManagedInstance
+        exampleFile: ..\examples\ServerConfigurationOptionList.json
+      - operationId: ServerConfigurationOptions_Get
+        exampleFile: ..\examples\ServerConfigurationOptionGet.json
+      - operationId: ManagedDatabaseTransparentDataEncryption_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedTransparentDataEncryptionUpdate.json
+      - operationId: ManagedDatabaseTransparentDataEncryption_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedTransparentDataEncryptionList.json
+      - operationId: ManagedDatabaseTransparentDataEncryption_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedTransparentDataEncryptionGet.json
+      - operationId: ManagedServerSecurityAlertPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedServerSecurityAlertCreateMin.json
+      - operationId: ManagedServerSecurityAlertPolicies_ListByInstance
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedServerSecurityAlertListByInstance.json
+      - operationId: ManagedServerSecurityAlertPolicies_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedServerSecurityAlertGet.json
+      - operationId: ServerBlobAuditingPolicies_CreateOrUpdate
+        exampleFile: ..\..\2021-11-01-preview\examples\ServerBlobAuditingCreateMin.json
+      - operationId: ServerBlobAuditingPolicies_ListByServer
+        exampleFile: ..\..\2021-11-01-preview\examples\ServerAuditingSettingsList.json
+      - operationId: ServerBlobAuditingPolicies_Get
+        exampleFile: ..\..\2021-11-01-preview\examples\ServerBlobAuditingGet.json
+      - operationId: DatabaseAdvancedThreatProtectionSettings_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\DatabaseAdvancedThreatProtectionSettingsCreateMin.json
+      - operationId: DatabaseAdvancedThreatProtectionSettings_ListByDatabase
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\DatabaseAdvancedThreatProtectionSettingsListByDatabase.json
+      - operationId: DatabaseAdvancedThreatProtectionSettings_Get
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\DatabaseAdvancedThreatProtectionSettingsGet.json
+      - operationId: ManagedDatabaseAdvancedThreatProtectionSettings_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ManagedDatabaseAdvancedThreatProtectionSettingsCreateMin.json
+      - operationId: ManagedDatabaseAdvancedThreatProtectionSettings_ListByDatabase
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabase.json
+      - operationId: ManagedDatabaseAdvancedThreatProtectionSettings_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ManagedDatabaseAdvancedThreatProtectionSettingsGet.json
+      - operationId: ServerAdvancedThreatProtectionSettings_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\ServerAdvancedThreatProtectionSettingsCreateMin.json
+      - operationId: ServerAdvancedThreatProtectionSettings_ListByServer
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\ServerAdvancedThreatProtectionSettingsListByServer.json
+      - operationId: ServerAdvancedThreatProtectionSettings_Get
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\ServerAdvancedThreatProtectionSettingsGet.json
+      - operationId: SqlAgent_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\SqlAgentConfigurationPut.json
+      - operationId: SqlAgent_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\SqlAgentConfigurationGet.json
+      - operationId: DataMaskingRules_CreateOrUpdate
+        variables:
+          dataMaskingRuleName:
+            type: string
+            prefix: datamask
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01\examples\DataMaskingRuleCreateOrUpdateText.json
+      - operationId: DataMaskingRules_ListByDatabase
+        exampleFile: ..\..\..\stable\2014-04-01\examples\DataMaskingRuleList.json
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\..\2020-11-01-preview\examples\FirewallRuleCreate.json
+      - operationId: MaintenanceWindows_CreateOrUpdate
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\CreateOrUpdateMaintenanceWindows.json
+      - operationId: MaintenanceWindows_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetMaintenanceWindows.json
+      - operationId: Operations_List
+      - operationId: DeletedServers_List
+        exampleFile: ..\..\2020-11-01-preview\examples\DeletedServerListBySubscription.json
+      - operationId: Capabilities_ListByLocation
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\LocationCapabilityListByLocation.json
+      - operationId: DeletedServers_ListByLocation
+        exampleFile: ..\..\2020-11-01-preview\examples\DeletedServerList.json
+      - operationId: DeletedServers_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\DeletedServerGet.json
+      - operationId: DeletedServers_Recover
+        exampleFile: ..\..\2020-11-01-preview\examples\DeletedServerRecover.json
+      - operationId: LongTermRetentionBackups_ListByLocation
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\LongTermRetentionBackupListByLocation.json
+      - operationId: LongTermRetentionManagedInstanceBackups_ListByLocation
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ManagedInstanceLongTermRetentionBackupListByLocation.json
+      - operationId: LongTermRetentionManagedInstanceBackups_ListByDatabase
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ManagedInstanceLongTermRetentionBackupListByDatabase.json
+      - operationId: LongTermRetentionManagedInstanceBackups_Delete
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ManagedInstanceLongTermRetentionBackupDelete.json
+      - operationId: LongTermRetentionManagedInstanceBackups_Get
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ManagedInstanceLongTermRetentionBackupGet.json
+      - operationId: LongTermRetentionManagedInstanceBackups_ListByInstance
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ManagedInstanceLongTermRetentionBackupListByInstance.json
+      - operationId: LongTermRetentionBackups_ListByServer
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\LongTermRetentionBackupListByServer.json
+      - operationId: LongTermRetentionBackups_ListByDatabase
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\LongTermRetentionBackupListByDatabase.json
+      - operationId: LongTermRetentionBackups_Delete
+        exampleFile: ..\..\2021-05-01-preview\examples\LongTermRetentionBackupDelete.json
+      - operationId: LongTermRetentionBackups_Get
+        exampleFile: ..\..\2021-05-01-preview\examples\LongTermRetentionBackupGet.json
+      - operationId: LongTermRetentionBackups_Copy
+        exampleFile: ..\..\2021-05-01-preview\examples\LongTermRetentionBackupCopy.json
+      - operationId: LongTermRetentionBackups_Update
+        exampleFile: ..\..\2021-05-01-preview\examples\LongTermRetentionBackupUpdate.json
+      - operationId: TimeZones_ListByLocation
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceTimeZoneListByLocation.json
+      - operationId: TimeZones_Get
+        variables:
+          timeZoneId:
+            type: string
+            prefix: timezone
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedInstanceTimeZoneGet.json
+      - operationId: SubscriptionUsages_ListByLocation
+        exampleFile: ..\..\2020-11-01-preview\examples\SubscriptionUsageListByLocation.json
+      - operationId: SubscriptionUsages_Get
+        variables:
+          usageName:
+            type: string
+            prefix: usagenam
+        exampleFile: ..\..\2020-11-01-preview\examples\SubscriptionUsageGet.json
+      - operationId: VirtualClusters_List
+        exampleFile: ..\..\2022-05-01-preview\examples\VirtualClusterList.json
+      - operationId: ManagedInstances_ListByInstancePool
+        exampleFile: ..\examples\ManagedInstanceListByInstancePool.json
+      - operationId: Usages_ListByInstancePool
+        exampleFile: ..\..\2021-02-01-preview\examples\ListInstancePoolUsage.json
+      - operationId: LongTermRetentionBackups_ListByResourceGroupLocation
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedLongTermRetentionBackupListByLocation.json
+      - operationId: LongTermRetentionManagedInstanceBackups_ListByResourceGroupLocation
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedManagedInstanceLongTermRetentionBackupListByLocation.json
+      - operationId: LongTermRetentionManagedInstanceBackups_ListByResourceGroupDatabase
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedManagedInstanceLongTermRetentionBackupListByDatabase.json
+      - operationId: LongTermRetentionManagedInstanceBackups_DeleteByResourceGroup
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedManagedInstanceLongTermRetentionBackupDelete.json
+      - operationId: LongTermRetentionManagedInstanceBackups_GetByResourceGroup
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedManagedInstanceLongTermRetentionBackupGet.json
+      - operationId: LongTermRetentionManagedInstanceBackups_ListByResourceGroupInstance
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedManagedInstanceLongTermRetentionBackupListByInstance.json
+      - operationId: LongTermRetentionBackups_ListByResourceGroupServer
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedLongTermRetentionBackupListByServer.json
+      - operationId: LongTermRetentionBackups_ListByResourceGroupDatabase
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedLongTermRetentionBackupListByDatabase.json
+      - operationId: LongTermRetentionBackups_DeleteByResourceGroup
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedLongTermRetentionBackupDelete.json
+      - operationId: LongTermRetentionBackups_GetByResourceGroup
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedLongTermRetentionBackupGet.json
+      - operationId: LongTermRetentionBackups_CopyByResourceGroup
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedLongTermRetentionBackupCopy.json
+      - operationId: LongTermRetentionBackups_UpdateByResourceGroup
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\ResourceGroupBasedLongTermRetentionBackupUpdate.json
+      - operationId: ManagedDatabaseMoveOperations_ListByLocation
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\ManagedDatabaseMoveOperationResultList.json
+      - operationId: ManagedDatabaseMoveOperations_Get
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\ManagedDatabaseMoveOperationResultGet.json
+      - operationId: ManagedDatabaseColumns_ListByDatabase
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedColumnsListByDatabaseMin.json
+      - operationId: ManagedDatabaseQueries_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedInstanceQueryGet.json
+      - operationId: ManagedDatabaseQueries_ListByQuery
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceQueryStatisticsListMin.json
+      - operationId: ManagedDatabaseRecommendedSensitivityLabels_Update
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseSensitivityLabelsRecommendedUpdate.json
+      - operationId: ManagedDatabaseRestoreDetails_Get
+        variables:
+          restoreDetailsName:
+            type: string
+            prefix: restored
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseRestoreDetails.json
+      - operationId: ManagedDatabaseSchemas_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseSchemaListByDatabase.json
+      - operationId: ManagedDatabaseSchemas_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedDatabaseSchemaGet.json
+      - operationId: ManagedDatabaseTables_ListBySchema
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseTableListBySchema.json
+      - operationId: ManagedDatabaseTables_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedDatabaseTableGet.json
+      - operationId: ManagedDatabaseColumns_ListByTable
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseColumnListByTable.json
+      - operationId: ManagedDatabaseColumns_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedDatabaseColumnGet.json
+      - operationId: ManagedDatabaseSecurityEvents_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseSecurityEventsGetMin.json
+      - operationId: ManagedDatabaseVulnerabilityAssessmentScans_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentScanRecordsListByDatabase.json
+      - operationId: ManagedDatabaseVulnerabilityAssessmentScans_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentScanRecordsGet.json
+      - operationId: ManagedDatabaseVulnerabilityAssessmentScans_Export
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentScanExport.json
+      - operationId: ManagedDatabaseVulnerabilityAssessmentScans_InitiateScan
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentScansExecute.json
+      - operationId: EndpointCertificates_ListByInstance
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\EndpointCertificatesListByInstance.json
+      - operationId: EndpointCertificates_Get
+        variables:
+          endpointType:
+            type: string
+            prefix: endpoint
+        exampleFile: ..\..\2021-11-01-preview\examples\EndpointCertificatesGet.json
+      - operationId: ManagedInstanceOperations_ListByManagedInstance
+        exampleFile: ..\..\2020-11-01-preview\examples\ListManagedInstanceOperations.json
+      - operationId: ManagedInstanceOperations_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetManagedInstanceOperation.json
+      - operationId: ManagedInstanceOperations_Cancel
+        exampleFile: ..\..\2020-11-01-preview\examples\CancelManagedInstanceOperation.json
+      - operationId: ManagedInstancePrivateLinkResources_ListByManagedInstance
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstancePrivateLinkResourcesList.json
+      - operationId: ManagedInstancePrivateLinkResources_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstancePrivateLinkResourcesGet.json
+      - operationId: RecoverableManagedDatabases_ListByInstance
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ListRecoverableManagedDatabasesByServer.json
+      - operationId: RecoverableManagedDatabases_Get
+        variables:
+          recoverableDatabaseName:
+            type: string
+            prefix: recovera
+        exampleFile: ..\..\2020-11-01-preview\examples\GetRecoverableManagedDatabase.json
+      - operationId: RestorableDroppedManagedDatabases_ListByInstance
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\RestorableDroppedManagedDatabaseListByManagedInstance.json
+      - operationId: RestorableDroppedManagedDatabases_Get
+        exampleFile: >-
+          ..\..\2021-05-01-preview\examples\GetRestorableDroppedManagedDatabase.json
+      - operationId: ManagedInstanceTdeCertificates_Create
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedInstanceTdeCertificate.json
+      - operationId: ServerAdvisors_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerAdvisorList.json
+      - operationId: ServerAdvisors_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerAdvisorGet.json
+      - operationId: ServerAdvisors_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerAdvisorUpdate.json
+      - operationId: ServerAutomaticTuning_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerAutomaticTuningGet.json
+      - operationId: ServerAutomaticTuning_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerAutomaticTuningUpdateMin.json
+      - operationId: DatabaseAdvisors_ListByDatabase
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseAdvisorList.json
+      - operationId: DatabaseAdvisors_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseAdvisorGet.json
+      - operationId: DatabaseAdvisors_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseAdvisorUpdate.json
+      - operationId: DatabaseRecommendedActions_ListByDatabaseAdvisor
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseRecommendedActionList.json
+      - operationId: DatabaseRecommendedActions_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseRecommendedActionGet.json
+      - operationId: DatabaseRecommendedActions_Update
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseRecommendedActionUpdate.json
+      - operationId: DatabaseAutomaticTuning_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseAutomaticTuningGet.json
+      - operationId: DatabaseAutomaticTuning_Update
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseAutomaticTuningUpdateMin.json
+      - operationId: DatabaseColumns_ListByDatabase
+        exampleFile: ..\..\2020-11-01-preview\examples\ColumnsListByDatabaseMin.json
+      - operationId: DataWarehouseUserActivities_ListByDatabase
+        exampleFile: ..\..\2020-11-01-preview\examples\ListDataWarehouseUserActivities.json
+      - operationId: DataWarehouseUserActivities_Get
+        variables:
+          dataWarehouseUserActivityName:
+            type: string
+            prefix: dataware
+        exampleFile: ..\..\2020-11-01-preview\examples\GetDataWarehouseUserActivities.json
+      - operationId: DatabaseEncryptionProtectors_Revalidate
+        exampleFile: ..\examples\DatabaseEncryptionProtectorRevalidate.json
+      - operationId: DatabaseEncryptionProtectors_Revert
+        exampleFile: ..\examples\DatabaseEncryptionProtectorRevert.json
+      - operationId: SynapseLinkWorkspaces_ListByDatabase
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\SynapseLinkWorkspaceListByDatabase.json
+      - operationId: MaintenanceWindowOptions_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetMaintenanceWindowOptions.json
+      - operationId: DatabaseOperations_ListByDatabase
+        exampleFile: ..\..\2021-02-01-preview\examples\ListDatabaseOperations.json
+      - operationId: DatabaseOperations_Cancel
+        exampleFile: ..\..\2021-02-01-preview\examples\CancelDatabaseOperation.json
+      - operationId: RecommendedSensitivityLabels_Update
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\SensitivityLabelsRecommendedUpdate.json
+      - operationId: ReplicationLinks_ListByDatabase
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkListByDatabase.json
+      - operationId: ReplicationLinks_Delete
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkDelete.json
+      - operationId: ReplicationLinks_Get
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkGet.json
+      - operationId: ReplicationLinks_Failover
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkFailover.json
+      - operationId: ReplicationLinks_FailoverAllowDataLoss
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\ReplicationLinkFailoverAllowDataLoss.json
+      - operationId: RestorePoints_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseRestorePointsListByDatabase.json
+      - operationId: RestorePoints_Create
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseRestorePointsPost.json
+      - operationId: RestorePoints_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseRestorePointsDelete.json
+      - operationId: RestorePoints_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseRestorePointsGet.json
+      - operationId: DatabaseSchemas_ListByDatabase
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseSchemaListByDatabase.json
+      - operationId: DatabaseSchemas_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseSchemaGet.json
+      - operationId: DatabaseTables_ListBySchema
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseTableListBySchema.json
+      - operationId: DatabaseTables_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseTableGet.json
+      - operationId: DatabaseColumns_ListByTable
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseColumnListByTable.json
+      - operationId: DatabaseColumns_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\DatabaseColumnGet.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentsSettings_ListByDatabase
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentListByDatabase.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentsSettings_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentGet.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentExecuteScan_Execute
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentScansExecute.json
+      - operationId: >-
+          DatabaseSqlVulnerabilityAssessmentScans_ListBySqlVulnerabilityAssessments
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentScanRecordsListByDatabase.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentScans_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentScan.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentScanResult_ListByScan
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentListScansResults.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentScanResult_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentScansResults.json
+      - operationId: DatabaseUsages_ListByDatabase
+        exampleFile: ..\..\2021-02-01-preview\examples\GetDatabaseUsages.json
+      - operationId: DatabaseVulnerabilityAssessmentScans_ListByDatabase
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentScanRecordsListByDatabase.json
+      - operationId: DatabaseVulnerabilityAssessmentScans_Get
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentScanRecordsGet.json
+      - operationId: DatabaseVulnerabilityAssessmentScans_Export
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentScanExport.json
+      - operationId: DatabaseVulnerabilityAssessmentScans_InitiateScan
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentScansExecute.json
+      - operationId: Databases_ListByElasticPool
+        exampleFile: ..\examples\ListDatabasesByElasticPool.json
+      - operationId: ElasticPoolActivities_ListByElasticPool
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01-legacy\examples\ElasticPoolActivityList.json
+      - operationId: ElasticPoolDatabaseActivities_ListByElasticPool
+        exampleFile: >-
+          ..\..\..\stable\2014-04-01-legacy\examples\ElasticPoolDatabaseActivityList.json
+      - operationId: ElasticPoolOperations_ListByElasticPool
+        exampleFile: ..\..\2020-11-01-preview\examples\ListElasticPoolOperations.json
+      - operationId: ElasticPoolOperations_Cancel
+        exampleFile: ..\..\2020-11-01-preview\examples\CancelElasticPoolOperation.json
+      - operationId: JobStepExecutions_ListByJobExecution
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobExecutionSteps.json
+      - operationId: JobStepExecutions_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJobExecutionStep.json
+      - operationId: JobTargetExecutions_ListByStep
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobExecutionTargetsByStep.json
+      - operationId: JobTargetExecutions_Get
+        variables:
+          targetId:
+            type: string
+            prefix: targetid
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJobExecutionTarget.json
+      - operationId: JobTargetExecutions_ListByJobExecution
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ListJobExecutionTargetsByExecution.json
+      - operationId: JobVersions_ListByJob
+        exampleFile: ..\..\2020-11-01-preview\examples\ListJobVersions.json
+      - operationId: JobVersions_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\GetJobVersion.json
+      - operationId: ServerOperations_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\ListServerOperations.json
+      - operationId: PrivateLinkResources_ListByServer
+        exampleFile: ..\..\2020-11-01-preview\examples\PrivateLinkResourcesList.json
+      - operationId: PrivateLinkResources_Get
+        exampleFile: ..\..\2020-11-01-preview\examples\PrivateLinkResourcesGet.json
+      - operationId: RecoverableDatabases_ListByServer
+        exampleFile: ..\examples\RecoverableDatabaseList.json
+      - operationId: RecoverableDatabases_Get
+        exampleFile: ..\examples\RecoverableDatabaseGet.json
+      - operationId: ReplicationLinks_ListByServer
+        exampleFile: ..\..\2022-02-01-preview\examples\ReplicationLinkListByServer.json
+      - operationId: RestorableDroppedDatabases_ListByServer
+        exampleFile: ..\examples\ListRestorableDroppedDatabasesByServer.json
+      - operationId: RestorableDroppedDatabases_Get
+        exampleFile: ..\examples\GetRestorableDroppedDatabase.json
+      - operationId: ServiceObjectives_ListByServer
+        exampleFile: ..\..\..\stable\2014-04-01\examples\ServiceObjectiveList.json
+      - operationId: ServiceObjectives_Get
+        variables:
+          serviceObjectiveName:
+            type: string
+            prefix: serviceo
+        exampleFile: ..\..\..\stable\2014-04-01\examples\ServiceObjectiveGet.json
+      - operationId: SqlVulnerabilityAssessments_Delete
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentDelete.json
+      - operationId: SqlVulnerabilityAssessmentBaseline_ListBySqlVulnerabilityAssessment
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessment.json
+      - operationId: SqlVulnerabilityAssessmentBaseline_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentBaselineGet.json
+      - operationId: SqlVulnerabilityAssessmentRuleBaselines_Delete
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentRuleBaselineDelete.json
+      - operationId: SqlVulnerabilityAssessmentExecuteScan_Execute
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentScansExecute.json
+      - operationId: SqlVulnerabilityAssessmentScans_ListBySqlVulnerabilityAssessments
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentScanRecordsListByDatabase.json
+      - operationId: SqlVulnerabilityAssessmentScans_Get
+        exampleFile: ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentScan.json
+      - operationId: SqlVulnerabilityAssessmentScanResult_ListByScan
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentListScansResults.json
+      - operationId: SqlVulnerabilityAssessmentScanResult_Get
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\SqlVulnerabilityAssessmentScansResults.json
+      - operationId: TdeCertificates_Create
+        exampleFile: ..\..\2020-11-01-preview\examples\SqlTdeCertificateCreate.json
+      - operationId: ServerUsages_ListByServer
+        exampleFile: ..\..\..\stable\2014-04-01-legacy\examples\ServerUsageMetricsList.json
+      - operationId: VirtualClusters_ListByResourceGroup
+        exampleFile: >-
+          ..\..\2022-05-01-preview\examples\VirtualClusterListByResourceGroup.json
+      - operationId: VirtualClusters_Delete
+        exampleFile: ..\..\2022-05-01-preview\examples\VirtualClusterDelete.json
+      - operationId: VirtualClusters_Get
+        exampleFile: ..\..\2022-05-01-preview\examples\VirtualClusterGet.json
+      - operationId: VirtualClusters_Update
+        exampleFile: ..\..\2022-05-01-preview\examples\VirtualClusterUpdate.json
+      - operationId: VirtualClusters_UpdateDnsServers
+        exampleFile: ..\..\2022-05-01-preview\examples\UpdateVirtualClusterDnsServers.json
+      - operationId: DatabaseSqlVulnerabilityAssessmentRuleBaselines_Delete
+        exampleFile: >-
+          ..\..\2022-02-01-preview\examples\DatabaseSqlVulnerabilityAssessmentRuleBaselineDelete.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\PrivateEndpointConnectionDelete.json
+      - operationId: WorkloadClassifiers_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\DeleteWorkloadClassifier.json
+      - operationId: ServerAzureADOnlyAuthentications_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\AzureADOnlyAuthDelete.json
+      - operationId: ManagedInstanceKeys_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\ManagedInstanceKeyDelete.json
+      - operationId: ManagedInstancePrivateEndpointConnections_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstancePrivateEndpointConnectionDelete.json
+      - operationId: IPv6FirewallRules_Delete
+        exampleFile: ..\..\2021-11-01-preview\examples\IPv6FirewallRuleDelete.json
+      - operationId: OutboundFirewallRules_Delete
+        exampleFile: ..\..\2021-02-01-preview\examples\OutboundFirewallRuleDelete.json
+      - operationId: ServerTrustCertificates_Delete
+        exampleFile: ..\..\2021-11-01-preview\examples\ServerTrustCertificatesDelete.json
+      - operationId: ServerKeys_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerKeyDelete.json
+      - operationId: StartStopManagedInstanceSchedules_Delete
+        exampleFile: ..\examples\StartStopManagedInstanceScheduleDelete.json
+      - operationId: ServerAzureADAdministrators_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\AdministratorDelete.json
+      - operationId: ServerTrustGroups_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerTrustGroupDelete.json
+      - operationId: JobCredentials_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\DeleteJobCredential.json
+      - operationId: ManagedInstanceVulnerabilityAssessments_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceVulnerabilityAssessmentDelete.json
+      - operationId: ServerVulnerabilityAssessments_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ServerVulnerabilityAssessmentDelete.json
+      - operationId: VirtualNetworkRules_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\VirtualNetworkRulesDelete.json
+      - operationId: JobSteps_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\DeleteJobStep.json
+      - operationId: ManagedInstanceAdministrators_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceAdministratorDelete.json
+      - operationId: ManagedDatabaseVulnerabilityAssessmentRuleBaselines_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentRuleBaselineDelete.json
+      - operationId: JobTargetGroups_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\DeleteJobTargetGroup.json
+      - operationId: DatabaseVulnerabilityAssessmentRuleBaselines_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentRuleBaselineDelete.json
+      - operationId: ManagedInstanceAzureADOnlyAuthentications_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedInstanceAzureADOnlyAuthDelete.json
+      - operationId: ServerCommunicationLinks_Delete
+        exampleFile: ..\..\..\stable\2014-04-01\examples\ServerCommunicationLinkDelete.json
+      - operationId: ManagedServerDnsAliases_Delete
+        exampleFile: ..\..\2021-11-01-preview\examples\ManagedServerDnsAliasDelete.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\FirewallRuleDelete.json
+      - operationId: DistributedAvailabilityGroups_Delete
+        exampleFile: >-
+          ..\..\2021-11-01-preview\examples\DistributedAvailabilityGroupsDelete.json
+      - operationId: ServerDnsAliases_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\ServerDnsAliasDelete.json
+      - operationId: ManagedDatabaseSensitivityLabels_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseColumnSensitivityLabelDelete.json
+      - operationId: InstanceFailoverGroups_Delete
+        exampleFile: ..\..\2022-05-01-preview\examples\InstanceFailoverGroupDelete.json
+      - operationId: SensitivityLabels_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\ColumnSensitivityLabelDelete.json
+      - operationId: SyncAgents_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncAgentDelete.json
+      - operationId: FailoverGroups_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\FailoverGroupDelete.json
+      - operationId: InstancePools_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\DeleteInstancePool.json
+      - operationId: SyncMembers_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncMemberDelete.json
+      - operationId: WorkloadGroups_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\DeleteWorkloadGroup.json
+      - operationId: ManagedDatabaseVulnerabilityAssessments_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\ManagedDatabaseVulnerabilityAssessmentDelete.json
+      - operationId: DatabaseVulnerabilityAssessments_Delete
+        exampleFile: >-
+          ..\..\2020-11-01-preview\examples\DatabaseVulnerabilityAssessmentDelete.json
+      - operationId: ElasticPools_Delete
+        exampleFile: ..\..\2021-08-01-preview\examples\ElasticPoolDelete.json
+      - operationId: SyncGroups_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\SyncGroupDelete.json
+      - operationId: Jobs_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\DeleteJob.json
+      - operationId: JobAgents_Delete
+        exampleFile: ..\..\2020-11-01-preview\examples\DeleteJobAgent.json
+      - operationId: ManagedDatabases_Delete
+        exampleFile: ..\..\2022-05-01-preview\examples\ManagedDatabaseDelete.json
+      - operationId: Databases_Delete
+        exampleFile: ..\examples\DeleteDatabase.json
+      - operationId: ManagedInstances_Delete
+        exampleFile: ..\examples\ManagedInstanceDelete.json
+      - operationId: Servers_Delete
+        exampleFile: ..\examples\ServerDelete.json

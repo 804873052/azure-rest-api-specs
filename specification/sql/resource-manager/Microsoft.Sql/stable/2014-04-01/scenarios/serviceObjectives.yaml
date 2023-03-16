@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ServiceObjectives
+    description: Microsoft.Sql/servers/{serverName}/serviceObjectives/{serviceObjectiveName}
+    steps:
+      - operationId: ServiceObjectives_ListByServer
+        exampleFile: .\examples\ServiceObjectiveList.json
+      - operationId: ServiceObjectives_Get
+        variables:
+          serviceObjectiveName:
+            type: string
+            prefix: serviceo
+        exampleFile: .\examples\ServiceObjectiveGet.json
