@@ -1,0 +1,125 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  namespaceName:
+    type: string
+    prefix: namespac
+
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    # exampleFile: ..\examples\NameSpaces\SBNameSpaceCreate.json
+    # requestUpdate:
+    #   - remove: /parameters/properties
+    #   - remove: /parameters/sku/capacity
+    operationId: Namespaces_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        sku:
+          name: Premium
+          tier: Premium
+    outputVariables:
+      namespaceId:
+        type: string
+        fromResponse: /id
+  - step: Create_PrivateEndpoint
+    armTemplate: ./templates/Create_PrivateEndpoint.json
+
+scenarios:
+# pass
+  - scenario: Namespaces
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}
+    steps:
+      - step: Namespaces_CheckNameAvailability
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceCheckNameAvailability.json
+        requestUpdate:
+          - replace: /parameters/name
+            value: $(namespaceName)
+      - step: Namespaces_ListByResourceGroup
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceListByResourceGroup.json
+      - step: Namespaces_List
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceList.json
+      - step: Namespaces_Get
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceGet.json
+      - step: Namespaces_Update
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceUpdate.json
+
+
+  - scenario: Namespaces_NetworkRuleSet
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}/networkRuleSets/default
+    steps:
+      - step: Namespaces_CreateOrUpdateNetworkRuleSet
+        # exampleFile: ..\examples\NameSpaces\VirtualNetworkRule\SBNetworkRuleSetCreate.json
+        # requestUpdate:
+        #   - remove: /parameters/properties/virtualNetworkRules
+        #   - replace: /parameters/properties/virtualNetworkRules
+        #     value: $(ruleSubnetId)
+        operationId: Namespaces_CreateOrUpdateNetworkRuleSet
+        parameters:
+          parameters:
+            properties:
+              defaultAction: Deny
+              virtualNetworkRules:
+                - ignoreMissingVnetServiceEndpoint: true
+                  subnet:
+                    id: $(ruleSubnetId)
+              ipRules:
+                - ipMask: 1.1.1.1
+                  action: Allow
+                - ipMask: 1.1.1.2
+                  action: Allow
+
+      - step: Namespaces_GetNetworkRuleSet
+        exampleFile: ..\examples\NameSpaces\VirtualNetworkRule\SBNetworkRuleSetGet.json
+      - step: Namespaces_ListNetworkRuleSets
+        exampleFile: ..\examples\NameSpaces\VirtualNetworkRule\SBNetworkRuleSetList.json
+
+
+# pass 
+  - scenario: Namespaces_Authorization
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}
+    variables:
+      authorizationRuleName:
+        type: string
+        prefix: namespaceauthoriz
+    steps:
+      - step: Namespaces_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceAuthorizationRuleCreate.json
+      - step: Namespaces_ListAuthorizationRules
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceAuthorizationRuleListAll.json
+      - step: Namespaces_GetAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceAuthorizationRuleGet.json
+      - step: Namespaces_ListKeys
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceAuthorizationRuleListKey.json
+      - step: Namespaces_RegenerateKeys
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceAuthorizationRuleRegenerateKey.json
+      - step: Namespaces_DeleteAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceAuthorizationRuleDelete.json
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: PrivateEndpointConnections_List
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionList.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionCreate.json
+        requestUpdate:
+          - remove: /parameters/properties/privateEndpoint
+          - remove: /parameters/properties/provisioningState
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionGet.json
+      - step: PrivateLinkResources_Get
+        exampleFile: ..\examples\NameSpaces\PrivateLinkResourcesGet.json
+      # - step: PrivateEndpointConnections_Delete # Private Endpoint Connection operation already in progress
+      #   exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionDelete.json
+
+cleanUpSteps:
+      - step: Namespaces_Delete
+        exampleFile: ..\examples\NameSpaces\SBNameSpaceDelete.json

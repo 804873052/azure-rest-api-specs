@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  queueName:
+    type: string
+    prefix: queuenam
+
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    # exampleFile: ..\examples\NameSpaces\SBNameSpaceCreate.json
+    # requestUpdate:
+    #   - remove: /parameters/properties
+    #   - remove: /parameters/sku/capacity
+    operationId: Namespaces_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        sku:
+          name: Premium
+          tier: Premium
+  - step: Queues_CreateOrUpdate
+    exampleFile: ..\examples\Queues\SBQueueCreate.json
+
+scenarios:
+  - scenario: Queues
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}
+    steps:
+      - step: Queues_ListByNamespace
+        exampleFile: ..\examples\Queues\SBQueueListByNameSpace.json
+      - step: Queues_Get
+        exampleFile: ..\examples\Queues\SBQueueGet.json
+
+  - scenario: Queues_Authorization
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}
+    variables:
+      authorizationRuleName:
+        type: string
+        prefix: queueauthoriz
+    steps:
+      - step: Queues_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\Queues\SBQueueAuthorizationRuleCreate.json
+      - step: Queues_GetAuthorizationRule
+        exampleFile: ..\examples\Queues\SBQueueAuthorizationRuleGet.json
+      - step: Queues_RegenerateKeys
+        exampleFile: ..\examples\Queues\SBQueueAuthorizationRuleRegenerateKey.json
+      - step: Queues_ListKeys
+        exampleFile: ..\examples\Queues\SBQueueAuthorizationRuleListKey.json
+      - step: Queues_ListAuthorizationRules
+        exampleFile: ..\examples\Queues\SBQueueAuthorizationRuleListAll.json
+      - step: Queues_DeleteAuthorizationRule
+        exampleFile: ..\examples\Queues\SBQueueAuthorizationRuleDelete.json
+
+cleanUpSteps:
+  - step: Queues_Delete
+    exampleFile: ..\examples\Queues\SBQueueDelete.json

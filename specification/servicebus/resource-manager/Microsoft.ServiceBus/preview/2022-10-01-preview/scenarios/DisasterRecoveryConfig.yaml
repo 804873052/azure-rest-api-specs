@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  primaryNamespaceName:
+    type: string
+    prefix: promarynamespac
+  authorizationRuleName:
+    type: string
+    prefix: namespaceauthoriz
+
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    operationId: Namespaces_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        sku:
+          name: Premium
+          tier: Premium
+  - step: Namespaces_CreateOrUpdate_Primary
+    operationId: Namespaces_CreateOrUpdate
+    parameters:
+      namespaceName: $(primaryNamespaceName)
+      parameters:
+        location: westus2
+        sku:
+          name: Premium
+          tier: Premium
+    outputVariables:
+      primaryNamespaceId:
+        type: string
+        fromResponse: /id
+  - step: Namespaces_CreateOrUpdateAuthorizationRule
+    exampleFile: ../examples/NameSpaces/SBNameSpaceAuthorizationRuleCreate.json
+
+scenarios:
+  - scenario: DisasterRecoveryConfigs
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}
+    variables:
+      alias:
+        type: string
+        prefix: drcalias
+    steps:
+      - step: DisasterRecoveryConfigs_CheckNameAvailability
+        exampleFile: ..\examples\disasterRecoveryConfigs\SBAliasCheckNameAvailability.json
+      - step: DisasterRecoveryConfigs_CreateOrUpdate
+        exampleFile: ..\examples\disasterRecoveryConfigs\SBAliasCreate.json
+        requestUpdate:
+          - replace: /parameters/properties/partnerNamespace
+            value: $(primaryNamespaceId)
+          - remove: /parameters/properties/alternateName
+      - step: DisasterRecoveryConfigs_List
+        exampleFile: ..\examples\disasterRecoveryConfigs\SBAliasList.json
+      - step: DisasterRecoveryConfigs_Get
+        exampleFile: ..\examples\disasterRecoveryConfigs\SBAliasGet.json
+
+      - step: DisasterRecoveryConfigs_ListAuthorizationRules
+        exampleFile: ..\examples\disasterRecoveryConfigs\SBAliasAuthorizationRuleListAll.json
+      - step: DisasterRecoveryConfigs_GetAuthorizationRule
+        exampleFile: ..\examples\disasterRecoveryConfigs\SBAliasAuthorizationRuleGet.json
+      - step: DisasterRecoveryConfigs_ListKeys
+        exampleFile: ..\examples\disasterRecoveryConfigs\SBAliasAuthorizationRuleListKey.json
+
+# Replication or disaster recovery operation in progress with state CreatePairing for alias
+      # - step: DisasterRecoveryConfigs_FailOver
+      #   # exampleFile: ..\examples\disasterRecoveryConfigs\SBAliasFailOver.json
+      #   operationId: DisasterRecoveryConfigs_FailOver
+      #   parameters:
+      #     namespaceName: $(primaryNamespaceName)
+      # - step: DisasterRecoveryConfigs_BreakPairing
+      #   exampleFile: ..\examples\disasterRecoveryConfigs\SBEHAliasBreakPairing.json
+      # - step: DisasterRecoveryConfigs_Delete
+      #   exampleFile: ..\examples\disasterRecoveryConfigs\SBAliasDelete.json

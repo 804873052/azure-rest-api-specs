@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  topicName:
+    type: string
+    prefix: topicnam
+
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    # exampleFile: ..\examples\NameSpaces\SBNameSpaceCreate.json
+    # requestUpdate:
+    #   - remove: /parameters/properties
+    #   - remove: /parameters/sku/capacity
+    operationId: Namespaces_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        sku:
+          name: Standard
+          tier: Standard
+  - step: Topics_CreateOrUpdate
+    exampleFile: ..\examples\Topics\SBTopicCreate.json
+
+scenarios:
+  - scenario: Topics
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}
+    steps:
+      - step: Topics_ListByNamespace
+        exampleFile: ..\examples\Topics\SBTopicListByNameSpace.json
+      - step: Topics_Get
+        exampleFile: ..\examples\Topics\SBTopicGet.json
+
+  - scenario: Topics_Authorization
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}
+    variables:
+      authorizationRuleName:
+        type: string
+        prefix: topicauthoriz
+    steps:
+      - step: Topics_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\Topics\SBTopicAuthorizationRuleCreate.json
+      - step: Topics_ListAuthorizationRules
+        exampleFile: ..\examples\Topics\SBTopicAuthorizationRuleListAll.json
+      - step: Topics_GetAuthorizationRule
+        exampleFile: ..\examples\Topics\SBTopicAuthorizationRuleGet.json
+      - step: Topics_ListKeys
+        exampleFile: ..\examples\Topics\SBTopicAuthorizationRuleListKey.json
+      - step: Topics_RegenerateKeys
+        exampleFile: ..\examples\Topics\SBTopicAuthorizationRuleRegenerateKey.json
+      - step: Topics_DeleteAuthorizationRule
+        exampleFile: ..\examples\Topics\SBTopicAuthorizationRuleDelete.json
+
+cleanUpSteps:
+  - step: Topics_Delete
+    exampleFile: ..\examples\Topics\SBTopicDelete.json

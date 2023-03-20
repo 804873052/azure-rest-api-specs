@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  topicName:
+    type: string
+    prefix: topicnam
+  subscriptionName:
+    type: string
+    prefix: subscrip
+
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    # exampleFile: ..\examples\NameSpaces\SBNameSpaceCreate.json
+    # requestUpdate:
+    #   - remove: /parameters/properties
+    #   - remove: /parameters/sku/capacity
+    operationId: Namespaces_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        sku:
+          name: Standard
+          tier: Standard
+  - step: Topics_CreateOrUpdate
+    exampleFile: ..\examples\Topics\SBTopicCreate.json
+  - step: Subscriptions_CreateOrUpdate
+    exampleFile: ..\examples\Subscriptions\SBSubscriptionCreate.json
+
+scenarios:
+  - scenario: Rules
+    description: providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}
+    variables:
+      ruleName:
+        type: string
+        prefix: rulename
+    steps:
+      - step: Rules_CreateOrUpdate
+        exampleFile: ..\examples\Rules\RuleCreate.json
+      - step: Rules_ListBySubscriptions
+        exampleFile: ..\examples\Rules\RuleListBySubscription.json
+      - step: Rules_Get
+        exampleFile: ..\examples\Rules\RuleGet.json
+      - step: Rules_Delete
+        exampleFile: ..\examples\Rules\RuleDelete.json

@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  namespaceNameSecond:
+    type: string
+    prefix: namespacsecond
+
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    operationId: Namespaces_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        sku:
+          name: Standard
+          tier: Standard
+  - step: Namespaces_CreateOrUpdate_Second
+    operationId: Namespaces_CreateOrUpdate
+    parameters:
+      namespaceName: $(namespaceNameSecond)
+      parameters:
+        location: westus
+        sku:
+          name: Premium
+          tier: Premium
+    outputVariables:
+      secondNamespaceId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: MigrationConfigs
+    description: Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}
+    variables:
+      postMigrationName:
+        type: string
+        prefix: postmigrationna
+    steps:
+      - step: MigrationConfigs_CreateAndStartMigration
+        exampleFile: ..\examples\Migrationconfigurations\SBMigrationconfigurationCreateAndStartMigration.json
+        requestUpdate:
+          - replace: /parameters/properties/targetNamespace
+            value: $(secondNamespaceId)
+          - replace: /parameters/properties/postMigrationName
+            value: $(postMigrationName)
+      - step: MigrationConfigs_List
+        exampleFile: ..\examples\Migrationconfigurations\SBMigrationconfigurationList.json
+      - step: MigrationConfigs_Get
+        exampleFile: ..\examples\Migrationconfigurations\SBMigrationconfigurationGet.json
+      - step: MigrationConfigs_Revert
+        exampleFile: ..\examples\Migrationconfigurations\SBMigrationconfigurationRevert.json
+      - step: MigrationConfigs_CompleteMigration
+        exampleFile: ..\examples\Migrationconfigurations\SBMigrationconfigurationCompleteMigration.json
+      # - step: MigrationConfigs_Delete
+      #   exampleFile: ..\examples\Migrationconfigurations\SBMigrationconfigurationDelete.json
