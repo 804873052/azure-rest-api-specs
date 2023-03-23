@@ -1,0 +1,168 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  adminPassword:
+    type: secureString
+  location:
+    type: string
+  serverName:
+    type: string
+    prefix: serverna
+
+prepareSteps:
+  - step: Servers_Create
+    exampleFile: ..\..\2017-12-01\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+      - replace: /parameters/sku
+        value: {
+          "name": "GP_Gen5_8",
+          "tier": "GeneralPurpose",
+          "family": "Gen5"
+        }
+
+scenarios:
+  - scenario: Servers
+    description: Microsoft.DBforPostgreSQL/servers/{serverName}
+    steps:
+      - step: Servers_List
+        exampleFile: ..\..\2017-12-01\examples\ServerList.json
+      - step: Servers_ListByResourceGroup
+        exampleFile: ..\..\2017-12-01\examples\ServerListByResourceGroup.json
+      - step: Servers_Get
+        exampleFile: ..\..\2017-12-01\examples\ServerGet.json
+      - step: Servers_Update
+        exampleFile: ..\..\2017-12-01\examples\ServerUpdate.json
+        # requestUpdate:
+        #   - replace: /parameters/properties/administratorLoginPassword
+        #     value: $(adminPassword)
+      - step: Servers_Restart
+        exampleFile: ..\..\2017-12-01\examples\ServerRestart.json
+
+  - scenario: FirewallRules
+    description: Microsoft.DBforPostgreSQL/servers/{serverName}/firewallRules/{firewallRuleName}
+    steps:
+      - step: FirewallRules_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\FirewallRuleCreate.json
+      - step: FirewallRules_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\FirewallRuleListByServer.json
+      - step: FirewallRules_Get
+        exampleFile: ..\..\2017-12-01\examples\FirewallRuleGet.json
+      - step: FirewallRules_Delete
+        exampleFile: ..\..\2017-12-01\examples\FirewallRuleDelete.json
+
+  - scenario: VirtualNetworkRules
+    description: Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}
+    steps:
+      - step: VirtualNetwork_Create
+        armTemplate: ./templates/Create_VirtualNetworkAndSubnet.json
+      - step: VirtualNetworkRules_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\VirtualNetworkRulesCreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/virtualNetworkSubnetId
+            value: $(subnetId)
+          - replace: /parameters/properties/ignoreMissingVnetServiceEndpoint
+            value: true
+      - step: VirtualNetworkRules_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\VirtualNetworkRulesList.json
+      - step: VirtualNetworkRules_Get
+        exampleFile: ..\..\2017-12-01\examples\VirtualNetworkRulesGet.json
+      - step: VirtualNetworkRules_Delete
+        exampleFile: ..\..\2017-12-01\examples\VirtualNetworkRulesDelete.json
+
+  - scenario: Databases
+    description: Microsoft.DBforPostgreSQL/servers/{serverName}/databases/{databaseName}
+    steps:
+      - step: Databases_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\DatabaseCreate.json
+      - step: Databases_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\DatabaseListByServer.json
+      - step: Databases_Get
+        exampleFile: ..\..\2017-12-01\examples\DatabaseGet.json
+      - step: Databases_Delete
+        exampleFile: ..\..\2017-12-01\examples\DatabaseDelete.json
+
+  - scenario: Configurations
+    description: Microsoft.DBforPostgreSQL/servers/{serverName}/configurations/{configurationName}
+    steps:
+      - step: Configurations_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\ConfigurationCreateOrUpdate.json
+      - step: Configurations_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\ConfigurationListByServer.json
+      - step: Configurations_Get
+        exampleFile: ..\..\2017-12-01\examples\ConfigurationGet.json
+
+  - scenario: ServerAdministrators
+    description: Microsoft.DBforPostgreSQL/servers/{serverName}/administrators/activeDirectory
+    steps:
+      - step: ServerAdministrators_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\ServerAdminCreateUpdate.json
+      - step: ServerAdministrators_List
+        exampleFile: ..\..\2017-12-01\examples\ServerAdminList.json
+      - step: ServerAdministrators_Get
+        exampleFile: ..\..\2017-12-01\examples\ServerAdminGet.json
+      - step: ServerAdministrators_Delete
+        exampleFile: ..\..\2017-12-01\examples\ServerAdminDelete.json
+
+  - scenario: Replicas
+    description: Microsoft.DBforPostgreSQL/servers/replicas
+    steps:
+      - step: Replicas_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\ReplicasListByServer.json
+
+  - scenario: ServerParameters
+    description: Microsoft.DBforPostgreSQL/servers/updateConfigurations
+    steps:
+      - step: ServerParameters_ListUpdateConfigurations
+        operationId: ServerParameters_ListUpdateConfigurations
+        parameters:
+          value:
+            value:
+              - name: array_nulls
+                properties:
+                  value: on
+              - name: backslash_quote
+                properties:
+                  value: on
+
+  - scenario: LogFiles
+    description: Microsoft.DBforPostgreSQL/servers/logFiles
+    steps:
+      - step: LogFiles_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\LogFileListByServer.json
+
+  - scenario: RecoverableServers
+    description: Microsoft.DBforPostgreSQL/servers/recoverableServers
+    steps:
+      - step: RecoverableServers_Get
+        exampleFile: ..\..\2017-12-01\examples\RecoverableServersGet.json
+
+  - scenario: ServerBasedPerformanceTier
+    description: Microsoft.DBforPostgreSQL/servers/performanceTiers
+    steps:
+      - step: ServerBasedPerformanceTier_List
+        exampleFile: ..\..\2017-12-01\examples\PerformanceTiersListByServer.json
+
+  - scenario: LocationBasedPerformanceTier
+    description: Microsoft.DBforPostgreSQL/locations/performanceTiers
+    steps:
+      - step: LocationBasedPerformanceTier_List
+        exampleFile: ..\..\2017-12-01\examples\PerformanceTiersListByLocation.json
+
+  - scenario: CheckNameAvailability
+    description: Microsoft.DBforPostgreSQL/checkNameAvailability
+    steps:
+      - step: CheckNameAvailability_Execute
+        exampleFile: ..\..\2017-12-01\examples\CheckNameAvailability.json
+
+  - scenario: Operations
+    description: Microsoft.DBforPostgreSQL/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\..\2017-12-01\examples\OperationList.json
+
+cleanUpSteps:
+  - step: Servers_Delete
+    exampleFile: ..\..\2017-12-01\examples\ServerDelete.json

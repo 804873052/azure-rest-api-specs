@@ -1,0 +1,134 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  virtualNetworkRuleName:
+    type: string
+    prefix: virtualn
+  databaseName:
+    type: string
+    prefix: database
+  keyName:
+    type: string
+    prefix: keyname
+  configurationName:
+    type: string
+    prefix: configur
+  securityAlertPolicyName:
+    type: string
+    prefix: security
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: CheckNameAvailability_Execute
+        exampleFile: ..\..\2017-12-01\examples\CheckNameAvailability.json
+      - operationId: Servers_Create
+        exampleFile: ..\..\2017-12-01\examples\ServerCreate.json
+      - operationId: Servers_List
+        exampleFile: ..\..\2017-12-01\examples\ServerList.json
+      - operationId: Servers_ListByResourceGroup
+        exampleFile: ..\..\2017-12-01\examples\ServerListByResourceGroup.json
+      - operationId: Servers_Get
+        exampleFile: ..\..\2017-12-01\examples\ServerGet.json
+      - operationId: Servers_Update
+        exampleFile: ..\..\2017-12-01\examples\ServerUpdate.json
+      - operationId: Servers_Restart
+        exampleFile: ..\..\2017-12-01\examples\ServerRestart.json
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionUpdate.json
+      - operationId: PrivateEndpointConnections_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionList.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionGet.json
+      - operationId: PrivateEndpointConnections_UpdateTags
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionUpdateTags.json
+      - operationId: VirtualNetworkRules_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\VirtualNetworkRulesCreateOrUpdate.json
+      - operationId: VirtualNetworkRules_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\VirtualNetworkRulesList.json
+      - operationId: VirtualNetworkRules_Get
+        exampleFile: ..\..\2017-12-01\examples\VirtualNetworkRulesGet.json
+      - operationId: Databases_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\DatabaseCreate.json
+      - operationId: Databases_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\DatabaseListByServer.json
+      - operationId: Databases_Get
+        exampleFile: ..\..\2017-12-01\examples\DatabaseGet.json
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\FirewallRuleCreate.json
+      - operationId: FirewallRules_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\FirewallRuleListByServer.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\..\2017-12-01\examples\FirewallRuleGet.json
+      - operationId: ServerKeys_CreateOrUpdate
+        exampleFile: ..\examples\ServerKeyCreateOrUpdate.json
+      - operationId: ServerKeys_List
+        exampleFile: ..\examples\ServerKeyList.json
+      - operationId: ServerKeys_Get
+        exampleFile: ..\examples\ServerKeyGet.json
+      - operationId: ServerSecurityAlertPolicies_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\ServerSecurityAlertsCreateMax.json
+      - operationId: ServerSecurityAlertPolicies_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\ServerSecurityAlertsListByServer.json
+      - operationId: ServerSecurityAlertPolicies_Get
+        exampleFile: ..\..\2017-12-01\examples\ServerSecurityAlertsGet.json
+      - operationId: Configurations_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\ConfigurationCreateOrUpdate.json
+      - operationId: Configurations_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\ConfigurationListByServer.json
+      - operationId: Configurations_Get
+        exampleFile: ..\..\2017-12-01\examples\ConfigurationGet.json
+      - operationId: ServerAdministrators_CreateOrUpdate
+        exampleFile: ..\..\2017-12-01\examples\ServerAdminCreateUpdate.json
+      - operationId: ServerAdministrators_List
+        exampleFile: ..\..\2017-12-01\examples\ServerAdminList.json
+      - operationId: ServerAdministrators_Get
+        exampleFile: ..\..\2017-12-01\examples\ServerAdminGet.json
+      - operationId: Operations_List
+        exampleFile: ..\..\2017-12-01\examples\OperationList.json
+      - operationId: LocationBasedPerformanceTier_List
+        variables:
+          locationName:
+            type: string
+            prefix: location
+        exampleFile: ..\..\2017-12-01\examples\PerformanceTiersListByLocation.json
+      - operationId: LogFiles_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\LogFileListByServer.json
+      - operationId: ServerBasedPerformanceTier_List
+        exampleFile: ..\..\2017-12-01\examples\PerformanceTiersListByServer.json
+      - operationId: PrivateLinkResources_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\PrivateLinkResourcesList.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          groupName:
+            type: string
+            prefix: groupnam
+        exampleFile: ..\..\2018-06-01\examples\PrivateLinkResourcesGet.json
+      - operationId: RecoverableServers_Get
+        exampleFile: ..\..\2017-12-01\examples\RecoverableServersGet.json
+      - operationId: Replicas_ListByServer
+        exampleFile: ..\..\2017-12-01\examples\ReplicasListByServer.json
+      - operationId: ServerParameters_ListUpdateConfigurations
+        exampleFile: ..\..\2017-12-01\examples\ConfigurationsUpdateByServer.json
+      - operationId: ServerAdministrators_Delete
+        exampleFile: ..\..\2017-12-01\examples\ServerAdminDelete.json
+      - operationId: ServerKeys_Delete
+        exampleFile: ..\examples\ServerKeyDelete.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\..\2017-12-01\examples\FirewallRuleDelete.json
+      - operationId: Databases_Delete
+        exampleFile: ..\..\2017-12-01\examples\DatabaseDelete.json
+      - operationId: VirtualNetworkRules_Delete
+        exampleFile: ..\..\2017-12-01\examples\VirtualNetworkRulesDelete.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionDelete.json
+      - operationId: Servers_Delete
+        exampleFile: ..\..\2017-12-01\examples\ServerDelete.json

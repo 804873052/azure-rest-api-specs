@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  adminPassword:
+    type: secureString
+  serverName:
+    type: string
+    prefix: serverna
+  azureTenantId:
+    type: secureString
+  azureObjectId:
+    type: secureString
+
+prepareSteps:
+  - step: Servers_Create
+    exampleFile: ..\..\2017-12-01\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+      - replace: /parameters/sku
+        value: {
+          "name": "GP_Gen5_8",
+          "tier": "GeneralPurpose",
+          "family": "Gen5"
+        }
+  - step: Create_Keyvault
+    armTemplate: ./templates/Create_Keyvault.json
+
+scenarios:
+  - scenario: ServerKeys
+    description: Microsoft.DBforPostgreSQL/servers/{serverName}/keys/{keyName}
+    variables:
+      keyName:
+        type: string
+        prefix: keyname
+    steps:
+      - step: ServerKeys_CreateOrUpdate
+        exampleFile: ..\examples\ServerKeyCreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/uri
+            value: $(keyUri)
+        
+      - step: ServerKeys_List
+        exampleFile: ..\examples\ServerKeyList.json
+      - step: ServerKeys_Get
+        exampleFile: ..\examples\ServerKeyGet.json
+      - step: ServerKeys_Delete
+        exampleFile: ..\examples\ServerKeyDelete.json

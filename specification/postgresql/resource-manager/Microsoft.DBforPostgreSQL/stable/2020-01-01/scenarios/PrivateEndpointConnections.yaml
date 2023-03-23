@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  adminPassword:
+    type: secureString
+  location: 
+    type: string
+  serverName:
+    type: string
+    prefix: serverna
+
+prepareSteps:
+  - step: Servers_Create
+    exampleFile: ..\..\2017-12-01\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+      - replace: /parameters/sku
+        value: {
+          "name": "GP_Gen5_8",
+          "tier": "GeneralPurpose",
+          "family": "Gen5"
+        }
+    outputVariables:
+      postgresqlserverId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.DBforPostgreSQL/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: PrivateEndpointConnections_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionList.json
+        outputVariables: # parentObject.properties is not iterable
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      # - step: PrivateEndpointConnections_CreateOrUpdate
+      #   exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionUpdate.json
+      #   requestUpdate:
+      #     - replace: /parameters/properties/privateLinkServiceConnectionState/status
+      #       value: Rejected
+      # - step: PrivateEndpointConnections_UpdateTags
+      #   exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionUpdateTags.json
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionGet.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionDelete.json
+
+
+  - scenario: PrivateLinkResources
+    description: Microsoft.DBforPostgreSQL/servers/{serverName}/privateLinkResources/{groupName}
+    variables:
+      privateEndpointConnectionName:
+        type: string
+        prefix: privatee
+    steps:
+      - step: PrivateLinkResources_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\PrivateLinkResourcesList.json
+        outputVariables: # parentObject.properties is not iterable
+          privateLinkResourceName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateLinkResources_Get
+        exampleFile: ..\..\2018-06-01\examples\PrivateLinkResourcesGet.json
+        requestUpdate:
+          - replace: /groupName
+            value: $(privateLinkResourceName)
+        
