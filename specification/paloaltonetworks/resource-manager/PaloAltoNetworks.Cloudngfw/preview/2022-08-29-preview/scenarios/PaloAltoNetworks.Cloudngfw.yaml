@@ -1,0 +1,304 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  globalRulestackName:
+    type: string
+    prefix: globalru
+  localRulestackName:
+    type: string
+    prefix: localrul
+
+prepareSteps:
+  - step: GlobalRulestack_CreateOrUpdate
+    exampleFile: ..\examples\GlobalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+  - step: LocalRulestacks_CreateOrUpdate
+    exampleFile: ..\examples\LocalRulestacks_CreateOrUpdate_MaximumSet_Gen.json
+
+scenarios:
+  - scenario: GlobalRulestack
+    description: PaloAltoNetworks.Cloudngfw/globalRulestacks/{globalRulestackName}
+    steps:
+      - step: GlobalRulestack_List
+        exampleFile: ..\examples\GlobalRulestack_List_MaximumSet_Gen.json
+      - step: GlobalRulestack_Get
+        exampleFile: ..\examples\GlobalRulestack_Get_MaximumSet_Gen.json
+      - step: GlobalRulestack_Update
+        exampleFile: ..\examples\GlobalRulestack_Update_MaximumSet_Gen.json
+      - step: GlobalRulestack_getChangeLog
+        exampleFile: ..\examples\GlobalRulestack_getChangeLog_MaximumSet_Gen.json
+      - step: GlobalRulestack_listAppIds
+        exampleFile: ..\examples\GlobalRulestack_listAppIds_MaximumSet_Gen.json
+      - step: GlobalRulestack_listCountries
+        exampleFile: ..\examples\GlobalRulestack_listCountries_MaximumSet_Gen.json
+      - step: GlobalRulestack_listAdvancedSecurityObjects
+      #   exampleFile: .\examples\GlobalRulestack_listAdvancedSecurityObjects_MaximumSet_Gen.json
+        operationId: GlobalRulestack_listAdvancedSecurityObjects
+      - step: GlobalRulestack_commit
+        exampleFile: ..\examples\GlobalRulestack_commit_MaximumSet_Gen.json
+      - step: GlobalRulestack_revert
+        exampleFile: ..\examples\GlobalRulestack_revert_MaximumSet_Gen.json
+      - step: GlobalRulestack_listFirewalls
+        exampleFile: ..\examples\GlobalRulestack_listFirewalls_MaximumSet_Gen.json
+      - step: GlobalRulestack_listSecurityServices
+        exampleFile: ..\examples\GlobalRulestack_listSecurityServices_MaximumSet_Gen.json
+      - step: GlobalRulestack_listPredefinedUrlCategories
+      #   exampleFile: .\examples\GlobalRulestack_listPredefinedUrlCategories_MaximumSet_Gen.json
+        operationId: GlobalRulestack_listPredefinedUrlCategories
+
+  - scenario: CertificateObjectGlobalRulestack
+    description: PaloAltoNetworks.Cloudngfw/globalRulestacks/{globalRulestackName}/certificates/{name}
+    variables:
+      name: 
+        type: string
+        prefix: grccertificate
+    steps:
+      - step: CertificateObjectGlobalRulestack_CreateOrUpdate
+      #   exampleFile: .\examples\CertificateObjectGlobalRulestack_CreateOrUpdate_MinimumSet_Gen.json
+        operationId: CertificateObjectGlobalRulestack_CreateOrUpdate
+      - step: CertificateObjectGlobalRulestack_List
+        exampleFile: ..\examples\CertificateObjectGlobalRulestack_List_MaximumSet_Gen.json
+      - step: CertificateObjectGlobalRulestack_Get
+        exampleFile: ..\examples\CertificateObjectGlobalRulestack_Get_MaximumSet_Gen.json
+      - step: CertificateObjectGlobalRulestack_Delete
+      #   exampleFile: .\examples\CertificateObjectGlobalRulestack_Delete_MaximumSet_Gen.json
+        operationId: CertificateObjectGlobalRulestack_Delete
+
+  - scenario: FqdnListGlobalRulestack
+    description: PaloAltoNetworks.Cloudngfw/globalRulestacks/{globalRulestackName}/fqdnlists/{name}
+    variables:
+      name: 
+        type: string
+        prefix: grcfqdnlist
+    steps:
+      - step: FqdnListGlobalRulestack_CreateOrUpdate
+        exampleFile: ..\examples\FqdnListGlobalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+      - step: FqdnListGlobalRulestack_List
+        exampleFile: ..\examples\FqdnListGlobalRulestack_List_MaximumSet_Gen.json
+      - step: FqdnListGlobalRulestack_Get
+        exampleFile: ..\examples\FqdnListGlobalRulestack_Get_MaximumSet_Gen.json
+      - step: FqdnListGlobalRulestack_Delete
+        exampleFile: ..\examples\FqdnListGlobalRulestack_Delete_MaximumSet_Gen.json
+
+  - scenario: PostRules
+    description: PaloAltoNetworks.Cloudngfw/globalRulestacks/{globalRulestackName}/postRules/{priority}
+    variables:
+      priority:
+        type: string
+        prefix: grcpostrule
+    steps:
+      - step: PostRules_CreateOrUpdate
+        exampleFile: ..\examples\PostRules_CreateOrUpdate_MaximumSet_Gen.json
+      - step: PostRules_List
+        exampleFile: ..\examples\PostRules_List_MaximumSet_Gen.json
+      - step: PostRules_Get
+        exampleFile: ..\examples\PostRules_Get_MaximumSet_Gen.json
+      - step: PostRules_resetCounters
+        exampleFile: ..\examples\PostRules_resetCounters_MaximumSet_Gen.json
+      - step: PostRules_getCounters
+        exampleFile: ..\examples\PostRules_getCounters_MaximumSet_Gen.json
+      - step: PostRules_refreshCounters
+        exampleFile: ..\examples\PostRules_refreshCounters_MaximumSet_Gen.json
+      - step: PostRules_Delete
+        exampleFile: ..\examples\PostRules_Delete_MaximumSet_Gen.json
+
+  - scenario: PrefixListGlobalRulestack
+    description: PaloAltoNetworks.Cloudngfw/globalRulestacks/{globalRulestackName}/prefixlists/{name}
+    variables:
+      name:
+        type: string
+        prefix: grcprefixlist
+    steps:
+      - step: PrefixListGlobalRulestack_CreateOrUpdate
+        # exampleFile: .\examples\PrefixListGlobalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+        operationId: PrefixListGlobalRulestack_CreateOrUpdate
+      - step: PrefixListGlobalRulestack_List
+        exampleFile: ..\examples\PrefixListGlobalRulestack_List_MaximumSet_Gen.json
+      - step: PrefixListGlobalRulestack_Get
+        exampleFile: ..\examples\PrefixListGlobalRulestack_Get_MaximumSet_Gen.json
+      - step: PrefixListGlobalRulestack_Delete
+        exampleFile: ..\examples\PrefixListGlobalRulestack_Delete_MaximumSet_Gen.json
+
+  - scenario: PreRules
+    description: PaloAltoNetworks.Cloudngfw/globalRulestacks/{globalRulestackName}/preRules/{priority}
+    variables:
+      priority:
+        type: string
+        prefix: prerulepriority
+    steps:
+      - step: PreRules_CreateOrUpdate
+        exampleFile: ..\examples\PreRules_CreateOrUpdate_MaximumSet_Gen.json
+      - step: PreRules_List
+        exampleFile: ..\examples\PreRules_List_MaximumSet_Gen.json
+      - step: PreRules_Get
+        exampleFile: ..\examples\PreRules_Get_MaximumSet_Gen.json
+      - step: PreRules_refreshCounters
+        exampleFile: ..\examples\PreRules_refreshCounters_MaximumSet_Gen.json
+      - step: PreRules_resetCounters
+        exampleFile: ..\examples\PreRules_resetCounters_MaximumSet_Gen.json
+      - step: PreRules_getCounters
+        exampleFile: ..\examples\PreRules_getCounters_MaximumSet_Gen.json
+      - step: PreRules_Delete
+        exampleFile: ..\examples\PreRules_Delete_MaximumSet_Gen.json
+
+  - scenario: Operations
+    description: PaloAltoNetworks.Cloudngfw/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\Operations_List_MaximumSet_Gen.json
+
+  - scenario: Firewalls
+    description: PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}
+    variables:
+      firewallName:
+        type: string
+        prefix: firewallna
+    steps:
+      - step: Firewalls_CreateOrUpdate
+        exampleFile: ..\examples\Firewalls_CreateOrUpdate_MaximumSet_Gen.json
+      - step: Firewalls_ListBySubscription
+        exampleFile: ..\examples\Firewalls_ListBySubscription_MaximumSet_Gen.json
+      - step: Firewalls_Get
+        exampleFile: ..\examples\Firewalls_Get_MaximumSet_Gen.json
+      - step: Firewalls_ListByResourceGroup
+        exampleFile: ..\examples\Firewalls_ListByResourceGroup_MaximumSet_Gen.json
+      - step: Firewalls_Update
+        exampleFile: ..\examples\Firewalls_Update_MaximumSet_Gen.json
+      - step: Firewalls_getGlobalRulestack
+        exampleFile: ..\examples\Firewalls_getGlobalRulestack_MaximumSet_Gen.json
+      - step: Firewalls_getLogProfile
+        exampleFile: ..\examples\Firewalls_getLogProfile_MaximumSet_Gen.json
+      - step: Firewalls_getSupportInfo
+        exampleFile: ..\examples\Firewalls_getSupportInfo_MaximumSet_Gen.json
+      - step: Firewalls_saveLogProfile
+        exampleFile: ..\examples\Firewalls_saveLogProfile_MaximumSet_Gen.json
+
+# PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/statuses/default
+      - step: FirewallStatus_ListByFirewalls
+        exampleFile: ..\examples\FirewallStatus_ListByFirewalls_MaximumSet_Gen.json
+      - step: FirewallStatus_Get
+        exampleFile: ..\examples\FirewallStatus_Get_MaximumSet_Gen.json
+
+      - step: Firewalls_Delete
+        exampleFile: ..\examples\Firewalls_Delete_MaximumSet_Gen.json
+
+
+  - scenario: LocalRulestacks
+    description: PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}
+    steps:
+      - step: LocalRulestacks_ListBySubscription
+        exampleFile: ..\examples\LocalRulestacks_ListBySubscription_MaximumSet_Gen.json
+      - step: LocalRulestacks_ListByResourceGroup
+        exampleFile: ..\examples\LocalRulestacks_ListByResourceGroup_MaximumSet_Gen.json
+      - step: LocalRulestacks_Get
+        exampleFile: ..\examples\LocalRulestacks_Get_MaximumSet_Gen.json
+      - step: LocalRulestacks_Update
+        exampleFile: ..\examples\LocalRulestacks_Update_MaximumSet_Gen.json
+      - step: LocalRulestacks_commit
+        exampleFile: ..\examples\LocalRulestacks_commit_MaximumSet_Gen.json
+      - step: LocalRulestacks_listSecurityServices
+        exampleFile: ..\examples\LocalRulestacks_listSecurityServices_MaximumSet_Gen.json
+      - step: LocalRulestacks_revert
+        exampleFile: ..\examples\LocalRulestacks_revert_MaximumSet_Gen.json
+      - step: LocalRulestacks_listAppIds
+        exampleFile: ..\examples\LocalRulestacks_listAppIds_MaximumSet_Gen.json
+      - step: LocalRulestacks_getChangeLog
+        exampleFile: ..\examples\LocalRulestacks_getChangeLog_MaximumSet_Gen.json
+      - step: LocalRulestacks_listCountries
+        exampleFile: ..\examples\LocalRulestacks_listCountries_MaximumSet_Gen.json
+      - step: LocalRulestacks_listPredefinedUrlCategories
+        # exampleFile: .\examples\LocalRulestacks_listPredefinedUrlCategories_MaximumSet_Gen.json
+        operationId: LocalRulestacks_listPredefinedUrlCategories
+      - step: LocalRulestacks_listFirewalls
+        exampleFile: ..\examples\LocalRulestacks_listFirewalls_MaximumSet_Gen.json
+      - step: LocalRulestacks_getSupportInfo
+        exampleFile: ..\examples\LocalRulestacks_getSupportInfo_MaximumSet_Gen.json
+      - step: LocalRulestacks_listAdvancedSecurityObjects
+        # exampleFile: .\examples\LocalRulestacks_listAdvancedSecurityObjects_MaximumSet_Gen.json
+        operationId: LocalRulestacks_listAdvancedSecurityObjects
+
+
+  - scenario: CertificateObjectLocalRulestack
+    description: PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/certificates/{name}
+    variables:
+      name:
+        type: string
+        prefix: lrccertificate
+    steps:
+      - step: CertificateObjectLocalRulestack_CreateOrUpdate
+        # exampleFile: .\examples\CertificateObjectLocalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+        operationId: CertificateObjectLocalRulestack_CreateOrUpdate
+        parameters:
+          resource:
+            properties:
+              certificateSelfSigned: TRUE
+      - step: CertificateObjectLocalRulestack_ListByLocalRulestacks
+        # exampleFile: .\examples\CertificateObjectLocalRulestack_ListByLocalRulestacks_MaximumSet_Gen.json
+        operationId: CertificateObjectLocalRulestack_ListByLocalRulestacks
+      - step: CertificateObjectLocalRulestack_Get
+        exampleFile: ..\examples\CertificateObjectLocalRulestack_Get_MaximumSet_Gen.json
+      - step: CertificateObjectLocalRulestack_Delete
+        exampleFile: ..\examples\CertificateObjectLocalRulestack_Delete_MaximumSet_Gen.json
+
+  - scenario: FqdnListLocalRulestack
+    description: PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/fqdnlists/{name}
+    variables:
+      name:
+        type: string
+        prefix: lrcfqdnlist
+    steps:
+      - step: FqdnListLocalRulestack_CreateOrUpdate
+        exampleFile: ..\examples\FqdnListLocalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+      - step: FqdnListLocalRulestack_ListByLocalRulestacks
+      #   exampleFile: .\examples\FqdnListLocalRulestack_ListByLocalRulestacks_MaximumSet_Gen.json
+        operationId: FqdnListLocalRulestack_ListByLocalRulestacks
+      - step: FqdnListLocalRulestack_Get
+        exampleFile: ..\examples\FqdnListLocalRulestack_Get_MaximumSet_Gen.json
+      - step: FqdnListLocalRulestack_Delete
+        exampleFile: ..\examples\FqdnListLocalRulestack_Delete_MaximumSet_Gen.json
+
+  - scenario: LocalRules
+    description: PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/localRules/{priority}
+    variables:
+      priority:
+        type: string
+        prefix: lrpriority
+    steps:
+      - step: LocalRules_CreateOrUpdate
+        exampleFile: ..\examples\LocalRules_CreateOrUpdate_MaximumSet_Gen.json
+      - step: LocalRules_ListByLocalRulestacks 
+        exampleFile: ..\examples\LocalRules_ListByLocalRulestacks_MaximumSet_Gen.json
+      - step: LocalRules_Get
+        exampleFile: ..\examples\LocalRules_Get_MaximumSet_Gen.json
+      - step: LocalRules_refreshCounters
+        exampleFile: ..\examples\LocalRules_refreshCounters_MaximumSet_Gen.json
+      - step: LocalRules_resetCounters
+        exampleFile: ..\examples\LocalRules_resetCounters_MaximumSet_Gen.json
+      - step: LocalRules_getCounters
+        exampleFile: ..\examples\LocalRules_getCounters_MaximumSet_Gen.json
+      - step: LocalRules_Delete
+        exampleFile: ..\examples\LocalRules_Delete_MaximumSet_Gen.json
+
+  - scenario: PrefixListLocalRulestack
+    description: PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/prefixlists/{name}
+    variables:
+      name:
+        type: string
+        prefix: lrcprefixlist
+    steps:
+      - step: PrefixListLocalRulestack_CreateOrUpdate
+        # exampleFile: .\examples\PrefixListLocalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+        operationId: PrefixListLocalRulestack_CreateOrUpdate
+      - step: PrefixListLocalRulestack_ListByLocalRulestacks
+        # exampleFile: .\examples\PrefixListLocalRulestack_ListByLocalRulestacks_MaximumSet_Gen.json
+        operationId: PrefixListLocalRulestack_ListByLocalRulestacks
+      - step: PrefixListLocalRulestack_Get
+        exampleFile: ..\examples\PrefixListLocalRulestack_Get_MaximumSet_Gen.json
+      - step: PrefixListLocalRulestack_Delete
+        exampleFile: ..\examples\PrefixListLocalRulestack_Delete_MaximumSet_Gen.json
+
+cleanUpSteps:
+  - step: LocalRulestacks_Delete
+    exampleFile: ..\examples\LocalRulestacks_Delete_MaximumSet_Gen.json
+  - step: GlobalRulestack_Delete
+    exampleFile: ..\examples\GlobalRulestack_Delete_MaximumSet_Gen.json
