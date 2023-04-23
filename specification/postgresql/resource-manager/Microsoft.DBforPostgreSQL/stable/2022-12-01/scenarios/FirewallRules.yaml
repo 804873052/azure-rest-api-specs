@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+
+prepareSteps:
+  - step: Servers_Create
+    exampleFile: ..\examples\ServerCreate.json
+
+scenarios:
+  - scenario: FirewallRules
+    description: Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}
+    variables:
+      firewallRuleName:
+        type: string
+        prefix: firewall
+    steps:
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\examples\FirewallRuleCreate.json
+      - operationId: FirewallRules_ListByServer
+        exampleFile: ..\examples\FirewallRuleListByServer.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\examples\FirewallRuleGet.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\examples\FirewallRuleDelete.json

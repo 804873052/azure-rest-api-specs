@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+
+prepareSteps:
+  - step: Servers_Create
+    exampleFile: ..\examples\ServerCreate.json
+
+scenarios:
+  - scenario: Administrators
+    description: Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators/{objectId}
+    steps:
+      - operationId: Administrators_Create
+        exampleFile: ..\examples\AdministratorAdd.json
+      - operationId: Administrators_ListByServer
+        exampleFile: ..\examples\AdministratorsListByServer.json
+      - operationId: Administrators_Get
+        exampleFile: ..\examples\AdministratorGet.json
+      - operationId: Administrators_Delete
+        exampleFile: ..\examples\AdministratorDelete.json

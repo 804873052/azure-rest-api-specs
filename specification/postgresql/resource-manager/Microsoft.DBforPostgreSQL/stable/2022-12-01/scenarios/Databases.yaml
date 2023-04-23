@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+
+prepareSteps:
+  - step: Servers_Create
+    exampleFile: ..\examples\ServerCreate.json
+
+scenarios:
+  - scenario: Databases
+    description: Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}
+    variables:
+      databaseName:
+        type: string
+        prefix: database
+    steps:
+      - operationId: Databases_Create
+        exampleFile: ..\examples\DatabaseCreate.json
+      - operationId: Databases_ListByServer
+        exampleFile: ..\examples\DatabasesListByServer.json
+      - operationId: Databases_Get
+        exampleFile: ..\examples\DatabaseGet.json
+      - operationId: Databases_Delete
+        exampleFile: ..\examples\DatabaseDelete.json

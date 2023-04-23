@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  adminPassword:
+    type: string
+
+scenarios:
+  - scenario: Servers
+    description: Microsoft.DBforPostgreSQL/flexibleServers/{serverName}
+    variables:
+      serverName:
+        type: string
+        prefix: serverna
+    steps:
+      - step: CheckNameAvailability_Execute
+        exampleFile: ..\examples\CheckNameAvailability.json
+        requestUpdate:
+          - replace: /nameAvailabilityRequest
+            value: $(serverName)
+      - step: Servers_Create
+        exampleFile: ..\examples\ServerCreate.json
+      - step: Servers_List
+        exampleFile: ..\examples\ServerList.json
+      - step: Servers_ListByResourceGroup
+        exampleFile: ..\examples\ServerListByResourceGroup.json
+      - step: Servers_Get
+        exampleFile: ..\examples\ServerGet.json
+      - step: Servers_Update
+        exampleFile: ..\examples\ServerUpdate.json
+
+      - step: Servers_Stop
+        exampleFile: ..\examples\ServerStop.json
+      - step: Servers_Start
+        exampleFile: ..\examples\ServerStart.json
+      - step: Servers_Restart
+        exampleFile: ..\examples\ServerRestart.json
+
+      - step: Servers_Delete
+        exampleFile: ..\examples\ServerDelete.json

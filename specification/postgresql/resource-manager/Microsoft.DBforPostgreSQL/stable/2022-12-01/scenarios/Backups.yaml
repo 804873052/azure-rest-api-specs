@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+
+prepareSteps:
+  - step: Servers_Create
+    exampleFile: ..\examples\ServerCreate.json
+
+scenarios:
+  - scenario: Backups
+    description: Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}
+    steps:
+      - operationId: Backups_ListByServer
+        exampleFile: ..\examples\BackupListByServer.json
+      - operationId: Backups_Get
+        variables:
+          backupName:
+            type: string
+            prefix: backupna
+        exampleFile: ..\examples\BackupGet.json

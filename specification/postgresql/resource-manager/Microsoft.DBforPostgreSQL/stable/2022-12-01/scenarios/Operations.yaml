@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: Operations
+    description: Microsoft.DBforPostgreSQL/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\OperationList.json
+
+  - scenario: LocationBasedCapabilities
+    description: Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities
+    steps:
+      - step: CheckNameAvailabilityWithLocation_Execute
+        exampleFile: ..\examples\CheckNameAvailabilityLocationBased.json
+      - step: LocationBasedCapabilities_Execute
+        exampleFile: ..\examples\CapabilitiesByLocation.json
+
+  - scenario: GetPrivateDnsZoneSuffix
+    description: Microsoft.DBforPostgreSQL/getPrivateDnsZoneSuffix
+    steps:
+      - step: GetPrivateDnsZoneSuffix_Execute
+        exampleFile: ..\examples\GetPrivateDnsZoneSuffix.json
+
+  - scenario: VirtualNetworkSubnetUsage
+    description: Microsoft.DBforPostgreSQL/locations/{locationName}/checkVirtualNetworkSubnetUsage
+    steps:
+      - step: VirtualNetworkSubnetUsage_Execute
+        exampleFile: ..\examples\VirtualNetworkSubnetUsage.json
