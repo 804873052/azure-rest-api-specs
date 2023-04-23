@@ -37,12 +37,11 @@ scenarios:
         type: string
         prefix: keyname
     steps:
-      - step: ServerKeys_CreateOrUpdate
+      - step: ServerKeys_CreateOrUpdate # An unexpected error occured while processing the request.
         exampleFile: ..\examples\ServerKeyCreateOrUpdate.json
         requestUpdate:
           - replace: /parameters/properties/uri
             value: $(keyUri)
-        
       - step: ServerKeys_List
         exampleFile: ..\examples\ServerKeyList.json
       - step: ServerKeys_Get

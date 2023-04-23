@@ -106,7 +106,7 @@
     "outputs": {
         "keyUri": {
             "type": "string",
-            "value": "[resourceId('Microsoft.KeyVault/vaults/keys', [concat(parameters('vaultName'), '/testkey')]).keyUri]"
+            "value": "[reference(resourceId('Microsoft.KeyVault/vaults/keys', parameters('vaultName'), 'testkey')).keyUri]"
         }
     }
 }

@@ -24,13 +24,9 @@ prepareSteps:
 scenarios:
   - scenario: ServerSecurityAlertPolicies
     description: Microsoft.DBforPostgreSQL/servers/{serverName}/securityAlertPolicies/{securityAlertPolicyName}
-    variables:
-      securityAlertPolicyName:
-        type: string
-        prefix: security
     steps:
       - step: ServerSecurityAlertPolicies_CreateOrUpdate
-        exampleFile: ..\..\2017-12-01\examples\ServerSecurityAlertsCreateMax.json
+        exampleFile: ..\..\2017-12-01\examples\ServerSecurityAlertsCreateMin.json
       - step: ServerSecurityAlertPolicies_ListByServer
         exampleFile: ..\..\2017-12-01\examples\ServerSecurityAlertsListByServer.json
       - step: ServerSecurityAlertPolicies_Get
