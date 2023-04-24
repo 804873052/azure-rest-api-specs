@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: Clusters
+    description: Microsoft.EventHub/clusters/{clusterName}
+    variables:
+      clusterName:
+        type: string
+        prefix: clustern
+    steps:
+# The resource type 'availableClusterRegions' could not be found in the namespace 'Microsoft.EventHub' for api version '2021-11-01'. The supported api-versions are '2018-01-01-preview'."
+      - step: Clusters_CreateOrUpdate
+        exampleFile: ..\examples\Clusters\ClusterPut.json
+      - step: Clusters_ListAvailableClusterRegion
+        exampleFile: ..\examples\Clusters\ListAvailableClustersGet.json
+      - step: Clusters_ListNamespaces
+        exampleFile: ..\examples\Clusters\ListNamespacesInClusterGet.json
+      - step: Clusters_ListBySubscription
+        exampleFile: ..\examples\Clusters\ClustersListBySubscription.json
+      - step: Clusters_Get
+        exampleFile: ..\examples\Clusters\ClusterGet.json
+      - step: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\Clusters\ClustersListByResourceGroup.json
+      - step: Clusters_Update # A server error has occured while processing the request. Please retry the request
+        exampleFile: ..\examples\Clusters\ClusterPatch.json
+      - step: Clusters_Delete
+        exampleFile: ..\examples\Clusters\ClusterDelete.json

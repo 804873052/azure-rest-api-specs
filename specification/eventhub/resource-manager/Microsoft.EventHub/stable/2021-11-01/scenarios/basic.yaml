@@ -1,0 +1,156 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  eventHubName:
+    type: string
+    prefix: eventhub
+  authorizationRuleName:
+    type: string
+    prefix: authoriz
+  alias:
+    type: string
+    prefix: alias
+  clusterName:
+    type: string
+    prefix: clustern
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  consumerGroupName:
+    type: string
+    prefix: consumer
+  schemaGroupName:
+    type: string
+    prefix: schemagr
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Namespaces_CheckNameAvailability
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceCheckNameAvailability.json
+      - operationId: DisasterRecoveryConfigs_CheckNameAvailability
+        exampleFile: ..\examples\disasterRecoveryConfigs\EHAliasCheckNameAvailability.json
+      - operationId: Namespaces_CreateOrUpdate
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceCreate.json
+      - operationId: Namespaces_List
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceList.json
+      - operationId: Namespaces_ListAuthorizationRules
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceAuthorizationRuleListAll.json
+      - operationId: Namespaces_GetNetworkRuleSet
+        exampleFile: ..\examples\NameSpaces\VirtualNetworkRule\EHNetworkRuleSetGet.json
+      - operationId: Namespaces_ListNetworkRuleSet
+        exampleFile: ..\examples\NameSpaces\VirtualNetworkRule\EHNetworkRuleSetList.json
+      - operationId: Namespaces_ListByResourceGroup
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceListByResourceGroup.json
+      - operationId: Namespaces_Get
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceGet.json
+      - operationId: Namespaces_Update
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceUpdate.json
+      - operationId: EventHubs_CreateOrUpdate
+        exampleFile: ..\examples\EventHubs\EHEventHubCreate.json
+      - operationId: EventHubs_ListByNamespace
+        exampleFile: ..\examples\EventHubs\EHEventHubListByNameSpace.json
+      - operationId: EventHubs_Get
+        exampleFile: ..\examples\EventHubs\EHEventHubGet.json
+      - operationId: EventHubs_ListAuthorizationRules
+        exampleFile: ..\examples\EventHubs\EHEventHubAuthorizationRuleListAll.json
+      - operationId: DisasterRecoveryConfigs_CreateOrUpdate
+        exampleFile: ..\examples\disasterRecoveryConfigs\EHAliasCreate.json
+      - operationId: DisasterRecoveryConfigs_List
+        exampleFile: ..\examples\disasterRecoveryConfigs\EHAliasList.json
+      - operationId: DisasterRecoveryConfigs_Get
+        exampleFile: ..\examples\disasterRecoveryConfigs\EHAliasGet.json
+      - operationId: DisasterRecoveryConfigs_ListAuthorizationRules
+        exampleFile: >-
+          ..\examples\disasterRecoveryConfigs\EHAliasAuthorizationRuleListAll.json
+      - operationId: DisasterRecoveryConfigs_GetAuthorizationRule
+        exampleFile: ..\examples\disasterRecoveryConfigs\EHAliasAuthorizationRuleGet.json
+      - operationId: DisasterRecoveryConfigs_ListKeys
+        exampleFile: >-
+          ..\examples\disasterRecoveryConfigs\EHAliasAuthorizationRuleListKey.json
+      - operationId: DisasterRecoveryConfigs_FailOver
+        exampleFile: ..\examples\disasterRecoveryConfigs\EHAliasFailOver.json
+      - operationId: DisasterRecoveryConfigs_BreakPairing
+        exampleFile: ..\examples\disasterRecoveryConfigs\EHAliasBreakPairing.json
+
+      - operationId: Clusters_CreateOrUpdate
+        exampleFile: ..\examples\Clusters\ClusterPut.json
+      - operationId: Clusters_ListAvailableClusterRegion
+        exampleFile: ..\examples\Clusters\ListAvailableClustersGet.json
+      - operationId: Clusters_ListNamespaces
+        exampleFile: ..\examples\Clusters\ListNamespacesInClusterGet.json
+      - operationId: Clusters_ListBySubscription
+        exampleFile: ..\examples\Clusters\ClustersListBySubscription.json
+      - operationId: Clusters_Get
+        exampleFile: ..\examples\Clusters\ClusterGet.json
+      - operationId: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\Clusters\ClustersListByResourceGroup.json
+      - operationId: Clusters_Update
+        exampleFile: ..\examples\Clusters\ClusterPatch.json
+        
+      - operationId: EventHubs_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\EventHubs\EHEventHubAuthorizationRuleCreate.json
+      - operationId: EventHubs_GetAuthorizationRule
+        exampleFile: ..\examples\EventHubs\EHEventHubAuthorizationRuleGet.json
+      - operationId: EventHubs_ListKeys
+        exampleFile: ..\examples\EventHubs\EHEventHubAuthorizationRuleListKey.json
+      - operationId: EventHubs_RegenerateKeys
+        exampleFile: ..\examples\EventHubs\EHEventHubAuthorizationRuleRegenerateKey.json
+      - operationId: Namespaces_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceAuthorizationRuleCreate.json
+      - operationId: Namespaces_GetAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceAuthorizationRuleGet.json
+      - operationId: Namespaces_ListKeys
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceAuthorizationRuleListKey.json
+      - operationId: Namespaces_RegenerateKeys
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceAuthorizationRuleRegenerateKey.json
+      - operationId: SchemaRegistry_CreateOrUpdate
+        exampleFile: ..\examples\SchemaRegistry\SchemaRegistryCreate.json
+      - operationId: SchemaRegistry_ListByNamespace
+        exampleFile: ..\examples\SchemaRegistry\SchemaRegistryListByNamespace.json
+      - operationId: SchemaRegistry_Get
+        exampleFile: ..\examples\SchemaRegistry\SchemaRegistryGet.json
+      - operationId: ConsumerGroups_CreateOrUpdate
+        exampleFile: ..\examples\ConsumerGroup\EHConsumerGroupCreate.json
+      - operationId: ConsumerGroups_ListByEventHub
+        exampleFile: ..\examples\ConsumerGroup\EHConsumerGroupListByEventHub.json
+      - operationId: ConsumerGroups_Get
+        exampleFile: ..\examples\ConsumerGroup\EHConsumerGroupGet.json
+
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionCreate.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionList.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionGet.json
+        
+      - operationId: Namespaces_CreateOrUpdateNetworkRuleSet
+        exampleFile: ..\examples\NameSpaces\VirtualNetworkRule\EHNetworkRuleSetCreate.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\EHOperations_List.json
+      - operationId: Configuration_Get
+        exampleFile: ..\examples\Clusters\ClusterQuotaConfigurationGet.json
+      - operationId: Configuration_Patch
+        exampleFile: ..\examples\Clusters\ClusterQuotaConfigurationPatch.json
+      - operationId: PrivateLinkResources_Get
+        exampleFile: ..\examples\NameSpaces\PrivateLinkResourcesGet.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionDelete.json
+      - operationId: ConsumerGroups_Delete
+        exampleFile: ..\examples\ConsumerGroup\EHConsumerGroupDelete.json
+      - operationId: SchemaRegistry_Delete
+        exampleFile: ..\examples\SchemaRegistry\SchemaRegistryDelete.json
+      - operationId: Namespaces_DeleteAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceAuthorizationRuleDelete.json
+      - operationId: EventHubs_DeleteAuthorizationRule
+        exampleFile: ..\examples\EventHubs\EHEventHubAuthorizationRuleDelete.json
+      - operationId: Clusters_Delete
+        exampleFile: ..\examples\Clusters\ClusterDelete.json
+      - operationId: DisasterRecoveryConfigs_Delete
+        exampleFile: ..\examples\disasterRecoveryConfigs\EHAliasDelete.json
+      - operationId: EventHubs_Delete
+        exampleFile: ..\examples\EventHubs\EHEventHubDelete.json
+      - operationId: Namespaces_Delete
+        exampleFile: ..\examples\NameSpaces\EHNameSpaceDelete.json

@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  namespaceName:
+    type: string
+    prefix: namespac
+
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    # exampleFile: ..\examples\NameSpaces\EHNameSpaceCreate.json
+    operationId: Namespaces_CreateOrUpdate
+    parameters:
+      parameters:
+        location: $(location)
+        sku:
+          name: Standard # Premium
+          tier: Standard
+    outputVariables:
+      namespaceId:
+        type: string
+        fromResponse: /id
+  - step: Create_PrivateEndpoint
+    armTemplate: ./templates/Create_PrivateEndpoint.json
+
+scenarios:
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: PrivateEndpointConnections_List
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionList.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_CreateOrUpdate # 202 accepted
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionCreate.json
+        requestUpdate:
+          - remove: /parameters/properties/privateEndpoint
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionGet.json
+      - step: PrivateLinkResources_Get
+        exampleFile: ..\examples\NameSpaces\PrivateLinkResourcesGet.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\NameSpaces\PrivateEndPointConnectionDelete.json
+
