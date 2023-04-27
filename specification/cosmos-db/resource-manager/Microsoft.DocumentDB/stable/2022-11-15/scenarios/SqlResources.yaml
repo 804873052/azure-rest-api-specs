@@ -1,0 +1,180 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  databaseName:
+    type: string
+    prefix: sqldb
+  containerName:
+    type: string
+    prefix: sqlcontaine
+
+prepareSteps:
+  - step: DatabaseAccounts_CreateOrUpdate
+    exampleFile: ../examples/CosmosDBDatabaseAccountCreateMin.json
+    requestUpdate:
+      - replace: /createUpdateParameters/properties/locations/0/locationName
+        value: $(location)
+  - step: SqlResources_CreateUpdateSqlDatabase
+    exampleFile: ..\examples\CosmosDBSqlDatabaseCreateUpdate.json
+    requestUpdate:
+      - add: /createUpdateSqlDatabaseParameters/properties/options/throughput
+        value: 2000
+  - step: SqlResources_CreateUpdateSqlContainer
+    exampleFile: ..\examples\CosmosDBSqlContainerCreateUpdate.json
+    requestUpdate:
+      - remove: /createUpdateSqlContainerParameters/properties/resource/defaultTtl
+      - remove: /createUpdateSqlContainerParameters/properties/resource/clientEncryptionPolicy
+      - add: /createUpdateSqlContainerParameters/properties/options/throughput
+        value: 2000
+
+scenarios:
+  - scenario: SqlDatabase
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}
+    steps:
+      - step: SqlResources_ListSqlDatabases
+        exampleFile: ..\examples\CosmosDBSqlDatabaseList.json
+      - step: SqlResources_GetSqlDatabase
+        exampleFile: ..\examples\CosmosDBSqlDatabaseGet.json
+      - step: SqlResources_GetSqlDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBSqlDatabaseThroughputGet.json
+      - step: SqlResources_UpdateSqlDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBSqlDatabaseThroughputUpdate.json
+
+      - step: SqlResources_MigrateSqlDatabaseToAutoscale
+        exampleFile: ..\examples\CosmosDBSqlDatabaseMigrateToAutoscale.json
+
+      - step: SqlResources_MigrateSqlDatabaseToManualThroughput
+        exampleFile: ..\examples\CosmosDBSqlDatabaseMigrateToManualThroughput.json
+
+
+  - scenario: SqlContainer
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}
+    steps:
+      - step: SqlResources_GetSqlContainer
+        exampleFile: ..\examples\CosmosDBSqlContainerGet.json
+      - step: SqlResources_ListSqlContainers
+        exampleFile: ..\examples\CosmosDBSqlContainerList.json
+      - step: SqlResources_GetSqlContainerThroughput
+        exampleFile: ..\examples\CosmosDBSqlContainerThroughputGet.json
+
+      - step: SqlResources_UpdateSqlContainerThroughput
+        exampleFile: ..\examples\CosmosDBSqlContainerThroughputUpdate.json
+      - step: SqlResources_MigrateSqlContainerToAutoscale
+        exampleFile: ..\examples\CosmosDBSqlContainerMigrateToAutoscale.json
+      - step: SqlResources_MigrateSqlContainerToManualThroughput
+        exampleFile: ..\examples\CosmosDBSqlContainerMigrateToManualThroughput.json
+
+      # - step: SqlResources_RetrieveContinuousBackupInformation
+      #   exampleFile: ..\examples\CosmosDBSqlContainerBackupInformation.json
+
+
+
+  # - scenario: SqlRoleAssignment
+  #   description: Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}
+  #   variables:
+  #     roleAssignmentId:
+  #       type: string
+  #       prefix: roleassi
+  #   steps:
+  #     - step: SqlResources_CreateUpdateSqlRoleAssignment
+  #       exampleFile: ..\examples\CosmosDBSqlRoleAssignmentCreateUpdate.json
+  #     - step: SqlResources_GetSqlRoleAssignment
+  #       exampleFile: ..\examples\CosmosDBSqlRoleAssignmentGet.json
+  #     - step: SqlResources_ListSqlRoleAssignments
+  #       exampleFile: ..\examples\CosmosDBSqlRoleAssignmentList.json
+  #     - step: SqlResources_DeleteSqlRoleAssignment
+  #       exampleFile: ..\examples\CosmosDBSqlRoleAssignmentDelete.json
+
+  - scenario: SqlTrigger
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}
+    variables:
+      triggerName:
+        type: string
+        prefix: triggern
+    steps:
+      - step: SqlResources_CreateUpdateSqlTrigger
+        exampleFile: ..\examples\CosmosDBSqlTriggerCreateUpdate.json
+        requestUpdate:
+          - replace: /createUpdateSqlTriggerParameters/properties/resource/triggerType
+            value: Pre
+          - replace: /createUpdateSqlTriggerParameters/properties/resource/triggerOperation
+            value: All
+      - step: SqlResources_GetSqlTrigger
+        exampleFile: ..\examples\CosmosDBSqlTriggerGet.json
+      - step: SqlResources_ListSqlTriggers
+        exampleFile: ..\examples\CosmosDBSqlTriggerList.json
+      - step: SqlResources_DeleteSqlTrigger
+        exampleFile: ..\examples\CosmosDBSqlTriggerDelete.json
+
+  - scenario: SqlStoredProcedure
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}
+    variables:
+      storedProcedureName:
+        type: string
+        prefix: storedpr
+    steps:
+      - step: SqlResources_CreateUpdateSqlStoredProcedure
+        exampleFile: ..\examples\CosmosDBSqlStoredProcedureCreateUpdate.json
+      - step: SqlResources_GetSqlStoredProcedure
+        exampleFile: ..\examples\CosmosDBSqlStoredProcedureGet.json
+      - step: SqlResources_ListSqlStoredProcedures
+        exampleFile: ..\examples\CosmosDBSqlStoredProcedureList.json
+      - step: SqlResources_DeleteSqlStoredProcedure
+        exampleFile: ..\examples\CosmosDBSqlStoredProcedureDelete.json
+
+  - scenario: SqlUserDefinedFunction
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}
+    variables:
+      userDefinedFunctionName:
+        type: string
+        prefix: userdefi
+    steps:
+      - step: SqlResources_CreateUpdateSqlUserDefinedFunction
+        exampleFile: ..\examples\CosmosDBSqlUserDefinedFunctionCreateUpdate.json
+      - step: SqlResources_GetSqlUserDefinedFunction
+        exampleFile: ..\examples\CosmosDBSqlUserDefinedFunctionGet.json
+      - step: SqlResources_ListSqlUserDefinedFunctions
+        exampleFile: ..\examples\CosmosDBSqlUserDefinedFunctionList.json
+      - step: SqlResources_DeleteSqlUserDefinedFunction
+        exampleFile: ..\examples\CosmosDBSqlUserDefinedFunctionDelete.json
+        
+  # - scenario: SqlRoleDefinition
+  #   description: Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}
+  #   variables:
+  #     roleDefinitionId:
+  #       type: string
+  #       prefix: roledefi
+  #   steps:
+  #     - step: SqlResources_CreateUpdateSqlRoleDefinition
+  #       exampleFile: ..\examples\CosmosDBSqlRoleDefinitionCreateUpdate.json
+  #     - step: SqlResources_GetSqlRoleDefinition
+  #       exampleFile: ..\examples\CosmosDBSqlRoleDefinitionGet.json
+  #     - step: SqlResources_ListSqlRoleDefinitions
+  #       exampleFile: ..\examples\CosmosDBSqlRoleDefinitionList.json
+  #     - step: SqlResources_DeleteSqlRoleDefinition
+  #       exampleFile: ..\examples\CosmosDBSqlRoleDefinitionDelete.json
+
+  - scenario: SqlClientEncryptionKey
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}
+    variables:
+      clientEncryptionKeyName:
+        type: string
+        prefix: clienten
+    steps:
+      - step: SqlResources_CreateUpdateClientEncryptionKey
+        exampleFile: ..\examples\CosmosDBSqlClientEncryptionKeyCreateUpdate.json
+      - step: SqlResources_GetClientEncryptionKey
+        exampleFile: ..\examples\CosmosDBSqlClientEncryptionKeyGet.json
+      - step: SqlResources_ListClientEncryptionKeys
+        exampleFile: ..\examples\CosmosDBSqlClientEncryptionKeysList.json
+
+
+cleanUpSteps:
+  - step: SqlResources_DeleteSqlContainer
+    exampleFile: ..\examples\CosmosDBSqlContainerDelete.json
+  - step: SqlResources_DeleteSqlDatabase
+    exampleFile: ..\examples\CosmosDBSqlDatabaseDelete.json

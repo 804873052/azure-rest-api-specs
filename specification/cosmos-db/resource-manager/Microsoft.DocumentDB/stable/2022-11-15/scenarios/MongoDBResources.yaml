@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  databaseName:
+    type: string
+    prefix: mongodb
+
+prepareSteps:
+  - step: DatabaseAccounts_CreateOrUpdate
+    exampleFile: ../examples/CosmosDBDatabaseAccountCreateMin.json
+    requestUpdate:
+      - replace: /createUpdateParameters/properties/locations/0/locationName
+        value: $(location)
+      - add: /createUpdateParameters/kind
+        value: MongoDB
+  - step: MongoDBResources_CreateUpdateMongoDBDatabase
+    exampleFile: ..\examples\CosmosDBMongoDBDatabaseCreateUpdate.json
+    requestUpdate:
+    - add: /createUpdateMongoDBDatabaseParameters/properties/options/throughput
+      value: 2000
+
+
+scenarios:
+  - scenario: MongoDBDatabase
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}
+    steps:
+      - step: MongoDBResources_ListMongoDBDatabases
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseList.json
+      - step: MongoDBResources_GetMongoDBDatabase
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseGet.json
+      - step: MongoDBResources_GetMongoDBDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseThroughputGet.json
+      - step: MongoDBResources_MigrateMongoDBDatabaseToAutoscale
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseMigrateToAutoscale.json
+      - step: MongoDBResources_MigrateMongoDBDatabaseToManualThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseMigrateToManualThroughput.json
+      - step: MongoDBResources_UpdateMongoDBDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseThroughputUpdate.json
+
+  - scenario: MongoDBCollection
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}
+    variables:
+      collectionName:
+        type: string
+        prefix: collecti
+    steps:
+      - step: MongoDBResources_CreateUpdateMongoDBCollection
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionCreateUpdate.json
+        requestUpdate:
+        - add: /createUpdateMongoDBCollectionParameters/properties/options/throughput
+          value: 2000
+        - remove: /createUpdateMongoDBCollectionParameters/properties/resource/indexes
+      - step: MongoDBResources_ListMongoDBCollections
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionList.json
+      - step: MongoDBResources_GetMongoDBCollection
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionGet.json
+      - step: MongoDBResources_GetMongoDBCollectionThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionThroughputGet.json
+      - step: MongoDBResources_MigrateMongoDBCollectionToAutoscale
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionMigrateToAutoscale.json
+      - step: MongoDBResources_MigrateMongoDBCollectionToManualThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionMigrateToManualThroughput.json
+      # - step: MongoDBResources_RetrieveContinuousBackupInformation
+      #   exampleFile: ..\examples\CosmosDBMongoDBCollectionBackupInformation.json
+      - step: MongoDBResources_UpdateMongoDBCollectionThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionThroughputUpdate.json
+      - step: MongoDBResources_DeleteMongoDBCollection
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionDelete.json
+
+  # - scenario: MongoRoleDefinition
+  #   description: Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}
+  #   variables:
+  #     mongoRoleDefinitionId:
+  #       type: string
+  #       prefix: mongorol
+  #   steps:
+  #     - step: MongoDBResources_CreateUpdateMongoRoleDefinition # Mongo Role Defination is not enabled for the account
+  #       exampleFile: ..\examples\CosmosDBMongoDBRoleDefinitionCreateUpdate.json
+  #     - step: MongoDBResources_GetMongoRoleDefinition
+  #       exampleFile: ..\examples\CosmosDBMongoDBRoleDefinitionGet.json
+  #     - step: MongoDBResources_ListMongoRoleDefinitions
+  #       exampleFile: ..\examples\CosmosDBMongoDBRoleDefinitionList.json
+  #     - step: MongoDBResources_DeleteMongoRoleDefinition
+  #       exampleFile: ..\examples\CosmosDBMongoDBRoleDefinitionDelete.json
+
+
+  # - scenario: MongoUserDefinition
+  #   description: Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}
+  #   variables:
+  #     mongoUserDefinitionId:
+  #       type: string
+  #       prefix: mongouse
+  #   steps:
+  #     - step: MongoDBResources_CreateUpdateMongoUserDefinition # Mongo User Defination is not enabled for the account
+  #       exampleFile: ..\examples\CosmosDBMongoDBUserDefinitionCreateUpdate.json
+  #     - step: MongoDBResources_ListMongoUserDefinitions
+  #       exampleFile: ..\examples\CosmosDBMongoDBUserDefinitionList.json
+  #     - step: MongoDBResources_GetMongoUserDefinition
+  #       exampleFile: ..\examples\CosmosDBMongoDBUserDefinitionGet.json
+  #     - step: MongoDBResources_DeleteMongoUserDefinition
+  #       exampleFile: ..\examples\CosmosDBMongoDBUserDefinitionDelete.json
+
+cleanUpSteps:
+  - step: MongoDBResources_DeleteMongoDBDatabase
+    exampleFile: ..\examples\CosmosDBMongoDBDatabaseDelete.json

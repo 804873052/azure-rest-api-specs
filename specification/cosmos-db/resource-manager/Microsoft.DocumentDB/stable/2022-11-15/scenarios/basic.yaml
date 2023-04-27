@@ -1,0 +1,517 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  databaseName:
+    type: string
+    prefix: database
+  containerName:
+    type: string
+    prefix: containe
+  tableName:
+    type: string
+    prefix: tablenam
+  keyspaceName:
+    type: string
+    prefix: keyspace
+  clusterName:
+    type: string
+    prefix: clustern
+  databaseRid:
+    type: string
+    prefix: database
+  instanceId:
+    type: string
+    prefix: instance
+  collectionRid:
+    type: string
+    prefix: collecti
+  collectionName:
+    type: string
+    prefix: collecti
+  graphName:
+    type: string
+    prefix: graphnam
+  notebookWorkspaceName:
+    type: string
+    prefix: notebook
+  region:
+    type: string
+    prefix: region
+  dataCenterName:
+    type: string
+    prefix: datacent
+  storedProcedureName:
+    type: string
+    prefix: storedpr
+  userDefinedFunctionName:
+    type: string
+    prefix: userdefi
+  triggerName:
+    type: string
+    prefix: triggern
+  mongoRoleDefinitionId:
+    type: string
+    prefix: mongorol
+  mongoUserDefinitionId:
+    type: string
+    prefix: mongouse
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  roleDefinitionId:
+    type: string
+    prefix: roledefi
+  roleAssignmentId:
+    type: string
+    prefix: roleassi
+  serviceName:
+    type: string
+    prefix: servicen
+  targetRegion:
+    type: string
+    prefix: targetre
+  partitionKeyRangeId:
+    type: string
+    prefix: partitio
+  clientEncryptionKeyName:
+    type: string
+    prefix: clienten
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: DatabaseAccounts_CreateOrUpdate
+        exampleFile: ..\examples\CosmosDBDatabaseAccountCreateMin.json
+      - operationId: DatabaseAccounts_CheckNameExists
+        exampleFile: ..\examples\CosmosDBDatabaseAccountCheckNameExists.json
+      - operationId: DatabaseAccounts_List
+        exampleFile: ..\examples\CosmosDBDatabaseAccountList.json
+      - operationId: DatabaseAccounts_ListUsages
+        exampleFile: ..\examples\CosmosDBDatabaseAccountGetUsages.json
+      - operationId: DatabaseAccounts_GetReadOnlyKeys
+        exampleFile: ..\examples\CosmosDBDatabaseAccountListReadOnlyKeys.json
+      - operationId: DatabaseAccounts_ListByResourceGroup
+        exampleFile: ..\examples\CosmosDBDatabaseAccountListByResourceGroup.json
+      - operationId: DatabaseAccounts_ListMetricDefinitions
+        exampleFile: ..\examples\CosmosDBDatabaseAccountGetMetricDefinitions.json
+      - operationId: DatabaseAccounts_ListMetrics
+        exampleFile: ..\examples\CosmosDBDatabaseAccountGetMetrics.json
+      - operationId: DatabaseAccounts_Get
+        exampleFile: ..\examples\CosmosDBDatabaseAccountGet.json
+      - operationId: DatabaseAccounts_Update
+        exampleFile: ..\examples\CosmosDBDatabaseAccountPatch.json
+      - operationId: DatabaseAccounts_RegenerateKey
+        exampleFile: ..\examples\CosmosDBDatabaseAccountRegenerateKey.json
+      - operationId: DatabaseAccounts_OfflineRegion
+        exampleFile: ..\examples\CosmosDBDatabaseAccountOfflineRegion.json
+      - operationId: DatabaseAccounts_ListReadOnlyKeys
+        exampleFile: ..\examples\CosmosDBDatabaseAccountListReadOnlyKeys.json
+      - operationId: DatabaseAccounts_OnlineRegion
+        exampleFile: ..\examples\CosmosDBDatabaseAccountOnlineRegion.json
+      - operationId: DatabaseAccounts_ListConnectionStrings
+        exampleFile: ..\examples\CosmosDBDatabaseAccountListConnectionStrings.json
+      - operationId: DatabaseAccounts_ListKeys
+        exampleFile: ..\examples\CosmosDBDatabaseAccountListKeys.json
+      - operationId: DatabaseAccounts_FailoverPriorityChange
+        exampleFile: ..\examples\CosmosDBDatabaseAccountFailoverPriorityChange.json
+
+      - operationId: SqlResources_CreateUpdateSqlDatabase
+        exampleFile: ..\examples\CosmosDBSqlDatabaseCreateUpdate.json
+      - operationId: SqlResources_ListSqlDatabases
+        exampleFile: ..\examples\CosmosDBSqlDatabaseList.json
+      - operationId: SqlResources_ListSqlRoleDefinitions
+        exampleFile: ..\examples\CosmosDBSqlRoleDefinitionList.json
+      - operationId: SqlResources_GetSqlDatabase
+        exampleFile: ..\examples\CosmosDBSqlDatabaseGet.json
+      - operationId: SqlResources_GetSqlDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBSqlDatabaseThroughputGet.json
+      - operationId: SqlResources_ListSqlRoleAssignments
+        exampleFile: ..\examples\CosmosDBSqlRoleAssignmentList.json
+      - operationId: SqlResources_ListClientEncryptionKeys
+        exampleFile: ..\examples\CosmosDBSqlClientEncryptionKeysList.json
+      - operationId: SqlResources_ListSqlContainers
+        exampleFile: ..\examples\CosmosDBSqlContainerList.json
+      - operationId: SqlResources_MigrateSqlDatabaseToManualThroughput
+        exampleFile: ..\examples\CosmosDBSqlDatabaseMigrateToManualThroughput.json
+      - operationId: SqlResources_MigrateSqlDatabaseToAutoscale
+        exampleFile: ..\examples\CosmosDBSqlDatabaseMigrateToAutoscale.json
+      - operationId: SqlResources_CreateUpdateSqlContainer
+        exampleFile: ..\examples\CosmosDBSqlContainerCreateUpdate.json
+      - operationId: SqlResources_GetSqlContainer
+        exampleFile: ..\examples\CosmosDBSqlContainerGet.json
+      - operationId: SqlResources_ListSqlTriggers
+        exampleFile: ..\examples\CosmosDBSqlTriggerList.json
+      - operationId: SqlResources_ListSqlUserDefinedFunctions
+        exampleFile: ..\examples\CosmosDBSqlUserDefinedFunctionList.json
+      - operationId: SqlResources_ListSqlStoredProcedures
+        exampleFile: ..\examples\CosmosDBSqlStoredProcedureList.json
+      - operationId: SqlResources_GetSqlContainerThroughput
+        exampleFile: ..\examples\CosmosDBSqlContainerThroughputGet.json
+      - operationId: SqlResources_MigrateSqlContainerToManualThroughput
+        exampleFile: ..\examples\CosmosDBSqlContainerMigrateToManualThroughput.json
+      - operationId: SqlResources_RetrieveContinuousBackupInformation
+        exampleFile: ..\examples\CosmosDBSqlContainerBackupInformation.json
+      - operationId: SqlResources_MigrateSqlContainerToAutoscale
+        exampleFile: ..\examples\CosmosDBSqlContainerMigrateToAutoscale.json
+
+      - operationId: MongoDBResources_CreateUpdateMongoDBDatabase
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseCreateUpdate.json
+      - operationId: MongoDBResources_ListMongoDBDatabases
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseList.json
+      - operationId: MongoDBResources_ListMongoRoleDefinitions
+        exampleFile: ..\examples\CosmosDBMongoDBRoleDefinitionList.json
+      - operationId: MongoDBResources_ListMongoUserDefinitions
+        exampleFile: ..\examples\CosmosDBMongoDBUserDefinitionList.json
+      - operationId: MongoDBResources_GetMongoDBDatabase
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseGet.json
+      - operationId: MongoDBResources_ListMongoDBCollections
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionList.json
+      - operationId: MongoDBResources_GetMongoDBDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseThroughputGet.json
+      - operationId: MongoDBResources_MigrateMongoDBDatabaseToAutoscale
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseMigrateToAutoscale.json
+      - operationId: MongoDBResources_MigrateMongoDBDatabaseToManualThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseMigrateToManualThroughput.json
+
+      - operationId: GremlinResources_CreateUpdateGremlinDatabase
+        exampleFile: ..\examples\CosmosDBGremlinDatabaseCreateUpdate.json
+      - operationId: GremlinResources_ListGremlinDatabases
+        exampleFile: ..\examples\CosmosDBGremlinDatabaseList.json
+      - operationId: GremlinResources_GetGremlinDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBGremlinDatabaseThroughputGet.json
+      - operationId: GremlinResources_GetGremlinDatabase
+        exampleFile: ..\examples\CosmosDBGremlinDatabaseGet.json
+      - operationId: GremlinResources_ListGremlinGraphs
+        exampleFile: ..\examples\CosmosDBGremlinGraphList.json
+      - operationId: GremlinResources_MigrateGremlinDatabaseToAutoscale
+        exampleFile: ..\examples\CosmosDBGremlinDatabaseMigrateToAutoscale.json
+      - operationId: GremlinResources_MigrateGremlinDatabaseToManualThroughput
+        exampleFile: ..\examples\CosmosDBGremlinDatabaseMigrateToManualThroughput.json
+
+      - operationId: CassandraResources_CreateUpdateCassandraKeyspace
+        exampleFile: ..\examples\CosmosDBCassandraKeyspaceCreateUpdate.json
+      - operationId: CassandraResources_ListCassandraKeyspaces
+        exampleFile: ..\examples\CosmosDBCassandraKeyspaceList.json
+      - operationId: CassandraResources_ListCassandraTables
+        exampleFile: ..\examples\CosmosDBCassandraTableList.json
+      - operationId: CassandraResources_GetCassandraKeyspaceThroughput
+        exampleFile: ..\examples\CosmosDBCassandraKeyspaceThroughputGet.json
+      - operationId: CassandraResources_GetCassandraKeyspace
+        exampleFile: ..\examples\CosmosDBCassandraKeyspaceGet.json
+      - operationId: CassandraResources_MigrateCassandraKeyspaceToAutoscale
+        exampleFile: ..\examples\CosmosDBCassandraKeyspaceMigrateToAutoscale.json
+      - operationId: CassandraResources_MigrateCassandraKeyspaceToManualThroughput
+        exampleFile: ..\examples\CosmosDBCassandraKeyspaceMigrateToManualThroughput.json
+
+      - operationId: CassandraClusters_CreateUpdate
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterCreate.json
+      - operationId: CassandraClusters_ListBySubscription
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterListBySubscription.json
+      - operationId: CassandraClusters_Get
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterGet.json
+      - operationId: CassandraClusters_Status
+        exampleFile: ..\examples\CosmosDBManagedCassandraStatus.json
+      - operationId: CassandraClusters_ListByResourceGroup
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterListByResourceGroup.json
+      - operationId: CassandraClusters_Update
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterPatch.json
+      - operationId: CassandraClusters_Start
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterStart.json
+      - operationId: CassandraClusters_Deallocate
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterDeallocate.json
+      - operationId: CassandraClusters_InvokeCommand
+        exampleFile: ..\examples\CosmosDBManagedCassandraCommand.json
+
+      - operationId: TableResources_CreateUpdateTable
+        exampleFile: ..\examples\CosmosDBTableCreateUpdate.json
+      - operationId: TableResources_ListTables
+        exampleFile: ..\examples\CosmosDBTableList.json
+      - operationId: TableResources_GetTableThroughput
+        exampleFile: ..\examples\CosmosDBTableThroughputGet.json
+      - operationId: TableResources_GetTable
+        exampleFile: ..\examples\CosmosDBTableGet.json
+      - operationId: TableResources_RetrieveContinuousBackupInformation
+        exampleFile: ..\examples\CosmosDBTableBackupInformation.json
+      - operationId: TableResources_MigrateTableToAutoscale
+        exampleFile: ..\examples\CosmosDBTableMigrateToAutoscale.json
+      - operationId: TableResources_MigrateTableToManualThroughput
+        exampleFile: ..\examples\CosmosDBTableMigrateToManualThroughput.json
+
+      - operationId: MongoDBResources_CreateUpdateMongoDBCollection
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionCreateUpdate.json
+      - operationId: MongoDBResources_GetMongoDBCollection
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionGet.json
+      - operationId: MongoDBResources_GetMongoDBCollectionThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionThroughputGet.json
+      - operationId: MongoDBResources_MigrateMongoDBCollectionToAutoscale
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionMigrateToAutoscale.json
+      - operationId: MongoDBResources_MigrateMongoDBCollectionToManualThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionMigrateToManualThroughput.json
+      - operationId: MongoDBResources_RetrieveContinuousBackupInformation
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionBackupInformation.json
+
+      - operationId: GremlinResources_CreateUpdateGremlinGraph
+        exampleFile: ..\examples\CosmosDBGremlinGraphCreateUpdate.json
+      - operationId: GremlinResources_GetGremlinGraph
+        exampleFile: ..\examples\CosmosDBGremlinGraphGet.json
+      - operationId: GremlinResources_GetGremlinGraphThroughput
+        exampleFile: ..\examples\CosmosDBGremlinGraphThroughputGet.json
+      - operationId: GremlinResources_MigrateGremlinGraphToAutoscale
+        exampleFile: ..\examples\CosmosDBGremlinGraphMigrateToAutoscale.json
+      - operationId: GremlinResources_MigrateGremlinGraphToManualThroughput
+        exampleFile: ..\examples\CosmosDBGremlinGraphMigrateToManualThroughput.json
+      - operationId: GremlinResources_RetrieveContinuousBackupInformation
+        exampleFile: ..\examples\CosmosDBGremlinGraphBackupInformation.json
+
+      - operationId: CassandraResources_CreateUpdateCassandraTable
+        exampleFile: ..\examples\CosmosDBCassandraTableCreateUpdate.json
+      - operationId: CassandraResources_GetCassandraTable
+        exampleFile: ..\examples\CosmosDBCassandraTableGet.json
+      - operationId: CassandraResources_GetCassandraTableThroughput
+        exampleFile: ..\examples\CosmosDBCassandraTableThroughputGet.json
+      - operationId: CassandraResources_MigrateCassandraTableToAutoscale
+        exampleFile: ..\examples\CosmosDBCassandraTableMigrateToAutoscale.json
+      - operationId: CassandraResources_MigrateCassandraTableToManualThroughput
+        exampleFile: ..\examples\CosmosDBCassandraTableMigrateToManualThroughput.json
+
+      - operationId: NotebookWorkspaces_CreateOrUpdate
+        exampleFile: ..\examples\CosmosDBNotebookWorkspaceCreate.json
+      - operationId: NotebookWorkspaces_ListByDatabaseAccount
+        exampleFile: ..\examples\CosmosDBNotebookWorkspaceList.json
+      - operationId: NotebookWorkspaces_Get
+        exampleFile: ..\examples\CosmosDBNotebookWorkspaceGet.json
+      - operationId: NotebookWorkspaces_RegenerateAuthToken
+        exampleFile: ..\examples\CosmosDBNotebookWorkspaceRegenerateAuthToken.json
+      - operationId: NotebookWorkspaces_Start
+        exampleFile: ..\examples\CosmosDBNotebookWorkspaceStart.json
+      - operationId: NotebookWorkspaces_ListConnectionInfo
+        exampleFile: ..\examples\CosmosDBNotebookWorkspaceListConnectionInfo.json
+
+      - operationId: CassandraDataCenters_CreateUpdate
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterCreate.json
+      - operationId: CassandraDataCenters_List
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterList.json
+      - operationId: CassandraDataCenters_Get
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterGet.json
+      - operationId: CassandraDataCenters_Update
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterPatch.json
+
+      - operationId: MongoDBResources_CreateUpdateMongoRoleDefinition
+        exampleFile: ..\examples\CosmosDBMongoDBRoleDefinitionCreateUpdate.json
+      - operationId: MongoDBResources_GetMongoRoleDefinition
+        exampleFile: ..\examples\CosmosDBMongoDBRoleDefinitionGet.json
+
+      - operationId: SqlResources_CreateUpdateSqlRoleAssignment
+        exampleFile: ..\examples\CosmosDBSqlRoleAssignmentCreateUpdate.json
+      - operationId: SqlResources_GetSqlRoleAssignment
+        exampleFile: ..\examples\CosmosDBSqlRoleAssignmentGet.json
+
+      - operationId: Service_Create
+        exampleFile: ..\examples\CosmosDBDataTransferServiceCreate.json
+      - operationId: Service_List
+        exampleFile: ..\examples\CosmosDBServicesList.json
+      - operationId: Service_Get
+        exampleFile: ..\examples\CosmosDBDataTransferServiceGet.json
+
+      - operationId: SqlResources_CreateUpdateSqlTrigger
+        exampleFile: ..\examples\CosmosDBSqlTriggerCreateUpdate.json
+      - operationId: SqlResources_GetSqlTrigger
+        exampleFile: ..\examples\CosmosDBSqlTriggerGet.json
+      - operationId: SqlResources_CreateUpdateSqlStoredProcedure
+        exampleFile: ..\examples\CosmosDBSqlStoredProcedureCreateUpdate.json
+      - operationId: SqlResources_GetSqlStoredProcedure
+        exampleFile: ..\examples\CosmosDBSqlStoredProcedureGet.json
+
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\CosmosDBPrivateEndpointConnectionUpdate.json
+      - operationId: PrivateEndpointConnections_ListByDatabaseAccount
+        exampleFile: ..\examples\CosmosDBPrivateEndpointConnectionListGet.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\CosmosDBPrivateEndpointConnectionGet.json
+
+      - operationId: SqlResources_CreateUpdateSqlUserDefinedFunction
+        exampleFile: ..\examples\CosmosDBSqlUserDefinedFunctionCreateUpdate.json
+      - operationId: SqlResources_GetSqlUserDefinedFunction
+        exampleFile: ..\examples\CosmosDBSqlUserDefinedFunctionGet.json
+      - operationId: SqlResources_CreateUpdateSqlRoleDefinition
+        exampleFile: ..\examples\CosmosDBSqlRoleDefinitionCreateUpdate.json
+      - operationId: SqlResources_GetSqlRoleDefinition
+        exampleFile: ..\examples\CosmosDBSqlRoleDefinitionGet.json
+
+      - operationId: MongoDBResources_CreateUpdateMongoUserDefinition
+        exampleFile: ..\examples\CosmosDBMongoDBUserDefinitionCreateUpdate.json
+      - operationId: MongoDBResources_GetMongoUserDefinition
+        exampleFile: ..\examples\CosmosDBMongoDBUserDefinitionGet.json
+
+      - operationId: SqlResources_CreateUpdateClientEncryptionKey
+        exampleFile: ..\examples\CosmosDBSqlClientEncryptionKeyCreateUpdate.json
+      - operationId: SqlResources_GetClientEncryptionKey
+        exampleFile: ..\examples\CosmosDBSqlClientEncryptionKeyGet.json
+      - operationId: SqlResources_UpdateSqlDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBSqlDatabaseThroughputUpdate.json
+      - operationId: SqlResources_UpdateSqlContainerThroughput
+        exampleFile: ..\examples\CosmosDBSqlContainerThroughputUpdate.json
+
+      - operationId: GremlinResources_UpdateGremlinDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBGremlinDatabaseThroughputUpdate.json
+
+      - operationId: CassandraResources_UpdateCassandraTableThroughput
+        exampleFile: ..\examples\CosmosDBCassandraTableThroughputUpdate.json
+
+      - operationId: MongoDBResources_UpdateMongoDBCollectionThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionThroughputUpdate.json
+      - operationId: MongoDBResources_UpdateMongoDBDatabaseThroughput
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseThroughputUpdate.json
+
+      - operationId: TableResources_UpdateTableThroughput
+        exampleFile: ..\examples\CosmosDBTableThroughputUpdate.json
+
+      - operationId: GremlinResources_UpdateGremlinGraphThroughput
+        exampleFile: ..\examples\CosmosDBGremlinGraphThroughputUpdate.json
+      - operationId: CassandraResources_UpdateCassandraKeyspaceThroughput
+        exampleFile: ..\examples\CosmosDBCassandraKeyspaceThroughputUpdate.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\CosmosDBOperationsList.json
+      - operationId: Locations_List
+        exampleFile: ..\examples\CosmosDBLocationList.json
+      - operationId: Locations_Get
+        exampleFile: ..\examples\CosmosDBLocationGet.json
+
+      - operationId: RestorableDatabaseAccounts_ListByLocation
+        exampleFile: ..\examples\CosmosDBRestorableDatabaseAccountList.json
+      - operationId: RestorableDatabaseAccounts_GetByLocation
+        exampleFile: ..\examples\CosmosDBRestorableDatabaseAccountGet.json
+
+      - operationId: RestorableGremlinGraphs_List
+        exampleFile: ..\examples\CosmosDBRestorableGremlinGraphList.json
+      - operationId: RestorableGremlinDatabases_List
+        exampleFile: ..\examples\CosmosDBRestorableGremlinDatabaseList.json
+      - operationId: RestorableGremlinResources_List
+        exampleFile: ..\examples\CosmosDBRestorableGremlinResourceList.json
+      - operationId: RestorableMongodbCollections_List
+        exampleFile: ..\examples\CosmosDBRestorableMongodbCollectionList.json
+      - operationId: RestorableMongodbDatabases_List
+        exampleFile: ..\examples\CosmosDBRestorableMongodbDatabaseList.json
+      - operationId: RestorableMongodbResources_List
+        exampleFile: ..\examples\CosmosDBRestorableMongodbResourceList.json
+      - operationId: RestorableSqlContainers_List
+        exampleFile: ..\examples\CosmosDBRestorableSqlContainerList.json
+      - operationId: RestorableSqlDatabases_List
+        exampleFile: ..\examples\CosmosDBRestorableSqlDatabaseList.json
+      - operationId: RestorableSqlResources_List
+        exampleFile: ..\examples\CosmosDBRestorableSqlResourceList.json
+      - operationId: RestorableTableResources_List
+        exampleFile: ..\examples\CosmosDBRestorableTableResourceList.json
+      - operationId: RestorableTables_List
+        exampleFile: ..\examples\CosmosDBRestorableTableList.json
+      - operationId: RestorableDatabaseAccounts_List
+        exampleFile: ..\examples\CosmosDBRestorableDatabaseAccountNoLocationList.json
+
+      - operationId: Collection_ListMetricDefinitions
+        exampleFile: ..\examples\CosmosDBCollectionGetMetricDefinitions.json
+      - operationId: Collection_ListMetrics
+        exampleFile: ..\examples\CosmosDBCollectionGetMetrics.json
+        
+      - operationId: PartitionKeyRangeId_ListMetrics
+        exampleFile: ..\examples\CosmosDBPKeyRangeIdGetMetrics.json
+
+      - operationId: CollectionPartition_ListMetrics
+        exampleFile: ..\examples\CosmosDBCollectionPartitionGetMetrics.json
+      - operationId: CollectionPartition_ListUsages
+        exampleFile: ..\examples\CosmosDBCollectionPartitionGetUsages.json
+
+      - operationId: Collection_ListUsages
+        exampleFile: ..\examples\CosmosDBCollectionGetUsages.json
+
+      - operationId: Database_ListMetricDefinitions
+        exampleFile: ..\examples\CosmosDBDatabaseGetMetricDefinitions.json
+      - operationId: Database_ListMetrics
+        exampleFile: ..\examples\CosmosDBDatabaseGetMetrics.json
+      - operationId: Database_ListUsages
+        exampleFile: ..\examples\CosmosDBDatabaseGetUsages.json
+
+      - operationId: Percentile_ListMetrics
+        exampleFile: ..\examples\CosmosDBPercentileGetMetrics.json
+        
+      - operationId: PrivateLinkResources_ListByDatabaseAccount
+        exampleFile: ..\examples\CosmosDBPrivateLinkResourceListGet.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          groupName:
+            type: string
+            prefix: groupnam
+        exampleFile: ..\examples\CosmosDBPrivateLinkResourceGet.json
+
+      - operationId: CollectionRegion_ListMetrics
+        exampleFile: ..\examples\CosmosDBRegionCollectionGetMetrics.json
+
+      - operationId: PartitionKeyRangeIdRegion_ListMetrics
+        exampleFile: ..\examples\CosmosDBPKeyRangeIdRegionGetMetrics.json
+      - operationId: CollectionPartitionRegion_ListMetrics
+        exampleFile: ..\examples\CosmosDBCollectionPartitionRegionGetMetrics.json
+      - operationId: DatabaseAccountRegion_ListMetrics
+        exampleFile: ..\examples\CosmosDBDatabaseAccountRegionGetMetrics.json
+
+      - operationId: PercentileSourceTarget_ListMetrics
+        variables:
+          sourceRegion:
+            type: string
+            prefix: sourcere
+        exampleFile: ..\examples\CosmosDBPercentileSourceTargetGetMetrics.json
+        
+      - operationId: PercentileTarget_ListMetrics
+        exampleFile: ..\examples\CosmosDBPercentileTargetGetMetrics.json
+
+      - operationId: MongoDBResources_DeleteMongoUserDefinition
+        exampleFile: ..\examples\CosmosDBMongoDBUserDefinitionDelete.json
+
+      - operationId: SqlResources_DeleteSqlRoleDefinition
+        exampleFile: ..\examples\CosmosDBSqlRoleDefinitionDelete.json
+      - operationId: SqlResources_DeleteSqlUserDefinedFunction
+        exampleFile: ..\examples\CosmosDBSqlUserDefinedFunctionDelete.json
+
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\CosmosDBPrivateEndpointConnectionDelete.json
+
+      - operationId: SqlResources_DeleteSqlStoredProcedure
+        exampleFile: ..\examples\CosmosDBSqlStoredProcedureDelete.json
+      - operationId: SqlResources_DeleteSqlTrigger
+        exampleFile: ..\examples\CosmosDBSqlTriggerDelete.json
+
+      - operationId: Service_Delete
+        exampleFile: ..\examples\CosmosDBDataTransferServiceDelete.json
+
+      - operationId: SqlResources_DeleteSqlRoleAssignment
+        exampleFile: ..\examples\CosmosDBSqlRoleAssignmentDelete.json
+
+      - operationId: MongoDBResources_DeleteMongoRoleDefinition
+        exampleFile: ..\examples\CosmosDBMongoDBRoleDefinitionDelete.json
+      - operationId: CassandraDataCenters_Delete
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterDelete.json
+      - operationId: NotebookWorkspaces_Delete
+        exampleFile: ..\examples\CosmosDBNotebookWorkspaceDelete.json
+      - operationId: CassandraResources_DeleteCassandraTable
+        exampleFile: ..\examples\CosmosDBCassandraTableDelete.json
+      - operationId: GremlinResources_DeleteGremlinGraph
+        exampleFile: ..\examples\CosmosDBGremlinGraphDelete.json
+      - operationId: MongoDBResources_DeleteMongoDBCollection
+        exampleFile: ..\examples\CosmosDBMongoDBCollectionDelete.json
+      - operationId: TableResources_DeleteTable
+        exampleFile: ..\examples\CosmosDBTableDelete.json
+      - operationId: CassandraClusters_Delete
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterDelete.json
+      - operationId: CassandraResources_DeleteCassandraKeyspace
+        exampleFile: ..\examples\CosmosDBCassandraKeyspaceDelete.json
+      - operationId: GremlinResources_DeleteGremlinDatabase
+        exampleFile: ..\examples\CosmosDBGremlinDatabaseDelete.json
+      - operationId: MongoDBResources_DeleteMongoDBDatabase
+        exampleFile: ..\examples\CosmosDBMongoDBDatabaseDelete.json
+      - operationId: SqlResources_DeleteSqlContainer
+        exampleFile: ..\examples\CosmosDBSqlContainerDelete.json
+      - operationId: SqlResources_DeleteSqlDatabase
+        exampleFile: ..\examples\CosmosDBSqlDatabaseDelete.json
+      - operationId: DatabaseAccounts_Delete
+        exampleFile: ..\examples\CosmosDBDatabaseAccountDelete.json

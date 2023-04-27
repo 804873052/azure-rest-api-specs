@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  accountName:
+    type: string
+    prefix: accountn
+
+prepareSteps:
+  - step: DatabaseAccounts_CreateOrUpdate
+    exampleFile: ..\examples\CosmosDBDatabaseAccountCreateMin.json
+    requestUpdate:
+      - replace: /createUpdateParameters/properties/locations/0/locationName
+        value: $(location)
+    outputVariables:
+      cosmosAccountId: 
+        type: string
+        fromResponse: /id
+  - step: Create_PrivateEndpoint
+    armTemplate: ./templates/Create_PrivateEndpoint.json
+
+scenarios:
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+
+      - step: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\CosmosDBPrivateEndpointConnectionUpdate.json
+        requestUpdate:
+          - add: /parameters/properties/groupId
+            value: Sql
+          - add: /parameters/properties/provisioningState
+            value: Succeeded
+      - step: PrivateEndpointConnections_ListByDatabaseAccount
+        exampleFile: ..\examples\CosmosDBPrivateEndpointConnectionListGet.json
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\CosmosDBPrivateEndpointConnectionGet.json
+      - step: PrivateLinkResources_ListByDatabaseAccount
+        exampleFile: ..\examples\CosmosDBPrivateLinkResourceListGet.json
+      - step: PrivateLinkResources_Get
+        exampleFile: ..\examples\CosmosDBPrivateLinkResourceGet.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\CosmosDBPrivateEndpointConnectionDelete.json

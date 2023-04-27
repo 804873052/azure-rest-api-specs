@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+
+prepareSteps:
+  - step: DatabaseAccounts_CreateOrUpdate
+    exampleFile: ../examples/CosmosDBDatabaseAccountCreateMin.json
+    requestUpdate:
+      - replace: /createUpdateParameters/properties/locations/0/locationName
+        value: $(location)
+      - add: /createUpdateParameters/kind
+        value: GlobalDocumentDB
+      - add: /createUpdateParameters/properties/capabilities
+        value: [
+         "name": "EnableTable"
+        ]
+
+scenarios:
+  - scenario: TableResources
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}
+    variables:
+      tableName:
+        type: string
+        prefix: tablenam
+    steps:
+      - step: TableResources_CreateUpdateTable
+        exampleFile: ..\examples\CosmosDBTableCreateUpdate.json
+      - step: TableResources_ListTables
+        exampleFile: ..\examples\CosmosDBTableList.json
+      - step: TableResources_GetTableThroughput
+        exampleFile: ..\examples\CosmosDBTableThroughputGet.json
+      - step: TableResources_GetTable
+        exampleFile: ..\examples\CosmosDBTableGet.json
+      # - step: TableResources_RetrieveContinuousBackupInformation
+      #   exampleFile: ..\examples\CosmosDBTableBackupInformation.json
+      - step: TableResources_MigrateTableToAutoscale
+        exampleFile: ..\examples\CosmosDBTableMigrateToAutoscale.json
+      - step: TableResources_MigrateTableToManualThroughput
+        exampleFile: ..\examples\CosmosDBTableMigrateToManualThroughput.json
+
+      - step: TableResources_UpdateTableThroughput
+        exampleFile: ..\examples\CosmosDBTableThroughputUpdate.json
+
+      # - step: RestorableTableResources_List # instanceId ?
+      #   exampleFile: ..\examples\CosmosDBRestorableTableResourceList.json
+
+      - step: TableResources_DeleteTable
+        exampleFile: ..\examples\CosmosDBTableDelete.json

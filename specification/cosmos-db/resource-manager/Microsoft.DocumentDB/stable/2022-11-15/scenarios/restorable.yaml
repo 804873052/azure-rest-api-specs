@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: RestorableDatabaseAccounts
+    description: Microsoft.DocumentDB/restorableDatabaseAccounts
+    steps:
+      - step: RestorableDatabaseAccounts_ListByLocation
+        exampleFile: ..\examples\CosmosDBRestorableDatabaseAccountList.json
+      - step: RestorableDatabaseAccounts_GetByLocation
+        exampleFile: ..\examples\CosmosDBRestorableDatabaseAccountGet.json
+      - step: RestorableDatabaseAccounts_List
+        exampleFile: ..\examples\CosmosDBRestorableDatabaseAccountNoLocationList.json
+
+
+  - scenario: Restorable
+    description: Microsoft.DocumentDB/Restorable
+    steps:
+      - step: RestorableSqlDatabases_List
+        exampleFile: ..\examples\CosmosDBRestorableSqlDatabaseList.json
+
+      - step: RestorableSqlContainers_List
+        exampleFile: ..\examples\CosmosDBRestorableSqlContainerList.json
+
+      - step: RestorableSqlResources_List
+        exampleFile: ..\examples\CosmosDBRestorableSqlResourceList.json
+
+      - step: RestorableMongodbDatabases_List
+        exampleFile: ..\examples\CosmosDBRestorableMongodbDatabaseList.json
+
+      - step: RestorableMongodbCollections_List
+        exampleFile: ..\examples\CosmosDBRestorableMongodbCollectionList.json
+
+      - step: RestorableMongodbResources_List
+        exampleFile: ..\examples\CosmosDBRestorableMongodbResourceList.json
+
+      - step: RestorableGremlinDatabases_List
+        exampleFile: ..\examples\CosmosDBRestorableGremlinDatabaseList.json
+
+      - step: RestorableGremlinGraphs_List
+        exampleFile: ..\examples\CosmosDBRestorableGremlinGraphList.json
+
+      - step: RestorableGremlinResources_List
+        exampleFile: ..\examples\CosmosDBRestorableGremlinResourceList.json
+
+      - step: RestorableTables_List
+        exampleFile: ..\examples\CosmosDBRestorableTableList.json
+        
+      - step: RestorableTableResources_List
+        exampleFile: ..\examples\CosmosDBRestorableTableResourceList.json

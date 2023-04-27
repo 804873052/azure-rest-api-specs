@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  clusterName:
+    type: string
+    prefix: clustern
+
+prepareSteps:
+  - step: CassandraClusters_CreateUpdate
+    exampleFile: ..\examples\CosmosDBManagedCassandraClusterCreate.json
+
+# Please make sure that the service principal Azure Cosmos DB is assigned a role on subnet such as Network Contributor, 
+# that authorizes the action 'Microsoft.Network/virtualNetworks/subnets/join/action'
+scenarios:
+  - scenario: CassandraClusters
+    description: Microsoft.DocumentDB/cassandraClusters/{clusterName}
+    steps:
+      - step: CassandraClusters_ListBySubscription
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterListBySubscription.json
+      - step: CassandraClusters_Get
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterGet.json
+      - step: CassandraClusters_Status
+        exampleFile: ..\examples\CosmosDBManagedCassandraStatus.json
+      - step: CassandraClusters_ListByResourceGroup
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterListByResourceGroup.json
+      - step: CassandraClusters_Update
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterPatch.json
+        requestUpdate:
+          - remove: /body/properties
+      - step: CassandraClusters_Start
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterStart.json
+      - step: CassandraClusters_Deallocate
+        exampleFile: ..\examples\CosmosDBManagedCassandraClusterDeallocate.json
+      - step: CassandraClusters_InvokeCommand
+        exampleFile: ..\examples\CosmosDBManagedCassandraCommand.json
+
+
+  - scenario: CassandraDataCenters
+    description: Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}
+    variables:
+      dataCenterName:
+        type: string
+        prefix: datacent
+    steps:
+      - step: CassandraDataCenters_CreateUpdate
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterCreate.json
+      - step: CassandraDataCenters_List
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterList.json
+      - step: CassandraDataCenters_Get
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterGet.json
+      - step: CassandraDataCenters_Update
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterPatch.json
+      - step: CassandraDataCenters_Delete
+        exampleFile: ..\examples\CosmosDBManagedCassandraDataCenterDelete.json
+
+
+cleanUpSteps:
+  - step: CassandraClusters_Delete
+    exampleFile: ..\examples\CosmosDBManagedCassandraClusterDelete.json

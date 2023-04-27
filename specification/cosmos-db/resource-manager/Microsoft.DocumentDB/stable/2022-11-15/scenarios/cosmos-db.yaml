@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  databaseName:
+    type: string
+    prefix: mongodb
+  collectionName:
+    type: string
+    prefix: collecti
+
+prepareSteps:
+  - step: DatabaseAccounts_CreateOrUpdate
+    exampleFile: ../examples/CosmosDBDatabaseAccountCreateMin.json
+    requestUpdate:
+      - replace: /createUpdateParameters/properties/locations/0/locationName
+        value: $(location)
+      - add: /createUpdateParameters/kind
+        value: MongoDB
+  - step: MongoDBResources_CreateUpdateMongoDBDatabase
+    exampleFile: ..\examples\CosmosDBMongoDBDatabaseCreateUpdate.json
+    requestUpdate:
+    - add: /createUpdateMongoDBDatabaseParameters/properties/options/throughput
+      value: 2000
+  - step: MongoDBResources_CreateUpdateMongoDBCollection
+    exampleFile: ..\examples\CosmosDBMongoDBCollectionCreateUpdate.json
+    requestUpdate:
+    - add: /createUpdateMongoDBCollectionParameters/properties/options/throughput
+      value: 2000
+    - remove: /createUpdateMongoDBCollectionParameters/properties/resource/indexes
+
+scenarios:
+  - scenario: Operations
+    description: Microsoft.DocumentDB/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\CosmosDBOperationsList.json
+
+  - scenario: Locations
+    description: Microsoft.DocumentDB/locations
+    steps:
+      - step: Locations_List
+        exampleFile: ..\examples\CosmosDBLocationList.json
+      - step: Locations_Get
+        exampleFile: ..\examples\CosmosDBLocationGet.json
+
+  - scenario: Database
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}
+    steps:
+      - step: Database_ListMetricDefinitions
+        exampleFile: ..\examples\CosmosDBDatabaseGetMetricDefinitions.json
+      - step: Database_ListMetrics
+        exampleFile: ..\examples\CosmosDBDatabaseGetMetrics.json
+      - step: Database_ListUsages
+        exampleFile: ..\examples\CosmosDBDatabaseGetUsages.json
+
+  - scenario: Collection
+    description: Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}
+    steps:
+      - step: Collection_ListMetricDefinitions
+        exampleFile: ..\examples\CosmosDBCollectionGetMetricDefinitions.json
+      - step: Collection_ListMetrics
+        exampleFile: ..\examples\CosmosDBCollectionGetMetrics.json
+      - step: Collection_ListUsages
+        exampleFile: ..\examples\CosmosDBCollectionGetUsages.json
+
+
+  - scenario: ListMetrics
+    description: Microsoft.DocumentDB/listMetrics
+    steps:
+      - step: DatabaseAccountRegion_ListMetrics
+        exampleFile: ..\examples\CosmosDBDatabaseAccountRegionGetMetrics.json
+
+      - step: CollectionRegion_ListMetrics
+        exampleFile: ..\examples\CosmosDBRegionCollectionGetMetrics.json
+
+      - step: PercentileSourceTarget_ListMetrics
+        exampleFile: ..\examples\CosmosDBPercentileSourceTargetGetMetrics.json
+
+      - step: PercentileTarget_ListMetrics
+        exampleFile: ..\examples\CosmosDBPercentileTargetGetMetrics.json
+
+      - step: Percentile_ListMetrics
+        exampleFile: ..\examples\CosmosDBPercentileGetMetrics.json
+
+      - step: CollectionPartitionRegion_ListMetrics
+        exampleFile: ..\examples\CosmosDBCollectionPartitionRegionGetMetrics.json
+
+      - step: CollectionPartition_ListMetrics
+        exampleFile: ..\examples\CosmosDBCollectionPartitionGetMetrics.json
+      - step: CollectionPartition_ListUsages
+        exampleFile: ..\examples\CosmosDBCollectionPartitionGetUsages.json
+
+      - step: PartitionKeyRangeId_ListMetrics
+        exampleFile: ..\examples\CosmosDBPKeyRangeIdGetMetrics.json
+
+      - step: PartitionKeyRangeIdRegion_ListMetrics
+        exampleFile: ..\examples\CosmosDBPKeyRangeIdRegionGetMetrics.json
