@@ -1,0 +1,158 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  workspaceName:
+    type: string
+    prefix: workspac
+  clusterName:
+    type: string
+    prefix: clustern
+  dataExportName:
+    type: string
+    prefix: dataexpo
+  dataSourceName:
+    type: string
+    prefix: datasour
+  linkedServiceName:
+    type: string
+    prefix: linkedse
+  dataSourceType:
+    type: string
+    prefix: datasour
+  storageInsightName:
+    type: string
+    prefix: storagei
+  savedSearchId:
+    type: string
+    prefix: savedsea
+  intelligencePackName:
+    type: string
+    prefix: intellig
+  tableName:
+    type: string
+    prefix: tablenam
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Workspaces_CreateOrUpdate
+        exampleFile: ..\examples\WorkspacesCreate.json
+      - operationId: Workspaces_List
+        exampleFile: ..\examples\WorkspacesSubscriptionList.json
+      - operationId: Workspaces_ListByResourceGroup
+        exampleFile: ..\examples\WorkspacesListByResourceGroup.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\WorkspacesGet.json
+      - operationId: Workspaces_Update
+        exampleFile: ..\examples\WorkspacesUpdate.json
+      - operationId: Clusters_CreateOrUpdate
+        exampleFile: ..\examples\ClustersCreate.json
+      - operationId: Clusters_List
+        exampleFile: ..\examples\ClustersSubscriptionList.json
+      - operationId: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\ClustersListByResourceGroup.json
+      - operationId: Clusters_Get
+        exampleFile: ..\examples\ClustersGet.json
+      - operationId: Clusters_Update
+        exampleFile: ..\examples\ClustersUpdate.json
+      - operationId: DataSources_CreateOrUpdate
+        exampleFile: ..\..\2020-08-01\examples\DataSourcesCreate.json
+      - operationId: DataSources_ListByWorkspace
+        exampleFile: ..\..\2020-08-01\examples\DataSourcesListByWorkspace.json
+      - operationId: DataSources_Get
+        exampleFile: ..\..\2020-08-01\examples\DataSourcesGet.json
+      - operationId: SavedSearches_CreateOrUpdate
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesSavedSearchesCreateOrUpdate.json
+      - operationId: SavedSearches_ListByWorkspace
+        exampleFile: ..\..\2020-08-01\examples\SavedSearchesListByWorkspace.json
+      - operationId: SavedSearches_Get
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesSavedSearchesGet.json
+      - operationId: LinkedServices_CreateOrUpdate
+        exampleFile: ..\..\2020-08-01\examples\LinkedServicesCreate.json
+      - operationId: LinkedServices_ListByWorkspace
+        exampleFile: ..\..\2020-08-01\examples\LinkedServicesListByWorkspace.json
+      - operationId: LinkedServices_Get
+        exampleFile: ..\..\2020-08-01\examples\LinkedServicesGet.json
+      - operationId: LinkedStorageAccounts_CreateOrUpdate
+        exampleFile: ..\..\2020-08-01\examples\LinkedStorageAccountsCreate.json
+      - operationId: LinkedStorageAccounts_ListByWorkspace
+        exampleFile: ..\..\2020-08-01\examples\LinkedStorageAccountsListByWorkspace.json
+      - operationId: LinkedStorageAccounts_Get
+        exampleFile: ..\..\2020-08-01\examples\LinkedStorageAccountsGet.json
+      - operationId: DataExports_CreateOrUpdate
+        exampleFile: ..\..\2020-08-01\examples\DataExportCreateOrUpdate.json
+      - operationId: DataExports_ListByWorkspace
+        exampleFile: ..\..\2020-08-01\examples\DataExportListByWorkspace.json
+      - operationId: DataExports_Get
+        exampleFile: ..\..\2020-08-01\examples\DataExportGet.json
+      - operationId: StorageInsightConfigs_CreateOrUpdate
+        exampleFile: ..\..\2020-08-01\examples\StorageInsightsCreateOrUpdate.json
+      - operationId: StorageInsightConfigs_ListByWorkspace
+        exampleFile: ..\..\2020-08-01\examples\StorageInsightsListByWorkspace.json
+      - operationId: StorageInsightConfigs_Get
+        exampleFile: ..\..\2020-08-01\examples\StorageInsightsGet.json
+      - operationId: Operations_List
+        exampleFile: ..\..\2020-10-01\examples\OperationsListByTenant.json
+      - operationId: DeletedWorkspaces_List
+        exampleFile: ..\examples\WorkspacesSubscriptionList.json
+      - operationId: OperationStatuses_Get
+        variables:
+          asyncOperationId:
+            type: string
+            prefix: asyncope
+        exampleFile: ..\..\2020-08-01\examples\OperationStatusesGet.json
+      - operationId: WorkspacePurge_GetPurgeStatus
+        variables:
+          purgeId:
+            type: string
+            prefix: purgeid
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesPurgeOperation.json
+      - operationId: WorkspacePurge_Purge
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesPurge.json
+      - operationId: DeletedWorkspaces_ListByResourceGroup
+        exampleFile: ..\examples\WorkspacesListByResourceGroup.json
+      - operationId: AvailableServiceTiers_ListByWorkspace
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesAvailableServiceTiers.json
+      - operationId: Gateways_Delete
+        variables:
+          gatewayId:
+            type: string
+            prefix: gatewayi
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesGatewaysDelete.json
+      - operationId: IntelligencePacks_List
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesListIntelligencePacks.json
+      - operationId: IntelligencePacks_Disable
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesDisableIntelligencePack.json
+      - operationId: IntelligencePacks_Enable
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesEnableIntelligencePack.json
+      - operationId: ManagementGroups_List
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesListManagementGroups.json
+      - operationId: SharedKeys_Regenerate
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesRegenerateSharedKeys.json
+      - operationId: Schema_Get
+        exampleFile: ..\..\2020-08-01\examples\SavedSearchesGetSchema.json
+      - operationId: SharedKeys_GetSharedKeys
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesGetSharedKeys.json
+      - operationId: Tables_ListByWorkspace
+        exampleFile: ..\..\2020-08-01\examples\TablesList.json
+      - operationId: Tables_Get
+        exampleFile: ..\..\2020-08-01\examples\TablesGet.json
+      - operationId: Tables_Update
+        exampleFile: ..\..\2020-08-01\examples\TablesUpdate.json
+      - operationId: Usages_List
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesListUsages.json
+      - operationId: StorageInsightConfigs_Delete
+        exampleFile: ..\..\2020-08-01\examples\StorageInsightsDelete.json
+      - operationId: DataExports_Delete
+        exampleFile: ..\..\2020-08-01\examples\DataExportDelete.json
+      - operationId: LinkedStorageAccounts_Delete
+        exampleFile: ..\..\2020-08-01\examples\LinkedStorageAccountsDelete.json
+      - operationId: LinkedServices_Delete
+        exampleFile: ..\..\2020-08-01\examples\LinkedServicesDelete.json
+      - operationId: SavedSearches_Delete
+        exampleFile: ..\..\2020-08-01\examples\WorkspacesDeleteSavedSearches.json
+      - operationId: DataSources_Delete
+        exampleFile: ..\..\2020-08-01\examples\DataSourcesDelete.json
+      - operationId: Clusters_Delete
+        exampleFile: ..\examples\ClustersDelete.json
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\WorkspacesDelete.json
