@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  name:
+    type: string
+    prefix: redisna
+  linkedServerName:
+    type: string
+    prefix: linkedse
+
+prepareSteps:
+  - step: Redis_Create
+    exampleFile: ../examples/RedisCacheCreateDefaultVersion.json
+    requestUpdate:
+      - remove: /parameters/properties/subnetId
+      - remove: /parameters/properties/staticIP
+    outputVariables:
+      redisId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: LinkedServer
+    description: Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}
+    steps:
+      - step: LinkedServer_Create # AOF persistence and GeoReplication are not yet supported on zone redundant caches
+        exampleFile: ..\examples\RedisCacheLinkedServer_Create.json
+      - step: LinkedServer_List
+        exampleFile: ..\examples\RedisCacheLinkedServer_List.json
+      - step: LinkedServer_Get
+        exampleFile: ..\examples\RedisCacheLinkedServer_Get.json
+      - step: LinkedServer_Delete
+        exampleFile: ..\examples\RedisCacheLinkedServer_Delete.json

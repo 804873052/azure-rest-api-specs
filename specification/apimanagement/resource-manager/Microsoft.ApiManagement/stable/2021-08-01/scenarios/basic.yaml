@@ -1,0 +1,831 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  serviceName:
+    type: string
+    prefix: servicen
+  apiId:
+    type: string
+    prefix: apiid
+  productId:
+    type: string
+    prefix: producti
+  gatewayId:
+    type: string
+    prefix: gatewayi
+  userId:
+    type: string
+    prefix: userid
+  tagId:
+    type: string
+    prefix: tagid
+  policyId:
+    type: string
+    prefix: policyid
+  issueId:
+    type: string
+    prefix: issueid
+  operationId:
+    type: string
+    prefix: operatio
+  groupId:
+    type: string
+    prefix: groupid
+  diagnosticId:
+    type: string
+    prefix: diagnost
+  notificationName:
+    type: string
+    prefix: notifica
+  certificateId:
+    type: string
+    prefix: certific
+  sid:
+    type: string
+    prefix: sid
+  accessName:
+    type: string
+    prefix: accessna
+  schemaId:
+    type: string
+    prefix: schemaid
+  contentTypeId:
+    type: string
+    prefix: contentt
+  namedValueId:
+    type: string
+    prefix: namedval
+  authsid:
+    type: string
+    prefix: authsid
+  backendId:
+    type: string
+    prefix: backendi
+  identityProviderName:
+    type: string
+    prefix: identity
+  opid:
+    type: string
+    prefix: opid
+  releaseId:
+    type: string
+    prefix: releasei
+  versionSetId:
+    type: string
+    prefix: versions
+  cacheId:
+    type: string
+    prefix: cacheid
+  templateName:
+    type: string
+    prefix: template
+  loggerId:
+    type: string
+    prefix: loggerid
+  commentId:
+    type: string
+    prefix: commenti
+  attachmentId:
+    type: string
+    prefix: attachme
+  tagDescriptionId:
+    type: string
+    prefix: tagdescr
+  contentItemId:
+    type: string
+    prefix: contenti
+  hcId:
+    type: string
+    prefix: hcid
+  portalRevisionId:
+    type: string
+    prefix: portalre
+  quotaCounterKey:
+    type: string
+    prefix: quotacou
+  configurationName:
+    type: string
+    prefix: configur
+  email:
+    type: string
+    prefix: email
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  quotaPeriodKey:
+    type: string
+    prefix: quotaper
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: ApiManagementService_CheckNameAvailability
+        exampleFile: ..\examples\ApiManagementServiceCheckNameAvailability.json
+      - operationId: ApiManagementService_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateService.json
+      - operationId: ApiManagementService_List
+        exampleFile: ..\examples\ApiManagementListServiceBySubscription.json
+      - operationId: ApiManagementService_ListByResourceGroup
+        exampleFile: >-
+          ..\examples\ApiManagementListServiceBySubscriptionAndResourceGroup.json
+      - operationId: ApiManagementService_Get
+        exampleFile: ..\examples\ApiManagementServiceGetService.json
+      - operationId: ApiManagementService_Update
+        exampleFile: ..\examples\ApiManagementUpdateServiceDisableTls10.json
+      - operationId: ApiManagementService_GetDomainOwnershipIdentifier
+        exampleFile: ..\examples\ApiManagementServiceGetDomainOwnershipIdentifier.json
+      - operationId: ApiManagementService_GetSsoToken
+        exampleFile: ..\examples\ApiManagementServiceGetSsoToken.json
+      - operationId: ApiManagementService_Restore
+        exampleFile: ..\examples\ApiManagementRestoreWithAccessKey.json
+      - operationId: ApiManagementService_ApplyNetworkConfigurationUpdates
+        exampleFile: ..\examples\ApiManagementApplyNetworkConfigurationUpdates.json
+      - operationId: ApiManagementService_Backup
+        exampleFile: ..\examples\ApiManagementBackupWithAccessKey.json
+      - operationId: Api_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiUsingOai3Import.json
+      - operationId: Api_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApi.json
+      - operationId: Api_ListByService
+        exampleFile: ..\examples\ApiManagementListApis.json
+      - operationId: Api_ListByTags
+        exampleFile: ..\examples\ApiManagementListApisByTags.json
+      - operationId: Api_Get
+        exampleFile: ..\examples\ApiManagementGetApiContract.json
+      - operationId: Api_Update
+        exampleFile: ..\examples\ApiManagementUpdateApi.json
+      - operationId: Product_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateProduct.json
+      - operationId: Product_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadProduct.json
+      - operationId: Product_ListByService
+        exampleFile: ..\examples\ApiManagementListProducts.json
+      - operationId: Product_Get
+        exampleFile: ..\examples\ApiManagementGetProduct.json
+      - operationId: Product_ListByTags
+        exampleFile: ..\examples\ApiManagementListProductsByTags.json
+      - operationId: Product_Update
+        exampleFile: ..\examples\ApiManagementUpdateProduct.json
+      - operationId: Gateway_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateGateway.json
+      - operationId: Gateway_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadGateway.json
+      - operationId: Gateway_ListByService
+        exampleFile: ..\examples\ApiManagementListGateways.json
+      - operationId: Gateway_Get
+        exampleFile: ..\examples\ApiManagementGetGateway.json
+      - operationId: Gateway_Update
+        exampleFile: ..\examples\ApiManagementUpdateGateway.json
+      - operationId: Gateway_ListKeys
+        exampleFile: ..\examples\ApiManagementGatewayListKeys.json
+      - operationId: Gateway_RegenerateKey
+        exampleFile: ..\examples\ApiManagementGatewayRegenerateKey.json
+      - operationId: Gateway_GenerateToken
+        exampleFile: ..\examples\ApiManagementGatewayGenerateToken.json
+      - operationId: ApiOperation_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiOperation.json
+      - operationId: ApiOperation_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiOperation.json
+      - operationId: ApiOperation_ListByApi
+        exampleFile: ..\examples\ApiManagementListApiOperations.json
+      - operationId: ApiOperation_Get
+        exampleFile: ..\examples\ApiManagementGetApiOperation.json
+      - operationId: ApiOperation_Update
+        exampleFile: ..\examples\ApiManagementUpdateApiOperation.json
+
+      - operationId: ApiIssue_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiIssue.json
+      - operationId: ApiIssue_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiIssue.json
+      - operationId: ApiIssue_ListByService
+        exampleFile: ..\examples\ApiManagementListApiIssues.json
+      - operationId: ApiIssue_Get
+        exampleFile: ..\examples\ApiManagementGetApiIssue.json
+      - operationId: ApiIssue_Update
+        exampleFile: ..\examples\ApiManagementUpdateApiIssue.json
+
+      - operationId: User_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateUser.json
+      - operationId: User_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadUser.json
+      - operationId: User_ListByService
+        exampleFile: ..\examples\ApiManagementListUsers.json
+      - operationId: User_Get
+        exampleFile: ..\examples\ApiManagementGetUser.json
+      - operationId: User_Update
+        exampleFile: ..\examples\ApiManagementUpdateUser.json
+      - operationId: User_GenerateSsoUrl
+        exampleFile: ..\examples\ApiManagementUserGenerateSsoUrl.json
+      - operationId: User_GetSharedAccessToken
+        exampleFile: ..\examples\ApiManagementUserToken.json
+      - operationId: Notification_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateNotification.json
+      - operationId: Notification_ListByService
+        exampleFile: ..\examples\ApiManagementListNotifications.json
+      - operationId: Notification_Get
+        exampleFile: ..\examples\ApiManagementGetNotification.json
+      - operationId: TenantAccess_Create
+        exampleFile: ..\examples\ApiManagementCreateTenantAccess.json
+      - operationId: TenantAccess_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadTenantAccess.json
+      - operationId: TenantAccess_ListByService
+        exampleFile: ..\examples\ApiManagementListTenantAccess.json
+      - operationId: TenantAccess_Get
+        exampleFile: ..\examples\ApiManagementGetTenantAccess.json
+      - operationId: TenantAccess_Update
+        exampleFile: ..\examples\ApiManagementUpdateTenantAccess.json
+      - operationId: TenantAccess_RegenerateSecondaryKey
+        exampleFile: ..\examples\ApiManagementTenantAccessRegenerateKey.json
+      - operationId: TenantAccess_ListSecrets
+        exampleFile: ..\examples\ApiManagementListSecretsTenantAccess.json
+      - operationId: TenantAccess_RegeneratePrimaryKey
+        exampleFile: ..\examples\ApiManagementTenantAccessRegenerateKey.json
+      - operationId: Group_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateGroup.json
+      - operationId: Group_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadGroup.json
+      - operationId: Group_ListByService
+        exampleFile: ..\examples\ApiManagementListGroups.json
+      - operationId: Group_Get
+        exampleFile: ..\examples\ApiManagementGetGroup.json
+      - operationId: Group_Update
+        exampleFile: ..\examples\ApiManagementUpdateGroup.json
+      - operationId: Subscription_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateSubscription.json
+      - operationId: Subscription_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadSubscription.json
+      - operationId: Subscription_List
+        exampleFile: ..\examples\ApiManagementListSubscriptions.json
+      - operationId: Subscription_Get
+        exampleFile: ..\examples\ApiManagementGetSubscription.json
+      - operationId: Subscription_Update
+        exampleFile: ..\examples\ApiManagementUpdateSubscription.json
+      - operationId: Subscription_RegeneratePrimaryKey
+        exampleFile: ..\examples\ApiManagementSubscriptionRegeneratePrimaryKey.json
+      - operationId: Subscription_RegenerateSecondaryKey
+        exampleFile: ..\examples\ApiManagementSubscriptionRegenerateSecondaryKey.json
+      - operationId: Subscription_ListSecrets
+        exampleFile: ..\examples\ApiManagementSubscriptionListSecrets.json
+
+      - operationId: ContentType_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateContentType.json
+      - operationId: ContentType_ListByService
+        exampleFile: ..\examples\ApiManagementListContentTypes.json
+      - operationId: ContentType_Get
+        exampleFile: ..\examples\ApiManagementGetContentType.json
+
+      - operationId: NamedValue_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateNamedValue.json
+      - operationId: NamedValue_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadNamedValue.json
+      - operationId: NamedValue_ListByService
+        exampleFile: ..\examples\ApiManagementListNamedValues.json
+      - operationId: NamedValue_Get
+        exampleFile: ..\examples\ApiManagementGetNamedValue.json
+      - operationId: NamedValue_Update
+        exampleFile: ..\examples\ApiManagementUpdateNamedValue.json
+      - operationId: NamedValue_ListValue
+        exampleFile: ..\examples\ApiManagementNamedValueListValue.json
+      - operationId: NamedValue_RefreshSecret
+        exampleFile: ..\examples\ApiManagementRefreshNamedValue.json
+      - operationId: OpenIdConnectProvider_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateOpenIdConnectProvider.json
+      - operationId: OpenIdConnectProvider_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadOpenIdConnectProvider.json
+      - operationId: OpenIdConnectProvider_ListByService
+        exampleFile: ..\examples\ApiManagementListOpenIdConnectProviders.json
+      - operationId: OpenIdConnectProvider_Get
+        exampleFile: ..\examples\ApiManagementGetOpenIdConnectProvider.json
+      - operationId: OpenIdConnectProvider_Update
+        exampleFile: ..\examples\ApiManagementUpdateOpenIdConnectProvider.json
+      - operationId: OpenIdConnectProvider_ListSecrets
+        exampleFile: ..\examples\ApiManagementOpenidConnectProviderListSecrets.json
+      - operationId: AuthorizationServer_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateAuthorizationServer.json
+      - operationId: AuthorizationServer_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadAuthorizationServer.json
+      - operationId: AuthorizationServer_ListByService
+        exampleFile: ..\examples\ApiManagementListAuthorizationServers.json
+      - operationId: AuthorizationServer_Get
+        exampleFile: ..\examples\ApiManagementGetAuthorizationServer.json
+      - operationId: AuthorizationServer_Update
+        exampleFile: ..\examples\ApiManagementUpdateAuthorizationServer.json
+      - operationId: AuthorizationServer_ListSecrets
+        exampleFile: ..\examples\ApiManagementAuthorizationServerListSecrets.json
+      - operationId: IdentityProvider_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateIdentityProvider.json
+      - operationId: IdentityProvider_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadIdentityProvider.json
+      - operationId: IdentityProvider_ListByService
+        exampleFile: ..\examples\ApiManagementListIdentityProviders.json
+      - operationId: IdentityProvider_Get
+        exampleFile: ..\examples\ApiManagementGetIdentityProvider.json
+      - operationId: IdentityProvider_Update
+        exampleFile: ..\examples\ApiManagementUpdateIdentityProvider.json
+      - operationId: IdentityProvider_ListSecrets
+        exampleFile: ..\examples\ApiManagementIdentityProviderListSecrets.json
+      - operationId: Backend_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateBackendServiceFabric.json
+      - operationId: Backend_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadBackend.json
+      - operationId: Backend_ListByService
+        exampleFile: ..\examples\ApiManagementListBackends.json
+      - operationId: Backend_Get
+        exampleFile: ..\examples\ApiManagementGetBackend.json
+      - operationId: Backend_Update
+        exampleFile: ..\examples\ApiManagementUpdateBackend.json
+      - operationId: Backend_Reconnect
+        exampleFile: ..\examples\ApiManagementBackendReconnect.json
+
+      - operationId: ApiDiagnostic_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiDiagnostic.json
+      - operationId: ApiDiagnostic_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiDiagnostic.json
+      - operationId: ApiDiagnostic_ListByService
+        exampleFile: ..\examples\ApiManagementListApiDiagnostics.json
+      - operationId: ApiDiagnostic_Get
+        exampleFile: ..\examples\ApiManagementGetApiDiagnostic.json
+      - operationId: ApiDiagnostic_Update
+        exampleFile: ..\examples\ApiManagementUpdateApiDiagnostic.json
+
+      - operationId: EmailTemplate_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateTemplate.json
+      - operationId: EmailTemplate_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadEmailTemplate.json
+      - operationId: EmailTemplate_ListByService
+        exampleFile: ..\examples\ApiManagementListTemplates.json
+      - operationId: EmailTemplate_Get
+        exampleFile: ..\examples\ApiManagementGetTemplate.json
+      - operationId: EmailTemplate_Update
+        exampleFile: ..\examples\ApiManagementUpdateTemplate.json
+      - operationId: Tag_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateTag.json
+      - operationId: Tag_GetEntityState
+        exampleFile: ..\examples\ApiManagementHeadTag.json
+      - operationId: Tag_ListByOperation
+        exampleFile: ..\examples\ApiManagementListApiOperationTags.json
+      - operationId: Tag_ListByApi
+        exampleFile: ..\examples\ApiManagementListApiTags.json
+      - operationId: Tag_ListByProduct
+        exampleFile: ..\examples\ApiManagementListProductTags.json
+      - operationId: Tag_ListByService
+        exampleFile: ..\examples\ApiManagementListTags.json
+      - operationId: Tag_Get
+        exampleFile: ..\examples\ApiManagementGetTag.json
+      - operationId: Tag_Update
+        exampleFile: ..\examples\ApiManagementUpdateTag.json
+      - operationId: ApiVersionSet_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiVersionSet.json
+      - operationId: ApiVersionSet_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiVersionSet.json
+      - operationId: ApiVersionSet_ListByService
+        exampleFile: ..\examples\ApiManagementListApiVersionSets.json
+      - operationId: ApiVersionSet_Get
+        exampleFile: ..\examples\ApiManagementGetApiVersionSet.json
+      - operationId: ApiVersionSet_Update
+        exampleFile: ..\examples\ApiManagementUpdateApiVersionSet.json
+      - operationId: Logger_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateEHLogger.json
+      - operationId: Logger_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadLogger.json
+      - operationId: Logger_ListByService
+        exampleFile: ..\examples\ApiManagementListLoggers.json
+      - operationId: Logger_Get
+        exampleFile: ..\examples\ApiManagementGetLogger.json
+      - operationId: Logger_Update
+        exampleFile: ..\examples\ApiManagementUpdateLogger.json
+      - operationId: Cache_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateCache.json
+      - operationId: Cache_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadCache.json
+      - operationId: Cache_Get
+        exampleFile: ..\examples\ApiManagementGetCache.json
+      - operationId: Cache_ListByService
+        exampleFile: ..\examples\ApiManagementListCaches.json
+      - operationId: Cache_Update
+        exampleFile: ..\examples\ApiManagementUpdateCache.json
+      - operationId: Diagnostic_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateDiagnostic.json
+      - operationId: Diagnostic_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadDiagnostic.json
+      - operationId: Diagnostic_ListByService
+        exampleFile: ..\examples\ApiManagementListDiagnostics.json
+      - operationId: Diagnostic_Get
+        exampleFile: ..\examples\ApiManagementGetDiagnostic.json
+      - operationId: Diagnostic_Update
+        exampleFile: ..\examples\ApiManagementUpdateDiagnostic.json
+      - operationId: Certificate_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateCertificate.json
+      - operationId: Certificate_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadCertificate.json
+      - operationId: Certificate_ListByService
+        exampleFile: ..\examples\ApiManagementListCertificates.json
+      - operationId: Certificate_Get
+        exampleFile: ..\examples\ApiManagementGetCertificate.json
+      - operationId: Certificate_RefreshSecret
+        exampleFile: ..\examples\ApiManagementRefreshCertificate.json
+      - operationId: ApiRelease_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiRelease.json
+      - operationId: ApiRelease_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiRelease.json
+      - operationId: ApiRelease_ListByService
+        exampleFile: ..\examples\ApiManagementListApiReleases.json
+      - operationId: ApiRelease_Get
+        exampleFile: ..\examples\ApiManagementGetApiRelease.json
+      - operationId: ApiRelease_Update
+        exampleFile: ..\examples\ApiManagementUpdateApiRelease.json
+      - operationId: Tag_AssignToOperation
+        exampleFile: ..\examples\ApiManagementCreateApiOperationTag.json
+      - operationId: Tag_GetEntityStateByOperation
+        exampleFile: ..\examples\ApiManagementHeadApiOperationTag.json
+      - operationId: Tag_GetByOperation
+        exampleFile: ..\examples\ApiManagementGetApiOperationTag.json
+      - operationId: PortalRevision_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreatePortalRevision.json
+      - operationId: PortalRevision_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadPortalRevision.json
+      - operationId: PortalRevision_ListByService
+        exampleFile: ..\examples\ApiManagementListPortalRevisions.json
+      - operationId: PortalRevision_Get
+        exampleFile: ..\examples\ApiManagementGetPortalRevision.json
+      - operationId: PortalRevision_Update
+        exampleFile: ..\examples\ApiManagementUpdatePortalRevision.json
+      - operationId: ApiTagDescription_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiTagDescription.json
+      - operationId: ApiTagDescription_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiTagDescription.json
+      - operationId: ApiTagDescription_ListByService
+        exampleFile: ..\examples\ApiManagementListApiTagDescriptions.json
+      - operationId: ApiTagDescription_Get
+        exampleFile: ..\examples\ApiManagementGetApiTagDescription.json
+      - operationId: Tag_AssignToProduct
+        exampleFile: ..\examples\ApiManagementCreateProductTag.json
+      - operationId: Tag_GetEntityStateByProduct
+        exampleFile: ..\examples\ApiManagementHeadProductTag.json
+      - operationId: Tag_GetByProduct
+        exampleFile: ..\examples\ApiManagementGetProductTag.json
+      - operationId: ApiPolicy_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiPolicy.json
+      - operationId: ApiPolicy_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiPolicy.json
+      - operationId: ApiPolicy_ListByApi
+        exampleFile: ..\examples\ApiManagementListApiPolicies.json
+      - operationId: ApiPolicy_Get
+        exampleFile: ..\examples\ApiManagementGetApiPolicy.json
+      - operationId: GatewayHostnameConfiguration_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateGatewayHostnameConfiguration.json
+      - operationId: GatewayHostnameConfiguration_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadGatewayHostnameConfiguration.json
+      - operationId: GatewayHostnameConfiguration_ListByService
+        exampleFile: ..\examples\ApiManagementListGatewayHostnameConfigurations.json
+      - operationId: GatewayHostnameConfiguration_Get
+        exampleFile: ..\examples\ApiManagementGetGatewayHostnameConfiguration.json
+
+      - operationId: ApiIssueAttachment_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiIssueAttachment.json
+      - operationId: ApiIssueAttachment_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiIssueAttachment.json
+      - operationId: ApiIssueAttachment_ListByService
+        exampleFile: ..\examples\ApiManagementListApiIssueAttachments.json
+      - operationId: ApiIssueAttachment_Get
+        exampleFile: ..\examples\ApiManagementGetApiIssueAttachment.json
+
+      - operationId: ContentItem_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateContentTypeContentItem.json
+      - operationId: ContentItem_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadContentTypeContentItem.json
+      - operationId: ContentItem_ListByService
+        exampleFile: ..\examples\ApiManagementListContentTypeContentItems.json
+      - operationId: ContentItem_Get
+        exampleFile: ..\examples\ApiManagementGetContentTypeContentItem.json
+        
+      - operationId: GlobalSchema_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateGlobalSchema1.json
+      - operationId: GlobalSchema_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadGlobalSchema.json
+      - operationId: GlobalSchema_ListByService
+        exampleFile: ..\examples\ApiManagementListGlobalSchemas.json
+      - operationId: GlobalSchema_Get
+        exampleFile: ..\examples\ApiManagementGetGlobalSchema1.json
+
+      - operationId: ApiIssueComment_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiIssueComment.json
+      - operationId: ApiIssueComment_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiIssueComment.json
+      - operationId: ApiIssueComment_ListByService
+        exampleFile: ..\examples\ApiManagementListApiIssueComments.json
+      - operationId: ApiIssueComment_Get
+        exampleFile: ..\examples\ApiManagementGetApiIssueComment.json
+
+      - operationId: GatewayCertificateAuthority_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateGatewayCertificateAuthority.json
+      - operationId: GatewayCertificateAuthority_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadGatewayCertificateAuthority.json
+      - operationId: GatewayCertificateAuthority_ListByService
+        exampleFile: ..\examples\ApiManagementListGatewayCertificateAuthorities.json
+      - operationId: GatewayCertificateAuthority_Get
+        exampleFile: ..\examples\ApiManagementGetGatewayCertificateAuthority.json
+      - operationId: ApiOperationPolicy_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiOperationPolicy.json
+      - operationId: ApiOperationPolicy_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiOperationPolicy.json
+      - operationId: ApiOperationPolicy_ListByOperation
+        exampleFile: ..\examples\ApiManagementListApiOperationPolicies.json
+      - operationId: ApiOperationPolicy_Get
+        exampleFile: ..\examples\ApiManagementGetApiOperationPolicy.json
+      - operationId: Policy_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreatePolicy.json
+      - operationId: Policy_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadPolicy.json
+      - operationId: Policy_Get
+        exampleFile: ..\examples\ApiManagementGetPolicy.json
+      - operationId: Policy_ListByService
+        exampleFile: ..\examples\ApiManagementListPolicies.json
+      - operationId: ApiSchema_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiSchema.json
+      - operationId: ApiSchema_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiSchema.json
+      - operationId: ApiSchema_ListByApi
+        exampleFile: ..\examples\ApiManagementListApiSchemas.json
+      - operationId: ApiSchema_Get
+        exampleFile: ..\examples\ApiManagementGetApiSchema.json
+      - operationId: ProductPolicy_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateProductPolicy.json
+      - operationId: ProductPolicy_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadProductPolicy.json
+      - operationId: ProductPolicy_ListByProduct
+        exampleFile: ..\examples\ApiManagementListProductPolicies.json
+      - operationId: ProductPolicy_Get
+        exampleFile: ..\examples\ApiManagementGetProductPolicy.json
+      - operationId: Tag_AssignToApi
+        exampleFile: ..\examples\ApiManagementCreateApiTag.json
+      - operationId: Tag_GetEntityStateByApi
+        exampleFile: ..\examples\ApiManagementHeadApiTag.json
+      - operationId: Tag_GetByApi
+        exampleFile: ..\examples\ApiManagementGetApiTag.json
+      - operationId: PrivateEndpointConnection_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementApproveOrRejectPrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnection_ListByService
+        exampleFile: ..\examples\ApiManagementListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnection_ListPrivateLinkResources
+        exampleFile: ..\examples\ApiManagementListPrivateLinkGroupResources.json
+      - operationId: PrivateEndpointConnection_GetPrivateLinkResource
+        variables:
+          privateLinkSubResourceName:
+            type: string
+            prefix: privatel
+        exampleFile: ..\examples\ApiManagementGetPrivateLinkGroupResource.json
+      - operationId: PrivateEndpointConnection_GetByName
+        exampleFile: ..\examples\ApiManagementGetPrivateEndpointConnection.json
+      - operationId: ProductGroup_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateProductGroup.json
+      - operationId: ProductGroup_CheckEntityExists
+        exampleFile: ..\examples\ApiManagementHeadProductGroup.json
+      - operationId: ProductGroup_ListByProduct
+        exampleFile: ..\examples\ApiManagementListProductGroups.json
+      - operationId: ProductApi_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateProductApi.json
+      - operationId: ProductApi_CheckEntityExists
+        exampleFile: ..\examples\ApiManagementHeadProductApi.json
+      - operationId: ProductApi_ListByProduct
+        exampleFile: ..\examples\ApiManagementListProductApis.json
+      - operationId: GatewayApi_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateGatewayApi.json
+      - operationId: GatewayApi_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadGatewayApi.json
+      - operationId: GatewayApi_ListByService
+        exampleFile: ..\examples\ApiManagementListGatewayApis.json
+      - operationId: NotificationRecipientEmail_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateNotificationRecipientEmail.json
+      - operationId: NotificationRecipientEmail_CheckEntityExists
+        exampleFile: ..\examples\ApiManagementHeadNotificationRecipientEmail.json
+      - operationId: NotificationRecipientEmail_ListByNotification
+        exampleFile: ..\examples\ApiManagementListNotificationRecipientEmails.json
+      - operationId: NotificationRecipientUser_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateNotificationRecipientUser.json
+      - operationId: NotificationRecipientUser_CheckEntityExists
+        exampleFile: ..\examples\ApiManagementHeadNotificationRecipientUser.json
+      - operationId: NotificationRecipientUser_ListByNotification
+        exampleFile: ..\examples\ApiManagementListNotificationRecipientUsers.json
+      - operationId: GroupUser_Create
+        exampleFile: ..\examples\ApiManagementCreateGroupUser.json
+      - operationId: GroupUser_CheckEntityExists
+        exampleFile: ..\examples\ApiManagementHeadGroupUser.json
+      - operationId: GroupUser_List
+        exampleFile: ..\examples\ApiManagementListGroupUsers.json
+      - operationId: SignInSettings_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementPortalSettingsPutSignIn.json
+      - operationId: SignInSettings_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadSignInSettings.json
+      - operationId: SignInSettings_Get
+        exampleFile: ..\examples\ApiManagementPortalSettingsGetSignIn.json
+      - operationId: SignInSettings_Update
+        exampleFile: ..\examples\ApiManagementPortalSettingsUpdateSignIn.json
+      - operationId: DelegationSettings_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementPortalSettingsPutDelegation.json
+      - operationId: DelegationSettings_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadDelegationSettings.json
+      - operationId: DelegationSettings_Get
+        exampleFile: ..\examples\ApiManagementPortalSettingsGetDelegation.json
+      - operationId: DelegationSettings_Update
+        exampleFile: ..\examples\ApiManagementPortalSettingsUpdateDelegation.json
+      - operationId: DelegationSettings_ListSecrets
+        exampleFile: ..\examples\ApiManagementListSecretsPortalSettingsValidationKey.json
+      - operationId: SignUpSettings_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementPortalSettingsPutSignUp.json
+      - operationId: SignUpSettings_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadSignUpSettings.json
+      - operationId: SignUpSettings_Get
+        exampleFile: ..\examples\ApiManagementPortalSettingsGetSignUp.json
+      - operationId: SignUpSettings_Update
+        exampleFile: ..\examples\ApiManagementPortalSettingsUpdateSignUp.json
+      - operationId: ApiManagementOperations_List
+        exampleFile: ..\examples\ApiManagementListOperations.json
+      - operationId: DeletedServices_ListBySubscription
+        exampleFile: ..\examples\ApiManagementDeletedServicesListBySubscription.json
+      - operationId: DeletedServices_Purge
+        exampleFile: ..\examples\ApiManagementDeletedServicesPurge.json
+      - operationId: DeletedServices_GetByName
+        exampleFile: ..\examples\ApiManagementGetDeletedServiceByName.json
+      - operationId: ApiManagementSkus_List
+        exampleFile: ..\examples\ApiManagementListSku.json
+      - operationId: Operation_ListByTags
+        exampleFile: ..\examples\ApiManagementListApiOperationsByTags.json
+      - operationId: ApiProduct_ListByApis
+        exampleFile: ..\examples\ApiManagementListApiProducts.json
+      - operationId: ApiRevision_ListByService
+        exampleFile: ..\examples\ApiManagementListApiRevisions.json
+      - operationId: PerformConnectivityCheckAsync
+        exampleFile: ..\examples\ApiManagementPerformConnectivityCheck.json
+      - operationId: Issue_ListByService
+        exampleFile: ..\examples\ApiManagementListIssues.json
+      - operationId: Issue_Get
+        exampleFile: ..\examples\ApiManagementGetIssue.json
+      - operationId: NetworkStatus_ListByLocation
+        variables:
+          locationName:
+            type: string
+            prefix: location
+        exampleFile: ..\examples\ApiManagementServiceGetNetworkStatusByLocation.json
+      - operationId: NetworkStatus_ListByService
+        exampleFile: ..\examples\ApiManagementServiceGetNetworkStatus.json
+      - operationId: OutboundNetworkDependenciesEndpoints_ListByService
+        exampleFile: >-
+          ..\examples\ApiManagementServiceGetOutboundNetworkDependenciesEndpoints.json
+      - operationId: PolicyDescription_ListByService
+        exampleFile: ..\examples\ApiManagementListPolicyDescriptions.json
+      - operationId: PortalSettings_ListByService
+        exampleFile: ..\examples\ApiManagementListPortalSettings.json
+      - operationId: ProductSubscriptions_List
+        exampleFile: ..\examples\ApiManagementListProductSubscriptions.json
+      - operationId: QuotaByCounterKeys_ListByService
+        exampleFile: ..\examples\ApiManagementGetQuotaCounterKeys.json
+      - operationId: QuotaByCounterKeys_Update
+        exampleFile: ..\examples\ApiManagementUpdateQuotaCounterKey.json
+      - operationId: QuotaByPeriodKeys_Get
+        exampleFile: ..\examples\ApiManagementGetQuotaCounterKeysByQuotaPeriod.json
+      - operationId: QuotaByPeriodKeys_Update
+        exampleFile: ..\examples\ApiManagementUpdateQuotaCounterKeyByQuotaPeriod.json
+      - operationId: Region_ListByService
+        exampleFile: ..\examples\ApiManagementListRegions.json
+      - operationId: Reports_ListByApi
+        exampleFile: ..\examples\ApiManagementGetReportsByApi.json
+      - operationId: Reports_ListByGeo
+        exampleFile: ..\examples\ApiManagementGetReportsByGeo.json
+      - operationId: Reports_ListByOperation
+        exampleFile: ..\examples\ApiManagementGetReportsByOperation.json
+      - operationId: Reports_ListByProduct
+        exampleFile: ..\examples\ApiManagementGetReportsByProduct.json
+      - operationId: Reports_ListByRequest
+        exampleFile: ..\examples\ApiManagementGetReportsByRequest.json
+      - operationId: Reports_ListBySubscription
+        exampleFile: ..\examples\ApiManagementGetReportsBySubscription.json
+      - operationId: Reports_ListByTime
+        exampleFile: ..\examples\ApiManagementGetReportsByTime.json
+      - operationId: Reports_ListByUser
+        exampleFile: ..\examples\ApiManagementGetReportsByUser.json
+      - operationId: TenantSettings_ListByService
+        exampleFile: ..\examples\ApiManagementListTenantSettings.json
+      - operationId: TenantSettings_Get
+        variables:
+          settingsType:
+            type: string
+            prefix: settings
+        exampleFile: ..\examples\ApiManagementGetTenantSettings.json
+      - operationId: ApiManagementServiceSkus_ListAvailableServiceSkus
+        exampleFile: ..\examples\ApiManagementListSKUs-Dedicated.json
+      - operationId: TagResource_ListByService
+        exampleFile: ..\examples\ApiManagementListTagResources.json
+      - operationId: TenantAccessGit_RegeneratePrimaryKey
+        exampleFile: ..\examples\ApiManagementTenantAccessRegenerateKey.json
+      - operationId: TenantAccessGit_RegenerateSecondaryKey
+        exampleFile: ..\examples\ApiManagementTenantAccessRegenerateKey.json
+      - operationId: TenantConfiguration_Deploy
+        exampleFile: ..\examples\ApiManagementTenantConfigurationDeploy.json
+      - operationId: TenantConfiguration_Save
+        exampleFile: ..\examples\ApiManagementTenantConfigurationSave.json
+      - operationId: TenantConfiguration_GetSyncState
+        exampleFile: ..\examples\ApiManagementTenantAccessSyncState.json
+      - operationId: TenantConfiguration_Validate
+        exampleFile: ..\examples\ApiManagementTenantConfigurationValidate.json
+      - operationId: UserConfirmationPassword_Send
+        exampleFile: ..\examples\ApiManagementUserConfirmationPasswordSend.json
+      - operationId: UserGroup_List
+        exampleFile: ..\examples\ApiManagementListUserGroups.json
+      - operationId: UserIdentities_List
+        exampleFile: ..\examples\ApiManagementListUserIdentities.json
+      - operationId: UserSubscription_List
+        exampleFile: ..\examples\ApiManagementListUserSubscriptions.json
+      - operationId: UserSubscription_Get
+        exampleFile: ..\examples\ApiManagementGetUserSubscription.json
+      - operationId: GroupUser_Delete
+        exampleFile: ..\examples\ApiManagementDeleteGroupUser.json
+      - operationId: NotificationRecipientUser_Delete
+        exampleFile: ..\examples\ApiManagementDeleteNotificationRecipientUser.json
+      - operationId: NotificationRecipientEmail_Delete
+        exampleFile: ..\examples\ApiManagementDeleteNotificationRecipientEmail.json
+      - operationId: GatewayApi_Delete
+        exampleFile: ..\examples\ApiManagementDeleteGatewayApi.json
+      - operationId: ProductApi_Delete
+        exampleFile: ..\examples\ApiManagementDeleteProductApi.json
+      - operationId: ProductGroup_Delete
+        exampleFile: ..\examples\ApiManagementDeleteProductGroup.json
+      - operationId: PrivateEndpointConnection_Delete
+        exampleFile: ..\examples\ApiManagementDeletePrivateEndpointConnection.json
+      - operationId: Tag_DetachFromApi
+        exampleFile: ..\examples\ApiManagementDeleteApiTag.json
+      - operationId: ProductPolicy_Delete
+        exampleFile: ..\examples\ApiManagementDeleteProductPolicy.json
+      - operationId: ApiSchema_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiSchema.json
+      - operationId: Policy_Delete
+        exampleFile: ..\examples\ApiManagementDeletePolicy.json
+      - operationId: ApiOperationPolicy_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiOperationPolicy.json
+      - operationId: GatewayCertificateAuthority_Delete
+        exampleFile: ..\examples\ApiManagementDeleteGatewayCertificateAuthority.json
+      - operationId: ApiIssueComment_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiIssueComment.json
+      - operationId: GlobalSchema_Delete
+        exampleFile: ..\examples\ApiManagementDeleteGlobalSchema.json
+      - operationId: ContentItem_Delete
+        exampleFile: ..\examples\ApiManagementDeleteContentTypeContentItem.json
+      - operationId: ApiIssueAttachment_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiIssueAttachment.json
+      - operationId: GatewayHostnameConfiguration_Delete
+        exampleFile: ..\examples\ApiManagementDeleteGatewayHostnameConfiguration.json
+      - operationId: ApiPolicy_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiPolicy.json
+      - operationId: Tag_DetachFromProduct
+        exampleFile: ..\examples\ApiManagementDeleteProductTag.json
+      - operationId: ApiTagDescription_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiTagDescription.json
+      - operationId: Tag_DetachFromOperation
+        exampleFile: ..\examples\ApiManagementDeleteApiOperationTag.json
+      - operationId: ApiRelease_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiRelease.json
+      - operationId: Certificate_Delete
+        exampleFile: ..\examples\ApiManagementDeleteCertificate.json
+      - operationId: Diagnostic_Delete
+        exampleFile: ..\examples\ApiManagementDeleteDiagnostic.json
+      - operationId: Cache_Delete
+        exampleFile: ..\examples\ApiManagementDeleteCache.json
+      - operationId: Logger_Delete
+        exampleFile: ..\examples\ApiManagementDeleteLogger.json
+      - operationId: ApiVersionSet_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiVersionSet.json
+      - operationId: Tag_Delete
+        exampleFile: ..\examples\ApiManagementDeleteTag.json
+      - operationId: EmailTemplate_Delete
+        exampleFile: ..\examples\ApiManagementDeleteTemplate.json
+      - operationId: ApiDiagnostic_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiDiagnostic.json
+      - operationId: Backend_Delete
+        exampleFile: ..\examples\ApiManagementDeleteBackend.json
+      - operationId: IdentityProvider_Delete
+        exampleFile: ..\examples\ApiManagementDeleteIdentityProvider.json
+      - operationId: AuthorizationServer_Delete
+        exampleFile: ..\examples\ApiManagementDeleteAuthorizationServer.json
+      - operationId: OpenIdConnectProvider_Delete
+        exampleFile: ..\examples\ApiManagementDeleteOpenIdConnectProvider.json
+      - operationId: NamedValue_Delete
+        exampleFile: ..\examples\ApiManagementDeleteNamedValue.json
+      - operationId: ContentType_Delete
+        exampleFile: ..\examples\ApiManagementDeleteContentType.json
+      - operationId: Subscription_Delete
+        exampleFile: ..\examples\ApiManagementDeleteSubscription.json
+      - operationId: Group_Delete
+        exampleFile: ..\examples\ApiManagementDeleteGroup.json
+      - operationId: User_Delete
+        exampleFile: ..\examples\ApiManagementDeleteUser.json
+      - operationId: ApiIssue_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiIssue.json
+      - operationId: ApiOperation_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiOperation.json
+      - operationId: Gateway_Delete
+        exampleFile: ..\examples\ApiManagementDeleteGateway.json
+      - operationId: Product_Delete
+        exampleFile: ..\examples\ApiManagementDeleteProduct.json
+      - operationId: Api_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApi.json
+      - operationId: ApiManagementService_Delete
+        exampleFile: ..\examples\ApiManagementServiceDeleteService.json

@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  name:
+    type: string
+    prefix: name
+  cacheName:
+    type: string
+    prefix: cachenam
+  ruleName:
+    type: string
+    prefix: rulename
+  default:
+    type: string
+    prefix: default
+  linkedServerName:
+    type: string
+    prefix: linkedse
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Redis_CheckNameAvailability
+        exampleFile: ..\..\examples\RedisCacheCheckNameAvailability.json
+      - operationId: Redis_Create
+        exampleFile: ..\..\examples\RedisCacheCreateDefaultVersion.json
+      - operationId: Redis_ListBySubscription
+        exampleFile: ..\..\examples\RedisCacheList.json
+      - operationId: Redis_ListByResourceGroup
+        exampleFile: ..\..\examples\RedisCacheListByResourceGroup.json
+      - operationId: Redis_Get
+        exampleFile: ..\..\examples\RedisCacheGet.json
+      - operationId: Redis_ListUpgradeNotifications
+        exampleFile: ..\..\examples\RedisCacheListUpgradeNotifications.json
+      - operationId: Redis_Update
+        exampleFile: ..\..\examples\RedisCacheUpdate.json
+      - operationId: Redis_RegenerateKey
+        exampleFile: ..\..\examples\RedisCacheRegenerateKey.json
+      - operationId: Redis_ListKeys
+        exampleFile: ..\..\examples\RedisCacheListKeys.json
+      - operationId: Redis_ForceReboot
+        exampleFile: ..\..\examples\RedisCacheForceReboot.json
+      - operationId: Redis_ImportData
+        exampleFile: ..\..\examples\RedisCacheImport.json
+      - operationId: Redis_ExportData
+        exampleFile: ..\..\examples\RedisCacheExport.json
+        
+      - operationId: LinkedServer_Create
+        exampleFile: ..\..\examples\RedisCacheLinkedServer_Create.json
+      - operationId: LinkedServer_List
+        exampleFile: ..\..\examples\RedisCacheLinkedServer_List.json
+      - operationId: LinkedServer_Get
+        exampleFile: ..\..\examples\RedisCacheLinkedServer_Get.json
+
+      - operationId: PrivateEndpointConnections_Put
+        exampleFile: ..\..\examples\RedisCachePutPrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\..\examples\RedisCacheListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\..\examples\RedisCacheGetPrivateEndpointConnection.json
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\..\examples\RedisCacheFirewallRuleCreate.json
+      - operationId: FirewallRules_List
+        exampleFile: ..\..\examples\RedisCacheFirewallRulesList.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\..\examples\RedisCacheFirewallRuleGet.json
+      - operationId: PatchSchedules_CreateOrUpdate
+        exampleFile: ..\..\examples\RedisCachePatchSchedulesCreateOrUpdate.json
+      - operationId: PatchSchedules_ListByRedisResource
+        exampleFile: ..\..\examples\RedisCachePatchSchedulesList.json
+      - operationId: PatchSchedules_Get
+        exampleFile: ..\..\examples\RedisCachePatchSchedulesGet.json
+      - operationId: Operations_List
+        exampleFile: ..\..\examples\RedisCacheOperations.json
+      - operationId: AsyncOperationStatus_Get
+        variables:
+          operationId:
+            type: string
+            prefix: operatio
+        exampleFile: ..\..\examples\RedisCacheAsyncOperationStatus.json
+      - operationId: PrivateLinkResources_ListByRedisCache
+        exampleFile: ..\..\examples\RedisCacheListPrivateLinkResources.json
+      - operationId: PatchSchedules_Delete
+        exampleFile: ..\..\examples\RedisCachePatchSchedulesDelete.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\..\examples\RedisCacheFirewallRuleDelete.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\..\examples\RedisCacheDeletePrivateEndpointConnection.json
+      - operationId: LinkedServer_Delete
+        exampleFile: ..\..\examples\RedisCacheLinkedServer_Delete.json
+      - operationId: Redis_Delete
+        exampleFile: ..\..\examples\RedisCacheDelete.json

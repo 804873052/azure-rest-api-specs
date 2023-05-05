@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serviceName:
+    type: string
+    prefix: servicen
+  apiId:
+    type: string
+    prefix: apiid
+  diagnosticId:
+    type: string
+    prefix: diagnost
+
+
+prepareSteps:
+  - step: ApiManagementService_CreateOrUpdate
+    exampleFile: ..\examples\ApiManagementCreateService.json
+  - step: Api_CreateOrUpdate
+    exampleFile: ..\examples\ApiManagementCreateApiUsingOai3Import.json
+    # operationId: Api_CreateOrUpdate
+    # parameters:
+    #   parameters:
+    #     properties:
+    #       format: openapi-link
+    #       value: https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml
+    #       path: petstore
+
+scenarios:
+  - scenario: ApiDiagnostic
+    description: Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/diagnostics/{diagnosticId}
+    steps:
+      - step: ApiDiagnostic_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiDiagnostic.json
+      - step: ApiDiagnostic_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiDiagnostic.json
+      - step: ApiDiagnostic_ListByService
+        exampleFile: ..\examples\ApiManagementListApiDiagnostics.json
+      - step: ApiDiagnostic_Get
+        exampleFile: ..\examples\ApiManagementGetApiDiagnostic.json
+      - step: ApiDiagnostic_Update
+        exampleFile: ..\examples\ApiManagementUpdateApiDiagnostic.json
+      - step: ApiDiagnostic_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiDiagnostic.json

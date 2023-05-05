@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serviceName:
+    type: string
+    prefix: servicen
+  apiId:
+    type: string
+    prefix: apiid
+  issueId:
+    type: string
+    prefix: issueid
+  commentId:
+    type: string
+    prefix: commenti
+  attachmentId:
+    type: string
+    prefix: attachme
+
+prepareSteps:
+  - step: ApiManagementService_CreateOrUpdate
+    exampleFile: ..\examples\ApiManagementCreateService.json
+  - step: Api_CreateOrUpdate
+    exampleFile: ..\examples\ApiManagementCreateApiUsingOai3Import.json
+
+scenarios:
+  - scenario: ApiIssue
+    description: Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}
+    steps:
+      - step: ApiIssue_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiIssue.json
+      - step: ApiIssue_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiIssue.json
+      - step: ApiIssue_ListByService
+        exampleFile: ..\examples\ApiManagementListApiIssues.json
+      - step: ApiIssue_Get
+        exampleFile: ..\examples\ApiManagementGetApiIssue.json
+      - step: ApiIssue_Update
+        exampleFile: ..\examples\ApiManagementUpdateApiIssue.json
+      - step: ApiIssue_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiIssue.json
+
+  - scenario: ApiIssueComment
+    description: Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/comments/{commentId}
+    steps:
+      - step: ApiIssueComment_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiIssueComment.json
+      - step: ApiIssueComment_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiIssueComment.json
+      - step: ApiIssueComment_ListByService
+        exampleFile: ..\examples\ApiManagementListApiIssueComments.json
+      - step: ApiIssueComment_Get
+        exampleFile: ..\examples\ApiManagementGetApiIssueComment.json
+      - step: ApiIssueComment_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiIssueComment.json
+
+  - scenario: ApiIssueAttachment
+    description: Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/attachments/{attachmentId}
+    steps:
+      - step: ApiIssueAttachment_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateApiIssueAttachment.json
+      - step: ApiIssueAttachment_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadApiIssueAttachment.json
+      - step: ApiIssueAttachment_ListByService
+        exampleFile: ..\examples\ApiManagementListApiIssueAttachments.json
+      - step: ApiIssueAttachment_Get
+        exampleFile: ..\examples\ApiManagementGetApiIssueAttachment.json
+      - step: ApiIssueAttachment_Delete
+        exampleFile: ..\examples\ApiManagementDeleteApiIssueAttachment.json
+
+  - scenario: Issue
+    description: Microsoft.ApiManagement/service/{serviceName}/issues/{issueId}
+    steps:
+      - step: Issue_ListByService
+        exampleFile: ..\examples\ApiManagementListIssues.json
+      - step: Issue_Get
+        exampleFile: ..\examples\ApiManagementGetIssue.json

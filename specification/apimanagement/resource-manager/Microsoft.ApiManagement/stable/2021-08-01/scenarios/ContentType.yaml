@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serviceName:
+    type: string
+    prefix: servicen
+  contentTypeId:
+    type: string
+    prefix: contentt
+  contentItemId:
+    type: string
+    prefix: contenti
+
+prepareSteps:
+  - step: ApiManagementService_CreateOrUpdate
+    exampleFile: ..\examples\ApiManagementCreateService.json
+
+scenarios:
+  - scenario: ContentType
+    description: Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}
+    steps:
+      - step: ContentType_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateContentType.json
+      - step: ContentType_ListByService
+        exampleFile: ..\examples\ApiManagementListContentTypes.json
+      - step: ContentType_Get
+        exampleFile: ..\examples\ApiManagementGetContentType.json
+      - step: ContentType_Delete
+        exampleFile: ..\examples\ApiManagementDeleteContentType.json
+
+  - scenario: ContentItem
+    description: Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}/contentItems/{contentItemId}
+    steps:
+      - step: ContentItem_CreateOrUpdate
+        exampleFile: ..\examples\ApiManagementCreateContentTypeContentItem.json
+      - step: ContentItem_GetEntityTag
+        exampleFile: ..\examples\ApiManagementHeadContentTypeContentItem.json
+      - step: ContentItem_ListByService
+        exampleFile: ..\examples\ApiManagementListContentTypeContentItems.json
+      - step: ContentItem_Get
+        exampleFile: ..\examples\ApiManagementGetContentTypeContentItem.json
+      - step: ContentItem_Delete
+        exampleFile: ..\examples\ApiManagementDeleteContentTypeContentItem.json
