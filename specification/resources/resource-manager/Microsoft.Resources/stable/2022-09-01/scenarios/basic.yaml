@@ -1,0 +1,158 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  deploymentName:
+    type: string
+    prefix: deployme
+  groupId:
+    type: string
+    prefix: groupid
+  resourceProviderNamespace:
+    type: string
+    prefix: resource
+  resourceName:
+    type: string
+    prefix: resource
+  operationId:
+    type: string
+    prefix: operatio
+  parameters:
+    type: object
+    value: {}
+  tagName:
+    type: string
+    prefix: tagname
+  sourceResourceGroupName:
+    type: string
+    prefix: sourcere
+  tagValue:
+    type: string
+    prefix: tagvalue
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: ResourceGroups_CreateOrUpdate
+        exampleFile: ..\examples\CreateResourceGroup.json
+      - operationId: ResourceGroups_CheckExistence
+      - operationId: ResourceGroups_List
+      - operationId: ResourceGroups_Get
+      - operationId: ResourceGroups_Update
+        variables:
+          parameters:
+            type: object
+            value: {}
+      - operationId: ResourceGroups_ExportTemplate
+        exampleFile: ..\examples\ExportResourceGroup.json
+      - operationId: Deployments_CreateOrUpdateAtSubscriptionScope
+        exampleFile: ..\examples\PutDeploymentSubscriptionTemplateSpecsWithId.json
+      - operationId: Deployments_CheckExistenceAtSubscriptionScope
+      - operationId: Deployments_ListAtManagementGroupScope
+      - operationId: Deployments_ListAtSubscriptionScope
+      - operationId: Deployments_GetAtSubscriptionScope
+      - operationId: Deployments_ListAtTenantScope
+      - operationId: Deployments_ListAtScope
+      - operationId: Deployments_ListByResourceGroup
+      - operationId: Deployments_CancelAtSubscriptionScope
+      - operationId: Deployments_WhatIfAtSubscriptionScope
+        exampleFile: ..\examples\PostDeploymentWhatIfOnSubscription.json
+      - operationId: Deployments_CalculateTemplateHash
+        exampleFile: ..\examples\CalculateTemplateHash.json
+      - operationId: Deployments_ExportTemplateAtSubscriptionScope
+      - operationId: Deployments_ValidateAtSubscriptionScope
+      - operationId: Deployments_CreateOrUpdateAtManagementGroupScope
+        exampleFile: ..\examples\PutDeploymentAtManagementGroup.json
+      - operationId: Deployments_CheckExistenceAtManagementGroupScope
+      - operationId: Deployments_GetAtManagementGroupScope
+      - operationId: Deployments_ValidateAtManagementGroupScope
+      - operationId: Deployments_WhatIfAtManagementGroupScope
+        exampleFile: ..\examples\PostDeploymentWhatIfOnManagementGroup.json
+      - operationId: Deployments_CancelAtManagementGroupScope
+      - operationId: Deployments_ExportTemplateAtManagementGroupScope
+      - operationId: Deployments_CreateOrUpdateAtTenantScope
+        exampleFile: ..\examples\PutDeploymentAtTenant.json
+      - operationId: Deployments_CheckExistenceAtTenantScope
+      - operationId: Deployments_GetAtTenantScope
+      - operationId: Deployments_WhatIfAtTenantScope
+        exampleFile: ..\examples\PostDeploymentWhatIfOnTenant.json
+      - operationId: Deployments_ExportTemplateAtTenantScope
+      - operationId: Deployments_ValidateAtTenantScope
+      - operationId: Deployments_CancelAtTenantScope
+      - operationId: Deployments_CreateOrUpdateAtScope
+        exampleFile: ..\examples\PutDeploymentAtScope.json
+      - operationId: Deployments_CheckExistenceAtScope
+      - operationId: Deployments_GetAtScope
+      - operationId: Deployments_CancelAtScope
+      - operationId: Deployments_ValidateAtScope
+      - operationId: Deployments_ExportTemplateAtScope
+      - operationId: Deployments_CreateOrUpdate
+        exampleFile: ..\examples\PutDeploymentWithOnErrorDeploymentLastSuccessful.json
+      - operationId: Deployments_CheckExistence
+      - operationId: Deployments_Get
+      - operationId: Deployments_Cancel
+      - operationId: Deployments_ExportTemplate
+      - operationId: Deployments_WhatIf
+        exampleFile: ..\examples\PostDeploymentWhatIfOnResourceGroup.json
+      - operationId: Deployments_Validate
+      - operationId: Resources_CreateOrUpdate
+      - operationId: Resources_CheckExistence
+      - operationId: Resources_Get
+      - operationId: Resources_ListByResourceGroup
+      - operationId: Resources_List
+      - operationId: Resources_Update
+      - operationId: Resources_ValidateMoveResources
+        variables:
+          parameters:
+            type: object
+            value: {}
+      - operationId: Resources_MoveResources
+      - operationId: Resources_CreateOrUpdateById
+      - operationId: Resources_CheckExistenceById
+      - operationId: Resources_GetById
+      - operationId: Resources_UpdateById
+      - operationId: Tags_CreateOrUpdate
+      - operationId: Tags_List
+      - operationId: Tags_GetAtScope
+        exampleFile: ..\examples\GetTagsResource.json
+      - operationId: Tags_UpdateAtScope
+        exampleFile: ..\examples\PatchTagsResource.json
+      - operationId: Tags_CreateOrUpdateValue
+      - operationId: Tags_CreateOrUpdateAtScope
+        exampleFile: ..\examples\PutTagsResource.json
+      - operationId: Providers_ListAtTenantScope
+      - operationId: DeploymentOperations_ListAtManagementGroupScope
+      - operationId: DeploymentOperations_GetAtManagementGroupScope
+      - operationId: Providers_RegisterAtManagementGroupScope
+      - operationId: DeploymentOperations_ListAtTenantScope
+      - operationId: DeploymentOperations_GetAtTenantScope
+      - operationId: Operations_List
+      - operationId: Providers_GetAtTenantScope
+        exampleFile: ..\examples\GetNamedProviderAtTenant.json
+      - operationId: Providers_List
+        exampleFile: ..\examples\GetProviders.json
+      - operationId: DeploymentOperations_ListAtSubscriptionScope
+      - operationId: DeploymentOperations_GetAtSubscriptionScope
+      - operationId: Providers_Get
+        exampleFile: ..\examples\GetProvider.json
+      - operationId: Providers_ProviderPermissions
+        exampleFile: ..\examples\GetProviderPermissions.json
+      - operationId: Providers_Register
+      - operationId: ProviderResourceTypes_List
+        exampleFile: ..\examples\GetProviderResourceTypes.json
+      - operationId: Providers_Unregister
+      - operationId: DeploymentOperations_List
+      - operationId: DeploymentOperations_Get
+      - operationId: DeploymentOperations_ListAtScope
+      - operationId: DeploymentOperations_GetAtScope
+      - operationId: Tags_DeleteValue
+      - operationId: Tags_DeleteAtScope
+        exampleFile: ..\examples\DeleteTagsResource.json
+      - operationId: Tags_Delete
+      - operationId: Resources_DeleteById
+      - operationId: Resources_Delete
+      - operationId: Deployments_Delete
+      - operationId: Deployments_DeleteAtScope
+      - operationId: Deployments_DeleteAtTenantScope
+      - operationId: Deployments_DeleteAtManagementGroupScope
+      - operationId: Deployments_DeleteAtSubscriptionScope
+      - operationId: ResourceGroups_Delete
+        exampleFile: ..\examples\ForceDeleteVMsInResourceGroup.json
