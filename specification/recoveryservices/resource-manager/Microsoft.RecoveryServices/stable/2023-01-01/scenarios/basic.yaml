@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  vaultName:
+    type: string
+    prefix: vaultnam
+  operationId:
+    type: string
+    prefix: operatio
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: RecoveryServices_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailability_Available.json
+      - operationId: Vaults_CreateOrUpdate
+        exampleFile: ..\examples\PUTVault.json
+      - operationId: Vaults_ListBySubscriptionId
+        exampleFile: ..\examples\ListBySubscriptionIds.json
+      - operationId: Vaults_ListByResourceGroup
+        exampleFile: ..\examples\ListResources.json
+      - operationId: Vaults_Get
+        exampleFile: ..\examples\GETVault.json
+      - operationId: Vaults_Update
+        exampleFile: ..\examples\PATCHVault.json
+      - operationId: VaultExtendedInfo_CreateOrUpdate
+        exampleFile: ..\examples\UpdateVaultExtendedInfo.json
+      - operationId: VaultExtendedInfo_Get
+        exampleFile: ..\examples\GETVaultExtendedInfo.json
+      - operationId: VaultExtendedInfo_Update
+        exampleFile: ..\examples\UpdateVaultExtendedInfo.json
+      - operationId: VaultCertificates_Create
+        variables:
+          certificateName:
+            type: string
+            prefix: certific
+        exampleFile: ..\examples\PUTVaultCred.json
+      - operationId: RegisteredIdentities_Delete
+        variables:
+          identityName:
+            type: string
+            prefix: identity
+        exampleFile: ..\examples\DeleteRegisteredIdentities.json
+      - operationId: ReplicationUsages_List
+        exampleFile: ..\examples\ListReplicationUsages.json
+      - operationId: Usages_ListByVaults
+        exampleFile: ..\examples\ListUsages.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+      - operationId: RecoveryServices_Capabilities
+        exampleFile: ..\examples\Capabilities.json
+      - operationId: GetOperationResult
+        exampleFile: ..\examples\GetOperationResult.json
+      - operationId: GetOperationStatus
+        exampleFile: ..\examples\GetOperationStatus.json
+      - operationId: PrivateLinkResources_List
+        exampleFile: ..\examples\ListPrivateLinkResources.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          privateLinkResourceName:
+            type: string
+            prefix: privatel
+        exampleFile: ..\examples\GetPrivateLinkResources.json
+      - operationId: Vaults_Delete
+        exampleFile: ..\examples\DeleteVault.json

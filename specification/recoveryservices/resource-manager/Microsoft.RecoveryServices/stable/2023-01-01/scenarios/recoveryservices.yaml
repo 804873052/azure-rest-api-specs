@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  vaultName:
+    type: string
+    prefix: vaultnam
+  # operationId:
+  #   type: string
+  #   prefix: operatio
+
+scenarios:
+  - scenario: RecoveryServices
+    description: Microsoft.RecoveryServices/vaults/{vaultName}
+    steps:
+      # - step: RecoveryServices_CheckNameAvailability # The resource type 'locations/checkNameAvailability' could not be found in the namespace 'Microsoft.RecoveryServices' for api version '2023-01-01'. The supported api-versions are '2018-01-10'."
+      #   exampleFile: ..\examples\CheckNameAvailability_Available.json
+
+      - step: Vaults_CreateOrUpdate
+        exampleFile: ..\examples\PUTVault.json
+      - step: Vaults_ListBySubscriptionId
+        exampleFile: ..\examples\ListBySubscriptionIds.json
+      - step: Vaults_ListByResourceGroup
+        exampleFile: ..\examples\ListResources.json
+      - step: Vaults_Get
+        exampleFile: ..\examples\GETVault.json
+      - step: Vaults_Update
+        exampleFile: ..\examples\PATCHVault.json
+      - step: VaultExtendedInfo_CreateOrUpdate
+        # exampleFile: ..\examples\UpdateVaultExtendedInfo.json
+        operationId: VaultExtendedInfo_CreateOrUpdate
+        parameters:
+          resourceResourceExtendedInfoDetails:
+            properties: 
+              integrityKey: myIntegrityKey
+              algorithm: None
+
+      - step: VaultExtendedInfo_Get
+        exampleFile: ..\examples\GETVaultExtendedInfo.json
+      # - step: VaultExtendedInfo_Update
+      #   # exampleFile: ..\examples\UpdateVaultExtendedInfo.json
+      #   operationId: VaultExtendedInfo_Update
+      #   parameters:
+      #     resourceResourceExtendedInfoDetails:
+      #       properties: 
+      #         integrityKey: J99wzS27fmJ+Wjot7xO5wA==
+      #         algorithm: None
+
+      # - step: VaultCertificates_Create
+      #   exampleFile: ..\examples\PUTVaultCred.json
+      # - step: RegisteredIdentities_Delete
+      #   exampleFile: ..\examples\DeleteRegisteredIdentities.json
+
+      - step: ReplicationUsages_List
+        exampleFile: ..\examples\ListReplicationUsages.json
+      - step: Usages_ListByVaults
+        exampleFile: ..\examples\ListUsages.json
+      - step: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+      - step: RecoveryServices_Capabilities
+        exampleFile: ..\examples\Capabilities.json
+
+      # - step: GetOperationResult
+      #   exampleFile: ..\examples\GetOperationResult.json
+      # - step: GetOperationStatus
+      #   exampleFile: ..\examples\GetOperationStatus.json
+
+      - step: PrivateLinkResources_List
+        exampleFile: ..\examples\ListPrivateLinkResources.json
+        outputVariables:
+          privateLinkResourceName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateLinkResources_Get
+        exampleFile: ..\examples\GetPrivateLinkResources.json
+        requestUpdate:
+          - replace: /privateLinkResourceName
+            value: $(privateLinkResourceName)
+      - step: Vaults_Delete
+        exampleFile: ..\examples\DeleteVault.json
