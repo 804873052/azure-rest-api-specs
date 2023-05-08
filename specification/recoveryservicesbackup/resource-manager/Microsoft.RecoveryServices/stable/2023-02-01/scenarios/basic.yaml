@@ -1,0 +1,204 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  vaultName:
+    type: string
+    prefix: vaultnam
+  fabricName:
+    type: string
+    prefix: fabricna
+  containerName:
+    type: string
+    prefix: containe
+  operationId:
+    type: string
+    prefix: operatio
+  protectedItemName:
+    type: string
+    prefix: protecte
+  recoveryPointId:
+    type: string
+    prefix: recovery
+  policyName:
+    type: string
+    prefix: policyna
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  resourceGuardProxyName:
+    type: string
+    prefix: resource
+  azureRegion:
+    type: string
+    prefix: azurereg
+  intentObjectName:
+    type: string
+    prefix: intentob
+  jobName:
+    type: string
+    prefix: jobname
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: ProtectionContainers_Register
+        exampleFile: ..\examples\AzureStorage\ProtectionContainers_Register.json
+      - operationId: ProtectionContainers_Get
+        exampleFile: ..\examples\AzureWorkload\ProtectionContainers_Get.json
+      - operationId: ProtectionContainers_Inquire
+        exampleFile: ..\examples\AzureStorage\ProtectionContainers_Inquire.json
+      - operationId: ProtectionContainers_Refresh
+        exampleFile: ..\examples\Common\RefreshContainers.json
+      - operationId: ProtectedItems_CreateOrUpdate
+        exampleFile: ..\examples\AzureIaasVm\ConfigureProtection.json
+      - operationId: ProtectedItems_Get
+        exampleFile: ..\examples\AzureIaasVm\ClassicCompute_ProtectedItem_Get.json
+      - operationId: ProtectionPolicies_CreateOrUpdate
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicies_CreateOrUpdate_Simple.json
+      - operationId: ProtectionPolicies_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicies_Get.json
+      - operationId: ResourceGuardProxy_Put
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\PutResourceGuardProxy.json
+      - operationId: ResourceGuardProxy_Get
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\GetResourceGuardProxy.json
+      - operationId: ResourceGuardProxy_UnlockDelete
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\UnlockDeleteResourceGuardProxy.json
+      - operationId: PrivateEndpointConnection_Put
+        exampleFile: >-
+          ..\examples\PrivateEndpointConnection\PutPrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnection_Get
+        exampleFile: >-
+          ..\examples\PrivateEndpointConnection\GetPrivateEndpointConnection.json
+      - operationId: ProtectionIntent_CreateOrUpdate
+        exampleFile: ..\examples\AzureIaasVm\ProtectionIntent_CreateOrUpdate.json
+      - operationId: ProtectionIntent_Get
+        exampleFile: ..\examples\AzureWorkload\BackupProtectionIntent_Get.json
+      - operationId: ProtectionIntent_Validate
+        exampleFile: ..\examples\AzureIaasVm\ProtectionIntent_Validate.json
+      - operationId: BackupResourceStorageConfigsNonCRR_Update
+        exampleFile: ..\examples\Common\BackupStorageConfig_Put.json
+      - operationId: BackupResourceStorageConfigsNonCRR_Get
+        exampleFile: ..\examples\Common\BackupStorageConfig_Get.json
+      - operationId: BackupResourceStorageConfigsNonCRR_patch
+        exampleFile: ..\examples\Common\BackupStorageConfig_Patch.json
+      - operationId: BackupResourceVaultConfigs_Put
+        exampleFile: ..\examples\Common\BackupResourceVaultConfigs_Put.json
+      - operationId: BackupResourceVaultConfigs_Get
+        exampleFile: ..\examples\Common\BackupResourceVaultConfigs_Get.json
+      - operationId: BackupResourceVaultConfigs_Update
+        exampleFile: ..\examples\Common\BackupResourceVaultConfigs_Patch.json
+      - operationId: BackupResourceEncryptionConfigs_Update
+        exampleFile: ..\examples\BackupResourceEncryptionConfig_Put.json
+      - operationId: BackupResourceEncryptionConfigs_Get
+        exampleFile: ..\examples\BackupResourceEncryptionConfig_Get.json
+      - operationId: BackupStatus_Get
+        exampleFile: ..\examples\AzureIaasVm\GetBackupStatus.json
+      - operationId: FeatureSupport_Validate
+        exampleFile: ..\examples\AzureIaasVm\BackupFeature_Validate.json
+      - operationId: BackupProtectionIntent_List
+        exampleFile: ..\examples\AzureWorkload\BackupProtectionIntent_List.json
+      - operationId: BackupUsageSummaries_List
+        exampleFile: ..\examples\Common\BackupProtectedItem_UsageSummary_Get.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+      - operationId: DeletedProtectionContainers_List
+        exampleFile: ..\examples\AzureStorage\SoftDeletedContainers_List.json
+      - operationId: BackupEngines_List
+        exampleFile: ..\examples\Dpm\BackupEngines_List.json
+      - operationId: BackupEngines_Get
+        variables:
+          backupEngineName:
+            type: string
+            prefix: backupen
+        exampleFile: ..\examples\Dpm\BackupEngines_Get.json
+      - operationId: ProtectionContainerRefreshOperationResults_Get
+        exampleFile: ..\examples\Common\RefreshContainers_OperationResults.json
+      - operationId: ProtectableContainers_List
+        exampleFile: ..\examples\AzureStorage\ProtectableContainers_List.json
+      - operationId: BackupWorkloadItems_List
+        exampleFile: ..\examples\AzureWorkload\BackupWorkloadItems_List.json
+      - operationId: ProtectionContainerOperationResults_Get
+        exampleFile: ..\examples\AzureStorage\ProtectionContainers_Inquire_Result.json
+      - operationId: Backups_Trigger
+        exampleFile: ..\examples\Common\TriggerBackup_Post.json
+      - operationId: ProtectedItemOperationResults_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectedItemOperationResults.json
+      - operationId: ProtectedItemOperationStatuses_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectedItemOperationStatus.json
+      - operationId: RecoveryPoints_List
+        exampleFile: ..\examples\AzureIaasVm\RecoveryPoints_List.json
+      - operationId: RecoveryPoints_Get
+        exampleFile: ..\examples\AzureIaasVm\RecoveryPoints_Get.json
+      - operationId: MoveRecoveryPoint
+        exampleFile: ..\examples\TriggerRecoveryPointMove_Post.json
+      - operationId: ItemLevelRecoveryConnections_Provision
+        exampleFile: ..\examples\AzureIaasVm\Provision_Ilr.json
+      - operationId: Restores_Trigger
+        exampleFile: ..\examples\AzureIaasVm\TriggerRestore_ALR_IaasVMRestoreRequest.json
+      - operationId: ItemLevelRecoveryConnections_Revoke
+        exampleFile: ..\examples\AzureIaasVm\Revoke_Ilr.json
+      - operationId: RecoveryPointsRecommendedForMove_List
+        exampleFile: ..\examples\AzureIaasVm\RecoveryPointsRecommendedForMove_List.json
+      - operationId: BackupJobs_List
+        exampleFile: ..\examples\Common\ListJobs.json
+      - operationId: ExportJobsOperationResults_Get
+        exampleFile: ..\examples\Common\ExportJobsOperationResult.json
+      - operationId: JobDetails_Get
+        exampleFile: ..\examples\Common\GetJobDetails.json
+      - operationId: JobCancellations_Trigger
+        exampleFile: ..\examples\Common\TriggerCancelJob.json
+      - operationId: JobOperationResults_Get
+        exampleFile: ..\examples\Common\CancelJobOperationResult.json
+      - operationId: Jobs_Export
+        exampleFile: ..\examples\Common\TriggerExportJobs.json
+      - operationId: BackupOperationResults_Get
+        exampleFile: ..\examples\Common\ProtectedItem_Delete_OperationResult.json
+      - operationId: BackupOperationStatuses_Get
+        exampleFile: ..\examples\Common\ProtectedItem_Delete_OperationStatus.json
+      - operationId: BackupPolicies_List
+        exampleFile: ..\examples\AzureIaasVm\BackupPolicies_List.json
+      - operationId: ProtectionPolicyOperationResults_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicyOperationResults_Get.json
+      - operationId: ProtectionPolicyOperationStatuses_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicyOperationStatuses_Get.json
+      - operationId: BackupProtectableItems_List
+        exampleFile: ..\examples\AzureIaasVm\BackupProtectableItems_List.json
+      - operationId: BackupProtectedItems_List
+        exampleFile: ..\examples\AzureIaasVm\BackupProtectedItems_List.json
+      - operationId: BackupProtectionContainers_List
+        exampleFile: ..\examples\AzureStorage\ProtectionContainers_List.json
+      - operationId: ResourceGuardProxies_Get
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\ListResourceGuardProxy.json
+      - operationId: SecurityPINs_Get
+        exampleFile: ..\examples\Common\BackupSecurityPin_Get.json
+      - operationId: ValidateOperation_Trigger
+        exampleFile: ..\examples\AzureIaasVm\TriggerValidateOperation_RestoreDisk.json
+      - operationId: Operation_Validate
+        exampleFile: ..\examples\AzureIaasVm\ValidateOperation_RestoreDisk.json
+      - operationId: ValidateOperationResults_Get
+        exampleFile: ..\examples\AzureIaasVm\ValidateOperationResults.json
+      - operationId: ValidateOperationStatuses_Get
+        exampleFile: ..\examples\AzureIaasVm\ValidateOperationStatus.json
+      - operationId: BMSPrepareDataMoveOperationResult_Get
+        exampleFile: ..\examples\BackupDataMove\PrepareDataMoveOperationResult_Get.json
+      - operationId: GetOperationStatus
+        exampleFile: ..\examples\BackupDataMove\BackupDataMoveOperationStatus_Get.json
+      - operationId: BMSPrepareDataMove
+        exampleFile: ..\examples\BackupDataMove\PrepareDataMove_Post.json
+      - operationId: BMSTriggerDataMove
+        exampleFile: ..\examples\BackupDataMove\TriggerDataMove_Post.json
+      - operationId: PrivateEndpoint_GetOperationStatus
+        exampleFile: >-
+          ..\examples\PrivateEndpointConnection\GetPrivateEndpointConnectionOperationStatus.json
+      - operationId: ProtectionIntent_Delete
+        exampleFile: ..\examples\AzureWorkload\BackupProtectionIntent_Delete.json
+      - operationId: PrivateEndpointConnection_Delete
+        exampleFile: >-
+          ..\examples\PrivateEndpointConnection\DeletePrivateEndpointConnection.json
+      - operationId: ResourceGuardProxy_Delete
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\DeleteResourceGuardProxy.json
+      - operationId: ProtectionPolicies_Delete
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicies_Delete.json
+      - operationId: ProtectedItems_Delete
+        exampleFile: ..\examples\Common\ProtectedItem_Delete.json
+      - operationId: ProtectionContainers_Unregister
+        exampleFile: ..\examples\AzureWorkload\ProtectionContainers_Unregister.json

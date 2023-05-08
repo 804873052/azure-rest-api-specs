@@ -1,0 +1,266 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  vaultName:
+    type: string
+    prefix: vaultnam
+  fabricName:
+    type: string
+    prefix: fabricna
+  containerName:
+    type: string
+    prefix: containe
+  # operationId:
+  #   type: string
+  #   prefix: operatio
+  protectedItemName:
+    type: string
+    prefix: protecte
+  recoveryPointId:
+    type: string
+    prefix: recovery
+  policyName:
+    type: string
+    prefix: policyna
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  resourceGuardProxyName:
+    type: string
+    prefix: resource
+  azureRegion:
+    type: string
+    prefix: azurereg
+  intentObjectName:
+    type: string
+    prefix: intentob
+  jobName:
+    type: string
+    prefix: jobname
+
+scenarios:
+  - scenario: ProtectionContainers
+    description: Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}
+    steps:
+      - step: ProtectionContainers_Register
+        exampleFile: ..\examples\AzureStorage\ProtectionContainers_Register.json
+      - step: ProtectionContainers_Get
+        exampleFile: ..\examples\AzureWorkload\ProtectionContainers_Get.json
+      - step: ProtectionContainers_Inquire
+        exampleFile: ..\examples\AzureStorage\ProtectionContainers_Inquire.json
+      - step: ProtectionContainers_Refresh
+        exampleFile: ..\examples\Common\RefreshContainers.json
+      - step: ProtectionContainers_Unregister
+        exampleFile: ..\examples\AzureWorkload\ProtectionContainers_Unregister.json
+
+  - scenario: ProtectedItems
+    description: Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}
+    steps:
+      - step: ProtectedItems_CreateOrUpdate
+        exampleFile: ..\examples\AzureIaasVm\ConfigureProtection.json
+      - step: ProtectedItems_Get
+        exampleFile: ..\examples\AzureIaasVm\ClassicCompute_ProtectedItem_Get.json
+
+      - step: BackupProtectedItems_List
+        exampleFile: ..\examples\AzureIaasVm\BackupProtectedItems_List.json
+
+      - step: ProtectedItems_Delete
+        exampleFile: ..\examples\Common\ProtectedItem_Delete.json
+
+
+  - scenario: ProtectionPolicies
+    description: Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}
+    steps:
+      - step: ProtectionPolicies_CreateOrUpdate
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicies_CreateOrUpdate_Simple.json
+      - step: ProtectionPolicies_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicies_Get.json
+      - step: ProtectionPolicies_Delete
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicies_Delete.json
+
+
+  - scenario: ResourceGuardProxy
+    description: Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}
+    steps:
+      - step: ResourceGuardProxy_Put
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\PutResourceGuardProxy.json
+      - step: ResourceGuardProxy_Get
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\GetResourceGuardProxy.json
+      - step: ResourceGuardProxy_UnlockDelete
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\UnlockDeleteResourceGuardProxy.json
+      - step: ResourceGuardProxy_Delete
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\DeleteResourceGuardProxy.json
+
+
+  - scenario: PrivateEndpointConnection
+    description: Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: PrivateEndpointConnection_Put
+        exampleFile: ..\examples\PrivateEndpointConnection\PutPrivateEndpointConnection.json
+      - step: PrivateEndpointConnection_Get
+        exampleFile: ..\examples\PrivateEndpointConnection\GetPrivateEndpointConnection.json
+      - step: PrivateEndpointConnection_Delete
+        exampleFile: ..\examples\PrivateEndpointConnection\DeletePrivateEndpointConnection.json
+
+
+  - scenario: ProtectionIntent
+    description: Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}
+    steps:
+      - step: ProtectionIntent_CreateOrUpdate
+        exampleFile: ..\examples\AzureIaasVm\ProtectionIntent_CreateOrUpdate.json
+      - step: ProtectionIntent_Get
+        exampleFile: ..\examples\AzureWorkload\BackupProtectionIntent_Get.json
+      - step: ProtectionIntent_Validate
+        exampleFile: ..\examples\AzureIaasVm\ProtectionIntent_Validate.json
+
+      - step: BackupProtectionIntent_List
+        exampleFile: ..\examples\AzureWorkload\BackupProtectionIntent_List.json
+        
+      - step: ProtectionIntent_Delete
+        exampleFile: ..\examples\AzureWorkload\BackupProtectionIntent_Delete.json
+
+
+  - scenario: BackupResourceStorageConfigsNonCRR
+    description: Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig
+    steps:
+      - step: BackupResourceStorageConfigsNonCRR_Update
+        exampleFile: ..\examples\Common\BackupStorageConfig_Put.json
+      - step: BackupResourceStorageConfigsNonCRR_Get
+        exampleFile: ..\examples\Common\BackupStorageConfig_Get.json
+      - step: BackupResourceStorageConfigsNonCRR_patch
+        exampleFile: ..\examples\Common\BackupStorageConfig_Patch.json
+
+  - scenario: BackupResourceVaultConfigs
+    description: Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig
+    steps:
+      - step: BackupResourceVaultConfigs_Put
+        exampleFile: ..\examples\Common\BackupResourceVaultConfigs_Put.json
+      - step: BackupResourceVaultConfigs_Get
+        exampleFile: ..\examples\Common\BackupResourceVaultConfigs_Get.json
+      - step: BackupResourceVaultConfigs_Update
+        exampleFile: ..\examples\Common\BackupResourceVaultConfigs_Patch.json
+
+
+  - scenario: BackupResourceEncryptionConfigs
+    description: Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig
+    steps:
+      - step: BackupResourceEncryptionConfigs_Update
+        exampleFile: ..\examples\BackupResourceEncryptionConfig_Put.json
+      - step: BackupResourceEncryptionConfigs_Get
+        exampleFile: ..\examples\BackupResourceEncryptionConfig_Get.json
+
+
+      - step: BackupStatus_Get # Microsoft.RecoveryServices/locations/{azureRegion}/backupStatus
+        exampleFile: ..\examples\AzureIaasVm\GetBackupStatus.json
+      - step: FeatureSupport_Validate # Microsoft.RecoveryServices/locations/{azureRegion}/backupValidateFeatures
+        exampleFile: ..\examples\AzureIaasVm\BackupFeature_Validate.json
+
+      - step: BackupUsageSummaries_List # Microsoft.RecoveryServices/vaults/{vaultName}/backupUsageSummaries
+        exampleFile: ..\examples\Common\BackupProtectedItem_UsageSummary_Get.json
+
+  - scenario: Operations
+    description: Microsoft.RecoveryServices/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+
+      - step: DeletedProtectionContainers_List # Microsoft.RecoveryServices/vaults/{vaultName}/backupDeletedProtectionContainers
+        exampleFile: ..\examples\AzureStorage\SoftDeletedContainers_List.json
+
+      - step: BackupEngines_List # Microsoft.RecoveryServices/vaults/{vaultName}/backupEngines/{backupEngineName}
+        exampleFile: ..\examples\Dpm\BackupEngines_List.json
+        outputVariables:
+          backupEngineName:
+            type: string
+            fromResponse: /value/0/name
+      - step: BackupEngines_Get
+        exampleFile: ..\examples\Dpm\BackupEngines_Get.json
+        requestUpdate:
+          - replace: /backupEngineName
+            value: $(backupEngineName)
+
+         
+      - step: ProtectionContainerRefreshOperationResults_Get # Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/operationResults/{operationId}
+        exampleFile: ..\examples\Common\RefreshContainers_OperationResults.json
+
+      - step: ProtectableContainers_List
+        exampleFile: ..\examples\AzureStorage\ProtectableContainers_List.json
+      - step: BackupWorkloadItems_List
+        exampleFile: ..\examples\AzureWorkload\BackupWorkloadItems_List.json
+      - step: ProtectionContainerOperationResults_Get
+        exampleFile: ..\examples\AzureStorage\ProtectionContainers_Inquire_Result.json
+      - step: Backups_Trigger
+        exampleFile: ..\examples\Common\TriggerBackup_Post.json
+      - step: ProtectedItemOperationResults_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectedItemOperationResults.json
+      - step: ProtectedItemOperationStatuses_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectedItemOperationStatus.json
+      - step: RecoveryPoints_List
+        exampleFile: ..\examples\AzureIaasVm\RecoveryPoints_List.json
+      - step: RecoveryPoints_Get
+        exampleFile: ..\examples\AzureIaasVm\RecoveryPoints_Get.json
+      - step: MoveRecoveryPoint
+        exampleFile: ..\examples\TriggerRecoveryPointMove_Post.json
+      - step: ItemLevelRecoveryConnections_Provision
+        exampleFile: ..\examples\AzureIaasVm\Provision_Ilr.json
+      - step: Restores_Trigger
+        exampleFile: ..\examples\AzureIaasVm\TriggerRestore_ALR_IaasVMRestoreRequest.json
+      - step: ItemLevelRecoveryConnections_Revoke
+        exampleFile: ..\examples\AzureIaasVm\Revoke_Ilr.json
+      - step: RecoveryPointsRecommendedForMove_List
+        exampleFile: ..\examples\AzureIaasVm\RecoveryPointsRecommendedForMove_List.json
+      - step: BackupJobs_List
+        exampleFile: ..\examples\Common\ListJobs.json
+      - step: ExportJobsOperationResults_Get
+        exampleFile: ..\examples\Common\ExportJobsOperationResult.json
+      - step: JobDetails_Get
+        exampleFile: ..\examples\Common\GetJobDetails.json
+      - step: JobCancellations_Trigger
+        exampleFile: ..\examples\Common\TriggerCancelJob.json
+      - step: JobOperationResults_Get
+        exampleFile: ..\examples\Common\CancelJobOperationResult.json
+      - step: Jobs_Export
+        exampleFile: ..\examples\Common\TriggerExportJobs.json
+      - step: BackupOperationResults_Get
+        exampleFile: ..\examples\Common\ProtectedItem_Delete_OperationResult.json
+      - step: BackupOperationStatuses_Get
+        exampleFile: ..\examples\Common\ProtectedItem_Delete_OperationStatus.json
+      - step: BackupPolicies_List
+        exampleFile: ..\examples\AzureIaasVm\BackupPolicies_List.json
+      - step: ProtectionPolicyOperationResults_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicyOperationResults_Get.json
+      - step: ProtectionPolicyOperationStatuses_Get
+        exampleFile: ..\examples\AzureIaasVm\ProtectionPolicyOperationStatuses_Get.json
+      - step: BackupProtectableItems_List
+        exampleFile: ..\examples\AzureIaasVm\BackupProtectableItems_List.json
+
+      - step: BackupProtectionContainers_List
+        exampleFile: ..\examples\AzureStorage\ProtectionContainers_List.json
+      - step: ResourceGuardProxies_Get
+        exampleFile: ..\examples\ResourceGuardProxyCRUD\ListResourceGuardProxy.json
+      - step: SecurityPINs_Get
+        exampleFile: ..\examples\Common\BackupSecurityPin_Get.json
+      - step: ValidateOperation_Trigger
+        exampleFile: ..\examples\AzureIaasVm\TriggerValidateOperation_RestoreDisk.json
+      - step: Operation_Validate
+        exampleFile: ..\examples\AzureIaasVm\ValidateOperation_RestoreDisk.json
+      - step: ValidateOperationResults_Get
+        exampleFile: ..\examples\AzureIaasVm\ValidateOperationResults.json
+      - step: ValidateOperationStatuses_Get
+        exampleFile: ..\examples\AzureIaasVm\ValidateOperationStatus.json
+      - step: BMSPrepareDataMoveOperationResult_Get
+        exampleFile: ..\examples\BackupDataMove\PrepareDataMoveOperationResult_Get.json
+      - step: GetOperationStatus
+        exampleFile: ..\examples\BackupDataMove\BackupDataMoveOperationStatus_Get.json
+      - step: BMSPrepareDataMove
+        exampleFile: ..\examples\BackupDataMove\PrepareDataMove_Post.json
+      - step: BMSTriggerDataMove
+        exampleFile: ..\examples\BackupDataMove\TriggerDataMove_Post.json
+      - step: PrivateEndpoint_GetOperationStatus
+        exampleFile: ..\examples\PrivateEndpointConnection\GetPrivateEndpointConnectionOperationStatus.json
+
+
+
+
+
+
