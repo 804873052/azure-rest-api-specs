@@ -1,0 +1,141 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  resourceName:
+    type: string
+    prefix: resource
+  certificateName:
+    type: string
+    prefix: certific
+
+prepareSteps:
+  - step: IotHubResource_CreateOrUpdate
+    exampleFile: ..\examples\iothub_createOrUpdate.json
+    outputVariables:
+      iothubId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: Operations
+    description: Microsoft.Devices/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\iothub_operations.json
+      - step: ResourceProviderCommon_GetSubscriptionQuota
+        exampleFile: ..\examples\iothub_usages.json
+
+  - scenario: IotHubResource
+    description: Microsoft.Devices/IotHubs/{resourceName}
+    variables:
+      iotHubName: $(resourceName)
+    steps:
+      - step: IotHubResource_CheckNameAvailability
+        exampleFile: ..\examples\checkNameAvailability.json
+      - step: IotHubResource_ListBySubscription
+        exampleFile: ..\examples\iothub_listbysubscription.json
+      - step: IotHubResource_GetStats
+        exampleFile: ..\examples\iothub_stats.json
+      - step: IotHubResource_ListEventHubConsumerGroups
+        exampleFile: ..\examples\iothub_listehgroups.json
+      - step: IotHubResource_GetQuotaMetrics
+        exampleFile: ..\examples\iothub_quotametrics.json
+      - step: IotHubResource_ListByResourceGroup
+        exampleFile: ..\examples\iothub_listbyrg.json
+      - step: IotHubResource_GetValidSkus
+        exampleFile: ..\examples\iothub_getskus.json
+      # - step: IotHubResource_GetJob
+      #   exampleFile: ..\examples\iothub_getjob.json
+      # - step: IotHubResource_GetEndpointHealth
+      #   exampleFile: ..\examples\iothub_routingendpointhealth.json
+      - step: IotHubResource_Get
+        exampleFile: ..\examples\iothub_get.json
+      - step: IotHubResource_ListJobs
+        exampleFile: ..\examples\iothub_listjobs.json
+      - step: IotHubResource_Update
+        exampleFile: ..\examples\iothub_patch.json
+      # - step: IotHubResource_TestRoute
+      #   exampleFile: ..\examples\iothub_testnewroute.json
+      # - step: IotHubResource_ImportDevices
+      #   exampleFile: ..\examples\iothub_importdevices.json
+      # - step: IotHubResource_TestAllRoutes
+      #   exampleFile: ..\examples\iothub_testallroutes.json
+      # - step: IotHubResource_ExportDevices
+      #   exampleFile: ..\examples\iothub_exportdevices.json
+
+      - step: IotHubResource_ListKeys
+        exampleFile: ..\examples\iothub_listkeys.json
+        outputVariables:
+          keyName:
+            type: string
+            fromResponse: /value/0/keyName
+      - step: IotHubResource_GetKeysForKeyName
+        exampleFile: ..\examples\iothub_getkey.json
+      - step: IotHub_ManualFailover # Microsoft.Devices/IotHubs/{iotHubName}/failover
+        exampleFile: ..\examples\IotHub_ManualFailover.json
+        requestUpdate:
+          - replace: /failoverInput/failoverRegion
+            value: eastus
+
+      # - step: IotHubResource_CreateEventHubConsumerGroup # Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}
+      #   exampleFile: ..\examples\iothub_createconsumergroup.json
+      # - step: IotHubResource_GetEventHubConsumerGroup
+      #   exampleFile: ..\examples\iothub_getconsumergroup.json
+      # - step: IotHubResource_DeleteEventHubConsumerGroup
+      #   exampleFile: ..\examples\iothub_deleteconsumergroup.json
+
+
+  # - scenario: Certificates
+  #   description: Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}
+  #   steps:
+  #     - step: Certificates_CreateOrUpdate
+  #       exampleFile: ..\examples\iothub_certificatescreateorupdate.json
+  #     - step: Certificates_ListByIotHub
+  #       exampleFile: ..\examples\iothub_listcertificates.json
+  #     - step: Certificates_Get
+  #       exampleFile: ..\examples\iothub_getcertificate.json
+  #     - step: Certificates_Verify
+  #       exampleFile: ..\examples\iothub_certverify.json
+  #     - step: Certificates_GenerateVerificationCode
+  #       exampleFile: ..\examples\iothub_generateverificationcode.json
+  #     - step: Certificates_Delete
+  #       exampleFile: ..\examples\iothub_certificatesdelete.json
+
+
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.Devices/iotHubs/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: PrivateEndpointConnections_List  # unmarshalling error
+        exampleFile: ..\examples\iothub_listprivateendpointconnections.json
+        # outputVariables:
+        #   privateEndpointConnectionName:
+        #     type: string
+        #     fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_Update
+        exampleFile: ..\examples\iothub_updateprivateendpointconnection.json
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\iothub_getprivateendpointconnection.json
+
+# Microsoft.Devices/iotHubs/{resourceName}/privateLinkResources/{groupId}
+      - step: PrivateLinkResources_List
+        exampleFile: ..\examples\iothub_listprivatelinkresources.json
+      - step: PrivateLinkResources_Get
+        # variables:
+        #   groupId:
+        #     type: string
+        #     prefix: groupid
+        exampleFile: ..\examples\iothub_getprivatelinkresources.json
+
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\iothub_deleteprivateendpointconnection.json
+
+
+cleanUpSteps:
+  - step: IotHubResource_Delete
+    exampleFile: ..\examples\iothub_delete.json

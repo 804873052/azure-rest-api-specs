@@ -1,0 +1,121 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  resourceName:
+    type: string
+    prefix: resource
+  certificateName:
+    type: string
+    prefix: certific
+  eventHubEndpointName:
+    type: string
+    prefix: eventhub
+  iotHubName:
+    type: string
+    prefix: iothubna
+  name:
+    type: string
+    prefix: name
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: IotHubResource_CheckNameAvailability
+        exampleFile: ..\examples\checkNameAvailability.json
+      - operationId: IotHubResource_CreateOrUpdate
+        exampleFile: ..\examples\iothub_createOrUpdate.json
+      - operationId: IotHubResource_ListBySubscription
+        exampleFile: ..\examples\iothub_listbysubscription.json
+      - operationId: IotHubResource_GetStats
+        exampleFile: ..\examples\iothub_stats.json
+      - operationId: IotHubResource_ListEventHubConsumerGroups
+        exampleFile: ..\examples\iothub_listehgroups.json
+      - operationId: IotHubResource_GetQuotaMetrics
+        exampleFile: ..\examples\iothub_quotametrics.json
+      - operationId: IotHubResource_ListByResourceGroup
+        exampleFile: ..\examples\iothub_listbyrg.json
+      - operationId: IotHubResource_GetValidSkus
+        exampleFile: ..\examples\iothub_getskus.json
+      - operationId: IotHubResource_GetJob
+        variables:
+          jobId:
+            type: string
+            prefix: jobid
+        exampleFile: ..\examples\iothub_getjob.json
+      - operationId: IotHubResource_GetEndpointHealth
+        exampleFile: ..\examples\iothub_routingendpointhealth.json
+      - operationId: IotHubResource_Get
+        exampleFile: ..\examples\iothub_get.json
+      - operationId: IotHubResource_ListJobs
+        exampleFile: ..\examples\iothub_listjobs.json
+      - operationId: IotHubResource_Update
+        exampleFile: ..\examples\iothub_patch.json
+      - operationId: IotHubResource_TestRoute
+        exampleFile: ..\examples\iothub_testnewroute.json
+      - operationId: IotHubResource_ImportDevices
+        exampleFile: ..\examples\iothub_importdevices.json
+      - operationId: IotHubResource_TestAllRoutes
+        exampleFile: ..\examples\iothub_testallroutes.json
+      - operationId: IotHubResource_ExportDevices
+        exampleFile: ..\examples\iothub_exportdevices.json
+      - operationId: IotHubResource_GetKeysForKeyName
+        variables:
+          keyName:
+            type: string
+            prefix: keyname
+        exampleFile: ..\examples\iothub_getkey.json
+      - operationId: IotHubResource_ListKeys
+        exampleFile: ..\examples\iothub_listkeys.json
+
+      - operationId: Certificates_CreateOrUpdate
+        exampleFile: ..\examples\iothub_certificatescreateorupdate.json
+      - operationId: Certificates_ListByIotHub
+        exampleFile: ..\examples\iothub_listcertificates.json
+      - operationId: Certificates_Get
+        exampleFile: ..\examples\iothub_getcertificate.json
+      - operationId: Certificates_Verify
+        exampleFile: ..\examples\iothub_certverify.json
+      - operationId: Certificates_GenerateVerificationCode
+        exampleFile: ..\examples\iothub_generateverificationcode.json
+
+      - operationId: IotHubResource_CreateEventHubConsumerGroup
+        exampleFile: ..\examples\iothub_createconsumergroup.json
+      - operationId: IotHubResource_GetEventHubConsumerGroup
+        exampleFile: ..\examples\iothub_getconsumergroup.json
+
+      - operationId: PrivateEndpointConnections_Update
+        exampleFile: ..\examples\iothub_updateprivateendpointconnection.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\iothub_listprivateendpointconnections.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\iothub_getprivateendpointconnection.json
+        
+      - operationId: Operations_List
+        exampleFile: ..\examples\iothub_operations.json
+      - operationId: ResourceProviderCommon_GetSubscriptionQuota
+        exampleFile: ..\examples\iothub_usages.json
+      - operationId: IotHub_ManualFailover
+        exampleFile: ..\examples\IotHub_ManualFailover.json
+
+      - operationId: PrivateLinkResources_List
+        exampleFile: ..\examples\iothub_listprivatelinkresources.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          groupId:
+            type: string
+            prefix: groupid
+        exampleFile: ..\examples\iothub_getprivatelinkresources.json
+
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\iothub_deleteprivateendpointconnection.json
+
+      - operationId: IotHubResource_DeleteEventHubConsumerGroup
+        exampleFile: ..\examples\iothub_deleteconsumergroup.json
+
+      - operationId: Certificates_Delete
+        exampleFile: ..\examples\iothub_certificatesdelete.json
+
+      - operationId: IotHubResource_Delete
+        exampleFile: ..\examples\iothub_delete.json
