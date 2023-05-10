@@ -1,0 +1,213 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  integrationAccountName:
+    type: string
+    prefix: integrat
+  integrationServiceEnvironmentName:
+    type: string
+    prefix: integratsenv
+  apiName:
+    type: string
+    prefix: apiname
+  assemblyArtifactName:
+    type: string
+    prefix: assembly
+  agreementName:
+    type: string
+    prefix: agreemen
+  partnerName:
+    type: string
+    prefix: partnern
+  mapName:
+    type: string
+    prefix: mapname
+  schemaName:
+    type: string
+    prefix: schemana
+  certificateName:
+    type: string
+    prefix: certific
+  batchConfigurationName:
+    type: string
+    prefix: batchcon
+  sessionName:
+    type: string
+    prefix: sessionn
+
+prepareSteps:
+  - step: IntegrationAccounts_CreateOrUpdate
+    exampleFile: ..\examples\IntegrationAccounts_CreateOrUpdate.json
+  # - step: IntegrationServiceEnvironments_CreateOrUpdate
+  #   exampleFile: ..\examples\IntegrationServiceEnvironments_Put.json
+
+# NotAfter: to.Ptr(time.Now().AddDate(0, 0, 1)),
+scenarios:
+  - scenario: IntegrationAccounts
+    description: Microsoft.Logic/integrationAccounts/{integrationAccountName}
+    steps:
+      - step: IntegrationAccounts_ListBySubscription
+        exampleFile: ..\examples\IntegrationAccounts_ListBySubscription.json
+      - step: IntegrationAccounts_ListByResourceGroup
+        exampleFile: ..\examples\IntegrationAccounts_ListByResourceGroup.json
+      - step: IntegrationAccounts_Get
+        exampleFile: ..\examples\IntegrationAccounts_Get.json
+      - step: IntegrationAccounts_Update
+        exampleFile: ..\examples\IntegrationAccounts_Update.json
+        requestUpdate:
+          - remove: /integrationAccount/properties
+      - step: IntegrationAccounts_ListCallbackUrl
+        exampleFile: ..\examples\IntegrationAccounts_ListCallbackUrl.json
+      # - step: IntegrationAccounts_ListKeyVaultKeys
+      #   exampleFile: ..\examples\IntegrationAccounts_ListKeyVaultKeys.json
+      - step: IntegrationAccounts_LogTrackingEvents
+        exampleFile: ..\examples\IntegrationAccounts_LogTrackingEvents.json
+      - step: IntegrationAccounts_RegenerateAccessKey
+        exampleFile: ..\examples\IntegrationAccounts_RegenerateAccessKey.json
+
+
+  # - scenario: IntegrationServiceEnvironments
+  #   description: Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}
+  #   steps:
+
+  #     - step: IntegrationServiceEnvironments_ListBySubscription
+  #       exampleFile: ..\examples\IntegrationServiceEnvironments_ListBySubscription.json
+  #     - step: IntegrationServiceEnvironments_Get
+  #       exampleFile: ..\examples\IntegrationServiceEnvironments_Get.json
+  #     - step: IntegrationServiceEnvironments_ListByResourceGroup
+  #       exampleFile: ..\examples\IntegrationServiceEnvironments_ListByResourceGroup.json
+  #     - step: IntegrationServiceEnvironments_Update
+  #       exampleFile: ..\examples\IntegrationServiceEnvironments_Patch.json
+  #     - step: IntegrationServiceEnvironments_Restart
+  #       exampleFile: ..\examples\IntegrationServiceEnvironments_Restart.json
+
+
+  # - scenario: IntegrationServiceEnvironmentManagedApis
+  #   description: Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}
+  #   steps:
+  #     - step: IntegrationServiceEnvironmentManagedApis_Put
+  #       exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_Put.json
+  #     - step: IntegrationServiceEnvironmentManagedApis_List
+  #       exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_List.json
+  #     - step: IntegrationServiceEnvironmentManagedApis_Get
+  #       exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_Get.json
+  #     - step: IntegrationServiceEnvironmentManagedApis_Delete
+  #       exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_Delete.json
+
+  - scenario: IntegrationAccountAssemblies
+    description: Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies/{assemblyArtifactName}
+    steps:
+      - step: IntegrationAccountAssemblies_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountAssemblies_CreateOrUpdate.json
+        requestUpdate:
+          - add: /assemblyArtifact/properties/contentType
+            value: application/octet-stream
+      - step: IntegrationAccountAssemblies_List
+        exampleFile: ..\examples\IntegrationAccountAssemblies_List.json
+      - step: IntegrationAccountAssemblies_Get
+        exampleFile: ..\examples\IntegrationAccountAssemblies_Get.json
+      - step: IntegrationAccountAssemblies_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountAssemblies_ListContentCallbackUrl.json
+      - step: IntegrationAccountAssemblies_Delete
+        exampleFile: ..\examples\IntegrationAccountAssemblies_Delete.json
+
+  - scenario: IntegrationAccountAgreements
+    description: Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}
+    steps:
+      - step: IntegrationAccountAgreements_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountAgreements_CreateOrUpdate.json
+      - step: IntegrationAccountAgreements_List
+        exampleFile: ..\examples\IntegrationAccountAgreements_List.json
+      - step: IntegrationAccountAgreements_Get
+        exampleFile: ..\examples\IntegrationAccountAgreements_Get.json
+      - step: IntegrationAccountAgreements_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountAgreements_ListContentCallbackUrl.json
+      - step: IntegrationAccountAgreements_Delete
+        exampleFile: ..\examples\IntegrationAccountAgreements_Delete.json
+
+  - scenario: IntegrationAccountPartners
+    description: Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}
+    steps:
+      - step: IntegrationAccountPartners_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountPartners_CreateOrUpdate.json
+      - step: IntegrationAccountPartners_List
+        exampleFile: ..\examples\IntegrationAccountPartners_List.json
+      - step: IntegrationAccountPartners_Get
+        exampleFile: ..\examples\IntegrationAccountPartners_Get.json
+      - step: IntegrationAccountPartners_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountPartners_ListContentCallbackUrl.json
+      - step: IntegrationAccountPartners_Delete
+        exampleFile: ..\examples\IntegrationAccountPartners_Delete.json
+
+  - scenario: IntegrationAccountMaps
+    description: Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}
+    steps:
+      - step: IntegrationAccountMaps_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountMaps_CreateOrUpdate.json
+      - step: IntegrationAccountMaps_List
+        exampleFile: ..\examples\IntegrationAccountMaps_List.json
+      - step: IntegrationAccountMaps_Get
+        exampleFile: ..\examples\IntegrationAccountMaps_Get.json
+      - step: IntegrationAccountMaps_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountMaps_ListContentCallbackUrl.json
+      - step: IntegrationAccountMaps_Delete
+        exampleFile: ..\examples\IntegrationAccountMaps_Delete.json
+
+  - scenario: IntegrationAccountSchemas
+    description: Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas/{schemaName}
+    steps:
+      - step: IntegrationAccountSchemas_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountSchemas_CreateOrUpdate.json
+      - step: IntegrationAccountSchemas_List
+        exampleFile: ..\examples\IntegrationAccountSchemas_List.json
+      - step: IntegrationAccountSchemas_Get
+        exampleFile: ..\examples\IntegrationAccountSchemas_Get.json
+      - step: IntegrationAccountSchemas_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountSchemas_ListContentCallbackUrl.json
+      - step: IntegrationAccountSchemas_Delete
+        exampleFile: ..\examples\IntegrationAccountSchemas_Delete.json
+
+# keyvaultId, certoficate
+  # - scenario: IntegrationAccountCertificates
+  #   description: Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates/{certificateName}
+  #   steps:
+  #     - step: IntegrationAccountCertificates_CreateOrUpdate
+  #       exampleFile: ..\examples\IntegrationAccountCertificates_CreateOrUpdate.json
+  #     - step: IntegrationAccountCertificates_List
+  #       exampleFile: ..\examples\IntegrationAccountCertificates_List.json
+  #     - step: IntegrationAccountCertificates_Get
+  #       exampleFile: ..\examples\IntegrationAccountCertificates_Get.json
+  #     - step: IntegrationAccountCertificates_Delete
+  #       exampleFile: ..\examples\IntegrationAccountCertificates_Delete.json
+
+  - scenario: IntegrationAccountBatchConfigurations
+    description: Microsoft.Logic/integrationAccounts/{integrationAccountName}/batchConfigurations/{batchConfigurationName}
+    steps:
+      - step: IntegrationAccountBatchConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountBatchConfigurations_CreateOrUpdate.json
+      - step: IntegrationAccountBatchConfigurations_List
+        exampleFile: ..\examples\IntegrationAccountBatchConfigurations_List.json
+      - step: IntegrationAccountBatchConfigurations_Get
+        exampleFile: ..\examples\IntegrationAccountBatchConfigurations_Get.json
+      - step: IntegrationAccountBatchConfigurations_Delete
+        exampleFile: ..\examples\IntegrationAccountBatchConfigurations_Delete.json
+
+  - scenario: IntegrationAccountSessions
+    description: Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions/{sessionName}
+    steps:
+      - step: IntegrationAccountSessions_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountSessions_CreateOrUpdate.json
+      - step: IntegrationAccountSessions_List
+        exampleFile: ..\examples\IntegrationAccountSessions_List.json
+      - step: IntegrationAccountSessions_Get
+        exampleFile: ..\examples\IntegrationAccountSessions_Get.json
+      - step: IntegrationAccountSessions_Delete
+        exampleFile: ..\examples\IntegrationAccountSessions_Delete.json
+
+
+cleanUpSteps:
+  # - step: IntegrationServiceEnvironments_Delete
+  #   exampleFile: ..\examples\IntegrationServiceEnvironments_Delete.json
+  - step: IntegrationAccounts_Delete
+    exampleFile: ..\examples\IntegrationAccounts_Delete.json

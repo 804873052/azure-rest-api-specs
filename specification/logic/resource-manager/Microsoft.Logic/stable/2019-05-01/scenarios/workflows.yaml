@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  integrationAccountName:
+    type: string
+    prefix: integrat
+  workflowName:
+    type: string
+    prefix: workflow
+
+prepareSteps:
+  - step: IntegrationAccounts_CreateOrUpdate
+    exampleFile: ..\examples\IntegrationAccounts_CreateOrUpdate.json
+    outputVariables:
+      integrationAccountId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: Workflows
+    description: Microsoft.Logic/workflows/{workflowName}
+    steps:
+      - step: Workflows_CreateOrUpdate
+        exampleFile: ..\examples\Workflows_CreateOrUpdate.json
+        requestUpdate:
+          - replace: /workflow/properties/integrationAccount/id
+            value: $(integrationAccountId)
+          - remove: /workflow/properties/parameters
+      - step: Workflows_ListBySubscription
+        exampleFile: ..\examples\Workflows_ListBySubscription.json
+      - step: Workflows_ListByResourceGroup
+        exampleFile: ..\examples\Workflows_ListByResourceGroup.json
+      - step: Workflows_Get 
+        exampleFile: ..\examples\Workflows_Get.json
+      # - step: Workflows_Update # The resource definition is invalid
+      #   exampleFile: ..\examples\Workflows_Update.json
+      - step: Workflows_Disable
+        exampleFile: ..\examples\Workflows_Disable.json
+      - step: Workflows_Enable
+        exampleFile: ..\examples\Workflows_Enable.json
+      - step: Workflows_ListSwagger
+        exampleFile: ..\examples\Workflows_ListSwagger.json
+      - step: Workflows_ValidateByLocation
+        exampleFile: ..\examples\Workflows_ValidateByLocation.json
+        requestUpdate:
+          - replace: /validate/properties/integrationAccount/id
+            value: $(integrationAccountId)
+      # - step: Workflows_Move
+      #   exampleFile: ..\examples\Workflows_Move.json
+      - step: Workflows_ValidateByResourceGroup
+        exampleFile: ..\examples\Workflows_ValidateByResourceGroup.json
+        requestUpdate:
+          - replace: /validate/properties/integrationAccount/id
+            value: $(integrationAccountId)
+      - step: Workflows_RegenerateAccessKey
+        exampleFile: ..\examples\Workflows_RegenerateAccessKey.json
+
+      - step: Workflows_ListCallbackUrl
+        exampleFile: ..\examples\Workflows_ListCallbackUrl.json
+      # - step: Workflows_GenerateUpgradedDefinition
+      #   exampleFile: ..\examples\Workflows_GenerateUpgradedDefinition.json
+      - step: Workflows_Delete
+        exampleFile: ..\examples\Workflows_Delete.json

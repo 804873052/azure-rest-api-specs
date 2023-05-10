@@ -1,0 +1,303 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  integrationAccountName:
+    type: string
+    prefix: integrat
+  workflowName:
+    type: string
+    prefix: workflow
+  runName:
+    type: string
+    prefix: runname
+  resourceGroup:
+    type: string
+    prefix: resource
+  integrationServiceEnvironmentName:
+    type: string
+    prefix: integrat
+  actionName:
+    type: string
+    prefix: actionna
+  triggerName:
+    type: string
+    prefix: triggern
+  repetitionName:
+    type: string
+    prefix: repetiti
+  assemblyArtifactName:
+    type: string
+    prefix: assembly
+  schemaName:
+    type: string
+    prefix: schemana
+  mapName:
+    type: string
+    prefix: mapname
+  partnerName:
+    type: string
+    prefix: partnern
+  agreementName:
+    type: string
+    prefix: agreemen
+  apiName:
+    type: string
+    prefix: apiname
+  batchConfigurationName:
+    type: string
+    prefix: batchcon
+  certificateName:
+    type: string
+    prefix: certific
+  sessionName:
+    type: string
+    prefix: sessionn
+  versionId:
+    type: string
+    prefix: versioni
+  historyName:
+    type: string
+    prefix: historyn
+  requestHistoryName:
+    type: string
+    prefix: requesth
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: IntegrationAccounts_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccounts_CreateOrUpdate.json
+      - operationId: IntegrationAccounts_ListBySubscription
+        exampleFile: ..\examples\IntegrationAccounts_ListBySubscription.json
+      - operationId: IntegrationAccounts_ListByResourceGroup
+        exampleFile: ..\examples\IntegrationAccounts_ListByResourceGroup.json
+      - operationId: IntegrationAccounts_Get
+        exampleFile: ..\examples\IntegrationAccounts_Get.json
+      - operationId: IntegrationAccounts_Update
+        exampleFile: ..\examples\IntegrationAccounts_Update.json
+      - operationId: IntegrationAccounts_ListCallbackUrl
+        exampleFile: ..\examples\IntegrationAccounts_ListCallbackUrl.json
+      - operationId: IntegrationAccounts_ListKeyVaultKeys
+        exampleFile: ..\examples\IntegrationAccounts_ListKeyVaultKeys.json
+      - operationId: IntegrationAccounts_LogTrackingEvents
+        exampleFile: ..\examples\IntegrationAccounts_LogTrackingEvents.json
+      - operationId: IntegrationAccounts_RegenerateAccessKey
+        exampleFile: ..\examples\IntegrationAccounts_RegenerateAccessKey.json
+
+      - operationId: Workflows_CreateOrUpdate
+        exampleFile: ..\examples\Workflows_CreateOrUpdate.json
+      - operationId: Workflows_ListBySubscription
+        exampleFile: ..\examples\Workflows_ListBySubscription.json
+      - operationId: Workflows_ListByResourceGroup
+        exampleFile: ..\examples\Workflows_ListByResourceGroup.json
+      - operationId: Workflows_Get
+        exampleFile: ..\examples\Workflows_Get.json
+      - operationId: Workflows_Update
+        exampleFile: ..\examples\Workflows_Update.json
+      - operationId: Workflows_Disable
+        exampleFile: ..\examples\Workflows_Disable.json
+      - operationId: Workflows_ListSwagger
+        exampleFile: ..\examples\Workflows_ListSwagger.json
+      - operationId: Workflows_ValidateByLocation
+        exampleFile: ..\examples\Workflows_ValidateByLocation.json
+      - operationId: Workflows_Move
+        exampleFile: ..\examples\Workflows_Move.json
+      - operationId: Workflows_ValidateByResourceGroup
+        exampleFile: ..\examples\Workflows_ValidateByResourceGroup.json
+      - operationId: Workflows_RegenerateAccessKey
+        exampleFile: ..\examples\Workflows_RegenerateAccessKey.json
+      - operationId: Workflows_Enable
+        exampleFile: ..\examples\Workflows_Enable.json
+      - operationId: Workflows_ListCallbackUrl
+        exampleFile: ..\examples\Workflows_ListCallbackUrl.json
+      - operationId: Workflows_GenerateUpgradedDefinition
+        exampleFile: ..\examples\Workflows_GenerateUpgradedDefinition.json
+
+      - operationId: IntegrationServiceEnvironments_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationServiceEnvironments_Put.json
+      - operationId: IntegrationServiceEnvironments_ListBySubscription
+        exampleFile: ..\examples\IntegrationServiceEnvironments_ListBySubscription.json
+      - operationId: IntegrationServiceEnvironments_Get
+        exampleFile: ..\examples\IntegrationServiceEnvironments_Get.json
+      - operationId: IntegrationServiceEnvironments_ListByResourceGroup
+        exampleFile: ..\examples\IntegrationServiceEnvironments_ListByResourceGroup.json
+      - operationId: IntegrationServiceEnvironments_Update
+        exampleFile: ..\examples\IntegrationServiceEnvironments_Patch.json
+      - operationId: IntegrationServiceEnvironments_Restart
+        exampleFile: ..\examples\IntegrationServiceEnvironments_Restart.json
+
+      - operationId: IntegrationAccountAssemblies_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountAssemblies_CreateOrUpdate.json
+      - operationId: IntegrationAccountAssemblies_List
+        exampleFile: ..\examples\IntegrationAccountAssemblies_List.json
+      - operationId: IntegrationAccountAssemblies_Get
+        exampleFile: ..\examples\IntegrationAccountAssemblies_Get.json
+      - operationId: IntegrationAccountAssemblies_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountAssemblies_ListContentCallbackUrl.json
+
+      - operationId: IntegrationServiceEnvironmentManagedApis_Put
+        exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_Put.json
+      - operationId: IntegrationServiceEnvironmentManagedApis_List
+        exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_List.json
+      - operationId: IntegrationServiceEnvironmentManagedApis_Get
+        exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_Get.json
+
+      - operationId: IntegrationAccountAgreements_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountAgreements_CreateOrUpdate.json
+      - operationId: IntegrationAccountAgreements_List
+        exampleFile: ..\examples\IntegrationAccountAgreements_List.json
+      - operationId: IntegrationAccountAgreements_Get
+        exampleFile: ..\examples\IntegrationAccountAgreements_Get.json
+      - operationId: IntegrationAccountAgreements_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountAgreements_ListContentCallbackUrl.json
+
+      - operationId: IntegrationAccountPartners_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountPartners_CreateOrUpdate.json
+      - operationId: IntegrationAccountPartners_List
+        exampleFile: ..\examples\IntegrationAccountPartners_List.json
+      - operationId: IntegrationAccountPartners_Get
+        exampleFile: ..\examples\IntegrationAccountPartners_Get.json
+      - operationId: IntegrationAccountPartners_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountPartners_ListContentCallbackUrl.json
+
+      - operationId: IntegrationAccountMaps_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountMaps_CreateOrUpdate.json
+      - operationId: IntegrationAccountMaps_List
+        exampleFile: ..\examples\IntegrationAccountMaps_List.json
+      - operationId: IntegrationAccountMaps_Get
+        exampleFile: ..\examples\IntegrationAccountMaps_Get.json
+      - operationId: IntegrationAccountMaps_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountMaps_ListContentCallbackUrl.json
+
+      - operationId: IntegrationAccountSchemas_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountSchemas_CreateOrUpdate.json
+      - operationId: IntegrationAccountSchemas_List
+        exampleFile: ..\examples\IntegrationAccountSchemas_List.json
+      - operationId: IntegrationAccountSchemas_Get
+        exampleFile: ..\examples\IntegrationAccountSchemas_Get.json
+      - operationId: IntegrationAccountSchemas_ListContentCallbackUrl
+        exampleFile: ..\examples\IntegrationAccountSchemas_ListContentCallbackUrl.json
+
+      - operationId: IntegrationAccountCertificates_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountCertificates_CreateOrUpdate.json
+      - operationId: IntegrationAccountCertificates_List
+        exampleFile: ..\examples\IntegrationAccountCertificates_List.json
+      - operationId: IntegrationAccountCertificates_Get
+        exampleFile: ..\examples\IntegrationAccountCertificates_Get.json
+
+      - operationId: IntegrationAccountBatchConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountBatchConfigurations_CreateOrUpdate.json
+      - operationId: IntegrationAccountBatchConfigurations_List
+        exampleFile: ..\examples\IntegrationAccountBatchConfigurations_List.json
+      - operationId: IntegrationAccountBatchConfigurations_Get
+        exampleFile: ..\examples\IntegrationAccountBatchConfigurations_Get.json
+
+      - operationId: IntegrationAccountSessions_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationAccountSessions_CreateOrUpdate.json
+      - operationId: IntegrationAccountSessions_List
+        exampleFile: ..\examples\IntegrationAccountSessions_List.json
+      - operationId: IntegrationAccountSessions_Get
+        exampleFile: ..\examples\IntegrationAccountSessions_Get.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+      - operationId: WorkflowRuns_List
+        exampleFile: ..\examples\WorkflowRuns_List.json
+      - operationId: WorkflowRuns_Get
+        exampleFile: ..\examples\WorkflowRuns_Get.json
+      - operationId: WorkflowRunActions_List
+        exampleFile: ..\examples\WorkflowRunActions_List.json
+      - operationId: WorkflowRunActions_Get
+        exampleFile: ..\examples\WorkflowRunActions_Get.json
+      - operationId: WorkflowRunActions_ListExpressionTraces
+        exampleFile: ..\examples\WorkflowRunActions_ListExpressionTraces.json
+      - operationId: WorkflowRunActionRepetitions_List
+        exampleFile: ..\examples\WorkflowRunActionRepetitions_List.json
+      - operationId: WorkflowRunActionRepetitions_Get
+        exampleFile: ..\examples\WorkflowRunActionRepetitions_Get.json
+      - operationId: WorkflowRunActionRepetitions_ListExpressionTraces
+        exampleFile: ..\examples\WorkflowRunActionRepetitions_ListExpressionTraces.json
+
+      - operationId: WorkflowRunActionRepetitionsRequestHistories_List
+        exampleFile: ..\examples\WorkflowRunActionRepetitionsRequestHistories_List.json
+      - operationId: WorkflowRunActionRepetitionsRequestHistories_Get
+        exampleFile: ..\examples\WorkflowRunActionRepetitionsRequestHistories_Get.json
+
+      - operationId: WorkflowRunActionRequestHistories_List
+        exampleFile: ..\examples\WorkflowRunActionRequestHistories_List.json
+      - operationId: WorkflowRunActionRequestHistories_Get
+        exampleFile: ..\examples\WorkflowRunActionRequestHistories_Get.json
+
+      - operationId: WorkflowRunActionScopeRepetitions_List
+        exampleFile: ..\examples\WorkflowRunActionScopeRepetitions_List.json
+      - operationId: WorkflowRunActionScopeRepetitions_Get
+        exampleFile: ..\examples\WorkflowRunActionScopeRepetitions_Get.json
+      - operationId: WorkflowRuns_Cancel
+        exampleFile: ..\examples\WorkflowRuns_Cancel.json
+      - operationId: WorkflowRunOperations_Get
+        variables:
+          operationId:
+            type: string
+            prefix: operatio
+        exampleFile: ..\examples\WorkflowRunOperations_Get.json
+
+      - operationId: WorkflowTriggers_List
+        exampleFile: ..\examples\WorkflowTriggers_List.json
+      - operationId: WorkflowTriggers_Get
+        exampleFile: ..\examples\WorkflowTriggers_Get.json
+      - operationId: WorkflowTriggerHistories_List
+        exampleFile: ..\examples\WorkflowTriggerHistories_List.json
+      - operationId: WorkflowTriggerHistories_Get
+        exampleFile: ..\examples\WorkflowTriggerHistories_Get.json
+      - operationId: WorkflowTriggerHistories_Resubmit
+        exampleFile: ..\examples\WorkflowTriggerHistories_Resubmit.json
+      - operationId: WorkflowTriggers_ListCallbackUrl
+        exampleFile: ..\examples\WorkflowTriggers_ListCallbackUrl.json
+      - operationId: WorkflowTriggers_Reset
+        exampleFile: ..\examples\WorkflowTriggers_Reset.json
+      - operationId: WorkflowTriggers_Run
+        exampleFile: ..\examples\WorkflowTriggers_Run.json
+      - operationId: WorkflowTriggers_GetSchemaJson
+        exampleFile: ..\examples\WorkflowTriggers_GetSchemaJson.json
+      - operationId: WorkflowTriggers_SetState
+        exampleFile: ..\examples\WorkflowTriggers_SetState.json
+
+      - operationId: WorkflowVersions_List
+        exampleFile: ..\examples\WorkflowVersions_List.json
+      - operationId: WorkflowVersions_Get
+        exampleFile: ..\examples\WorkflowVersions_Get.json
+      - operationId: WorkflowVersionTriggers_ListCallbackUrl
+        exampleFile: ..\examples\WorkflowVersionTriggers_ListCallbackUrl.json
+      - operationId: IntegrationServiceEnvironmentNetworkHealth_Get
+        exampleFile: ..\examples\IntegrationServiceEnvironments_NetworkHealth.json
+      - operationId: IntegrationServiceEnvironmentManagedApiOperations_List
+        exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_ListApiOperations.json
+      - operationId: IntegrationServiceEnvironmentSkus_List
+        exampleFile: ..\examples\IntegrationServiceEnvironments_Skus.json
+
+      - operationId: IntegrationAccountSessions_Delete
+        exampleFile: ..\examples\IntegrationAccountSessions_Delete.json
+      - operationId: IntegrationAccountBatchConfigurations_Delete
+        exampleFile: ..\examples\IntegrationAccountBatchConfigurations_Delete.json
+      - operationId: IntegrationAccountCertificates_Delete
+        exampleFile: ..\examples\IntegrationAccountCertificates_Delete.json
+
+      - operationId: IntegrationAccountSchemas_Delete
+        exampleFile: ..\examples\IntegrationAccountSchemas_Delete.json
+      - operationId: IntegrationAccountMaps_Delete
+        exampleFile: ..\examples\IntegrationAccountMaps_Delete.json
+      - operationId: IntegrationAccountPartners_Delete
+        exampleFile: ..\examples\IntegrationAccountPartners_Delete.json
+      - operationId: IntegrationAccountAgreements_Delete
+        exampleFile: ..\examples\IntegrationAccountAgreements_Delete.json
+
+      - operationId: IntegrationServiceEnvironmentManagedApis_Delete
+        exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_Delete.json
+      - operationId: IntegrationAccountAssemblies_Delete
+        exampleFile: ..\examples\IntegrationAccountAssemblies_Delete.json
+      - operationId: IntegrationServiceEnvironments_Delete
+        exampleFile: ..\examples\IntegrationServiceEnvironments_Delete.json
+      - operationId: Workflows_Delete
+        exampleFile: ..\examples\Workflows_Delete.json
+      - operationId: IntegrationAccounts_Delete
+        exampleFile: ..\examples\IntegrationAccounts_Delete.json

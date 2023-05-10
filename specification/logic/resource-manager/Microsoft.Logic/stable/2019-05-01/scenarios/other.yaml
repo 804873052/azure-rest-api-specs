@@ -1,0 +1,99 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  integrationAccountName:
+    type: string
+    prefix: integrat
+  workflowName:
+    type: string
+    prefix: workflow
+
+prepareSteps:
+  - step: IntegrationAccounts_CreateOrUpdate
+    exampleFile: ..\examples\IntegrationAccounts_CreateOrUpdate.json
+    outputVariables:
+      integrationAccountId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: Workflows
+    description: Microsoft.Logic/workflows/{workflowName}
+    steps:
+      - step: Workflows_CreateOrUpdate
+        exampleFile: ..\examples\Workflows_CreateOrUpdate.json
+        requestUpdate:
+          - replace: /workflow/properties/integrationAccount/id
+            value: $(integrationAccountId)
+          - remove: /workflow/properties/parameters
+
+      - step: WorkflowRuns_List
+        exampleFile: ..\examples\WorkflowRuns_List.json
+      - step: WorkflowRuns_Get
+        exampleFile: ..\examples\WorkflowRuns_Get.json
+      - step: WorkflowRunActions_List
+        exampleFile: ..\examples\WorkflowRunActions_List.json
+      - step: WorkflowRunActions_Get
+        exampleFile: ..\examples\WorkflowRunActions_Get.json
+      - step: WorkflowRunActions_ListExpressionTraces
+        exampleFile: ..\examples\WorkflowRunActions_ListExpressionTraces.json
+      - step: WorkflowRunActionRepetitions_List
+        exampleFile: ..\examples\WorkflowRunActionRepetitions_List.json
+      - step: WorkflowRunActionRepetitions_Get
+        exampleFile: ..\examples\WorkflowRunActionRepetitions_Get.json
+      - step: WorkflowRunActionRepetitions_ListExpressionTraces
+        exampleFile: ..\examples\WorkflowRunActionRepetitions_ListExpressionTraces.json
+
+      - step: WorkflowRunActionRepetitionsRequestHistories_List
+        exampleFile: ..\examples\WorkflowRunActionRepetitionsRequestHistories_List.json
+      - step: WorkflowRunActionRepetitionsRequestHistories_Get
+        exampleFile: ..\examples\WorkflowRunActionRepetitionsRequestHistories_Get.json
+
+      - step: WorkflowRunActionRequestHistories_List
+        exampleFile: ..\examples\WorkflowRunActionRequestHistories_List.json
+      - step: WorkflowRunActionRequestHistories_Get
+        exampleFile: ..\examples\WorkflowRunActionRequestHistories_Get.json
+
+      - step: WorkflowRunActionScopeRepetitions_List
+        exampleFile: ..\examples\WorkflowRunActionScopeRepetitions_List.json
+      - step: WorkflowRunActionScopeRepetitions_Get
+        exampleFile: ..\examples\WorkflowRunActionScopeRepetitions_Get.json
+      - step: WorkflowRuns_Cancel
+        exampleFile: ..\examples\WorkflowRuns_Cancel.json
+      - step: WorkflowRunOperations_Get
+        exampleFile: ..\examples\WorkflowRunOperations_Get.json
+
+      - step: WorkflowTriggers_List
+        exampleFile: ..\examples\WorkflowTriggers_List.json
+      - step: WorkflowTriggers_Get
+        exampleFile: ..\examples\WorkflowTriggers_Get.json
+      - step: WorkflowTriggerHistories_List
+        exampleFile: ..\examples\WorkflowTriggerHistories_List.json
+      - step: WorkflowTriggerHistories_Get
+        exampleFile: ..\examples\WorkflowTriggerHistories_Get.json
+      - step: WorkflowTriggerHistories_Resubmit
+        exampleFile: ..\examples\WorkflowTriggerHistories_Resubmit.json
+      - step: WorkflowTriggers_ListCallbackUrl
+        exampleFile: ..\examples\WorkflowTriggers_ListCallbackUrl.json
+      - step: WorkflowTriggers_Reset
+        exampleFile: ..\examples\WorkflowTriggers_Reset.json
+      - step: WorkflowTriggers_Run
+        exampleFile: ..\examples\WorkflowTriggers_Run.json
+      - step: WorkflowTriggers_GetSchemaJson
+        exampleFile: ..\examples\WorkflowTriggers_GetSchemaJson.json
+      - step: WorkflowTriggers_SetState
+        exampleFile: ..\examples\WorkflowTriggers_SetState.json
+
+      - step: WorkflowVersions_List
+        exampleFile: ..\examples\WorkflowVersions_List.json
+      - step: WorkflowVersions_Get
+        exampleFile: ..\examples\WorkflowVersions_Get.json
+      - step: WorkflowVersionTriggers_ListCallbackUrl
+        exampleFile: ..\examples\WorkflowVersionTriggers_ListCallbackUrl.json
+      - step: IntegrationServiceEnvironmentNetworkHealth_Get
+        exampleFile: ..\examples\IntegrationServiceEnvironments_NetworkHealth.json
+      - step: IntegrationServiceEnvironmentManagedApiOperations_List
+        exampleFile: ..\examples\IntegrationServiceEnvironments_ManagedApis_ListApiOperations.json
+      - step: IntegrationServiceEnvironmentSkus_List
+        exampleFile: ..\examples\IntegrationServiceEnvironments_Skus.json
