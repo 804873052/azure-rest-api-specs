@@ -1,0 +1,115 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location: centralus
+  accountName:
+    type: string
+    prefix: accountn
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  virtualNetworkRuleName:
+    type: string
+    prefix: virtualn
+  trustedIdProviderName:
+    type: string
+    prefix: trustedi
+
+prepareSteps:
+  - step: Accounts_CheckNameAvailability
+    exampleFile: ..\examples\Accounts_CheckNameAvailability.json
+    requestUpdate:
+      - replace: /parameters/name
+        value: $(accountName)
+  - step: Accounts_Create
+    exampleFile: ..\examples\Accounts_Create.json
+    requestUpdate:
+      - remove: /parameters/properties
+    
+scenarios:
+  - scenario: Accounts
+    description: Microsoft.DataLakeStore/accounts/{accountName}
+    steps:
+      - step: Accounts_List
+        # exampleFile: ..\examples\Accounts_List.json
+        operationId: Accounts_List
+      - step: Accounts_Get
+        exampleFile: ..\examples\Accounts_Get.json
+      - step: Accounts_ListByResourceGroup
+        # exampleFile: ..\examples\Accounts_ListByResourceGroup.json
+        operationId: Accounts_ListByResourceGroup
+      - step: Accounts_Update
+        # exampleFile: ..\examples\Accounts_Update.json
+        operationId: Accounts_Update
+        parameters:
+          parameters:
+            tags:
+              test_key: test_value
+      # - step: Accounts_EnableKeyVault # Operation EnableKeyVault is invalid under current encryption state or config of account. need set keyvault
+      #   exampleFile: ..\examples\Accounts_EnableKeyVault.json
+
+
+  - scenario: VirtualNetworkRules
+    description: Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}
+    steps:
+      - step: Create_VirtualNetworkAndSubnet
+        armTemplate: ./templates/Create_VirtualNetworkAndSubnet.json
+      - step: VirtualNetworkRules_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkRules_CreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/subnetId
+            value: $(subnetId)
+      - step: VirtualNetworkRules_ListByAccount
+        exampleFile: ..\examples\VirtualNetworkRules_ListByAccount.json
+      - step: VirtualNetworkRules_Get
+        exampleFile: ..\examples\VirtualNetworkRules_Get.json
+      - step: VirtualNetworkRules_Update
+        exampleFile: ..\examples\VirtualNetworkRules_Update.json
+        requestUpdate:
+          - replace: /parameters/properties/subnetId
+            value: $(subnetId)
+      - step: VirtualNetworkRules_Delete
+        exampleFile: ..\examples\VirtualNetworkRules_Delete.json
+
+  - scenario: FirewallRules
+    description: Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}
+    steps:
+      - step: FirewallRules_CreateOrUpdate
+        exampleFile: ..\examples\FirewallRules_CreateOrUpdate.json
+      - step: FirewallRules_ListByAccount
+        exampleFile: ..\examples\FirewallRules_ListByAccount.json
+      - step: FirewallRules_Get
+        exampleFile: ..\examples\FirewallRules_Get.json
+      - step: FirewallRules_Update
+        exampleFile: ..\examples\FirewallRules_Update.json
+      - step: FirewallRules_Delete
+        exampleFile: ..\examples\FirewallRules_Delete.json
+
+  - scenario: TrustedIdProviders
+    description: Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}
+    steps:
+      - step: TrustedIdProviders_CreateOrUpdate
+        exampleFile: ..\examples\TrustedIdProviders_CreateOrUpdate.json
+      - step: TrustedIdProviders_ListByAccount
+        exampleFile: ..\examples\TrustedIdProviders_ListByAccount.json
+      - step: TrustedIdProviders_Get
+        exampleFile: ..\examples\TrustedIdProviders_Get.json
+      - step: TrustedIdProviders_Update
+        exampleFile: ..\examples\TrustedIdProviders_Update.json
+      - step: TrustedIdProviders_Delete
+        exampleFile: ..\examples\TrustedIdProviders_Delete.json
+
+  - scenario: Operations
+    description: Microsoft.DataLakeStore/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - step: Locations_GetCapability
+        exampleFile: ..\examples\Locations_GetCapability.json
+      - step: Locations_GetUsage
+        exampleFile: ..\examples\Locations_GetUsage.json
+
+cleanUpSteps:
+  - step: Accounts_Delete
+    exampleFile: ..\examples\Accounts_Delete.json

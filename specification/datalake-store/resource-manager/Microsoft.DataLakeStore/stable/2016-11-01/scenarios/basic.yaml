@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  virtualNetworkRuleName:
+    type: string
+    prefix: virtualn
+  trustedIdProviderName:
+    type: string
+    prefix: trustedi
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Accounts_CheckNameAvailability
+        exampleFile: ..\examples\Accounts_CheckNameAvailability.json
+      - operationId: Accounts_Create
+        exampleFile: ..\examples\Accounts_Create.json
+      - operationId: Accounts_List
+        exampleFile: ..\examples\Accounts_List.json
+      - operationId: Accounts_Get
+        exampleFile: ..\examples\Accounts_Get.json
+      - operationId: Accounts_ListByResourceGroup
+        exampleFile: ..\examples\Accounts_ListByResourceGroup.json
+      - operationId: Accounts_Update
+        exampleFile: ..\examples\Accounts_Update.json
+      - operationId: Accounts_EnableKeyVault
+        exampleFile: ..\examples\Accounts_EnableKeyVault.json
+
+      - operationId: VirtualNetworkRules_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkRules_CreateOrUpdate.json
+      - operationId: VirtualNetworkRules_ListByAccount
+        exampleFile: ..\examples\VirtualNetworkRules_ListByAccount.json
+      - operationId: VirtualNetworkRules_Get
+        exampleFile: ..\examples\VirtualNetworkRules_Get.json
+      - operationId: VirtualNetworkRules_Update
+        exampleFile: ..\examples\VirtualNetworkRules_Update.json
+
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\examples\FirewallRules_CreateOrUpdate.json
+      - operationId: FirewallRules_ListByAccount
+        exampleFile: ..\examples\FirewallRules_ListByAccount.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\examples\FirewallRules_Get.json
+      - operationId: FirewallRules_Update
+        exampleFile: ..\examples\FirewallRules_Update.json
+
+      - operationId: TrustedIdProviders_CreateOrUpdate
+        exampleFile: ..\examples\TrustedIdProviders_CreateOrUpdate.json
+      - operationId: TrustedIdProviders_ListByAccount
+        exampleFile: ..\examples\TrustedIdProviders_ListByAccount.json
+      - operationId: TrustedIdProviders_Get
+        exampleFile: ..\examples\TrustedIdProviders_Get.json
+      - operationId: TrustedIdProviders_Update
+        exampleFile: ..\examples\TrustedIdProviders_Update.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: Locations_GetCapability
+        exampleFile: ..\examples\Locations_GetCapability.json
+      - operationId: Locations_GetUsage
+        exampleFile: ..\examples\Locations_GetUsage.json
+        
+      - operationId: TrustedIdProviders_Delete
+        exampleFile: ..\examples\TrustedIdProviders_Delete.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\examples\FirewallRules_Delete.json
+      - operationId: VirtualNetworkRules_Delete
+        exampleFile: ..\examples\VirtualNetworkRules_Delete.json
+      - operationId: Accounts_Delete
+        exampleFile: ..\examples\Accounts_Delete.json
