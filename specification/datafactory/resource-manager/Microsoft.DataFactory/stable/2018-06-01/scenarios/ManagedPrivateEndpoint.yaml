@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  factoryName:
+    type: string
+    prefix: factoryn
+
+prepareSteps:
+  - step: Factories_CreateOrUpdate
+    exampleFile: ..\examples\Factories_CreateOrUpdate.json
+    # outputVariables:
+    #   datafactoryId:
+    #     type: string
+    #     fromResponse: /id
+
+scenarios:
+  - scenario: PrivateEndpointConnection
+    description: Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: privateEndPointConnections_ListByFactory # Microsoft.DataFactory/factories/{factoryName}/privateEndPointConnections
+        exampleFile: ..\examples\PrivateEndPointConnections_ListByFactory.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnection_CreateOrUpdate
+        exampleFile: ..\examples\ApproveRejectPrivateEndpointConnection.json
+        requestUpdate:
+          - remove: /privateEndpointWrapper/properties/privateEndpoint
+          - replace: /privateEndpointWrapper/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - step: PrivateEndpointConnection_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+      - step: privateLinkResources_Get
+        exampleFile: ..\examples\GetPrivateLinkResources.json
+      - step: PrivateEndpointConnection_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json

@@ -1,0 +1,265 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  factoryName:
+    type: string
+    prefix: factoryn
+  integrationRuntimeName:
+    type: string
+    prefix: integrat
+  triggerName:
+    type: string
+    prefix: triggern
+  managedVirtualNetworkName:
+    type: string
+    prefix: managedv
+  runId:
+    type: string
+    prefix: runid
+  nodeName:
+    type: string
+    prefix: nodename
+  pipelineName:
+    type: string
+    prefix: pipeline
+  linkedServiceName:
+    type: string
+    prefix: linkedse
+  datasetName:
+    type: string
+    prefix: datasetn
+  dataFlowName:
+    type: string
+    prefix: dataflow
+  credentialName:
+    type: string
+    prefix: credenti
+  managedPrivateEndpointName:
+    type: string
+    prefix: managedp
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  globalParameterName:
+    type: string
+    prefix: globalpa
+  locationId:
+    type: string
+    prefix: location
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Factories_CreateOrUpdate
+        exampleFile: ..\examples\Factories_CreateOrUpdate.json
+      - operationId: Factories_List
+        exampleFile: ..\examples\Factories_List.json
+      - operationId: Factories_ListByResourceGroup
+        exampleFile: ..\examples\Factories_ListByResourceGroup.json
+      - operationId: Factories_Get
+        exampleFile: ..\examples\Factories_Get.json
+      - operationId: Factories_Update
+        exampleFile: ..\examples\Factories_Update.json
+      - operationId: Factories_ConfigureFactoryRepo
+        exampleFile: ..\examples\Factories_ConfigureFactoryRepo.json
+      - operationId: Factories_GetDataPlaneAccess
+        exampleFile: ..\examples\Factories_GetDataPlaneAccess.json
+      - operationId: Factories_GetGitHubAccessToken
+        exampleFile: ..\examples\Factories_GetGitHubAccessToken.json
+
+      - operationId: IntegrationRuntimes_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationRuntimes_Create.json
+      - operationId: IntegrationRuntimes_ListByFactory
+        exampleFile: ..\examples\IntegrationRuntimes_ListByFactory.json
+      - operationId: IntegrationRuntimes_Get
+        exampleFile: ..\examples\IntegrationRuntimes_Get.json
+      - operationId: IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints
+        exampleFile: ..\examples\IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints.json
+      - operationId: IntegrationRuntimes_Update
+        exampleFile: ..\examples\IntegrationRuntimes_Update.json
+      - operationId: IntegrationRuntimes_GetStatus
+        exampleFile: ..\examples\IntegrationRuntimes_GetStatus.json
+      - operationId: IntegrationRuntimes_CreateLinkedIntegrationRuntime
+        exampleFile: ..\examples\IntegrationRuntimes_CreateLinkedIntegrationRuntime.json
+      - operationId: IntegrationRuntimes_GetConnectionInfo
+        exampleFile: ..\examples\IntegrationRuntimes_GetConnectionInfo.json
+      - operationId: IntegrationRuntimes_Upgrade
+        exampleFile: ..\examples\IntegrationRuntimes_Upgrade.json
+      - operationId: IntegrationRuntimes_RemoveLinks
+        exampleFile: ..\examples\IntegrationRuntimes_RemoveLinks.json
+      - operationId: IntegrationRuntimes_Stop
+        exampleFile: ..\examples\IntegrationRuntimes_Stop.json
+      - operationId: IntegrationRuntimes_SyncCredentials
+        exampleFile: ..\examples\IntegrationRuntimes_SyncCredentials.json
+      - operationId: IntegrationRuntimes_Start
+        exampleFile: ..\examples\IntegrationRuntimes_Start.json
+      - operationId: IntegrationRuntimes_ListAuthKeys
+        exampleFile: ..\examples\IntegrationRuntimes_ListAuthKeys.json
+      - operationId: IntegrationRuntimes_RegenerateAuthKey
+        exampleFile: ..\examples\IntegrationRuntimes_RegenerateAuthKey.json
+      - operationId: IntegrationRuntimes_GetMonitoringData
+        exampleFile: ..\examples\IntegrationRuntimes_GetMonitoringData.json
+
+      - operationId: Triggers_CreateOrUpdate
+        exampleFile: ..\examples\Triggers_Create.json
+      - operationId: Triggers_ListByFactory
+        exampleFile: ..\examples\Triggers_ListByFactory.json
+      - operationId: Triggers_Get
+        exampleFile: ..\examples\Triggers_Get.json
+      - operationId: Triggers_GetEventSubscriptionStatus
+        exampleFile: ..\examples\Triggers_GetEventSubscriptionStatus.json
+      - operationId: Triggers_Stop
+        exampleFile: ..\examples\Triggers_Stop.json
+      - operationId: Triggers_SubscribeToEvents
+        exampleFile: ..\examples\Triggers_SubscribeToEvents.json
+      - operationId: Triggers_Start
+        exampleFile: ..\examples\Triggers_Start.json
+      - operationId: Triggers_QueryByFactory
+        exampleFile: ..\examples\Triggers_QueryByFactory.json
+      - operationId: Triggers_UnsubscribeFromEvents
+        exampleFile: ..\examples\Triggers_UnsubscribeFromEvents.json
+
+      - operationId: ManagedVirtualNetworks_CreateOrUpdate
+        exampleFile: ..\examples\ManagedVirtualNetworks_Create.json
+      - operationId: ManagedVirtualNetworks_ListByFactory
+        exampleFile: ..\examples\ManagedVirtualNetworks_ListByFactory.json
+      - operationId: ManagedVirtualNetworks_Get
+        exampleFile: ..\examples\ManagedVirtualNetworks_Get.json
+
+      - operationId: Pipelines_CreateOrUpdate
+        exampleFile: ..\examples\Pipelines_Create.json
+      - operationId: Pipelines_ListByFactory
+        exampleFile: ..\examples\Pipelines_ListByFactory.json
+      - operationId: Pipelines_Get
+        exampleFile: ..\examples\Pipelines_Get.json
+      - operationId: Pipelines_CreateRun
+        exampleFile: ..\examples\Pipelines_CreateRun.json
+
+      - operationId: PrivateEndpointConnection_CreateOrUpdate
+        exampleFile: ..\examples\ApproveRejectPrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnection_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+
+      - operationId: ManagedPrivateEndpoints_CreateOrUpdate
+        exampleFile: ..\examples\ManagedPrivateEndpoints_Create.json
+      - operationId: ManagedPrivateEndpoints_ListByFactory
+        exampleFile: ..\examples\ManagedPrivateEndpoints_ListByFactory.json
+      - operationId: ManagedPrivateEndpoints_Get
+        exampleFile: ..\examples\ManagedPrivateEndpoints_Get.json
+
+      - operationId: LinkedServices_CreateOrUpdate
+        exampleFile: ..\examples\LinkedServices_Create.json
+      - operationId: LinkedServices_ListByFactory
+        exampleFile: ..\examples\LinkedServices_ListByFactory.json
+      - operationId: LinkedServices_Get
+        exampleFile: ..\examples\LinkedServices_Get.json
+
+      - operationId: GlobalParameters_CreateOrUpdate
+        exampleFile: ..\examples\GlobalParameters_Create.json
+      - operationId: GlobalParameters_ListByFactory
+        exampleFile: ..\examples\GlobalParameters_ListByFactory.json
+      - operationId: GlobalParameters_Get
+        exampleFile: ..\examples\GlobalParameters_Get.json
+
+      - operationId: DataFlows_CreateOrUpdate
+        exampleFile: ..\examples\DataFlows_Create.json
+      - operationId: DataFlows_ListByFactory
+        exampleFile: ..\examples\DataFlows_ListByFactory.json
+      - operationId: DataFlows_Get
+        exampleFile: ..\examples\DataFlows_Get.json
+
+      - operationId: CredentialOperations_CreateOrUpdate
+        exampleFile: ..\examples\Credentials_Create.json
+      - operationId: CredentialOperations_ListByFactory
+        exampleFile: ..\examples\Credentials_ListByFactory.json
+      - operationId: CredentialOperations_Get
+        exampleFile: ..\examples\Credentials_Get.json
+
+      - operationId: Datasets_CreateOrUpdate
+        exampleFile: ..\examples\Datasets_Create.json
+      - operationId: Datasets_ListByFactory
+        exampleFile: ..\examples\Datasets_ListByFactory.json
+      - operationId: Datasets_Get
+        exampleFile: ..\examples\Datasets_Get.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: ExposureControl_GetFeatureValue
+        exampleFile: ..\examples\ExposureControl_GetFeatureValue.json
+
+      - operationId: DataFlowDebugSession_AddDataFlow
+        exampleFile: ..\examples\DataFlowDebugSession_AddDataFlow.json
+      - operationId: DataFlowDebugSession_Create
+        exampleFile: ..\examples\DataFlowDebugSession_Create.json
+      - operationId: DataFlowDebugSession_Delete
+        exampleFile: ..\examples\DataFlowDebugSession_Delete.json
+      - operationId: DataFlowDebugSession_ExecuteCommand
+        exampleFile: ..\examples\DataFlowDebugSession_ExecuteCommand.json
+
+      - operationId: ExposureControl_GetFeatureValueByFactory
+        exampleFile: ..\examples\ExposureControl_GetFeatureValueByFactory.json
+      - operationId: IntegrationRuntimeObjectMetadata_Get
+        exampleFile: ..\examples\IntegrationRuntimeObjectMetadata_Get.json
+
+      - operationId: IntegrationRuntimeNodes_Delete
+        exampleFile: ..\examples\IntegrationRuntimeNodes_Delete.json
+      - operationId: IntegrationRuntimeNodes_Get
+        exampleFile: ..\examples\IntegrationRuntimeNodes_Get.json
+      - operationId: IntegrationRuntimeNodes_Update
+        exampleFile: ..\examples\IntegrationRuntimeNodes_Update.json
+      - operationId: IntegrationRuntimeNodes_GetIpAddress
+        exampleFile: ..\examples\IntegrationRuntimeNodes_GetIpAddress.json
+
+      - operationId: IntegrationRuntimeObjectMetadata_Refresh
+        exampleFile: ..\examples\IntegrationRuntimeObjectMetadata_Refresh.json
+
+      - operationId: PipelineRuns_Get
+        exampleFile: ..\examples\PipelineRuns_Get.json
+      - operationId: PipelineRuns_Cancel
+        exampleFile: ..\examples\PipelineRuns_Cancel.json
+
+      - operationId: ActivityRuns_QueryByPipelineRun
+        exampleFile: ..\examples\ActivityRuns_QueryByPipelineRun.json
+      - operationId: privateEndPointConnections_ListByFactory
+        exampleFile: ..\examples\PrivateEndPointConnections_ListByFactory.json
+      - operationId: privateLinkResources_Get
+        exampleFile: ..\examples\GetPrivateLinkResources.json
+      - operationId: DataFlowDebugSession_QueryByFactory
+        exampleFile: ..\examples\DataFlowDebugSession_QueryByFactory.json
+      - operationId: ExposureControl_QueryFeatureValuesByFactory
+        exampleFile: ..\examples\ExposureControl_QueryFeatureValuesByFactory.json
+      - operationId: PipelineRuns_QueryByFactory
+        exampleFile: ..\examples\PipelineRuns_QueryByFactory.json
+
+      - operationId: TriggerRuns_QueryByFactory
+        exampleFile: ..\examples\TriggerRuns_QueryByFactory.json
+      - operationId: TriggerRuns_Cancel
+        exampleFile: ..\examples\TriggerRuns_Cancel.json
+      - operationId: TriggerRuns_Rerun
+        exampleFile: ..\examples\TriggerRuns_Rerun.json
+
+      - operationId: Datasets_Delete
+        exampleFile: ..\examples\Datasets_Delete.json
+      - operationId: CredentialOperations_Delete
+        exampleFile: ..\examples\Credentials_Delete.json
+      - operationId: DataFlows_Delete
+        exampleFile: ..\examples\DataFlows_Delete.json
+      - operationId: GlobalParameters_Delete
+        exampleFile: ..\examples\GlobalParameters_Delete.json
+      - operationId: LinkedServices_Delete
+        exampleFile: ..\examples\LinkedServices_Delete.json
+      - operationId: ManagedPrivateEndpoints_Delete
+        exampleFile: ..\examples\ManagedPrivateEndpoints_Delete.json
+      - operationId: PrivateEndpointConnection_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json
+      - operationId: Pipelines_Delete
+        exampleFile: ..\examples\Pipelines_Delete.json
+      - operationId: Triggers_Delete
+        exampleFile: ..\examples\Triggers_Delete.json
+      - operationId: IntegrationRuntimes_Delete
+        exampleFile: ..\examples\IntegrationRuntimes_Delete.json
+      - operationId: Factories_Delete
+        exampleFile: ..\examples\Factories_Delete.json
+
+# // (95-23) / 95 = 
+# 95 - 21 - 2 = 72
+# 72 / 95 = 0.7578947368421053

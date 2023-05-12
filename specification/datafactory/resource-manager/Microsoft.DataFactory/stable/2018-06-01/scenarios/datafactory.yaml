@@ -1,0 +1,366 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location: eastus
+  factoryName:
+    type: string
+    prefix: factoryn
+  integrationRuntimeName:
+    type: string
+    prefix: integrat
+  triggerName:
+    type: string
+    prefix: triggern
+  managedVirtualNetworkName:
+    type: string
+    prefix: managedv
+  nodeName:
+    type: string
+    prefix: nodename
+  pipelineName:
+    type: string
+    prefix: pipeline
+  linkedServiceName:
+    type: string
+    prefix: linkedse
+  datasetName:
+    type: string
+    prefix: datasetn
+  dataFlowName:
+    type: string
+    prefix: dataflow
+  credentialName:
+    type: string
+    prefix: credenti
+  managedPrivateEndpointName:
+    type: string
+    prefix: managedp
+  locationId:
+    type: string
+    prefix: location
+
+prepareSteps:
+  - step: Factories_CreateOrUpdate
+    exampleFile: ..\examples\Factories_CreateOrUpdate.json
+    # outputVariables:
+    #   datafactoryId:
+    #     type: string
+    #     fromResponse: /id
+  - step: LinkedServices_CreateOrUpdate
+    exampleFile: ..\examples\LinkedServices_Create.json
+  - step: Datasets_CreateOrUpdate # reference LinkedServices
+    exampleFile: ..\examples\Datasets_Create.json
+    requestUpdate:
+      - replace: /dataset/properties/linkedServiceName/referenceName
+        value: $(linkedServiceName)
+    
+  - step: Pipelines_CreateOrUpdate
+    exampleFile: ..\examples\Pipelines_Create.json
+    requestUpdate:
+      - replace: /pipeline/properties/activities/0/typeProperties/activities/0/inputs/0/referenceName
+        value: $(datasetName)
+      - replace: /pipeline/properties/activities/0/typeProperties/activities/0/outputs/0/referenceName
+        value: $(datasetName)
+
+    
+
+scenarios:
+# pass
+  - scenario: Operations
+    description: Microsoft.DataFactory/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+# pass
+  - scenario: Factories
+    description: Microsoft.DataFactory/factories/{factoryName}
+    steps:
+      - step: Factories_List
+        exampleFile: ..\examples\Factories_List.json
+      - step: Factories_ListByResourceGroup
+        exampleFile: ..\examples\Factories_ListByResourceGroup.json
+      - step: Factories_Get
+        exampleFile: ..\examples\Factories_Get.json
+      - step: Factories_Update
+        exampleFile: ..\examples\Factories_Update.json
+      # - step: Factories_ConfigureFactoryRepo
+      #   exampleFile: ..\examples\Factories_ConfigureFactoryRepo.json
+      - step: Factories_GetDataPlaneAccess
+        exampleFile: ..\examples\Factories_GetDataPlaneAccess.json
+        requestUpdate:
+          - remove: /policy/startTime
+          - remove: /policy/expireTime
+      # - step: Factories_GetGitHubAccessToken # GitHubClientId is invalid
+      #   exampleFile: ..\examples\Factories_GetGitHubAccessToken.json
+
+# pass
+  - scenario: ExposureControl
+    description: Microsoft.DataFactory/locations/{locationId}/getFeatureValue
+    steps:
+      # - step: ExposureControl_GetFeatureValue
+      #   exampleFile: ..\examples\ExposureControl_GetFeatureValue.json
+      - step: ExposureControl_GetFeatureValueByFactory
+        exampleFile: ..\examples\ExposureControl_GetFeatureValueByFactory.json
+      - step: ExposureControl_QueryFeatureValuesByFactory
+        exampleFile: ..\examples\ExposureControl_QueryFeatureValuesByFactory.json
+
+
+  - scenario: IntegrationRuntimes
+    description: Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}
+    steps:
+      - step: IntegrationRuntimes_CreateOrUpdate
+        exampleFile: ..\examples\IntegrationRuntimes_Create.json
+      - step: IntegrationRuntimes_ListByFactory
+        exampleFile: ..\examples\IntegrationRuntimes_ListByFactory.json
+      - step: IntegrationRuntimes_Get
+        exampleFile: ..\examples\IntegrationRuntimes_Get.json
+      # - step: IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints # only Azure-SSIS integration
+      #   exampleFile: ..\examples\IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints.json
+      - step: IntegrationRuntimes_Update
+        exampleFile: ..\examples\IntegrationRuntimes_Update.json
+      - step: IntegrationRuntimes_GetStatus
+        exampleFile: ..\examples\IntegrationRuntimes_GetStatus.json
+      # - step: IntegrationRuntimes_CreateLinkedIntegrationRuntime
+      #   exampleFile: ..\examples\IntegrationRuntimes_CreateLinkedIntegrationRuntime.json
+      # - step: IntegrationRuntimes_GetConnectionInfo
+      #   exampleFile: ..\examples\IntegrationRuntimes_GetConnectionInfo.json
+      - step: IntegrationRuntimes_Upgrade
+        exampleFile: ..\examples\IntegrationRuntimes_Upgrade.json
+      - step: IntegrationRuntimes_RemoveLinks
+        exampleFile: ..\examples\IntegrationRuntimes_RemoveLinks.json
+      # - step: IntegrationRuntimes_Stop # 405 Method Not Allowed
+      #   exampleFile: ..\examples\IntegrationRuntimes_Stop.json
+      # - step: IntegrationRuntimes_Start # 405 Method Not Allowed
+      #   exampleFile: ..\examples\IntegrationRuntimes_Start.json
+      - step: IntegrationRuntimes_SyncCredentials
+        exampleFile: ..\examples\IntegrationRuntimes_SyncCredentials.json
+      - step: IntegrationRuntimes_ListAuthKeys
+        exampleFile: ..\examples\IntegrationRuntimes_ListAuthKeys.json
+      - step: IntegrationRuntimes_RegenerateAuthKey
+        exampleFile: ..\examples\IntegrationRuntimes_RegenerateAuthKey.json
+      - step: IntegrationRuntimes_GetMonitoringData
+        exampleFile: ..\examples\IntegrationRuntimes_GetMonitoringData.json
+
+      # - step: IntegrationRuntimeObjectMetadata_Get # 405 Method Not Allowed
+      #   exampleFile: ..\examples\IntegrationRuntimeObjectMetadata_Get.json
+      # - step: IntegrationRuntimeObjectMetadata_Refresh # Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/refreshObjectMetadata
+      #   exampleFile: ..\examples\IntegrationRuntimeObjectMetadata_Refresh.json
+
+      - step: IntegrationRuntimes_Delete
+        exampleFile: ..\examples\IntegrationRuntimes_Delete.json
+
+# no create function
+  # - scenario: IntegrationRuntimeNodes
+  #   description: Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}
+  #   steps:
+  #     - step: IntegrationRuntimeNodes_Update
+  #       exampleFile: ..\examples\IntegrationRuntimeNodes_Update.json
+  #     - step: IntegrationRuntimeNodes_Get
+  #       exampleFile: ..\examples\IntegrationRuntimeNodes_Get.json
+  #     - step: IntegrationRuntimeNodes_GetIpAddress
+  #       exampleFile: ..\examples\IntegrationRuntimeNodes_GetIpAddress.json
+  #     - step: IntegrationRuntimeNodes_Delete
+  #       exampleFile: ..\examples\IntegrationRuntimeNodes_Delete.json
+
+# pass
+  - scenario: LinkedServices
+    description: Microsoft.DataFactory/factories/{factoryName}/linkedservices/{linkedServiceName}
+    steps:
+
+      - step: LinkedServices_ListByFactory
+        exampleFile: ..\examples\LinkedServices_ListByFactory.json
+      - step: LinkedServices_Get
+        exampleFile: ..\examples\LinkedServices_Get.json
+
+# pass
+  - scenario: Datasets
+    description: Microsoft.DataFactory/factories/{factoryName}/datasets/{datasetName}
+    steps:
+      - step: Datasets_ListByFactory
+        exampleFile: ..\examples\Datasets_ListByFactory.json
+      - step: Datasets_Get
+        exampleFile: ..\examples\Datasets_Get.json
+
+
+# need dataset, pass
+  - scenario: Pipelines
+    description: Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}
+    steps:
+      - step: Pipelines_ListByFactory
+        exampleFile: ..\examples\Pipelines_ListByFactory.json
+      - step: Pipelines_Get
+        exampleFile: ..\examples\Pipelines_Get.json
+      - step: Pipelines_CreateRun
+        exampleFile: ..\examples\Pipelines_CreateRun.json
+        outputVariables:
+          runId:
+            type: string
+            fromResponse: /runId
+
+  # - scenario: PipelineRuns
+  #   description: Microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}
+  #   steps:
+      - step: PipelineRuns_Get
+        exampleFile: ..\examples\PipelineRuns_Get.json
+      - step: ActivityRuns_QueryByPipelineRun # Microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}/queryActivityruns
+        exampleFile: ..\examples\ActivityRuns_QueryByPipelineRun.json
+      - step: PipelineRuns_QueryByFactory
+        exampleFile: ..\examples\PipelineRuns_QueryByFactory.json
+      - step: PipelineRuns_Cancel
+        exampleFile: ..\examples\PipelineRuns_Cancel.json
+
+# need pipeline pass
+  - scenario: Triggers
+    description: Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}
+    steps:
+      - step: Triggers_CreateOrUpdate
+        exampleFile: ..\examples\Triggers_Create.json
+        requestUpdate:
+          - replace: /trigger/properties/pipelines/0/pipelineReference/referenceName
+            value: $(pipelineName)
+        
+      - step: Triggers_ListByFactory
+        exampleFile: ..\examples\Triggers_ListByFactory.json
+      - step: Triggers_Get
+        exampleFile: ..\examples\Triggers_Get.json
+      - step: Triggers_GetEventSubscriptionStatus
+        exampleFile: ..\examples\Triggers_GetEventSubscriptionStatus.json
+      - step: Triggers_SubscribeToEvents
+        exampleFile: ..\examples\Triggers_SubscribeToEvents.json
+      - step: Triggers_Start
+        exampleFile: ..\examples\Triggers_Start.json
+      - step: Triggers_QueryByFactory
+        exampleFile: ..\examples\Triggers_QueryByFactory.json
+      - step: Triggers_UnsubscribeFromEvents
+        exampleFile: ..\examples\Triggers_UnsubscribeFromEvents.json
+      - step: Triggers_Stop
+        exampleFile: ..\examples\Triggers_Stop.json
+      - step: Triggers_Delete
+        exampleFile: ..\examples\Triggers_Delete.json
+
+  # - scenario: TriggerRuns
+  #   description: Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/triggerRuns/{runId}/rerun
+  #   steps:
+  #     - step: TriggerRuns_QueryByFactory
+  #       exampleFile: ..\examples\TriggerRuns_QueryByFactory.json
+  #     - step: TriggerRuns_Rerun
+  #       exampleFile: ..\examples\TriggerRuns_Rerun.json
+  #     - step: TriggerRuns_Cancel
+  #       exampleFile: ..\examples\TriggerRuns_Cancel.json
+
+  - scenario: DataFlows
+    description: Microsoft.DataFactory/factories/{factoryName}/dataflows/{dataFlowName}
+    steps:
+      - step: DataFlows_CreateOrUpdate # reference datasets
+        exampleFile: ..\examples\DataFlows_Create.json
+        requestUpdate:
+          - remove: /dataFlow/properties/typeProperties/sources
+          - remove: /dataFlow/properties/typeProperties/sinks/1
+          - replace: /dataFlow/properties/typeProperties/sinks/0/dataset/referenceName
+            value: $(datasetName)
+      - step: DataFlows_ListByFactory
+        exampleFile: ..\examples\DataFlows_ListByFactory.json
+      - step: DataFlows_Get
+        exampleFile: ..\examples\DataFlows_Get.json
+      - step: DataFlows_Delete
+        exampleFile: ..\examples\DataFlows_Delete.json
+
+# pass
+  - scenario: DataFlowDebugSession # reference datasets
+    description: Microsoft.DataFactory/factories/{factoryName}/createDataFlowDebugSession
+    steps:
+      - step: DataFlowDebugSession_Create
+        exampleFile: ..\examples\DataFlowDebugSession_Create.json
+      # - step: DataFlowDebugSession_AddDataFlow
+      #   exampleFile: ..\examples\DataFlowDebugSession_AddDataFlow.json
+      # - step: DataFlowDebugSession_ExecuteCommand
+      #   exampleFile: ..\examples\DataFlowDebugSession_ExecuteCommand.json
+      - step: DataFlowDebugSession_QueryByFactory
+        exampleFile: ..\examples\DataFlowDebugSession_QueryByFactory.json
+      - step: DataFlowDebugSession_Delete
+        exampleFile: ..\examples\DataFlowDebugSession_Delete.json
+
+# pass
+  - scenario: ManagedVirtualNetworks
+    description: Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}
+    steps:
+      - step: ManagedVirtualNetworks_CreateOrUpdate
+        exampleFile: ..\examples\ManagedVirtualNetworks_Create.json
+      - step: ManagedVirtualNetworks_ListByFactory
+        exampleFile: ..\examples\ManagedVirtualNetworks_ListByFactory.json
+      - step: ManagedVirtualNetworks_Get
+        exampleFile: ..\examples\ManagedVirtualNetworks_Get.json
+
+  # - scenario: ManagedPrivateEndpoints
+  #   description: Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints/{managedPrivateEndpointName}
+  #   steps:
+      - step: ManagedPrivateEndpoints_CreateOrUpdate
+        exampleFile: ..\examples\ManagedPrivateEndpoints_Create.json
+      - step: ManagedPrivateEndpoints_ListByFactory
+        exampleFile: ..\examples\ManagedPrivateEndpoints_ListByFactory.json
+      - step: ManagedPrivateEndpoints_Get
+        exampleFile: ..\examples\ManagedPrivateEndpoints_Get.json
+      - step: ManagedPrivateEndpoints_Delete
+        exampleFile: ..\examples\ManagedPrivateEndpoints_Delete.json
+
+# faile cred
+  # - scenario: CredentialOperations
+  #   description: Microsoft.DataFactory/factories/{factoryName}/credentials/{credentialName}
+  #   steps:
+  #     - step: CredentialOperations_CreateOrUpdate
+  #       exampleFile: ..\examples\Credentials_Create.json
+  #     - step: CredentialOperations_ListByFactory
+  #       exampleFile: ..\examples\Credentials_ListByFactory.json
+  #     - step: CredentialOperations_Get
+  #       exampleFile: ..\examples\Credentials_Get.json
+  #     - step: CredentialOperations_Delete
+  #       exampleFile: ..\examples\Credentials_Delete.json
+
+  - scenario: PrivateEndpointConnection
+    description: Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: privateEndPointConnections_ListByFactory # Microsoft.DataFactory/factories/{factoryName}/privateEndPointConnections
+        exampleFile: ..\examples\PrivateEndPointConnections_ListByFactory.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnection_CreateOrUpdate
+        exampleFile: ..\examples\ApproveRejectPrivateEndpointConnection.json
+        requestUpdate:
+          - remove: /privateEndpointWrapper/properties/privateEndpoint
+          - replace: /privateEndpointWrapper/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - step: PrivateEndpointConnection_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+      - step: privateLinkResources_Get
+        exampleFile: ..\examples\GetPrivateLinkResources.json
+      - step: PrivateEndpointConnection_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json
+
+# pass
+  - scenario: GlobalParameters
+    description: Microsoft.DataFactory/factories/{factoryName}/globalParameters/{globalParameterName}
+    steps:
+      - step: GlobalParameters_CreateOrUpdate
+        exampleFile: ..\examples\GlobalParameters_Create.json
+      - step: GlobalParameters_ListByFactory
+        exampleFile: ..\examples\GlobalParameters_ListByFactory.json
+      - step: GlobalParameters_Get
+        exampleFile: ..\examples\GlobalParameters_Get.json
+      - step: GlobalParameters_Delete
+        exampleFile: ..\examples\GlobalParameters_Delete.json
+
+cleanUpSteps:
+  - step: Pipelines_Delete
+    exampleFile: ..\examples\Pipelines_Delete.json
+  - step: Datasets_Delete
+    exampleFile: ..\examples\Datasets_Delete.json
+  - step: LinkedServices_Delete
+    exampleFile: ..\examples\LinkedServices_Delete.json
+  - step: Factories_Delete
+    exampleFile: ..\examples\Factories_Delete.json
