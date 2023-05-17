@@ -1,0 +1,388 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  serviceName:
+    type: string
+    prefix: servicen
+  appName:
+    type: string
+    prefix: appname
+  buildServiceName:
+    type: string
+    prefix: buildser
+  gatewayName:
+    type: string
+    prefix: gatewayn
+  deploymentName:
+    type: string
+    prefix: deployme
+  applicationAcceleratorName:
+    type: string
+    prefix: applicat
+  domainName:
+    type: string
+    prefix: domainna
+  builderName:
+    type: string
+    prefix: buildern
+  apiPortalName:
+    type: string
+    prefix: apiporta
+  buildName:
+    type: string
+    prefix: buildnam
+  configurationServiceName:
+    type: string
+    prefix: configur
+  bindingName:
+    type: string
+    prefix: bindingn
+  customizedAcceleratorName:
+    type: string
+    prefix: customiz
+  serviceRegistryName:
+    type: string
+    prefix: servicer
+  applicationLiveViewName:
+    type: string
+    prefix: applicat
+  devToolPortalName:
+    type: string
+    prefix: devtoolp
+  buildpackBindingName:
+    type: string
+    prefix: buildpac
+  storageName:
+    type: string
+    prefix: storagen
+  certificateName:
+    type: string
+    prefix: certific
+  routeConfigName:
+    type: string
+    prefix: routecon
+  predefinedAcceleratorName:
+    type: string
+    prefix: predefin
+  containerRegistryName:
+    type: string
+    prefix: containe
+  buildResultName:
+    type: string
+    prefix: buildres
+  agentPoolName:
+    type: string
+    prefix: agentpoo
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Services_CheckNameAvailability
+        exampleFile: ..\examples\Services_CheckNameAvailability.json
+      - operationId: Services_CreateOrUpdate
+        exampleFile: ..\examples\Services_CreateOrUpdate.json
+      - operationId: Services_ListBySubscription
+        exampleFile: ..\examples\Services_ListBySubscription.json
+      - operationId: Services_List
+        exampleFile: ..\examples\Services_List.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\Services_Get.json
+      - operationId: Services_Update
+        exampleFile: ..\examples\Services_Update.json
+      - operationId: Services_Stop
+        exampleFile: ..\examples\Services_Stop.json
+      - operationId: Services_EnableTestEndpoint
+        exampleFile: ..\examples\Services_EnableTestEndpoint.json
+      - operationId: Services_RegenerateTestKey
+        exampleFile: ..\examples\Services_RegenerateTestKey.json
+      - operationId: Services_ListTestKeys
+        exampleFile: ..\examples\Services_ListTestKeys.json
+      - operationId: Services_DisableTestEndpoint
+        exampleFile: ..\examples\Services_DisableTestEndpoint.json
+      - operationId: Services_Start
+        exampleFile: ..\examples\Services_Start.json
+      - operationId: Apps_CreateOrUpdate
+        exampleFile: ..\examples\Apps_CreateOrUpdate.json
+      - operationId: Apps_List
+        exampleFile: ..\examples\Apps_List.json
+      - operationId: Apps_Get
+        exampleFile: ..\examples\Apps_Get.json
+      - operationId: Apps_Update
+        exampleFile: ..\examples\Apps_Update.json
+      - operationId: Apps_GetResourceUploadUrl
+        exampleFile: ..\examples\Apps_GetResourceUploadUrl.json
+      - operationId: Apps_ValidateDomain
+        exampleFile: ..\examples\Apps_ValidateDomain.json
+      - operationId: Apps_SetActiveDeployments
+        exampleFile: ..\examples\Apps_SetActiveDeployments.json
+      - operationId: BuildService_CreateOrUpdate
+        exampleFile: ..\examples\BuildService_CreateOrUpdate.json
+      - operationId: BuildService_ListBuildServices
+        exampleFile: ..\examples\BuildService_ListBuildServices.json
+      - operationId: BuildService_GetSupportedBuildpack
+        variables:
+          buildpackName:
+            type: string
+            prefix: buildpac
+        exampleFile: ..\examples\BuildService_GetSupportedBuildpack.json
+      - operationId: BuildService_ListSupportedStacks
+        exampleFile: ..\examples\BuildService_ListSupportedStacks.json
+      - operationId: BuildService_GetSupportedStack
+        variables:
+          stackName:
+            type: string
+            prefix: stacknam
+        exampleFile: ..\examples\BuildService_GetSupportedStack.json
+      - operationId: BuildService_GetBuildService
+        exampleFile: ..\examples\BuildService_GetBuildService.json
+      - operationId: BuildService_ListBuilds
+        exampleFile: ..\examples\BuildService_ListBuilds.json
+      - operationId: BuildService_ListSupportedBuildpacks
+        exampleFile: ..\examples\BuildService_ListSupportedBuildpacks.json
+      - operationId: BuildService_GetResourceUploadUrl
+        exampleFile: ..\examples\BuildService_GetResourceUploadUrl.json
+      - operationId: Gateways_CreateOrUpdate
+        exampleFile: ..\examples\Gateways_CreateOrUpdate.json
+      - operationId: Gateways_List
+        exampleFile: ..\examples\Gateways_List.json
+      - operationId: Gateways_Get
+        exampleFile: ..\examples\Gateways_Get.json
+      - operationId: Gateways_UpdateCapacity
+        exampleFile: ..\examples\Gateway_Scale.json
+      - operationId: Gateways_Restart
+        exampleFile: ..\examples\Gateways_Restart.json
+      - operationId: Gateways_ValidateDomain
+        exampleFile: ..\examples\Gateways_ValidateDomain.json
+      - operationId: Gateways_ListEnvSecrets
+        exampleFile: ..\examples\Gateways_ListEnvSecrets.json
+      - operationId: Deployments_CreateOrUpdate
+        exampleFile: ..\examples\Deployments_CreateOrUpdate.json
+      - operationId: Deployments_List
+        exampleFile: ..\examples\Deployments_List.json
+      - operationId: Deployments_Get
+        exampleFile: ..\examples\Deployments_Get.json
+      - operationId: Deployments_ListForCluster
+        exampleFile: ..\examples\Deployments_ListForCluster.json
+      - operationId: Deployments_Update
+        exampleFile: ..\examples\Deployments_Update.json
+      - operationId: Deployments_GenerateHeapDump
+        exampleFile: ..\examples\Deployments_GenerateHeapDump.json
+      - operationId: Deployments_Restart
+        exampleFile: ..\examples\Deployments_Restart.json
+      - operationId: Deployments_StartJFR
+        exampleFile: ..\examples\Deployments_StartJFR.json
+      - operationId: Deployments_Start
+        exampleFile: ..\examples\Deployments_Start.json
+      - operationId: Deployments_GetRemoteDebuggingConfig
+        exampleFile: ..\examples\Deployments_GetRemoteDebuggingConfig.json
+      - operationId: Deployments_GenerateThreadDump
+        exampleFile: ..\examples\Deployments_GenerateThreadDump.json
+      - operationId: Deployments_GetLogFileUrl
+        exampleFile: ..\examples\Deployments_GetLogFileUrl.json
+      - operationId: Deployments_DisableRemoteDebugging
+        exampleFile: ..\examples\Deployments_DisableRemoteDebugging.json
+      - operationId: Deployments_EnableRemoteDebugging
+        exampleFile: ..\examples\Deployments_EnableRemoteDebugging.json
+      - operationId: Deployments_Stop
+        exampleFile: ..\examples\Deployments_Stop.json
+      - operationId: ApplicationAccelerators_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationAccelerators_CreateOrUpdate.json
+      - operationId: ApplicationAccelerators_List
+        exampleFile: ..\examples\ApplicationAccelerators_List.json
+      - operationId: ApplicationAccelerators_Get
+        exampleFile: ..\examples\ApplicationAccelerators_Get.json
+      - operationId: BuildServiceBuilder_CreateOrUpdate
+        exampleFile: ..\examples\BuildServiceBuilder_CreateOrUpdate.json
+      - operationId: BuildServiceBuilder_List
+        exampleFile: ..\examples\BuildServiceBuilder_List.json
+      - operationId: BuildServiceBuilder_Get
+        exampleFile: ..\examples\BuildServiceBuilder_Get.json
+      - operationId: BuildServiceBuilder_ListDeployments
+        exampleFile: ..\examples\BuildServiceBuilder_ListDeployments.json
+      - operationId: ApiPortals_CreateOrUpdate
+        exampleFile: ..\examples\ApiPortals_CreateOrUpdate.json
+      - operationId: ApiPortals_List
+        exampleFile: ..\examples\ApiPortals_List.json
+      - operationId: ApiPortals_Get
+        exampleFile: ..\examples\ApiPortals_Get.json
+      - operationId: ApiPortals_ValidateDomain
+        exampleFile: ..\examples\ApiPortals_ValidateDomain.json
+      - operationId: BuildService_CreateOrUpdateBuild
+        exampleFile: ..\examples\BuildService_CreateOrUpdateBuild.json
+      - operationId: BuildService_GetBuild
+        exampleFile: ..\examples\BuildService_GetBuild.json
+      - operationId: BuildService_ListBuildResults
+        exampleFile: ..\examples\BuildService_ListBuildResults.json
+      - operationId: BuildService_GetBuildResult
+        exampleFile: ..\examples\BuildService_GetBuildResult.json
+      - operationId: BuildService_GetBuildResultLog
+        exampleFile: ..\examples\BuildService_GetBuildResultLog.json
+      - operationId: Bindings_CreateOrUpdate
+        exampleFile: ..\examples\Bindings_CreateOrUpdate.json
+      - operationId: Bindings_List
+        exampleFile: ..\examples\Bindings_List.json
+      - operationId: Bindings_Get
+        exampleFile: ..\examples\Bindings_Get.json
+      - operationId: Bindings_Update
+        exampleFile: ..\examples\Bindings_Update.json
+      - operationId: ConfigurationServices_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationServices_CreateOrUpdate.json
+      - operationId: ConfigurationServices_List
+        exampleFile: ..\examples\ConfigurationServices_List.json
+      - operationId: ConfigurationServices_Get
+        exampleFile: ..\examples\ConfigurationServices_Get.json
+      - operationId: ConfigurationServices_Validate
+        exampleFile: ..\examples\ConfigurationServices_Validate.json
+      - operationId: CustomizedAccelerators_CreateOrUpdate
+        exampleFile: ..\examples\CustomizedAccelerators_CreateOrUpdate.json
+      - operationId: CustomizedAccelerators_List
+        exampleFile: ..\examples\CustomizedAccelerators_List.json
+      - operationId: CustomizedAccelerators_Get
+        exampleFile: ..\examples\CustomizedAccelerators_Get.json
+      - operationId: CustomizedAccelerators_Validate
+        exampleFile: ..\examples\CustomizedAccelerators_Validate.json
+      - operationId: CustomDomains_CreateOrUpdate
+        exampleFile: ..\examples\CustomDomains_CreateOrUpdate.json
+      - operationId: CustomDomains_List
+        exampleFile: ..\examples\CustomDomains_List.json
+      - operationId: CustomDomains_Get
+        exampleFile: ..\examples\CustomDomains_Get.json
+      - operationId: CustomDomains_Update
+        exampleFile: ..\examples\CustomDomains_Update.json
+      - operationId: ApplicationLiveViews_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationLiveViews_CreateOrUpdate.json
+      - operationId: ApplicationLiveViews_List
+        exampleFile: ..\examples\ApplicationLiveViews_List.json
+      - operationId: ApplicationLiveViews_Get
+        exampleFile: ..\examples\ApplicationLiveViews_Get.json
+      - operationId: BuildpackBinding_CreateOrUpdate
+        exampleFile: ..\examples\BuildpackBinding_CreateOrUpdate.json
+      - operationId: BuildpackBinding_List
+        exampleFile: ..\examples\BuildpackBinding_List.json
+      - operationId: BuildpackBinding_Get
+        exampleFile: ..\examples\BuildpackBinding_Get.json
+      - operationId: BuildpackBinding_ListForCluster
+        exampleFile: ..\examples\BuildpackBinding_ListForCluster.json
+      - operationId: Certificates_CreateOrUpdate
+        exampleFile: ..\examples\Certificates_CreateOrUpdate.json
+      - operationId: Certificates_List
+        exampleFile: ..\examples\Certificates_List.json
+      - operationId: Certificates_Get
+        exampleFile: ..\examples\Certificates_Get.json
+      - operationId: Storages_CreateOrUpdate
+        exampleFile: ..\examples\Storages_CreateOrUpdate.json
+      - operationId: Storages_List
+        exampleFile: ..\examples\Storages_List.json
+      - operationId: Storages_Get
+        exampleFile: ..\examples\Storages_Get.json
+      - operationId: GatewayRouteConfigs_CreateOrUpdate
+        exampleFile: ..\examples\GatewayRouteConfigs_CreateOrUpdate.json
+      - operationId: GatewayRouteConfigs_List
+        exampleFile: ..\examples\GatewayRouteConfigs_List.json
+      - operationId: GatewayRouteConfigs_Get
+        exampleFile: ..\examples\GatewayRouteConfigs_Get.json
+      - operationId: GatewayCustomDomains_CreateOrUpdate
+        exampleFile: ..\examples\GatewayCustomDomains_CreateOrUpdate.json
+      - operationId: GatewayCustomDomains_List
+        exampleFile: ..\examples\GatewayCustomDomains_List.json
+      - operationId: GatewayCustomDomains_Get
+        exampleFile: ..\examples\GatewayCustomDomains_Get.json
+      - operationId: ServiceRegistries_CreateOrUpdate
+        exampleFile: ..\examples\ServiceRegistries_CreateOrUpdate.json
+      - operationId: ServiceRegistries_List
+        exampleFile: ..\examples\ServiceRegistries_List.json
+      - operationId: ServiceRegistries_Get
+        exampleFile: ..\examples\ServiceRegistries_Get.json
+      - operationId: DevToolPortals_CreateOrUpdate
+        exampleFile: ..\examples\DevToolPortals_CreateOrUpdate.json
+      - operationId: DevToolPortals_List
+        exampleFile: ..\examples\DevToolPortals_List.json
+      - operationId: DevToolPortals_Get
+        exampleFile: ..\examples\DevToolPortals_Get.json
+      - operationId: ApiPortalCustomDomains_CreateOrUpdate
+        exampleFile: ..\examples\ApiPortalCustomDomains_CreateOrUpdate.json
+      - operationId: ApiPortalCustomDomains_List
+        exampleFile: ..\examples\ApiPortalCustomDomains_List.json
+      - operationId: ApiPortalCustomDomains_Get
+        exampleFile: ..\examples\ApiPortalCustomDomains_Get.json
+      - operationId: ContainerRegistries_CreateOrUpdate
+        exampleFile: ..\examples\ContainerRegistries_CreateOrUpdate.json
+      - operationId: ContainerRegistries_List
+        exampleFile: ..\examples\ContainerRegistries_List.json
+      - operationId: ContainerRegistries_Get
+        exampleFile: ..\examples\ContainerRegistries_Get.json
+      - operationId: BuildServiceAgentPool_UpdatePut
+        exampleFile: ..\examples\BuildServiceAgentPool_UpdatePut.json
+      - operationId: BuildServiceAgentPool_List
+        exampleFile: ..\examples\BuildServiceAgentPool_List.json
+      - operationId: BuildServiceAgentPool_Get
+        exampleFile: ..\examples\BuildServiceAgentPool_Get.json
+      - operationId: ConfigServers_UpdatePut
+        exampleFile: ..\examples\ConfigServers_UpdatePut.json
+      - operationId: ConfigServers_Get
+        exampleFile: ..\examples\ConfigServers_Get.json
+      - operationId: ConfigServers_UpdatePatch
+        exampleFile: ..\examples\ConfigServers_UpdatePatch.json
+      - operationId: ConfigServers_Validate
+        exampleFile: ..\examples\ConfigServers_Validate.json
+      - operationId: MonitoringSettings_UpdatePut
+        exampleFile: ..\examples\MonitoringSettings_UpdatePut.json
+      - operationId: MonitoringSettings_Get
+        exampleFile: ..\examples\MonitoringSettings_Get.json
+      - operationId: MonitoringSettings_UpdatePatch
+        exampleFile: ..\examples\MonitoringSettings_UpdatePatch.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: RuntimeVersions_ListRuntimeVersions
+        exampleFile: ..\examples\RuntimeVersions_ListRuntimeVersions.json
+      - operationId: Skus_List
+        exampleFile: ..\examples\Skus_List.json
+      - operationId: PredefinedAccelerators_List
+        exampleFile: ..\examples\PredefinedAccelerators_List.json
+      - operationId: PredefinedAccelerators_Get
+        exampleFile: ..\examples\PredefinedAccelerators_Get.json
+      - operationId: PredefinedAccelerators_Disable
+        exampleFile: ..\examples\PredefinedAccelerators_Disable.json
+      - operationId: PredefinedAccelerators_Enable
+        exampleFile: ..\examples\PredefinedAccelerators_Enable.json
+      - operationId: ApiPortalCustomDomains_Delete
+        exampleFile: ..\examples\ApiPortalCustomDomains_Delete.json
+      - operationId: DevToolPortals_Delete
+        exampleFile: ..\examples\DevToolPortal_Delete.json
+      - operationId: ServiceRegistries_Delete
+        exampleFile: ..\examples\ServiceRegistries_Delete.json
+      - operationId: GatewayCustomDomains_Delete
+        exampleFile: ..\examples\GatewayCustomDomains_Delete.json
+      - operationId: GatewayRouteConfigs_Delete
+        exampleFile: ..\examples\GatewayRouteConfigs_Delete.json
+      - operationId: Storages_Delete
+        exampleFile: ..\examples\Storages_Delete.json
+      - operationId: Certificates_Delete
+        exampleFile: ..\examples\Certificates_Delete.json
+      - operationId: BuildpackBinding_Delete
+        exampleFile: ..\examples\BuildpackBinding_Delete.json
+      - operationId: ApplicationLiveViews_Delete
+        exampleFile: ..\examples\ApplicationLiveView_Delete.json
+      - operationId: CustomDomains_Delete
+        exampleFile: ..\examples\CustomDomains_Delete.json
+      - operationId: CustomizedAccelerators_Delete
+        exampleFile: ..\examples\CustomizedAccelerators_Delete.json
+      - operationId: ConfigurationServices_Delete
+        exampleFile: ..\examples\ConfigurationServices_Delete.json
+      - operationId: Bindings_Delete
+        exampleFile: ..\examples\Bindings_Delete.json
+      - operationId: BuildService_DeleteBuild
+        exampleFile: ..\examples\BuildService_DeleteBuild.json
+      - operationId: ApiPortals_Delete
+        exampleFile: ..\examples\ApiPortals_Delete.json
+      - operationId: BuildServiceBuilder_Delete
+        exampleFile: ..\examples\BuildServiceBuilder_Delete.json
+      - operationId: ApplicationAccelerators_Delete
+        exampleFile: ..\examples\ApplicationAccelerators_Delete.json
+      - operationId: Deployments_Delete
+        exampleFile: ..\examples\Deployments_Delete.json
+      - operationId: Gateways_Delete
+        exampleFile: ..\examples\Gateways_Delete.json
+      - operationId: Apps_Delete
+        exampleFile: ..\examples\Apps_Delete.json
+      - operationId: Services_Delete
+        exampleFile: ..\examples\Services_Delete.json

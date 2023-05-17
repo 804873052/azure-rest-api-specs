@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serviceName:
+    type: string
+    prefix: servicen
+
+prepareSteps:
+  - step: Services_CreateOrUpdate
+    exampleFile: ..\examples\Services_CreateOrUpdate.json
+
+# pass
+scenarios:
+  - scenario: ConfigServers
+    description: Microsoft.AppPlatform/Spring/{serviceName}/configServers/default
+    steps:
+      - step: ConfigServers_UpdatePut # Feature ConfigServer is not supported in Sku E0 for API version 2023-01-01-preview.
+        exampleFile: ..\examples\ConfigServers_UpdatePut.json
+      - step: ConfigServers_Get
+        exampleFile: ..\examples\ConfigServers_Get.json
+      - step: ConfigServers_UpdatePatch
+        exampleFile: ..\examples\ConfigServers_UpdatePatch.json
+      - step: ConfigServers_Validate
+        exampleFile: ..\examples\ConfigServers_Validate.json

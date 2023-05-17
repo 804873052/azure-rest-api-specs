@@ -1,0 +1,522 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serviceName:
+    type: string
+    prefix: servicen
+  appName:
+    type: string
+    prefix: appname
+  buildServiceName:
+    type: string
+    prefix: buildser
+  deploymentName:
+    type: string
+    prefix: deployme
+  domainName:
+    type: string
+    prefix: domainna
+  builderName:
+    type: string
+    prefix: buildern
+  buildName:
+    type: string
+    prefix: buildnam
+  bindingName:
+    type: string
+    prefix: bindingn
+  customizedAcceleratorName:
+    type: string
+    prefix: customiz
+  buildpackBindingName:
+    type: string
+    prefix: buildpac
+  storageName:
+    type: string
+    prefix: storagen
+  certificateName:
+    type: string
+    prefix: certific
+  routeConfigName:
+    type: string
+    prefix: routecon
+  containerRegistryName:
+    type: string
+    prefix: containe
+  buildResultName:
+    type: string
+    prefix: buildres
+  agentPoolName:
+    type: string
+    prefix: agentpoo
+
+prepareSteps:
+  - step: Services_CheckNameAvailability
+    exampleFile: ..\examples\Services_CheckNameAvailability.json
+    requestUpdate:
+      - replace: /availabilityParameters/name
+        value: $(serviceName)
+  - step: Services_CreateOrUpdate
+    # exampleFile: ..\examples\Services_CreateOrUpdate.json
+    exampleFile: ../examples/Services_CreateOrUpdate_Enterprise.json
+
+  - step: Apps_CreateOrUpdate
+    # exampleFile: ..\examples\Apps_CreateOrUpdate.json
+    operationId: Apps_CreateOrUpdate
+    parameters:
+      appResource:
+        public: true
+        httpsOnly: false
+        enableEndToEndTLS: false
+        temporaryDisk:
+          sizeInGB: 2
+          mountPath: /mytemporarydisk
+        persistentDisk:
+          sizeInGB: 0
+          mountPath: /mypersistentdisk
+
+  # - step: BuildService_CreateOrUpdateBuild # 404
+  #   exampleFile: ..\examples\BuildService_CreateOrUpdateBuild.json
+  # - step: BuildServiceBuilder_CreateOrUpdate # 404
+  #   exampleFile: ..\examples\BuildServiceBuilder_CreateOrUpdate.json
+  
+  - step: ApplicationAccelerators_CreateOrUpdate # Feature ApplicationAccelerator is not supported in Sku S0 for API version 2023-01-01-preview.
+    exampleFile: ..\examples\ApplicationAccelerators_CreateOrUpdate.json
+  - step: Gateways_CreateOrUpdate # Feature SpringCloudGateway is not supported in Sku S0 for API version 2023-01-01-preview
+    exampleFile: ..\examples\Gateways_CreateOrUpdate.json
+    requestUpdate:
+      - remove: /gatewayResource/properties/resourceRequests
+
+  - step: ApiPortals_CreateOrUpdate
+    exampleFile: ..\examples\ApiPortals_CreateOrUpdate.json
+
+scenarios:
+# pass
+  - scenario: Services
+    description: Microsoft.AppPlatform/Spring/{serviceName}
+    steps:
+      - step: Services_ListBySubscription
+        exampleFile: ..\examples\Services_ListBySubscription.json
+      - step: Services_List
+        exampleFile: ..\examples\Services_List.json
+      - step: Services_Get
+        exampleFile: ..\examples\Services_Get.json
+      - step: Services_Update
+        exampleFile: ..\examples\Services_Update.json
+        requestUpdate:
+          - remove: /resource/sku
+      - step: Services_RegenerateTestKey
+        exampleFile: ..\examples\Services_RegenerateTestKey.json
+      - step: Services_ListTestKeys
+        exampleFile: ..\examples\Services_ListTestKeys.json
+      - step: Services_DisableTestEndpoint
+        exampleFile: ..\examples\Services_DisableTestEndpoint.json
+      - step: Services_EnableTestEndpoint # Testing endpoint already enabled
+        exampleFile: ..\examples\Services_EnableTestEndpoint.json
+      # - step: Services_Start # long long time
+      #   exampleFile: ..\examples\Services_Start.json
+      # - step: Services_Stop # Dev Tool Portal default for servicen4u1ogk is not stoppable, with reason 'in Failed status
+      #   exampleFile: ..\examples\Services_Stop.json
+
+# pass
+  - scenario: Apps
+    description: Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}
+    steps:
+      - step: Apps_List
+        exampleFile: ..\examples\Apps_List.json
+      - step: Apps_Get
+        exampleFile: ..\examples\Apps_Get.json
+      - step: Apps_Update
+        # exampleFile: ..\examples\Apps_Update.json
+        operationId: Apps_Update
+        parameters:
+          appResource:
+            location: $(location)
+      - step: Apps_GetResourceUploadUrl
+        exampleFile: ..\examples\Apps_GetResourceUploadUrl.json
+      - step: Apps_ValidateDomain
+        exampleFile: ..\examples\Apps_ValidateDomain.json
+
+  # - scenario: Deployments
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}
+  #   steps:
+  #     - step: Deployments_CreateOrUpdate
+  #       exampleFile: ..\examples\Deployments_CreateOrUpdate.json
+  #     - step: Deployments_List
+  #       exampleFile: ..\examples\Deployments_List.json
+  #     - step: Deployments_Get
+  #       exampleFile: ..\examples\Deployments_Get.json
+  #     - step: Deployments_ListForCluster
+  #       exampleFile: ..\examples\Deployments_ListForCluster.json
+  #     - step: Deployments_Update
+  #       exampleFile: ..\examples\Deployments_Update.json
+  #     - step: Deployments_GenerateHeapDump
+  #       exampleFile: ..\examples\Deployments_GenerateHeapDump.json
+  #     - step: Deployments_Restart
+  #       exampleFile: ..\examples\Deployments_Restart.json
+  #     - step: Deployments_StartJFR
+  #       exampleFile: ..\examples\Deployments_StartJFR.json
+  #     - step: Deployments_Start
+  #       exampleFile: ..\examples\Deployments_Start.json
+  #     - step: Deployments_GetRemoteDebuggingConfig
+  #       exampleFile: ..\examples\Deployments_GetRemoteDebuggingConfig.json
+  #     - step: Deployments_GenerateThreadDump
+  #       exampleFile: ..\examples\Deployments_GenerateThreadDump.json
+  #     - step: Deployments_GetLogFileUrl
+  #       exampleFile: ..\examples\Deployments_GetLogFileUrl.json
+  #     - step: Deployments_DisableRemoteDebugging
+  #       exampleFile: ..\examples\Deployments_DisableRemoteDebugging.json
+  #     - step: Deployments_EnableRemoteDebugging
+  #       exampleFile: ..\examples\Deployments_EnableRemoteDebugging.json
+  #     - step: Deployments_Stop
+  #       exampleFile: ..\examples\Deployments_Stop.json
+
+  #     - step: Apps_SetActiveDeployments
+  #       exampleFile: ..\examples\Apps_SetActiveDeployments.json
+  #       requestUpdate:
+  #         - replace: /activeDeploymentCollection/activeDeploymentNames/0
+  #           value: $(deploymentName)
+
+# fail, need cosmosdb
+  # - scenario: Bindings
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}
+  #   steps:
+  #     - step: Bindings_CreateOrUpdate
+  #       exampleFile: ..\examples\Bindings_CreateOrUpdate.json
+  #     - step: Bindings_List
+  #       exampleFile: ..\examples\Bindings_List.json
+  #     - step: Bindings_Get
+  #       exampleFile: ..\examples\Bindings_Get.json
+  #     - step: Bindings_Update
+  #       exampleFile: ..\examples\Bindings_Update.json
+  #     - step: Bindings_Delete
+  #       exampleFile: ..\examples\Bindings_Delete.json
+
+  # - scenario: CustomDomains
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}
+  #   steps:
+  #     - step: CustomDomains_CreateOrUpdate
+  #       exampleFile: ..\examples\CustomDomains_CreateOrUpdate.json
+  #     - step: CustomDomains_List
+  #       exampleFile: ..\examples\CustomDomains_List.json
+  #     - step: CustomDomains_Get
+  #       exampleFile: ..\examples\CustomDomains_Get.json
+  #     - step: CustomDomains_Update
+  #       exampleFile: ..\examples\CustomDomains_Update.json
+  #     - step: CustomDomains_Delete
+  #       exampleFile: ..\examples\CustomDomains_Delete.json
+
+# not create
+  # - scenario: BuildService
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}
+  #   steps:
+  #     - step: BuildService_GetBuild
+  #       exampleFile: ..\examples\BuildService_GetBuild.json
+  #     - step: BuildService_ListBuildResults
+  #       exampleFile: ..\examples\BuildService_ListBuildResults.json
+  #     - step: BuildService_GetBuildResult
+  #       exampleFile: ..\examples\BuildService_GetBuildResult.json
+  #     - step: BuildService_GetBuildResultLog
+  #       exampleFile: ..\examples\BuildService_GetBuildResultLog.json
+
+  #     - step: BuildService_ListBuildServices
+  #       exampleFile: ..\examples\BuildService_ListBuildServices.json
+  #     - step: BuildService_GetSupportedBuildpack
+  #       # variables:
+  #       #   buildpackName:
+  #       #     type: string
+  #       #     prefix: buildpac
+  #       exampleFile: ..\examples\BuildService_GetSupportedBuildpack.json
+  #     - step: BuildService_ListSupportedStacks
+  #       exampleFile: ..\examples\BuildService_ListSupportedStacks.json
+  #     - step: BuildService_GetSupportedStack
+  #       # variables:
+  #       #   stackName:
+  #       #     type: string
+  #       #     prefix: stacknam
+  #       exampleFile: ..\examples\BuildService_GetSupportedStack.json
+  #     - step: BuildService_GetBuildService
+  #       exampleFile: ..\examples\BuildService_GetBuildService.json
+  #     - step: BuildService_ListBuilds
+  #       exampleFile: ..\examples\BuildService_ListBuilds.json
+  #     - step: BuildService_ListSupportedBuildpacks
+  #       exampleFile: ..\examples\BuildService_ListSupportedBuildpacks.json
+  #     - step: BuildService_GetResourceUploadUrl
+        # exampleFile: ..\examples\BuildService_GetResourceUploadUrl.json
+
+
+  # - scenario: BuildServiceBuilder
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}
+  #   steps:
+  #     - step: BuildServiceBuilder_List
+  #       exampleFile: ..\examples\BuildServiceBuilder_List.json
+  #     - step: BuildServiceBuilder_Get
+  #       exampleFile: ..\examples\BuildServiceBuilder_Get.json
+  #     - step: BuildServiceBuilder_ListDeployments
+  #       exampleFile: ..\examples\BuildServiceBuilder_ListDeployments.json
+
+
+  # - scenario: BuildpackBinding
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}
+  #   steps:
+  #     - step: BuildpackBinding_CreateOrUpdate
+  #       exampleFile: ..\examples\BuildpackBinding_CreateOrUpdate.json
+  #     - step: BuildpackBinding_List
+  #       exampleFile: ..\examples\BuildpackBinding_List.json
+  #     - step: BuildpackBinding_Get
+  #       exampleFile: ..\examples\BuildpackBinding_Get.json
+  #     - step: BuildpackBinding_ListForCluster
+  #       exampleFile: ..\examples\BuildpackBinding_ListForCluster.json
+  #     - step: BuildpackBinding_Delete
+  #       exampleFile: ..\examples\BuildpackBinding_Delete.json
+
+  # - scenario: BuildServiceAgentPool
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}
+  #   steps:
+  #     - step: BuildServiceAgentPool_UpdatePut
+  #       exampleFile: ..\examples\BuildServiceAgentPool_UpdatePut.json
+  #     - step: BuildServiceAgentPool_List
+  #       exampleFile: ..\examples\BuildServiceAgentPool_List.json
+  #     - step: BuildServiceAgentPool_Get
+  #       exampleFile: ..\examples\BuildServiceAgentPool_Get.json
+
+# pass
+  - scenario: Gateways
+    description: Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}
+    steps:
+      - step: Gateways_List
+        exampleFile: ..\examples\Gateways_List.json
+      - step: Gateways_Get
+        exampleFile: ..\examples\Gateways_Get.json
+      - step: Gateways_UpdateCapacity
+        exampleFile: ..\examples\Gateway_Scale.json
+      - step: Gateways_ValidateDomain
+        exampleFile: ..\examples\Gateways_ValidateDomain.json
+      - step: Gateways_ListEnvSecrets
+        exampleFile: ..\examples\Gateways_ListEnvSecrets.json
+
+# pass
+  - scenario: GatewayRouteConfigs
+    description: Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}
+    steps:
+      - step: GatewayRouteConfigs_CreateOrUpdate
+        exampleFile: ..\examples\GatewayRouteConfigs_CreateOrUpdate.json
+      - step: GatewayRouteConfigs_List
+        exampleFile: ..\examples\GatewayRouteConfigs_List.json
+      - step: GatewayRouteConfigs_Get
+        exampleFile: ..\examples\GatewayRouteConfigs_Get.json
+      - step: GatewayRouteConfigs_Delete
+        exampleFile: ..\examples\GatewayRouteConfigs_Delete.json
+
+  # - scenario: GatewayCustomDomains
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}
+  #   steps:
+  #     - step: GatewayCustomDomains_CreateOrUpdate # Thumbprint '*' not found
+  #       exampleFile: ..\examples\GatewayCustomDomains_CreateOrUpdate.json
+  #     - step: GatewayCustomDomains_List
+  #       exampleFile: ..\examples\GatewayCustomDomains_List.json
+  #     - step: GatewayCustomDomains_Get
+  #       exampleFile: ..\examples\GatewayCustomDomains_Get.json
+  #     - step: GatewayCustomDomains_Delete
+  #       exampleFile: ..\examples\GatewayCustomDomains_Delete.json
+
+# pass
+  - scenario: ApplicationAccelerators
+    description: Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}
+    steps:
+      - step: ApplicationAccelerators_List
+        exampleFile: ..\examples\ApplicationAccelerators_List.json
+      - step: ApplicationAccelerators_Get
+        exampleFile: ..\examples\ApplicationAccelerators_Get.json
+
+
+  # - scenario: CustomizedAccelerators
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}
+  #   steps:
+  #     - step: CustomizedAccelerators_CreateOrUpdate # SSH auth
+  #       exampleFile: ..\examples\CustomizedAccelerators_CreateOrUpdate.json
+  #     - step: CustomizedAccelerators_List
+  #       exampleFile: ..\examples\CustomizedAccelerators_List.json
+  #     - step: CustomizedAccelerators_Get
+  #       exampleFile: ..\examples\CustomizedAccelerators_Get.json
+  #     - step: CustomizedAccelerators_Validate
+  #       exampleFile: ..\examples\CustomizedAccelerators_Validate.json
+  #     - step: CustomizedAccelerators_Delete
+  #       exampleFile: ..\examples\CustomizedAccelerators_Delete.json
+
+# pass
+  - scenario: PredefinedAccelerators
+    description: Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}
+    steps:
+      - step: PredefinedAccelerators_List
+        exampleFile: ..\examples\PredefinedAccelerators_List.json
+        # outputVariables:
+        #   predefinedAcceleratorName:
+        #     type: string
+        #     fromResponse: /value/0/name
+      - step: PredefinedAccelerators_Get
+        exampleFile: ..\examples\PredefinedAccelerators_Get.json
+      - step: PredefinedAccelerators_Disable
+        exampleFile: ..\examples\PredefinedAccelerators_Disable.json
+      - step: PredefinedAccelerators_Enable # Predefined accelerator not found
+        exampleFile: ..\examples\PredefinedAccelerators_Enable.json
+
+
+# pass
+  - scenario: ApiPortals
+    description: Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}
+    steps:
+      - step: ApiPortals_List
+        exampleFile: ..\examples\ApiPortals_List.json
+      - step: ApiPortals_Get
+        exampleFile: ..\examples\ApiPortals_Get.json
+      - step: ApiPortals_ValidateDomain
+        exampleFile: ..\examples\ApiPortals_ValidateDomain.json
+
+  # - scenario: ApiPortalCustomDomains
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}
+  #   steps:
+  #     - step: ApiPortalCustomDomains_CreateOrUpdate  # Thumbprint '' not found
+  #       exampleFile: ..\examples\ApiPortalCustomDomains_CreateOrUpdate.json
+  #     - step: ApiPortalCustomDomains_List
+  #       exampleFile: ..\examples\ApiPortalCustomDomains_List.json
+  #     - step: ApiPortalCustomDomains_Get
+  #       exampleFile: ..\examples\ApiPortalCustomDomains_Get.json
+  #     - step: ApiPortalCustomDomains_Delete
+  #       exampleFile: ..\examples\ApiPortalCustomDomains_Delete.json
+
+# pass
+  - scenario: ConfigurationServices
+    description: Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}
+    steps:
+      - step: ConfigurationServices_CreateOrUpdate # # https://github.com/Azure
+        exampleFile: ..\examples\ConfigurationServices_CreateOrUpdate.json
+      - step: ConfigurationServices_List
+        exampleFile: ..\examples\ConfigurationServices_List.json
+      - step: ConfigurationServices_Get
+        exampleFile: ..\examples\ConfigurationServices_Get.json
+      - step: ConfigurationServices_Validate
+        exampleFile: ..\examples\ConfigurationServices_Validate.json
+      - step: ConfigurationServices_Delete
+        exampleFile: ..\examples\ConfigurationServices_Delete.json
+
+
+
+
+# pass
+  - scenario: ApplicationLiveViews
+    description: Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}
+    steps:
+      - step: ApplicationLiveViews_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationLiveViews_CreateOrUpdate.json
+      - step: ApplicationLiveViews_List
+        exampleFile: ..\examples\ApplicationLiveViews_List.json
+      - step: ApplicationLiveViews_Get
+        exampleFile: ..\examples\ApplicationLiveViews_Get.json
+      - step: ApplicationLiveViews_Delete
+        exampleFile: ..\examples\ApplicationLiveView_Delete.json
+
+
+
+  # - scenario: Certificates
+  #   description: Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}
+  #   steps:
+  #     - step: Certificates_CreateOrUpdate
+  #       exampleFile: ..\examples\Certificates_CreateOrUpdate.json
+  #     - step: Certificates_List
+  #       exampleFile: ..\examples\Certificates_List.json
+  #     - step: Certificates_Get
+  #       exampleFile: ..\examples\Certificates_Get.json
+  #     - step: Certificates_Delete
+  #       exampleFile: ..\examples\Certificates_Delete.json
+
+# pass
+  - scenario: Storages
+    description: Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}
+    steps:
+      - step: Storages_CreateOrUpdate
+        exampleFile: ..\examples\Storages_CreateOrUpdate.json
+      - step: Storages_List
+        exampleFile: ..\examples\Storages_List.json
+      - step: Storages_Get
+        exampleFile: ..\examples\Storages_Get.json
+      - step: Storages_Delete
+        exampleFile: ..\examples\Storages_Delete.json
+
+
+
+# pass
+  - scenario: ServiceRegistries
+    description: Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}
+    steps:
+      - step: ServiceRegistries_CreateOrUpdate
+        exampleFile: ..\examples\ServiceRegistries_CreateOrUpdate.json
+      - step: ServiceRegistries_List
+        exampleFile: ..\examples\ServiceRegistries_List.json
+      - step: ServiceRegistries_Get
+        exampleFile: ..\examples\ServiceRegistries_Get.json
+      - step: ServiceRegistries_Delete
+        exampleFile: ..\examples\ServiceRegistries_Delete.json
+
+
+# pass
+  - scenario: DevToolPortals
+    description: Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}
+    steps:
+      - step: DevToolPortals_CreateOrUpdate
+        exampleFile: ..\examples\DevToolPortals_CreateOrUpdate.json
+        requestUpdate:
+          - remove: /DevToolPortalResource/properties/ssoProperties
+      - step: DevToolPortals_List
+        exampleFile: ..\examples\DevToolPortals_List.json
+      - step: DevToolPortals_Get
+        exampleFile: ..\examples\DevToolPortals_Get.json
+      - step: DevToolPortals_Delete
+        exampleFile: ..\examples\DevToolPortal_Delete.json
+
+
+# pass
+  - scenario: MonitoringSettings
+    description: Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default
+    steps:
+      - step: MonitoringSettings_UpdatePut
+        exampleFile: ..\examples\MonitoringSettings_UpdatePut.json
+      - step: MonitoringSettings_Get
+        exampleFile: ..\examples\MonitoringSettings_Get.json
+      - step: MonitoringSettings_UpdatePatch
+        exampleFile: ..\examples\MonitoringSettings_UpdatePatch.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.AppPlatform/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - step: RuntimeVersions_ListRuntimeVersions # Microsoft.AppPlatform/runtimeVersions
+        exampleFile: ..\examples\RuntimeVersions_ListRuntimeVersions.json
+      - step: Skus_List # Microsoft.AppPlatform/skus
+        exampleFile: ..\examples\Skus_List.json
+
+
+cleanUpSteps:
+  # - step: ApiPortals_Delete # Please unassign public endpoint before deleting API Portal
+  #   exampleFile: ..\examples\ApiPortals_Delete.json
+
+  - step: ApplicationAccelerators_Delete
+    exampleFile: ..\examples\ApplicationAccelerators_Delete.json
+
+  # - step: BuildServiceBuilder_Delete
+  #   exampleFile: ..\examples\BuildServiceBuilder_Delete.json
+  # - step: Deployments_Delete
+  #   exampleFile: ..\examples\Deployments_Delete.json
+
+  # - step: Gateways_Delete # Please unassign public endpoint before deleting Spring Cloud Gateway
+  #   exampleFile: ..\examples\Gateways_Delete.json
+
+  - step: Apps_Delete
+    exampleFile: ..\examples\Apps_Delete.json
+  - step: Services_Delete
+    exampleFile: ..\examples\Services_Delete.json
+
+# 72 / 145 = 49.6%
