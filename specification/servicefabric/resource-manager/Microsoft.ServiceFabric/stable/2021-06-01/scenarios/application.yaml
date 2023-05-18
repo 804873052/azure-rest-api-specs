@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  clusterName:
+    type: string
+    prefix: clustern
+  applicationName:
+    type: string
+    prefix: applicat
+  applicationTypeName:
+    type: string
+    prefix: applicat
+  serviceName:
+    type: string
+    prefix: servicen
+  version:
+    type: string
+    prefix: version
+
+prepareSteps:
+  - step: Clusters_CreateOrUpdate
+    exampleFile: ..\examples\ClusterPutOperation_example_min.json
+
+  - step: ApplicationTypes_CreateOrUpdate
+    exampleFile: ..\examples\ApplicationTypeNamePutOperation_example.json
+
+  - step: Applications_CreateOrUpdate
+    exampleFile: ..\examples\ApplicationPutOperation_example_min.json
+
+scenarios:
+# pass
+  - scenario: ApplicationTypes
+    description: Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}
+    steps:
+      - step: ApplicationTypes_List
+        exampleFile: ..\examples\ApplicationTypeNameListOperation_example.json
+      - step: ApplicationTypes_Get
+        exampleFile: ..\examples\ApplicationTypeNameGetOperation_example.json
+
+  - scenario: ApplicationTypeVersions
+    description: Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}
+    steps:
+ 
+      - step: ApplicationTypeVersions_List
+        exampleFile: ..\examples\ApplicationTypeVersionListOperation_example.json
+      - step: ApplicationTypeVersions_Get
+        exampleFile: ..\examples\ApplicationTypeVersionGetOperation_example.json
+      - step: ApplicationTypeVersions_Delete
+        exampleFile: ..\examples\ApplicationTypeVersionDeleteOperation_example.json
+
+  - scenario: Applications
+    description: Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}
+    steps:
+      - step: Applications_List
+        exampleFile: ..\examples\ApplicationListOperation_example.json
+      - step: Applications_Get
+        exampleFile: ..\examples\ApplicationGetOperation_example.json
+      - step: Applications_Update
+        exampleFile: ..\examples\ApplicationPatchOperation_example.json
+
+  - scenario: Services
+    description: Microsoft.ServiceFabric/clusters/{clusterName}/applications/{applicationName}/services/{serviceName}
+    steps:
+      - step: Services_CreateOrUpdate
+        exampleFile: ..\examples\ServicePutOperation_example_min.json
+      - step: Services_List
+        exampleFile: ..\examples\ServiceListOperation_example.json
+      - step: Services_Get
+        exampleFile: ..\examples\ServiceGetOperation_example.json
+      - step: Services_Update
+        exampleFile: ..\examples\ServicePatchOperation_example.json
+      - step: Services_Delete
+        exampleFile: ..\examples\ServiceDeleteOperation_example.json
+
+cleanUpSteps:
+  - step: ApplicationTypes_Delete
+    exampleFile: ..\examples\ApplicationTypeNameDeleteOperation_example.json
+  - step: Applications_Delete
+    exampleFile: ..\examples\ApplicationDeleteOperation_example.json

@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  clusterName:
+    type: string
+    prefix: clustern
+  applicationTypeName:
+    type: string
+    prefix: applicat
+
+prepareSteps:
+  - step: Clusters_CreateOrUpdate
+    exampleFile: ..\examples\ClusterPutOperation_example_min.json
+
+scenarios:
+  - scenario: Clusters
+    description: Microsoft.ServiceFabric/clusters/{clusterName}
+    steps:
+      - step: Clusters_List
+        exampleFile: ..\examples\ClusterListOperation_example.json
+      - step: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\ClusterListByResourceGroupOperation_example.json
+      - step: Clusters_Get
+        exampleFile: ..\examples\ClusterGetOperation_example.json
+      - step: Clusters_Update
+        exampleFile: ..\examples\ClusterPatchOperation_example.json
+        requestUpdate:
+          - remove: /parameters/properties
+      - step: Clusters_ListUpgradableVersions
+        exampleFile: ..\examples\ListUpgradableVersionsPath_example.json
+        requestUpdate:
+          - replace: /versionsDescription/targetVersion
+            value: 9.1.1653.9590
+
+  - scenario: ClusterVersions
+    description: Microsoft.ServiceFabric/locations/{location}/clusterVersions/{clusterVersion}
+    steps:
+      - step: ClusterVersions_List
+        exampleFile: ..\examples\ClusterVersionsList_example.json
+      - step: ClusterVersions_Get
+        exampleFile: ..\examples\ClusterVersionsGet_example.json
+      - step: ClusterVersions_ListByEnvironment
+        exampleFile: ..\examples\ClusterVersionsListByEnvironment.json
+      - step: ClusterVersions_GetByEnvironment
+        exampleFile: ..\examples\ClusterVersionsGetByEnvironment_example.json
+
+  - scenario: ApplicationTypes
+    description: Microsoft.ServiceFabric/clusters/{clusterName}/applicationTypes/{applicationTypeName}
+    steps:
+      - step: ApplicationTypes_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationTypeNamePutOperation_example.json
+      - step: ApplicationTypes_List
+        exampleFile: ..\examples\ApplicationTypeNameListOperation_example.json
+      - step: ApplicationTypes_Get
+        exampleFile: ..\examples\ApplicationTypeNameGetOperation_example.json
+      - step: ApplicationTypes_Delete
+        exampleFile: ..\examples\ApplicationTypeNameDeleteOperation_example.json
+
+  - scenario: Operations
+    description: Microsoft.ServiceFabric/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+
+cleanUpSteps:
+  - step: Clusters_Delete
+    exampleFile: ..\examples\ClusterDeleteOperation_example.json

@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  clusterName:
+    type: string
+    prefix: clustern
+  applicationName:
+    type: string
+    prefix: applicat
+  applicationTypeName:
+    type: string
+    prefix: applicat
+  serviceName:
+    type: string
+    prefix: servicen
+  version:
+    type: string
+    prefix: version
+  clusterVersion:
+    type: string
+    prefix: clusterv
+  environment:
+    type: string
+    prefix: environm
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Clusters_CreateOrUpdate
+        exampleFile: ..\examples\ClusterPutOperation_example_min.json
+      - operationId: Clusters_List
+        exampleFile: ..\examples\ClusterListOperation_example.json
+      - operationId: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\ClusterListByResourceGroupOperation_example.json
+      - operationId: Clusters_Get
+        exampleFile: ..\examples\ClusterGetOperation_example.json
+      - operationId: Clusters_Update
+        exampleFile: ..\examples\ClusterPatchOperation_example.json
+      - operationId: Clusters_ListUpgradableVersions
+        exampleFile: ..\examples\ListUpgradableVersionsPath_example.json
+
+      - operationId: Applications_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationPutOperation_example_min.json
+      - operationId: Applications_List
+        exampleFile: ..\examples\ApplicationListOperation_example.json
+      - operationId: Applications_Get
+        exampleFile: ..\examples\ApplicationGetOperation_example.json
+      - operationId: Applications_Update
+        exampleFile: ..\examples\ApplicationPatchOperation_example.json
+
+      - operationId: ApplicationTypes_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationTypeNamePutOperation_example.json
+      - operationId: ApplicationTypes_List
+        exampleFile: ..\examples\ApplicationTypeNameListOperation_example.json
+      - operationId: ApplicationTypes_Get
+        exampleFile: ..\examples\ApplicationTypeNameGetOperation_example.json
+
+      - operationId: Services_CreateOrUpdate
+        exampleFile: ..\examples\ServicePutOperation_example_min.json
+      - operationId: Services_List
+        exampleFile: ..\examples\ServiceListOperation_example.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\ServiceGetOperation_example.json
+      - operationId: Services_Update
+        exampleFile: ..\examples\ServicePatchOperation_example.json
+
+      - operationId: ApplicationTypeVersions_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationTypeVersionPutOperation_example.json
+      - operationId: ApplicationTypeVersions_List
+        exampleFile: ..\examples\ApplicationTypeVersionListOperation_example.json
+      - operationId: ApplicationTypeVersions_Get
+        exampleFile: ..\examples\ApplicationTypeVersionGetOperation_example.json
+        
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+
+      - operationId: ClusterVersions_List
+        exampleFile: ..\examples\ClusterVersionsList_example.json
+      - operationId: ClusterVersions_Get
+        exampleFile: ..\examples\ClusterVersionsGet_example.json
+      - operationId: ClusterVersions_ListByEnvironment
+        exampleFile: ..\examples\ClusterVersionsListByEnvironment.json
+      - operationId: ClusterVersions_GetByEnvironment
+        exampleFile: ..\examples\ClusterVersionsGetByEnvironment_example.json
+
+      - operationId: ApplicationTypeVersions_Delete
+        exampleFile: ..\examples\ApplicationTypeVersionDeleteOperation_example.json
+      - operationId: Services_Delete
+        exampleFile: ..\examples\ServiceDeleteOperation_example.json
+      - operationId: ApplicationTypes_Delete
+        exampleFile: ..\examples\ApplicationTypeNameDeleteOperation_example.json
+      - operationId: Applications_Delete
+        exampleFile: ..\examples\ApplicationDeleteOperation_example.json
+      - operationId: Clusters_Delete
+        exampleFile: ..\examples\ClusterDeleteOperation_example.json
