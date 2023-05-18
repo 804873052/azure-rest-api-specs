@@ -1,0 +1,126 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  scope:
+    type: string
+    prefix: scope
+  name:
+    type: string
+    prefix: name
+  exportName:
+    type: string
+    prefix: exportna
+  billingAccountId:
+    type: string
+    prefix: billinga
+  operationId:
+    type: string
+    prefix: operatio
+  billingProfileId:
+    type: string
+    prefix: billingp
+  billingAccountName:
+    type: string
+    prefix: billinga
+  billingProfileName:
+    type: string
+    prefix: billingp
+  savingsPlanOrderId:
+    type: string
+    prefix: savingsp
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: ScheduledActions_CheckNameAvailability
+        exampleFile: >-
+          ..\examples\scheduledActions\checkNameAvailability-private-scheduledAction.json
+      - operationId: ScheduledActions_CheckNameAvailabilityByScope
+        exampleFile: >-
+          ..\examples\scheduledActions\checkNameAvailability-shared-scheduledAction.json
+
+      - operationId: Exports_CreateOrUpdate
+        exampleFile: ..\examples\ExportCreateOrUpdateBySubscription.json
+      - operationId: Exports_List
+        exampleFile: ..\examples\ExportsGetBySubscription.json
+      - operationId: Exports_GetExecutionHistory
+        exampleFile: ..\examples\ExportRunHistoryGetBySubscription.json
+      - operationId: Exports_Get
+        exampleFile: ..\examples\ExportGetBySubscription.json
+      - operationId: Exports_Execute
+        exampleFile: ..\examples\ExportRunBySubscription.json
+
+      - operationId: ScheduledActions_CreateOrUpdateByScope
+        exampleFile: >-
+          ..\examples\scheduledActions\scheduledAction-createOrUpdate-shared.json
+      - operationId: ScheduledActions_List
+        exampleFile: ..\examples\scheduledActions\scheduledActions-list-private.json
+      - operationId: ScheduledActions_ListByScope
+        exampleFile: ..\examples\scheduledActions\scheduledActions-list-shared.json
+      - operationId: ScheduledActions_GetByScope
+        exampleFile: ..\examples\scheduledActions\scheduledAction-get-shared.json
+      - operationId: ScheduledActions_RunByScope
+        exampleFile: ..\examples\scheduledActions\scheduledAction-sendNow-shared.json
+      - operationId: ScheduledActions_CreateOrUpdate
+        exampleFile: >-
+          ..\examples\scheduledActions\scheduledAction-createOrUpdate-private.json
+      - operationId: ScheduledActions_Get
+        exampleFile: ..\examples\scheduledActions\scheduledAction-get-private.json
+      - operationId: ScheduledActions_Run
+        exampleFile: ..\examples\scheduledActions\scheduledAction-sendNow-private.json
+        
+      - operationId: BenefitUtilizationSummaries_ListByBillingProfileId
+        exampleFile: >-
+          ..\examples\BenefitUtilizationSummaries\SavingsPlan-BillingProfile.json
+      - operationId: BenefitUtilizationSummaries_ListByBillingAccountId
+        exampleFile: >-
+          ..\examples\BenefitUtilizationSummaries\SavingsPlan-BillingAccount.json
+
+      - operationId: PriceSheet_Download
+        variables:
+          invoiceName:
+            type: string
+            prefix: invoicen
+        exampleFile: ..\examples\PricesheetDownload.json
+      - operationId: PriceSheet_DownloadByBillingProfile
+        exampleFile: ..\examples\PricesheetDownloadByBillingProfile.json
+
+      - operationId: BenefitUtilizationSummaries_ListBySavingsPlanOrder
+        exampleFile: >-
+          ..\examples\BenefitUtilizationSummaries\SavingsPlan-SavingsPlanOrderId-Daily.json
+      - operationId: BenefitUtilizationSummaries_ListBySavingsPlanId
+        variables:
+          savingsPlanId:
+            type: string
+            prefix: savingsp
+        exampleFile: >-
+          ..\examples\BenefitUtilizationSummaries\SavingsPlan-SavingsPlanId-Monthly.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationList.json
+
+      - operationId: BenefitRecommendations_List
+        exampleFile: ..\examples\BenefitRecommendationsByBillingAccount.json
+
+      - operationId: GenerateCostDetailsReport_GetOperationResults
+        exampleFile: ..\examples\CostDetailsOperationResultsBySubscriptionScope.json
+      - operationId: GenerateCostDetailsReport_CreateOperation
+        exampleFile: ..\examples\GenerateCostDetailsReportByBillingProfileAndInvoiceId.json
+
+      - operationId: GenerateDetailedCostReport_CreateOperation
+        exampleFile: >-
+          ..\examples\GenerateDetailedCostReportByBillingProfileAndInvoiceId.json
+
+      - operationId: GenerateDetailedCostReportOperationResults_Get
+        exampleFile: >-
+          ..\examples\GenerateDetailedCostReportOperationResultsBySubscriptionScope.json
+
+      - operationId: GenerateDetailedCostReportOperationStatus_Get
+        exampleFile: >-
+          ..\examples\GenerateDetailedCostReportOperationStatusBySubscriptionScope.json
+
+      - operationId: ScheduledActions_Delete
+        exampleFile: ..\examples\scheduledActions\scheduledAction-delete-private.json
+      - operationId: ScheduledActions_DeleteByScope
+        exampleFile: ..\examples\scheduledActions\scheduledAction-delete-shared.json
+      - operationId: Exports_Delete
+        exampleFile: ..\examples\ExportDeleteBySubscription.json

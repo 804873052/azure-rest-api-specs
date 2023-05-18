@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: GenerateDetailedCostReport
+    description: Microsoft.CostManagement/generateDetailedCostReport
+    steps:
+      - step: GenerateDetailedCostReport_CreateOperation
+        exampleFile: ..\examples\GenerateDetailedCostReportByBillingProfileAndInvoiceId.json
+
+      - step: GenerateDetailedCostReportOperationResults_Get # Microsoft.CostManagement/operationResults/{operationId}
+        exampleFile: ..\examples\GenerateDetailedCostReportOperationResultsBySubscriptionScope.json
+
+      - step: GenerateDetailedCostReportOperationStatus_Get # Microsoft.CostManagement/operationStatus/{operationId}
+        exampleFile: ..\examples\GenerateDetailedCostReportOperationStatusBySubscriptionScope.json

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: PriceSheet
+    description: Microsoft.CostManagement/pricesheets/default/download
+    steps:
+      - step: PriceSheet_Download
+        variables:
+          invoiceName:
+            type: string
+            prefix: invoicen
+        exampleFile: ..\examples\PricesheetDownload.json
+      - step: PriceSheet_DownloadByBillingProfile
+        exampleFile: ..\examples\PricesheetDownloadByBillingProfile.json

@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  viewName:
+    type: string
+    prefix: viewna
+  viewByScope:
+    type: string
+    prefix: viewbyscope
+
+scenarios:
+  - scenario: Views
+    description: Microsoft.CostManagement/views/{viewName}
+    steps:
+      - step: Views_CreateOrUpdate
+        exampleFile: ../examples/PrivateViewCreateOrUpdate.json
+      - step: Views_List
+        exampleFile: ../examples/PrivateViewList.json
+      - step: Views_Get
+        exampleFile: ../examples/PrivateView.json
+      - step: Views_Delete
+        exampleFile: ../examples/PrivateViewDelete.json
+
+  - scenario: ViewsByScope
+    description: /{scope}/providers/Microsoft.CostManagement/views/{viewName}
+    variables:
+      viewName: $(viewByScope)
+    steps:
+      - step: Views_CreateOrUpdateByScope
+        exampleFile: ../examples/ViewCreateOrUpdateByResourceGroup.json
+      - step: Views_ListByScope
+        exampleFile: ../examples/ViewListByResourceGroup.json
+      - step: Views_GetByScope
+        exampleFile: ../examples/ViewByResourceGroup.json
+      - step: Views_DeleteByScope
+        exampleFile: ../examples/ViewDeleteByResourceGroup.json
+
+  - scenario: Alerts
+    description: Microsoft.CostManagement/alerts/{alertId}
+    steps:
+      - step: Alerts_List
+        exampleFile: ../examples/SubscriptionAlerts.json
+      - step: Alerts_Get
+        exampleFile: ../examples/SingleSubscriptionAlert.json
+      - step: Alerts_Dismiss
+        exampleFile: ../examples/DismissSubscriptionAlerts.json
+      - step: Alerts_ListExternal
+        exampleFile: ../examples/ExternalSubscriptionAlerts.json
+
+  - scenario: Forecast
+    description: Microsoft.CostManagement/forecast
+    steps:
+      - step: Forecast_Usage
+        exampleFile: ../examples/SubscriptionForecast.json
+      - step: Forecast_ExternalCloudProviderUsage
+        exampleFile: ../examples/ExternalSubscriptionForecast.json
+
+
+  - scenario: Dimensions
+    description: Microsoft.CostManagement/dimensions
+    steps:
+      - step: Dimensions_List
+        exampleFile: ../examples/MCACustomerDimensionsList.json
+      - step: Dimensions_ByExternalCloudProviderType
+        exampleFile: ../examples/ExternalSubscriptionsDimensions.json
+
+  - scenario: Query
+    description: Microsoft.CostManagement/query
+    steps:
+      - step: Query_Usage
+        exampleFile: ../examples/SubscriptionQuery.json
+      - step: Query_UsageByExternalCloudProviderType
+        exampleFile: ../examples/ExternalSubscriptionsQuery.json
+
+
+  - scenario: GenerateReservationDetailsReport
+    description: Microsoft.CostManagement/generateReservationDetailsReport
+    steps:
+      - step: GenerateReservationDetailsReport_ByBillingAccountId
+        exampleFile: ../examples/GenerateReservationDetailsReportByBillingAccount.json
+      - step: GenerateReservationDetailsReport_ByBillingProfileId
+        exampleFile: ../examples/GenerateReservationDetailsReportByBillingProfile.json

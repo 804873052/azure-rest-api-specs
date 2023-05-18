@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  name:
+    type: string
+    prefix: name
+  nameByScope:
+    type: string
+    prefix: namebyscope
+
+scenarios:
+  - scenario: ScheduledActions
+    description: /providers/Microsoft.CostManagement/scheduledActions/{name}
+    steps:
+      - step: ScheduledActions_CheckNameAvailability
+        exampleFile: ..\examples\scheduledActions\checkNameAvailability-private-scheduledAction.json
+      - step: ScheduledActions_CreateOrUpdate
+        exampleFile: ..\examples\scheduledActions\scheduledAction-createOrUpdate-private.json
+      - step: ScheduledActions_List
+        exampleFile: ..\examples\scheduledActions\scheduledActions-list-private.json
+      - step: ScheduledActions_Get
+        exampleFile: ..\examples\scheduledActions\scheduledAction-get-private.json
+      - step: ScheduledActions_Run
+        exampleFile: ..\examples\scheduledActions\scheduledAction-sendNow-private.json
+      - step: ScheduledActions_Delete
+        exampleFile: ..\examples\scheduledActions\scheduledAction-delete-private.json
+
+  - scenario: ScheduledActionsByScope
+    description: /{scope}/providers/Microsoft.CostManagement/scheduledActions/{name}
+    variables:
+      name: $(nameByScope)
+    steps:
+      - step: ScheduledActions_CheckNameAvailabilityByScope
+        exampleFile: ..\examples\scheduledActions\checkNameAvailability-shared-scheduledAction.json
+      - step: ScheduledActions_CreateOrUpdateByScope
+        exampleFile: ..\examples\scheduledActions\scheduledAction-createOrUpdate-shared.json
+      - step: ScheduledActions_ListByScope
+        exampleFile: ..\examples\scheduledActions\scheduledActions-list-shared.json
+      - step: ScheduledActions_GetByScope
+        exampleFile: ..\examples\scheduledActions\scheduledAction-get-shared.json
+      - step: ScheduledActions_RunByScope
+        exampleFile: ..\examples\scheduledActions\scheduledAction-sendNow-shared.json
+      - step: ScheduledActions_DeleteByScope
+        exampleFile: ..\examples\scheduledActions\scheduledAction-delete-shared.json

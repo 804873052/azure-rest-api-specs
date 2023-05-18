@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: BenefitRecommendations
+    description: Microsoft.CostManagement/benefitRecommendations
+    steps:
+      - step: BenefitRecommendations_List
+        exampleFile: ..\examples\BenefitRecommendationsByBillingAccount.json
+
+  - scenario: BenefitUtilizationSummaries
+    description: Microsoft.CostManagement/benefitUtilizationSummaries
+    steps:
+      - step: BenefitUtilizationSummaries_ListByBillingProfileId
+        exampleFile: ..\examples\BenefitUtilizationSummaries\SavingsPlan-BillingProfile.json
+      - step: BenefitUtilizationSummaries_ListByBillingAccountId
+        exampleFile: ..\examples\BenefitUtilizationSummaries\SavingsPlan-BillingAccount.json
+      - step: BenefitUtilizationSummaries_ListBySavingsPlanOrder
+        exampleFile: ..\examples\BenefitUtilizationSummaries\SavingsPlan-SavingsPlanOrderId-Daily.json
+      - step: BenefitUtilizationSummaries_ListBySavingsPlanId
+        variables:
+          savingsPlanId:
+            type: string
+            prefix: savingsp
+        exampleFile: ..\examples\BenefitUtilizationSummaries\SavingsPlan-SavingsPlanId-Monthly.json
