@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  diagnosticsResourceName:
+    type: string
+    prefix: diagnosticna
+
+scenarios:
+  - scenario: Operations
+    description: Microsoft.Help/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ../examples/ListOperations.json
+
+  - scenario: Diagnostics
+    description: Microsoft.Help/diagnostics/{diagnosticsResourceName}
+    steps:
+      - step: Create_VirtualNetwork
+        armTemplate: ./templates/Create_VirtualNetwork.json
+
+      - step: Diagnostics_CheckNameAvailability
+        exampleFile: ../examples/CheckNameAvailabilityForDiagnosticWhenNameIsAvailable.json
+        requestUpdate:
+          - replace: /scope
+            value: $(virtualNetworkId)
+          - replace: /CheckNameAvailabilityRequest/name
+            value: $(diagnosticsResourceName)
+      - step: Diagnostics_Create
+        exampleFile: ../examples/CreateDiagnosticForKeyVaultResource.json
+        requestUpdate:
+          - replace: /scope
+            value: $(virtualNetworkId)
+      - step: Diagnostics_Get
+        exampleFile: ../examples/GetDiagnosticForKeyVaultResource.json
+        requestUpdate:
+          - replace: /scope
+            value: $(virtualNetworkId)
+
+  - scenario: DiscoverySolution
+    description: Microsoft.Help/discoverySolutions
+    steps:
+      - step: DiscoverySolution_List
+        exampleFile: ../examples/ListDiscoverySolutionsForKeyVaultResource.json
+        requestUpdate:
+          - replace: /scope
+            value: subscriptions/$(subscriptionId)
+        
