@@ -1,0 +1,56 @@
+
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "galleryName": {
+            "defaultValue": "gallerynam5BRggA",
+            "type": "string"
+        },
+        "imageName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/galleries",
+            "apiVersion": "2022-03-03",
+            "name": "[parameters('galleryName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "description": "This is the gallery description.",
+                "identifier": {}
+            }
+        },
+        {
+            "type": "Microsoft.Compute/galleries/images",
+            "apiVersion": "2022-03-03",
+            "name": "[concat(parameters('galleryName'),'/', parameters('imageName'))]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/galleries', parameters('galleryName'))]"
+            ],
+            "properties": {
+                "hyperVGeneration": "V1",
+                "architecture": "x64",
+                "osType": "Windows",
+                "osState": "Generalized",
+                "identifier": {
+                    "publisher": "myPublisherName",
+                    "offer": "myOfferName",
+                    "sku": "mySkuName"
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "galleryId": {
+          "value": "[resourceId('Microsoft.Compute/galleries', parameters('galleryName'))]",
+          "type": "string"
+        }
+    }
+}

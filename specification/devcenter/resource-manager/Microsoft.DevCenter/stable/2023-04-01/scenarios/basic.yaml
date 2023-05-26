@@ -1,0 +1,221 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  devCenterName:
+    type: string
+    prefix: devcente
+  projectName:
+    type: string
+    prefix: projectn
+  environmentTypeName:
+    type: string
+    prefix: environm
+  galleryName:
+    type: string
+    prefix: galleryn
+  catalogName:
+    type: string
+    prefix: catalogn
+  attachedNetworkConnectionName:
+    type: string
+    prefix: attached
+  imageName:
+    type: string
+    prefix: imagenam
+  networkConnectionName:
+    type: string
+    prefix: networkc
+
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: CheckNameAvailability_Execute
+        exampleFile: ..\examples\CheckNameAvailability.json
+
+      - operationId: DevCenters_CreateOrUpdate
+        exampleFile: ..\examples\DevCenters_Create.json
+      - operationId: DevCenters_ListBySubscription
+        exampleFile: ..\examples\DevCenters_ListBySubscription.json
+      - operationId: DevCenters_ListByResourceGroup
+        exampleFile: ..\examples\DevCenters_ListByResourceGroup.json
+      - operationId: DevCenters_Get
+        exampleFile: ..\examples\DevCenters_Get.json
+      - operationId: DevCenters_Update
+        exampleFile: ..\examples\DevCenters_Patch.json
+
+      - operationId: Projects_CreateOrUpdate
+        exampleFile: ..\examples\Projects_Put.json
+      - operationId: Projects_ListBySubscription
+        exampleFile: ..\examples\Projects_ListBySubscription.json
+      - operationId: Projects_ListByResourceGroup
+        exampleFile: ..\examples\Projects_ListByResourceGroup.json
+      - operationId: Projects_Get
+        exampleFile: ..\examples\Projects_Get.json
+      - operationId: Projects_Update
+        exampleFile: ..\examples\Projects_Patch.json
+
+      - operationId: Pools_CreateOrUpdate
+        exampleFile: ..\examples\Pools_Put.json
+      - operationId: Pools_ListByProject
+        exampleFile: ..\examples\Pools_List.json
+      - operationId: Pools_Get
+        exampleFile: ..\examples\Pools_Get.json
+      - operationId: Pools_Update
+        exampleFile: ..\examples\Pools_Patch.json
+      - operationId: Pools_RunHealthChecks
+        variables:
+          poolName:
+            type: string
+            prefix: poolname
+        exampleFile: ..\examples\Pools_RunHealthChecks.json
+
+      - operationId: NetworkConnections_CreateOrUpdate
+        exampleFile: ..\examples\NetworkConnections_Put.json
+      - operationId: NetworkConnections_ListBySubscription
+        exampleFile: ..\examples\NetworkConnections_ListBySubscription.json
+      - operationId: NetworkConnections_ListHealthDetails
+        exampleFile: ..\examples\NetworkConnections_ListHealthDetails.json
+      - operationId: NetworkConnections_ListOutboundNetworkDependenciesEndpoints
+        exampleFile: >-
+          ..\examples\NetworkConnections_ListOutboundNetworkDependenciesEndpoints.json
+      - operationId: NetworkConnections_GetHealthDetails
+        exampleFile: ..\examples\NetworkConnections_GetHealthDetails.json
+      - operationId: NetworkConnections_ListByResourceGroup
+        exampleFile: ..\examples\NetworkConnections_ListByResourceGroup.json
+      - operationId: NetworkConnections_Get
+        exampleFile: ..\examples\NetworkConnections_Get.json
+      - operationId: NetworkConnections_Update
+        exampleFile: ..\examples\NetworkConnections_Patch.json
+      - operationId: NetworkConnections_RunHealthChecks
+        exampleFile: ..\examples\NetworkConnections_RunHealthChecks.json
+
+      - operationId: Galleries_CreateOrUpdate
+        exampleFile: ..\examples\Galleries_Create.json
+      - operationId: Galleries_ListByDevCenter
+        exampleFile: ..\examples\Galleries_List.json
+      - operationId: Galleries_Get
+        exampleFile: ..\examples\Galleries_Get.json
+
+      - operationId: Catalogs_CreateOrUpdate
+        exampleFile: ..\examples\Catalogs_CreateGitHub.json
+      - operationId: Catalogs_ListByDevCenter
+        exampleFile: ..\examples\Catalogs_List.json
+      - operationId: Catalogs_Get
+        exampleFile: ..\examples\Catalogs_Get.json
+      - operationId: Catalogs_Update
+        exampleFile: ..\examples\Catalogs_Patch.json
+      - operationId: Catalogs_Sync
+        exampleFile: ..\examples\Catalogs_Sync.json
+
+      - operationId: ProjectEnvironmentTypes_CreateOrUpdate
+        exampleFile: ..\examples\ProjectEnvironmentTypes_Put.json
+      - operationId: ProjectEnvironmentTypes_List
+        exampleFile: ..\examples\ProjectEnvironmentTypes_List.json
+      - operationId: ProjectEnvironmentTypes_Get
+        exampleFile: ..\examples\ProjectEnvironmentTypes_Get.json
+      - operationId: ProjectEnvironmentTypes_Update
+        exampleFile: ..\examples\ProjectEnvironmentTypes_Patch.json
+
+      - operationId: EnvironmentTypes_CreateOrUpdate
+        exampleFile: ..\examples\EnvironmentTypes_Put.json
+      - operationId: EnvironmentTypes_ListByDevCenter
+        exampleFile: ..\examples\EnvironmentTypes_List.json
+      - operationId: EnvironmentTypes_Get
+        exampleFile: ..\examples\EnvironmentTypes_Get.json
+      - operationId: EnvironmentTypes_Update
+        exampleFile: ..\examples\EnvironmentTypes_Patch.json
+
+      - operationId: DevBoxDefinitions_CreateOrUpdate
+        exampleFile: ..\examples\DevBoxDefinitions_Create.json
+      - operationId: DevBoxDefinitions_ListByDevCenter
+        exampleFile: ..\examples\DevBoxDefinitions_ListByDevCenter.json
+      - operationId: DevBoxDefinitions_ListByProject
+        exampleFile: ..\examples\DevBoxDefinitions_ListByProject.json
+      - operationId: DevBoxDefinitions_GetByProject
+        exampleFile: ..\examples\DevBoxDefinitions_GetByProject.json
+      - operationId: DevBoxDefinitions_Get
+        exampleFile: ..\examples\DevBoxDefinitions_Get.json
+      - operationId: DevBoxDefinitions_Update
+        exampleFile: ..\examples\DevBoxDefinitions_Patch.json
+
+      - operationId: Schedules_CreateOrUpdate
+        exampleFile: ..\examples\Schedules_CreateDailyShutdownPoolSchedule.json
+      - operationId: Schedules_ListByPool
+        exampleFile: ..\examples\Schedules_ListByPool.json
+      - operationId: Schedules_Get
+        exampleFile: ..\examples\Schedules_Get.json
+      - operationId: Schedules_Update
+        exampleFile: ..\examples\Schedules_Patch.json
+
+      - operationId: AttachedNetworks_CreateOrUpdate
+        exampleFile: ..\examples\AttachedNetworks_Create.json
+      - operationId: AttachedNetworks_ListByDevCenter
+        exampleFile: ..\examples\AttachedNetworks_ListByDevCenter.json
+      - operationId: AttachedNetworks_ListByProject
+        exampleFile: ..\examples\AttachedNetworks_ListByProject.json
+      - operationId: AttachedNetworks_GetByDevCenter
+        exampleFile: ..\examples\AttachedNetworks_GetByDevCenter.json
+      - operationId: AttachedNetworks_GetByProject
+        exampleFile: ..\examples\AttachedNetworks_GetByProject.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_Get.json
+
+      - operationId: OperationStatuses_Get
+        variables:
+          operationId:
+            type: string
+            prefix: operatio
+        exampleFile: ..\examples\OperationStatus_Get.json
+
+      - operationId: Usages_ListByLocation
+        exampleFile: ..\examples\Usages_ListByLocation.json
+
+      - operationId: Skus_ListBySubscription
+        exampleFile: ..\examples\Skus_ListBySubscription.json
+
+      - operationId: Images_ListByGallery
+        exampleFile: ..\examples\Images_ListByGallery.json
+      - operationId: Images_Get
+        exampleFile: ..\examples\Images_Get.json
+
+      - operationId: ImageVersions_ListByImage
+        exampleFile: ..\examples\ImageVersions_List.json
+      - operationId: ImageVersions_Get
+        variables:
+          versionName:
+            type: string
+            prefix: versionn
+        exampleFile: ..\examples\ImageVersions_Get.json
+
+      - operationId: Images_ListByDevCenter
+        exampleFile: ..\examples\Images_ListByDevCenter.json
+        
+      - operationId: ProjectAllowedEnvironmentTypes_List
+        exampleFile: ..\examples\ProjectAllowedEnvironmentTypes_List.json
+      - operationId: ProjectAllowedEnvironmentTypes_Get
+        exampleFile: ..\examples\ProjectAllowedEnvironmentTypes_Get.json
+
+      - operationId: AttachedNetworks_Delete
+        exampleFile: ..\examples\AttachedNetworks_Delete.json
+      - operationId: Schedules_Delete
+        exampleFile: ..\examples\Schedules_Delete.json
+      - operationId: DevBoxDefinitions_Delete
+        exampleFile: ..\examples\DevBoxDefinitions_Delete.json
+      - operationId: EnvironmentTypes_Delete
+        exampleFile: ..\examples\EnvironmentTypes_Delete.json
+      - operationId: ProjectEnvironmentTypes_Delete
+        exampleFile: ..\examples\ProjectEnvironmentTypes_Delete.json
+      - operationId: Catalogs_Delete
+        exampleFile: ..\examples\Catalogs_Delete.json
+      - operationId: Galleries_Delete
+        exampleFile: ..\examples\Galleries_Delete.json
+      - operationId: NetworkConnections_Delete
+        exampleFile: ..\examples\NetworkConnections_Delete.json
+      - operationId: Pools_Delete
+        exampleFile: ..\examples\Pools_Delete.json
+      - operationId: Projects_Delete
+        exampleFile: ..\examples\Projects_Delete.json
+      - operationId: DevCenters_Delete
+        exampleFile: ..\examples\DevCenters_Delete.json
+#  42 / 79 = 53%

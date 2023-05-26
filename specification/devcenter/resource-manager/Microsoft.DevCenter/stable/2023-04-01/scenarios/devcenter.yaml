@@ -1,0 +1,337 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  devCenterName:
+    type: string
+    prefix: devcente
+  projectName:
+    type: string
+    prefix: projectn
+  environmentTypeName:
+    type: string
+    prefix: environm
+  galleryName:
+    type: string
+    prefix: galleryn
+  catalogName:
+    type: string
+    prefix: catalogn
+  attachedNetworkConnectionName:
+    type: string
+    prefix: attached
+  imageName:
+    type: string
+    prefix: imagenam
+  networkConnectionName:
+    type: string
+    prefix: networkc
+
+prepareSteps:
+  - step: CheckNameAvailability_Execute # Microsoft.DevCenter/checkNameAvailability
+    exampleFile: ..\examples\CheckNameAvailability.json
+    requestUpdate:
+      - replace: /nameAvailabilityRequest/name
+        value: $(devCenterName)
+
+  - step: DevCenters_CreateOrUpdate
+    exampleFile: ..\examples\DevCenters_Create.json
+    outputVariables:
+      devcenterId:
+        type: string
+        fromResponse: /id
+
+  - step: Projects_CreateOrUpdate
+    exampleFile: ..\examples\Projects_Put.json
+    requestUpdate:
+      - replace: /body/properties/devCenterId
+        value: $(devcenterId)
+
+  - step: Create_Subnet
+    armTemplate: ./templates/Create_Subnet.json
+  - step: NetworkConnections_CreateOrUpdate
+    exampleFile: ..\examples\NetworkConnections_Put.json
+    requestUpdate:
+      - replace: /body/properties/subnetId
+        value: $(subnetId)
+    outputVariables:
+      networkConnectionId:
+        type: string
+        fromResponse: /id
+  - step: AttachedNetworks_CreateOrUpdate # need networkConnection
+    exampleFile: ..\examples\AttachedNetworks_Create.json
+    requestUpdate:
+      - replace: /body/properties/networkConnectionId
+        value: $(networkConnectionId)
+
+scenarios:
+# pass
+  - scenario: DevCenters
+    description: Microsoft.DevCenter/devcenters/{devCenterName}
+    steps:
+      - step: DevCenters_ListBySubscription
+        exampleFile: ..\examples\DevCenters_ListBySubscription.json
+      - step: DevCenters_ListByResourceGroup
+        exampleFile: ..\examples\DevCenters_ListByResourceGroup.json
+      - step: DevCenters_Get
+        exampleFile: ..\examples\DevCenters_Get.json
+      - step: DevCenters_Update
+        exampleFile: ..\examples\DevCenters_Patch.json
+
+# pass
+  - scenario: Projects
+    description: Microsoft.DevCenter/projects/{projectName}
+    steps:
+
+      - step: Projects_ListBySubscription
+        exampleFile: ..\examples\Projects_ListBySubscription.json
+      - step: Projects_ListByResourceGroup
+        exampleFile: ..\examples\Projects_ListByResourceGroup.json
+      - step: Projects_Get
+        exampleFile: ..\examples\Projects_Get.json
+      - step: Projects_Update
+        exampleFile: ..\examples\Projects_Patch.json
+
+
+  # - scenario: Galleries
+  #   description: Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}
+  #   steps:
+  #     - step: Create_Gallery
+  #       armTemplate: ./templates/Create_Gallery.json
+  #     - step: Galleries_CreateOrUpdate # Parent DevCenter does not have an assigned identity
+  #       exampleFile: ..\examples\Galleries_Create.json
+  #       requestUpdate:
+  #         - replace: /body/properties/galleryResourceId
+  #           value: $(galleryId)
+  #     - step: Galleries_ListByDevCenter
+  #       exampleFile: ..\examples\Galleries_List.json
+  #     - step: Galleries_Get
+  #       exampleFile: ..\examples\Galleries_Get.json
+
+  #     - step: Images_ListByGallery
+  #       exampleFile: ..\examples\Images_ListByGallery.json
+  #     - step: Images_Get
+  #       exampleFile: ..\examples\Images_Get.json
+  #     - step: Images_ListByDevCenter
+  #       exampleFile: ..\examples\Images_ListByDevCenter.json
+
+  #     - step: ImageVersions_ListByImage
+  #       exampleFile: ..\examples\ImageVersions_List.json
+  #     - step: ImageVersions_Get
+  #       # variables:
+  #       #   versionName:
+  #       #     type: string
+  #       #     prefix: versionn
+  #       exampleFile: ..\examples\ImageVersions_Get.json
+
+  #     - step: Galleries_Delete
+  #       exampleFile: ..\examples\Galleries_Delete.json
+
+  # - scenario: Images
+  #   description: Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images
+  #   steps:
+  #     - step: Images_ListByGallery
+  #       exampleFile: ..\examples\Images_ListByGallery.json
+  #     - step: Images_Get
+  #       exampleFile: ..\examples\Images_Get.json
+  #     - step: Images_ListByDevCenter
+  #       exampleFile: ..\examples\Images_ListByDevCenter.json
+
+  # - scenario: ImageVersions
+  #   description: Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images/{imageName}/versions
+  #   steps:
+  #     - step: ImageVersions_ListByImage
+  #       exampleFile: ..\examples\ImageVersions_List.json
+  #     - step: ImageVersions_Get
+  #       # variables:
+  #       #   versionName:
+  #       #     type: string
+  #       #     prefix: versionn
+  #       exampleFile: ..\examples\ImageVersions_Get.json
+
+# pass
+  - scenario: Catalogs
+    description: Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}
+    steps:
+      - step: Catalogs_CreateOrUpdate
+        exampleFile: ..\examples\Catalogs_CreateGitHub.json
+      - step: Catalogs_ListByDevCenter
+        exampleFile: ..\examples\Catalogs_List.json
+      - step: Catalogs_Get
+        exampleFile: ..\examples\Catalogs_Get.json
+      - step: Catalogs_Update
+        exampleFile: ..\examples\Catalogs_Patch.json
+      # - step: Catalogs_Sync  # Parent DevCenter devcenternaxcYvzM does not have an assigned identity
+      #   exampleFile: ..\examples\Catalogs_Sync.json
+      - step: Catalogs_Delete
+        exampleFile: ..\examples\Catalogs_Delete.json
+
+# pass
+  - scenario: EnvironmentTypes
+    description: Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes/{environmentTypeName}
+    steps:
+      - step: EnvironmentTypes_CreateOrUpdate
+        exampleFile: ..\examples\EnvironmentTypes_Put.json
+      - step: EnvironmentTypes_ListByDevCenter
+        exampleFile: ..\examples\EnvironmentTypes_List.json
+      - step: EnvironmentTypes_Get
+        exampleFile: ..\examples\EnvironmentTypes_Get.json
+      - step: EnvironmentTypes_Update
+        exampleFile: ..\examples\EnvironmentTypes_Patch.json
+      - step: EnvironmentTypes_Delete
+        exampleFile: ..\examples\EnvironmentTypes_Delete.json
+
+  # - scenario: ProjectAllowedEnvironmentTypes
+  #   description: Microsoft.DevCenter/projects/{projectName}/allowedEnvironmentTypes
+  #   steps:
+  #     - step: ProjectAllowedEnvironmentTypes_List
+  #       exampleFile: ..\examples\ProjectAllowedEnvironmentTypes_List.json
+  #     - step: ProjectAllowedEnvironmentTypes_Get
+  #       exampleFile: ..\examples\ProjectAllowedEnvironmentTypes_Get.json
+
+  # - scenario: ProjectEnvironmentTypes
+  #   description: Microsoft.DevCenter/projects/{projectName}/environmentTypes/{environmentTypeName}
+  #   steps:
+  #     - step: ProjectEnvironmentTypes_CreateOrUpdate # not have permission
+  #       exampleFile: ..\examples\ProjectEnvironmentTypes_Put.json
+  #     - step: ProjectEnvironmentTypes_List
+  #       exampleFile: ..\examples\ProjectEnvironmentTypes_List.json
+  #     - step: ProjectEnvironmentTypes_Get
+  #       exampleFile: ..\examples\ProjectEnvironmentTypes_Get.json
+  #     - step: ProjectEnvironmentTypes_Update
+  #       exampleFile: ..\examples\ProjectEnvironmentTypes_Patch.json
+
+  #     - step: ProjectAllowedEnvironmentTypes_List
+  #       exampleFile: ..\examples\ProjectAllowedEnvironmentTypes_List.json
+  #     - step: ProjectAllowedEnvironmentTypes_Get
+  #       exampleFile: ..\examples\ProjectAllowedEnvironmentTypes_Get.json
+
+  #     - step: ProjectEnvironmentTypes_Delete
+  #       exampleFile: ..\examples\ProjectEnvironmentTypes_Delete.json
+
+  # - scenario: DevBoxDefinitions
+  #   description: Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}
+  #   steps:
+  #     - step: DevBoxDefinitions_CreateOrUpdate # image version???
+  #       exampleFile: ..\examples\DevBoxDefinitions_Create.json
+  #     - step: DevBoxDefinitions_ListByDevCenter
+  #       exampleFile: ..\examples\DevBoxDefinitions_ListByDevCenter.json
+  #     - step: DevBoxDefinitions_ListByProject
+  #       exampleFile: ..\examples\DevBoxDefinitions_ListByProject.json
+  #     - step: DevBoxDefinitions_GetByProject
+  #       exampleFile: ..\examples\DevBoxDefinitions_GetByProject.json
+  #     - step: DevBoxDefinitions_Get
+  #       exampleFile: ..\examples\DevBoxDefinitions_Get.json
+  #     - step: DevBoxDefinitions_Update
+  #       exampleFile: ..\examples\DevBoxDefinitions_Patch.json
+  #     - step: DevBoxDefinitions_Delete
+  #       exampleFile: ..\examples\DevBoxDefinitions_Delete.json
+
+# pass
+  - scenario: Operations 
+    description: Microsoft.DevCenter/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\Operations_Get.json
+
+      # - step: OperationStatuses_Get # Microsoft.DevCenter/locations/{location}/operationStatuses/{operationId}
+      #   # variables:
+      #   #   step:
+      #   #     type: string
+      #   #     prefix: operatio
+      #   exampleFile: ..\examples\OperationStatus_Get.json
+
+      - step: Usages_ListByLocation # Microsoft.DevCenter/locations/{location}/usages
+        exampleFile: ..\examples\Usages_ListByLocation.json
+
+# pass
+  - scenario: Skus
+    description: Microsoft.DevCenter/skus
+    steps:
+      - step: Skus_ListBySubscription
+        exampleFile: ..\examples\Skus_ListBySubscription.json
+
+  # - scenario: Pools # need DevBoxDefinition, AttachedNetworkConnection
+  #   description: Microsoft.DevCenter/projects/{projectName}/pools/{poolName}
+  #   steps:
+  #     - step: Pools_CreateOrUpdate
+  #       exampleFile: ..\examples\Pools_Put.json
+  #     - step: Pools_ListByProject
+  #       exampleFile: ..\examples\Pools_List.json
+  #     - step: Pools_Get
+  #       exampleFile: ..\examples\Pools_Get.json
+  #     - step: Pools_Update
+  #       exampleFile: ..\examples\Pools_Patch.json
+  #     - step: Pools_RunHealthChecks
+  #       variables:
+  #         poolName:
+  #           type: string
+  #           prefix: poolname
+  #       exampleFile: ..\examples\Pools_RunHealthChecks.json
+  #     - step: Pools_Delete
+  #       exampleFile: ..\examples\Pools_Delete.json
+
+  # - scenario: Schedules # need pools
+  #   description: Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}
+  #   steps:
+  #     - step: Schedules_CreateOrUpdate
+  #       exampleFile: ..\examples\Schedules_CreateDailyShutdownPoolSchedule.json
+  #     - step: Schedules_ListByPool
+  #       exampleFile: ..\examples\Schedules_ListByPool.json
+  #     - step: Schedules_Get
+  #       exampleFile: ..\examples\Schedules_Get.json
+  #     - step: Schedules_Update
+  #       exampleFile: ..\examples\Schedules_Patch.json
+  #     - step: Schedules_Delete
+  #       exampleFile: ..\examples\Schedules_Delete.json
+
+# pass
+  - scenario: NetworkConnections
+    description: Microsoft.DevCenter/networkConnections/{networkConnectionName}
+    steps:
+
+      - step: NetworkConnections_ListBySubscription
+        exampleFile: ..\examples\NetworkConnections_ListBySubscription.json
+      - step: NetworkConnections_ListHealthDetails
+        exampleFile: ..\examples\NetworkConnections_ListHealthDetails.json
+      - step: NetworkConnections_ListOutboundNetworkDependenciesEndpoints
+        exampleFile: ..\examples\NetworkConnections_ListOutboundNetworkDependenciesEndpoints.json
+      - step: NetworkConnections_GetHealthDetails
+        exampleFile: ..\examples\NetworkConnections_GetHealthDetails.json
+      - step: NetworkConnections_ListByResourceGroup
+        exampleFile: ..\examples\NetworkConnections_ListByResourceGroup.json
+      - step: NetworkConnections_Get
+        exampleFile: ..\examples\NetworkConnections_Get.json
+      - step: NetworkConnections_Update
+        exampleFile: ..\examples\NetworkConnections_Patch.json
+      - step: NetworkConnections_RunHealthChecks
+        exampleFile: ..\examples\NetworkConnections_RunHealthChecks.json
+
+# pass
+  - scenario: AttachedNetworks
+    description: Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}
+    steps:
+      - step: AttachedNetworks_ListByDevCenter
+        exampleFile: ..\examples\AttachedNetworks_ListByDevCenter.json
+      - step: AttachedNetworks_ListByProject
+        exampleFile: ..\examples\AttachedNetworks_ListByProject.json
+      - step: AttachedNetworks_GetByDevCenter
+        exampleFile: ..\examples\AttachedNetworks_GetByDevCenter.json
+      - step: AttachedNetworks_GetByProject
+        exampleFile: ..\examples\AttachedNetworks_GetByProject.json
+
+
+cleanUpSteps:
+
+  - step: AttachedNetworks_Delete
+    exampleFile: ..\examples\AttachedNetworks_Delete.json
+  - step: NetworkConnections_Delete
+    exampleFile: ..\examples\NetworkConnections_Delete.json
+
+  - step: Projects_Delete
+    exampleFile: ..\examples\Projects_Delete.json
+
+  - step: DevCenters_Delete
+    exampleFile: ..\examples\DevCenters_Delete.json
