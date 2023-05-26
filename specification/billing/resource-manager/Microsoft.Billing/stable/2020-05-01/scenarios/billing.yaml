@@ -1,0 +1,262 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# level too high, no test
+# konwn't BillingAccounts 
+scenarios:
+  - scenario: BillingAccounts
+    description: Microsoft.Billing/billingAccounts
+    steps:
+      - step: BillingAccounts_List
+        exampleFile: ..\examples\BillingAccountsList.json
+      - step: BillingAccounts_Get
+        exampleFile: ..\examples\BillingAccount.json
+      - step: BillingAccounts_Update
+        exampleFile: ..\examples\UpdateBillingAccount.json
+      - step: BillingAccounts_ListInvoiceSectionsByCreateSubscriptionPermission
+        exampleFile: ..\examples\InvoiceSectionsListWithCreateSubPermission.json
+
+# pass
+  - scenario: Address
+    description: Microsoft.Billing/validateAddress
+    steps:
+      - step: Address_Validate
+        exampleFile: ..\examples\AddressValid.json
+
+  - scenario: AvailableBalances
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/availableBalance/default
+    steps:
+      - step: AvailableBalances_Get
+        exampleFile: ..\examples\AvailableBalanceByBillingProfile.json
+
+
+  - scenario: Instructions
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/instructions/{instructionName}
+    steps:
+      - step: Instructions_Put
+        exampleFile: ..\examples\PutInstruction.json
+      - step: Instructions_ListByBillingProfile
+        exampleFile: ..\examples\InstructionsListByBillingProfile.json
+      - step: Instructions_Get
+        exampleFile: ..\examples\Instruction.json
+
+  - scenario: BillingProfiles
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}
+    steps:
+      - step: BillingProfiles_CreateOrUpdate
+        exampleFile: ..\examples\PutBillingProfile.json
+      - step: BillingProfiles_ListByBillingAccount
+        exampleFile: ..\examples\BillingProfilesListByBillingAccount.json
+      - step: BillingProfiles_Get
+        exampleFile: ..\examples\BillingProfile.json
+
+  - scenario: Customers
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}
+    steps:
+      - step: Customers_ListByBillingProfile
+        exampleFile: ..\examples\CustomersListByBillingProfile.json
+      - step: Customers_ListByBillingAccount
+        exampleFile: ..\examples\CustomersListByBillingAccount.json
+      - step: Customers_Get
+        exampleFile: ..\examples\Customer.json
+
+  - scenario: InvoiceSections
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}
+    steps:
+      - step: InvoiceSections_CreateOrUpdate
+        exampleFile: ..\examples\PutInvoiceSection.json
+      - step: InvoiceSections_ListByBillingProfile
+        exampleFile: ..\examples\InvoiceSectionsListByBillingProfile.json
+      - step: InvoiceSections_Get
+        exampleFile: ..\examples\InvoiceSection.json
+
+  - scenario: BillingPermissions
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/billingPermissions
+    steps:
+      - step: BillingPermissions_ListByBillingAccount
+        exampleFile: ..\examples\BillingAccountPermissionsList.json
+      - step: BillingPermissions_ListByBillingProfile
+        exampleFile: ..\examples\BillingProfilePermissionsList.json
+      - step: BillingPermissions_ListByInvoiceSections
+        exampleFile: ..\examples\InvoiceSectionPermissionsList.json
+      - step: BillingPermissions_ListByCustomer
+        exampleFile: ..\examples\CustomerPermissionsList.json
+
+
+  - scenario: BillingSubscriptions
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{subscriptionId}
+    steps:
+      - step: BillingSubscriptions_ListByBillingProfile
+        exampleFile: ..\examples\BillingSubscriptionsListByBillingProfile.json
+      - step: BillingSubscriptions_ListByInvoiceSection
+        exampleFile: ..\examples\BillingSubscriptionsListByInvoiceSection.json
+      - step: BillingSubscriptions_ListByBillingAccount
+        exampleFile: ..\examples\BillingSubscriptionsListByBillingAccount.json
+      - step: BillingSubscriptions_ListByCustomer
+        exampleFile: ..\examples\BillingSubscriptionsListByCustomer.json
+
+      - step: BillingSubscriptions_Get
+        exampleFile: ..\examples\BillingSubscription.json
+      - step: BillingSubscriptions_Update
+        exampleFile: ..\examples\UpdateBillingSubscription.json
+      - step: BillingSubscriptions_Move
+        exampleFile: ..\examples\MoveBillingSubscription.json
+      - step: BillingSubscriptions_ValidateMove
+        exampleFile: ..\examples\ValidateSubscriptionMoveSuccess.json
+
+  - scenario: Products
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/products/{productName}
+    steps:
+      - step: Products_ListByInvoiceSection
+        exampleFile: ..\examples\ProductsListByInvoiceSection.json
+      - step: Products_ListByBillingProfile
+        exampleFile: ..\examples\ProductsListByBillingProfile.json
+      - step: Products_ListByCustomer
+        exampleFile: ..\examples\ProductsListByCustomer.json
+      - step: Products_ListByBillingAccount
+        exampleFile: ..\examples\ProductsListByBillingAccount.json
+
+      - step: Products_Get
+        exampleFile: ..\examples\Product.json
+      - step: Products_Update
+        exampleFile: ..\examples\UpdateProduct.json
+      - step: Products_Move
+        exampleFile: ..\examples\MoveProduct.json
+      - step: Products_ValidateMove
+        exampleFile: ..\examples\ValidateProductMoveSuccess.json
+
+  - scenario: Invoices
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/download
+    steps:
+      - step: Invoices_DownloadMultipleBillingSubscriptionInvoices
+        exampleFile: ..\examples\MultipleBillingSubscriptionInvoiceDownload.json
+      - step: Invoices_ListByBillingSubscription
+        exampleFile: ..\examples\BillingSubscriptionInvoicesList.json
+      - step: Invoices_GetBySubscriptionAndInvoiceId
+        exampleFile: ..\examples\BillingSubscriptionInvoice.json
+      - step: Invoices_DownloadBillingSubscriptionInvoice
+        exampleFile: ..\examples\BillingSubscriptionInvoiceDownload.json
+      - step: Invoices_GetById
+        exampleFile: ..\examples\InvoiceById.json
+      - step: Invoices_ListByBillingProfile
+        exampleFile: ..\examples\InvoicesListByBillingProfile.json
+      - step: Invoices_DownloadMultipleBillingProfileInvoices
+        exampleFile: ..\examples\MultipleModernInvoiceDownload.json
+      - step: Invoices_ListByBillingAccount
+        exampleFile: ..\examples\BillingAccountInvoicesList.json
+      - step: Invoices_Get
+        exampleFile: ..\examples\Invoice.json
+      - step: Invoices_DownloadInvoice
+        exampleFile: ..\examples\ModernInvoiceDownload.json
+
+  - scenario: Transactions
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/transactions
+    steps:
+      - step: Transactions_ListByInvoice
+        exampleFile: ..\examples\TransactionsListByInvoice.json
+
+  - scenario: Policies
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/policies/default
+    steps:
+      - step: Policies_UpdateCustomer
+        exampleFile: ..\examples\UpdateCustomerPolicy.json
+      - step: Policies_GetByCustomer
+        exampleFile: ..\examples\CustomerPolicy.json
+      - step: Policies_GetByBillingProfile
+        exampleFile: ..\examples\Policy.json
+      - step: Policies_Update
+        exampleFile: ..\examples\UpdatePolicy.json
+
+  - scenario: BillingProperty
+    description: Microsoft.Billing/billingProperty/default
+    steps:
+      - step: BillingProperty_Get
+        exampleFile: ..\examples\BillingProperty.json
+      - step: BillingProperty_Update
+        exampleFile: ..\examples\UpdateBillingProperty.json
+
+  - scenario: BillingRoleDefinitions
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleDefinitions/{billingRoleDefinitionName}
+    steps:
+      - step: BillingRoleDefinitions_ListByBillingProfile
+        exampleFile: ..\examples\BillingProfileRoleDefinitionsList.json
+      - step: BillingRoleDefinitions_GetByBillingProfile
+        exampleFile: ..\examples\BillingProfileRoleDefinition.json
+        
+      - step: BillingRoleDefinitions_ListByInvoiceSection
+        exampleFile: ..\examples\InvoiceSectionRoleDefinitionsList.json
+      - step: BillingRoleDefinitions_GetByInvoiceSection
+        exampleFile: ..\examples\InvoiceSectionRoleDefinition.json
+
+      - step: BillingRoleDefinitions_ListByBillingAccount
+        exampleFile: ..\examples\BillingAccountRoleDefinitionsList.json
+      - step: BillingRoleDefinitions_GetByBillingAccount
+        exampleFile: ..\examples\BillingAccountRoleDefinition.json
+
+  - scenario: BillingRoleAssignments
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}
+    steps:
+      - step: BillingRoleAssignments_ListByBillingProfile
+        exampleFile: ..\examples\BillingProfileRoleAssignmentList.json
+      # - step: BillingRoleAssignments_DeleteByBillingProfile
+      #   exampleFile: ..\examples\BillingProfileRoleAssignmentDelete.json
+      - step: BillingRoleAssignments_GetByBillingProfile
+        exampleFile: ..\examples\BillingProfileRoleAssignment.json
+
+      - step: BillingRoleAssignments_ListByInvoiceSection
+        exampleFile: ..\examples\InvoiceSectionRoleAssignmentList.json
+      # - step: BillingRoleAssignments_DeleteByInvoiceSection
+      #   exampleFile: ..\examples\InvoiceSectionRoleAssignmentDelete.json
+      - step: BillingRoleAssignments_GetByInvoiceSection
+        exampleFile: ..\examples\InvoiceSectionRoleAssignment.json
+
+      - step: BillingRoleAssignments_ListByBillingAccount
+        exampleFile: ..\examples\BillingAccountRoleAssignmentList.json
+      # - step: BillingRoleAssignments_DeleteByBillingAccount
+      #   exampleFile: ..\examples\BillingAccountRoleAssignmentDelete.json
+      - step: BillingRoleAssignments_GetByBillingAccount
+        exampleFile: ..\examples\BillingAccountRoleAssignment.json
+
+  - scenario: Agreements
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/agreements
+    steps:
+      - step: Agreements_ListByBillingAccount
+        exampleFile: ..\examples\AgreementsListByBillingAccount.json
+      - step: Agreements_Get
+        # variables:
+        #   agreementName:
+        #     type: string
+        #     prefix: agreemen
+        exampleFile: ..\examples\AgreementByName.json
+
+  - scenario: Reservations
+    description: Microsoft.Billing/billingAccounts/{billingAccountName}/reservations
+    steps:
+      - step: Reservations_ListByBillingProfile
+        exampleFile: ..\examples\ReservationsListByBillingProfile.json
+      - step: Reservations_ListByBillingAccount
+        exampleFile: ..\examples\ReservationsListByBillingAccount.json
+
+  - scenario: EnrollmentAccounts
+    description: Microsoft.Billing/enrollmentAccounts
+    steps:
+      - step: EnrollmentAccounts_List
+        exampleFile: ..\..\..\preview\2018-03-01-preview\examples\EnrollmentAccountsList.json
+      - step: EnrollmentAccounts_Get
+        # variables:
+        #   name:
+        #     type: string
+        #     prefix: name
+        exampleFile: ..\..\..\preview\2018-03-01-preview\examples\EnrollmentAccountsGet.json
+
+  - scenario: BillingPeriods
+    description: Microsoft.Billing/billingPeriods
+    steps:
+      - step: BillingPeriods_List
+        exampleFile: ..\..\..\preview\2018-03-01-preview\examples\BillingPeriodsList.json
+        outputVariables:
+          billingPeriodName:
+            type: string
+            fromResponse: /value/0/name
+      - step: BillingPeriods_Get
+        exampleFile: ..\..\..\preview\2018-03-01-preview\examples\BillingPeriodsGet.json

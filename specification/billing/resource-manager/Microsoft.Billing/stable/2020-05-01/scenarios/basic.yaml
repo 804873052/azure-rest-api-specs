@@ -1,0 +1,238 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  billingAccountName:
+    type: string
+    prefix: billinga
+  billingProfileName:
+    type: string
+    prefix: billingp
+  invoiceSectionName:
+    type: string
+    prefix: invoices
+  customerName:
+    type: string
+    prefix: customer
+  invoiceName:
+    type: string
+    prefix: invoicen
+  billingRoleAssignmentName:
+    type: string
+    prefix: billingr
+  productName:
+    type: string
+    prefix: productn
+  billingRoleDefinitionName:
+    type: string
+    prefix: billingr
+  instructionName:
+    type: string
+    prefix: instruct
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: BillingProfiles_CreateOrUpdate
+        exampleFile: ..\examples\PutBillingProfile.json
+      - operationId: BillingProfiles_ListByBillingAccount
+        exampleFile: ..\examples\BillingProfilesListByBillingAccount.json
+      - operationId: BillingProfiles_Get
+        exampleFile: ..\examples\BillingProfile.json
+
+      - operationId: InvoiceSections_CreateOrUpdate
+        exampleFile: ..\examples\PutInvoiceSection.json
+      - operationId: InvoiceSections_ListByBillingProfile
+        exampleFile: ..\examples\InvoiceSectionsListByBillingProfile.json
+      - operationId: InvoiceSections_Get
+        exampleFile: ..\examples\InvoiceSection.json
+
+      - operationId: Instructions_Put
+        exampleFile: ..\examples\PutInstruction.json
+      - operationId: Instructions_ListByBillingProfile
+        exampleFile: ..\examples\InstructionsListByBillingProfile.json
+      - operationId: Instructions_Get
+        exampleFile: ..\examples\Instruction.json
+
+      - operationId: Policies_UpdateCustomer
+        exampleFile: ..\examples\UpdateCustomerPolicy.json
+      - operationId: Policies_GetByBillingProfile
+        exampleFile: ..\examples\Policy.json
+      - operationId: Policies_GetByCustomer
+        exampleFile: ..\examples\CustomerPolicy.json
+      - operationId: Policies_Update
+        exampleFile: ..\examples\UpdatePolicy.json
+
+      - operationId: BillingAccounts_List
+        exampleFile: ..\examples\BillingAccountsList.json
+
+      - operationId: Invoices_DownloadMultipleBillingSubscriptionInvoices
+        exampleFile: ..\examples\MultipleBillingSubscriptionInvoiceDownload.json
+      - operationId: Invoices_ListByBillingSubscription
+        exampleFile: ..\examples\BillingSubscriptionInvoicesList.json
+      - operationId: Invoices_GetBySubscriptionAndInvoiceId
+        exampleFile: ..\examples\BillingSubscriptionInvoice.json
+      - operationId: Invoices_DownloadBillingSubscriptionInvoice
+        exampleFile: ..\examples\BillingSubscriptionInvoiceDownload.json
+      - operationId: Invoices_GetById
+        exampleFile: ..\examples\InvoiceById.json
+
+      - operationId: BillingAccounts_Get
+        exampleFile: ..\examples\BillingAccount.json
+      - operationId: BillingAccounts_Update
+        exampleFile: ..\examples\UpdateBillingAccount.json
+
+      - operationId: Agreements_ListByBillingAccount
+        exampleFile: ..\examples\AgreementsListByBillingAccount.json
+      - operationId: Agreements_Get
+        variables:
+          agreementName:
+            type: string
+            prefix: agreemen
+        exampleFile: ..\examples\AgreementByName.json
+
+      - operationId: BillingPermissions_ListByBillingAccount
+        exampleFile: ..\examples\BillingAccountPermissionsList.json
+
+      - operationId: AvailableBalances_Get
+        exampleFile: ..\examples\AvailableBalanceByBillingProfile.json
+
+      - operationId: BillingPermissions_ListByBillingProfile
+        exampleFile: ..\examples\BillingProfilePermissionsList.json
+
+      - operationId: BillingRoleAssignments_ListByBillingProfile
+        exampleFile: ..\examples\BillingProfileRoleAssignmentList.json
+      - operationId: BillingRoleAssignments_DeleteByBillingProfile
+        exampleFile: ..\examples\BillingProfileRoleAssignmentDelete.json
+      - operationId: BillingRoleAssignments_GetByBillingProfile
+        exampleFile: ..\examples\BillingProfileRoleAssignment.json
+
+      - operationId: BillingRoleDefinitions_ListByBillingProfile
+        exampleFile: ..\examples\BillingProfileRoleDefinitionsList.json
+      - operationId: BillingRoleDefinitions_GetByBillingProfile
+        exampleFile: ..\examples\BillingProfileRoleDefinition.json
+
+      - operationId: BillingSubscriptions_ListByBillingProfile
+        exampleFile: ..\examples\BillingSubscriptionsListByBillingProfile.json
+
+      - operationId: Customers_ListByBillingProfile
+        exampleFile: ..\examples\CustomersListByBillingProfile.json
+
+      - operationId: BillingPermissions_ListByInvoiceSections
+        exampleFile: ..\examples\InvoiceSectionPermissionsList.json
+
+      - operationId: BillingRoleAssignments_ListByInvoiceSection
+        exampleFile: ..\examples\InvoiceSectionRoleAssignmentList.json
+      - operationId: BillingRoleAssignments_DeleteByInvoiceSection
+        exampleFile: ..\examples\InvoiceSectionRoleAssignmentDelete.json
+      - operationId: BillingRoleAssignments_GetByInvoiceSection
+        exampleFile: ..\examples\InvoiceSectionRoleAssignment.json
+      - operationId: BillingRoleDefinitions_ListByInvoiceSection
+        exampleFile: ..\examples\InvoiceSectionRoleDefinitionsList.json
+      - operationId: BillingRoleDefinitions_GetByInvoiceSection
+        exampleFile: ..\examples\InvoiceSectionRoleDefinition.json
+
+      - operationId: BillingSubscriptions_ListByInvoiceSection
+        exampleFile: ..\examples\BillingSubscriptionsListByInvoiceSection.json
+
+      - operationId: Products_ListByInvoiceSection
+        exampleFile: ..\examples\ProductsListByInvoiceSection.json
+
+      - operationId: Invoices_ListByBillingProfile
+        exampleFile: ..\examples\InvoicesListByBillingProfile.json
+
+      - operationId: Products_ListByBillingProfile
+        exampleFile: ..\examples\ProductsListByBillingProfile.json
+
+      - operationId: Reservations_ListByBillingProfile
+        exampleFile: ..\examples\ReservationsListByBillingProfile.json
+
+      - operationId: BillingRoleAssignments_ListByBillingAccount
+        exampleFile: ..\examples\BillingAccountRoleAssignmentList.json
+      - operationId: BillingRoleAssignments_DeleteByBillingAccount
+        exampleFile: ..\examples\BillingAccountRoleAssignmentDelete.json
+      - operationId: BillingRoleAssignments_GetByBillingAccount
+        exampleFile: ..\examples\BillingAccountRoleAssignment.json
+      - operationId: BillingRoleDefinitions_ListByBillingAccount
+        exampleFile: ..\examples\BillingAccountRoleDefinitionsList.json
+      - operationId: BillingRoleDefinitions_GetByBillingAccount
+        exampleFile: ..\examples\BillingAccountRoleDefinition.json
+
+      - operationId: BillingSubscriptions_ListByBillingAccount
+        exampleFile: ..\examples\BillingSubscriptionsListByBillingAccount.json
+      - operationId: BillingSubscriptions_Get
+        exampleFile: ..\examples\BillingSubscription.json
+      - operationId: BillingSubscriptions_Update
+        exampleFile: ..\examples\UpdateBillingSubscription.json
+      - operationId: BillingSubscriptions_Move
+        exampleFile: ..\examples\MoveBillingSubscription.json
+      - operationId: BillingSubscriptions_ValidateMove
+        exampleFile: ..\examples\ValidateSubscriptionMoveSuccess.json
+
+      - operationId: Customers_ListByBillingAccount
+        exampleFile: ..\examples\CustomersListByBillingAccount.json
+      - operationId: Customers_Get
+        exampleFile: ..\examples\Customer.json
+
+      - operationId: BillingPermissions_ListByCustomer
+        exampleFile: ..\examples\CustomerPermissionsList.json
+
+      - operationId: BillingSubscriptions_ListByCustomer
+        exampleFile: ..\examples\BillingSubscriptionsListByCustomer.json
+
+      - operationId: Products_ListByCustomer
+        exampleFile: ..\examples\ProductsListByCustomer.json
+      - operationId: Invoices_DownloadMultipleBillingProfileInvoices
+        exampleFile: ..\examples\MultipleModernInvoiceDownload.json
+      - operationId: Invoices_ListByBillingAccount
+        exampleFile: ..\examples\BillingAccountInvoicesList.json
+      - operationId: Invoices_Get
+        exampleFile: ..\examples\Invoice.json
+      - operationId: Invoices_DownloadInvoice
+        exampleFile: ..\examples\ModernInvoiceDownload.json
+
+      - operationId: Transactions_ListByInvoice
+        exampleFile: ..\examples\TransactionsListByInvoice.json
+
+      - operationId: BillingAccounts_ListInvoiceSectionsByCreateSubscriptionPermission
+        exampleFile: ..\examples\InvoiceSectionsListWithCreateSubPermission.json
+      - operationId: Products_ListByBillingAccount
+        exampleFile: ..\examples\ProductsListByBillingAccount.json
+      - operationId: Products_Get
+        exampleFile: ..\examples\Product.json
+      - operationId: Products_Update
+        exampleFile: ..\examples\UpdateProduct.json
+      - operationId: Products_Move
+        exampleFile: ..\examples\MoveProduct.json
+      - operationId: Products_ValidateMove
+        exampleFile: ..\examples\ValidateProductMoveSuccess.json
+      - operationId: Reservations_ListByBillingAccount
+        exampleFile: ..\examples\ReservationsListByBillingAccount.json
+
+      - operationId: EnrollmentAccounts_List
+        exampleFile: >-
+          ..\..\..\preview\2018-03-01-preview\examples\EnrollmentAccountsList.json
+      - operationId: EnrollmentAccounts_Get
+        variables:
+          name:
+            type: string
+            prefix: name
+        exampleFile: >-
+          ..\..\..\preview\2018-03-01-preview\examples\EnrollmentAccountsGet.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\GetOperations.json
+      - operationId: Address_Validate
+        exampleFile: ..\examples\AddressValid.json
+        
+      - operationId: BillingPeriods_List
+        exampleFile: ..\..\..\preview\2018-03-01-preview\examples\BillingPeriodsList.json
+      - operationId: BillingPeriods_Get
+        variables:
+          billingPeriodName:
+            type: string
+            prefix: billingp
+        exampleFile: ..\..\..\preview\2018-03-01-preview\examples\BillingPeriodsGet.json
+
+      - operationId: BillingProperty_Get
+        exampleFile: ..\examples\BillingProperty.json
+      - operationId: BillingProperty_Update
+        exampleFile: ..\examples\UpdateBillingProperty.json
