@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  accountName:
+    type: string
+    prefix: accountn
+  assetName:
+    type: string
+    prefix: assetnam
+  transformName:
+    type: string
+    prefix: transfor
+  jobName:
+    type: string
+    prefix: jobname
+  storageAccountName:
+    type: string
+    prefix: storageaccount
+
+prepareSteps:
+  - step: Create_StorageAccount
+    armTemplate: ./templates/Create_StorageAccount.json
+  - step: Mediaservices_CreateOrUpdate
+    exampleFile: ../../../../Accounts/stable/2021-11-01/examples/async-accounts-create.json
+    requestUpdate:
+      - replace: /parameters/properties/storageAccounts/0/id
+        value: $(storageAccountId)
+
+# pass
+scenarios:
+  - scenario: EncodingTests
+    steps:
+      - step: Transforms_CreateOrUpdate
+        exampleFile: ../examples/transforms-create.json
+      - step: Transforms_List
+        exampleFile: ../examples/transforms-list-all.json
+      - step: Transforms_Get
+        exampleFile: ../examples/transforms-get-by-name.json
+      - step: Transforms_Update
+        exampleFile: ../examples/transforms-update.json
+      - step: Assets_CreateOrUpdate_InputAsset
+        exampleFile: ../../../../Metadata/stable/2022-08-01/examples/assets-create.json
+        variables:
+          assetName: $(jobName)-InputAsset
+        requestUpdate:
+          - replace: /parameters/properties/storageAccountName
+            value: $(storageAccountName)
+      - step: Assets_CreateOrUpdate_OutputAsset
+        exampleFile: ../../../../Metadata/stable/2022-08-01/examples/assets-create.json
+        variables:
+          assetName: $(jobName)-OutputAsset
+        requestUpdate:
+          - replace: /parameters/properties/storageAccountName
+            value: $(storageAccountName)
+      - step: Jobs_Create
+        exampleFile: ../examples/jobs-create.json
+      - step: Jobs_List
+        exampleFile: ../examples/jobs-list-all.json
+      - step: Jobs_Get
+        exampleFile: ../examples/jobs-get-by-name.json
+      - step: Jobs_Update
+        exampleFile: ../examples/jobs-update.json      
+      - step: Jobs_CancelJob
+        exampleFile: ../examples/jobs-cancel.json
+      # disabling delete job test as it might fail based on its state based on above steps, it's possible that the job is still in scheduling or cancelling state.
+      # this might conflict with the next steps of the test.
+      # example : delete might fails, as the job might go in to canceling state and stay in that state for a while.
+      # - step: Jobs_Delete
+      #   exampleFile: ../examples/jobs-delete.json
+      - step: Transforms_Delete
+        exampleFile: ../examples/transforms-delete.json

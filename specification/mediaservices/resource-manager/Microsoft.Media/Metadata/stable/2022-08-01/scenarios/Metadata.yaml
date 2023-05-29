@@ -1,0 +1,131 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  assetName:
+    type: string
+    prefix: assetnam
+  filterName:
+    type: string
+    prefix: filterna
+  contentKeyPolicyName:
+    type: string
+    prefix: contentk
+  jobName:
+    type: string
+    prefix: jobname
+  streamingLocatorName:
+    type: string
+    prefix: streamin
+  liveOutputName:
+    type: string
+    prefix: liveoutp
+  location:
+    type: string
+  storageAccountName:
+    type: string
+    prefix: storageaccount
+
+prepareSteps:
+  - step: Create_StorageAccount
+    armTemplate: ../../../../Encoding/stable/2022-07-01/scenarios/templates/Create_StorageAccount.json
+  - step: Mediaservices_CreateOrUpdate
+    exampleFile: ../../../../Accounts/stable/2021-11-01/examples/async-accounts-create.json
+    requestUpdate:
+      - replace: /parameters/properties/storageAccounts/0/id
+        value: $(storageAccountId)
+
+# pass
+scenarios:
+  - scenario: MetadataTests
+    steps:
+      - step: Assets_CreateOrUpdate
+        exampleFile: ../examples/assets-create.json
+        requestUpdate:
+          - replace: /parameters/properties/storageAccountName
+            value: $(storageAccountName)
+      - step: Assets_List
+        exampleFile: ../examples/assets-list-all.json
+      - step: Assets_Get
+        exampleFile: ../examples/assets-get-by-name.json
+      - step: Assets_Update
+        exampleFile: ../examples/assets-update.json
+      - step: Assets_ListContainerSas
+        exampleFile: ../examples/assets-list-sas-urls.json
+      - step: Assets_ListStreamingLocators
+        exampleFile: ../examples/assets-list-streaming-locators.json
+      # cannot test Tracks API because we need the asset be encoded(need ism file)
+      # - step: Tracks_CreateOrUpdate
+      #   exampleFile: >-
+      #     ../examples/asset-tracks-create.json
+      # - step: Tracks_List
+      #   exampleFile: >-
+      #     ../examples/asset-tracks-list-all.json
+      # - step: Tracks_Get
+      #   exampleFile: >-
+      #     ../examples/asset-tracks-get-by-name.json
+      # - step: Tracks_Update
+      #   exampleFile: >-
+      #     ../examples/asset-tracks-update.json
+      # - step: Tracks_UpdateTrackData
+      #   exampleFile: >-
+      #     ../examples/asset-tracks-update-data.json
+      - step: StreamingPolicies_Create
+        exampleFile: ../examples/streaming-policies-create-clear.json
+      - step: StreamingPolicies_List
+        exampleFile: ../examples/streaming-policies-list.json
+      - step: StreamingPolicies_Get
+        exampleFile: ../examples/streaming-policy-get-by-name.json
+      - step: StreamingLocators_Create
+        exampleFile: ../examples/streaming-locators-create-clear.json
+        requestUpdate:
+          - replace: /parameters/properties/assetName
+            value: $(assetName)
+      - step: StreamingLocators_List
+        exampleFile: ../examples/streaming-locators-list.json
+      - step: StreamingLocators_Get
+        exampleFile: ../examples/streaming-locators-get-by-name.json
+      - step: StreamingLocators_ListContentKeys
+        exampleFile: ../examples/streaming-locators-list-content-keys.json
+      - step: StreamingLocators_ListPaths
+        exampleFile: ../examples/streaming-locators-list-paths-streaming-only.json
+      - step: ContentKeyPolicies_CreateOrUpdate
+        exampleFile: ../examples/content-key-policies-create-playready-open.json
+      - step: ContentKeyPolicies_List
+        exampleFile: ../examples/content-key-policies-list-all.json
+      - step: ContentKeyPolicies_Get
+        exampleFile: ../examples/content-key-policies-get-by-name.json
+      - step: ContentKeyPolicies_Update
+        exampleFile: ../examples/content-key-policies-update.json
+      - step: ContentKeyPolicies_GetPolicyPropertiesWithSecrets
+        exampleFile: ../examples/content-key-policies-get-with-secrets.json
+      - step: AssetFilters_CreateOrUpdate
+        exampleFile: ../examples/assetFilters-create.json
+      - step: AssetFilters_List
+        exampleFile: ../examples/assetFilters-list-all.json
+      - step: AssetFilters_Get
+        exampleFile: ../examples/assetFilters-get-by-name.json
+      - step: AssetFilters_Update
+        exampleFile: ../examples/assetFilters-update.json
+      - step: AccountFilters_CreateOrUpdate
+        exampleFile: ../examples/accountFilters-create.json
+      - step: AccountFilters_List
+        exampleFile: ../examples/accountFilters-list-all.json
+      - step: AccountFilters_Get
+        exampleFile: ../examples/accountFilters-get-by-name.json
+      - step: AccountFilters_Update
+        exampleFile: ../examples/accountFilters-update.json
+      - step: StreamingPolicies_Delete
+        exampleFile: ../examples/streaming-policies-delete.json
+      - step: AccountFilters_Delete
+        exampleFile: ../examples/accountFilters-delete.json
+      - step: AssetFilters_Delete
+        exampleFile: ../examples/assetFilters-delete.json
+      - step: ContentKeyPolicies_Delete
+        exampleFile: ../examples/content-key-policies-delete.json
+      - step: StreamingLocators_Delete
+        exampleFile: ../examples/streaming-locators-delete.json
+      - step: Assets_Delete
+        exampleFile: ../examples/assets-delete.json

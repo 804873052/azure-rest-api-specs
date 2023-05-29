@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  location:
+    type: string
+  storageAccountName:
+    type: string
+    prefix: storageaccount
+
+prepareSteps:
+  - step: Create_StorageAccount
+    armTemplate: ../../../../Encoding/stable/2022-07-01/scenarios/templates/Create_StorageAccount.json
+
+# fail
+scenarios:
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.Media/mediaservices/{accountName}/privateEndpointConnections/{name}
+    steps:
+      - step: Mediaservices_CreateOrUpdate
+        exampleFile: ../examples/async-accounts-create.json
+        requestUpdate:
+          - replace: /parameters/properties/storageAccounts/0/id
+            value: $(storageAccountId)
+        outputVariables:
+          mediaservicesId:
+            type: string
+            fromResponse: /id
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+
+      - step: PrivateEndpointConnections_List
+        exampleFile: ..\examples\private-endpoint-connection-list.json
+        outputVariables:
+          name: 
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_CreateOrUpdate # 202 Accepted
+        exampleFile: ..\examples\private-endpoint-connection-put.json
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\private-endpoint-connection-get-by-name.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\private-endpoint-connection-delete.json

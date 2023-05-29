@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  assetName:
+    type: string
+    prefix: assetnam
+  liveEventName:
+    type: string
+    prefix: liveeven
+  streamingEndpointName:
+    type: string
+    prefix: streamin
+  liveOutputName:
+    type: string
+    prefix: liveoutp
+  location:
+    type: string
+  storageAccountName:
+    type: string
+    prefix: storageaccount
+
+# pass
+prepareSteps:
+  - step: Create_StorageAccount
+    armTemplate: ../../../../Encoding/stable/2022-07-01/scenarios/templates/Create_StorageAccount.json
+  - step: Mediaservices_CreateOrUpdate
+    exampleFile: ../../../../Accounts/stable/2021-11-01/examples/async-accounts-create.json
+    requestUpdate:
+      - replace: /parameters/properties/storageAccounts/0/id
+        value: $(storageAccountId)
+
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - step: LiveEvents_Create
+        exampleFile: ../examples/liveevent-create.json
+      - step: LiveEvents_List
+        exampleFile: ../examples/liveevent-list-all.json
+      - step: LiveEvents_Get
+        exampleFile: ../examples/liveevent-list-by-name.json
+      - step: LiveEvents_Allocate
+        exampleFile: ../examples/liveevent-allocate.json
+      - step: LiveEvents_Stop
+        exampleFile: ../examples/liveevent-stop.json
+      # disabling this test as it might take from 1 minutes to 30 minutes to complete
+      # - step: LiveEvents_Reset
+      #   exampleFile: ../examples/liveevent-reset.json
+      # - step: LiveEvents_Start
+      #   exampleFile: ../examples/liveevent-start.json
+      - step: StreamingEndpoints_Create
+        exampleFile: ../examples/streamingendpoint-create.json
+      - step: StreamingEndpoints_Get
+        exampleFile: ../examples/streamingendpoint-list-by-name.json
+      - step: StreamingEndpoints_List
+        exampleFile: ../examples/streamingendpoint-list-all.json
+      - step: StreamingEndpoints_Skus
+        exampleFile: ../examples/streamingendpoint-list-skus.json
+      - step: StreamingEndpoints_Scale
+        exampleFile: ../examples/streamingendpoint-scale.json
+      - step: StreamingEndpoints_Stop
+        exampleFile: ../examples/streamingendpoint-stop.json
+      # disabling this test as it might take from 1 minutes to 30 minutes to complete
+      # - step: StreamingEndpoints_Start
+      #   exampleFile: >-
+      #     ../examples/streamingendpoint-start.json
+      - step: Assets_CreateOrUpdate
+        exampleFile: ../../../../Metadata/stable/2022-08-01/examples/assets-create.json
+        requestUpdate:
+          - replace: /parameters/properties/storageAccountName
+            value: $(storageAccountName)
+      - step: LiveOutputs_Create
+        exampleFile: ../examples/liveoutput-create.json
+        requestUpdate:
+          - replace: /parameters/properties/assetName
+            value: $(assetName)
+      - step: LiveOutputs_List
+        exampleFile: ../examples/liveoutput-list-all.json
+      - step: LiveOutputs_Get
+        exampleFile: ../examples/liveoutput-list-by-name.json
+      - step: LiveOutputs_Delete
+        exampleFile: ../examples/liveoutput-delete.json
+      - step: StreamingEndpoints_Delete
+        exampleFile: ../examples/streamingendpoint-delete.json
+      - step: LiveEvents_Delete
+        exampleFile: ../examples/liveevent-delete.json

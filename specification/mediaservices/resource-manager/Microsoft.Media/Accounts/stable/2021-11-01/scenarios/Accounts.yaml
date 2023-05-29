@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  location:
+    type: string
+  storageAccountName:
+    type: string
+    prefix: storageaccount
+
+prepareSteps:
+  - step: Create_StorageAccount
+    armTemplate: ../../../../Encoding/stable/2022-07-01/scenarios/templates/Create_StorageAccount.json
+
+# pass
+scenarios:
+  - scenario: AccountTests
+    steps:
+      - step: Locations_CheckNameAvailability
+        exampleFile: ../examples/accounts-check-name-availability.json
+        requestUpdate:
+          - replace: /parameters/name
+            value: $(accountName)
+      - step: Mediaservices_CreateOrUpdate
+        exampleFile: ../examples/async-accounts-create.json
+        requestUpdate:
+          - replace: /parameters/properties/storageAccounts/0/id
+            value: $(storageAccountId)
+      - step: Mediaservices_ListBySubscription
+        exampleFile: ../examples/accounts-subscription-list-all-accounts.json
+      - step: Mediaservices_Get
+        exampleFile: ../examples/accounts-get-by-name.json
+      - step: Mediaservices_List
+        exampleFile: ../examples/accounts-list-all-accounts.json
+      - step: Mediaservices_Update
+        exampleFile: ../examples/async-accounts-update.json
+      - step: Mediaservices_SyncStorageKeys
+        exampleFile: ../examples/accounts-sync-storage-keys.json
+        requestUpdate:
+          - replace: /parameters/id
+            value: $(storageAccountId)
+      - step: Operations_List
+        exampleFile: ../examples/operations-list-all.json
+      - step: Mediaservices_Delete
+        exampleFile: ../examples/accounts-delete.json

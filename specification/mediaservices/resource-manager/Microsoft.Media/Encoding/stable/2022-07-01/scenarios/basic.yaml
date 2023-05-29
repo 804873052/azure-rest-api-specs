@@ -1,0 +1,328 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  assetName:
+    type: string
+    prefix: assetnam
+  liveEventName:
+    type: string
+    prefix: liveeven
+  operationId:
+    type: string
+    prefix: operatio
+  transformName:
+    type: string
+    prefix: transfor
+  streamingEndpointName:
+    type: string
+    prefix: streamin
+  filterName:
+    type: string
+    prefix: filterna
+  trackName:
+    type: string
+    prefix: tracknam
+  contentKeyPolicyName:
+    type: string
+    prefix: contentk
+  jobName:
+    type: string
+    prefix: jobname
+  streamingLocatorName:
+    type: string
+    prefix: streamin
+  name:
+    type: string
+    prefix: name
+  liveOutputName:
+    type: string
+    prefix: liveoutp
+  locationName:
+    type: string
+    prefix: location
+  streamingPolicyName:
+    type: string
+    prefix: streamin
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Locations_CheckNameAvailability
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\accounts-check-name-availability.json
+      - operationId: Mediaservices_CreateOrUpdate
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\async-accounts-create.json
+      - operationId: Mediaservices_ListBySubscription
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\accounts-subscription-list-all-accounts.json
+      - operationId: Mediaservices_Get
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\accounts-get-by-name.json
+      - operationId: Mediaservices_List
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\accounts-list-all-accounts.json
+      - operationId: Mediaservices_Update
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\async-accounts-update.json
+      - operationId: Mediaservices_ListEdgePolicies
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\accounts-list-media-edge-policies.json
+      - operationId: Mediaservices_SyncStorageKeys
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\accounts-sync-storage-keys.json
+      - operationId: Assets_CreateOrUpdate
+        exampleFile: ..\..\..\..\Metadata\stable\2022-08-01\examples\assets-create.json
+      - operationId: Assets_List
+        exampleFile: ..\..\..\..\Metadata\stable\2022-08-01\examples\assets-list-all.json
+      - operationId: Assets_Get
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\assets-get-by-name.json
+      - operationId: Assets_Update
+        exampleFile: ..\..\..\..\Metadata\stable\2022-08-01\examples\assets-update.json
+      - operationId: Assets_GetEncryptionKey
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\assets-get-encryption-keys.json
+      - operationId: Assets_ListContainerSas
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\assets-list-sas-urls.json
+      - operationId: Assets_ListStreamingLocators
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\assets-list-streaming-locators.json
+      - operationId: LiveEvents_Create
+        exampleFile: ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-create.json
+      - operationId: LiveEvents_AsyncOperation
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\async-operation-result.json
+      - operationId: LiveEvents_List
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-list-all.json
+      - operationId: LiveEvents_Get
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-list-by-name.json
+      - operationId: LiveEvents_OperationLocation
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-operation-location.json
+      - operationId: LiveEvents_Update
+        exampleFile: ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-update.json
+      - operationId: LiveEvents_Allocate
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-allocate.json
+      - operationId: LiveEvents_Stop
+        exampleFile: ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-stop.json
+      - operationId: LiveEvents_Reset
+        exampleFile: ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-reset.json
+      - operationId: LiveEvents_Start
+        exampleFile: ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-start.json
+      - operationId: Transforms_CreateOrUpdate
+        exampleFile: ..\examples\transforms-create.json
+      - operationId: Transforms_List
+        exampleFile: ..\examples\transforms-list-all.json
+      - operationId: Transforms_Get
+        exampleFile: ..\examples\transforms-get-by-name.json
+      - operationId: Transforms_Update
+        exampleFile: ..\examples\transforms-update.json
+      - operationId: StreamingEndpoints_Create
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-create.json
+      - operationId: StreamingEndpoints_AsyncOperation
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\async-operation-result.json
+      - operationId: StreamingEndpoints_Get
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-list-by-name.json
+      - operationId: StreamingEndpoints_OperationLocation
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-operation-location.json
+      - operationId: StreamingEndpoints_List
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-list-all.json
+      - operationId: StreamingEndpoints_Skus
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-list-skus.json
+      - operationId: StreamingEndpoints_Update
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-update.json
+      - operationId: StreamingEndpoints_Scale
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-scale.json
+      - operationId: StreamingEndpoints_Stop
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-stop.json
+      - operationId: StreamingEndpoints_Start
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-start.json
+      - operationId: Tracks_CreateOrUpdate
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\asset-tracks-create.json
+      - operationId: Tracks_List
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\asset-tracks-list-all.json
+      - operationId: Tracks_Get
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\asset-tracks-get-by-name.json
+      - operationId: Tracks_Update
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\asset-tracks-update.json
+      - operationId: Tracks_UpdateTrackData
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\asset-tracks-update-data.json
+      - operationId: StreamingLocators_Create
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-locators-create-clear.json
+      - operationId: StreamingLocators_List
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-locators-list.json
+      - operationId: StreamingLocators_Get
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-locators-get-by-name.json
+      - operationId: StreamingLocators_ListContentKeys
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-locators-list-content-keys.json
+      - operationId: StreamingLocators_ListPaths
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-locators-list-paths-streaming-only.json
+      - operationId: ContentKeyPolicies_CreateOrUpdate
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\content-key-policies-create-playready-open.json
+      - operationId: ContentKeyPolicies_List
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\content-key-policies-list-all.json
+      - operationId: ContentKeyPolicies_Get
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\content-key-policies-get-by-name.json
+      - operationId: ContentKeyPolicies_Update
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\content-key-policies-update.json
+      - operationId: ContentKeyPolicies_GetPolicyPropertiesWithSecrets
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\content-key-policies-get-with-secrets.json
+      - operationId: Jobs_Create
+        exampleFile: ..\examples\jobs-create.json
+      - operationId: Jobs_List
+        exampleFile: ..\examples\jobs-list-all.json
+      - operationId: Jobs_Get
+        exampleFile: ..\examples\jobs-get-by-name.json
+      - operationId: Jobs_Update
+        exampleFile: ..\examples\jobs-update.json
+      - operationId: Jobs_CancelJob
+        exampleFile: ..\examples\jobs-cancel.json
+      - operationId: AssetFilters_CreateOrUpdate
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\assetFilters-create.json
+      - operationId: AssetFilters_List
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\assetFilters-list-all.json
+      - operationId: AssetFilters_Get
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\assetFilters-get-by-name.json
+      - operationId: AssetFilters_Update
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\assetFilters-update.json
+      - operationId: LiveOutputs_Create
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\liveoutput-create.json
+      - operationId: LiveOutputs_List
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\liveoutput-list-all.json
+      - operationId: LiveOutputs_OperationLocation
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\liveoutput-operation-location.json
+      - operationId: LiveOutputs_AsyncOperation
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\async-operation-result.json
+      - operationId: LiveOutputs_Get
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\liveoutput-list-by-name.json
+      - operationId: AccountFilters_CreateOrUpdate
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\accountFilters-create.json
+      - operationId: AccountFilters_List
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\accountFilters-list-all.json
+      - operationId: AccountFilters_Get
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\accountFilters-get-by-name.json
+      - operationId: AccountFilters_Update
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\accountFilters-update.json
+
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\private-endpoint-connection-put.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\private-endpoint-connection-list.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\private-endpoint-connection-get-by-name.json
+          
+      - operationId: StreamingPolicies_Create
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-policies-create-clear.json
+      - operationId: StreamingPolicies_List
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-policies-list.json
+      - operationId: StreamingPolicies_Get
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-policy-get-by-name.json
+      - operationId: Operations_List
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\operations-list-all.json
+      - operationId: MediaServicesOperationResults_Get
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\media-service-operation-result-by-id.json
+      - operationId: MediaServicesOperationStatuses_Get
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\media-service-operation-status-by-id-terminal-state.json
+      - operationId: OperationResults_Get
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\asset-tracks-operation-result-by-id.json
+      - operationId: OperationStatuses_Get
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\asset-tracks-operation-status-by-id-terminal-state.json
+      - operationId: PrivateLinkResources_List
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\private-link-resources-list.json
+      - operationId: PrivateLinkResources_Get
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\private-link-resources-get-by-name.json
+      - operationId: StreamingPolicies_Delete
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-policies-delete.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: >-
+          ..\..\..\..\Accounts\stable\2021-11-01\examples\private-endpoint-connection-delete.json
+      - operationId: AccountFilters_Delete
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\accountFilters-delete.json
+      - operationId: LiveOutputs_Delete
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\liveoutput-delete.json
+      - operationId: AssetFilters_Delete
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\assetFilters-delete.json
+      - operationId: Jobs_Delete
+        exampleFile: ..\examples\jobs-delete.json
+      - operationId: ContentKeyPolicies_Delete
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\content-key-policies-delete.json
+      - operationId: StreamingLocators_Delete
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\streaming-locators-delete.json
+      - operationId: Tracks_Delete
+        exampleFile: >-
+          ..\..\..\..\Metadata\stable\2022-08-01\examples\asset-tracks-delete.json
+      - operationId: StreamingEndpoints_Delete
+        exampleFile: >-
+          ..\..\..\..\Streaming\stable\2022-08-01\examples\streamingendpoint-delete.json
+      - operationId: Transforms_Delete
+        exampleFile: ..\examples\transforms-delete.json
+      - operationId: LiveEvents_Delete
+        exampleFile: ..\..\..\..\Streaming\stable\2022-08-01\examples\liveevent-delete.json
+      - operationId: Assets_Delete
+        exampleFile: ..\..\..\..\Metadata\stable\2022-08-01\examples\assets-delete.json
+      - operationId: Mediaservices_Delete
+        exampleFile: ..\..\..\..\Accounts\stable\2021-11-01\examples\accounts-delete.json
