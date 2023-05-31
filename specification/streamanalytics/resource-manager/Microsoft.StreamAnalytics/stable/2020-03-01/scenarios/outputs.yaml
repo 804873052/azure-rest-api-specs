@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  jobName:
+    type: string
+    prefix: jobname
+  outputName:
+    type: string
+    prefix: outputna
+  storageAccountName:
+    type: string
+    prefix: streamsc
+
+prepareSteps:
+  - step: StreamingJobs_CreateOrReplace
+    exampleFile: ..\examples\StreamingJob_Create_JobShell.json
+  - step: Create_StorageAccount
+    armTemplate: ./templates/Create_StorageAccount.json
+
+# pass
+scenarios:
+  - scenario: Outputs
+    description: Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}
+    steps:
+      - step: Outputs_CreateOrReplace
+        exampleFile: ..\examples\Output_Create_Blob_CSV.json
+        requestUpdate:
+          - replace: /output/properties/datasource/properties/storageAccounts/0/accountName
+            value: $(storageAccountName)
+          - replace: /output/properties/datasource/properties/storageAccounts/0/accountKey
+            value: $(storageAccountKey)
+
+      - step: Outputs_ListByStreamingJob
+        exampleFile: ..\examples\Output_ListByStreamingJob.json
+      - step: Outputs_Get
+        exampleFile: ..\examples\Output_Get_AzureSQL.json
+      - step: Outputs_Update
+        exampleFile: ..\examples\Output_Update_Blob.json
+      - step: Outputs_Test
+        exampleFile: ..\examples\Output_Test.json
+      - step: Outputs_Delete
+        exampleFile: ..\examples\Output_Delete.json

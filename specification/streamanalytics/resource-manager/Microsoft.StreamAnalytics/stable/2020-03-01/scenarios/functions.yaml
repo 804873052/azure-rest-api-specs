@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  jobName:
+    type: string
+    prefix: jobname
+  functionName:
+    type: string
+    prefix: function
+
+prepareSteps:
+  - step: StreamingJobs_CreateOrReplace
+    exampleFile: ..\examples\StreamingJob_Create_JobShell.json
+
+# pass
+scenarios:
+  - scenario: Functions
+    description: Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}
+    steps:
+      - step: Functions_CreateOrReplace
+        exampleFile: ..\examples\Function_Create_JavaScript.json
+      - step: Functions_ListByStreamingJob
+        exampleFile: ..\examples\Function_ListByStreamingJob.json
+      - step: Functions_Get
+        exampleFile: ..\examples\Function_Get_AzureML.json
+      - step: Functions_Update
+        exampleFile: ..\examples\Function_Update_JavaScript.json
+      # - step: Functions_RetrieveDefaultDefinition
+      #   exampleFile: ..\examples\Function_RetrieveDefaultDefinition_AzureML.json
+      - step: Functions_Test
+        exampleFile: ..\examples\Function_Test_JavaScript.json
+      - step: Functions_Delete
+        exampleFile: ..\examples\Function_Delete.json

@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  jobName:
+    type: string
+    prefix: jobname
+
+# pass
+scenarios:
+  - scenario: Operations
+    description: Microsoft.StreamAnalytics/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\Operation_List.json
+
+  - scenario: StreamingJobs
+    description: Microsoft.StreamAnalytics/streamingjobs/{jobName}
+    steps:
+      - step: StreamingJobs_CreateOrReplace
+        exampleFile: ..\examples\StreamingJob_Create_JobShell.json
+      - step: StreamingJobs_List
+        exampleFile: ..\examples\StreamingJob_List_BySubscription_NoExpand.json
+      - step: StreamingJobs_ListByResourceGroup
+        exampleFile: ..\examples\StreamingJob_List_ByResourceGroup_NoExpand.json
+      - step: StreamingJobs_Get
+        exampleFile: ..\examples\StreamingJob_Get_NoExpand.json
+      - step: StreamingJobs_Update
+        exampleFile: ..\examples\StreamingJob_Update.json
+      # - step: StreamingJobs_Stop
+      #   exampleFile: ..\examples\StreamingJob_Stop.json
+      # - step: StreamingJobs_Scale
+      #   exampleFile: ..\examples\StreamingJob_Scale.json
+      # - step: StreamingJobs_Start
+      #   exampleFile: ..\examples\StreamingJob_Start_CustomTime.json
+      - step: StreamingJobs_Delete
+        exampleFile: ..\examples\StreamingJob_Delete.json

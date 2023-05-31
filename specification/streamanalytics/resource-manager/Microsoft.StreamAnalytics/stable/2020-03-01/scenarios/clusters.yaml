@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  clusterName:
+    type: string
+    prefix: clustern
+  storageAccountName:
+    type: string
+    prefix: streamsc
+  privateEndpointName:
+    type: string
+    prefix: privatee
+
+prepareSteps:
+  - step: Clusters_CreateOrUpdate # long time(about 40min), capacity acceptable range from 36 to 396
+    exampleFile: ..\examples\Cluster_Create.json
+    requestUpdate:
+      - replace: /cluster/sku/capacity
+        value: 36
+  - step: Create_StorageAccount
+    armTemplate: ./templates/Create_StorageAccount.json
+
+scenarios: 
+  - scenario: Clusters
+    description: Microsoft.StreamAnalytics/clusters/{clusterName}
+    steps:
+      - step: Clusters_ListBySubscription
+        exampleFile: ..\examples\Cluster_ListBySubscription.json
+      - step: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\Cluster_ListByResourceGroup.json
+      - step: Clusters_Get
+        exampleFile: ..\examples\Cluster_Get.json
+      - step: Clusters_Update
+        # exampleFile: ..\examples\Cluster_Update.json
+        operationId: Clusters_Update
+        parameters:
+          cluster:
+            tag:
+              key: value2
+      - step: Clusters_ListStreamingJobs
+        exampleFile: ..\examples\Cluster_ListStreamingJobs.json
+        
+      # - step: Clusters_Delete
+      #   exampleFile: ..\examples\Cluster_Delete.json
+
+  - scenario: PrivateEndpoint
+    description: Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}
+    steps:
+      - step: PrivateEndpoints_CreateOrUpdate
+        exampleFile: ..\examples\PrivateEndpoint_Create.json
+        requestUpdate:
+          - replace: /privateEndpoint/properties/manualPrivateLinkServiceConnections/0/properties/privateLinkServiceId
+            value: $(storageAccountId)
+          - replace: /privateEndpoint/properties/manualPrivateLinkServiceConnections/0/properties/groupIds
+            value: ["blob"]
+      - step: PrivateEndpoints_ListByCluster
+        exampleFile: ..\examples\PrivateEndpoint_ListByCluster.json
+      - step: PrivateEndpoints_Get
+        exampleFile: ..\examples\PrivateEndpoint_Get.json
+      - step: PrivateEndpoints_Delete
+        exampleFile: ..\examples\PrivateEndpoint_Delete.json

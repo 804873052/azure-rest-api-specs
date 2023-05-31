@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  jobName:
+    type: string
+    prefix: jobname
+  inputName:
+    type: string
+    prefix: inputnam
+  storageAccountName:
+    type: string
+    prefix: streamsc
+
+prepareSteps:
+  - step: StreamingJobs_CreateOrReplace
+    exampleFile: ..\examples\StreamingJob_Create_JobShell.json
+  - step: Create_StorageAccount
+    armTemplate: ./templates/Create_StorageAccount.json
+
+# pass
+scenarios:
+  - scenario: Inputs
+    description: Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}
+    steps:
+      - step: Inputs_CreateOrReplace
+        exampleFile: ..\examples\Input_Create_Reference_Blob_CSV.json
+        requestUpdate:
+          - replace: /input/properties/datasource/properties/storageAccounts/0/accountName
+            value: $(storageAccountName)
+          - replace: /input/properties/datasource/properties/storageAccounts/0/accountKey
+            value: $(storageAccountKey)
+            
+      - step: Inputs_ListByStreamingJob
+        exampleFile: ..\examples\Input_ListByStreamingJob.json
+      - step: Inputs_Get
+        exampleFile: ..\examples\Input_Get_Reference_Blob_CSV.json
+      - step: Inputs_Update
+        exampleFile: ..\examples\Input_Update_Reference_Blob.json
+      - step: Inputs_Test
+        exampleFile: ..\examples\Input_Test.json
+      - step: Inputs_Delete
+        exampleFile: ..\examples\Input_Delete.json

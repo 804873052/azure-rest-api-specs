@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  jobName:
+    type: string
+    prefix: jobname
+  transformationName:
+    type: string
+    prefix: transfor
+
+prepareSteps:
+  - step: StreamingJobs_CreateOrReplace
+    exampleFile: ..\examples\StreamingJob_Create_JobShell.json
+
+# pass
+scenarios:
+  - scenario: Transformations
+    description: Microsoft.StreamAnalytics/streamingjobs/{jobName}/transformations/{transformationName}
+    steps:
+      - step: Transformations_CreateOrReplace
+        exampleFile: ..\examples\Transformation_Create.json
+      - step: Transformations_Get
+        exampleFile: ..\examples\Transformation_Get.json
+      - step: Transformations_Update
+        exampleFile: ..\examples\Transformation_Update.json

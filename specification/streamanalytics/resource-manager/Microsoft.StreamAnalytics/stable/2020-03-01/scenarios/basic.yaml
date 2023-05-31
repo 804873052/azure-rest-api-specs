@@ -1,0 +1,124 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  jobName:
+    type: string
+    prefix: jobname
+  clusterName:
+    type: string
+    prefix: clustern
+  functionName:
+    type: string
+    prefix: function
+  inputName:
+    type: string
+    prefix: inputnam
+  outputName:
+    type: string
+    prefix: outputna
+  transformationName:
+    type: string
+    prefix: transfor
+  privateEndpointName:
+    type: string
+    prefix: privatee
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: StreamingJobs_CreateOrReplace
+        exampleFile: ..\examples\StreamingJob_Create_JobShell.json
+      - operationId: StreamingJobs_List
+        exampleFile: ..\examples\StreamingJob_List_BySubscription_NoExpand.json
+      - operationId: StreamingJobs_ListByResourceGroup
+        exampleFile: ..\examples\StreamingJob_List_ByResourceGroup_NoExpand.json
+      - operationId: StreamingJobs_Get
+        exampleFile: ..\examples\StreamingJob_Get_NoExpand.json
+      - operationId: StreamingJobs_Update
+        exampleFile: ..\examples\StreamingJob_Update.json
+      - operationId: StreamingJobs_Stop
+        exampleFile: ..\examples\StreamingJob_Stop.json
+      - operationId: StreamingJobs_Scale
+        exampleFile: ..\examples\StreamingJob_Scale.json
+      - operationId: StreamingJobs_Start
+        exampleFile: ..\examples\StreamingJob_Start_CustomTime.json
+
+      - operationId: Clusters_CreateOrUpdate
+        exampleFile: ..\examples\Cluster_Create.json
+      - operationId: Clusters_ListBySubscription
+        exampleFile: ..\examples\Cluster_ListBySubscription.json
+      - operationId: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\Cluster_ListByResourceGroup.json
+      - operationId: Clusters_Get
+        exampleFile: ..\examples\Cluster_Get.json
+      - operationId: Clusters_Update
+        exampleFile: ..\examples\Cluster_Update.json
+      - operationId: Clusters_ListStreamingJobs
+        exampleFile: ..\examples\Cluster_ListStreamingJobs.json
+
+      - operationId: Functions_CreateOrReplace
+        exampleFile: ..\examples\Function_Create_AzureML.json
+      - operationId: Functions_ListByStreamingJob
+        exampleFile: ..\examples\Function_ListByStreamingJob.json
+      - operationId: Functions_Get
+        exampleFile: ..\examples\Function_Get_AzureML.json
+      - operationId: Functions_Update
+        exampleFile: ..\examples\Function_Update_AzureML.json
+      - operationId: Functions_RetrieveDefaultDefinition
+        exampleFile: ..\examples\Function_RetrieveDefaultDefinition_AzureML.json
+      - operationId: Functions_Test
+        exampleFile: ..\examples\Function_Test_AzureML.json
+
+      - operationId: Inputs_CreateOrReplace
+        exampleFile: ..\examples\Input_Create_Reference_Blob_CSV.json
+      - operationId: Inputs_ListByStreamingJob
+        exampleFile: ..\examples\Input_ListByStreamingJob.json
+      - operationId: Inputs_Get
+        exampleFile: ..\examples\Input_Get_Reference_Blob_CSV.json
+      - operationId: Inputs_Update
+        exampleFile: ..\examples\Input_Update_Reference_Blob.json
+      - operationId: Inputs_Test
+        exampleFile: ..\examples\Input_Test.json
+
+      - operationId: Outputs_CreateOrReplace
+        exampleFile: ..\examples\Output_Create_AzureSQL.json
+      - operationId: Outputs_ListByStreamingJob
+        exampleFile: ..\examples\Output_ListByStreamingJob.json
+      - operationId: Outputs_Get
+        exampleFile: ..\examples\Output_Get_AzureSQL.json
+      - operationId: Outputs_Update
+        exampleFile: ..\examples\Output_Update_AzureSQL.json
+      - operationId: Outputs_Test
+        exampleFile: ..\examples\Output_Test.json
+
+      - operationId: Transformations_CreateOrReplace
+        exampleFile: ..\examples\Transformation_Create.json
+      - operationId: Transformations_Get
+        exampleFile: ..\examples\Transformation_Get.json
+      - operationId: Transformations_Update
+        exampleFile: ..\examples\Transformation_Update.json
+
+      - operationId: PrivateEndpoints_CreateOrUpdate
+        exampleFile: ..\examples\PrivateEndpoint_Create.json
+      - operationId: PrivateEndpoints_ListByCluster
+        exampleFile: ..\examples\PrivateEndpoint_ListByCluster.json
+      - operationId: PrivateEndpoints_Get
+        exampleFile: ..\examples\PrivateEndpoint_Get.json
+        
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operation_List.json
+      - operationId: Subscriptions_ListQuotas
+        exampleFile: ..\examples\Subscription_ListQuotas.json
+      - operationId: PrivateEndpoints_Delete
+        exampleFile: ..\examples\PrivateEndpoint_Delete.json
+      - operationId: Outputs_Delete
+        exampleFile: ..\examples\Output_Delete.json
+      - operationId: Inputs_Delete
+        exampleFile: ..\examples\Input_Delete.json
+      - operationId: Functions_Delete
+        exampleFile: ..\examples\Function_Delete.json
+      - operationId: Clusters_Delete
+        exampleFile: ..\examples\Cluster_Delete.json
+      - operationId: StreamingJobs_Delete
+        exampleFile: ..\examples\StreamingJob_Delete.json
+
+# (44 - 5) / 44 = 0.88
