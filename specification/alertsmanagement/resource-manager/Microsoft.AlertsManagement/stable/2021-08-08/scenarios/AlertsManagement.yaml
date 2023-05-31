@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  alertProcessingRuleName:
+    type: string
+    prefix: alertpro
+
+scenarios:
+  - scenario: Operations
+    description: Microsoft.AlertsManagement/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\..\..\preview\2019-05-05-preview\examples\Operations_List.json
+
+  - scenario: Alerts
+    description: Microsoft.AlertsManagement/alerts/{alertId}
+    steps:
+      # - step: Alerts_MetaData # The ApiVersion '2019-05-05-preview' is not registered for ResourceType 'Microsoft.AlertsManagement/alertsMetaData'. Valid Api Versions are:  '2019-03-01-preview
+      #   exampleFile: ..\..\..\preview\2019-05-05-preview\examples\AlertsMetaData_MonitorService.json
+      - step: Alerts_GetAll
+        exampleFile: ..\..\..\preview\2019-05-05-preview\examples\Alerts_List.json
+      # - step: Alerts_GetById
+      #   exampleFile: ..\..\..\preview\2019-05-05-preview\examples\Alerts_GetById.json
+      # - step: Alerts_ChangeState
+      #   exampleFile: ..\..\..\preview\2019-05-05-preview\examples\Alerts_ChangeState.json
+      # - step: Alerts_GetHistory
+      #   exampleFile: ..\..\..\preview\2019-05-05-preview\examples\Alerts_History.json
+      - step: Alerts_GetSummary
+        exampleFile: ..\..\..\preview\2019-05-05-preview\examples\Alerts_Summary.json
+
+  - scenario: AlertProcessingRules
+    description: Microsoft.AlertsManagement/actionRules/{alertProcessingRuleName}
+    variables:
+      globalLocation: Global
+    steps:
+      - step: AlertProcessingRules_CreateOrUpdate
+        exampleFile: ..\examples\AlertProcessingRules_Create_or_update_remove_all_action_groups_outside_business_hours.json
+        requestUpdate:
+          - replace: /alertProcessingRule/properties/scopes
+            value: [/subscriptions/$(subscriptionId)/resourceGroups/$(resourceGroupName)]
+          - replace: /alertProcessingRule/location
+            value: $(globalLocation)
+      - step: AlertProcessingRules_ListBySubscription
+        exampleFile: ..\examples\AlertProcessingRules_List_Subscription.json
+      - step: AlertProcessingRules_GetByName
+        exampleFile: ..\examples\AlertProcessingRules_GetById.json
+      - step: AlertProcessingRules_ListByResourceGroup
+        exampleFile: ..\examples\AlertProcessingRules_List_ResourceGroup.json
+      - step: AlertProcessingRules_Update
+        exampleFile: ..\examples\AlertProcessingRules_Patch.json
+      - step: AlertProcessingRules_Delete
+        exampleFile: ..\examples\AlertProcessingRules_Delete.json
+
+  - scenario: SmartGroups
+    description: Microsoft.AlertsManagement/smartGroups/{smartGroupId}
+    steps:
+      - step: SmartGroups_GetAll
+        exampleFile: ..\..\..\preview\2019-05-05-preview\examples\SmartGroups_List.json
+      # - step: SmartGroups_GetById
+      #   exampleFile: ..\..\..\preview\2019-05-05-preview\examples\SmartGroups_GetById.json
+      # - step: SmartGroups_ChangeState
+      #   exampleFile: ..\..\..\preview\2019-05-05-preview\examples\SmartGroups_ChangeState.json
+      # - step: SmartGroups_GetHistory
+      #   exampleFile: ..\..\..\preview\2019-05-05-preview\examples\SmartGroups_History.json
