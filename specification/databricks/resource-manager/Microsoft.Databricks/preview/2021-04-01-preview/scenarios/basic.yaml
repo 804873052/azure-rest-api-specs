@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  workspaceName:
+    type: string
+    prefix: workspac
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  peeringName:
+    type: string
+    prefix: peeringn
+    
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Workspaces_CreateOrUpdate
+        exampleFile: ..\examples\WorkspaceCreate.json
+      - operationId: Workspaces_ListBySubscription
+        exampleFile: ..\examples\WorkspacesListBySubscription.json
+      - operationId: Workspaces_ListByResourceGroup
+        exampleFile: ..\examples\WorkspacesListByResourceGroup.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\WorkspaceGet.json
+      - operationId: Workspaces_Update
+        exampleFile: ..\examples\WorkspaceUpdate.json
+
+      - operationId: vNetPeering_CreateOrUpdate
+        exampleFile: ..\examples\WorkspaceVirtualNetworkPeeringCreateOrUpdate.json
+      - operationId: vNetPeering_ListByWorkspace
+        exampleFile: ..\examples\WorkspaceVirtualNetPeeringList.json
+      - operationId: vNetPeering_Get
+        exampleFile: ..\examples\WorkspaceVirtualNetPeeringGet.json
+
+      - operationId: PrivateEndpointConnections_Create
+        exampleFile: ..\examples\PrivateEndpointConnectionsUpdate.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\ListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\PrivateEndpointConnectionsGet.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+      - operationId: OutboundNetworkDependenciesEndpoints_List
+        exampleFile: ..\examples\OutboundNetworkDependenciesEndpointsList.json
+
+      - operationId: PrivateLinkResources_List
+        exampleFile: ..\examples\ListPrivateLinkResources.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          groupId:
+            type: string
+            prefix: groupid
+        exampleFile: ..\examples\PrivateLinkResourcesGet.json
+
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\PrivateEndpointConnectionsDelete.json
+      - operationId: vNetPeering_Delete
+        exampleFile: ..\examples\WorkspaceVirtualNetworkPeeringDelete.json
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\WorkspaceDelete.json

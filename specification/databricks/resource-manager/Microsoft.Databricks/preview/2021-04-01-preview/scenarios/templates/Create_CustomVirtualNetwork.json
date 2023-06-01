@@ -1,0 +1,92 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "virtualNetworksName": {
+        "type": "string",
+        "defaultValue": "databricksvnet2"
+      },
+      "networkSecurityGroupName": { 
+        "type": "string",
+        "defaultValue": "databricks-nsg"
+      },
+      "location": {
+        "type": "string"
+      }
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Network/networkSecurityGroups",
+        "apiVersion": "2022-11-01",
+        "name": "[parameters('networkSecurityGroupName')]",
+        "location": "[parameters('location')]"
+      },
+      {
+        "name": "[parameters('virtualNetworksName')]",
+        "type": "Microsoft.Network/virtualNetworks",
+        "location": "[parameters('location')]",
+        "tags": {},
+        "apiVersion": "2021-05-01",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+        ],
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/16"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "default",
+              "properties": {
+                "addressPrefix": "10.0.0.0/24"
+              }
+            },
+            {
+              "name": "myPublicSubnet",
+              "properties": {
+                "addressPrefix": "10.0.1.0/24",
+                "networkSecurityGroup": {
+                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+                },
+                "delegations": [
+                  {
+                      "name": "Microsoft.Databricks.workspaces",
+                      "properties": {
+                          "serviceName": "Microsoft.Databricks/workspaces"
+                      },
+                      "type": "Microsoft.Network/virtualNetworks/subnets/delegations"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "myPrivateSubnet",
+              "properties": {
+                "addressPrefix": "10.0.2.0/24",
+                "networkSecurityGroup": {
+                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+                },
+                "delegations": [
+                  {
+                      "name": "Microsoft.Databricks.workspaces",
+                      "properties": {
+                          "serviceName": "Microsoft.Databricks/workspaces"
+                      },
+                      "type": "Microsoft.Network/virtualNetworks/subnets/delegations"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "outputs": {
+      "virtaulNetworkId": {
+        "value": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworksName'))]",
+        "type": "string"
+      }
+    }
+  }

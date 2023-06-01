@@ -1,0 +1,90 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  workspaceName:
+    type: string
+    prefix: workspac
+  peeringName:
+    type: string
+    prefix: peeringn
+  managedResourceGroupName:
+    type: string
+    prefix: managedrg
+
+prepareSteps:
+  - step: Create_VirtualNetwork
+    armTemplate: ./templates/Create_CustomVirtualNetwork.json
+
+  - step: Workspaces_CreateOrUpdate
+    exampleFile: ..\examples\WorkspaceCreateWithParameters.json
+    requestUpdate:
+      - replace: /parameters/properties/managedResourceGroupId
+        value: /subscriptions/$(subscriptionId)/resourceGroups/$(managedResourceGroupName)
+      - add: /parameters/sku
+        value: {name: "premium"}
+      - add: /parameters/properties/parameters/customVirtualNetworkId/value
+        value: $(virtaulNetworkId)
+    outputVariables:
+      workspaceId: 
+        type: string
+        fromResponse: /id
+  - step: Create_PrivateEndpoint
+    armTemplate: ./templates/Create_PrivateEndpoint.json
+
+scenarios:
+# pass
+  - scenario: Workspaces
+    description: Microsoft.Databricks/workspaces/{workspaceName}
+    steps:
+      # - step: Workspaces_ListBySubscription # json: cannot unmarshal array into Go value of type map[string]json.RawMessage
+      #   exampleFile: ..\examples\WorkspacesListBySubscription.json
+      - step: Workspaces_ListByResourceGroup
+        exampleFile: ..\examples\WorkspacesListByResourceGroup.json
+      - step: Workspaces_Get
+        exampleFile: ..\examples\WorkspaceGet.json
+      - step: Workspaces_Update
+        exampleFile: ..\examples\WorkspaceUpdate.json
+
+  # - scenario: Operations 
+  #   description: Microsoft.Databricks/operations
+  #   steps:
+  #     - step: Operations_List # json: cannot unmarshal array into Go value of type map[string]json.RawMessage
+  #       exampleFile: ..\examples\OperationsList.json
+
+# pass
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: PrivateEndpointConnections_List
+        exampleFile: ..\examples\ListPrivateEndpointConnections.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_Create
+        exampleFile: ..\examples\PrivateEndpointConnectionsUpdate.json
+        requestUpdate:
+          - replace: /privateEndpointConnection/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\PrivateEndpointConnectionsGet.json
+      - step: PrivateLinkResources_List
+        exampleFile: ..\examples\ListPrivateLinkResources.json
+      - step: PrivateLinkResources_Get
+        exampleFile: ..\examples\PrivateLinkResourcesGet.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\PrivateEndpointConnectionsDelete.json
+
+# pass
+  - scenario: OutboundNetworkDependenciesEndpoints
+    description: Microsoft.Databricks/workspaces/{workspaceName}/outboundNetworkDependenciesEndpoints
+    steps:
+      - step: OutboundNetworkDependenciesEndpoints_List
+        exampleFile: ..\examples\OutboundNetworkDependenciesEndpointsList.json
+
+cleanUpSteps:
+  - step: Workspaces_Delete
+    exampleFile: ..\examples\WorkspaceDelete.json

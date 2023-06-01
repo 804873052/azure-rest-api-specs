@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  workspaceName:
+    type: string
+    prefix: workspac
+  peeringName:
+    type: string
+    prefix: peeringn
+
+prepareSteps:
+  - step: Workspaces_CreateOrUpdate
+    exampleFile: ..\examples\WorkspaceCreate.json
+  - step: Create_VirtualNetwork
+    armTemplate: ./templates/Create_VirtualNetwork.json
+
+scenarios:
+  - scenario: vNetPeering
+    description: Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}
+    steps:
+      - step: vNetPeering_CreateOrUpdate
+        exampleFile: ..\examples\WorkspaceVirtualNetworkPeeringCreateOrUpdate.json
+        requestUpdate:
+          - replace: /VirtualNetworkPeeringParameters/properties/remoteVirtualNetwork/id
+            value: $(virtaulNetworkId)
+      - step: vNetPeering_ListByWorkspace
+        exampleFile: ..\examples\WorkspaceVirtualNetPeeringList.json
+      - step: vNetPeering_Get
+        exampleFile: ..\examples\WorkspaceVirtualNetPeeringGet.json
+      - step: vNetPeering_Delete
+        exampleFile: ..\examples\WorkspaceVirtualNetworkPeeringDelete.json
