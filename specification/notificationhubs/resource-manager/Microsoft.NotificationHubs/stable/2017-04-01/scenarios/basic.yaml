@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  notificationHubName:
+    type: string
+    prefix: notifica
+  authorizationRuleName:
+    type: string
+    prefix: authoriz
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Namespaces_CreateOrUpdate
+        exampleFile: ..\examples\Namespaces\NHNameSpaceCreate.json
+      - operationId: Namespaces_ListAll
+        exampleFile: ..\examples\Namespaces\NHNameSpaceList.json
+      - operationId: Namespaces_Get
+        exampleFile: ..\examples\Namespaces\NHNameSpaceGet.json
+      - operationId: Namespaces_List
+        exampleFile: ..\examples\Namespaces\NHNameSpaceListByResourceGroup.json
+      - operationId: Namespaces_ListAuthorizationRules
+        exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleListAll.json
+      - operationId: Namespaces_Patch
+        exampleFile: ..\examples\Namespaces\NHNameSpaceUpdate.json
+      - operationId: Namespaces_CheckAvailability
+        exampleFile: ..\examples\Namespaces\NHNameSpaceCheckNameAvailability.json
+
+      - operationId: NotificationHubs_CreateOrUpdate
+        exampleFile: ..\examples\NotificationHubs\NotificationHubCreate.json
+      - operationId: NotificationHubs_List
+        exampleFile: ..\examples\NotificationHubs\NotificationHubListByNameSpace.json
+      - operationId: NotificationHubs_ListAuthorizationRules
+        exampleFile: >-
+          ..\examples\NotificationHubs\NotificationHubAuthorizationRuleListAll.json
+      - operationId: NotificationHubs_Get
+        exampleFile: ..\examples\NotificationHubs\NotificationHubGet.json
+      - operationId: NotificationHubs_Patch
+        exampleFile: ..\examples\NotificationHubs\NotificationHubPatch.json
+      - operationId: NotificationHubs_GetPnsCredentials
+        exampleFile: ..\examples\NotificationHubs\NotificationHubPnsCredentials.json
+      - operationId: NotificationHubs_CheckNotificationHubAvailability
+        exampleFile: ..\examples\NotificationHubs\NotificationHubCheckNameAvailability.json
+      - operationId: NotificationHubs_DebugSend
+        exampleFile: ..\examples\NotificationHubs\NotificationHubDebugSend.json
+      - operationId: NotificationHubs_CreateOrUpdateAuthorizationRule
+        exampleFile: >-
+          ..\examples\NotificationHubs\NotificationHubAuthorizationRuleCreate.json
+      - operationId: NotificationHubs_GetAuthorizationRule
+        exampleFile: ..\examples\NotificationHubs\NotificationHubAuthorizationRuleGet.json
+      - operationId: NotificationHubs_ListKeys
+        exampleFile: >-
+          ..\examples\NotificationHubs\NotificationHubAuthorizationRuleListKey.json
+      - operationId: NotificationHubs_RegenerateKeys
+        exampleFile: >-
+          ..\examples\NotificationHubs\NotificationHubAuthorizationRuleRegenrateKey.json
+          
+      - operationId: Namespaces_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleCreate.json
+      - operationId: Namespaces_GetAuthorizationRule
+        exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleGet.json
+      - operationId: Namespaces_ListKeys
+        exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleListKey.json
+      - operationId: Namespaces_RegenerateKeys
+        exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleRegenrateKey.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\NHOperationsList.json
+
+      - operationId: Namespaces_DeleteAuthorizationRule
+        exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleDelete.json
+      - operationId: NotificationHubs_DeleteAuthorizationRule
+        exampleFile: >-
+          ..\examples\NotificationHubs\NotificationHubAuthorizationRuleDelete.json
+      - operationId: NotificationHubs_Delete
+        exampleFile: ..\examples\NotificationHubs\NotificationHubDelete.json
+      - operationId: Namespaces_Delete
+        exampleFile: ..\examples\Namespaces\NHNameSpaceDelete.json

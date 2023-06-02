@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  notificationHubName:
+    type: string
+    prefix: notifica
+  authorizationRuleName:
+    type: string
+    prefix: authoriz
+
+prepareSteps:
+  - step: Namespaces_CheckAvailability
+    exampleFile: ..\examples\Namespaces\NHNameSpaceCheckNameAvailability.json
+    requestUpdate:
+      - replace: /parameters/name
+        value: $(namespaceName)
+  - step: Namespaces_CreateOrUpdate
+    exampleFile: ..\examples\Namespaces\NHNameSpaceCreate.json
+
+  - step: NotificationHubs_CheckNotificationHubAvailability
+    exampleFile: ..\examples\NotificationHubs\NotificationHubCheckNameAvailability.json
+    requestUpdate:
+      - replace: /parameters/name
+        value: $(notificationHubName)
+  - step: NotificationHubs_CreateOrUpdate
+    exampleFile: ..\examples\NotificationHubs\NotificationHubCreate.json
+
+
+scenarios:
+  - scenario: Operations
+    description: Microsoft.NotificationHubs/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\NHOperationsList.json
+
+# pass
+  - scenario: Namespaces
+    description: Microsoft.NotificationHubs/namespaces/{namespaceName}
+    steps:
+      - step: Namespaces_ListAll
+        exampleFile: ..\examples\Namespaces\NHNameSpaceList.json
+      - step: Namespaces_Get
+        exampleFile: ..\examples\Namespaces\NHNameSpaceGet.json
+      - step: Namespaces_List
+        exampleFile: ..\examples\Namespaces\NHNameSpaceListByResourceGroup.json
+      - step: Namespaces_Patch
+        exampleFile: ..\examples\Namespaces\NHNameSpaceUpdate.json
+
+# pass, but testgen generate error: Maximum call stack size exceeded
+  # - scenario: NamespacesAuthorizationRule
+  #   description: Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}
+  #   variables:
+  #     authorizationRuleName: namespac$(authorizationRuleName)
+  #   steps:
+  #     - step: Namespaces_CreateOrUpdateAuthorizationRule
+  #       exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleCreate.json
+  #     - step: Namespaces_ListAuthorizationRules
+  #       exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleListAll.json
+  #     - step: Namespaces_GetAuthorizationRule
+  #       exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleGet.json
+  #     - step: Namespaces_ListKeys
+  #       exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleListKey.json
+  #     - step: Namespaces_RegenerateKeys
+  #       exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleRegenrateKey.json
+  #     - step: Namespaces_DeleteAuthorizationRule
+  #       exampleFile: ..\examples\Namespaces\NHNameSpaceAuthorizationRuleDelete.json
+
+  - scenario: NotificationHubs
+    description: Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}
+    steps:
+      - step: NotificationHubs_List
+        exampleFile: ..\examples\NotificationHubs\NotificationHubListByNameSpace.json
+      - step: NotificationHubs_Get
+        exampleFile: ..\examples\NotificationHubs\NotificationHubGet.json
+      - step: NotificationHubs_Patch
+        exampleFile: ..\examples\NotificationHubs\NotificationHubPatch.json
+      - step: NotificationHubs_GetPnsCredentials
+        exampleFile: ..\examples\NotificationHubs\NotificationHubPnsCredentials.json
+      # - step: NotificationHubs_DebugSend # not target application
+      #   exampleFile: ..\examples\NotificationHubs\NotificationHubDebugSend.json
+
+# pass, but testgen generate error: Maximum call stack size exceeded
+  # - scenario: NotificationHubsAuthorizationRule
+  #   description: Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules/{authorizationRuleName}
+  #   variables:
+  #     authorizationRuleName: notifica+$(authorizationRuleName)
+  #   steps:
+  #     - step: NotificationHubs_CreateOrUpdateAuthorizationRule
+  #       exampleFile: ..\examples\NotificationHubs\NotificationHubAuthorizationRuleCreate.json
+  #     - step: NotificationHubs_ListAuthorizationRules
+  #       exampleFile: ..\examples\NotificationHubs\NotificationHubAuthorizationRuleListAll.json
+  #     - step: NotificationHubs_GetAuthorizationRule
+  #       exampleFile: ..\examples\NotificationHubs\NotificationHubAuthorizationRuleGet.json
+  #     - step: NotificationHubs_ListKeys
+  #       exampleFile: ..\examples\NotificationHubs\NotificationHubAuthorizationRuleListKey.json
+  #     - step: NotificationHubs_RegenerateKeys
+  #       exampleFile: ..\examples\NotificationHubs\NotificationHubAuthorizationRuleRegenrateKey.json
+  #     - step: NotificationHubs_DeleteAuthorizationRule
+  #       exampleFile: ..\examples\NotificationHubs\NotificationHubAuthorizationRuleDelete.json
+
+cleanUpSteps:
+  - step: NotificationHubs_Delete
+    exampleFile: ..\examples\NotificationHubs\NotificationHubDelete.json
+  - step: Namespaces_Delete
+    exampleFile: ..\examples\Namespaces\NHNameSpaceDelete.json
