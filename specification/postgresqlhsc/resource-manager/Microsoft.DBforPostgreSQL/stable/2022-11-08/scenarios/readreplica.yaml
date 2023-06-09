@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  adminPassword:
+    type: string
+  clusterName:
+    type: string
+    prefix: clustern
+  clusterReplicaName:
+    type: string
+    prefix: clustern
+
+scenarios:
+  - scenario: Clusters
+    description: Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}
+    steps:
+      - step: Clusters_Create
+        exampleFile: ..\examples\ClusterCreate.json
+        requestUpdate:
+          - replace: /parameters/properties/administratorLoginPassword
+            value: $(adminPassword)
+        outputVariables:
+          clusterId:
+            type: string
+            fromResponse: /id
+
+      - step: Clusters_CreateReadReplica
+        # exampleFile: ..\examples\ClusterCreateReadReplica.json
+        operationId: Clusters_Create
+        parameters: 
+          clusterName: $(clusterReplicaName)
+          parameters:
+            location: $(location)
+            properties:
+              sourceResourceId: $(clusterId)
+              sourceLocation: $(location)
+
+      - step: Clusters_PromoteReadReplica # Only read replica formations can be promoted, sleep about 5-10 min
+        # exampleFile: ..\examples\ClusterPromoteReadReplica.json
+        operationId: Clusters_PromoteReadReplica
+        parameters:
+          clusterName: $(clusterReplicaName)

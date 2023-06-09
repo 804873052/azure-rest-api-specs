@@ -1,0 +1,159 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  adminPassword:
+    type: string
+  clusterName:
+    type: string
+    prefix: clustern
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  roleName:
+    type: string
+    prefix: rolename
+
+prepareSteps:
+  - step: Clusters_CheckNameAvailability
+    exampleFile: ..\examples\CheckNameAvailability.json
+  - step: Clusters_Create
+    exampleFile: ..\examples\ClusterCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+    outputVariables:
+      clusterId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+# pass 
+  - scenario: Clusters
+    description: Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}
+    steps:
+      - step: Clusters_List
+        exampleFile: ..\examples\ClusterList.json
+      - step: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\ClusterListByResourceGroup.json
+      - step: Clusters_Get
+        exampleFile: ..\examples\ClusterGet.json
+      - step: Clusters_Update
+        # exampleFile: ..\examples\ClusterUpdate.json
+        operationId: Clusters_Update
+        parameters:
+          parameters:
+            tag:
+              - key: postgresqlhsc
+      - step: Clusters_Stop
+        exampleFile: ..\examples\ClusterStop.json
+      - step: Clusters_Start
+        exampleFile: ..\examples\ClusterStart.json
+      - step: Clusters_Restart
+        exampleFile: ..\examples\ClusterRestart.json
+
+# pass
+  - scenario: FirewallRules
+    description: Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/firewallRules/{firewallRuleName}
+    steps:
+      - step: FirewallRules_CreateOrUpdate
+        exampleFile: ..\examples\FirewallRuleCreate.json
+      - step: FirewallRules_ListByCluster
+        exampleFile: ..\examples\FirewallRuleListByCluster.json
+      - step: FirewallRules_Get
+        exampleFile: ..\examples\FirewallRuleGet.json
+      - step: FirewallRules_Delete
+        exampleFile: ..\examples\FirewallRuleDelete.json
+
+# pass
+  - scenario: Roles
+    description: Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}
+    steps:
+      - step: Roles_Create
+        exampleFile: ..\examples\RoleCreate.json
+        requestUpdate:
+          - replace: /parameters/properties/password
+            value: $(adminPassword)
+      - step: Roles_ListByCluster
+        exampleFile: ..\examples\RoleListByCluster.json
+      - step: Roles_Get
+        exampleFile: ..\examples\RoleGet.json
+      - step: Roles_Delete
+        exampleFile: ..\examples\RoleDelete.json
+
+# pass
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: PrivateEndpointConnections_ListByCluster
+        exampleFile: ..\examples\PrivateEndpointConnectionsListByCluster.json
+        # outputVariables:
+        #   privateEndpointConnectionName:
+        #     type: string
+        #     fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\PrivateEndpointConnectionCreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\PrivateEndpointConnectionsGet.json
+      - step: PrivateLinkResources_ListByCluster
+        exampleFile: ..\examples\PrivateLinkResourceListByCluster.json
+      - step: PrivateLinkResources_Get
+        # variables:
+        #   privateLinkResourceName:
+        #     type: string
+        #     prefix: privatel
+        exampleFile: ..\examples\PrivateLinkResourcesGet.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\PrivateEndpointConnectionsDelete.json
+
+# pass
+  - scenario: Configurations
+    description: Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/coordinatorConfigurations/{configurationName}
+    variables:
+      configurationName: array_nulls
+    steps:
+      - step: Configurations_UpdateOnCoordinator
+        exampleFile: ..\examples\ConfigurationUpdateCoordinator.json
+      - step: Configurations_ListByCluster
+        exampleFile: ..\examples\ConfigurationListByCluster.json
+      - step: Configurations_Get
+        exampleFile: ..\examples\ConfigurationGet.json
+      - step: Configurations_GetCoordinator
+        exampleFile: ..\examples\ConfigurationGetCoordinator.json
+      - step: Configurations_UpdateOnNode
+        exampleFile: ..\examples\ConfigurationUpdateNode.json
+      - step: Configurations_GetNode
+        exampleFile: ..\examples\ConfigurationGetNode.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.DBforPostgreSQL/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\OperationList.json
+
+
+# pass
+  - scenario: Servers
+    description: Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers
+    steps:
+      - step: Servers_ListByCluster
+        exampleFile: ..\examples\ServerListByCluster.json
+        # outputVariables:
+        #   serverName:
+        #     type: string
+        #     fromResponse: /value/0/name
+      - step: Servers_Get
+        exampleFile: ..\examples\ServerGet.json
+      - step: Configurations_ListByServer
+        exampleFile: ..\examples\ConfigurationListByServer.json
+
+cleanUpSteps:
+  - step: Clusters_Delete
+    exampleFile: ..\examples\ClusterDelete.json

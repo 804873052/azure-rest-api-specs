@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  clusterName:
+    type: string
+    prefix: clustern
+  configurationName:
+    type: string
+    prefix: configur
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  roleName:
+    type: string
+    prefix: rolename
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  serverName:
+    type: string
+    prefix: serverna
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Clusters_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailability.json
+      - operationId: Clusters_Create
+        exampleFile: ..\examples\ClusterCreate.json
+      - operationId: Clusters_List
+        exampleFile: ..\examples\ClusterList.json
+      - operationId: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\ClusterListByResourceGroup.json
+      - operationId: Clusters_Get
+        exampleFile: ..\examples\ClusterGet.json
+      - operationId: Clusters_Update
+        exampleFile: ..\examples\ClusterUpdate.json
+      - operationId: Clusters_Start
+        exampleFile: ..\examples\ClusterStart.json
+      - operationId: Clusters_Stop
+        exampleFile: ..\examples\ClusterStop.json
+      - operationId: Clusters_PromoteReadReplica
+        exampleFile: ..\examples\ClusterPromoteReadReplica.json
+      - operationId: Clusters_Restart
+        exampleFile: ..\examples\ClusterRestart.json
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\examples\FirewallRuleCreate.json
+      - operationId: FirewallRules_ListByCluster
+        exampleFile: ..\examples\FirewallRuleListByCluster.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\examples\FirewallRuleGet.json
+      - operationId: Roles_Create
+        exampleFile: ..\examples\RoleCreate.json
+      - operationId: Roles_ListByCluster
+        exampleFile: ..\examples\RoleListByCluster.json
+      - operationId: Roles_Get
+        exampleFile: ..\examples\RoleGet.json
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\PrivateEndpointConnectionCreateOrUpdate.json
+      - operationId: PrivateEndpointConnections_ListByCluster
+        exampleFile: ..\examples\PrivateEndpointConnectionsListByCluster.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\PrivateEndpointConnectionsGet.json
+      - operationId: Configurations_UpdateOnCoordinator
+        exampleFile: ..\examples\ConfigurationUpdateCoordinator.json
+      - operationId: Configurations_ListByCluster
+        exampleFile: ..\examples\ConfigurationListByCluster.json
+      - operationId: Configurations_Get
+        exampleFile: ..\examples\ConfigurationGet.json
+      - operationId: Configurations_ListByServer
+        exampleFile: ..\examples\ConfigurationListByServer.json
+      - operationId: Configurations_GetCoordinator
+        exampleFile: ..\examples\ConfigurationGetCoordinator.json
+      - operationId: Configurations_UpdateOnNode
+        exampleFile: ..\examples\ConfigurationUpdateNode.json
+      - operationId: Configurations_GetNode
+        exampleFile: ..\examples\ConfigurationGetNode.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationList.json
+      - operationId: PrivateLinkResources_ListByCluster
+        exampleFile: ..\examples\PrivateLinkResourceListByCluster.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          privateLinkResourceName:
+            type: string
+            prefix: privatel
+        exampleFile: ..\examples\PrivateLinkResourcesGet.json
+      - operationId: Servers_ListByCluster
+        exampleFile: ..\examples\ServerListByCluster.json
+      - operationId: Servers_Get
+        exampleFile: ..\examples\ServerGet.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\PrivateEndpointConnectionsDelete.json
+      - operationId: Roles_Delete
+        exampleFile: ..\examples\RoleDelete.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\examples\FirewallRuleDelete.json
+      - operationId: Clusters_Delete
+        exampleFile: ..\examples\ClusterDelete.json
