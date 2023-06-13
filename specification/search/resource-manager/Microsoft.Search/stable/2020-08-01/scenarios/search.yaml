@@ -1,0 +1,124 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location: 
+    type: string
+  searchServiceName:
+    type: string
+    prefix: searchse
+  sharedPrivateLinkResourceName:
+    type: string
+    prefix: sharedpr
+  storageAccountName:
+    type: string
+    prefix: searchstorageac
+
+prepareSteps:
+  - step: Services_CheckNameAvailability
+    # exampleFile: ..\examples\SearchCheckNameAvailability.json
+    operationId: Services_CheckNameAvailability
+    parameters:
+      checkNameAvailabilityInput:
+        name: $(searchServiceName)
+        type: Microsoft.Search/searchServices
+
+  - step: Services_CreateOrUpdate
+    exampleFile: ..\examples\SearchCreateOrUpdateService.json
+    outputVariables:
+      serviceId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+# pass
+  - scenario: Services
+    description: Microsoft.Search/searchServices/{searchServiceName}
+    steps:
+      - step: Services_ListBySubscription
+        exampleFile: ..\examples\SearchListServicesBySubscription.json
+      - step: Services_ListByResourceGroup
+        exampleFile: ..\examples\SearchListServicesByResourceGroup.json
+      - step: Services_Get
+        exampleFile: ..\examples\SearchGetService.json
+      - step: Services_Update
+        exampleFile: ..\examples\SearchUpdateService.json
+
+# pass
+  - scenario: SharedPrivateLinkResources
+    description: Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}
+    steps:
+      - step: Create_StorageAccount
+        armTemplate: ./templates/Create_StorageAccount.json
+      - step: SharedPrivateLinkResources_CreateOrUpdate
+        exampleFile: ..\examples\CreateOrUpdateSharedPrivateLinkResource.json
+        requestUpdate:
+          - replace: /sharedPrivateLinkResource/properties/privateLinkResourceId
+            value: $(storageAccountId)
+      - step: SharedPrivateLinkResources_ListByService
+        exampleFile: ..\examples\ListSharedPrivateLinkResourcesByService.json
+      - step: SharedPrivateLinkResources_Get
+        exampleFile: ..\examples\GetSharedPrivateLinkResource.json
+      - step: SharedPrivateLinkResources_Delete
+        exampleFile: ..\examples\DeleteSharedPrivateLinkResource.json
+
+# pass
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.Search/searchServices/{searchServiceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: PrivateEndpointConnections_ListByService
+        exampleFile: ..\examples\ListPrivateEndpointConnectionsByService.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_Update
+        exampleFile: ..\examples\UpdatePrivateEndpointConnection.json
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+      - step: PrivateLinkResources_ListSupported
+        exampleFile: ..\examples\ListSupportedPrivateLinkResources.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.Search/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+# pass
+  - scenario: QueryKeys
+    description: Microsoft.Search/searchServices/{searchServiceName}/createQueryKey/{name}
+    variables:
+      name: myquerykey
+    steps:
+      - step: QueryKeys_Create
+        exampleFile: ..\examples\SearchCreateQueryKey.json
+        outputVariables:
+          queryKey:
+            type: string
+            fromResponse: /key
+      - step: QueryKeys_ListBySearchService
+        exampleFile: ..\examples\SearchListQueryKeysBySearchService.json
+      - step: QueryKeys_Delete
+        exampleFile: ..\examples\SearchDeleteQueryKey.json
+        requestUpdate:
+          - replace: /key
+            value: $(queryKey)
+
+# pass
+  - scenario: AdminKeys
+    description: Microsoft.Search/searchServices/{searchServiceName}/regenerateAdminKey/{keyKind}
+    steps:
+      - step: AdminKeys_Get
+        exampleFile: ..\examples\SearchGetAdminKeys.json
+      - step: AdminKeys_Regenerate
+        exampleFile: ..\examples\SearchRegenerateAdminKey.json
+
+cleanUpSteps:
+  - step: Services_Delete
+    exampleFile: ..\examples\SearchDeleteService.json

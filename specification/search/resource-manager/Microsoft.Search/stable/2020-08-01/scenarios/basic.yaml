@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  searchServiceName:
+    type: string
+    prefix: searchse
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  sharedPrivateLinkResourceName:
+    type: string
+    prefix: sharedpr
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Services_CheckNameAvailability
+        exampleFile: ..\examples\SearchCheckNameAvailability.json
+      - operationId: Services_CreateOrUpdate
+        exampleFile: ..\examples\SearchCreateOrUpdateService.json
+      - operationId: Services_ListBySubscription
+        exampleFile: ..\examples\SearchListServicesBySubscription.json
+      - operationId: Services_ListByResourceGroup
+        exampleFile: ..\examples\SearchListServicesByResourceGroup.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\SearchGetService.json
+      - operationId: Services_Update
+        exampleFile: ..\examples\SearchUpdateService.json
+
+      - operationId: SharedPrivateLinkResources_CreateOrUpdate
+        exampleFile: ..\examples\CreateOrUpdateSharedPrivateLinkResource.json
+      - operationId: SharedPrivateLinkResources_ListByService
+        exampleFile: ..\examples\ListSharedPrivateLinkResourcesByService.json
+      - operationId: SharedPrivateLinkResources_Get
+        exampleFile: ..\examples\GetSharedPrivateLinkResource.json
+
+      - operationId: PrivateEndpointConnections_Update
+        exampleFile: ..\examples\UpdatePrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_ListByService
+        exampleFile: ..\examples\ListPrivateEndpointConnectionsByService.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+      - operationId: QueryKeys_Create
+        variables:
+          name:
+            type: string
+            prefix: name
+        exampleFile: ..\examples\SearchCreateQueryKey.json
+      - operationId: QueryKeys_Delete
+        variables:
+          key:
+            type: string
+            prefix: key
+        exampleFile: ..\examples\SearchDeleteQueryKey.json
+
+      - operationId: AdminKeys_Get
+        exampleFile: ..\examples\SearchGetAdminKeys.json
+
+      - operationId: QueryKeys_ListBySearchService
+        exampleFile: ..\examples\SearchListQueryKeysBySearchService.json
+
+      - operationId: PrivateLinkResources_ListSupported
+        exampleFile: ..\examples\ListSupportedPrivateLinkResources.json
+
+      - operationId: AdminKeys_Regenerate
+        variables:
+          keyKind:
+            type: string
+            prefix: keykind
+        exampleFile: ..\examples\SearchRegenerateAdminKey.json
+        
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json
+      - operationId: SharedPrivateLinkResources_Delete
+        exampleFile: ..\examples\DeleteSharedPrivateLinkResource.json
+      - operationId: Services_Delete
+        exampleFile: ..\examples\SearchDeleteService.json
