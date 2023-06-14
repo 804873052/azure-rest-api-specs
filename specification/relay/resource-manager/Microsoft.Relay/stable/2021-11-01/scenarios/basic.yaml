@@ -1,0 +1,135 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  authorizationRuleName:
+    type: string
+    prefix: authoriz
+  hybridConnectionName:
+    type: string
+    prefix: hybridco
+  relayName:
+    type: string
+    prefix: relaynam
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+    
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Namespaces_CheckNameAvailability
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceCheckNameAvailability.json
+      - operationId: Namespaces_CreateOrUpdate
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceCreate.json
+      - operationId: Namespaces_List
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceListBySubscription.json
+      - operationId: Namespaces_ListByResourceGroup
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceListByResourceGroup.json
+      - operationId: Namespaces_GetNetworkRuleSet
+        exampleFile: ..\examples\VirtualNetworkRules\RelayNetworkRuleSetGet.json
+      - operationId: Namespaces_Get
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceGet.json
+
+      - operationId: Namespaces_ListAuthorizationRules
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleListAll.json
+
+      - operationId: Namespaces_Update
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceUpdate.json
+
+      - operationId: HybridConnections_CreateOrUpdate
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionCreate.json
+      - operationId: HybridConnections_ListByNamespace
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionListAll.json
+      - operationId: HybridConnections_Get
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionGet.json
+
+      - operationId: HybridConnections_ListAuthorizationRules
+        exampleFile: >-
+          ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleListAll.json
+
+      - operationId: WCFRelays_CreateOrUpdate
+        exampleFile: ..\examples\Relay\RelayCreate.json
+      - operationId: WCFRelays_ListByNamespace
+        exampleFile: ..\examples\Relay\RelayListAll.json
+      - operationId: WCFRelays_Get
+        exampleFile: ..\examples\Relay\RelayGet.json
+
+      - operationId: WCFRelays_ListAuthorizationRules
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleListAll.json
+
+      - operationId: HybridConnections_CreateOrUpdateAuthorizationRule
+        exampleFile: >-
+          ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleCreate.json
+      - operationId: HybridConnections_GetAuthorizationRule
+        exampleFile: >-
+          ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleGet.json
+      - operationId: HybridConnections_ListKeys
+        exampleFile: >-
+          ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleListKey.json
+      - operationId: HybridConnections_RegenerateKeys
+        exampleFile: >-
+          ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleRegenerateKey.json
+
+      - operationId: WCFRelays_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleCreate.json
+      - operationId: WCFRelays_GetAuthorizationRule
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleGet.json
+      - operationId: WCFRelays_RegenerateKeys
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleRegenerateKey.json
+      - operationId: WCFRelays_ListKeys
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleListKey.json
+
+      - operationId: Namespaces_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleCreate.json
+      - operationId: Namespaces_GetAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleGet.json
+      - operationId: Namespaces_ListKeys
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleListKey.json
+      - operationId: Namespaces_RegenerateKeys
+        exampleFile: >-
+          ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleRegenerateKey.json
+
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: >-
+          ..\examples\PrivateEndpointConnections\PrivateEndpointConnectionsCreate.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: >-
+          ..\examples\PrivateEndpointConnections\PrivateEndpointConnectionsList.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: >-
+          ..\examples\PrivateEndpointConnections\PrivateEndpointConnectionsGet.json
+
+      - operationId: Namespaces_CreateOrUpdateNetworkRuleSet
+        exampleFile: ..\examples\VirtualNetworkRules\RelayNetworkRuleSetCreate.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\RelayOperations_List.json
+
+      - operationId: PrivateLinkResources_List
+        exampleFile: ..\examples\PrivateEndpointConnections\PrivateLinkResourcesList.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          privateLinkResourceName:
+            type: string
+            prefix: privatel
+        exampleFile: ..\examples\PrivateEndpointConnections\PrivateLinkResourcesGet.json
+
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: >-
+          ..\examples\PrivateEndpointConnections\PrivateEndpointConnectionsDelete.json
+      - operationId: Namespaces_DeleteAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleDelete.json
+      - operationId: WCFRelays_DeleteAuthorizationRule
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleDelete.json
+      - operationId: HybridConnections_DeleteAuthorizationRule
+        exampleFile: >-
+          ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleDelete.json
+      - operationId: WCFRelays_Delete
+        exampleFile: ..\examples\Relay\RelayDelete.json
+      - operationId: HybridConnections_Delete
+        exampleFile: ..\examples\HybridConnection\RelayHybridconnectionDelete.json
+      - operationId: Namespaces_Delete
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceDelete.json

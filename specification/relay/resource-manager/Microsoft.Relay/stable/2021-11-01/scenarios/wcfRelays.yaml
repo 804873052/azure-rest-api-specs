@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  relayName:
+    type: string
+    prefix: relaynam
+  authorizationRuleName:
+    type: string
+    prefix: authoriz
+
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    exampleFile: ..\examples\NameSpaces\RelayNameSpaceCreate.json
+  - step: WCFRelays_CreateOrUpdate
+    exampleFile: ..\examples\Relay\RelayCreate.json
+
+scenarios:
+  - scenario: WCFRelays
+    description: Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}
+    steps:
+      - step: WCFRelays_ListByNamespace
+        exampleFile: ..\examples\Relay\RelayListAll.json
+      - step: WCFRelays_Get
+        exampleFile: ..\examples\Relay\RelayGet.json
+
+  - scenario: WCFRelaysAuthorization
+    description: Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}
+    steps:
+      - step: WCFRelays_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleCreate.json
+      - step: WCFRelays_GetAuthorizationRule
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleGet.json
+      - step: WCFRelays_ListAuthorizationRules
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleListAll.json
+      - step: WCFRelays_RegenerateKeys
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleRegenerateKey.json
+      - step: WCFRelays_ListKeys
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleListKey.json
+      - step: WCFRelays_DeleteAuthorizationRule
+        exampleFile: ..\examples\Relay\RelayAuthorizationRuleDelete.json
+
+cleanUpSteps:
+  - step: WCFRelays_Delete
+    exampleFile: ..\examples\Relay\RelayDelete.json

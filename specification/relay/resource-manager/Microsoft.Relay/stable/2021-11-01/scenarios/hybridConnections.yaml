@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  hybridConnectionName:
+    type: string
+    prefix: hybridco
+  authorizationRuleName:
+    type: string
+    prefix: authoriz
+
+# pass
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    exampleFile: ..\examples\NameSpaces\RelayNameSpaceCreate.json
+  - step: HybridConnections_CreateOrUpdate
+    exampleFile: ..\examples\HybridConnection\RelayHybridConnectionCreate.json
+
+scenarios:
+  - scenario: HybridConnections
+    description: Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}
+    steps:
+      - step: HybridConnections_ListByNamespace
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionListAll.json
+      - step: HybridConnections_Get
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionGet.json
+
+  - scenario: HybridConnectionsAuthorization
+    description: Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}
+    steps:
+      - step: HybridConnections_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleCreate.json
+      - step: HybridConnections_GetAuthorizationRule
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleGet.json
+      - step: HybridConnections_ListAuthorizationRules
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleListAll.json
+      - step: HybridConnections_ListKeys
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleListKey.json
+      - step: HybridConnections_RegenerateKeys
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleRegenerateKey.json
+      - step: HybridConnections_DeleteAuthorizationRule
+        exampleFile: ..\examples\HybridConnection\RelayHybridConnectionAuthorizationRuleDelete.json
+
+cleanUpSteps:
+  - step: HybridConnections_Delete
+    exampleFile: ..\examples\HybridConnection\RelayHybridconnectionDelete.json

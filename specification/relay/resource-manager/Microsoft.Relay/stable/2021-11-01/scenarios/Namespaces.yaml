@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  namespaceName:
+    type: string
+    prefix: namespac
+  authorizationRuleName:
+    type: string
+    prefix: authoriz
+
+prepareSteps:
+  - step: Namespaces_CreateOrUpdate
+    exampleFile: ..\examples\NameSpaces\RelayNameSpaceCreate.json
+    outputVariables:
+      namespaceId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+# pass
+  - scenario: Namespaces
+    description: Microsoft.Relay/namespaces/{namespaceName}
+    steps:
+      - step: Namespaces_CheckNameAvailability
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceCheckNameAvailability.json
+      - step: Namespaces_Update
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceUpdate.json
+      - step: Namespaces_List
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceListBySubscription.json
+      - step: Namespaces_ListByResourceGroup
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceListByResourceGroup.json
+      - step: Namespaces_Get
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceGet.json
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: PrivateEndpointConnections_List
+        exampleFile: ..\examples\PrivateEndpointConnections\PrivateEndpointConnectionsList.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_CreateOrUpdate # 202 accepted
+        # exampleFile: ..\examples\PrivateEndpointConnections\PrivateEndpointConnectionsCreate.json
+        operationId: PrivateEndpointConnections_CreateOrUpdate
+        parameters:
+          parameters:
+            properties:
+              privateLinkServiceConnectionState:
+                description: description rejected
+                status: Rejected
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\PrivateEndpointConnections\PrivateEndpointConnectionsGet.json
+      - step: PrivateLinkResources_List
+        exampleFile: ..\examples\PrivateEndpointConnections\PrivateLinkResourcesList.json
+        # outputVariables:
+        #   privateLinkResourceName:
+        #     type: string
+        #     fromResponse: /value/0/name
+      # - step: PrivateLinkResources_Get # "No HTTP resource was found that matches the request URI
+      #   exampleFile: ..\examples\PrivateEndpointConnections\PrivateLinkResourcesGet.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\PrivateEndpointConnections\PrivateEndpointConnectionsDelete.json
+
+# pass
+  - scenario: NamespacesAuthorization
+    description: Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}
+    steps:
+      - step: Namespaces_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleCreate.json
+      - step: Namespaces_GetAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleGet.json
+      - step: Namespaces_ListAuthorizationRules
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleListAll.json
+      - step: Namespaces_ListKeys
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleListKey.json
+      - step: Namespaces_RegenerateKeys
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleRegenerateKey.json
+      - step: Namespaces_DeleteAuthorizationRule
+        exampleFile: ..\examples\NameSpaces\RelayNameSpaceAuthorizationRuleDelete.json
+
+  - scenario: NamespacesNetworkRuleSet
+    description: Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default
+    steps:
+      - step: Namespaces_CreateOrUpdateNetworkRuleSet
+        exampleFile: ..\examples\VirtualNetworkRules\RelayNetworkRuleSetCreate.json
+      - step: Namespaces_GetNetworkRuleSet
+        exampleFile: ..\examples\VirtualNetworkRules\RelayNetworkRuleSetGet.json
+
+cleanUpSteps:
+  - step: Namespaces_Delete
+    exampleFile: ..\examples\NameSpaces\RelayNameSpaceDelete.json
