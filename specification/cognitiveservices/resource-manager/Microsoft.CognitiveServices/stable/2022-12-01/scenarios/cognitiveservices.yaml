@@ -1,0 +1,194 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  accountName:
+    type: string
+    prefix: accountn
+  commitmentPlanName:
+    type: string
+    prefix: commitme
+  deploymentName:
+    type: string
+    prefix: deployme
+  commitmentPlanAssociationName:
+    type: string
+    prefix: commitmeass
+
+prepareSteps:
+  - step: Accounts_Create
+    exampleFile: ..\examples\CreateAccountMin.json
+    requestUpdate:
+      - add: /account/properties/customSubDomainName
+        value: $(accountName)
+    outputVariables:
+      accountId:
+        type: string
+        fromResponse: /id
+  # - step: CommitmentPlans_CreateOrUpdatePlan
+  #   exampleFile: ..\examples\CreateSharedCommitmentPlan.json
+
+scenarios:
+# pass
+  - scenario: Accounts
+    description: Microsoft.CognitiveServices/accounts/{accountName}
+    steps:
+      - step: Accounts_List
+        exampleFile: ..\examples\ListAccountsBySubscription.json
+      - step: Accounts_ListByResourceGroup
+        exampleFile: ..\examples\ListAccountsByResourceGroup.json
+      - step: Accounts_Get
+        exampleFile: ..\examples\GetAccount.json
+      - step: Accounts_ListUsages
+        exampleFile: ..\examples\GetUsages.json
+      - step: Accounts_ListSkus
+        exampleFile: ..\examples\ListSkus.json
+      - step: Accounts_ListModels
+        exampleFile: ..\examples\ListAccountModels.json
+      - step: Accounts_Update
+        exampleFile: ..\examples\UpdateAccount.json
+        requestUpdate:
+          - remove: /account/sku
+          - add: /account/tags
+            value:
+              tag1: value1
+      - step: Accounts_RegenerateKey
+        exampleFile: ..\examples\RegenerateKey.json
+      - step: Accounts_ListKeys
+        exampleFile: ..\examples\ListKeys.json
+
+# pass
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - step: PrivateEndpointConnections_List
+        exampleFile: ..\examples\ListPrivateEndpointConnections.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\PutPrivateEndpointConnection.json
+        requestUpdate:
+          - replace: /properties/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - step: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+      - step: PrivateLinkResources_List
+        exampleFile: ..\examples\ListPrivateLinkResources.json
+      - step: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.CognitiveServices/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\GetOperations.json
+
+  - scenario: CheckDomainAvailability
+    description: Microsoft.CognitiveServices/checkDomainAvailability
+    steps:
+      - step: CheckDomainAvailability
+        exampleFile: ..\examples\CheckDomainAvailability.json
+
+  - scenario: CheckSkuAvailability
+    description: Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability
+    steps:
+      - step: CheckSkuAvailability
+        exampleFile: ..\examples\CheckSkuAvailability.json
+
+  - scenario: CommitmentTiers
+    description: Microsoft.CognitiveServices/locations/{location}/commitmentTiers
+    steps:
+      - step: CommitmentTiers_List
+        exampleFile: ..\examples\ListCommitmentTiers.json
+
+  - scenario: ResourceSkus
+    description: Microsoft.CognitiveServices/skus
+    steps:
+      - step: ResourceSkus_List
+        exampleFile: ..\examples\GetSkus.json
+
+
+  # - scenario: CommitmentPlansAccounts # 
+  #   description: Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}
+  #   steps:
+  #     - step: CommitmentPlans_CreateOrUpdate
+  #       exampleFile: ..\examples\PutCommitmentPlan.json
+  #     - step: CommitmentPlans_Get
+  #       exampleFile: ..\examples\GetCommitmentPlan.json
+  #     - step: CommitmentPlans_List
+  #       exampleFile: ..\examples\ListCommitmentPlans.json
+  #     - step: CommitmentPlans_Delete
+  #       exampleFile: ..\examples\DeleteCommitmentPlan.json
+
+  # - scenario: CommitmentPlans # 
+  #   description: Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}
+  #   steps:
+  #     - step: CommitmentPlans_ListPlansBySubscription
+  #       exampleFile: ..\examples\ListSharedCommitmentPlansBySubscription.json
+  #     - step: CommitmentPlans_ListPlansByResourceGroup
+  #       exampleFile: ..\examples\ListSharedCommitmentPlansByResourceGroup.json
+  #     - step: CommitmentPlans_GetPlan
+  #       exampleFile: ..\examples\GetSharedCommitmentPlan.json
+  #     - step: CommitmentPlans_UpdatePlan
+  #       exampleFile: ..\examples\UpdateSharedCommitmentPlan.json
+
+  # - scenario: CommitmentPlansAssociation # 
+  #   description: Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}
+  #   steps:
+  #     - step: CommitmentPlans_CreateOrUpdateAssociation
+  #       exampleFile: ..\examples\CreateSharedCommitmentPlanAssociation.json
+  #       requestUpdate:
+  #         - replace: /association/properties/accountId
+  #           value: $(accountId)
+        
+  #     - step: CommitmentPlans_GetAssociation
+  #       exampleFile: ..\examples\GetSharedCommitmentPlanAssociation.json
+  #     - step: CommitmentPlans_ListAssociations
+  #       exampleFile: ..\examples\ListSharedCommitmentPlanAssociations.json
+  #     - step: CommitmentPlans_DeleteAssociation
+  #       exampleFile: ..\examples\DeleteSharedCommitmentPlanAssociation.json
+
+  # - scenario: Deployments # The account deployments are not supported by current SKU
+  #   description: Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}
+  #   steps:
+  #     - step: Deployments_CreateOrUpdate
+  #       exampleFile: ..\examples\PutDeployment.json
+  #     - step: Deployments_List
+  #       exampleFile: ..\examples\ListDeployments.json
+  #     - step: Deployments_Get
+  #       exampleFile: ..\examples\GetDeployment.json
+  #     - step: Deployments_Delete
+  #       exampleFile: ..\examples\DeleteDeployment.json
+
+  # - scenario: DeletedAccounts
+  #   description: Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroupName}/deletedAccounts/{accountName}
+  #   steps:
+  #     - step: DeletedAccounts_List
+  #       exampleFile: ..\examples\ListDeletedAccountsBySubscription.json
+  #     - step: DeletedAccounts_Get
+  #       exampleFile: ..\examples\GetDeletedAccount.json
+  #     - step: DeletedAccounts_Purge
+  #       exampleFile: ..\examples\PurgeDeletedAccount.json
+
+cleanUpSteps:
+
+  # - step: CommitmentPlans_DeletePlan
+  #   exampleFile: ..\examples\DeleteSharedCommitmentPlan.json
+
+  - step: Accounts_Delete
+    exampleFile: ..\examples\DeleteAccount.json
+
+# DeletedAccount
+  - step: DeletedAccounts_List
+    exampleFile: ..\examples\ListDeletedAccountsBySubscription.json
+  - step: DeletedAccounts_Get
+    exampleFile: ..\examples\GetDeletedAccount.json
+  - step: DeletedAccounts_Purge
+    exampleFile: ..\examples\PurgeDeletedAccount.json
