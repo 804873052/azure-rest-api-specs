@@ -1,0 +1,129 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  applicationName:
+    type: string
+    prefix: applicat
+  poolName:
+    type: string
+    prefix: poolname
+  certificateName:
+    type: string
+    prefix: certific
+  versionName:
+    type: string
+    prefix: versionn
+  locationName:
+    type: string
+    prefix: location
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Location_CheckNameAvailability
+        exampleFile: ..\examples\LocationCheckNameAvailability_Available.json
+      - operationId: BatchAccount_Create
+        exampleFile: ..\examples\BatchAccountCreate_Default.json
+      - operationId: BatchAccount_List
+        exampleFile: ..\examples\BatchAccountList.json
+      - operationId: BatchAccount_Get
+        exampleFile: ..\examples\BatchAccountGet.json
+      - operationId: BatchAccount_ListByResourceGroup
+        exampleFile: ..\examples\BatchAccountListByResourceGroup.json
+      - operationId: BatchAccount_ListOutboundNetworkDependenciesEndpoints
+        exampleFile: ..\examples\BatchAccountListOutboundNetworkDependenciesEndpoints.json
+      - operationId: BatchAccount_ListDetectors
+        exampleFile: ..\examples\DetectorList.json
+      - operationId: BatchAccount_GetDetector
+        variables:
+          detectorId:
+            type: string
+            prefix: detector
+        exampleFile: ..\examples\DetectorGet.json
+      - operationId: BatchAccount_Update
+        exampleFile: ..\examples\BatchAccountUpdate.json
+      - operationId: BatchAccount_SynchronizeAutoStorageKeys
+        exampleFile: ..\examples\BatchAccountSynchronizeAutoStorageKeys.json
+      - operationId: BatchAccount_RegenerateKey
+        exampleFile: ..\examples\BatchAccountRegenerateKey.json
+      - operationId: BatchAccount_GetKeys
+        exampleFile: ..\examples\BatchAccountGetKeys.json
+      - operationId: Application_Create
+        exampleFile: ..\examples\ApplicationCreate.json
+      - operationId: Application_List
+        exampleFile: ..\examples\ApplicationList.json
+      - operationId: Application_Get
+        exampleFile: ..\examples\ApplicationGet.json
+      - operationId: Application_Update
+        exampleFile: ..\examples\ApplicationUpdate.json
+      - operationId: Pool_Create
+        exampleFile: ..\examples\PoolCreate_MinimalCloudServiceConfiguration.json
+      - operationId: Pool_ListByBatchAccount
+        exampleFile: ..\examples\PoolList.json
+      - operationId: Pool_Get
+        exampleFile: ..\examples\PoolGet.json
+      - operationId: Pool_Update
+        exampleFile: ..\examples\PoolUpdate_ResizePool.json
+      - operationId: Pool_DisableAutoScale
+        exampleFile: ..\examples\PoolDisableAutoScale.json
+      - operationId: Pool_StopResize
+        exampleFile: ..\examples\PoolStopResize.json
+      - operationId: Certificate_Create
+        exampleFile: ..\examples\CertificateCreate_Minimal.json
+      - operationId: Certificate_ListByBatchAccount
+        exampleFile: ..\examples\CertificateList.json
+      - operationId: Certificate_Get
+        exampleFile: ..\examples\CertificateGet.json
+      - operationId: Certificate_Update
+        exampleFile: ..\examples\CertificateUpdate.json
+      - operationId: Certificate_CancelDeletion
+        exampleFile: ..\examples\CertificateCancelDeletion.json
+      - operationId: ApplicationPackage_Create
+        exampleFile: ..\examples\ApplicationPackageCreate.json
+      - operationId: ApplicationPackage_List
+        exampleFile: ..\examples\ApplicationPackageList.json
+      - operationId: ApplicationPackage_Get
+        exampleFile: ..\examples\ApplicationPackageGet.json
+      - operationId: ApplicationPackage_Activate
+        exampleFile: ..\examples\ApplicationPackageActivate.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+      - operationId: Location_ListSupportedCloudServiceSkus
+        exampleFile: ..\examples\LocationListCloudServiceSkus.json
+      - operationId: Location_GetQuotas
+        exampleFile: ..\examples\LocationGetQuotas.json
+      - operationId: Location_ListSupportedVirtualMachineSkus
+        exampleFile: ..\examples\LocationListVirtualMachineSkus.json
+      - operationId: PrivateEndpointConnection_ListByBatchAccount
+        exampleFile: ..\examples\PrivateEndpointConnectionsList.json
+      - operationId: PrivateEndpointConnection_Delete
+        exampleFile: ..\examples\PrivateEndpointConnectionDelete.json
+      - operationId: PrivateEndpointConnection_Get
+        exampleFile: ..\examples\PrivateEndpointConnectionGet.json
+      - operationId: PrivateEndpointConnection_Update
+        exampleFile: ..\examples\PrivateEndpointConnectionUpdate.json
+      - operationId: PrivateLinkResource_ListByBatchAccount
+        exampleFile: ..\examples\PrivateLinkResourcesList.json
+      - operationId: PrivateLinkResource_Get
+        variables:
+          privateLinkResourceName:
+            type: string
+            prefix: privatel
+        exampleFile: ..\examples\PrivateLinkResourceGet.json
+      - operationId: ApplicationPackage_Delete
+        exampleFile: ..\examples\ApplicationPackageDelete.json
+      - operationId: Certificate_Delete
+        exampleFile: ..\examples\CertificateDelete.json
+      - operationId: Pool_Delete
+        exampleFile: ..\examples\PoolDelete.json
+      - operationId: Application_Delete
+        exampleFile: ..\examples\ApplicationDelete.json
+      - operationId: BatchAccount_Delete
+        exampleFile: ..\examples\BatchAccountDelete.json
+
+# (46 - 7) / 46 = 84.78% coverage

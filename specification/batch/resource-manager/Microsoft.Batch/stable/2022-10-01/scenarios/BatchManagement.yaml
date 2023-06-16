@@ -1,0 +1,194 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  accountName:
+    type: string
+    prefix: accountn
+  applicationName:
+    type: string
+    prefix: applicat
+  poolName:
+    type: string
+    prefix: poolname
+  # certificateName:
+  #   type: string
+  #   prefix: certific
+  versionName:
+    type: string
+    prefix: versionn
+  storageAccountName:
+    type: string
+    prefix: storagea
+
+prepareSteps:
+  - step: Create_StorageAccount
+    armTemplate: ./templates/Create_StorageAccount.json
+
+  - step: BatchAccount_Create
+    exampleFile: ..\examples\BatchAccountCreate_Default.json
+    requestUpdate:
+      - replace: /parameters/properties/autoStorage/storageAccountId
+        value: $(storageAccountId)
+    outputVariables:
+      batchAccountId:
+        type: string
+        fromResponse: /id
+
+  - step: Application_Create
+    exampleFile: ..\examples\ApplicationCreate.json
+
+scenarios:
+# pass
+  - scenario: Location
+    description: Microsoft.Batch/locations/{locationName}
+    variables:
+      locationName: $(location)
+    steps:
+      - step: Location_CheckNameAvailability
+        exampleFile: ..\examples\LocationCheckNameAvailability_Available.json
+      - step: Location_ListSupportedCloudServiceSkus
+        exampleFile: ..\examples\LocationListCloudServiceSkus.json
+      - step: Location_GetQuotas
+        exampleFile: ..\examples\LocationGetQuotas.json
+      - step: Location_ListSupportedVirtualMachineSkus
+        exampleFile: ..\examples\LocationListVirtualMachineSkus.json
+
+  - scenario: BatchAccount
+    description: Microsoft.Batch/batchAccounts/{accountName}
+    steps:
+      - step: BatchAccount_List
+        exampleFile: ..\examples\BatchAccountList.json
+      - step: BatchAccount_Get
+        exampleFile: ..\examples\BatchAccountGet.json
+      - step: BatchAccount_ListByResourceGroup
+        exampleFile: ..\examples\BatchAccountListByResourceGroup.json
+      - step: BatchAccount_ListOutboundNetworkDependenciesEndpoints
+        exampleFile: ..\examples\BatchAccountListOutboundNetworkDependenciesEndpoints.json
+      - step: BatchAccount_ListDetectors
+        exampleFile: ..\examples\DetectorList.json
+      - step: BatchAccount_GetDetector
+        exampleFile: ..\examples\DetectorGet.json
+      - step: BatchAccount_Update
+        # exampleFile: ..\examples\BatchAccountUpdate.json
+        operationId: BatchAccount_Update
+        parameters:
+          parameters:
+            tags:
+              key1: value1
+
+      - step: BatchAccount_SynchronizeAutoStorageKeys
+        exampleFile: ..\examples\BatchAccountSynchronizeAutoStorageKeys.json
+      - step: BatchAccount_RegenerateKey
+        exampleFile: ..\examples\BatchAccountRegenerateKey.json
+      - step: BatchAccount_GetKeys
+        exampleFile: ..\examples\BatchAccountGetKeys.json
+
+# pass
+  - scenario: Pool
+    description: Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}
+    steps:
+      - step: Pool_Create
+        exampleFile: ..\examples\PoolCreate_MinimalCloudServiceConfiguration.json
+      - step: Pool_ListByBatchAccount
+        exampleFile: ..\examples\PoolList.json
+      - step: Pool_Get
+        exampleFile: ..\examples\PoolGet.json
+      - step: Pool_Update
+        exampleFile: ..\examples\PoolUpdate_ResizePool.json
+      - step: Pool_DisableAutoScale
+        exampleFile: ..\examples\PoolDisableAutoScale.json
+      - step: Pool_StopResize
+        exampleFile: ..\examples\PoolStopResize.json
+      - step: Pool_Delete
+        exampleFile: ..\examples\PoolDelete.json
+
+# deprecated and will be retired on February 29, 2024
+  # - scenario: Certificate
+  #   description: Microsoft.Batch/batchAccounts/{accountName}/certificates/{certificateName}
+  #   steps:
+  #     - step: Certificate_Create
+  #       exampleFile: ..\examples\CertificateCreate_Minimal.json
+  #     - step: Certificate_ListByBatchAccount
+  #       exampleFile: ..\examples\CertificateList.json
+  #     - step: Certificate_Get
+  #       exampleFile: ..\examples\CertificateGet.json
+  #     - step: Certificate_Update
+  #       exampleFile: ..\examples\CertificateUpdate.json
+  #     - step: Certificate_CancelDeletion
+  #       exampleFile: ..\examples\CertificateCancelDeletion.json
+  #     - step: Certificate_Delete
+  #       exampleFile: ..\examples\CertificateDelete.json
+
+  - scenario: Application
+    description: Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}
+    steps:
+      - step: Application_List
+        exampleFile: ..\examples\ApplicationList.json
+      - step: Application_Get
+        exampleFile: ..\examples\ApplicationGet.json
+      - step: Application_Update
+        exampleFile: ..\examples\ApplicationUpdate.json
+        requestUpdate:
+          - remove: /parameters/properties/defaultVersion
+
+
+  - scenario: ApplicationPackage
+    description: Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}
+    steps:
+      - step: ApplicationPackage_Create
+        exampleFile: ..\examples\ApplicationPackageCreate.json
+      - step: ApplicationPackage_List
+        exampleFile: ..\examples\ApplicationPackageList.json
+      - step: ApplicationPackage_Get
+        exampleFile: ..\examples\ApplicationPackageGet.json
+      # - step: ApplicationPackage_Activate
+      #   exampleFile: ..\examples\ApplicationPackageActivate.json
+      - step: ApplicationPackage_Delete
+        exampleFile: ..\examples\ApplicationPackageDelete.json
+
+  - scenario: Operations
+    description: Microsoft.Batch/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+  - scenario: PrivateEndpointConnection
+    description: Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+
+      - step: PrivateEndpointConnection_ListByBatchAccount
+        exampleFile: ..\examples\PrivateEndpointConnectionsList.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateEndpointConnection_Update
+        exampleFile: ..\examples\PrivateEndpointConnectionUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - step: PrivateEndpointConnection_Get
+        exampleFile: ..\examples\PrivateEndpointConnectionGet.json
+      - step: PrivateLinkResource_ListByBatchAccount
+        exampleFile: ..\examples\PrivateLinkResourcesList.json
+        outputVariables:
+          privateLinkResourceName:
+            type: string
+            fromResponse: /value/0/name
+      - step: PrivateLinkResource_Get
+        exampleFile: ..\examples\PrivateLinkResourceGet.json
+
+      - step: PrivateEndpointConnection_Delete
+        exampleFile: ..\examples\PrivateEndpointConnectionDelete.json
+
+cleanUpSteps:
+  - step: Application_Delete
+    exampleFile: ..\examples\ApplicationDelete.json
+
+  - step: BatchAccount_Delete
+    exampleFile: ..\examples\BatchAccountDelete.json
