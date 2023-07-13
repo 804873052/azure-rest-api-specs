@@ -1,0 +1,181 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  resourceName:
+    type: string
+    prefix: resource
+  connectionName:
+    type: string
+    prefix: connecti
+
+prepareSteps:
+  - operationId: Bots_GetCheckNameAvailability
+    exampleFile: ..\examples\CheckNameAvailability.json
+  - operationId: Bots_Create
+    # exampleFile: ..\examples\CreateBot.json
+    parameters: # copy js example
+      parameters:
+        etag: etag1
+        kind: sdk
+        location: global
+        sku: 
+          name: S1
+        tags:
+          tag1: value1
+          tag2: value2
+        properties:
+          displayName: The Name of the bot
+          description: The description of the bot
+          endpoint: https://bing.com/messages/
+          msaAppId: 00000000-0000-0000-0000-000000000001
+    outputVariables:
+      botServiceId: 
+        type: string
+        fromResponse: /id
+
+scenarios:
+  - scenario: Bots
+    description: Microsoft.BotService/botServices/{resourceName}
+    steps:
+      - operationId: Bots_List
+        exampleFile: ..\examples\ListBotsBySubscription.json
+      - operationId: Bots_Get
+        exampleFile: ..\examples\GetBot.json
+      - operationId: Bots_ListByResourceGroup
+        exampleFile: ..\examples\ListBotsByResourceGroup.json
+      - operationId: Bots_Update
+        # exampleFile: ..\examples\UpdateBot.json
+        parameters:
+          parameters:
+            tags:
+              tag1: value1
+              tag2: value2
+
+
+  - scenario: Channels
+    description: Microsoft.BotService/botServices/{resourceName}/channels/{channelName}
+    # variables:
+    #   channelName: MsTeamsChannel
+    steps:
+      - operationId: Channels_Create
+        # exampleFile: ..\examples\PutChannel.json
+        parameters:
+          channelName: MsTeamsChannel
+          parameters:
+            location: global
+            properties:
+              channelName: MsTeamsChannel
+              properties:
+                isEnabled: true
+          
+      - operationId: Channels_ListByResourceGroup
+        exampleFile: ..\examples\ListChannelsByBotService.json
+      - operationId: Channels_Get
+        # exampleFile: ..\examples\GetChannel.json
+        parameters:
+          channelName: MsTeamsChannel
+      - operationId: Channels_Update
+        # exampleFile: ..\examples\UpdateChannel.json
+        parameters:
+          channelName: MsTeamsChannel
+          parameters:
+            location: global
+            properties:
+              channelName: MsTeamsChannel
+              properties:
+                isEnabled: true
+      - operationId: Channels_ListWithKeys
+        # exampleFile: ..\examples\ListChannel.json
+        parameters:
+          channelName: MsTeamsChannel
+
+      - operationId: DirectLine_RegenerateKeys # Microsoft.BotService/botServices/{resourceName}/channels/{channelName}/regeneratekeys
+        exampleFile: ..\examples\DirectlineRegenerateKeys.json
+
+      - operationId: Channels_Delete
+        # exampleFile: ..\examples\DeleteChannel.json
+        parameters:
+          channelName: MsTeamsChannel
+
+# fail
+  # - scenario: BotConnection
+  #   description: Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}
+  #   steps:
+  #     - operationId: BotConnection_Create
+  #       exampleFile: ..\examples\PutConnection.json
+  #     - operationId: BotConnection_ListByBotService
+  #       exampleFile: ..\examples\ListConnectionsByBotService.json
+  #     - operationId: BotConnection_Get
+  #       exampleFile: ..\examples\GetConnection.json
+  #     - operationId: BotConnection_Update
+  #       # exampleFile: ..\examples\UpdateConnection.json
+  #       parameters:
+  #         parameters:
+  #           tags:
+  #             tag1: value1
+  #             tag2: value2
+  #     - operationId: BotConnection_ListServiceProviders
+  #       exampleFile: ..\examples\ListServiceProviders.json
+  #     - operationId: BotConnection_ListWithSecrets
+  #       exampleFile: ..\examples\GetConnection.json
+  #     - operationId: BotConnection_Delete
+  #       exampleFile: ..\examples\DeleteConnection.json
+
+# pass
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\ListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnections_Create
+        exampleFile: ..\examples\PutPrivateEndpointConnection.json
+        requestUpdate:
+          - replace: /properties/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+      - operationId: PrivateLinkResources_ListByBotResource # Microsoft.BotService/botServices/{resourceName}/privateLinkResources
+        exampleFile: ..\examples\ListPrivateLinkResources.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json
+
+  - scenario: Operations
+    description: Microsoft.BotService/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\GetOperations.json
+
+  - scenario: HostSettings
+    description: Microsoft.BotService/hostSettings
+    steps:
+      - operationId: HostSettings_Get
+        exampleFile: ..\examples\GetHostSettings.json
+
+  # - scenario: QnAMakerEndpointKeys # 401 Unauthorized
+  #   description: Microsoft.BotService/listQnAMakerEndpointKeys
+  #   steps:
+  #     - operationId: QnAMakerEndpointKeys_Get
+  #       exampleFile: ..\examples\ListQnAMakerEndpointKeys.json
+
+  # - scenario: OperationResults # operationResultId unknown
+  #   description: Microsoft.BotService/operationresults/{operationResultId}
+  #   steps:
+  #     - operationId: OperationResults_Get
+  #       exampleFile: ..\examples\OperationResultsGet.json
+
+  - scenario: Email
+    description: Microsoft.BotService/botServices/{resourceName}/createEmailSignInUrl
+    steps:
+      - operationId: Email_CreateSignInUrl
+        exampleFile: ..\examples\CreateEmailSignInUrl.json
+
+
+cleanUpSteps:
+      - operationId: Bots_Delete
+        exampleFile: ..\examples\DeleteBot.json
+

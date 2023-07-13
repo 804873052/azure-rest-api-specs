@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  resourceName:
+    type: string
+    prefix: resource
+  # channelName:
+  #   type: string
+  #   prefix: channeln
+  connectionName:
+    type: string
+    prefix: connecti
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Bots_GetCheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailability.json
+      - operationId: Bots_Create
+        exampleFile: ..\examples\CreateBot.json
+      - operationId: Bots_List
+        exampleFile: ..\examples\ListBotsBySubscription.json
+      - operationId: Bots_Get
+        exampleFile: ..\examples\GetBot.json
+      - operationId: Bots_ListByResourceGroup
+        exampleFile: ..\examples\ListBotsByResourceGroup.json
+      - operationId: Bots_Update
+        exampleFile: ..\examples\UpdateBot.json
+      - operationId: Channels_Create
+        exampleFile: ..\examples\PutChannel.json
+      - operationId: Channels_ListByResourceGroup
+        exampleFile: ..\examples\ListChannelsByBotService.json
+      - operationId: Channels_Get
+        exampleFile: ..\examples\GetChannel.json
+      - operationId: Channels_Update
+        exampleFile: ..\examples\UpdateChannel.json
+      - operationId: Channels_ListWithKeys
+        exampleFile: ..\examples\ListChannel.json
+      - operationId: BotConnection_Create
+        exampleFile: ..\examples\PutConnection.json
+      - operationId: BotConnection_ListByBotService
+        exampleFile: ..\examples\ListConnectionsByBotService.json
+      - operationId: BotConnection_Get
+        exampleFile: ..\examples\GetConnection.json
+      - operationId: BotConnection_Update
+        exampleFile: ..\examples\UpdateConnection.json
+      - operationId: BotConnection_ListServiceProviders
+        exampleFile: ..\examples\ListServiceProviders.json
+      - operationId: BotConnection_ListWithSecrets
+        exampleFile: ..\examples\GetConnection.json
+      - operationId: PrivateEndpointConnections_Create
+        exampleFile: ..\examples\PutPrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\ListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\GetOperations.json
+      - operationId: HostSettings_Get
+        exampleFile: ..\examples\GetHostSettings.json
+      - operationId: QnAMakerEndpointKeys_Get
+        exampleFile: ..\examples\ListQnAMakerEndpointKeys.json
+      - operationId: OperationResults_Get
+        variables:
+          operationResultId:
+            type: string
+            prefix: operatio
+        exampleFile: ..\examples\OperationResultsGet.json
+      - operationId: DirectLine_RegenerateKeys
+        exampleFile: ..\examples\DirectlineRegenerateKeys.json
+      - operationId: Email_CreateSignInUrl
+        exampleFile: ..\examples\CreateEmailSignInUrl.json
+      - operationId: PrivateLinkResources_ListByBotResource
+        exampleFile: ..\examples\ListPrivateLinkResources.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json
+      - operationId: BotConnection_Delete
+        exampleFile: ..\examples\DeleteConnection.json
+      - operationId: Channels_Delete
+        exampleFile: ..\examples\DeleteChannel.json
+      - operationId: Bots_Delete
+        exampleFile: ..\examples\DeleteBot.json
