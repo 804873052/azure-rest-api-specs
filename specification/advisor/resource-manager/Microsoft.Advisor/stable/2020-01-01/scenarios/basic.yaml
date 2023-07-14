@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  name:
+    type: string
+    prefix: name
+  resourceUri:
+    type: string
+    prefix: resource
+  recommendationId:
+    type: string
+    prefix: recommen
+  configurationName:
+    type: string
+    prefix: configur
+  resourceGroup:
+    type: string
+    prefix: resource
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Suppressions_Create
+        exampleFile: ..\examples\CreateSuppression.json
+      - operationId: Suppressions_List
+        exampleFile: ..\examples\ListSuppressions.json
+      - operationId: Suppressions_Get
+        exampleFile: ..\examples\GetSuppressionDetail.json
+      - operationId: Configurations_CreateInSubscription
+        exampleFile: ..\examples\CreateConfiguration.json
+      - operationId: Configurations_ListBySubscription
+        exampleFile: ..\examples\ListConfigurations.json
+      - operationId: Configurations_ListByResourceGroup
+        exampleFile: ..\examples\ListConfigurations.json
+      - operationId: Configurations_CreateInResourceGroup
+        exampleFile: ..\examples\CreateConfiguration.json
+      - operationId: RecommendationMetadata_List
+        exampleFile: ..\examples\ListRecommendationMetadata.json
+      - operationId: RecommendationMetadata_Get
+        exampleFile: ..\examples\GetRecommendationMetadataEntity.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+      - operationId: Recommendations_Generate
+        exampleFile: ..\examples\GenerateRecommendations.json
+      - operationId: Recommendations_GetGenerateStatus
+        variables:
+          operationId:
+            type: string
+            prefix: operatio
+        exampleFile: ..\examples\EmptyResponse.json
+      - operationId: Recommendations_List
+        exampleFile: ..\examples\ListRecommendations.json
+      - operationId: Recommendations_Get
+        exampleFile: ..\examples\GetRecommendationDetail.json
+      - operationId: Suppressions_Delete
+        exampleFile: ..\examples\DeleteSuppression.json

@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  name:
+    type: string
+    prefix: suppressiona
+
+scenarios:
+  - scenario: Recommendations
+    description: Microsoft.Advisor/generateRecommendations
+    variables:
+      resourceUri:
+        type: string
+      recommendationId:
+        type: string
+    steps:
+      # operationId := regexp.MustCompile("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}").FindAllString(*recommendationsClientGenerateResponse.Location,-1)[1]
+      - operationId: Recommendations_Generate
+        exampleFile: ..\examples\GenerateRecommendations.json
+        outputVariables: 
+          locationId:
+            type: string
+            fromResponse: /location
+      - operationId: Recommendations_GetGenerateStatus
+        exampleFile: ..\examples\EmptyResponse.json
+        # resourceUri,_,_ = strings.Cut(*recommendationsClientListResponse.Value[0].ID, "/providers/Microsoft.Advisor/recommendations")
+        # recommendationId = *recommendationsClientListResponse.Value[0].Name
+      - operationId: Recommendations_List
+        exampleFile: ..\examples\ListRecommendations.json
+      - operationId: Recommendations_Get
+        exampleFile: ..\examples\GetRecommendationDetail.json
+
+  # - scenario: Suppressions
+  #   description: Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}
+  #   steps:
+      - operationId: Suppressions_Create
+        exampleFile: ..\examples\CreateSuppression.json
+      - operationId: Suppressions_List
+        exampleFile: ..\examples\ListSuppressions.json
+      - operationId: Suppressions_Get
+        exampleFile: ..\examples\GetSuppressionDetail.json
+      - operationId: Suppressions_Delete
+        exampleFile: ..\examples\DeleteSuppression.json
+
+# pass
+  - scenario: Configurations
+    description: Microsoft.Advisor/configurations/{configurationName}
+    variables:
+      resourceGroup: $(resourceGroupName)
+    steps:
+      - operationId: Configurations_CreateInSubscription
+        # exampleFile: ..\examples\CreateConfiguration.json
+        parameters:
+          configurationName: default
+          configContract:
+            properties:
+              lowCpuThreshold: "5"
+      - operationId: Configurations_ListBySubscription
+        exampleFile: ..\examples\ListConfigurations.json
+      - operationId: Configurations_CreateInResourceGroup
+        # exampleFile: ..\examples\CreateConfiguration.json
+        parameters:
+          configurationName: default
+          configContract:
+            properties:
+              exclude: false
+      - operationId: Configurations_ListByResourceGroup
+        exampleFile: ..\examples\ListConfigurations.json
+
+  - scenario: RecommendationMetadata
+    description: Microsoft.Advisor/metadata
+    steps:
+      - operationId: RecommendationMetadata_List
+        exampleFile: ..\examples\ListRecommendationMetadata.json
+        outputVariables:
+          recommendationMetadataName:
+            type: string
+            fromResponse: /value/0/name
+      - operationId: RecommendationMetadata_Get
+        exampleFile: ..\examples\GetRecommendationMetadataEntity.json
+        requestUpdate:
+          - replace: /name
+            value: $(recommendationMetadataName)
+        
+  - scenario: Operations
+    description: Microsoft.Advisor/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+        
