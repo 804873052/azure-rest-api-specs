@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+  operationId:
+    type: string
+    prefix: operatio
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Servers_CheckNameAvailability
+        exampleFile: ..\examples\checkNameAvailability.json
+      - operationId: Servers_Create
+        exampleFile: ..\examples\createServer.json
+      - operationId: Servers_ListOperationResults
+        exampleFile: ..\examples\operationResults.json
+      - operationId: Servers_List
+        exampleFile: ..\examples\listServers.json
+      - operationId: Servers_GetDetails
+        exampleFile: ..\examples\getServer.json
+      - operationId: Servers_ListSkusForExisting
+        exampleFile: ..\examples\listSkusForExisting.json
+      - operationId: Servers_ListOperationStatuses
+        exampleFile: ..\examples\operationStatuses.json
+      - operationId: Servers_ListByResourceGroup
+        exampleFile: ..\examples\listServersInResourceGroup.json
+      - operationId: Servers_ListSkusForNew
+        exampleFile: ..\examples\listSkusForNew.json
+      - operationId: Servers_Update
+        exampleFile: ..\examples\updateServer.json
+      - operationId: Servers_Suspend
+        exampleFile: ..\examples\suspendServer.json
+      - operationId: Servers_Resume
+        exampleFile: ..\examples\resumeServer.json
+      - operationId: Servers_ListGatewayStatus
+        exampleFile: ..\examples\listGatewayStatus.json
+      - operationId: Servers_DissociateGateway
+        exampleFile: ..\examples\dissociateGateway.json
+      - operationId: Operations_List
+      - operationId: Servers_Delete
+        exampleFile: ..\examples\deleteServer.json
