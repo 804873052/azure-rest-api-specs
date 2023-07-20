@@ -1,0 +1,73 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "eventhubNamespace": {
+            "type": "string"
+        },
+        "eventhubName": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.EventHub/namespaces",
+            "apiVersion": "2022-10-01-preview",
+            "name": "[parameters('eventhubNamespace')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "properties": {
+                "minimumTlsVersion": "1.2",
+                "publicNetworkAccess": "Enabled",
+                "disableLocalAuth": false,
+                "zoneRedundant": true,
+                "isAutoInflateEnabled": false,
+                "maximumThroughputUnits": 0,
+                "kafkaEnabled": true
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2022-10-01-preview",
+            "name": "[concat(parameters('eventhubNamespace'), '/', parameters('eventhubName'))]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhubNamespace'))]"
+            ],
+            "properties": {
+                "retentionDescription": {
+                    "cleanupPolicy": "Delete",
+                    "retentionTimeInHours": 4
+                },
+                "messageRetentionInDays": 4,
+                "partitionCount": 4,
+                "status": "Active"
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+            "apiVersion": "2022-10-01-preview",
+            "name": "[concat(parameters('eventhubNamespace'), '/', parameters('eventhubName'), '/$Default')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('eventhubNamespace'), parameters('eventhubName'))]",
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhubNamespace'))]"
+            ],
+            "properties": {}
+        }
+    ],
+    "outputs": {
+        "eventhubId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('eventhubNamespace'), parameters('eventhubName'))]"
+        }
+    }
+}

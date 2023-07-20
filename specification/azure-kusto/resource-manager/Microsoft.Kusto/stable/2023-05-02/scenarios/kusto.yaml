@@ -1,0 +1,357 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  azureTenantId:
+    type: string
+  azureClientId:
+    type: string
+  clusterName:
+    type: string
+    prefix: clustern
+  attachedClusterName:
+    type: string
+    prefix: attachedclustern
+  attachedDatabaseName:
+    type: string
+    prefix: attacheddatabase
+  attachedDatabaseConfigurationName:
+    type: string
+    prefix: attached
+  databaseName:
+    type: string
+    prefix: database
+  dataConnectionName:
+    type: string
+    prefix: dataconn
+  scriptName:
+    type: string
+    prefix: scriptna
+  managedPrivateEndpointName:
+    type: string
+    prefix: managedp
+  clusterPrincipalAssignmentName:
+    type: string
+    prefix: clusterprincipa
+  databasePrincipalAssignmentName:
+    type: string
+    prefix: databaseprincipa
+  eventhubName:
+    type: string
+    prefix: eventhubn
+  eventhubNamespace:
+    type: string
+    prefix: eventhubnamespace
+  storageAccountName:
+    type: string
+    prefix: storagea
+
+# long time
+prepareSteps:
+  - operationId: Clusters_CheckNameAvailability
+    exampleFile: ../examples/KustoClustersCheckNameAvailability.json
+    requestUpdate:
+      - replace: /clusterName/name
+        value: $(clusterName)
+  - operationId: Clusters_CreateOrUpdate
+    exampleFile: ../examples/KustoClustersCreateOrUpdate.json
+    outputVariables:
+      kustoId:
+        type: string
+        fromResponse: /id
+  - operationId: Databases_CheckNameAvailability
+    exampleFile: ../examples/KustoDatabasesCheckNameAvailability.json
+    requestUpdate:
+      - replace: /resourceName/name
+        value: $(databaseName)
+  - operationId: Databases_CreateOrUpdate
+    exampleFile: ../examples/KustoDatabasesCreateOrUpdate.json
+
+scenarios:
+# pass
+  - scenario: Clusters
+    description: Microsoft.Kusto/clusters/{clusterName}
+    steps:
+      - operationId: Clusters_List
+        exampleFile: ../examples/KustoClustersList.json
+      - operationId: Clusters_ListSkus
+        exampleFile: ../examples/KustoClustersListSkus.json
+      - operationId: Clusters_ListByResourceGroup
+        exampleFile: ../examples/KustoClustersListByResourceGroup.json
+      - operationId: Clusters_Get
+        exampleFile: ../examples/KustoClustersGet.json
+      - operationId: Clusters_ListSkusByResource
+        exampleFile: ../examples/KustoClustersListResourceSkus.json
+      - operationId: Clusters_ListOutboundNetworkDependenciesEndpoints
+        exampleFile: ../examples/KustoOutboundNetworkDependenciesList.json
+      - operationId: Clusters_Update
+        exampleFile: ../examples/KustoClustersUpdate.json
+      - operationId: Clusters_ListFollowerDatabases
+        exampleFile: ../examples/KustoClusterListFollowerDatabases.json
+      - operationId: Clusters_ListLanguageExtensions
+        exampleFile: ../examples/KustoClusterListLanguageExtensions.json
+      # - operationId: Clusters_DetachFollowerDatabases
+      #   exampleFile: ../examples/KustoClusterDetachFollowerDatabases.json
+      - operationId: Clusters_DiagnoseVirtualNetwork
+        exampleFile: ../examples/KustoClustersDiagnoseVirtualNetwork.json
+      - operationId: Clusters_AddLanguageExtensions
+        exampleFile: ../examples/KustoClusterAddLanguageExtensions.json
+      - operationId: Clusters_RemoveLanguageExtensions
+        exampleFile: ../examples/KustoClusterRemoveLanguageExtensions.json
+      - operationId: Clusters_Stop
+        exampleFile: ../examples/KustoClustersStop.json
+      - operationId: Clusters_Start
+        exampleFile: ../examples/KustoClustersStart.json
+
+
+# pass
+  - scenario: AttachedDatabaseConfigurations
+    description: Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}
+    steps:
+      - operationId: Clusters_CreateOrUpdate
+        parameters:
+          clusterName: $(attachedClusterName)
+          parameters:
+            location: $(location)
+            sku:
+              name: Standard_L16as_v3
+              capacity: 2
+              tier: Standard
+            identity:
+              type: SystemAssigned
+            properties: 
+              enableStreamingIngest: true
+        outputVariables:
+          attachedKustoId:
+            type: string
+            fromResponse: /id
+      - operationId: Databases_CreateOrUpdate
+        parameters:
+          clusterName: $(attachedClusterName)
+          databaseName: $(attachedDatabaseName)
+          parameters:
+            location: $(location)
+            kind: ReadWrite
+            properties:
+              softDeletePeriod: P1D
+            callerRole: Admin
+      - operationId: AttachedDatabaseConfigurations_CheckNameAvailability
+        exampleFile: ../examples/KustoAttachedDatabaseConfigurationCheckNameAvailability.json
+      - operationId: AttachedDatabaseConfigurations_CreateOrUpdate
+        exampleFile: ../examples/KustoAttachedDatabaseConfigurationsCreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/clusterResourceId
+            value: $(attachedKustoId)
+          - replace: /parameters/properties/databaseName
+            value: $(attachedDatabaseName)
+      - operationId: AttachedDatabaseConfigurations_ListByCluster
+        exampleFile: ../examples/KustoAttachedDatabaseConfigurationsListByCluster.json
+      - operationId: AttachedDatabaseConfigurations_Get
+        exampleFile: ../examples/KustoAttachedDatabaseConfigurationsGet.json
+      - operationId: AttachedDatabaseConfigurations_Delete
+        exampleFile: ../examples/KustoAttachedDatabaseConfigurationsDelete.json
+
+  # pass
+  - scenario: ClusterPrincipalAssignments
+    description: Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}
+    variables:
+      principalAssignmentName: $(clusterPrincipalAssignmentName)
+    steps:
+      - operationId: ClusterPrincipalAssignments_CheckNameAvailability
+        exampleFile: ../examples/KustoClusterPrincipalAssignmentsCheckNameAvailability.json
+      - operationId: ClusterPrincipalAssignments_CreateOrUpdate
+        exampleFile: ../examples/KustoClusterPrincipalAssignmentsCreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/principalId
+            value: $(azureClientId)
+          - replace: /parameters/properties/tenantId
+            value: $(azureTenantId)
+      - operationId: ClusterPrincipalAssignments_List
+        exampleFile: ../examples/KustoClusterPrincipalAssignmentsList.json
+      - operationId: ClusterPrincipalAssignments_Get
+        exampleFile: ../examples/KustoClusterPrincipalAssignmentsGet.json
+      - operationId: ClusterPrincipalAssignments_Delete
+        exampleFile: ../examples/KustoClusterPrincipalAssignmentsDelete.json
+
+# pass
+  - scenario: Databases
+    description: Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}
+    steps:
+      - operationId: Databases_ListByCluster
+        exampleFile: ../examples/KustoDatabasesListByCluster.json
+      - operationId: Databases_Get
+        exampleFile: ../examples/KustoDatabasesGet.json
+      - operationId: Databases_Update
+        exampleFile: ../examples/KustoDatabasesUpdate.json
+      - operationId: Databases_ListPrincipals
+        exampleFile: ../examples/KustoDatabaseListPrincipals.json
+      # - operationId: Databases_AddPrincipals
+      #   exampleFile: ../examples/KustoDatabaseAddPrincipals.json
+      # - operationId: Databases_RemovePrincipals
+      #   exampleFile: ../examples/KustoDatabaseRemovePrincipals.json
+      - operationId: Database_InviteFollower
+        exampleFile: ../examples/KustoDatabaseInviteFollower.json
+
+# Pass
+  - scenario: DataConnections
+    description: Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}
+    steps:
+      - step: Create_Eventhub
+        armTemplate: ./templates/Create_Eventhub.json
+      - operationId: DataConnections_CheckNameAvailability
+        exampleFile: ../examples/KustoDataConnectionsCheckNameAvailability.json
+      - operationId: DataConnections_CreateOrUpdate # need eventhub
+        exampleFile: ../examples/KustoDataConnectionsCreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/eventHubResourceId
+            value: $(eventhubId)
+          - replace: /parameters/properties/consumerGroup
+            value: $Default
+          - remove: /parameters/properties/managedIdentityResourceId
+      - operationId: DataConnections_ListByDatabase
+        exampleFile: ../examples/KustoDataConnectionsListByDatabase.json
+      - operationId: DataConnections_Get
+        exampleFile: ../examples/KustoDataConnectionsGet.json
+      - operationId: DataConnections_Update
+        exampleFile: ../examples/KustoDataConnectionsUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/eventHubResourceId
+            value: $(eventhubId)
+          - replace: /parameters/properties/consumerGroup
+            value: $Default
+          - remove: /parameters/properties/managedIdentityResourceId
+      - operationId: DataConnections_dataConnectionValidation
+        exampleFile: ../examples/KustoDataConnectionValidationAsync.json
+      - operationId: DataConnections_Delete
+        exampleFile: ../examples/KustoDataConnectionsDelete.json
+
+# pass
+  - scenario: DatabasePrincipalAssignments
+    description: Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments/{principalAssignmentName}
+    variables:
+      principalAssignmentName: $(databasePrincipalAssignmentName)
+    steps:
+      - operationId: DatabasePrincipalAssignments_CheckNameAvailability
+        exampleFile: ../examples/KustoDatabasePrincipalAssignmentsCheckNameAvailability.json
+      - operationId: DatabasePrincipalAssignments_CreateOrUpdate
+        exampleFile: ../examples/KustoDatabasePrincipalAssignmentsCreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/principalId
+            value: $(azureClientId)
+          - replace: /parameters/properties/tenantId
+            value: $(azureTenantId)
+          - replace: /parameters/properties/role
+            value: User
+      - operationId: DatabasePrincipalAssignments_List
+        exampleFile: ../examples/KustoDatabasePrincipalAssignmentsList.json
+      - operationId: DatabasePrincipalAssignments_Get
+        exampleFile: ../examples/KustoDatabasePrincipalAssignmentsGet.json
+      - operationId: DatabasePrincipalAssignments_Delete
+        exampleFile: ../examples/KustoDatabasePrincipalAssignmentsDelete.json
+
+  # - scenario: Scripts
+  #   description: Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}
+  #   steps:
+  #     - operationId: Scripts_CheckNameAvailability
+  #       exampleFile: ../examples/KustoScriptsCheckNameAvailability.json
+  #     - operationId: Scripts_CreateOrUpdate
+  #       exampleFile: ../examples/KustoScriptsCreateOrUpdate.json
+  #     - operationId: Scripts_ListByDatabase
+  #       exampleFile: ../examples/KustoScriptsListByDatabase.json
+  #     - operationId: Scripts_Get
+  #       exampleFile: ../examples/KustoScriptsGet.json
+  #     - operationId: Scripts_Update
+  #       exampleFile: ../examples/KustoScriptsUpdate.json
+  #     - operationId: Scripts_Delete
+  #       exampleFile: ../examples/KustoScriptsDelete.json
+
+# pass
+  - scenario: ManagedPrivateEndpoints # need storage account
+    description: Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}
+    steps:
+      - step: Create_StorageAccount
+        armTemplate: ./templates/Create_StorageAccount.json
+      - operationId: ManagedPrivateEndpoints_CheckNameAvailability
+        exampleFile: ../examples/KustoManagedPrivateEndpointsCheckNameAvailability.json
+      - operationId: ManagedPrivateEndpoints_CreateOrUpdate
+        exampleFile: ../examples/KustoManagedPrivateEndpointsCreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/privateLinkResourceId
+            value: $(storageAccountId)
+      - operationId: ManagedPrivateEndpoints_List
+        exampleFile: ../examples/KustoManagedPrivateEndpointsList.json
+      - operationId: ManagedPrivateEndpoints_Get
+        exampleFile: ../examples/KustoManagedPrivateEndpointsGet.json
+      - operationId: ManagedPrivateEndpoints_Update
+        exampleFile: ../examples/KustoManagedPrivateEndpointsUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/privateLinkResourceId
+            value: $(storageAccountId)
+          - replace: /parameters/properties/requestMessage
+            value: Please Approve.
+      - operationId: ManagedPrivateEndpoints_Delete
+        exampleFile: ../examples/KustoManagedPrivateEndpointsDelete.json
+
+# Call to Microsoft.Kusto/clusters failed. Error message: [BadRequest] Cannot enable private endpoint because cluster '' has public IPv6 address
+  # - scenario: PrivateEndpointConnections
+  #   description: Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}
+  #   steps:
+  #     - step: Create_PrivateEndpoint
+  #       armTemplate: ./templates/Create_PrivateEndpoint.json
+  #     - operationId: PrivateEndpointConnections_List
+  #       exampleFile: ../examples/KustoPrivateEndpointConnectionsList.json
+  #       # outputVariables:
+  #       #   privateEndpointConnectionName:
+  #       #     type: string
+  #       #     fromResponse: /value/0/name
+  #     - operationId: PrivateEndpointConnections_CreateOrUpdate
+  #       exampleFile: ../examples/KustoPrivateEndpointConnectionsCreateOrUpdate.json
+  #       requestUpdate:
+  #         - replace: /parameters/properties/privateLinkServiceConnectionState/status
+  #           value: Rejected
+  #     - operationId: PrivateEndpointConnections_Get
+  #       exampleFile: ../examples/KustoPrivateEndpointConnectionsGet.json
+  #     - operationId: PrivateLinkResources_List
+  #       exampleFile: ../examples/KustoPrivateLinkResourcesList.json
+  #       outputVariables:
+  #         privateLinkResourceName:
+  #           type: string
+  #           fromResponse: /value/0/name
+  #     - operationId: PrivateLinkResources_Get
+  #       exampleFile: ../examples/KustoPrivateLinkResourcesGet.json
+  #     - operationId: PrivateEndpointConnections_Delete
+  #       exampleFile: ../examples/KustoPrivateEndpointConnectionsDelete.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.Kusto/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ../examples/KustoOperationsList.json
+
+  # - scenario: OperationsResults
+  #   description: Microsoft.Kusto/locations/{location}/operationResults/{operationId}
+  #   steps:
+  #     - operationId: OperationsResults_Get
+  #       exampleFile: ../examples/KustoOperationResultsGet.json
+
+  # - scenario: OperationsResultsLocation
+  #   description: Microsoft.Kusto/locations/{location}/operationResults/{operationId}?operationResultResponseType=Location
+  #   steps:
+  #     - operationId: OperationsResultsLocation_Get
+  #       exampleFile: ../examples/KustoOperationResultsOperationResultResponseTypeGet.json
+
+# pass
+  - scenario: Skus
+    description: Microsoft.Kusto/locations/{location}/skus
+    steps:
+      - operationId: Skus_List
+        exampleFile: ../examples/KustoSkus.json
+
+cleanUpSteps:
+  - operationId: Databases_Delete
+    exampleFile: ../examples/KustoDatabasesDelete.json
+  - operationId: Clusters_Delete
+    exampleFile: ../examples/KustoClustersDelete.json
