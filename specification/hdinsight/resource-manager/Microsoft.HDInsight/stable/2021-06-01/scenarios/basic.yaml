@@ -1,0 +1,161 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  clusterName:
+    type: string
+    prefix: clustern
+  operationId:
+    type: string
+    prefix: operatio
+  applicationName:
+    type: string
+    prefix: applicat
+  extensionName:
+    type: string
+    prefix: extensio
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  roleName:
+    type: string
+    prefix: rolename
+  configurationName:
+    type: string
+    prefix: configur
+  scriptExecutionId:
+    type: string
+    prefix: scriptex
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Locations_CheckNameAvailability
+        exampleFile: ..\examples\HDI_Locations_CheckClusterNameAvailability.json
+
+      - operationId: Clusters_Create
+        exampleFile: ..\examples\CreateLinuxHadoopSshPassword.json
+      - operationId: Clusters_List
+        exampleFile: ..\examples\GetLinuxHadoopAllClusters.json
+      - operationId: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\GetLinuxHadoopAllClustersInResourceGroup.json
+      - operationId: Clusters_Get
+        exampleFile: ..\examples\GetLinuxHadoopCluster.json
+      - operationId: Clusters_GetAzureAsyncOperationStatus
+        exampleFile: ..\examples\GetClusterCreatingAsyncOperationStatus.json
+      - operationId: Clusters_Update
+        exampleFile: ..\examples\PatchLinuxHadoopCluster.json
+      - operationId: Clusters_UpdateIdentityCertificate
+        exampleFile: ..\examples\HDI_Clusters_UpdateClusterIdentityCertificate.json
+      - operationId: Clusters_UpdateGatewaySettings
+        exampleFile: ..\examples\HDI_Clusters_UpdateGatewaySettings_Enable.json
+      - operationId: Clusters_GetGatewaySettings
+        exampleFile: ..\examples\HDI_Clusters_GetGatewaySettings.json
+      - operationId: Clusters_ExecuteScriptActions
+        exampleFile: ..\examples\PostExecuteScriptAction.json
+      - operationId: Clusters_RotateDiskEncryptionKey
+        exampleFile: ..\examples\RotateLinuxHadoopClusterDiskEncryptionKey.json
+
+      - operationId: Applications_Create
+        exampleFile: ..\examples\CreateApplication.json
+      - operationId: Applications_ListByCluster
+        exampleFile: ..\examples\GetAllApplications.json
+      - operationId: Applications_Get
+        exampleFile: ..\examples\GetApplicationCreated.json
+      - operationId: Applications_GetAzureAsyncOperationStatus
+        exampleFile: ..\examples\GetApplicationCreationAsyncOperationStatus.json
+
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\ApprovePrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_ListByCluster
+        exampleFile: ..\examples\GetAllPrivateEndpointConnectionsInCluster.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+
+      - operationId: Extensions_EnableMonitoring
+        exampleFile: ..\examples\EnableLinuxClusterMonitoring.json
+      - operationId: Extensions_GetAzureMonitorStatus
+        exampleFile: ..\examples\GetLinuxClusterAzureMonitorStatus.json
+      - operationId: Extensions_GetAzureAsyncOperationStatus
+        exampleFile: ..\examples\GetExtensionCreationAsyncOperationStatus.json
+      - operationId: Extensions_GetMonitoringStatus
+        exampleFile: ..\examples\GetLinuxClusterMonitoringStatus.json
+      - operationId: Extensions_Get
+        exampleFile: ..\examples\GetExtension.json
+      - operationId: Extensions_EnableAzureMonitor
+        exampleFile: ..\examples\EnableLinuxClusterAzureMonitor.json
+      - operationId: Extensions_Create
+        exampleFile: ..\examples\CreateExtension.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListHDInsightOperations.json
+
+      - operationId: Locations_GetAzureAsyncOperationStatus
+        exampleFile: ..\examples\HDI_Locations_GetAsyncOperationStatus.json
+      - operationId: Locations_ListBillingSpecs
+        exampleFile: ..\examples\HDI_Locations_ListBillingSpecs.json
+      - operationId: Locations_GetCapabilities
+        exampleFile: ..\examples\GetHDInsightCapabilities.json
+      - operationId: Locations_ListUsages
+        exampleFile: ..\examples\GetHDInsightUsages.json
+      - operationId: Locations_ValidateClusterCreateRequest
+        exampleFile: ..\examples\HDI_Locations_ValidateClusterCreateRequest.json
+
+      - operationId: Configurations_List
+        exampleFile: ..\examples\HDI_Configurations_List.json
+      - operationId: Configurations_Get
+        exampleFile: ..\examples\HDI_Configurations_Get.json
+      - operationId: Configurations_Update
+        exampleFile: ..\examples\ChangeHttpConnectivityEnable.json
+
+      - operationId: ScriptActions_GetExecutionAsyncOperationStatus
+        exampleFile: ..\examples\GetScriptExecutionAsyncOperationStatus.json
+
+      - operationId: VirtualMachines_ListHosts
+        exampleFile: ..\examples\GetClusterVirtualMachines.json
+
+      - operationId: PrivateLinkResources_ListByCluster
+        exampleFile: ..\examples\GetAllPrivateLinkResourcesInCluster.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          privateLinkResourceName:
+            type: string
+            prefix: privatel
+        exampleFile: ..\examples\GetPrivateLinkResource.json
+
+      - operationId: VirtualMachines_RestartHosts
+        exampleFile: ..\examples\RestartVirtualMachinesOperation.json
+      - operationId: VirtualMachines_GetAsyncOperationStatus
+        exampleFile: ..\examples\GetRestartHostsAsyncOperationStatus.json
+      - operationId: Clusters_UpdateAutoScaleConfiguration # inDegree
+        exampleFile: ..\examples\EnableOrUpdateAutoScaleWithLoadBasedConfiguration.json
+      - operationId: Clusters_Resize # inDegree
+        exampleFile: ..\examples\ResizeLinuxHadoopCluster.json
+      - operationId: ScriptActions_ListByCluster
+        exampleFile: ..\examples\GetLinuxHadoopScriptAction.json
+      - operationId: ScriptActions_Delete # inDegree
+        variables:
+          scriptName:
+            type: string
+            prefix: scriptna
+        exampleFile: ..\examples\DeleteScriptAction.json
+
+      - operationId: ScriptExecutionHistory_ListByCluster
+        exampleFile: ..\examples\GetScriptExecutionHistory.json
+
+      - operationId: ScriptActions_GetExecutionDetail
+        exampleFile: ..\examples\GetScriptActionById.json
+
+      - operationId: ScriptExecutionHistory_Promote
+        exampleFile: ..\examples\PromoteLinuxHadoopScriptAction.json
+        
+      - operationId: Extensions_Delete
+        exampleFile: ..\examples\DeleteExtension.json
+      - operationId: Extensions_DisableMonitoring
+        exampleFile: ..\examples\DisableLinuxClusterMonitoring.json
+      - operationId: Extensions_DisableAzureMonitor
+        exampleFile: ..\examples\DisableLinuxClusterAzureMonitor.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json
+      - operationId: Applications_Delete
+        exampleFile: ..\examples\DeleteApplication.json
+      - operationId: Clusters_Delete
+        exampleFile: ..\examples\DeleteLinuxHadoopCluster.json

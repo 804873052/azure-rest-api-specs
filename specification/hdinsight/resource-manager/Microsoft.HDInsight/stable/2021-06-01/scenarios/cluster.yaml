@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  adminPassword:
+    type: secureString
+  clusterName:
+    type: string
+    prefix: clustern
+  storageAccountName:
+    type: string
+    prefix: storageaccountn
+
+prepareSteps:
+# need to get storage access key, but form template doesn't support it(listKeys function)
+  - step: Create_StorageAccount
+    armTemplate: ./templates/Create_StorageAccount.json
+
+scenarios:
+  - scenario: Clusters
+    description: Microsoft.HDInsight/clusters/{clusterName}
+    steps:
+      - step: Clusters_Create
+        exampleFile: ..\examples\CreateLinuxHadoopSshPassword.json
+      - step: Clusters_List
+        exampleFile: ..\examples\GetLinuxHadoopAllClusters.json
+      - step: Clusters_ListByResourceGroup
+        exampleFile: ..\examples\GetLinuxHadoopAllClustersInResourceGroup.json
+      - step: Clusters_Get
+        exampleFile: ..\examples\GetLinuxHadoopCluster.json
+      - step: Clusters_GetAzureAsyncOperationStatus
+        exampleFile: ..\examples\GetClusterCreatingAsyncOperationStatus.json
+      - step: Clusters_Update
+        exampleFile: ..\examples\PatchLinuxHadoopCluster.json
+      - step: Clusters_UpdateIdentityCertificate
+        exampleFile: ..\examples\HDI_Clusters_UpdateClusterIdentityCertificate.json
+      - step: Clusters_UpdateGatewaySettings
+        exampleFile: ..\examples\HDI_Clusters_UpdateGatewaySettings_Enable.json
+      - step: Clusters_GetGatewaySettings
+        exampleFile: ..\examples\HDI_Clusters_GetGatewaySettings.json
+
+      - step: Clusters_RotateDiskEncryptionKey
+        exampleFile: ..\examples\RotateLinuxHadoopClusterDiskEncryptionKey.json
+      - step: Clusters_UpdateAutoScaleConfiguration # inDegree
+        exampleFile: ..\examples\EnableOrUpdateAutoScaleWithLoadBasedConfiguration.json
+      - step: Clusters_Resize # inDegree
+        exampleFile: ..\examples\ResizeLinuxHadoopCluster.json
+      - step: Clusters_Delete
+        exampleFile: ..\examples\DeleteLinuxHadoopCluster.json

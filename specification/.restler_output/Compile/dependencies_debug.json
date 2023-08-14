@@ -1,0 +1,4589 @@
+[
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/providers/Microsoft.AnalysisServices/operations",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "operations",
+        "PathContainerName": "operations",
+        "CandidateTypeNames": [
+          "operation"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "checkNameAvailability",
+        "PathContainerName": "checkNameAvailability",
+        "CandidateTypeNames": [
+          "check__name__availability"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "checkNameAvailability",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "location",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "locations"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "locations",
+        "PathContainerName": "checkNameAvailability",
+        "CandidateTypeNames": [
+          "location"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "location",
+        "ProducerParameterName": "location",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "name",
+            "fullPath": {
+              "path": [
+                "name"
+              ]
+            }
+          }
+        },
+        "ContainerName": "checkNameAvailability",
+        "PathContainerName": "checkNameAvailability",
+        "CandidateTypeNames": [
+          "check__name__availability"
+        ],
+        "AccessPath": "name",
+        "AccessPathParts": {
+          "path": [
+            "name"
+          ]
+        },
+        "ResourceName": "name",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "type",
+            "fullPath": {
+              "path": [
+                "type"
+              ]
+            }
+          }
+        },
+        "ContainerName": "checkNameAvailability",
+        "PathContainerName": "checkNameAvailability",
+        "CandidateTypeNames": [
+          "check__name__availability"
+        ],
+        "AccessPath": "type",
+        "AccessPathParts": {
+          "path": [
+            "type"
+          ]
+        },
+        "ResourceName": "type",
+        "ProducerParameterName": "type",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "operationresults",
+        "PathContainerName": "operationresults",
+        "CandidateTypeNames": [
+          "operationresult"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "operationresults",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "location",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "locations"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "locations",
+        "PathContainerName": "operationresults",
+        "CandidateTypeNames": [
+          "location"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "location",
+        "ProducerParameterName": "location",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "operationId",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "locations",
+              "{location}",
+              "operationresults"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "operationresults",
+        "PathContainerName": "operationresults",
+        "CandidateTypeNames": [
+          "operationresult"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "operationId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "operationstatuses",
+        "PathContainerName": "operationstatuses",
+        "CandidateTypeNames": [
+          "operationstatus"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "operationstatuses",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "location",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "locations"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "locations",
+        "PathContainerName": "operationstatuses",
+        "CandidateTypeNames": [
+          "location"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "location",
+        "ProducerParameterName": "location",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "operationId",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "locations",
+              "{location}",
+              "operationstatuses"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "operationstatuses",
+        "PathContainerName": "operationstatuses",
+        "CandidateTypeNames": [
+          "operationstatus"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "operationId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "skus",
+        "PathContainerName": "skus",
+        "CandidateTypeNames": [
+          "skus"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "skus",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "serverName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups",
+              "{resourceGroupName}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "servers"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "serverName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    },
+    "producer": {
+      "ResponseObject": {
+        "id": {
+          "RequestId": {
+            "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+            "method": "Put"
+          },
+          "ResourceReference": {
+            "BodyResource": {
+              "name": "name",
+              "fullPath": {
+                "path": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "ContainerName": "servers",
+          "PathContainerName": "servers",
+          "CandidateTypeNames": [
+            "server"
+          ],
+          "AccessPath": "name",
+          "AccessPathParts": {
+            "path": [
+              "name"
+            ]
+          },
+          "ResourceName": "name",
+          "ProducerParameterName": "name",
+          "IsNestedBodyResource": false,
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "serverName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups",
+              "{resourceGroupName}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "servers"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "serverName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    },
+    "producer": {
+      "DictionaryPayload": {
+        "payloadType": "UuidSuffix",
+        "primitiveType": "String",
+        "name": "serverName",
+        "isObject": false
+      }
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "id",
+            "fullPath": {
+              "path": [
+                "id"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "id",
+        "AccessPathParts": {
+          "path": [
+            "id"
+          ]
+        },
+        "ResourceName": "id",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "location",
+            "fullPath": {
+              "path": [
+                "location"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "location",
+        "AccessPathParts": {
+          "path": [
+            "location"
+          ]
+        },
+        "ResourceName": "location",
+        "ProducerParameterName": "location",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "name",
+            "fullPath": {
+              "path": [
+                "name"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "name",
+        "AccessPathParts": {
+          "path": [
+            "name"
+          ]
+        },
+        "ResourceName": "name",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "properties",
+            "fullPath": {
+              "path": [
+                "properties"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "properties",
+        "AccessPathParts": {
+          "path": [
+            "properties"
+          ]
+        },
+        "ResourceName": "properties",
+        "ProducerParameterName": "properties",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "asAdministrators",
+            "fullPath": {
+              "path": [
+                "properties",
+                "asAdministrators"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/asAdministrators",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "asAdministrators"
+          ]
+        },
+        "ResourceName": "asAdministrators",
+        "ProducerParameterName": "administrators",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "members",
+            "fullPath": {
+              "path": [
+                "properties",
+                "asAdministrators",
+                "members",
+                "[0]"
+              ]
+            }
+          }
+        },
+        "ContainerName": "asAdministrators",
+        "BodyContainerName": "asAdministrators",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "as__administrator",
+          "administrator"
+        ],
+        "AccessPath": "properties/asAdministrators/members/[0]",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "asAdministrators",
+            "members",
+            "[0]"
+          ]
+        },
+        "ResourceName": "members",
+        "ProducerParameterName": "members",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "backupBlobContainerUri",
+            "fullPath": {
+              "path": [
+                "properties",
+                "backupBlobContainerUri"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/backupBlobContainerUri",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "backupBlobContainerUri"
+          ]
+        },
+        "ResourceName": "backupBlobContainerUri",
+        "ProducerParameterName": "uri",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "gatewayDetails",
+            "fullPath": {
+              "path": [
+                "properties",
+                "gatewayDetails"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/gatewayDetails",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "gatewayDetails"
+          ]
+        },
+        "ResourceName": "gatewayDetails",
+        "ProducerParameterName": "details",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "dmtsClusterUri",
+            "fullPath": {
+              "path": [
+                "properties",
+                "gatewayDetails",
+                "dmtsClusterUri"
+              ]
+            }
+          }
+        },
+        "ContainerName": "gatewayDetails",
+        "BodyContainerName": "gatewayDetails",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "gateway__detail",
+          "detail"
+        ],
+        "AccessPath": "properties/gatewayDetails/dmtsClusterUri",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "gatewayDetails",
+            "dmtsClusterUri"
+          ]
+        },
+        "ResourceName": "dmtsClusterUri",
+        "ProducerParameterName": "uri",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "gatewayObjectId",
+            "fullPath": {
+              "path": [
+                "properties",
+                "gatewayDetails",
+                "gatewayObjectId"
+              ]
+            }
+          }
+        },
+        "ContainerName": "gatewayDetails",
+        "BodyContainerName": "gatewayDetails",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "gateway__detail",
+          "detail"
+        ],
+        "AccessPath": "properties/gatewayDetails/gatewayObjectId",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "gatewayDetails",
+            "gatewayObjectId"
+          ]
+        },
+        "ResourceName": "gatewayObjectId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "gatewayResourceId",
+            "fullPath": {
+              "path": [
+                "properties",
+                "gatewayDetails",
+                "gatewayResourceId"
+              ]
+            }
+          }
+        },
+        "ContainerName": "gatewayDetails",
+        "BodyContainerName": "gatewayDetails",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "gateway__detail",
+          "detail"
+        ],
+        "AccessPath": "properties/gatewayDetails/gatewayResourceId",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "gatewayDetails",
+            "gatewayResourceId"
+          ]
+        },
+        "ResourceName": "gatewayResourceId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "ipV4FirewallSettings",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings"
+          ]
+        },
+        "ResourceName": "ipV4FirewallSettings",
+        "ProducerParameterName": "settings",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "enablePowerBIService",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "enablePowerBIService"
+              ]
+            }
+          }
+        },
+        "ContainerName": "ipV4FirewallSettings",
+        "BodyContainerName": "ipV4FirewallSettings",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "ip__v4__firewall__setting",
+          "v4__firewall__setting",
+          "firewall__setting",
+          "setting",
+          "ip__v4__firewall"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/enablePowerBIService",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "enablePowerBIService"
+          ]
+        },
+        "ResourceName": "enablePowerBIService",
+        "ProducerParameterName": "service",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "Bool"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "firewallRules",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "firewallRules",
+                "[0]"
+              ]
+            }
+          }
+        },
+        "ContainerName": "ipV4FirewallSettings",
+        "BodyContainerName": "ipV4FirewallSettings",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "ip__v4__firewall__setting",
+          "v4__firewall__setting",
+          "firewall__setting",
+          "setting",
+          "ip__v4__firewall"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/firewallRules/[0]",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "firewallRules",
+            "[0]"
+          ]
+        },
+        "ResourceName": "firewallRules",
+        "ProducerParameterName": "rules",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "firewallRuleName",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "firewallRules",
+                "[0]",
+                "firewallRuleName"
+              ]
+            }
+          }
+        },
+        "ContainerName": "firewallRules",
+        "BodyContainerName": "firewallRules",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "firewall__rule",
+          "rule"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/firewallRules/[0]/firewallRuleName",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "firewallRules",
+            "[0]",
+            "firewallRuleName"
+          ]
+        },
+        "ResourceName": "firewallRuleName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "rangeEnd",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "firewallRules",
+                "[0]",
+                "rangeEnd"
+              ]
+            }
+          }
+        },
+        "ContainerName": "firewallRules",
+        "BodyContainerName": "firewallRules",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "firewall__rule",
+          "rule"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/firewallRules/[0]/rangeEnd",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "firewallRules",
+            "[0]",
+            "rangeEnd"
+          ]
+        },
+        "ResourceName": "rangeEnd",
+        "ProducerParameterName": "end",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "rangeStart",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "firewallRules",
+                "[0]",
+                "rangeStart"
+              ]
+            }
+          }
+        },
+        "ContainerName": "firewallRules",
+        "BodyContainerName": "firewallRules",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "firewall__rule",
+          "rule"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/firewallRules/[0]/rangeStart",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "firewallRules",
+            "[0]",
+            "rangeStart"
+          ]
+        },
+        "ResourceName": "rangeStart",
+        "ProducerParameterName": "start",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "managedMode",
+            "fullPath": {
+              "path": [
+                "properties",
+                "managedMode"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/managedMode",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "managedMode"
+          ]
+        },
+        "ResourceName": "managedMode",
+        "ProducerParameterName": "mode",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "managedMode",
+            "Int",
+            [
+              "0",
+              "1"
+            ],
+            "1"
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "provisioningState",
+            "fullPath": {
+              "path": [
+                "properties",
+                "provisioningState"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/provisioningState",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "provisioningState"
+          ]
+        },
+        "ResourceName": "provisioningState",
+        "ProducerParameterName": "state",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "provisioningState",
+            "String",
+            [
+              "Deleting",
+              "Succeeded",
+              "Failed",
+              "Paused",
+              "Suspended",
+              "Provisioning",
+              "Updating",
+              "Suspending",
+              "Pausing",
+              "Resuming",
+              "Preparing",
+              "Scaling"
+            ],
+            null
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "querypoolConnectionMode",
+            "fullPath": {
+              "path": [
+                "properties",
+                "querypoolConnectionMode"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/querypoolConnectionMode",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "querypoolConnectionMode"
+          ]
+        },
+        "ResourceName": "querypoolConnectionMode",
+        "ProducerParameterName": "mode",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "querypoolConnectionMode",
+            "String",
+            [
+              "All",
+              "ReadOnly"
+            ],
+            "All"
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "serverFullName",
+            "fullPath": {
+              "path": [
+                "properties",
+                "serverFullName"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/serverFullName",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "serverFullName"
+          ]
+        },
+        "ResourceName": "serverFullName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "serverMonitorMode",
+            "fullPath": {
+              "path": [
+                "properties",
+                "serverMonitorMode"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/serverMonitorMode",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "serverMonitorMode"
+          ]
+        },
+        "ResourceName": "serverMonitorMode",
+        "ProducerParameterName": "mode",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "serverMonitorMode",
+            "Int",
+            [
+              "0",
+              "1"
+            ],
+            "1"
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "sku",
+            "fullPath": {
+              "path": [
+                "properties",
+                "sku"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/sku",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "sku"
+          ]
+        },
+        "ResourceName": "sku",
+        "ProducerParameterName": "sku",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "capacity",
+            "fullPath": {
+              "path": [
+                "properties",
+                "sku",
+                "capacity"
+              ]
+            }
+          }
+        },
+        "ContainerName": "sku",
+        "BodyContainerName": "sku",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "sku"
+        ],
+        "AccessPath": "properties/sku/capacity",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "sku",
+            "capacity"
+          ]
+        },
+        "ResourceName": "capacity",
+        "ProducerParameterName": "capacity",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "Int"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "name",
+            "fullPath": {
+              "path": [
+                "properties",
+                "sku",
+                "name"
+              ]
+            }
+          }
+        },
+        "ContainerName": "sku",
+        "BodyContainerName": "sku",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "sku"
+        ],
+        "AccessPath": "properties/sku/name",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "sku",
+            "name"
+          ]
+        },
+        "ResourceName": "name",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "tier",
+            "fullPath": {
+              "path": [
+                "properties",
+                "sku",
+                "tier"
+              ]
+            }
+          }
+        },
+        "ContainerName": "sku",
+        "BodyContainerName": "sku",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "sku"
+        ],
+        "AccessPath": "properties/sku/tier",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "sku",
+            "tier"
+          ]
+        },
+        "ResourceName": "tier",
+        "ProducerParameterName": "tier",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "tier",
+            "String",
+            [
+              "Development",
+              "Basic",
+              "Standard"
+            ],
+            null
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "state",
+            "fullPath": {
+              "path": [
+                "properties",
+                "state"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/state",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "state"
+          ]
+        },
+        "ResourceName": "state",
+        "ProducerParameterName": "state",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "state",
+            "String",
+            [
+              "Deleting",
+              "Succeeded",
+              "Failed",
+              "Paused",
+              "Suspended",
+              "Provisioning",
+              "Updating",
+              "Suspending",
+              "Pausing",
+              "Resuming",
+              "Preparing",
+              "Scaling"
+            ],
+            null
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "sku",
+            "fullPath": {
+              "path": [
+                "sku"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "sku",
+        "AccessPathParts": {
+          "path": [
+            "sku"
+          ]
+        },
+        "ResourceName": "sku",
+        "ProducerParameterName": "sku",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "capacity",
+            "fullPath": {
+              "path": [
+                "sku",
+                "capacity"
+              ]
+            }
+          }
+        },
+        "ContainerName": "sku",
+        "BodyContainerName": "sku",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "sku"
+        ],
+        "AccessPath": "sku/capacity",
+        "AccessPathParts": {
+          "path": [
+            "sku",
+            "capacity"
+          ]
+        },
+        "ResourceName": "capacity",
+        "ProducerParameterName": "capacity",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "Int"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "name",
+            "fullPath": {
+              "path": [
+                "sku",
+                "name"
+              ]
+            }
+          }
+        },
+        "ContainerName": "sku",
+        "BodyContainerName": "sku",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "sku"
+        ],
+        "AccessPath": "sku/name",
+        "AccessPathParts": {
+          "path": [
+            "sku",
+            "name"
+          ]
+        },
+        "ResourceName": "name",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "tier",
+            "fullPath": {
+              "path": [
+                "sku",
+                "tier"
+              ]
+            }
+          }
+        },
+        "ContainerName": "sku",
+        "BodyContainerName": "sku",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "sku"
+        ],
+        "AccessPath": "sku/tier",
+        "AccessPathParts": {
+          "path": [
+            "sku",
+            "tier"
+          ]
+        },
+        "ResourceName": "tier",
+        "ProducerParameterName": "tier",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "tier",
+            "String",
+            [
+              "Development",
+              "Basic",
+              "Standard"
+            ],
+            null
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "tags",
+            "fullPath": {
+              "path": [
+                "tags"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "tags",
+        "AccessPathParts": {
+          "path": [
+            "tags"
+          ]
+        },
+        "ResourceName": "tags",
+        "ProducerParameterName": "tags",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "Object"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Put"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "type",
+            "fullPath": {
+              "path": [
+                "type"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "type",
+        "AccessPathParts": {
+          "path": [
+            "type"
+          ]
+        },
+        "ResourceName": "type",
+        "ProducerParameterName": "type",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Delete"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Delete"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Delete"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Delete"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "serverName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups",
+              "{resourceGroupName}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "servers"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "serverName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    },
+    "producer": {
+      "ResponseObject": {
+        "id": {
+          "RequestId": {
+            "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+            "method": "Put"
+          },
+          "ResourceReference": {
+            "BodyResource": {
+              "name": "name",
+              "fullPath": {
+                "path": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "ContainerName": "servers",
+          "PathContainerName": "servers",
+          "CandidateTypeNames": [
+            "server"
+          ],
+          "AccessPath": "name",
+          "AccessPathParts": {
+            "path": [
+              "name"
+            ]
+          },
+          "ResourceName": "name",
+          "ProducerParameterName": "name",
+          "IsNestedBodyResource": false,
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "serverName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups",
+              "{resourceGroupName}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "servers"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "serverName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    },
+    "producer": {
+      "ResponseObject": {
+        "id": {
+          "RequestId": {
+            "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+            "method": "Put"
+          },
+          "ResourceReference": {
+            "BodyResource": {
+              "name": "name",
+              "fullPath": {
+                "path": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "ContainerName": "servers",
+          "PathContainerName": "servers",
+          "CandidateTypeNames": [
+            "server"
+          ],
+          "AccessPath": "name",
+          "AccessPathParts": {
+            "path": [
+              "name"
+            ]
+          },
+          "ResourceName": "name",
+          "ProducerParameterName": "name",
+          "IsNestedBodyResource": false,
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "properties",
+            "fullPath": {
+              "path": [
+                "properties"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "properties",
+        "AccessPathParts": {
+          "path": [
+            "properties"
+          ]
+        },
+        "ResourceName": "properties",
+        "ProducerParameterName": "properties",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "asAdministrators",
+            "fullPath": {
+              "path": [
+                "properties",
+                "asAdministrators"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/asAdministrators",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "asAdministrators"
+          ]
+        },
+        "ResourceName": "asAdministrators",
+        "ProducerParameterName": "administrators",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "members",
+            "fullPath": {
+              "path": [
+                "properties",
+                "asAdministrators",
+                "members",
+                "[0]"
+              ]
+            }
+          }
+        },
+        "ContainerName": "asAdministrators",
+        "BodyContainerName": "asAdministrators",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "as__administrator",
+          "administrator"
+        ],
+        "AccessPath": "properties/asAdministrators/members/[0]",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "asAdministrators",
+            "members",
+            "[0]"
+          ]
+        },
+        "ResourceName": "members",
+        "ProducerParameterName": "members",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "backupBlobContainerUri",
+            "fullPath": {
+              "path": [
+                "properties",
+                "backupBlobContainerUri"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/backupBlobContainerUri",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "backupBlobContainerUri"
+          ]
+        },
+        "ResourceName": "backupBlobContainerUri",
+        "ProducerParameterName": "uri",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "gatewayDetails",
+            "fullPath": {
+              "path": [
+                "properties",
+                "gatewayDetails"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/gatewayDetails",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "gatewayDetails"
+          ]
+        },
+        "ResourceName": "gatewayDetails",
+        "ProducerParameterName": "details",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "dmtsClusterUri",
+            "fullPath": {
+              "path": [
+                "properties",
+                "gatewayDetails",
+                "dmtsClusterUri"
+              ]
+            }
+          }
+        },
+        "ContainerName": "gatewayDetails",
+        "BodyContainerName": "gatewayDetails",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "gateway__detail",
+          "detail"
+        ],
+        "AccessPath": "properties/gatewayDetails/dmtsClusterUri",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "gatewayDetails",
+            "dmtsClusterUri"
+          ]
+        },
+        "ResourceName": "dmtsClusterUri",
+        "ProducerParameterName": "uri",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "gatewayObjectId",
+            "fullPath": {
+              "path": [
+                "properties",
+                "gatewayDetails",
+                "gatewayObjectId"
+              ]
+            }
+          }
+        },
+        "ContainerName": "gatewayDetails",
+        "BodyContainerName": "gatewayDetails",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "gateway__detail",
+          "detail"
+        ],
+        "AccessPath": "properties/gatewayDetails/gatewayObjectId",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "gatewayDetails",
+            "gatewayObjectId"
+          ]
+        },
+        "ResourceName": "gatewayObjectId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "gatewayResourceId",
+            "fullPath": {
+              "path": [
+                "properties",
+                "gatewayDetails",
+                "gatewayResourceId"
+              ]
+            }
+          }
+        },
+        "ContainerName": "gatewayDetails",
+        "BodyContainerName": "gatewayDetails",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "gateway__detail",
+          "detail"
+        ],
+        "AccessPath": "properties/gatewayDetails/gatewayResourceId",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "gatewayDetails",
+            "gatewayResourceId"
+          ]
+        },
+        "ResourceName": "gatewayResourceId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "ipV4FirewallSettings",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings"
+          ]
+        },
+        "ResourceName": "ipV4FirewallSettings",
+        "ProducerParameterName": "settings",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "enablePowerBIService",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "enablePowerBIService"
+              ]
+            }
+          }
+        },
+        "ContainerName": "ipV4FirewallSettings",
+        "BodyContainerName": "ipV4FirewallSettings",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "ip__v4__firewall__setting",
+          "v4__firewall__setting",
+          "firewall__setting",
+          "setting",
+          "ip__v4__firewall"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/enablePowerBIService",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "enablePowerBIService"
+          ]
+        },
+        "ResourceName": "enablePowerBIService",
+        "ProducerParameterName": "service",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "Bool"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "firewallRules",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "firewallRules",
+                "[0]"
+              ]
+            }
+          }
+        },
+        "ContainerName": "ipV4FirewallSettings",
+        "BodyContainerName": "ipV4FirewallSettings",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "ip__v4__firewall__setting",
+          "v4__firewall__setting",
+          "firewall__setting",
+          "setting",
+          "ip__v4__firewall"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/firewallRules/[0]",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "firewallRules",
+            "[0]"
+          ]
+        },
+        "ResourceName": "firewallRules",
+        "ProducerParameterName": "rules",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "firewallRuleName",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "firewallRules",
+                "[0]",
+                "firewallRuleName"
+              ]
+            }
+          }
+        },
+        "ContainerName": "firewallRules",
+        "BodyContainerName": "firewallRules",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "firewall__rule",
+          "rule"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/firewallRules/[0]/firewallRuleName",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "firewallRules",
+            "[0]",
+            "firewallRuleName"
+          ]
+        },
+        "ResourceName": "firewallRuleName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "rangeEnd",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "firewallRules",
+                "[0]",
+                "rangeEnd"
+              ]
+            }
+          }
+        },
+        "ContainerName": "firewallRules",
+        "BodyContainerName": "firewallRules",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "firewall__rule",
+          "rule"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/firewallRules/[0]/rangeEnd",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "firewallRules",
+            "[0]",
+            "rangeEnd"
+          ]
+        },
+        "ResourceName": "rangeEnd",
+        "ProducerParameterName": "end",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "rangeStart",
+            "fullPath": {
+              "path": [
+                "properties",
+                "ipV4FirewallSettings",
+                "firewallRules",
+                "[0]",
+                "rangeStart"
+              ]
+            }
+          }
+        },
+        "ContainerName": "firewallRules",
+        "BodyContainerName": "firewallRules",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "firewall__rule",
+          "rule"
+        ],
+        "AccessPath": "properties/ipV4FirewallSettings/firewallRules/[0]/rangeStart",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "ipV4FirewallSettings",
+            "firewallRules",
+            "[0]",
+            "rangeStart"
+          ]
+        },
+        "ResourceName": "rangeStart",
+        "ProducerParameterName": "start",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "managedMode",
+            "fullPath": {
+              "path": [
+                "properties",
+                "managedMode"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/managedMode",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "managedMode"
+          ]
+        },
+        "ResourceName": "managedMode",
+        "ProducerParameterName": "mode",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "managedMode",
+            "Int",
+            [
+              "0",
+              "1"
+            ],
+            "1"
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "querypoolConnectionMode",
+            "fullPath": {
+              "path": [
+                "properties",
+                "querypoolConnectionMode"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/querypoolConnectionMode",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "querypoolConnectionMode"
+          ]
+        },
+        "ResourceName": "querypoolConnectionMode",
+        "ProducerParameterName": "mode",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "querypoolConnectionMode",
+            "String",
+            [
+              "All",
+              "ReadOnly"
+            ],
+            "All"
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "serverMonitorMode",
+            "fullPath": {
+              "path": [
+                "properties",
+                "serverMonitorMode"
+              ]
+            }
+          }
+        },
+        "ContainerName": "properties",
+        "BodyContainerName": "properties",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "property"
+        ],
+        "AccessPath": "properties/serverMonitorMode",
+        "AccessPathParts": {
+          "path": [
+            "properties",
+            "serverMonitorMode"
+          ]
+        },
+        "ResourceName": "serverMonitorMode",
+        "ProducerParameterName": "mode",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "serverMonitorMode",
+            "Int",
+            [
+              "0",
+              "1"
+            ],
+            "1"
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "sku",
+            "fullPath": {
+              "path": [
+                "sku"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "sku",
+        "AccessPathParts": {
+          "path": [
+            "sku"
+          ]
+        },
+        "ResourceName": "sku",
+        "ProducerParameterName": "sku",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "capacity",
+            "fullPath": {
+              "path": [
+                "sku",
+                "capacity"
+              ]
+            }
+          }
+        },
+        "ContainerName": "sku",
+        "BodyContainerName": "sku",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "sku"
+        ],
+        "AccessPath": "sku/capacity",
+        "AccessPathParts": {
+          "path": [
+            "sku",
+            "capacity"
+          ]
+        },
+        "ResourceName": "capacity",
+        "ProducerParameterName": "capacity",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "Int"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "name",
+            "fullPath": {
+              "path": [
+                "sku",
+                "name"
+              ]
+            }
+          }
+        },
+        "ContainerName": "sku",
+        "BodyContainerName": "sku",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "sku"
+        ],
+        "AccessPath": "sku/name",
+        "AccessPathParts": {
+          "path": [
+            "sku",
+            "name"
+          ]
+        },
+        "ResourceName": "name",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "tier",
+            "fullPath": {
+              "path": [
+                "sku",
+                "tier"
+              ]
+            }
+          }
+        },
+        "ContainerName": "sku",
+        "BodyContainerName": "sku",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "sku"
+        ],
+        "AccessPath": "sku/tier",
+        "AccessPathParts": {
+          "path": [
+            "sku",
+            "tier"
+          ]
+        },
+        "ResourceName": "tier",
+        "ProducerParameterName": "tier",
+        "IsNestedBodyResource": true,
+        "PrimitiveType": {
+          "Enum": [
+            "tier",
+            "String",
+            [
+              "Development",
+              "Basic",
+              "Standard"
+            ],
+            null
+          ]
+        }
+      },
+      "parameterKind": "Body"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+          "method": "Patch"
+        },
+        "ResourceReference": {
+          "BodyResource": {
+            "name": "tags",
+            "fullPath": {
+              "path": [
+                "tags"
+              ]
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "servers",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPath": "tags",
+        "AccessPathParts": {
+          "path": [
+            "tags"
+          ]
+        },
+        "ResourceName": "tags",
+        "ProducerParameterName": "tags",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "Object"
+      },
+      "parameterKind": "Body"
+    },
+    "producer": {
+      "ResponseObject": {
+        "id": {
+          "RequestId": {
+            "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+            "method": "Put"
+          },
+          "ResourceReference": {
+            "BodyResource": {
+              "name": "tags",
+              "fullPath": {
+                "path": [
+                  "tags"
+                ]
+              }
+            }
+          },
+          "ContainerName": "servers",
+          "PathContainerName": "servers",
+          "CandidateTypeNames": [
+            "server"
+          ],
+          "AccessPath": "tags",
+          "AccessPathParts": {
+            "path": [
+              "tags"
+            ]
+          },
+          "ResourceName": "tags",
+          "ProducerParameterName": "tags",
+          "IsNestedBodyResource": false,
+          "PrimitiveType": "Object"
+        }
+      }
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "dissociateGateway",
+        "PathContainerName": "dissociateGateway",
+        "CandidateTypeNames": [
+          "dissociate__gateway"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "dissociateGateway",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "dissociateGateway",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "serverName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups",
+              "{resourceGroupName}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "servers"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "dissociateGateway",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "serverName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    },
+    "producer": {
+      "ResponseObject": {
+        "id": {
+          "RequestId": {
+            "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+            "method": "Put"
+          },
+          "ResourceReference": {
+            "BodyResource": {
+              "name": "name",
+              "fullPath": {
+                "path": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "ContainerName": "servers",
+          "PathContainerName": "servers",
+          "CandidateTypeNames": [
+            "server"
+          ],
+          "AccessPath": "name",
+          "AccessPathParts": {
+            "path": [
+              "name"
+            ]
+          },
+          "ResourceName": "name",
+          "ProducerParameterName": "name",
+          "IsNestedBodyResource": false,
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "listGatewayStatus",
+        "PathContainerName": "listGatewayStatus",
+        "CandidateTypeNames": [
+          "list__gateway__status"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "listGatewayStatus",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "listGatewayStatus",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "serverName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups",
+              "{resourceGroupName}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "servers"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "listGatewayStatus",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "serverName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    },
+    "producer": {
+      "ResponseObject": {
+        "id": {
+          "RequestId": {
+            "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+            "method": "Put"
+          },
+          "ResourceReference": {
+            "BodyResource": {
+              "name": "name",
+              "fullPath": {
+                "path": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "ContainerName": "servers",
+          "PathContainerName": "servers",
+          "CandidateTypeNames": [
+            "server"
+          ],
+          "AccessPath": "name",
+          "AccessPathParts": {
+            "path": [
+              "name"
+            ]
+          },
+          "ResourceName": "name",
+          "ProducerParameterName": "name",
+          "IsNestedBodyResource": false,
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "resume",
+        "PathContainerName": "resume",
+        "CandidateTypeNames": [
+          "resume"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "resume",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "resume",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "serverName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups",
+              "{resourceGroupName}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "servers"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "resume",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "serverName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    },
+    "producer": {
+      "ResponseObject": {
+        "id": {
+          "RequestId": {
+            "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+            "method": "Put"
+          },
+          "ResourceReference": {
+            "BodyResource": {
+              "name": "name",
+              "fullPath": {
+                "path": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "ContainerName": "servers",
+          "PathContainerName": "servers",
+          "CandidateTypeNames": [
+            "server"
+          ],
+          "AccessPath": "name",
+          "AccessPathParts": {
+            "path": [
+              "name"
+            ]
+          },
+          "ResourceName": "name",
+          "ProducerParameterName": "name",
+          "IsNestedBodyResource": false,
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "skus",
+        "PathContainerName": "skus",
+        "CandidateTypeNames": [
+          "skus"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "skus",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "skus",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "serverName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups",
+              "{resourceGroupName}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "servers"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "skus",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "serverName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    },
+    "producer": {
+      "ResponseObject": {
+        "id": {
+          "RequestId": {
+            "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+            "method": "Put"
+          },
+          "ResourceReference": {
+            "BodyResource": {
+              "name": "name",
+              "fullPath": {
+                "path": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "ContainerName": "servers",
+          "PathContainerName": "servers",
+          "CandidateTypeNames": [
+            "server"
+          ],
+          "AccessPath": "name",
+          "AccessPathParts": {
+            "path": [
+              "name"
+            ]
+          },
+          "ResourceName": "name",
+          "ProducerParameterName": "name",
+          "IsNestedBodyResource": false,
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "QueryResource": "api-version"
+        },
+        "ContainerName": "suspend",
+        "PathContainerName": "suspend",
+        "CandidateTypeNames": [
+          "suspend"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "api-version",
+        "ProducerParameterName": "version",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "subscriptionId",
+            "pathToParameter": [
+              "subscriptions"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "subscriptions",
+        "PathContainerName": "suspend",
+        "CandidateTypeNames": [
+          "subscription"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "subscriptionId",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "resourceGroupName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "resourceGroups",
+        "PathContainerName": "suspend",
+        "CandidateTypeNames": [
+          "resource__group"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "resourceGroupName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend",
+          "method": "Post"
+        },
+        "ResourceReference": {
+          "PathResource": {
+            "name": "serverName",
+            "pathToParameter": [
+              "subscriptions",
+              "{subscriptionId}",
+              "resourceGroups",
+              "{resourceGroupName}",
+              "providers",
+              "Microsoft.AnalysisServices",
+              "servers"
+            ],
+            "responsePath": {
+              "path": []
+            }
+          }
+        },
+        "ContainerName": "servers",
+        "PathContainerName": "suspend",
+        "CandidateTypeNames": [
+          "server"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "serverName",
+        "ProducerParameterName": "name",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Path"
+    },
+    "producer": {
+      "ResponseObject": {
+        "id": {
+          "RequestId": {
+            "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+            "method": "Put"
+          },
+          "ResourceReference": {
+            "BodyResource": {
+              "name": "name",
+              "fullPath": {
+                "path": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "ContainerName": "servers",
+          "PathContainerName": "servers",
+          "CandidateTypeNames": [
+            "server"
+          ],
+          "AccessPath": "name",
+          "AccessPathParts": {
+            "path": [
+              "name"
+            ]
+          },
+          "ResourceName": "name",
+          "ProducerParameterName": "name",
+          "IsNestedBodyResource": false,
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  }
+]

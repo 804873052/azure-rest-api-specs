@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: CheckDomainAvailability
+    description: Microsoft.CognitiveServices/checkDomainAvailability
+    steps:
+      - step: CheckDomainAvailability
+        exampleFile: ..\examples\CheckDomainAvailability.json
+
+  - scenario: CheckSkuAvailability
+    description: Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability
+    steps:
+      - step: CheckSkuAvailability
+        exampleFile: ..\examples\CheckSkuAvailability.json
+
+  - scenario: CommitmentTiers
+    description: Microsoft.CognitiveServices/locations/{location}/commitmentTiers
+    steps:
+      - step: CommitmentTiers_List
+        exampleFile: ..\examples\ListCommitmentTiers.json
+
+  - scenario: ResourceSkus
+    description: Microsoft.CognitiveServices/skus
+    steps:
+      - step: ResourceSkus_List
+        exampleFile: ..\examples\GetSkus.json

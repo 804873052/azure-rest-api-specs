@@ -1,0 +1,58 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  jobCollectionName:
+    type: string
+    prefix: jobcollect
+  jobName:
+    type: string
+    prefix: jobna
+
+prepareSteps:
+  - step: JobCollections_CreateOrUpdate
+    operationId: JobCollections_CreateOrUpdate'
+    parameters:
+      location: $(location)
+
+# The operation is not permitted for namespace 'Microsoft.Scheduler'.
+scenarios:
+  - scenario: JobCollections
+    description: Microsoft.Scheduler/jobCollections/{jobCollectionName}
+    steps:
+      - step: JobCollections_ListBySubscription
+        operationId: JobCollections_ListBySubscription
+      - step: JobCollections_ListByResourceGroup
+        operationId: JobCollections_ListByResourceGroup
+      - step: JobCollections_Get
+        operationId: JobCollections_Get
+      - step: JobCollections_Patch
+        operationId: JobCollections_Patch
+      - step: JobCollections_Enable
+        operationId: JobCollections_Enable
+      - step: JobCollections_Disable
+        operationId: JobCollections_Disable
+
+  - scenario: Jobs
+    description: Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
+    steps:
+      - step: Jobs_CreateOrUpdate
+        operationId: Jobs_CreateOrUpdate
+      - step: Jobs_Get
+        operationId: Jobs_Get
+      - step: Jobs_List
+        operationId: Jobs_List
+      - step: Jobs_ListJobHistory
+        operationId: Jobs_ListJobHistory
+      - step: Jobs_Patch
+        operationId: Jobs_Patch
+      - step: Jobs_Run
+        operationId: Jobs_Run
+      - step: Jobs_Delete
+        operationId: Jobs_Delete
+
+cleanUpSteps:
+  - step: JobCollections_Delete
+    operationId: JobCollections_Delete

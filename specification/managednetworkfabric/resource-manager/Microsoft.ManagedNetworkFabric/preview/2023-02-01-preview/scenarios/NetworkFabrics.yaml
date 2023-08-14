@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkFabricName:
+    type: string
+    prefix: networkf
+  networkToNetworkInterconnectName:
+    type: string
+    prefix: networkt
+
+prepareSteps:
+  - operationId: NetworkFabrics_Create
+    exampleFile: ..\examples\NetworkFabrics_Create_MaximumSet_Gen.json
+
+scenarios:
+  - scenario: NetworkFabrics
+    description: Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}
+    steps:
+
+      - operationId: NetworkFabrics_ListBySubscription
+        exampleFile: ..\examples\NetworkFabrics_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_ListByResourceGroup
+        exampleFile: ..\examples\NetworkFabrics_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_Get
+        exampleFile: ..\examples\NetworkFabrics_Get_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_Update
+        exampleFile: ..\examples\NetworkFabrics_Update_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_deprovision
+        exampleFile: ..\examples\NetworkFabrics_deprovision_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_provision
+        exampleFile: ..\examples\NetworkFabrics_provision_MaximumSet_Gen.json
+
+
+  - scenario: NetworkToNetworkInterconnects
+    description: Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}
+    steps:
+      - operationId: NetworkToNetworkInterconnects_Create
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Create_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_List
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_List_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_Get
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Get_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_Delete
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Delete_MaximumSet_Gen.json
+
+  - scenario: NetworkFabricSkus
+    description: Microsoft.ManagedNetworkFabric/networkFabricSkus
+    steps:
+      - operationId: NetworkFabricSkus_ListBySubscription
+        exampleFile: ..\examples\NetworkFabricSkus_ListBySubscription_MaximumSet_Gen.json
+        outputVariables:
+          networkFabricSkuName:
+            type: string
+            fromResponse: /value/0/name
+      - operationId: NetworkFabricSkus_Get
+        # variables:
+        #   networkFabricSkuName:
+        #     type: string
+        #     prefix: networkf
+        exampleFile: ..\examples\NetworkFabricSkus_Get_MaximumSet_Gen.json
+
+cleanUpSteps:
+  - operationId: NetworkFabrics_Delete
+    exampleFile: ..\examples\NetworkFabrics_Delete_MaximumSet_Gen.json

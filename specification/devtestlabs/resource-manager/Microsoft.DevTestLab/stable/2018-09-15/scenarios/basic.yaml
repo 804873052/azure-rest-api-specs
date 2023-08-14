@@ -1,0 +1,322 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  labName:
+    type: string
+    prefix: labname
+  name:
+    type: string
+    prefix: name
+  userName:
+    type: string
+    prefix: username
+  serviceFabricName:
+    type: string
+    prefix: servicef
+  virtualMachineName:
+    type: string
+    prefix: virtualm
+  artifactSourceName:
+    type: string
+    prefix: artifact
+  policySetName:
+    type: string
+    prefix: policyse
+    
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: VirtualMachines_CreateOrUpdate
+        exampleFile: ..\examples\VirtualMachines_CreateOrUpdate.json
+      - operationId: VirtualMachines_List
+        exampleFile: ..\examples\VirtualMachines_List.json
+      - operationId: VirtualMachines_Get
+        exampleFile: ..\examples\VirtualMachines_Get.json
+      - operationId: VirtualMachines_Update
+        exampleFile: ..\examples\VirtualMachines_Update.json
+      - operationId: VirtualMachines_Claim
+        exampleFile: ..\examples\VirtualMachines_Claim.json
+      - operationId: VirtualMachines_Redeploy
+        exampleFile: ..\examples\VirtualMachines_Redeploy.json
+      - operationId: VirtualMachines_Restart
+        exampleFile: ..\examples\VirtualMachines_Restart.json
+      - operationId: VirtualMachines_Start
+        exampleFile: ..\examples\VirtualMachines_Start.json
+      - operationId: VirtualMachines_Resize
+        exampleFile: ..\examples\VirtualMachines_Resize.json
+      - operationId: VirtualMachines_DetachDataDisk
+        exampleFile: ..\examples\VirtualMachines_DetachDataDisk.json
+      - operationId: VirtualMachines_GetRdpFileContents
+        exampleFile: ..\examples\VirtualMachines_GetRdpFileContents.json
+      - operationId: VirtualMachines_ListApplicableSchedules
+        exampleFile: ..\examples\VirtualMachines_ListApplicableSchedules.json
+      - operationId: VirtualMachines_AddDataDisk
+        exampleFile: ..\examples\VirtualMachines_AddDataDisk.json
+      - operationId: VirtualMachines_ApplyArtifacts
+        exampleFile: ..\examples\VirtualMachines_ApplyArtifacts.json
+      - operationId: VirtualMachines_Stop
+        exampleFile: ..\examples\VirtualMachines_Stop.json
+      - operationId: VirtualMachines_TransferDisks
+        exampleFile: ..\examples\VirtualMachines_TransferDisks.json
+      - operationId: VirtualMachines_UnClaim
+        exampleFile: ..\examples\VirtualMachines_UnClaim.json
+
+        
+      - operationId: Labs_CreateOrUpdate
+        exampleFile: ..\examples\Labs_CreateOrUpdate.json
+      - operationId: Labs_ListBySubscription
+        exampleFile: ..\examples\Labs_ListBySubscription.json
+      - operationId: Labs_ListByResourceGroup
+        exampleFile: ..\examples\Labs_ListByResourceGroup.json
+      - operationId: Labs_Get
+        exampleFile: ..\examples\Labs_Get.json
+      - operationId: Labs_Update
+        exampleFile: ..\examples\Labs_Update.json
+      - operationId: Labs_ExportResourceUsage
+        exampleFile: ..\examples\Labs_ExportResourceUsage.json
+      - operationId: Labs_GenerateUploadUri
+        exampleFile: ..\examples\Labs_GenerateUploadUri.json
+      - operationId: Labs_ImportVirtualMachine
+        exampleFile: ..\examples\Labs_ImportVirtualMachine.json
+      - operationId: Labs_ClaimAnyVm
+        exampleFile: ..\examples\Labs_ClaimAnyVm.json
+      - operationId: Labs_CreateEnvironment
+        exampleFile: ..\examples\Labs_CreateEnvironment.json
+      - operationId: Labs_ListVhds
+        exampleFile: ..\examples\Labs_ListVhds.json
+
+      - operationId: ServiceFabrics_CreateOrUpdate
+        exampleFile: ..\examples\ServiceFabrics_CreateOrUpdate.json
+      - operationId: ServiceFabrics_List
+        exampleFile: ..\examples\ServiceFabrics_List.json
+      - operationId: ServiceFabrics_Get
+        exampleFile: ..\examples\ServiceFabrics_Get.json
+      - operationId: ServiceFabrics_Update
+        exampleFile: ..\examples\ServiceFabrics_Update.json
+      - operationId: ServiceFabrics_ListApplicableSchedules
+        exampleFile: ..\examples\ServiceFabrics_ListApplicableSchedules.json
+      - operationId: ServiceFabrics_Stop
+        exampleFile: ..\examples\ServiceFabrics_Stop.json
+      - operationId: ServiceFabrics_Start
+        exampleFile: ..\examples\ServiceFabrics_Start.json
+
+      - operationId: Schedules_CreateOrUpdate
+        exampleFile: ..\examples\Schedules_CreateOrUpdate.json
+      - operationId: Schedules_List
+        exampleFile: ..\examples\Schedules_List.json
+      - operationId: Schedules_Get
+        exampleFile: ..\examples\Schedules_Get.json
+      - operationId: Schedules_Update
+        exampleFile: ..\examples\Schedules_Update.json
+      - operationId: Schedules_ListApplicable
+        exampleFile: ..\examples\Schedules_ListApplicable.json
+      - operationId: Schedules_Execute
+        exampleFile: ..\examples\Schedules_Execute.json
+
+      - operationId: GlobalSchedules_CreateOrUpdate
+        exampleFile: ..\examples\GlobalSchedules_CreateOrUpdate.json
+      - operationId: GlobalSchedules_ListBySubscription
+        exampleFile: ..\examples\GlobalSchedules_ListBySubscription.json
+      - operationId: GlobalSchedules_ListByResourceGroup
+        exampleFile: ..\examples\GlobalSchedules_ListByResourceGroup.json
+      - operationId: GlobalSchedules_Get
+        exampleFile: ..\examples\GlobalSchedules_Get.json
+      - operationId: GlobalSchedules_Update
+        exampleFile: ..\examples\GlobalSchedules_Update.json
+      - operationId: GlobalSchedules_Retarget
+        exampleFile: ..\examples\GlobalSchedules_Retarget.json
+      - operationId: GlobalSchedules_Execute
+        exampleFile: ..\examples\GlobalSchedules_Execute.json
+
+      - operationId: Disks_CreateOrUpdate
+        exampleFile: ..\examples\Disks_CreateOrUpdate.json
+      - operationId: Disks_List
+        exampleFile: ..\examples\Disks_List.json
+      - operationId: Disks_Get
+        exampleFile: ..\examples\Disks_Get.json
+      - operationId: Disks_Update
+        exampleFile: ..\examples\Disks_Update.json
+      - operationId: Disks_Attach
+        exampleFile: ..\examples\Disks_Attach.json
+      - operationId: Disks_Detach
+        exampleFile: ..\examples\Disks_Detach.json
+
+      - operationId: ServiceFabricSchedules_CreateOrUpdate
+        exampleFile: ..\examples\ServiceFabricSchedules_CreateOrUpdate.json
+      - operationId: ServiceFabricSchedules_List
+        exampleFile: ..\examples\ServiceFabricSchedules_List.json
+      - operationId: ServiceFabricSchedules_Get
+        exampleFile: ..\examples\ServiceFabricSchedules_Get.json
+      - operationId: ServiceFabricSchedules_Update
+        exampleFile: ..\examples\ServiceFabricSchedules_Update.json
+      - operationId: ServiceFabricSchedules_Execute
+        exampleFile: ..\examples\ServiceFabricSchedules_Execute.json
+
+      - operationId: VirtualMachineSchedules_CreateOrUpdate
+        exampleFile: ..\examples\VirtualMachineSchedules_CreateOrUpdate.json
+      - operationId: VirtualMachineSchedules_List
+        exampleFile: ..\examples\VirtualMachineSchedules_List.json
+      - operationId: VirtualMachineSchedules_Get
+        exampleFile: ..\examples\VirtualMachineSchedules_Get.json
+      - operationId: VirtualMachineSchedules_Update
+        exampleFile: ..\examples\VirtualMachineSchedules_Update.json
+      - operationId: VirtualMachineSchedules_Execute
+        exampleFile: ..\examples\VirtualMachineSchedules_Execute.json
+
+      - operationId: NotificationChannels_CreateOrUpdate
+        exampleFile: ..\examples\NotificationChannels_CreateOrUpdate.json
+      - operationId: NotificationChannels_List
+        exampleFile: ..\examples\NotificationChannels_List.json
+      - operationId: NotificationChannels_Get
+        exampleFile: ..\examples\NotificationChannels_Get.json
+      - operationId: NotificationChannels_Update
+        exampleFile: ..\examples\NotificationChannels_Update.json
+      - operationId: NotificationChannels_Notify
+        exampleFile: ..\examples\NotificationChannels_Notify.json
+
+      - operationId: Users_CreateOrUpdate
+        exampleFile: ..\examples\Users_CreateOrUpdate.json
+      - operationId: Users_List
+        exampleFile: ..\examples\Users_List.json
+      - operationId: Users_Get
+        exampleFile: ..\examples\Users_Get.json
+      - operationId: Users_Update
+        exampleFile: ..\examples\Users_Update.json
+
+      - operationId: ArtifactSources_CreateOrUpdate
+        exampleFile: ..\examples\ArtifactSources_CreateOrUpdate.json
+      - operationId: ArtifactSources_List
+        exampleFile: ..\examples\ArtifactSources_List.json
+      - operationId: ArtifactSources_Get
+        exampleFile: ..\examples\ArtifactSources_Get.json
+      - operationId: ArtifactSources_Update
+        exampleFile: ..\examples\ArtifactSources_Update.json
+
+      - operationId: VirtualNetworks_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworks_CreateOrUpdate.json
+      - operationId: VirtualNetworks_List
+        exampleFile: ..\examples\VirtualNetworks_List.json
+      - operationId: VirtualNetworks_Get
+        exampleFile: ..\examples\VirtualNetworks_Get.json
+      - operationId: VirtualNetworks_Update
+        exampleFile: ..\examples\VirtualNetworks_Update.json
+
+      - operationId: Environments_CreateOrUpdate
+        exampleFile: ..\examples\Environments_CreateOrUpdate.json
+      - operationId: Environments_List
+        exampleFile: ..\examples\Environments_List.json
+      - operationId: Environments_Get
+        exampleFile: ..\examples\Environments_Get.json
+      - operationId: Environments_Update
+        exampleFile: ..\examples\Environments_Update.json
+
+      - operationId: CustomImages_CreateOrUpdate
+        exampleFile: ..\examples\CustomImages_CreateOrUpdate.json
+      - operationId: CustomImages_List
+        exampleFile: ..\examples\CustomImages_List.json
+      - operationId: CustomImages_Get
+        exampleFile: ..\examples\CustomImages_Get.json
+      - operationId: CustomImages_Update
+        exampleFile: ..\examples\CustomImages_Update.json
+
+      - operationId: Secrets_CreateOrUpdate
+        exampleFile: ..\examples\Secrets_CreateOrUpdate.json
+      - operationId: Secrets_List
+        exampleFile: ..\examples\Secrets_List.json
+      - operationId: Secrets_Get
+        exampleFile: ..\examples\Secrets_Get.json
+      - operationId: Secrets_Update
+        exampleFile: ..\examples\Secrets_Update.json
+
+      - operationId: Policies_CreateOrUpdate
+        exampleFile: ..\examples\Policies_CreateOrUpdate.json
+      - operationId: Policies_List
+        exampleFile: ..\examples\Policies_List.json
+      - operationId: Policies_Get
+        exampleFile: ..\examples\Policies_Get.json
+      - operationId: Policies_Update
+        exampleFile: ..\examples\Policies_Update.json
+
+      - operationId: Formulas_CreateOrUpdate
+        exampleFile: ..\examples\Formulas_CreateOrUpdate.json
+      - operationId: Formulas_List
+        exampleFile: ..\examples\Formulas_List.json
+      - operationId: Formulas_Get
+        exampleFile: ..\examples\Formulas_Get.json
+      - operationId: Formulas_Update
+        exampleFile: ..\examples\Formulas_Update.json
+
+      - operationId: ServiceRunners_CreateOrUpdate
+        exampleFile: ..\examples\ServiceRunners_CreateOrUpdate.json
+      - operationId: ServiceRunners_Get
+        exampleFile: ..\examples\ServiceRunners_Get.json
+
+      - operationId: Costs_CreateOrUpdate
+        exampleFile: ..\examples\Costs_CreateOrUpdate.json
+      - operationId: Costs_Get
+        exampleFile: ..\examples\Costs_Get.json
+
+      - operationId: ProviderOperations_List
+        exampleFile: ..\examples\ProviderOperations_List.json
+
+      - operationId: Operations_Get
+        variables:
+          locationName:
+            type: string
+            prefix: location
+        exampleFile: ..\examples\Operations_Get.json
+
+      - operationId: ArmTemplates_List
+        exampleFile: ..\examples\ArmTemplates_List.json
+      - operationId: ArmTemplates_Get
+        exampleFile: ..\examples\ArmTemplates_Get.json
+
+      - operationId: Artifacts_List
+        exampleFile: ..\examples\Artifacts_List.json
+      - operationId: Artifacts_Get
+        exampleFile: ..\examples\Artifacts_Get.json
+      - operationId: Artifacts_GenerateArmTemplate
+        exampleFile: ..\examples\Artifacts_GenerateArmTemplate.json
+
+      - operationId: GalleryImages_List
+        exampleFile: ..\examples\GalleryImages_List.json
+
+      - operationId: PolicySets_EvaluatePolicies
+        exampleFile: ..\examples\PolicySets_EvaluatePolicies.json
+
+      - operationId: ServiceRunners_Delete
+        exampleFile: ..\examples\ServiceRunners_Delete.json
+      - operationId: Formulas_Delete
+        exampleFile: ..\examples\Formulas_Delete.json
+      - operationId: Policies_Delete
+        exampleFile: ..\examples\Policies_Delete.json
+      - operationId: Secrets_Delete
+        exampleFile: ..\examples\Secrets_Delete.json
+      - operationId: CustomImages_Delete
+        exampleFile: ..\examples\CustomImages_Delete.json
+      - operationId: Environments_Delete
+        exampleFile: ..\examples\Environments_Delete.json
+      - operationId: VirtualNetworks_Delete
+        exampleFile: ..\examples\VirtualNetworks_Delete.json
+      - operationId: ArtifactSources_Delete
+        exampleFile: ..\examples\ArtifactSources_Delete.json
+      - operationId: Users_Delete
+        exampleFile: ..\examples\Users_Delete.json
+      - operationId: NotificationChannels_Delete
+        exampleFile: ..\examples\NotificationChannels_Delete.json
+      - operationId: VirtualMachineSchedules_Delete
+        exampleFile: ..\examples\VirtualMachineSchedules_Delete.json
+      - operationId: ServiceFabricSchedules_Delete
+        exampleFile: ..\examples\ServiceFabricSchedules_Delete.json
+      - operationId: Disks_Delete
+        exampleFile: ..\examples\Disks_Delete.json
+      - operationId: GlobalSchedules_Delete
+        exampleFile: ..\examples\GlobalSchedules_Delete.json
+      - operationId: Schedules_Delete
+        exampleFile: ..\examples\Schedules_Delete.json
+      - operationId: ServiceFabrics_Delete
+        exampleFile: ..\examples\ServiceFabrics_Delete.json
+      - operationId: Labs_Delete
+        exampleFile: ..\examples\Labs_Delete.json
+      - operationId: VirtualMachines_Delete
+        exampleFile: ..\examples\VirtualMachines_Delete.json

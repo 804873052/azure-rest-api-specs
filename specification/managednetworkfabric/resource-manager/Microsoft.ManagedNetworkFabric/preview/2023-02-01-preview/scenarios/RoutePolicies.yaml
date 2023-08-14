@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  routePolicyName:
+    type: string
+    prefix: routepol
+
+scenarios:
+  - scenario: RoutePolicies
+    description: Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}
+    steps:
+      - operationId: RoutePolicies_Create
+        exampleFile: ..\examples\RoutePolicies_Create_MaximumSet_Gen.json
+      - operationId: RoutePolicies_ListBySubscription
+        exampleFile: ..\examples\RoutePolicies_ListBySubscription_MaximumSet_Gen.json
+      - operationId: RoutePolicies_ListByResourceGroup
+        exampleFile: ..\examples\RoutePolicies_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: RoutePolicies_Get
+        exampleFile: ..\examples\RoutePolicies_Get_MaximumSet_Gen.json
+      - operationId: RoutePolicies_Update
+        exampleFile: ..\examples\RoutePolicies_Update_MaximumSet_Gen.json
+      - operationId: RoutePolicies_Delete
+        exampleFile: ..\examples\RoutePolicies_Delete_MaximumSet_Gen.json

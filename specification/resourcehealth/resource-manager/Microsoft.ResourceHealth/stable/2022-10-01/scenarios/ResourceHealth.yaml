@@ -1,0 +1,114 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+# The request did not have a subscription or a valid tenant level resource provider
+  - scenario: EmergingIssues
+    description: Microsoft.ResourceHealth/emergingIssues/{issueName}
+    steps:
+      - step: EmergingIssues_List
+        exampleFile: ..\examples\EmergingIssues_List.json
+        # outputVariables:
+        #   issueName:
+        #     type: string
+        #     fromResponse: /value/0/name
+      - step: EmergingIssues_Get
+        # variables:
+        #   issueName:
+        #     type: string
+        #     prefix: issuenam
+        exampleFile: ..\examples\EmergingIssues_Get.json
+
+  - scenario: Events
+    description: Microsoft.ResourceHealth/events
+    steps:
+      - step: Events_ListByTenantId
+        exampleFile: ..\examples\Events_ListByTenantId.json
+      - step: Events_ListBySubscriptionId
+        exampleFile: ..\examples\Events_ListBySubscriptionId.json
+      - step: Events_ListBySingleResource
+        exampleFile: ..\examples\Events_ListBySingleResource.json
+
+  - scenario: Event
+    description: Microsoft.ResourceHealth/events/{eventTrackingId}
+    steps:
+      - step: Event_GetByTenantIdAndTrackingId
+        exampleFile: ..\examples\Event_GetByTenantIdAndTrackingId.json
+      - step: Event_fetchDetailsByTenantIdAndTrackingId
+        exampleFile: ..\examples\Event_fetchDetailsByTenantIdAndTrackingId.json
+      - step: Event_GetBySubscriptionIdAndTrackingId
+        exampleFile: ..\examples\Event_GetBySubscriptionIdAndTrackingId.json
+      - step: Event_fetchDetailsBySubscriptionIdAndTrackingId
+        exampleFile: ..\examples\Event_fetchDetailsBySubscriptionIdAndTrackingId.json
+
+
+  - scenario: ImpactedResources
+    description: Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources/{impactedResourceName}
+    steps:
+      - step: ImpactedResources_ListByTenantIdAndEventId
+        exampleFile: ..\examples\ImpactedResources_ListByTenantId_ListByEventId.json
+      - step: ImpactedResources_GetByTenantId
+        exampleFile: ..\examples\ImpactedResources_GetByTenantId.json
+
+      - step: SecurityAdvisoryImpactedResources_ListByTenantIdAndEventId
+        exampleFile: ..\examples\SecurityAdvisoryImpactedResources_ListByTenantId_ListByEventId.json
+      - step: SecurityAdvisoryImpactedResources_ListBySubscriptionIdAndEventId
+        exampleFile: ..\examples\SecurityAdvisoryImpactedResources_ListBySubscriptionId_ListByEventId.json
+
+      - step: ImpactedResources_ListBySubscriptionIdAndEventId
+        exampleFile: ..\examples\ImpactedResources_ListBySubscriptionId_ListByEventId.json
+      - step: ImpactedResources_Get
+        exampleFile: ..\examples\ImpactedResources_Get.json
+
+
+  - scenario: Metadata
+    description: Microsoft.ResourceHealth/metadata/{name}
+    steps:
+      - step: Metadata_List
+        exampleFile: ..\examples\Metadata_List.json
+        # outputVariables:
+        #   name:
+        #     type: string
+        #     fromResponse: /value/0/name
+      - step: Metadata_GetEntity
+        # variables:
+        #   name:
+        #     type: string
+        #     prefix: name
+        exampleFile: ..\examples\Metadata_GetEntity.json
+
+
+  - scenario: Operations
+    description: Microsoft.ResourceHealth/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+
+  - scenario: AvailabilityStatuses
+    description: Microsoft.ResourceHealth/availabilityStatuses
+    steps:
+      - step: AvailabilityStatuses_ListBySubscriptionId
+        exampleFile: ..\examples\AvailabilityStatuses_ListBySubscriptionId.json
+      - step: AvailabilityStatuses_ListByResourceGroup
+        exampleFile: ..\examples\AvailabilityStatuses_ListByResourceGroup.json
+      - step: AvailabilityStatuses_List
+        exampleFile: ..\examples\AvailabilityStatuses_List.json
+      - step: AvailabilityStatuses_GetByResource
+        exampleFile: ..\examples\AvailabilityStatus_GetByResource.json
+
+  - scenario: ChildAvailabilityStatuses
+    description: Microsoft.ResourceHealth/childAvailabilityStatuses/current
+    steps:
+      - step: ChildAvailabilityStatuses_List
+        exampleFile: ..\examples\ChildAvailabilityStatuses_List.json
+      - step: ChildAvailabilityStatuses_GetByResource
+        exampleFile: ..\examples\ChildAvailabilityStatus_GetByResource.json
+
+  - scenario: ChildResources
+    description: Microsoft.ResourceHealth/childResources
+    steps:
+      - step: ChildResources_List
+        exampleFile: ..\examples\ChildResources_List.json
+
+

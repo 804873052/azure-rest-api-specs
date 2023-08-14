@@ -1,0 +1,14 @@
+Restler Information: 0 : Starting task Compile...
+    DateTime=2022-09-07T03:04:39.6847317Z
+Restler Information: 0 : Launching 'dotnet "/RESTler/restler/../compiler/Restler.CompilerExe.dll" "/swagger/.restler_output/Compile/config.json"'
+    DateTime=2022-09-07T03:04:39.9409836Z
+Restler Information: 0 : Process execution terminated in 00:00:00.3060904 with exit code 0x86: 'dotnet "/RESTler/restler/../compiler/Restler.CompilerExe.dll" "/swagger/.restler_output/Compile/config.json"'
+    DateTime=2022-09-07T03:04:40.2543862Z
+Restler Information: 0 : (17) dotnet "/RESTler/restler/../compiler/Restler.CompilerExe.dll" "/swagger/.restler_output/Compile/config.json" exited with code: 134
+    DateTime=2022-09-07T03:04:40.2624195Z
+Restler Error: 0 : Compiler failed. See logs in /swagger/.restler_output/Compile directory for more information. 
+    DateTime=2022-09-07T03:04:40.2786506Z
+Restler Information: 0 : Task Compile failed.
+    DateTime=2022-09-07T03:04:40.2826688Z
+Restler Information: 0 : Collecting logs...
+    DateTime=2022-09-07T03:04:40.2879108Z

@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  monitorName:
+    type: string
+    prefix: monitorn
+  ruleSetName:
+    type: string
+    prefix: rulesetn
+    
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Monitors_CreateOrUpdate
+        exampleFile: ..\examples\Monitors_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: Monitors_ListBySubscription
+        exampleFile: ..\examples\Monitors_ListBySubscription_MaximumSet_Gen.json
+      - operationId: Monitors_ListByResourceGroup
+        exampleFile: ..\examples\Monitors_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: Monitors_Get
+        exampleFile: ..\examples\Monitors_Get_MaximumSet_Gen.json
+      - operationId: Monitors_Update
+        exampleFile: ..\examples\Monitors_Update_MaximumSet_Gen.json
+      - operationId: Monitors_GetMetricStatus
+        exampleFile: ..\examples\Monitors_GetMetricStatus_MaximumSet_Gen.json
+      - operationId: Monitors_VmHostPayload
+        exampleFile: ..\examples\Monitors_VmHostPayload_MaximumSet_Gen.json
+      - operationId: Monitors_ListHosts
+        exampleFile: ..\examples\Monitors_ListHosts_MaximumSet_Gen.json
+      - operationId: Monitors_GetMetricRules
+        exampleFile: ..\examples\Monitors_GetMetricRules_MaximumSet_Gen.json
+      - operationId: Monitors_ListMonitoredResources
+        exampleFile: ..\examples\Monitors_ListMonitoredResources_MaximumSet_Gen.json
+      - operationId: Monitors_ListAppServices
+        exampleFile: ..\examples\Monitors_ListAppServices_MaximumSet_Gen.json
+      - operationId: Monitors_SwitchBilling
+        exampleFile: ..\examples\Monitors_SwitchBilling_MaximumSet_Gen.json
+      - operationId: TagRules_CreateOrUpdate
+        exampleFile: ..\examples\TagRules_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: TagRules_ListByNewRelicMonitorResource
+        exampleFile: ..\examples\TagRules_ListByNewRelicMonitorResource_MaximumSet_Gen.json
+      - operationId: TagRules_Get
+        exampleFile: ..\examples\TagRules_Get_MaximumSet_Gen.json
+      - operationId: TagRules_Update
+        exampleFile: ..\examples\TagRules_Update_MaximumSet_Gen.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List_MaximumSet_Gen.json
+      - operationId: Accounts_List
+        exampleFile: ..\examples\Accounts_List_MaximumSet_Gen.json
+      - operationId: Organizations_List
+        exampleFile: ..\examples\Organizations_List_MaximumSet_Gen.json
+      - operationId: Plans_List
+        exampleFile: ..\examples\Plans_List_MaximumSet_Gen.json
+      - operationId: TagRules_Delete
+        exampleFile: ..\examples\TagRules_Delete_MaximumSet_Gen.json
+      - operationId: Monitors_Delete
+        exampleFile: ..\examples\Monitors_Delete_MaximumSet_Gen.json

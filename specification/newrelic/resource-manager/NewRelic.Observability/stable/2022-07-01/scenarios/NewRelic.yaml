@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  monitorName:
+    type: string
+    prefix: monitorn
+  ruleSetName:
+    type: string
+    prefix: rulesetn
+
+prepareSteps:
+  - step: Monitors_CreateOrUpdate
+    exampleFile: ..\examples\Monitors_CreateOrUpdate_MaximumSet_Gen.json
+
+# Failure while creating NewRelic Resource.Object reference not set to an instance of an object
+scenarios:
+  - scenario: Monitors
+    description: NewRelic.Observability/monitors/{monitorName}
+    steps:
+      - step: Monitors_ListBySubscription
+        exampleFile: ..\examples\Monitors_ListBySubscription_MaximumSet_Gen.json
+      - step: Monitors_ListByResourceGroup
+        exampleFile: ..\examples\Monitors_ListByResourceGroup_MaximumSet_Gen.json
+      - step: Monitors_Get
+        exampleFile: ..\examples\Monitors_Get_MaximumSet_Gen.json
+      - step: Monitors_Update
+        # exampleFile: ..\examples\Monitors_Update_MaximumSet_Gen.
+        operationId: Monitors_Update
+        parameters:
+          properties:
+            tags: 
+              key164: jqakdrrmmyzytqu
+      - step: Monitors_GetMetricStatus
+        exampleFile: ..\examples\Monitors_GetMetricStatus_MaximumSet_Gen.json
+      - step: Monitors_VmHostPayload
+        exampleFile: ..\examples\Monitors_VmHostPayload_MaximumSet_Gen.json
+      - step: Monitors_ListHosts
+        exampleFile: ..\examples\Monitors_ListHosts_MaximumSet_Gen.json
+      - step: Monitors_GetMetricRules
+        exampleFile: ..\examples\Monitors_GetMetricRules_MaximumSet_Gen.json
+      - step: Monitors_ListMonitoredResources
+        exampleFile: ..\examples\Monitors_ListMonitoredResources_MaximumSet_Gen.json
+      - step: Monitors_ListAppServices
+        exampleFile: ..\examples\Monitors_ListAppServices_MaximumSet_Gen.json
+      - step: Monitors_SwitchBilling
+        exampleFile: ..\examples\Monitors_SwitchBilling_MaximumSet_Gen.json
+
+  - scenario: TagRules
+    description: NewRelic.Observability/monitors/{monitorName}/tagRules/{ruleSetName}
+    steps:
+      - step: TagRules_CreateOrUpdate
+        exampleFile: ..\examples\TagRules_CreateOrUpdate_MaximumSet_Gen.json
+      - step: TagRules_ListByNewRelicMonitorResource
+        exampleFile: ..\examples\TagRules_ListByNewRelicMonitorResource_MaximumSet_Gen.json
+      - step: TagRules_Get
+        exampleFile: ..\examples\TagRules_Get_MaximumSet_Gen.json
+      - step: TagRules_Update
+        exampleFile: ..\examples\TagRules_Update_MaximumSet_Gen.json
+      - step: TagRules_Delete
+        exampleFile: ..\examples\TagRules_Delete_MaximumSet_Gen.json
+
+# pass
+  - scenario: Operations
+    description: NewRelic.Observability/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\Operations_List_MaximumSet_Gen.json
+
+  - scenario: Accounts
+    description: NewRelic.Observability/accounts
+    steps:
+      - step: Accounts_List
+        exampleFile: ..\examples\Accounts_List_MaximumSet_Gen.json
+
+  - scenario: Organizations
+    description: NewRelic.Observability/organizations
+    steps:
+      - step: Organizations_List
+        exampleFile: ..\examples\Organizations_List_MaximumSet_Gen.json
+
+# pass
+  - scenario: Plans
+    description: NewRelic.Observability/plans
+    steps:
+      - step: Plans_List
+        exampleFile: ..\examples\Plans_List_MaximumSet_Gen.json
+
+cleanUpSteps:
+  - step: Monitors_Delete
+    exampleFile: ..\examples\Monitors_Delete_MaximumSet_Gen.json

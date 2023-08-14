@@ -1,0 +1,72 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  eventTrackingId:
+    type: string
+    prefix: eventtra
+  impactedResourceName:
+    type: string
+    prefix: impacted
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: EmergingIssues_List
+        exampleFile: ..\examples\EmergingIssues_List.json
+      - operationId: EmergingIssues_Get
+        variables:
+          issueName:
+            type: string
+            prefix: issuenam
+        exampleFile: ..\examples\EmergingIssues_Get.json
+      - operationId: Events_ListByTenantId
+        exampleFile: ..\examples\Events_ListByTenantId.json
+      - operationId: Event_GetByTenantIdAndTrackingId
+        exampleFile: ..\examples\Event_GetByTenantIdAndTrackingId.json
+      - operationId: Event_fetchDetailsByTenantIdAndTrackingId
+        exampleFile: ..\examples\Event_fetchDetailsByTenantIdAndTrackingId.json
+      - operationId: ImpactedResources_ListByTenantIdAndEventId
+        exampleFile: ..\examples\ImpactedResources_ListByTenantId_ListByEventId.json
+      - operationId: ImpactedResources_GetByTenantId
+        exampleFile: ..\examples\ImpactedResources_GetByTenantId.json
+      - operationId: SecurityAdvisoryImpactedResources_ListByTenantIdAndEventId
+        exampleFile: >-
+          ..\examples\SecurityAdvisoryImpactedResources_ListByTenantId_ListByEventId.json
+      - operationId: Metadata_List
+        exampleFile: ..\examples\Metadata_List.json
+      - operationId: Metadata_GetEntity
+        variables:
+          name:
+            type: string
+            prefix: name
+        exampleFile: ..\examples\Metadata_GetEntity.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: AvailabilityStatuses_ListBySubscriptionId
+        exampleFile: ..\examples\AvailabilityStatuses_ListBySubscriptionId.json
+      - operationId: Events_ListBySubscriptionId
+        exampleFile: ..\examples\Events_ListBySubscriptionId.json
+      - operationId: Event_GetBySubscriptionIdAndTrackingId
+        exampleFile: ..\examples\Event_GetBySubscriptionIdAndTrackingId.json
+      - operationId: Event_fetchDetailsBySubscriptionIdAndTrackingId
+        exampleFile: ..\examples\Event_fetchDetailsBySubscriptionIdAndTrackingId.json
+      - operationId: ImpactedResources_ListBySubscriptionIdAndEventId
+        exampleFile: ..\examples\ImpactedResources_ListBySubscriptionId_ListByEventId.json
+      - operationId: ImpactedResources_Get
+        exampleFile: ..\examples\ImpactedResources_Get.json
+      - operationId: SecurityAdvisoryImpactedResources_ListBySubscriptionIdAndEventId
+        exampleFile: >-
+          ..\examples\SecurityAdvisoryImpactedResources_ListBySubscriptionId_ListByEventId.json
+      - operationId: AvailabilityStatuses_ListByResourceGroup
+        exampleFile: ..\examples\AvailabilityStatuses_ListByResourceGroup.json
+      - operationId: AvailabilityStatuses_List
+        exampleFile: ..\examples\AvailabilityStatuses_List.json
+      - operationId: AvailabilityStatuses_GetByResource
+        exampleFile: ..\examples\AvailabilityStatus_GetByResource.json
+      - operationId: ChildAvailabilityStatuses_List
+        exampleFile: ..\examples\ChildAvailabilityStatuses_List.json
+      - operationId: ChildAvailabilityStatuses_GetByResource
+        exampleFile: ..\examples\ChildAvailabilityStatus_GetByResource.json
+      - operationId: ChildResources_List
+        exampleFile: ..\examples\ChildResources_List.json
+      - operationId: Events_ListBySingleResource
+        exampleFile: ..\examples\Events_ListBySingleResource.json

@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  accountName:
+    type: string
+    prefix: accountn
+  commitmentPlanName:
+    type: string
+    prefix: commitme
+  deploymentName:
+    type: string
+    prefix: deployme
+  commitmentPlanAssociationName:
+    type: string
+    prefix: commitmeass
+
+prepareSteps:
+  - step: Accounts_Create
+    exampleFile: ..\examples\CreateAccountMin.json
+    requestUpdate:
+      - add: /account/properties/customSubDomainName
+        value: $(accountName)
+      - replace: /account/kind
+        value: OpenAI
+    outputVariables:
+      accountId:
+        type: string
+        fromResponse: /id
+  # - step: CommitmentPlans_CreateOrUpdatePlan
+  #   exampleFile: ..\examples\CreateSharedCommitmentPlan.json
+
+scenarios:
+  - scenario: Deployments # The account deployments are not supported by current SKU
+    description: Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}
+    steps:
+      - step: Deployments_CreateOrUpdate
+        exampleFile: ..\examples\PutDeployment.json
+        # requestUpdate:
+        #   - replace: /deployment/properties/scaleSettings/scaleType
+        #     value: Standard
+        
+      - step: Deployments_List
+        exampleFile: ..\examples\ListDeployments.json
+      - step: Deployments_Get
+        exampleFile: ..\examples\GetDeployment.json
+      - step: Deployments_Delete
+        exampleFile: ..\examples\DeleteDeployment.json

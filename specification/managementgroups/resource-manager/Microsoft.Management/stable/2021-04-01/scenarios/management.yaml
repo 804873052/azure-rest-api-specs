@@ -1,0 +1,86 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  groupId:
+    type: string
+    prefix: groupid
+
+scenarios:
+  - scenario: ManagementGroups
+    description: Microsoft.Management/managementGroups/{groupId}
+    steps:
+      - step: CheckNameAvailability
+        exampleFile: ..\examples\CheckManagementGroupNameAvailability.json
+        requestUpdate:
+          - replace: /checkNameAvailabilityRequest/name
+            value: $(groupId)
+      - step: ManagementGroups_CreateOrUpdate
+        exampleFile: ..\examples\PutManagementGroup.json
+        requestUpdate:
+          - remove: /createManagementGroupRequest/properties/details
+      - step: ManagementGroups_List
+        exampleFile: ..\examples\ListManagementGroups.json
+      - step: ManagementGroups_GetDescendants
+        exampleFile: ..\examples\GetDescendants.json
+      - step: ManagementGroups_Get
+        exampleFile: ..\examples\GetManagementGroup.json
+      - step: ManagementGroups_Update
+        exampleFile: ..\examples\PatchManagementGroup.json
+        requestUpdate:
+          - remove: /patchGroupRequest
+      - step: ManagementGroups_Delete
+        exampleFile: ..\examples\DeleteManagementGroup.json
+
+  - scenario: Entities
+    description: Microsoft.Management/getEntities
+    steps:
+      - step: Entities_List
+        exampleFile: ..\examples\GetEntities.json
+
+  - scenario: Operations
+    description: Microsoft.Management/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+
+  - scenario: StartTenantBackfill
+    description: Microsoft.Management/startTenantBackfill
+    steps:
+      - step: StartTenantBackfill
+        exampleFile: ..\examples\StartTenantBackfillRequest.json
+
+  - scenario: TenantBackfillStatus
+    description: Microsoft.Management/tenantBackfillStatus
+    steps:
+      - step: TenantBackfillStatus
+        exampleFile: ..\examples\TenantBackfillStatusRequest.json
+
+# Permission to write and delete on resources of type 'Microsoft.Authorization/roleAssignments' is required on the subscription or its ancestors.
+  # - scenario: ManagementGroupSubscriptions
+  #   description: Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}
+  #   steps:
+  #     - step: ManagementGroupSubscriptions_Create
+  #       exampleFile: ..\examples\AddManagementGroupSubscription.json
+  #     - step: ManagementGroupSubscriptions_GetSubscriptionsUnderManagementGroup
+  #       exampleFile: ..\examples\GetAllSubscriptionsFromManagementGroup.json
+  #     - step: ManagementGroupSubscriptions_GetSubscription
+  #       exampleFile: ..\examples\GetSubscriptionFromManagementGroup.json
+  #     - step: ManagementGroupSubscriptions_Delete
+  #       exampleFile: ..\examples\RemoveManagementGroupSubscription.json
+
+# The provided Management Group Id 'groupid' is not the root management group. Hierarchy settings can only be modified on the root management group.
+  # - scenario: HierarchySettings
+  #   description: Microsoft.Management/managementGroups/{groupId}/settings/default
+  #   steps:
+  #     - step: HierarchySettings_CreateOrUpdate
+  #       exampleFile: ..\examples\PutHierarchySettings.json
+  #     - step: HierarchySettings_List
+  #       exampleFile: ..\examples\ListHierarchySettings.json
+  #     - step: HierarchySettings_Get
+  #       exampleFile: ..\examples\GetHierarchySettings.json
+  #     - step: HierarchySettings_Update
+  #       exampleFile: ..\examples\PatchHierarchySettings.json
+  #     - step: HierarchySettings_Delete
+  #       exampleFile: ..\examples\DeleteHierarchySettings.json
+

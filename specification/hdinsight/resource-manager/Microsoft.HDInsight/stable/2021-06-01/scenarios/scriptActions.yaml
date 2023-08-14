@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ScriptActions
+    description: Microsoft.HDInsight/clusters/{clusterName}/scriptActions/{scriptName}
+    steps:
+
+      - operationId: Clusters_ExecuteScriptActions # Microsoft.HDInsight/clusters/{clusterName}/executeScriptActions
+        exampleFile: ..\examples\PostExecuteScriptAction.json
+
+      - operationId: ScriptActions_GetExecutionAsyncOperationStatus
+        exampleFile: ..\examples\GetScriptExecutionAsyncOperationStatus.json
+      - operationId: ScriptActions_ListByCluster
+        exampleFile: ..\examples\GetLinuxHadoopScriptAction.json
+      - operationId: ScriptActions_Delete # inDegree
+        variables:
+          scriptName:
+            type: string
+            prefix: scriptna
+        exampleFile: ..\examples\DeleteScriptAction.json
+      - operationId: ScriptActions_GetExecutionDetail
+        exampleFile: ..\examples\GetScriptActionById.json
+
+  - scenario: ScriptExecutionHistory
+    description: providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory/{scriptExecutionId}/promote
+    steps:
+      - operationId: ScriptExecutionHistory_ListByCluster
+        exampleFile: ..\examples\GetScriptExecutionHistory.json
+      - operationId: ScriptExecutionHistory_Promote
+        exampleFile: ..\examples\PromoteLinuxHadoopScriptAction.json

@@ -1,0 +1,523 @@
+[07/14/2023 08:44:15] Generating grammar...
+[07/14/2023 08:44:15] Getting requests...
+[07/14/2023 08:44:15] Getting dependencies...
+[07/14/2023 08:44:15] Getting path consumers...
+[07/14/2023 08:44:15] Getting query consumers...
+[07/14/2023 08:44:15] Getting header consumers...
+[07/14/2023 08:44:15] Getting body consumers...
+[07/14/2023 08:44:16] Getting producers...
+[07/14/2023 08:44:16] Done processing producers
+[07/14/2023 08:44:16] Compute dependencies
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Get }[
+07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus"
+  xMsPath = None
+  method = Get }
+[[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Put }07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Get }
+
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Put }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Delete }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Delete }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Patch }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Patch }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume"
+  xMsPath = None
+  method = Post }
+[[07/14/2023 08:44:16] 07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Put }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint = "/providers/Microsoft.AnalysisServices/operations"
+  xMsPath = None
+  method = Get }
+[[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus"
+  xMsPath = None
+  method = Get }
+07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability"
+  xMsPath = None
+  method = Post }
+[[07/14/2023 08:44:16] Done dependencies for request { endpoint = "/providers/Microsoft.AnalysisServices/operations"
+  xMsPath = None
+  method = Get }07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Put }
+
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Delete }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Delete }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Put }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus"
+  xMsPath = None
+  method = Post }
+[[07/14/2023 08:44:16[] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Put }07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}"
+  xMsPath = None
+  method = Get }
+07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}"
+  xMsPath = None
+  method = Get }
+
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Patch }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Put }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Delete }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Patch }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Put }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Delete }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint = "/providers/Microsoft.AnalysisServices/operations"
+  xMsPath = None
+  method = Get }[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability"
+  xMsPath = None
+  method = Post }
+
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint = "/providers/Microsoft.AnalysisServices/operations"
+  xMsPath = None
+  method = Get }
+[[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability"
+  xMsPath = None
+  method = Post }
+07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend"
+  xMsPath = None
+  method = Post }
+[[07/14/2023 08:44:16] Done dependencies for request { endpoint = "/providers/Microsoft.AnalysisServices/operations"
+  xMsPath = None
+  method = Get }
+07/14/2023 08:44:16] Done dependencies for request { endpoint = "/providers/Microsoft.AnalysisServices/operations"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Patch }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Delete }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint = "/providers/Microsoft.AnalysisServices/operations"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Delete }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint = "/providers/Microsoft.AnalysisServices/operations"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Patch }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Patch }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}"
+  xMsPath = None
+  method = Patch }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume"
+  xMsPath = None
+  method = Post }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Second pass dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Done dependencies for request { endpoint =
+            "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers"
+  xMsPath = None
+  method = Get }
+[07/14/2023 08:44:16] Getting ordering constraints...
+[07/14/2023 08:44:16] Dependency analysis completed.
+[07/14/2023 08:44:16] Generating request primitives...
+Writing new dictionary to /swagger/.restler_output/Compile/dict.json
+[07/14/2023 08:44:16] Generating python grammar...
+[07/14/2023 08:44:16] Get requests
+[07/14/2023 08:44:16] Done get requests
+[07/14/2023 08:44:16] Done generating python grammar.
+Workflow completed.  See /swagger/.restler_output/Compile for REST-ler grammar.

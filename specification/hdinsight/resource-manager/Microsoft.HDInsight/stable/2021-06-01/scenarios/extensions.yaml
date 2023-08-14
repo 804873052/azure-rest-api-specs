@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: Extensions
+    description: Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}
+    steps:
+      - operationId: Extensions_EnableMonitoring
+        exampleFile: ..\examples\EnableLinuxClusterMonitoring.json
+      - operationId: Extensions_GetMonitoringStatus
+        exampleFile: ..\examples\GetLinuxClusterMonitoringStatus.json
+      - operationId: Extensions_DisableMonitoring
+        exampleFile: ..\examples\DisableLinuxClusterMonitoring.json
+
+
+      - operationId: Extensions_EnableAzureMonitor
+        exampleFile: ..\examples\EnableLinuxClusterAzureMonitor.json
+      - operationId: Extensions_GetAzureMonitorStatus
+        exampleFile: ..\examples\GetLinuxClusterAzureMonitorStatus.json
+      - operationId: Extensions_DisableAzureMonitor
+        exampleFile: ..\examples\DisableLinuxClusterAzureMonitor.json
+
+      - operationId: Extensions_Create
+        exampleFile: ..\examples\CreateExtension.json
+      - operationId: Extensions_Get
+        exampleFile: ..\examples\GetExtension.json
+      - operationId: Extensions_Delete
+        exampleFile: ..\examples\DeleteExtension.json
+
+      - operationId: Extensions_GetAzureAsyncOperationStatus
+        exampleFile: ..\examples\GetExtensionCreationAsyncOperationStatus.json
+
+
+

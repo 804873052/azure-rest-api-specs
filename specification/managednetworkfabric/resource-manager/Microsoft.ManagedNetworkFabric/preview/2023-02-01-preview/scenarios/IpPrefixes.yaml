@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  ipPrefixName:
+    type: string
+    prefix: ipprefix
+
+scenarios:
+  - scenario: IpPrefixes
+    description: Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}
+    steps:
+      - step: IpPrefixes_Create
+        exampleFile: ..\examples\IpPrefixes_Create_MaximumSet_Gen.json
+      - step: IpPrefixes_ListBySubscription
+        exampleFile: ..\examples\IpPrefixes_ListBySubscription_MaximumSet_Gen.json
+      - step: IpPrefixes_ListByResourceGroup
+        exampleFile: ..\examples\IpPrefixes_ListByResourceGroup_MaximumSet_Gen.json
+      - step: IpPrefixes_Get
+        exampleFile: ..\examples\IpPrefixes_Get_MaximumSet_Gen.json
+      - step: IpPrefixes_Update
+        exampleFile: ..\examples\IpPrefixes_Update_MaximumSet_Gen.json
+      - step: IpPrefixes_Delete
+        exampleFile: ..\examples\IpPrefixes_Delete_MaximumSet_Gen.json

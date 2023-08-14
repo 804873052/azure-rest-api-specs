@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  groupId:
+    type: string
+    prefix: groupid
+
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: CheckNameAvailability
+        exampleFile: ..\examples\CheckManagementGroupNameAvailability.json
+      - operationId: ManagementGroups_CreateOrUpdate
+        exampleFile: ..\examples\PutManagementGroup.json
+      - operationId: ManagementGroups_List
+        exampleFile: ..\examples\ListManagementGroups.json
+      - operationId: ManagementGroups_GetDescendants
+        exampleFile: ..\examples\GetDescendants.json
+      - operationId: ManagementGroups_Get
+        exampleFile: ..\examples\GetManagementGroup.json
+      - operationId: ManagementGroups_Update
+        exampleFile: ..\examples\PatchManagementGroup.json
+      - operationId: ManagementGroupSubscriptions_Create
+        exampleFile: ..\examples\AddManagementGroupSubscription.json
+      - operationId: ManagementGroupSubscriptions_GetSubscriptionsUnderManagementGroup
+        exampleFile: ..\examples\GetAllSubscriptionsFromManagementGroup.json
+      - operationId: ManagementGroupSubscriptions_GetSubscription
+        exampleFile: ..\examples\GetSubscriptionFromManagementGroup.json
+      - operationId: HierarchySettings_CreateOrUpdate
+        exampleFile: ..\examples\PutHierarchySettings.json
+      - operationId: HierarchySettings_List
+        exampleFile: ..\examples\ListHierarchySettings.json
+      - operationId: HierarchySettings_Get
+        exampleFile: ..\examples\GetHierarchySettings.json
+      - operationId: HierarchySettings_Update
+        exampleFile: ..\examples\PatchHierarchySettings.json
+      - operationId: Entities_List
+        exampleFile: ..\examples\GetEntities.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+      - operationId: StartTenantBackfill
+        exampleFile: ..\examples\StartTenantBackfillRequest.json
+      - operationId: TenantBackfillStatus
+        exampleFile: ..\examples\TenantBackfillStatusRequest.json
+      - operationId: HierarchySettings_Delete
+        exampleFile: ..\examples\DeleteHierarchySettings.json
+      - operationId: ManagementGroupSubscriptions_Delete
+        exampleFile: ..\examples\RemoveManagementGroupSubscription.json
+      - operationId: ManagementGroups_Delete
+        exampleFile: ..\examples\DeleteManagementGroup.json
+
+# (20 - 9) / 20 = 55% coverage

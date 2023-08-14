@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  l2IsolationDomainName:
+    type: string
+    prefix: l2isolat
+
+scenarios:
+  - scenario: L2IsolationDomains
+    description: Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}
+    steps:
+      - operationId: L2IsolationDomains_Create
+        exampleFile: ..\examples\L2IsolationDomains_Create_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_ListBySubscription
+        exampleFile: ..\examples\L2IsolationDomains_ListBySubscription_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_Get
+        exampleFile: ..\examples\L2IsolationDomains_Get_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_ListByResourceGroup
+        exampleFile: ..\examples\L2IsolationDomains_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_Update
+        exampleFile: ..\examples\L2IsolationDomains_Update_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_clearArpTable
+        exampleFile: ..\examples\L2IsolationDomains_clearArpTable_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_clearNeighborTable
+        exampleFile: ..\examples\L2IsolationDomains_clearNeighborTable_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_getArpEntries
+        exampleFile: ..\examples\L2IsolationDomains_getArpEntries_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_updateAdministrativeState
+        exampleFile: ..\examples\L2IsolationDomains_updateAdministrativeState_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_Delete
+        exampleFile: ..\examples\L2IsolationDomains_Delete_MaximumSet_Gen.json

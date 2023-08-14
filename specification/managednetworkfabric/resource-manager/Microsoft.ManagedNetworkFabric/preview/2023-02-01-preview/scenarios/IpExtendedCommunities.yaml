@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  ipExtendedCommunityName:
+    type: string
+    prefix: ipextend
+
+scenarios:
+  - scenario: IpExtendedCommunities
+    description: Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}
+    steps:
+      - step: IpExtendedCommunities_Create
+        exampleFile: ..\examples\IpExtendedCommunities_Create_MaximumSet_Gen.json
+      - step: IpExtendedCommunities_ListBySubscription
+        exampleFile: ..\examples\IpExtendedCommunities_ListBySubscription_MaximumSet_Gen.json
+      - step: IpExtendedCommunities_ListByResourceGroup
+        exampleFile: ..\examples\IpExtendedCommunities_ListByResourceGroup_MaximumSet_Gen.json
+      - step: IpExtendedCommunities_Get
+        exampleFile: ..\examples\IpExtendedCommunities_Get_MaximumSet_Gen.json
+      - step: IpExtendedCommunities_Update
+        exampleFile: ..\examples\IpExtendedCommunities_Update_MaximumSet_Gen.json
+      - step: IpExtendedCommunities_Delete
+        exampleFile: ..\examples\IpExtendedCommunities_Delete_MaximumSet_Gen.json

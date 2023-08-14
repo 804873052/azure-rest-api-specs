@@ -1,0 +1,18 @@
+Unhandled exception. System.ArgumentException: This specification format extension is not supported (Parameter '.md')
+   at Restler.SwaggerSpecPreprocessor.getSpecFormat(String specFilePath) in D:\a\1\s\src\compiler\Restler.Compiler\SwaggerSpecPreprocessor.fs:line 47
+   at Restler.SwaggerSpecPreprocessor.getJsonSpec(String filePath) in D:\a\1\s\src\compiler\Restler.Compiler\SwaggerSpecPreprocessor.fs:line 60
+   at Restler.SwaggerSpecPreprocessor.preprocessApiSpec[a](String specPath, String outputSpecPath) in D:\a\1\s\src\compiler\Restler.Compiler\SwaggerSpecPreprocessor.fs:line 348
+   at Restler.Swagger.getSwaggerDocument@31.Invoke(Unit unitVar) in D:\a\1\s\src\compiler\Restler.Compiler\Swagger.fs:line 38
+   at Microsoft.FSharp.Control.AsyncPrimitives.CallThenInvoke[T,TResult](AsyncActivation`1 ctxt, TResult result1, FSharpFunc`2 part2) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\async.fs:line 398
+   at Microsoft.FSharp.Control.Trampoline.Execute(FSharpFunc`2 firstAction) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\async.fs:line 109
+--- End of stack trace from previous location ---
+   at Microsoft.FSharp.Control.AsyncResult`1.Commit() in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\async.fs:line 349
+   at Microsoft.FSharp.Control.AsyncPrimitives.RunSynchronouslyInCurrentThread[a](CancellationToken cancellationToken, FSharpAsync`1 computation) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\async.fs:line 882
+   at Microsoft.FSharp.Control.AsyncPrimitives.RunSynchronously[T](CancellationToken cancellationToken, FSharpAsync`1 computation, FSharpOption`1 timeout) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\async.fs:line 890
+   at Microsoft.FSharp.Control.FSharpAsync.RunSynchronously[T](FSharpAsync`1 computation, FSharpOption`1 timeout, FSharpOption`1 cancellationToken) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\async.fs:line 1154
+   at Restler.Workflow.swaggerDocs@91-1.Invoke(String fp) in D:\a\1\s\src\compiler\Restler.Compiler\Workflow.fs:line 91
+   at Microsoft.FSharp.Primitives.Basics.List.map[T,TResult](FSharpFunc`2 mapping, FSharpList`1 x) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\local.fs:line 248
+   at Microsoft.FSharp.Collections.ListModule.Map[T,TResult](FSharpFunc`2 mapping, FSharpList`1 list) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\list.fs:line 75
+   at Restler.Workflow.generateGrammarFromSwagger(String grammarOutputDirectoryPath, FSharpOption`1 swaggerDoc, FSharpOption`1 specMetadata, Config config) in D:\a\1\s\src\compiler\Restler.Compiler\Workflow.fs:line 91
+   at Restler.Workflow.generateRestlerGrammar(FSharpOption`1 swaggerDoc, Config config) in D:\a\1\s\src\compiler\Restler.Compiler\Workflow.fs:line 275
+   at Program.main(String[] argv) in D:\a\1\s\src\compiler\Restler.CompilerExe\Program.fs:line 37

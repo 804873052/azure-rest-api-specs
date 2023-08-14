@@ -1,0 +1,227 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  globalRulestackName:
+    type: string
+    prefix: globalru
+  localRulestackName:
+    type: string
+    prefix: localrul
+  name:
+    type: string
+    prefix: name
+  priority:
+    type: string
+    prefix: priority
+  firewallName:
+    type: string
+    prefix: firewall
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: GlobalRulestack_CreateOrUpdate
+        exampleFile: ..\examples\GlobalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_List
+        exampleFile: ..\examples\GlobalRulestack_List_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_Get
+        exampleFile: ..\examples\GlobalRulestack_Get_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_Update
+        exampleFile: ..\examples\GlobalRulestack_Update_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_getChangeLog
+        exampleFile: ..\examples\GlobalRulestack_getChangeLog_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_listAppIds
+        exampleFile: ..\examples\GlobalRulestack_listAppIds_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_listCountries
+        exampleFile: ..\examples\GlobalRulestack_listCountries_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_listAdvancedSecurityObjects
+        exampleFile: >-
+          ..\examples\GlobalRulestack_listAdvancedSecurityObjects_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_commit
+        exampleFile: ..\examples\GlobalRulestack_commit_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_revert
+        exampleFile: ..\examples\GlobalRulestack_revert_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_listFirewalls
+        exampleFile: ..\examples\GlobalRulestack_listFirewalls_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_listSecurityServices
+        exampleFile: ..\examples\GlobalRulestack_listSecurityServices_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_listPredefinedUrlCategories
+        exampleFile: >-
+          ..\examples\GlobalRulestack_listPredefinedUrlCategories_MaximumSet_Gen.json
+
+      - operationId: LocalRulestacks_CreateOrUpdate
+        exampleFile: ..\examples\LocalRulestacks_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_ListBySubscription
+        exampleFile: ..\examples\LocalRulestacks_ListBySubscription_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_ListByResourceGroup
+        exampleFile: ..\examples\LocalRulestacks_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_Get
+        exampleFile: ..\examples\LocalRulestacks_Get_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_Update
+        exampleFile: ..\examples\LocalRulestacks_Update_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_commit
+        exampleFile: ..\examples\LocalRulestacks_commit_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_listSecurityServices
+        exampleFile: ..\examples\LocalRulestacks_listSecurityServices_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_revert
+        exampleFile: ..\examples\LocalRulestacks_revert_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_listAppIds
+        exampleFile: ..\examples\LocalRulestacks_listAppIds_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_getChangeLog
+        exampleFile: ..\examples\LocalRulestacks_getChangeLog_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_listCountries
+        exampleFile: ..\examples\LocalRulestacks_listCountries_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_listPredefinedUrlCategories
+        exampleFile: >-
+          ..\examples\LocalRulestacks_listPredefinedUrlCategories_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_listFirewalls
+        exampleFile: ..\examples\LocalRulestacks_listFirewalls_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_getSupportInfo
+        exampleFile: ..\examples\LocalRulestacks_getSupportInfo_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_listAdvancedSecurityObjects
+        exampleFile: >-
+          ..\examples\LocalRulestacks_listAdvancedSecurityObjects_MaximumSet_Gen.json
+
+      - operationId: Firewalls_CreateOrUpdate
+        exampleFile: ..\examples\Firewalls_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: Firewalls_ListBySubscription
+        exampleFile: ..\examples\Firewalls_ListBySubscription_MaximumSet_Gen.json
+      - operationId: Firewalls_Get
+        exampleFile: ..\examples\Firewalls_Get_MaximumSet_Gen.json
+      - operationId: Firewalls_ListByResourceGroup
+        exampleFile: ..\examples\Firewalls_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: Firewalls_Update
+        exampleFile: ..\examples\Firewalls_Update_MaximumSet_Gen.json
+      - operationId: Firewalls_getGlobalRulestack
+        exampleFile: ..\examples\Firewalls_getGlobalRulestack_MaximumSet_Gen.json
+      - operationId: Firewalls_getLogProfile
+        exampleFile: ..\examples\Firewalls_getLogProfile_MaximumSet_Gen.json
+      - operationId: Firewalls_getSupportInfo
+        exampleFile: ..\examples\Firewalls_getSupportInfo_MaximumSet_Gen.json
+      - operationId: Firewalls_saveLogProfile
+        exampleFile: ..\examples\Firewalls_saveLogProfile_MaximumSet_Gen.json
+
+      - operationId: PreRules_CreateOrUpdate
+        exampleFile: ..\examples\PreRules_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: PreRules_List
+        exampleFile: ..\examples\PreRules_List_MaximumSet_Gen.json
+      - operationId: PreRules_Get
+        exampleFile: ..\examples\PreRules_Get_MaximumSet_Gen.json
+      - operationId: PreRules_refreshCounters
+        exampleFile: ..\examples\PreRules_refreshCounters_MaximumSet_Gen.json
+      - operationId: PreRules_resetCounters
+        exampleFile: ..\examples\PreRules_resetCounters_MaximumSet_Gen.json
+      - operationId: PreRules_getCounters
+        exampleFile: ..\examples\PreRules_getCounters_MaximumSet_Gen.json
+
+      - operationId: PostRules_CreateOrUpdate
+        exampleFile: ..\examples\PostRules_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: PostRules_List
+        exampleFile: ..\examples\PostRules_List_MaximumSet_Gen.json
+      - operationId: PostRules_Get
+        exampleFile: ..\examples\PostRules_Get_MaximumSet_Gen.json
+      - operationId: PostRules_resetCounters
+        exampleFile: ..\examples\PostRules_resetCounters_MaximumSet_Gen.json
+      - operationId: PostRules_getCounters
+        exampleFile: ..\examples\PostRules_getCounters_MaximumSet_Gen.json
+      - operationId: PostRules_refreshCounters
+        exampleFile: ..\examples\PostRules_refreshCounters_MaximumSet_Gen.json
+
+      - operationId: LocalRules_CreateOrUpdate
+        exampleFile: ..\examples\LocalRules_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: LocalRules_ListByLocalRulestacks
+        exampleFile: ..\examples\LocalRules_ListByLocalRulestacks_MaximumSet_Gen.json
+      - operationId: LocalRules_Get
+        exampleFile: ..\examples\LocalRules_Get_MaximumSet_Gen.json
+      - operationId: LocalRules_refreshCounters
+        exampleFile: ..\examples\LocalRules_refreshCounters_MaximumSet_Gen.json
+      - operationId: LocalRules_resetCounters
+        exampleFile: ..\examples\LocalRules_resetCounters_MaximumSet_Gen.json
+      - operationId: LocalRules_getCounters
+        exampleFile: ..\examples\LocalRules_getCounters_MaximumSet_Gen.json
+
+      - operationId: CertificateObjectGlobalRulestack_CreateOrUpdate
+        exampleFile: >-
+          ..\examples\CertificateObjectGlobalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: CertificateObjectGlobalRulestack_List
+        exampleFile: ..\examples\CertificateObjectGlobalRulestack_List_MaximumSet_Gen.json
+      - operationId: CertificateObjectGlobalRulestack_Get
+        exampleFile: ..\examples\CertificateObjectGlobalRulestack_Get_MaximumSet_Gen.json
+
+      - operationId: FqdnListLocalRulestack_CreateOrUpdate
+        exampleFile: ..\examples\FqdnListLocalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: FqdnListLocalRulestack_ListByLocalRulestacks
+        exampleFile: >-
+          ..\examples\FqdnListLocalRulestack_ListByLocalRulestacks_MaximumSet_Gen.json
+      - operationId: FqdnListLocalRulestack_Get
+        exampleFile: ..\examples\FqdnListLocalRulestack_Get_MaximumSet_Gen.json
+
+      - operationId: FqdnListGlobalRulestack_CreateOrUpdate
+        exampleFile: ..\examples\FqdnListGlobalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: FqdnListGlobalRulestack_List
+        exampleFile: ..\examples\FqdnListGlobalRulestack_List_MaximumSet_Gen.json
+      - operationId: FqdnListGlobalRulestack_Get
+        exampleFile: ..\examples\FqdnListGlobalRulestack_Get_MaximumSet_Gen.json
+
+      - operationId: PrefixListLocalRulestack_CreateOrUpdate
+        exampleFile: >-
+          ..\examples\PrefixListLocalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: PrefixListLocalRulestack_ListByLocalRulestacks
+        exampleFile: >-
+          ..\examples\PrefixListLocalRulestack_ListByLocalRulestacks_MaximumSet_Gen.json
+      - operationId: PrefixListLocalRulestack_Get
+        exampleFile: ..\examples\PrefixListLocalRulestack_Get_MaximumSet_Gen.json
+        
+      - operationId: CertificateObjectLocalRulestack_CreateOrUpdate
+        exampleFile: >-
+          ..\examples\CertificateObjectLocalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: CertificateObjectLocalRulestack_ListByLocalRulestacks
+        exampleFile: >-
+          ..\examples\CertificateObjectLocalRulestack_ListByLocalRulestacks_MaximumSet_Gen.json
+      - operationId: CertificateObjectLocalRulestack_Get
+        exampleFile: ..\examples\CertificateObjectLocalRulestack_Get_MaximumSet_Gen.json
+
+      - operationId: PrefixListGlobalRulestack_CreateOrUpdate
+        exampleFile: >-
+          ..\examples\PrefixListGlobalRulestack_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: PrefixListGlobalRulestack_List
+        exampleFile: ..\examples\PrefixListGlobalRulestack_List_MaximumSet_Gen.json
+      - operationId: PrefixListGlobalRulestack_Get
+        exampleFile: ..\examples\PrefixListGlobalRulestack_Get_MaximumSet_Gen.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List_MaximumSet_Gen.json
+
+      - operationId: FirewallStatus_ListByFirewalls
+        exampleFile: ..\examples\FirewallStatus_ListByFirewalls_MaximumSet_Gen.json
+      - operationId: FirewallStatus_Get
+        exampleFile: ..\examples\FirewallStatus_Get_MaximumSet_Gen.json
+
+      - operationId: PrefixListGlobalRulestack_Delete
+        exampleFile: ..\examples\PrefixListGlobalRulestack_Delete_MaximumSet_Gen.json
+      - operationId: CertificateObjectLocalRulestack_Delete
+        exampleFile: ..\examples\CertificateObjectLocalRulestack_Delete_MaximumSet_Gen.json
+      - operationId: PrefixListLocalRulestack_Delete
+        exampleFile: ..\examples\PrefixListLocalRulestack_Delete_MaximumSet_Gen.json
+
+      - operationId: FqdnListGlobalRulestack_Delete
+        exampleFile: ..\examples\FqdnListGlobalRulestack_Delete_MaximumSet_Gen.json
+
+      - operationId: FqdnListLocalRulestack_Delete
+        exampleFile: ..\examples\FqdnListLocalRulestack_Delete_MaximumSet_Gen.json
+
+      - operationId: CertificateObjectGlobalRulestack_Delete
+        exampleFile: >-
+          ..\examples\CertificateObjectGlobalRulestack_Delete_MaximumSet_Gen.json
+
+      - operationId: LocalRules_Delete
+        exampleFile: ..\examples\LocalRules_Delete_MaximumSet_Gen.json
+      - operationId: PostRules_Delete
+        exampleFile: ..\examples\PostRules_Delete_MaximumSet_Gen.json
+      - operationId: PreRules_Delete
+        exampleFile: ..\examples\PreRules_Delete_MaximumSet_Gen.json
+      - operationId: Firewalls_Delete
+        exampleFile: ..\examples\Firewalls_Delete_MaximumSet_Gen.json
+      - operationId: LocalRulestacks_Delete
+        exampleFile: ..\examples\LocalRulestacks_Delete_MaximumSet_Gen.json
+      - operationId: GlobalRulestack_Delete
+        exampleFile: ..\examples\GlobalRulestack_Delete_MaximumSet_Gen.json

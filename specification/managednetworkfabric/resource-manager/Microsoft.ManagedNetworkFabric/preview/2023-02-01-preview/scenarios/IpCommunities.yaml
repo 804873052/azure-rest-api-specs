@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  ipCommunityName:
+    type: string
+    prefix: ipcommun
+
+scenarios:
+  - scenario: IpCommunities
+    description: Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}
+    steps:
+      - step: IpCommunities_Create
+        exampleFile: ..\examples\IpCommunities_Create_MaximumSet_Gen.json
+      - step: IpCommunities_ListBySubscription
+        exampleFile: ..\examples\IpCommunities_ListBySubscription_MaximumSet_Gen.json
+      - step: IpCommunities_ListByResourceGroup
+        exampleFile: ..\examples\IpCommunities_ListByResourceGroup_MaximumSet_Gen.json
+      - step: IpCommunities_Get
+        exampleFile: ..\examples\IpCommunities_Get_MaximumSet_Gen.json
+      - step: IpCommunities_Update
+        exampleFile: ..\examples\IpCommunities_Update_MaximumSet_Gen.json
+      - step: IpCommunities_Delete
+        exampleFile: ..\examples\IpCommunities_Delete_MaximumSet_Gen.json

@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  azureClientID:
+    type: string
+  resourceName:
+    type: string
+    prefix: resource
+
+scenarios:
+  - scenario: Accounts
+    description: Microsoft.GraphServices/accounts/{resourceName}
+    steps:
+      - operationId: Accounts_CreateAndUpdate
+        # exampleFile: ..\examples\Accounts_Create.json
+        parameters:
+          accountResource:
+            location: global
+            properties: 
+              appId: $(azureClientID) # The user is not allowed to update the billing configuration of the provided application
+      - operationId: Accounts_ListBySubscription
+        exampleFile: ..\examples\Accounts_List_Sub.json
+      - operationId: Accounts_Get
+        exampleFile: ..\examples\Accounts_Get.json
+      - operationId: Accounts_ListByResourceGroup
+        exampleFile: ..\examples\Accounts_List.json
+      - operationId: Accounts_Update
+        exampleFile: ..\examples\Accounts_Update.json
+      - operationId: Accounts_Delete
+        exampleFile: ..\examples\Accounts_Delete.json
+
+  - scenario: Operations
+    description: Microsoft.GraphServices/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json

@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\ApprovePrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_ListByCluster
+        exampleFile: ..\examples\GetAllPrivateEndpointConnectionsInCluster.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\GetPrivateEndpointConnection.json
+
+      - operationId: PrivateLinkResources_ListByCluster
+        exampleFile: ..\examples\GetAllPrivateLinkResourcesInCluster.json
+        outputVariables:
+          privateLinkResourceName:
+            type: string
+            fromResponse: /value/0/name
+      - operationId: PrivateLinkResources_Get
+        # variables:
+        #   privateLinkResourceName:
+        #     type: string
+        #     prefix: privatel
+        exampleFile: ..\examples\GetPrivateLinkResource.json
+
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\DeletePrivateEndpointConnection.json

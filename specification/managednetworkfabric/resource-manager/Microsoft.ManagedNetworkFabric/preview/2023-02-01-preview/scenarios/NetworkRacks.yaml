@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkRackName:
+    type: string
+    prefix: networkr
+
+scenarios:
+  - scenario: NetworkRacks
+    description: Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}
+    steps:
+      - operationId: NetworkRacks_Create
+        exampleFile: ..\examples\NetworkRacks_Create_MaximumSet_Gen.json
+      - operationId: NetworkRacks_ListBySubscription
+        exampleFile: ..\examples\NetworkRacks_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkRacks_ListByResourceGroup
+        exampleFile: ..\examples\NetworkRacks_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkRacks_Get
+        exampleFile: ..\examples\NetworkRacks_Get_MaximumSet_Gen.json
+      - operationId: NetworkRacks_Update
+        exampleFile: ..\examples\NetworkRacks_Update_MaximumSet_Gen.json
+      - operationId: NetworkRacks_Delete
+        exampleFile: ..\examples\NetworkRacks_Delete_MaximumSet_Gen.json
+
+  - scenario: NetworkRackSkus
+    description: Microsoft.ManagedNetworkFabric/networkRackSkus
+    steps:
+      - operationId: NetworkRackSkus_ListBySubscription
+        exampleFile: ..\examples\NetworkRackSkus_ListBySubscription_MaximumSet_Gen.json
+        outputVariables:
+          networkRackSkuName:
+            type: string
+            fromResponse: /value/0/name
+      - operationId: NetworkRackSkus_Get
+        # variables:
+        #   networkRackSkuName:
+        #     type: string
+        #     prefix: networkr
+        exampleFile: ..\examples\NetworkRackSkus_Get_MaximumSet_Gen.json

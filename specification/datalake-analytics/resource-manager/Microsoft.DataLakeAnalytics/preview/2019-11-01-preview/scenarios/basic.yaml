@@ -1,0 +1,97 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  storageAccountName:
+    type: string
+    prefix: storagea
+  computePolicyName:
+    type: string
+    prefix: computep
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  dataLakeStoreAccountName:
+    type: string
+    prefix: datalake
+  containerName:
+    type: string
+    prefix: containe
+    
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Accounts_CheckNameAvailability
+        exampleFile: ..\examples\Accounts_CheckNameAvailability.json
+      - operationId: Accounts_Create
+        exampleFile: ..\examples\Accounts_Create.json
+      - operationId: Accounts_List
+        exampleFile: ..\examples\Accounts_List.json
+      - operationId: Accounts_ListByResourceGroup
+        exampleFile: ..\examples\Accounts_ListByResourceGroup.json
+      - operationId: Accounts_Get
+        exampleFile: ..\examples\Accounts_Get.json
+      - operationId: Accounts_Update
+        exampleFile: ..\examples\Accounts_Update.json
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\examples\FirewallRules_CreateOrUpdate.json
+      - operationId: FirewallRules_ListByAccount
+        exampleFile: ..\examples\FirewallRules_ListByAccount.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\examples\FirewallRules_Get.json
+      - operationId: FirewallRules_Update
+        exampleFile: ..\examples\FirewallRules_Update.json
+      - operationId: ComputePolicies_CreateOrUpdate
+        exampleFile: ..\examples\ComputePolicies_CreateOrUpdate.json
+      - operationId: ComputePolicies_ListByAccount
+        exampleFile: ..\examples\ComputePolicies_ListByAccount.json
+      - operationId: ComputePolicies_Get
+        exampleFile: ..\examples\ComputePolicies_Get.json
+      - operationId: ComputePolicies_Update
+        exampleFile: ..\examples\ComputePolicies_Update.json
+      - operationId: DataLakeStoreAccounts_Add
+        exampleFile: ..\examples\DataLakeStoreAccounts_Add.json
+      - operationId: DataLakeStoreAccounts_ListByAccount
+        exampleFile: ..\examples\DataLakeStoreAccounts_ListByAccount.json
+      - operationId: StorageAccounts_Add
+        exampleFile: ..\examples\StorageAccounts_Add.json
+      - operationId: StorageAccounts_ListByAccount
+        exampleFile: ..\examples\StorageAccounts_ListByAccount.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: Locations_GetCapability
+        exampleFile: ..\examples\Locations_GetCapability.json
+      - operationId: DataLakeStoreAccounts_Delete
+        exampleFile: ..\examples\DataLakeStoreAccounts_Delete.json
+      - operationId: DataLakeStoreAccounts_Get
+        exampleFile: ..\examples\DataLakeStoreAccounts_Get.json
+      - operationId: StorageAccounts_Delete
+        exampleFile: ..\examples\StorageAccounts_Delete.json
+      - operationId: StorageAccounts_Get
+        exampleFile: ..\examples\StorageAccounts_Get.json
+      - operationId: StorageAccounts_Update
+        exampleFile: ..\examples\StorageAccounts_Update.json
+      - operationId: StorageAccounts_ListStorageContainers
+        exampleFile: ..\examples\StorageAccounts_ListStorageContainers.json
+      - operationId: StorageAccounts_GetStorageContainer
+        exampleFile: ..\examples\StorageAccounts_GetStorageContainer.json
+      - operationId: StorageAccounts_ListSasTokens
+        exampleFile: ..\examples\StorageAccounts_ListSasTokens.json
+      - operationId: ComputePolicies_Delete
+        exampleFile: ..\examples\ComputePolicies_Delete.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\examples\FirewallRules_Delete.json
+      - operationId: Accounts_Delete
+        exampleFile: ..\examples\Accounts_Delete.json
+
+
+# node inDegree is not 0  DataLakeStoreAccounts_Delete delete
+# node inDegree is not 0  DataLakeStoreAccounts_Get get
+# node inDegree is not 0  StorageAccounts_Delete delete
+# node inDegree is not 0  StorageAccounts_Get get
+# node inDegree is not 0  StorageAccounts_Update patch
+# node inDegree is not 0  StorageAccounts_ListStorageContainers get
+# node inDegree is not 0  StorageAccounts_GetStorageContainer get
+# node inDegree is not 0  StorageAccounts_ListSasTokens post

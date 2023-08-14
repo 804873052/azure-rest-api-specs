@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkDeviceName:
+    type: string
+    prefix: networkd
+  networkInterfaceName:
+    type: string
+    prefix: networki
+
+prepareSteps:
+  - operationId: NetworkDevices_Create
+    exampleFile: ..\examples\NetworkDevices_Create_MaximumSet_Gen.json
+
+scenarios:
+  - scenario: NetworkDevices
+    description: Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}
+    steps:
+
+      - operationId: NetworkDevices_ListBySubscription
+        exampleFile: ..\examples\NetworkDevices_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkDevices_ListByResourceGroup
+        exampleFile: ..\examples\NetworkDevices_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkDevices_Get
+        exampleFile: ..\examples\NetworkDevices_Get_MaximumSet_Gen.json
+      - operationId: NetworkDevices_Update
+        exampleFile: ..\examples\NetworkDevices_Update_MaximumSet_Gen.json
+      - operationId: NetworkDevices_updateVersion
+        exampleFile: ..\examples\NetworkDevices_updateVersion_MaximumSet_Gen.json
+      - operationId: NetworkDevices_updatePowerCycle
+        exampleFile: ..\examples\NetworkDevices_updatePowerCycle_MaximumSet_Gen.json
+      - operationId: NetworkDevices_getStatus
+        exampleFile: ..\examples\NetworkDevices_getStatus_MaximumSet_Gen.json
+      - operationId: NetworkDevices_restoreConfig
+        exampleFile: ..\examples\NetworkDevices_restoreConfig_MaximumSet_Gen.json
+      - operationId: NetworkDevices_reboot
+        exampleFile: ..\examples\NetworkDevices_reboot_MaximumSet_Gen.json
+      - operationId: NetworkDevices_getStaticInterfaceMaps
+        exampleFile: ..\examples\NetworkDevices_getStaticInterfaceMaps_MaximumSet_Gen.json
+      - operationId: NetworkDevices_generateSupportPackage
+        exampleFile: ..\examples\NetworkDevices_generateSupportPackage_MaximumSet_Gen.json
+      - operationId: NetworkDevices_getDynamicInterfaceMaps
+        exampleFile: ..\examples\NetworkDevices_getDynamicInterfaceMaps_MaximumSet_Gen.json
+
+
+  - scenario: NetworkInterfaces
+    description: Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}
+    steps:
+      - operationId: NetworkInterfaces_Create
+        exampleFile: ..\examples\NetworkInterfaces_Create_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_List
+        exampleFile: ..\examples\NetworkInterfaces_List_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_Get
+        exampleFile: ..\examples\NetworkInterfaces_Get_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_Update
+        exampleFile: ..\examples\NetworkInterfaces_Update_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_updateAdministrativeState
+        exampleFile: ..\examples\NetworkInterfaces_updateAdministrativeState_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_getStatus
+        exampleFile: ..\examples\NetworkInterfaces_getStatus_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_Delete
+        exampleFile: ..\examples\NetworkInterfaces_Delete_MaximumSet_Gen.json
+
+  - scenario: NetworkDeviceSkus
+    description: Microsoft.ManagedNetworkFabric/networkDeviceSkus
+    steps:
+      - operationId: NetworkDeviceSkus_ListBySubscription
+        exampleFile: ..\examples\NetworkDeviceSkus_ListBySubscription_MaximumSet_Gen.json
+        outputVariables:
+          networkDeviceSkuName:
+            type: string
+            fromResponse: /value/0/name
+      - operationId: NetworkDeviceSkus_Get
+        # variables:
+        #   networkDeviceSkuName:
+        #     type: string
+        #     prefix: networkd
+        exampleFile: ..\examples\NetworkDeviceSkus_Get_MaximumSet_Gen.json
+
+cleanUpSteps:
+  - operationId: NetworkDevices_Delete
+    exampleFile: ..\examples\NetworkDevices_Delete_MaximumSet_Gen.json

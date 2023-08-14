@@ -1,0 +1,4051 @@
+{
+  "Requests": [
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        },
+        {
+          "DynamicObject": {
+            "primitiveType": "String",
+            "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_name",
+            "isWriter": false
+          }
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+        "method": "Put"
+      },
+      "method": "Put",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        },
+        {
+          "Custom": {
+            "payloadType": "UuidSuffix",
+            "primitiveType": "String",
+            "payloadValue": "serverName",
+            "isObject": false
+          }
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "serverParameters",
+                "payload": {
+                  "InternalNode": [
+                    {
+                      "name": "",
+                      "propertyType": "Object",
+                      "isRequired": true,
+                      "isReadOnly": false
+                    },
+                    [
+                      {
+                        "InternalNode": [
+                          {
+                            "name": "properties",
+                            "propertyType": "Property",
+                            "isRequired": false,
+                            "isReadOnly": false
+                          },
+                          [
+                            {
+                              "InternalNode": [
+                                {
+                                  "name": "",
+                                  "propertyType": "Object",
+                                  "isRequired": false,
+                                  "isReadOnly": false
+                                },
+                                [
+                                  {
+                                    "InternalNode": [
+                                      {
+                                        "name": "asAdministrators",
+                                        "propertyType": "Property",
+                                        "isRequired": false,
+                                        "isReadOnly": false
+                                      },
+                                      [
+                                        {
+                                          "InternalNode": [
+                                            {
+                                              "name": "",
+                                              "propertyType": "Object",
+                                              "isRequired": false,
+                                              "isReadOnly": false
+                                            },
+                                            [
+                                              {
+                                                "InternalNode": [
+                                                  {
+                                                    "name": "members",
+                                                    "propertyType": "Array",
+                                                    "isRequired": false,
+                                                    "isReadOnly": false
+                                                  },
+                                                  [
+                                                    {
+                                                      "LeafNode": {
+                                                        "name": "",
+                                                        "payload": {
+                                                          "Fuzzable": {
+                                                            "primitiveType": "String",
+                                                            "defaultValue": "fuzzstring",
+                                                            "exampleValue": "azsdktest@microsoft.com"
+                                                          }
+                                                        },
+                                                        "isRequired": false,
+                                                        "isReadOnly": false
+                                                      }
+                                                    },
+                                                    {
+                                                      "LeafNode": {
+                                                        "name": "",
+                                                        "payload": {
+                                                          "Fuzzable": {
+                                                            "primitiveType": "String",
+                                                            "defaultValue": "fuzzstring",
+                                                            "exampleValue": "azsdktest2@microsoft.com"
+                                                          }
+                                                        },
+                                                        "isRequired": false,
+                                                        "isReadOnly": false
+                                                      }
+                                                    }
+                                                  ]
+                                                ]
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "location",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring",
+                              "exampleValue": "West US"
+                            }
+                          },
+                          "isRequired": true,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "InternalNode": [
+                          {
+                            "name": "sku",
+                            "propertyType": "Property",
+                            "isRequired": true,
+                            "isReadOnly": false
+                          },
+                          [
+                            {
+                              "InternalNode": [
+                                {
+                                  "name": "",
+                                  "propertyType": "Object",
+                                  "isRequired": true,
+                                  "isReadOnly": false
+                                },
+                                [
+                                  {
+                                    "LeafNode": {
+                                      "name": "name",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "String",
+                                          "defaultValue": "fuzzstring",
+                                          "exampleValue": "S1"
+                                        }
+                                      },
+                                      "isRequired": true,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "tier",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "tier",
+                                              "String",
+                                              [
+                                                "Development",
+                                                "Basic",
+                                                "Standard"
+                                              ],
+                                              null
+                                            ]
+                                          },
+                                          "defaultValue": "Development",
+                                          "exampleValue": "Standard"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "capacity",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "Int",
+                                          "defaultValue": "1",
+                                          "exampleValue": "1"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "tags",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "Object",
+                              "defaultValue": "{ \"fuzz\": false }",
+                              "exampleValue": "{\"testKey\":\"testValue\"}"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "serverParameters",
+                "payload": {
+                  "InternalNode": [
+                    {
+                      "name": "",
+                      "propertyType": "Object",
+                      "isRequired": true,
+                      "isReadOnly": false
+                    },
+                    [
+                      {
+                        "InternalNode": [
+                          {
+                            "name": "properties",
+                            "propertyType": "Property",
+                            "isRequired": false,
+                            "isReadOnly": false
+                          },
+                          [
+                            {
+                              "InternalNode": [
+                                {
+                                  "name": "",
+                                  "propertyType": "Object",
+                                  "isRequired": false,
+                                  "isReadOnly": false
+                                },
+                                [
+                                  {
+                                    "LeafNode": {
+                                      "name": "state",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "state",
+                                              "String",
+                                              [
+                                                "Deleting",
+                                                "Succeeded",
+                                                "Failed",
+                                                "Paused",
+                                                "Suspended",
+                                                "Provisioning",
+                                                "Updating",
+                                                "Suspending",
+                                                "Pausing",
+                                                "Resuming",
+                                                "Preparing",
+                                                "Scaling"
+                                              ],
+                                              null
+                                            ]
+                                          },
+                                          "defaultValue": "Deleting"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": true
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "provisioningState",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "provisioningState",
+                                              "String",
+                                              [
+                                                "Deleting",
+                                                "Succeeded",
+                                                "Failed",
+                                                "Paused",
+                                                "Suspended",
+                                                "Provisioning",
+                                                "Updating",
+                                                "Suspending",
+                                                "Pausing",
+                                                "Resuming",
+                                                "Preparing",
+                                                "Scaling"
+                                              ],
+                                              null
+                                            ]
+                                          },
+                                          "defaultValue": "Deleting"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": true
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "serverFullName",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "String",
+                                          "defaultValue": "fuzzstring"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": true
+                                    }
+                                  },
+                                  {
+                                    "InternalNode": [
+                                      {
+                                        "name": "sku",
+                                        "propertyType": "Property",
+                                        "isRequired": false,
+                                        "isReadOnly": false
+                                      },
+                                      [
+                                        {
+                                          "InternalNode": [
+                                            {
+                                              "name": "",
+                                              "propertyType": "Object",
+                                              "isRequired": true,
+                                              "isReadOnly": false
+                                            },
+                                            [
+                                              {
+                                                "LeafNode": {
+                                                  "name": "name",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "String",
+                                                      "defaultValue": "fuzzstring"
+                                                    }
+                                                  },
+                                                  "isRequired": true,
+                                                  "isReadOnly": false
+                                                }
+                                              },
+                                              {
+                                                "LeafNode": {
+                                                  "name": "tier",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": {
+                                                        "Enum": [
+                                                          "tier",
+                                                          "String",
+                                                          [
+                                                            "Development",
+                                                            "Basic",
+                                                            "Standard"
+                                                          ],
+                                                          null
+                                                        ]
+                                                      },
+                                                      "defaultValue": "Development"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": false
+                                                }
+                                              },
+                                              {
+                                                "LeafNode": {
+                                                  "name": "capacity",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "Int",
+                                                      "defaultValue": "1"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": false
+                                                }
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    ]
+                                  },
+                                  {
+                                    "InternalNode": [
+                                      {
+                                        "name": "asAdministrators",
+                                        "propertyType": "Property",
+                                        "isRequired": false,
+                                        "isReadOnly": false
+                                      },
+                                      [
+                                        {
+                                          "InternalNode": [
+                                            {
+                                              "name": "",
+                                              "propertyType": "Object",
+                                              "isRequired": false,
+                                              "isReadOnly": false
+                                            },
+                                            [
+                                              {
+                                                "InternalNode": [
+                                                  {
+                                                    "name": "members",
+                                                    "propertyType": "Array",
+                                                    "isRequired": false,
+                                                    "isReadOnly": false
+                                                  },
+                                                  [
+                                                    {
+                                                      "LeafNode": {
+                                                        "name": "",
+                                                        "payload": {
+                                                          "Fuzzable": {
+                                                            "primitiveType": "String",
+                                                            "defaultValue": "fuzzstring"
+                                                          }
+                                                        },
+                                                        "isRequired": false,
+                                                        "isReadOnly": false
+                                                      }
+                                                    }
+                                                  ]
+                                                ]
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    ]
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "backupBlobContainerUri",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "String",
+                                          "defaultValue": "fuzzstring"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "InternalNode": [
+                                      {
+                                        "name": "gatewayDetails",
+                                        "propertyType": "Property",
+                                        "isRequired": false,
+                                        "isReadOnly": false
+                                      },
+                                      [
+                                        {
+                                          "InternalNode": [
+                                            {
+                                              "name": "",
+                                              "propertyType": "Object",
+                                              "isRequired": false,
+                                              "isReadOnly": false
+                                            },
+                                            [
+                                              {
+                                                "LeafNode": {
+                                                  "name": "gatewayResourceId",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "String",
+                                                      "defaultValue": "fuzzstring"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": false
+                                                }
+                                              },
+                                              {
+                                                "LeafNode": {
+                                                  "name": "gatewayObjectId",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "String",
+                                                      "defaultValue": "fuzzstring"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": true
+                                                }
+                                              },
+                                              {
+                                                "LeafNode": {
+                                                  "name": "dmtsClusterUri",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "String",
+                                                      "defaultValue": "fuzzstring"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": true
+                                                }
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    ]
+                                  },
+                                  {
+                                    "InternalNode": [
+                                      {
+                                        "name": "ipV4FirewallSettings",
+                                        "propertyType": "Property",
+                                        "isRequired": false,
+                                        "isReadOnly": false
+                                      },
+                                      [
+                                        {
+                                          "InternalNode": [
+                                            {
+                                              "name": "",
+                                              "propertyType": "Object",
+                                              "isRequired": false,
+                                              "isReadOnly": false
+                                            },
+                                            [
+                                              {
+                                                "InternalNode": [
+                                                  {
+                                                    "name": "firewallRules",
+                                                    "propertyType": "Array",
+                                                    "isRequired": false,
+                                                    "isReadOnly": false
+                                                  },
+                                                  [
+                                                    {
+                                                      "InternalNode": [
+                                                        {
+                                                          "name": "",
+                                                          "propertyType": "Object",
+                                                          "isRequired": false,
+                                                          "isReadOnly": false
+                                                        },
+                                                        [
+                                                          {
+                                                            "LeafNode": {
+                                                              "name": "firewallRuleName",
+                                                              "payload": {
+                                                                "Fuzzable": {
+                                                                  "primitiveType": "String",
+                                                                  "defaultValue": "fuzzstring"
+                                                                }
+                                                              },
+                                                              "isRequired": false,
+                                                              "isReadOnly": false
+                                                            }
+                                                          },
+                                                          {
+                                                            "LeafNode": {
+                                                              "name": "rangeStart",
+                                                              "payload": {
+                                                                "Fuzzable": {
+                                                                  "primitiveType": "String",
+                                                                  "defaultValue": "fuzzstring"
+                                                                }
+                                                              },
+                                                              "isRequired": false,
+                                                              "isReadOnly": false
+                                                            }
+                                                          },
+                                                          {
+                                                            "LeafNode": {
+                                                              "name": "rangeEnd",
+                                                              "payload": {
+                                                                "Fuzzable": {
+                                                                  "primitiveType": "String",
+                                                                  "defaultValue": "fuzzstring"
+                                                                }
+                                                              },
+                                                              "isRequired": false,
+                                                              "isReadOnly": false
+                                                            }
+                                                          }
+                                                        ]
+                                                      ]
+                                                    }
+                                                  ]
+                                                ]
+                                              },
+                                              {
+                                                "LeafNode": {
+                                                  "name": "enablePowerBIService",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "Bool",
+                                                      "defaultValue": "true"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": false
+                                                }
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    ]
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "querypoolConnectionMode",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "querypoolConnectionMode",
+                                              "String",
+                                              [
+                                                "All",
+                                                "ReadOnly"
+                                              ],
+                                              "All"
+                                            ]
+                                          },
+                                          "defaultValue": "All"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "managedMode",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "managedMode",
+                                              "Int",
+                                              [
+                                                "0",
+                                                "1"
+                                              ],
+                                              "1"
+                                            ]
+                                          },
+                                          "defaultValue": "0"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "serverMonitorMode",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "serverMonitorMode",
+                                              "Int",
+                                              [
+                                                "0",
+                                                "1"
+                                              ],
+                                              "1"
+                                            ]
+                                          },
+                                          "defaultValue": "0"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "id",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": true
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "name",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": true
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "type",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": true
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "location",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring"
+                            }
+                          },
+                          "isRequired": true,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "InternalNode": [
+                          {
+                            "name": "sku",
+                            "propertyType": "Property",
+                            "isRequired": true,
+                            "isReadOnly": false
+                          },
+                          [
+                            {
+                              "InternalNode": [
+                                {
+                                  "name": "",
+                                  "propertyType": "Object",
+                                  "isRequired": true,
+                                  "isReadOnly": false
+                                },
+                                [
+                                  {
+                                    "LeafNode": {
+                                      "name": "name",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "String",
+                                          "defaultValue": "fuzzstring"
+                                        }
+                                      },
+                                      "isRequired": true,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "tier",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "tier",
+                                              "String",
+                                              [
+                                                "Development",
+                                                "Basic",
+                                                "Standard"
+                                              ],
+                                              null
+                                            ]
+                                          },
+                                          "defaultValue": "Development"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "capacity",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "Int",
+                                          "defaultValue": "1"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "tags",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "Object",
+                              "defaultValue": "{ \"fuzz\": false }"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": [
+              {
+                "name": "Content-Type",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Constant": [
+                        "String",
+                        "application/json"
+                      ]
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "dependencyData": {
+        "responseParser": {
+          "writerVariables": [
+            {
+              "requestId": {
+                "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+                "method": "Put"
+              },
+              "accessPathParts": {
+                "path": [
+                  "name"
+                ]
+              },
+              "primitiveType": "String",
+              "kind": "BodyResponseProperty"
+            },
+            {
+              "requestId": {
+                "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+                "method": "Put"
+              },
+              "accessPathParts": {
+                "path": [
+                  "tags"
+                ]
+              },
+              "primitiveType": "Object",
+              "kind": "BodyResponseProperty"
+            }
+          ],
+          "headerWriterVariables": []
+        },
+        "inputWriterVariables": [],
+        "orderingConstraintWriterVariables": [],
+        "orderingConstraintReaderVariables": []
+      },
+      "requestMetadata": {
+        "isLongRunningOperation": true
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+        "method": "Delete"
+      },
+      "method": "Delete",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        },
+        {
+          "DynamicObject": {
+            "primitiveType": "String",
+            "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_name",
+            "isWriter": false
+          }
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": true
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+        "method": "Patch"
+      },
+      "method": "Patch",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        },
+        {
+          "DynamicObject": {
+            "primitiveType": "String",
+            "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_name",
+            "isWriter": false
+          }
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "serverUpdateParameters",
+                "payload": {
+                  "InternalNode": [
+                    {
+                      "name": "",
+                      "propertyType": "Object",
+                      "isRequired": true,
+                      "isReadOnly": false
+                    },
+                    [
+                      {
+                        "InternalNode": [
+                          {
+                            "name": "sku",
+                            "propertyType": "Property",
+                            "isRequired": false,
+                            "isReadOnly": false
+                          },
+                          [
+                            {
+                              "InternalNode": [
+                                {
+                                  "name": "",
+                                  "propertyType": "Object",
+                                  "isRequired": false,
+                                  "isReadOnly": false
+                                },
+                                [
+                                  {
+                                    "LeafNode": {
+                                      "name": "name",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "String",
+                                          "defaultValue": "fuzzstring",
+                                          "exampleValue": "S1"
+                                        }
+                                      },
+                                      "isRequired": true,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "tier",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "tier",
+                                              "String",
+                                              [
+                                                "Development",
+                                                "Basic",
+                                                "Standard"
+                                              ],
+                                              null
+                                            ]
+                                          },
+                                          "defaultValue": "Development",
+                                          "exampleValue": "Standard"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "capacity",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "Int",
+                                          "defaultValue": "1",
+                                          "exampleValue": "1"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "tags",
+                          "payload": {
+                            "DynamicObject": {
+                              "primitiveType": "Object",
+                              "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_tags",
+                              "isWriter": false
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "InternalNode": [
+                          {
+                            "name": "properties",
+                            "propertyType": "Property",
+                            "isRequired": false,
+                            "isReadOnly": false
+                          },
+                          [
+                            {
+                              "InternalNode": [
+                                {
+                                  "name": "",
+                                  "propertyType": "Object",
+                                  "isRequired": false,
+                                  "isReadOnly": false
+                                },
+                                [
+                                  {
+                                    "InternalNode": [
+                                      {
+                                        "name": "asAdministrators",
+                                        "propertyType": "Property",
+                                        "isRequired": false,
+                                        "isReadOnly": false
+                                      },
+                                      [
+                                        {
+                                          "InternalNode": [
+                                            {
+                                              "name": "",
+                                              "propertyType": "Object",
+                                              "isRequired": false,
+                                              "isReadOnly": false
+                                            },
+                                            [
+                                              {
+                                                "InternalNode": [
+                                                  {
+                                                    "name": "members",
+                                                    "propertyType": "Array",
+                                                    "isRequired": false,
+                                                    "isReadOnly": false
+                                                  },
+                                                  [
+                                                    {
+                                                      "LeafNode": {
+                                                        "name": "",
+                                                        "payload": {
+                                                          "Fuzzable": {
+                                                            "primitiveType": "String",
+                                                            "defaultValue": "fuzzstring",
+                                                            "exampleValue": "azsdktest@microsoft.com"
+                                                          }
+                                                        },
+                                                        "isRequired": false,
+                                                        "isReadOnly": false
+                                                      }
+                                                    },
+                                                    {
+                                                      "LeafNode": {
+                                                        "name": "",
+                                                        "payload": {
+                                                          "Fuzzable": {
+                                                            "primitiveType": "String",
+                                                            "defaultValue": "fuzzstring",
+                                                            "exampleValue": "azsdktest2@microsoft.com"
+                                                          }
+                                                        },
+                                                        "isRequired": false,
+                                                        "isReadOnly": false
+                                                      }
+                                                    }
+                                                  ]
+                                                ]
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "serverUpdateParameters",
+                "payload": {
+                  "InternalNode": [
+                    {
+                      "name": "",
+                      "propertyType": "Object",
+                      "isRequired": true,
+                      "isReadOnly": false
+                    },
+                    [
+                      {
+                        "InternalNode": [
+                          {
+                            "name": "sku",
+                            "propertyType": "Property",
+                            "isRequired": false,
+                            "isReadOnly": false
+                          },
+                          [
+                            {
+                              "InternalNode": [
+                                {
+                                  "name": "",
+                                  "propertyType": "Object",
+                                  "isRequired": false,
+                                  "isReadOnly": false
+                                },
+                                [
+                                  {
+                                    "LeafNode": {
+                                      "name": "name",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "String",
+                                          "defaultValue": "fuzzstring"
+                                        }
+                                      },
+                                      "isRequired": true,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "tier",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "tier",
+                                              "String",
+                                              [
+                                                "Development",
+                                                "Basic",
+                                                "Standard"
+                                              ],
+                                              null
+                                            ]
+                                          },
+                                          "defaultValue": "Development"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "capacity",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "Int",
+                                          "defaultValue": "1"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "tags",
+                          "payload": {
+                            "DynamicObject": {
+                              "primitiveType": "Object",
+                              "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_tags",
+                              "isWriter": false
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "InternalNode": [
+                          {
+                            "name": "properties",
+                            "propertyType": "Property",
+                            "isRequired": false,
+                            "isReadOnly": false
+                          },
+                          [
+                            {
+                              "InternalNode": [
+                                {
+                                  "name": "",
+                                  "propertyType": "Object",
+                                  "isRequired": false,
+                                  "isReadOnly": false
+                                },
+                                [
+                                  {
+                                    "InternalNode": [
+                                      {
+                                        "name": "asAdministrators",
+                                        "propertyType": "Property",
+                                        "isRequired": false,
+                                        "isReadOnly": false
+                                      },
+                                      [
+                                        {
+                                          "InternalNode": [
+                                            {
+                                              "name": "",
+                                              "propertyType": "Object",
+                                              "isRequired": false,
+                                              "isReadOnly": false
+                                            },
+                                            [
+                                              {
+                                                "InternalNode": [
+                                                  {
+                                                    "name": "members",
+                                                    "propertyType": "Array",
+                                                    "isRequired": false,
+                                                    "isReadOnly": false
+                                                  },
+                                                  [
+                                                    {
+                                                      "LeafNode": {
+                                                        "name": "",
+                                                        "payload": {
+                                                          "Fuzzable": {
+                                                            "primitiveType": "String",
+                                                            "defaultValue": "fuzzstring"
+                                                          }
+                                                        },
+                                                        "isRequired": false,
+                                                        "isReadOnly": false
+                                                      }
+                                                    }
+                                                  ]
+                                                ]
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    ]
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "backupBlobContainerUri",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": "String",
+                                          "defaultValue": "fuzzstring"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "InternalNode": [
+                                      {
+                                        "name": "gatewayDetails",
+                                        "propertyType": "Property",
+                                        "isRequired": false,
+                                        "isReadOnly": false
+                                      },
+                                      [
+                                        {
+                                          "InternalNode": [
+                                            {
+                                              "name": "",
+                                              "propertyType": "Object",
+                                              "isRequired": false,
+                                              "isReadOnly": false
+                                            },
+                                            [
+                                              {
+                                                "LeafNode": {
+                                                  "name": "gatewayResourceId",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "String",
+                                                      "defaultValue": "fuzzstring"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": false
+                                                }
+                                              },
+                                              {
+                                                "LeafNode": {
+                                                  "name": "gatewayObjectId",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "String",
+                                                      "defaultValue": "fuzzstring"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": true
+                                                }
+                                              },
+                                              {
+                                                "LeafNode": {
+                                                  "name": "dmtsClusterUri",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "String",
+                                                      "defaultValue": "fuzzstring"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": true
+                                                }
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    ]
+                                  },
+                                  {
+                                    "InternalNode": [
+                                      {
+                                        "name": "ipV4FirewallSettings",
+                                        "propertyType": "Property",
+                                        "isRequired": false,
+                                        "isReadOnly": false
+                                      },
+                                      [
+                                        {
+                                          "InternalNode": [
+                                            {
+                                              "name": "",
+                                              "propertyType": "Object",
+                                              "isRequired": false,
+                                              "isReadOnly": false
+                                            },
+                                            [
+                                              {
+                                                "InternalNode": [
+                                                  {
+                                                    "name": "firewallRules",
+                                                    "propertyType": "Array",
+                                                    "isRequired": false,
+                                                    "isReadOnly": false
+                                                  },
+                                                  [
+                                                    {
+                                                      "InternalNode": [
+                                                        {
+                                                          "name": "",
+                                                          "propertyType": "Object",
+                                                          "isRequired": false,
+                                                          "isReadOnly": false
+                                                        },
+                                                        [
+                                                          {
+                                                            "LeafNode": {
+                                                              "name": "firewallRuleName",
+                                                              "payload": {
+                                                                "Fuzzable": {
+                                                                  "primitiveType": "String",
+                                                                  "defaultValue": "fuzzstring"
+                                                                }
+                                                              },
+                                                              "isRequired": false,
+                                                              "isReadOnly": false
+                                                            }
+                                                          },
+                                                          {
+                                                            "LeafNode": {
+                                                              "name": "rangeStart",
+                                                              "payload": {
+                                                                "Fuzzable": {
+                                                                  "primitiveType": "String",
+                                                                  "defaultValue": "fuzzstring"
+                                                                }
+                                                              },
+                                                              "isRequired": false,
+                                                              "isReadOnly": false
+                                                            }
+                                                          },
+                                                          {
+                                                            "LeafNode": {
+                                                              "name": "rangeEnd",
+                                                              "payload": {
+                                                                "Fuzzable": {
+                                                                  "primitiveType": "String",
+                                                                  "defaultValue": "fuzzstring"
+                                                                }
+                                                              },
+                                                              "isRequired": false,
+                                                              "isReadOnly": false
+                                                            }
+                                                          }
+                                                        ]
+                                                      ]
+                                                    }
+                                                  ]
+                                                ]
+                                              },
+                                              {
+                                                "LeafNode": {
+                                                  "name": "enablePowerBIService",
+                                                  "payload": {
+                                                    "Fuzzable": {
+                                                      "primitiveType": "Bool",
+                                                      "defaultValue": "true"
+                                                    }
+                                                  },
+                                                  "isRequired": false,
+                                                  "isReadOnly": false
+                                                }
+                                              }
+                                            ]
+                                          ]
+                                        }
+                                      ]
+                                    ]
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "querypoolConnectionMode",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "querypoolConnectionMode",
+                                              "String",
+                                              [
+                                                "All",
+                                                "ReadOnly"
+                                              ],
+                                              "All"
+                                            ]
+                                          },
+                                          "defaultValue": "All"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "managedMode",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "managedMode",
+                                              "Int",
+                                              [
+                                                "0",
+                                                "1"
+                                              ],
+                                              "1"
+                                            ]
+                                          },
+                                          "defaultValue": "0"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  },
+                                  {
+                                    "LeafNode": {
+                                      "name": "serverMonitorMode",
+                                      "payload": {
+                                        "Fuzzable": {
+                                          "primitiveType": {
+                                            "Enum": [
+                                              "serverMonitorMode",
+                                              "Int",
+                                              [
+                                                "0",
+                                                "1"
+                                              ],
+                                              "1"
+                                            ]
+                                          },
+                                          "defaultValue": "0"
+                                        }
+                                      },
+                                      "isRequired": false,
+                                      "isReadOnly": false
+                                    }
+                                  }
+                                ]
+                              ]
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": [
+              {
+                "name": "Content-Type",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Constant": [
+                        "String",
+                        "application/json"
+                      ]
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": true
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend",
+        "method": "Post"
+      },
+      "method": "Post",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        },
+        {
+          "DynamicObject": {
+            "primitiveType": "String",
+            "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_name",
+            "isWriter": false
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "suspend"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": true
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume",
+        "method": "Post"
+      },
+      "method": "Post",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        },
+        {
+          "DynamicObject": {
+            "primitiveType": "String",
+            "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_name",
+            "isWriter": false
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resume"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": true
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "skus"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        },
+        {
+          "DynamicObject": {
+            "primitiveType": "String",
+            "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_name",
+            "isWriter": false
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "skus"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus",
+        "method": "Post"
+      },
+      "method": "Post",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        },
+        {
+          "DynamicObject": {
+            "primitiveType": "String",
+            "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_name",
+            "isWriter": false
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "listGatewayStatus"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway",
+        "method": "Post"
+      },
+      "method": "Post",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "resourceGroups"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "servers"
+          ]
+        },
+        {
+          "DynamicObject": {
+            "primitiveType": "String",
+            "variableName": "_subscriptions__subscriptionId__resourceGroups__resourceGroupName__providers_Microsoft_AnalysisServices_servers__serverName__put_name",
+            "isWriter": false
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "dissociateGateway"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
+        "method": "Post"
+      },
+      "method": "Post",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "locations"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "checkNameAvailability"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "serverParameters",
+                "payload": {
+                  "InternalNode": [
+                    {
+                      "name": "",
+                      "propertyType": "Object",
+                      "isRequired": true,
+                      "isReadOnly": false
+                    },
+                    [
+                      {
+                        "LeafNode": {
+                          "name": "name",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring",
+                              "exampleValue": "azsdktest"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "type",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring",
+                              "exampleValue": "Microsoft.AnalysisServices/servers"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "serverParameters",
+                "payload": {
+                  "InternalNode": [
+                    {
+                      "name": "",
+                      "propertyType": "Object",
+                      "isRequired": true,
+                      "isReadOnly": false
+                    },
+                    [
+                      {
+                        "LeafNode": {
+                          "name": "name",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "type",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": [
+              {
+                "name": "Content-Type",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Constant": [
+                        "String",
+                        "application/json"
+                      ]
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "locations"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "operationresults"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "subscriptions"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "locations"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        },
+        {
+          "Constant": [
+            "String",
+            "operationstatuses"
+          ]
+        },
+        {
+          "Fuzzable": {
+            "primitiveType": "String",
+            "defaultValue": "fuzzstring"
+          }
+        }
+      ],
+      "queryParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring",
+                        "exampleValue": "2017-08-01"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Examples",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/providers/Microsoft.AnalysisServices/operations",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "providers"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "Microsoft.AnalysisServices"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "operations"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "api-version",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": true,
+                    "isReadOnly": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "management.azure.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    }
+  ]
+}

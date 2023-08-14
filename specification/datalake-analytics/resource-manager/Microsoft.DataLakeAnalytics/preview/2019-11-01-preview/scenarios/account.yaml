@@ -1,0 +1,121 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  storageAccountName:
+    type: string
+    prefix: storagea
+  computePolicyName:
+    type: string
+    prefix: computep
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  dataLakeStoreAccountName:
+    type: string
+    prefix: datalake
+
+prepareSteps:
+  - step: Accounts_CheckNameAvailability
+    exampleFile: ..\examples\Accounts_CheckNameAvailability.json
+    requestUpdate:
+      - replace: /parameters/name
+        value: $(accountName)
+  - step: Accounts_Create
+    # exampleFile: ..\examples\Accounts_Create.json
+    operationId: Accounts_Create
+    parameters:
+      
+
+scenarios:
+  - scenario: Accounts
+    description: Microsoft.DataLakeAnalytics/accounts/{accountName}
+    steps:
+      - step: Accounts_List
+        exampleFile: ..\examples\Accounts_List.json
+      - step: Accounts_ListByResourceGroup
+        exampleFile: ..\examples\Accounts_ListByResourceGroup.json
+      - step: Accounts_Get
+        exampleFile: ..\examples\Accounts_Get.json
+      - step: Accounts_Update
+        exampleFile: ..\examples\Accounts_Update.json
+
+  - scenario: FirewallRules
+    description: Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}
+    steps:
+      - step: FirewallRules_CreateOrUpdate
+        exampleFile: ..\examples\FirewallRules_CreateOrUpdate.json
+      - step: FirewallRules_ListByAccount
+        exampleFile: ..\examples\FirewallRules_ListByAccount.json
+      - step: FirewallRules_Get
+        exampleFile: ..\examples\FirewallRules_Get.json
+      - step: FirewallRules_Update
+        exampleFile: ..\examples\FirewallRules_Update.json
+      - step: FirewallRules_Delete
+        exampleFile: ..\examples\FirewallRules_Delete.json
+
+  - scenario: ComputePolicies
+    description: Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}
+    steps:
+      - step: ComputePolicies_CreateOrUpdate
+        exampleFile: ..\examples\ComputePolicies_CreateOrUpdate.json
+      - step: ComputePolicies_ListByAccount
+        exampleFile: ..\examples\ComputePolicies_ListByAccount.json
+      - step: ComputePolicies_Get
+        exampleFile: ..\examples\ComputePolicies_Get.json
+      - step: ComputePolicies_Update
+        exampleFile: ..\examples\ComputePolicies_Update.json
+      - step: ComputePolicies_Delete
+        exampleFile: ..\examples\ComputePolicies_Delete.json
+
+  - scenario: DataLakeStoreAccounts
+    description: Microsoft.DataLakeAnalytics/accounts/{accountName}/dataLakeStoreAccounts/{dataLakeStoreAccountName}
+    steps:
+      - step: DataLakeStoreAccounts_Add
+        exampleFile: ..\examples\DataLakeStoreAccounts_Add.json
+      - step: DataLakeStoreAccounts_ListByAccount
+        exampleFile: ..\examples\DataLakeStoreAccounts_ListByAccount.json
+      - step: DataLakeStoreAccounts_Delete
+        exampleFile: ..\examples\DataLakeStoreAccounts_Delete.json
+      - step: DataLakeStoreAccounts_Get
+        exampleFile: ..\examples\DataLakeStoreAccounts_Get.json
+
+  - scenario: StorageAccounts
+    description: Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}
+    steps:
+      - step: StorageAccounts_Add
+        exampleFile: ..\examples\StorageAccounts_Add.json
+      - step: StorageAccounts_ListByAccount
+        exampleFile: ..\examples\StorageAccounts_ListByAccount.json
+      - step: StorageAccounts_Get
+        exampleFile: ..\examples\StorageAccounts_Get.json
+      - step: StorageAccounts_Update
+        exampleFile: ..\examples\StorageAccounts_Update.json
+      - step: StorageAccounts_ListStorageContainers
+        exampleFile: ..\examples\StorageAccounts_ListStorageContainers.json
+      - step: StorageAccounts_GetStorageContainer
+        exampleFile: ..\examples\StorageAccounts_GetStorageContainer.json
+      - step: StorageAccounts_ListSasTokens
+        exampleFile: ..\examples\StorageAccounts_ListSasTokens.json
+      - step: StorageAccounts_Delete
+        exampleFile: ..\examples\StorageAccounts_Delete.json
+
+  - scenario: Operations
+    description: Microsoft.DataLakeAnalytics/operations
+    steps:
+      - step: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+  - scenario: Locations
+    description: Microsoft.DataLakeAnalytics/locations/{location}/capability
+    steps:
+      - step: Locations_GetCapability
+        exampleFile: ..\examples\Locations_GetCapability.json
+
+
+cleanUpSteps:
+  - step: Accounts_Delete
+    exampleFile: ..\examples\Accounts_Delete.json

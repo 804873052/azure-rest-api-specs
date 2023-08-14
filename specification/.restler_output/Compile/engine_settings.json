@@ -1,0 +1,14 @@
+{
+  "per_resource_settings": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}": {
+      "producer_timing_delay": 0
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend": {
+      "producer_timing_delay": 0
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume": {
+      "producer_timing_delay": 0
+    }
+  },
+  "max_combinations": 20
+}

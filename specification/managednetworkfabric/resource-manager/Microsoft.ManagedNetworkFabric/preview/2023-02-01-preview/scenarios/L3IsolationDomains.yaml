@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  l3IsolationDomainName:
+    type: string
+    prefix: l3isolat
+  internalNetworkName:
+    type: string
+    prefix: internal
+  externalNetworkName:
+    type: string
+    prefix: external
+
+prepareSteps:
+  - operationId: L3IsolationDomains_Create
+    exampleFile: ..\examples\L3IsolationDomains_Create_MaximumSet_Gen.json
+
+scenarios:
+  - scenario: L3IsolationDomains
+    description: Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}
+    steps:
+
+      - operationId: L3IsolationDomains_ListBySubscription
+        exampleFile: ..\examples\L3IsolationDomains_ListBySubscription_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_ListByResourceGroup
+        exampleFile: ..\examples\L3IsolationDomains_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_Get
+        exampleFile: ..\examples\L3IsolationDomains_Get_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_Update
+        exampleFile: ..\examples\L3IsolationDomains_Update_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_updateAdministrativeState
+        exampleFile: ..\examples\L3IsolationDomains_updateAdministrativeState_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_updateOptionBAdministrativeState
+        exampleFile: ..\examples\L3IsolationDomains_updateOptionBAdministrativeState_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_clearArpTable
+        exampleFile: ..\examples\L3IsolationDomains_clearArpTable_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_clearNeighborTable
+        exampleFile: ..\examples\L3IsolationDomains_clearNeighborTable_MaximumSet_Gen.json
+
+
+  - scenario: InternalNetworks
+    description: Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}
+    steps:
+      - operationId: InternalNetworks_Create
+        exampleFile: ..\examples\InternalNetworks_Create_MaximumSet_Gen.json
+      - operationId: InternalNetworks_List
+        exampleFile: ..\examples\InternalNetworks_List_MaximumSet_Gen.json
+      - operationId: InternalNetworks_Get
+        exampleFile: ..\examples\InternalNetworks_Get_MaximumSet_Gen.json
+      - operationId: InternalNetworks_Update
+        exampleFile: ..\examples\InternalNetworks_Update_MaximumSet_Gen.json
+      - operationId: InternalNetworks_clearArpEntries
+        exampleFile: ..\examples\InternalNetworks_clearArpEntries_MaximumSet_Gen.json
+      - operationId: InternalNetworks_updateBfdForStaticRouteAdministrativeState
+        exampleFile: ..\examples\InternalNetworks_updateBfdForStaticRouteAdministrativeState_MaximumSet_Gen.json
+      - operationId: InternalNetworks_clearIpv6Neighbors
+        exampleFile: ..\examples\InternalNetworks_clearIpv6Neighbors_MaximumSet_Gen.json
+      - operationId: InternalNetworks_updateBgpAdministrativeState
+        exampleFile: ..\examples\InternalNetworks_updateBgpAdministrativeState_MaximumSet_Gen.json
+      - operationId: InternalNetworks_updateAdministrativeState
+        exampleFile: ..\examples\InternalNetworks_updateAdministrativeState_MaximumSet_Gen.json
+      - operationId: InternalNetworks_updateBfdForBgpAdministrativeState
+        exampleFile: ..\examples\InternalNetworks_updateBfdForBgpAdministrativeState_MaximumSet_Gen.json
+      - operationId: InternalNetworks_Delete
+        exampleFile: ..\examples\InternalNetworks_Delete_MaximumSet_Gen.json
+
+  - scenario: ExternalNetworks
+    description: Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}
+    steps:
+      - operationId: ExternalNetworks_Create
+        exampleFile: ..\examples\ExternalNetworks_Create_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_List
+        exampleFile: ..\examples\ExternalNetworks_List_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_Get
+        exampleFile: ..\examples\ExternalNetworks_Get_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_Update
+        exampleFile: ..\examples\ExternalNetworks_Update_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_clearArpEntries
+        exampleFile: ..\examples\ExternalNetworks_clearArpEntries_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_clearIpv6Neighbors
+        exampleFile: ..\examples\ExternalNetworks_clearIpv6Neighbors_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_updateAdministrativeState
+        exampleFile: ..\examples\ExternalNetworks_updateAdministrativeState_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_updateBfdForBgpAdministrativeState
+        exampleFile: ..\examples\ExternalNetworks_updateBfdForBgpAdministrativeState_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_updateBgpAdministrativeState
+        exampleFile: ..\examples\ExternalNetworks_updateBgpAdministrativeState_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_Delete
+        exampleFile: ..\examples\ExternalNetworks_Delete_MaximumSet_Gen.json
+
+cleanUpSteps:
+  - operationId: L3IsolationDomains_Delete
+    exampleFile: ..\examples\L3IsolationDomains_Delete_MaximumSet_Gen.json

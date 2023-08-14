@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# pass
+scenarios:
+  - scenario: Locations
+    description: Microsoft.HDInsight/locations/{location}
+    steps:
+      - operationId: Locations_CheckNameAvailability
+        exampleFile: ..\examples\HDI_Locations_CheckClusterNameAvailability.json
+      # - operationId: Locations_GetAzureAsyncOperationStatus # InternalServerError
+      #   exampleFile: ..\examples\HDI_Locations_GetAsyncOperationStatus.json
+      - operationId: Locations_ListBillingSpecs
+        exampleFile: ..\examples\HDI_Locations_ListBillingSpecs.json
+      - operationId: Locations_GetCapabilities
+        exampleFile: ..\examples\GetHDInsightCapabilities.json
+      - operationId: Locations_ListUsages
+        exampleFile: ..\examples\GetHDInsightUsages.json
+      - operationId: Locations_ValidateClusterCreateRequest
+        exampleFile: ..\examples\HDI_Locations_ValidateClusterCreateRequest.json
