@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  siteName:
+    type: string
+    prefix: sitename
+  packetCoreControlPlaneName:
+    type: string
+    prefix: packetco
+  diagnosticsPackageName:
+    type: string
+    prefix: diagnost
+
+prepareSteps:
+  - operationId: MobileNetworks_CreateOrUpdate
+    exampleFile: ..\examples\MobileNetworkCreate.json
+  - operationId: Sites_CreateOrUpdate
+    exampleFile: ..\examples\SiteCreate.json
+    outputVariables:
+      sitesId:
+        type: string
+        fromResponse: /id
+  - operationId: PacketCoreControlPlanes_CreateOrUpdate
+    # exampleFile: ..\examples\PacketCoreControlPlaneCreate.json
+    parameters:
+      parameters:
+        location: $(location)
+        properties: 
+          installation:
+            desiredState: Installed
+          sites:
+            - id: $(sitesId)
+          platform:
+            type: AKS-HCI
+          coreNetworkTechnology: 5GC
+          controlPlaneAccessInterface:
+            name: N2
+            ipv4Address: "2.4.0.1"
+          sku: G0
+          ueMtu: 1600
+          localDiagnosticsAccess:
+            authenticationType: AAD
+
+# The resource type registration 'Microsoft.MobileNetwork/packetCoreControlPlanes/diagnosticsPackages' could not be found.
+scenarios:
+scenarios:
+  - scenario: DiagnosticsPackages
+    description: Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/diagnosticsPackages/{diagnosticsPackageName}
+    steps:
+      - operationId: DiagnosticsPackages_CreateOrUpdate
+        exampleFile: ..\examples\DiagnosticsPackageCreate.json
+      - operationId: DiagnosticsPackages_ListByPacketCoreControlPlane
+        exampleFile: ..\examples\DiagnosticsPackageListByPacketCoreControlPlane.json
+      - operationId: DiagnosticsPackages_Get
+        exampleFile: ..\examples\DiagnosticsPackageGet.json
+      - operationId: DiagnosticsPackages_Delete
+        exampleFile: ..\examples\DiagnosticsPackageDelete.json

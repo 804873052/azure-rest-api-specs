@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  siteName:
+    type: string
+    prefix: sitename
+  packetCoreControlPlaneName:
+    type: string
+    prefix: packetco
+  packetCoreDataPlaneName:
+    type: string
+    prefix: packetco
+
+prepareSteps:
+  - operationId: MobileNetworks_CreateOrUpdate
+    exampleFile: ..\examples\MobileNetworkCreate.json
+  - operationId: Sites_CreateOrUpdate
+    exampleFile: ..\examples\SiteCreate.json
+    outputVariables:
+      sitesId:
+        type: string
+        fromResponse: /id
+  - operationId: PacketCoreControlPlanes_CreateOrUpdate
+    # exampleFile: ..\examples\PacketCoreControlPlaneCreate.json
+    parameters:
+      parameters:
+        location: $(location)
+        properties: 
+          installation:
+            desiredState: Installed
+          sites:
+            - id: $(sitesId)
+          platform:
+            type: AKS-HCI
+          coreNetworkTechnology: 5GC
+          controlPlaneAccessInterface:
+            name: N2
+            ipv4Address: "2.4.0.1"
+          sku: G0
+          ueMtu: 1600
+          localDiagnosticsAccess:
+            authenticationType: AAD
+
+# pass
+scenarios:
+  - scenario: PacketCoreDataPlanes
+    description: Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}
+    steps:
+      - operationId: PacketCoreDataPlanes_CreateOrUpdate
+        exampleFile: ..\examples\PacketCoreDataPlaneCreate.json
+      - operationId: PacketCoreDataPlanes_ListByPacketCoreControlPlane
+        exampleFile: ..\examples\PacketCoreDataPlaneListByPacketCoreControlPlane.json
+      - operationId: PacketCoreDataPlanes_Get
+        exampleFile: ..\examples\PacketCoreDataPlaneGet.json
+      - operationId: PacketCoreDataPlanes_UpdateTags
+        exampleFile: ..\examples\PacketCoreDataPlaneUpdateTags.json
+      - operationId: PacketCoreDataPlanes_Delete
+        exampleFile: ..\examples\PacketCoreDataPlaneDelete.json

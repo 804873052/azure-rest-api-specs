@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  simGroupName:
+    type: string
+    prefix: simgroup
+
+prepareSteps:
+  - operationId: MobileNetworks_CreateOrUpdate
+    exampleFile: ..\examples\MobileNetworkCreate.json
+    outputVariables:
+      mobileNetworkId:
+        type: string
+        fromResponse: /id
+
+# pass
+scenarios:
+  - scenario: SimGroups
+    description: Microsoft.MobileNetwork/simGroups/{simGroupName}
+    steps:
+      - operationId: SimGroups_CreateOrUpdate
+        # exampleFile: ..\examples\SimGroupCreate.json
+        parameters:
+          parameters:
+            location: $(location)
+            properties: 
+              mobileNetwork:
+                id: $(mobileNetworkId)
+      - operationId: SimGroups_ListBySubscription
+        exampleFile: ..\examples\SimGroupListBySubscription.json
+      - operationId: SimGroups_Get
+        exampleFile: ..\examples\SimGroupGet.json
+      - operationId: SimGroups_ListByResourceGroup
+        exampleFile: ..\examples\SimGroupListByResourceGroup.json
+      - operationId: SimGroups_UpdateTags
+        exampleFile: ..\examples\SimGroupPatch.json
+        requestUpdate:
+          - remove: /parameters/identity
+      - operationId: SimGroups_Delete
+        exampleFile: ..\examples\SimGroupDelete.json

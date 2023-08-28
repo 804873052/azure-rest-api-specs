@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  simPolicyName:
+    type: string
+    prefix: simpolic
+  sliceName:
+    type: string
+    prefix: slicenam
+  serviceName:
+    type: string
+    prefix: servicen
+  dataNetworkName:
+    type: string
+    prefix: datanetw
+
+prepareSteps:
+  - operationId: MobileNetworks_CreateOrUpdate
+    exampleFile: ..\examples\MobileNetworkCreate.json
+  - operationId: Slices_CreateOrUpdate
+    exampleFile: ..\examples\SliceCreate.json
+    outputVariables:
+      sliceId:
+        type: string
+        fromResponse: /id
+  - operationId: Services_CreateOrUpdate
+    exampleFile: ..\examples\ServiceCreate.json
+    outputVariables:
+      serviceId:
+        type: string
+        fromResponse: /id
+  - operationId: DataNetworks_CreateOrUpdate
+    exampleFile: ..\examples\DataNetworkCreate.json
+    outputVariables:
+      dataNetworkId:
+        type: string
+        fromResponse: /id
+
+# pass
+scenarios:
+  - scenario: SimPolicies
+    description: Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/simPolicies/{simPolicyName}
+    steps:
+      - operationId: SimPolicies_CreateOrUpdate
+        exampleFile: ..\examples\SimPolicyCreate.json
+        requestUpdate:
+          - replace: /parameters/properties/defaultSlice/id
+            value: $(sliceId)
+          - replace: /parameters/properties/sliceConfigurations/0/slice/id
+            value: $(sliceId)
+          - replace: /parameters/properties/sliceConfigurations/0/defaultDataNetwork/id
+            value: $(dataNetworkId)
+          - replace: /parameters/properties/sliceConfigurations/0/dataNetworkConfigurations/0/dataNetwork/id
+            value: $(dataNetworkId)
+          - replace: /parameters/properties/sliceConfigurations/0/dataNetworkConfigurations/0/allowedServices/0/id
+            value: $(serviceId)
+      - operationId: SimPolicies_ListByMobileNetwork
+        exampleFile: ..\examples\SimPolicyListByMobileNetwork.json
+      - operationId: SimPolicies_Get
+        exampleFile: ..\examples\SimPolicyGet.json
+      - operationId: SimPolicies_UpdateTags
+        exampleFile: ..\examples\SimPolicyUpdateTags.json
+      - operationId: SimPolicies_Delete
+        exampleFile: ..\examples\SimPolicyDelete.json

@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  simGroupName:
+    type: string
+    prefix: simgroup
+  simName:
+    type: string
+    prefix: simname
+
+prepareSteps:
+  - operationId: MobileNetworks_CreateOrUpdate
+    exampleFile: ..\examples\MobileNetworkCreate.json
+    outputVariables:
+      mobileNetworkId:
+        type: string
+        fromResponse: /id
+  - operationId: SimGroups_CreateOrUpdate
+    # exampleFile: ..\examples\SimGroupCreate.json
+    parameters:
+      parameters:
+        location: $(location)
+        properties: 
+          mobileNetwork:
+            id: $(mobileNetworkId)
+
+# pass
+scenarios:
+  - scenario: Sims
+    description: Microsoft.MobileNetwork/simGroups/{simGroupName}/sims/{simName}
+    steps:
+      - operationId: Sims_CreateOrUpdate
+        # exampleFile: ..\examples\SimCreate.json
+        parameters:
+          parameters:
+            properties:
+              integratedCircuitCardIdentifier: "8900000000000000000"
+              internationalMobileSubscriberIdentity: "00000"
+              authenticationKey: "00000000000000000000000000000000"
+              operatorKeyCode: "00000000000000000000000000000000"
+              deviceType: Video camera
+      - operationId: Sims_ListByGroup
+        exampleFile: ..\examples\SimListBySimGroup.json
+      - operationId: Sims_Get
+        exampleFile: ..\examples\SimGet.json
+      - operationId: Sims_BulkUpload
+        # exampleFile: ..\examples\SimBulkUpload.json
+        parameters:
+          parameters:
+            sims:
+              - name: testSim
+                properties: 
+                  integratedCircuitCardIdentifier: "8900000000000000000"
+                  internationalMobileSubscriberIdentity: "00000"
+                  authenticationKey: "00000000000000000000000000000000"
+                  operatorKeyCode: "00000000000000000000000000000000"
+                  deviceType: Video camera
+              - name: testSim2
+                properties: 
+                  integratedCircuitCardIdentifier: "8900000000000000001"
+                  internationalMobileSubscriberIdentity: "00000"
+                  authenticationKey: "00000000000000000000000000000000"
+                  operatorKeyCode: "00000000000000000000000000000000"
+                  deviceType: Video camera
+      - operationId: Sims_BulkDelete
+        exampleFile: ..\examples\SimBulkDelete.json
+      # - operationId: Sims_BulkUploadEncrypted # Operation returned an invalid status code 'NotFound'
+      #   exampleFile: ..\examples\SimBulkUploadEncrypted.json
+      - operationId: Sims_Delete
+        exampleFile: ..\examples\SimDelete.json

@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  dataNetworkName:
+    type: string
+    prefix: datanetw
+
+prepareSteps:
+  - operationId: MobileNetworks_CreateOrUpdate
+    exampleFile: ..\examples\MobileNetworkCreate.json
+
+# pass
+scenarios:
+  - scenario: DataNetworks
+    description: Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/dataNetworks/{dataNetworkName}
+    steps:
+      - operationId: DataNetworks_CreateOrUpdate
+        exampleFile: ..\examples\DataNetworkCreate.json
+      - operationId: DataNetworks_ListByMobileNetwork
+        exampleFile: ..\examples\DataNetworkListByMobileNetwork.json
+      - operationId: DataNetworks_Get
+        exampleFile: ..\examples\DataNetworkGet.json
+      - operationId: DataNetworks_UpdateTags
+        exampleFile: ..\examples\DataNetworkUpdateTags.json
+      - operationId: DataNetworks_Delete
+        exampleFile: ..\examples\DataNetworkDelete.json

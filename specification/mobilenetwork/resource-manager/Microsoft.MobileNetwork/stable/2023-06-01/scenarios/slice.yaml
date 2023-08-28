@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  sliceName:
+    type: string
+    prefix: slicenam
+
+prepareSteps:
+  - operationId: MobileNetworks_CreateOrUpdate
+    exampleFile: ..\examples\MobileNetworkCreate.json
+
+# pass
+scenarios:
+  - scenario: Slices
+    description: Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/slices/{sliceName}
+    steps:
+      - operationId: Slices_CreateOrUpdate
+        exampleFile: ..\examples\SliceCreate.json
+      - operationId: Slices_ListByMobileNetwork
+        exampleFile: ..\examples\SliceListByMobileNetwork.json
+      - operationId: Slices_Get
+        exampleFile: ..\examples\SliceGet.json
+      - operationId: Slices_UpdateTags
+        exampleFile: ..\examples\SliceUpdateTags.json
+      - operationId: Slices_Delete
+        exampleFile: ..\examples\SliceDelete.json

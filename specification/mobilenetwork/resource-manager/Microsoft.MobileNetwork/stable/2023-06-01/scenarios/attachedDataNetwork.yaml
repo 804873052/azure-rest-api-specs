@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  siteName:
+    type: string
+    prefix: sitename
+  packetCoreControlPlaneName:
+    type: string
+    prefix: packetco
+  packetCoreDataPlaneName:
+    type: string
+    prefix: packetco
+  attachedDataNetworkName:
+    type: string
+    prefix: attached
+
+prepareSteps:
+  - operationId: MobileNetworks_CreateOrUpdate
+    exampleFile: ..\examples\MobileNetworkCreate.json
+  - operationId: Sites_CreateOrUpdate
+    exampleFile: ..\examples\SiteCreate.json
+    outputVariables:
+      sitesId:
+        type: string
+        fromResponse: /id
+  - operationId: PacketCoreControlPlanes_CreateOrUpdate
+    # exampleFile: ..\examples\PacketCoreControlPlaneCreate.json
+    parameters:
+      parameters:
+        location: $(location)
+        properties: 
+          installation:
+            desiredState: Installed
+          sites:
+            - id: $(sitesId)
+          platform:
+            type: AKS-HCI
+          coreNetworkTechnology: 5GC
+          controlPlaneAccessInterface:
+            name: N2
+            ipv4Address: "2.4.0.1"
+          sku: G0
+          ueMtu: 1600
+          localDiagnosticsAccess:
+            authenticationType: AAD
+  - operationId: PacketCoreDataPlanes_CreateOrUpdate
+    exampleFile: ..\examples\PacketCoreDataPlaneCreate.json
+
+  - operationId: DataNetworks_CreateOrUpdate
+    exampleFile: ..\examples\DataNetworkCreate.json
+    requestUpdate:
+      - replace: /dataNetworkName
+        value: $(attachedDataNetworkName)
+
+# pass
+scenarios:
+  - scenario: AttachedDataNetworks
+    description: Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks/{attachedDataNetworkName}
+    steps:
+      - operationId: AttachedDataNetworks_CreateOrUpdate
+        exampleFile: ..\examples\AttachedDataNetworkCreate.json
+      - operationId: AttachedDataNetworks_ListByPacketCoreDataPlane
+        exampleFile: ..\examples\AttachedDataNetworkListByPacketCoreDataPlane.json
+      - operationId: AttachedDataNetworks_Get
+        exampleFile: ..\examples\AttachedDataNetworkGet.json
+      - operationId: AttachedDataNetworks_UpdateTags
+        exampleFile: ..\examples\AttachedDataNetworkUpdateTags.json
+      - operationId: AttachedDataNetworks_Delete
+        exampleFile: ..\examples\AttachedDataNetworkDelete.json

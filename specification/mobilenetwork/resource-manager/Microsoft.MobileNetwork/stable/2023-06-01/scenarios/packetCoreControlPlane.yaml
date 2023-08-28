@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  siteName:
+    type: string
+    prefix: sitename
+  packetCoreControlPlaneName:
+    type: string
+    prefix: packetco
+
+# Validation failed with multiple errors: ERR013 - 
+# Invalid packet core version: version 0.2.0 not found.\r\n
+# Required field ipv4Address not set in 'N2' Interface Properties\r\n
+# ERR029 - Invalid sites value: /subscriptions/92f95d8f-3c67-4124-91c7-8cf07cdbf241/resourceGroups/go-sdk-test-570/providers/Microsoft.MobileNetwork/mobileNetworks/testMobileNetwork/sites/testSite not found\r\n
+# Packet core version 0.2.0 does not support localDiagnosticsAccess.authenticationType = AAD. Either use authenticationType = Password or use packet core version PMN-2301-0 or above.\r\n
+# Packet core version 0.2.0 is not compatible with specifying UeMtu values. Please use packet core version PMN-2308-0 or above. If you see this error but haven't changed how do you deploy then note that UeMtu field was present since 2022-11-01 API and had no effect before Packet core version PMN-2308-0
+
+
+prepareSteps:
+  - operationId: MobileNetworks_CreateOrUpdate
+    exampleFile: ..\examples\MobileNetworkCreate.json
+  - operationId: Sites_CreateOrUpdate
+    exampleFile: ..\examples\SiteCreate.json
+    outputVariables:
+      sitesId:
+        type: string
+        fromResponse: /id
+
+scenarios:
+# pass
+  - scenario: PacketCoreControlPlanes
+    description: Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}
+    steps:
+      - operationId: PacketCoreControlPlanes_CreateOrUpdate
+        # exampleFile: ..\examples\PacketCoreControlPlaneCreate.json
+        parameters:
+          parameters:
+            location: $(location)
+            properties: 
+              installation:
+                desiredState: Installed
+              sites:
+                - id: $(sitesId)
+              platform:
+                type: AKS-HCI
+              coreNetworkTechnology: 5GC
+              controlPlaneAccessInterface:
+                name: N2
+                ipv4Address: "2.4.0.1"
+              sku: G0
+              ueMtu: 1600
+              localDiagnosticsAccess:
+                authenticationType: AAD
+      - operationId: PacketCoreControlPlanes_ListBySubscription
+        exampleFile: ..\examples\PacketCoreControlPlaneListBySubscription.json
+      - operationId: PacketCoreControlPlanes_Get
+        exampleFile: ..\examples\PacketCoreControlPlaneGet.json
+      - operationId: PacketCoreControlPlanes_ListByResourceGroup
+        exampleFile: ..\examples\PacketCoreControlPlaneListByResourceGroup.json
+      # - operationId: PacketCoreControlPlanes_UpdateTags # Internal Server Error
+      #   exampleFile: ..\examples\PacketCoreControlPlanePatch.json
+      #   requestUpdate:
+      #     - remove: /parameters/identity
+      # - operationId: PacketCoreControlPlanes_CollectDiagnosticsPackage
+      #   exampleFile: ..\examples\PacketCoreControlPlaneCollectDiagnosticsPackage.json
+      # - operationId: PacketCoreControlPlanes_Rollback # MissingRollbackVersion
+      #   exampleFile: ..\examples\PacketCoreControlPlaneRollback.json
+      # - operationId: PacketCoreControlPlanes_Reinstall # ResourcePostActionFailed
+      #   exampleFile: ..\examples\PacketCoreControlPlaneReinstall.json
+      - operationId: PacketCoreControlPlanes_Delete
+        exampleFile: ..\examples\PacketCoreControlPlaneDelete.json
+
+# pass
+  - scenario: PacketCoreControlPlaneVersions
+    description: Microsoft.MobileNetwork/packetCoreControlPlaneVersions
+    steps:
+      - operationId: PacketCoreControlPlaneVersions_List
+        exampleFile: ..\examples\PacketCoreControlPlaneVersionList.json
+      - operationId: PacketCoreControlPlaneVersions_Get
+        exampleFile: ..\examples\PacketCoreControlPlaneVersionGet.json
+      - operationId: PacketCoreControlPlaneVersions_ListBySubscription
+        exampleFile: ..\examples\PacketCoreControlPlaneVersionListBySubscription.json
+      # - operationId: PacketCoreControlPlaneVersions_GetBySubscription # 404 Not Found
+      #   exampleFile: ..\examples\PacketCoreControlPlaneVersionGetBySubscription.json

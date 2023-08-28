@@ -1,0 +1,221 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  mobileNetworkName:
+    type: string
+    prefix: mobilene
+  packetCoreControlPlaneName:
+    type: string
+    prefix: packetco
+  simGroupName:
+    type: string
+    prefix: simgroup
+  packetCoreDataPlaneName:
+    type: string
+    prefix: packetco
+  siteName:
+    type: string
+    prefix: sitename
+  attachedDataNetworkName:
+    type: string
+    prefix: attached
+  dataNetworkName:
+    type: string
+    prefix: datanetw
+  packetCaptureName:
+    type: string
+    prefix: packetca
+  serviceName:
+    type: string
+    prefix: servicen
+  simPolicyName:
+    type: string
+    prefix: simpolic
+  sliceName:
+    type: string
+    prefix: slicenam
+  diagnosticsPackageName:
+    type: string
+    prefix: diagnost
+  simName:
+    type: string
+    prefix: simname
+  versionName:
+    type: string
+    prefix: versionn
+  
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: MobileNetworks_CreateOrUpdate
+        exampleFile: ..\examples\MobileNetworkCreate.json
+      - operationId: MobileNetworks_ListBySubscription
+        exampleFile: ..\examples\MobileNetworkListBySubscription.json
+      - operationId: MobileNetworks_ListByResourceGroup
+        exampleFile: ..\examples\MobileNetworkListByResourceGroup.json
+      - operationId: MobileNetworks_Get
+        exampleFile: ..\examples\MobileNetworkGet.json
+      - operationId: MobileNetworks_UpdateTags
+        exampleFile: ..\examples\MobileNetworkUpdateTags.json
+
+      - operationId: PacketCoreControlPlanes_CreateOrUpdate
+        exampleFile: ..\examples\PacketCoreControlPlaneCreate.json
+      - operationId: PacketCoreControlPlanes_ListBySubscription
+        exampleFile: ..\examples\PacketCoreControlPlaneListBySubscription.json
+      - operationId: PacketCoreControlPlanes_Get
+        exampleFile: ..\examples\PacketCoreControlPlaneGet.json
+      - operationId: PacketCoreControlPlanes_ListByResourceGroup
+        exampleFile: ..\examples\PacketCoreControlPlaneListByResourceGroup.json
+      - operationId: PacketCoreControlPlanes_UpdateTags
+        exampleFile: ..\examples\PacketCoreControlPlanePatch.json
+      - operationId: PacketCoreControlPlanes_CollectDiagnosticsPackage
+        exampleFile: ..\examples\PacketCoreControlPlaneCollectDiagnosticsPackage.json
+      - operationId: PacketCoreControlPlanes_Rollback
+        exampleFile: ..\examples\PacketCoreControlPlaneRollback.json
+      - operationId: PacketCoreControlPlanes_Reinstall
+        exampleFile: ..\examples\PacketCoreControlPlaneReinstall.json
+
+      - operationId: SimGroups_CreateOrUpdate
+        exampleFile: ..\examples\SimGroupCreate.json
+      - operationId: SimGroups_ListBySubscription
+        exampleFile: ..\examples\SimGroupListBySubscription.json
+      - operationId: SimGroups_Get
+        exampleFile: ..\examples\SimGroupGet.json
+      - operationId: SimGroups_ListByResourceGroup
+        exampleFile: ..\examples\SimGroupListByResourceGroup.json
+      - operationId: SimGroups_UpdateTags
+        exampleFile: ..\examples\SimGroupPatch.json
+
+      - operationId: PacketCoreDataPlanes_CreateOrUpdate
+        exampleFile: ..\examples\PacketCoreDataPlaneCreate.json
+      - operationId: PacketCoreDataPlanes_ListByPacketCoreControlPlane
+        exampleFile: ..\examples\PacketCoreDataPlaneListByPacketCoreControlPlane.json
+      - operationId: PacketCoreDataPlanes_Get
+        exampleFile: ..\examples\PacketCoreDataPlaneGet.json
+      - operationId: PacketCoreDataPlanes_UpdateTags
+        exampleFile: ..\examples\PacketCoreDataPlaneUpdateTags.json
+
+      - operationId: Sites_CreateOrUpdate
+        exampleFile: ..\examples\SiteCreate.json
+      - operationId: Sites_ListByMobileNetwork
+        exampleFile: ..\examples\SiteListByMobileNetwork.json
+      - operationId: Sites_Get
+        exampleFile: ..\examples\SiteGet.json
+      - operationId: Sites_UpdateTags
+        exampleFile: ..\examples\SiteUpdateTags.json
+      - operationId: Sites_DeletePacketCore
+        exampleFile: ..\examples\SiteDeletePacketCore.json
+
+      - operationId: AttachedDataNetworks_CreateOrUpdate
+        exampleFile: ..\examples\AttachedDataNetworkCreate.json
+      - operationId: AttachedDataNetworks_ListByPacketCoreDataPlane
+        exampleFile: ..\examples\AttachedDataNetworkListByPacketCoreDataPlane.json
+      - operationId: AttachedDataNetworks_Get
+        exampleFile: ..\examples\AttachedDataNetworkGet.json
+      - operationId: AttachedDataNetworks_UpdateTags
+        exampleFile: ..\examples\AttachedDataNetworkUpdateTags.json
+
+      - operationId: SimPolicies_CreateOrUpdate
+        exampleFile: ..\examples\SimPolicyCreate.json
+      - operationId: SimPolicies_ListByMobileNetwork
+        exampleFile: ..\examples\SimPolicyListByMobileNetwork.json
+      - operationId: SimPolicies_Get
+        exampleFile: ..\examples\SimPolicyGet.json
+      - operationId: SimPolicies_UpdateTags
+        exampleFile: ..\examples\SimPolicyUpdateTags.json
+        
+      - operationId: Slices_CreateOrUpdate
+        exampleFile: ..\examples\SliceCreate.json
+      - operationId: Slices_ListByMobileNetwork
+        exampleFile: ..\examples\SliceListByMobileNetwork.json
+      - operationId: Slices_Get
+        exampleFile: ..\examples\SliceGet.json
+      - operationId: Slices_UpdateTags
+        exampleFile: ..\examples\SliceUpdateTags.json
+
+      - operationId: DataNetworks_CreateOrUpdate
+        exampleFile: ..\examples\DataNetworkCreate.json
+      - operationId: DataNetworks_ListByMobileNetwork
+        exampleFile: ..\examples\DataNetworkListByMobileNetwork.json
+      - operationId: DataNetworks_Get
+        exampleFile: ..\examples\DataNetworkGet.json
+      - operationId: DataNetworks_UpdateTags
+        exampleFile: ..\examples\DataNetworkUpdateTags.json
+
+      - operationId: PacketCaptures_CreateOrUpdate
+        exampleFile: ..\examples\PacketCaptureCreate.json
+      - operationId: PacketCaptures_ListByPacketCoreControlPlane
+        exampleFile: ..\examples\PacketCaptureListByPacketCoreControlPlane.json
+      - operationId: PacketCaptures_Get
+        exampleFile: ..\examples\PacketCaptureGet.json
+      - operationId: PacketCaptures_Stop
+        exampleFile: ..\examples\PacketCaptureStop.json
+
+      - operationId: Services_CreateOrUpdate
+        exampleFile: ..\examples\ServiceCreate.json
+      - operationId: Services_ListByMobileNetwork
+        exampleFile: ..\examples\ServiceListByMobileNetwork.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\ServiceGet.json
+      - operationId: Services_UpdateTags
+        exampleFile: ..\examples\ServiceUpdateTags.json
+
+      - operationId: DiagnosticsPackages_CreateOrUpdate
+        exampleFile: ..\examples\DiagnosticsPackageCreate.json
+      - operationId: DiagnosticsPackages_ListByPacketCoreControlPlane
+        exampleFile: ..\examples\DiagnosticsPackageListByPacketCoreControlPlane.json
+      - operationId: DiagnosticsPackages_Get
+        exampleFile: ..\examples\DiagnosticsPackageGet.json
+
+      - operationId: Sims_CreateOrUpdate
+        exampleFile: ..\examples\SimCreate.json
+      - operationId: Sims_ListByGroup
+        exampleFile: ..\examples\SimListBySimGroup.json
+      - operationId: Sims_Get
+        exampleFile: ..\examples\SimGet.json
+      - operationId: Sims_BulkUpload
+        exampleFile: ..\examples\SimBulkUpload.json
+      - operationId: Sims_BulkDelete
+        exampleFile: ..\examples\SimBulkDelete.json
+      - operationId: Sims_BulkUploadEncrypted
+        exampleFile: ..\examples\SimBulkUploadEncrypted.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationList.json
+
+      - operationId: PacketCoreControlPlaneVersions_List
+        exampleFile: ..\examples\PacketCoreControlPlaneVersionList.json
+      - operationId: PacketCoreControlPlaneVersions_Get
+        exampleFile: ..\examples\PacketCoreControlPlaneVersionGet.json
+      - operationId: PacketCoreControlPlaneVersions_ListBySubscription
+        exampleFile: ..\examples\PacketCoreControlPlaneVersionListBySubscription.json
+      - operationId: PacketCoreControlPlaneVersions_GetBySubscription
+        exampleFile: ..\examples\PacketCoreControlPlaneVersionGetBySubscription.json
+
+      - operationId: Sims_Delete
+        exampleFile: ..\examples\SimDelete.json
+      - operationId: DiagnosticsPackages_Delete
+        exampleFile: ..\examples\DiagnosticsPackageDelete.json
+      - operationId: Services_Delete
+        exampleFile: ..\examples\ServiceDelete.json
+      - operationId: PacketCaptures_Delete
+        exampleFile: ..\examples\PacketCaptureDelete.json
+      - operationId: DataNetworks_Delete
+        exampleFile: ..\examples\DataNetworkDelete.json
+      - operationId: Slices_Delete
+        exampleFile: ..\examples\SliceDelete.json
+      - operationId: SimPolicies_Delete
+        exampleFile: ..\examples\SimPolicyDelete.json
+      - operationId: AttachedDataNetworks_Delete
+        exampleFile: ..\examples\AttachedDataNetworkDelete.json
+      - operationId: Sites_Delete
+        exampleFile: ..\examples\SiteDelete.json
+      - operationId: PacketCoreDataPlanes_Delete
+        exampleFile: ..\examples\PacketCoreDataPlaneDelete.json
+      - operationId: SimGroups_Delete
+        exampleFile: ..\examples\SimGroupDelete.json
+      - operationId: PacketCoreControlPlanes_Delete
+        exampleFile: ..\examples\PacketCoreControlPlaneDelete.json
+      - operationId: MobileNetworks_Delete
+        exampleFile: ..\examples\MobileNetworkDelete.json
