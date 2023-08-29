@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  monitorName:
+    type: string
+    prefix: monitorn
+
+prepareSteps:
+  - operationId: Monitors_CreateOrUpdate
+    exampleFile: ..\examples\Monitors_CreateOrUpdate_MaximumSet_Gen.json
+    requestUpdate:
+      - add: /resource/properties/dynatraceEnvironmentProperties/singleSignOnProperties
+        value: {
+          "singleSignOnState": "Enable",
+          "aadDomains": ["http://www.contoso.com/"]
+        }
+        
+scenarios:
+# pass
+  - scenario: Monitor
+    description: Dynatrace.Observability/monitors/{monitorName}
+    steps:
+      - operationId: Monitors_ListBySubscriptionId
+        exampleFile: ..\examples\Monitors_ListBySubscriptionId_MaximumSet_Gen.json
+      - operationId: Monitors_Get
+        exampleFile: ..\examples\Monitors_Get_MaximumSet_Gen.json
+      - operationId: Monitors_ListByResourceGroup
+        exampleFile: ..\examples\Monitors_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: Monitors_Update
+        exampleFile: ..\examples\Monitors_Update_MaximumSet_Gen.json
+      - operationId: Monitors_ListMonitoredResources
+        exampleFile: ..\examples\Monitors_ListMonitoredResources_MaximumSet_Gen.json
+      - operationId: Monitors_ListHosts
+        exampleFile: ..\examples\Monitors_ListHosts_MaximumSet_Gen.json
+      # - operationId: Monitors_ListLinkableEnvironments # ResourcePostActionFailed
+      #   exampleFile: ..\examples\Monitors_ListLinkableEnvironments_MaximumSet_Gen.json
+      - operationId: Monitors_GetVMHostPayload
+        exampleFile: ..\examples\Monitors_GetVMHostPayload_MaximumSet_Gen.json
+      # - operationId: Monitors_GetSSODetails # ResourcePostActionFailed: Unauthorized
+      #   exampleFile: ..\examples\Monitors_GetSSODetails_MaximumSet_Gen.json
+      # - operationId: Monitors_GetMarketplaceSaaSResourceDetails # ResourcePostActionFailed: Not Found
+      #   exampleFile: ..\examples\Monitors_GetMarketplaceSaaSResourceDetails_MaximumSet_Gen.json
+      - operationId: Monitors_ListAppServices
+        exampleFile: ..\examples\Monitors_ListAppServices_MaximumSet_Gen.json
+      - operationId: Monitors_GetMetricStatus
+        exampleFile: ..\examples\Monitors_GetMetricStatus_MaximumSet_Gen.json
+
+# pass
+  - scenario: TagRules
+    description: Dynatrace.Observability/monitors/{monitorName}/tagRules/{ruleSetName}
+    steps:
+      - operationId: TagRules_CreateOrUpdate
+        exampleFile: ..\examples\TagRules_CreateOrUpdate_MaximumSet_Gen.json
+      - operationId: TagRules_List
+        exampleFile: ..\examples\TagRules_List_MaximumSet_Gen.json
+      - operationId: TagRules_Get
+        exampleFile: ..\examples\TagRules_Get_MaximumSet_Gen.json
+      - operationId: TagRules_Delete
+        exampleFile: ..\examples\TagRules_Delete_MaximumSet_Gen.json
+
+  # - scenario: SingleSignOn
+  #   description: Dynatrace.Observability/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}
+  #   steps:
+  #     - operationId: SingleSignOn_CreateOrUpdate # "Self referencing loop detected with type 'System.Net.Http.HttpResponseMessage'. Path 'requestMessage.properties'."
+  #       exampleFile: ..\examples\SingleSignOn_CreateOrUpdate_MaximumSet_Gen.json
+  #     - operationId: SingleSignOn_List
+  #       exampleFile: ..\examples\SingleSignOn_List_MaximumSet_Gen.json
+  #     - operationId: SingleSignOn_Get
+  #       exampleFile: ..\examples\SingleSignOn_Get_MaximumSet_Gen.json
+
+# pass
+  - scenario: Operations
+    description: Dynatrace.Observability/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List_MaximumSet_Gen.json
+
+cleanUpSteps:
+  - operationId: Monitors_Delete
+    exampleFile: ..\examples\Monitors_Delete_MaximumSet_Gen.json
