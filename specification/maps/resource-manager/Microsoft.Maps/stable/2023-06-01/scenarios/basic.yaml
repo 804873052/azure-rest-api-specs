@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  creatorName:
+    type: string
+    prefix: creatorn
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Accounts_CreateOrUpdate
+        exampleFile: ..\examples\CreateAccount.json
+      - operationId: Accounts_ListBySubscription
+        exampleFile: ..\examples\ListAccountsBySubscription.json
+      - operationId: Accounts_ListByResourceGroup
+        exampleFile: ..\examples\ListAccountsByResourceGroup.json
+      - operationId: Accounts_Get
+        exampleFile: ..\examples\GetAccount.json
+      - operationId: Accounts_Update
+        exampleFile: ..\examples\UpdateAccount.json
+      - operationId: Accounts_ListSas
+        exampleFile: ..\examples\AccountListSAS.json
+      - operationId: Accounts_RegenerateKeys
+        exampleFile: ..\examples\RegenerateKey.json
+      - operationId: Accounts_ListKeys
+        exampleFile: ..\examples\ListKeys.json
+      - operationId: Creators_CreateOrUpdate
+        exampleFile: ..\examples\CreateMapsCreator.json
+      - operationId: Creators_ListByAccount
+        exampleFile: ..\examples\ListMapsCreatorsByAccount.json
+      - operationId: Creators_Get
+        exampleFile: ..\examples\GetMapsCreator.json
+      - operationId: Creators_Update
+        exampleFile: ..\examples\UpdateMapsCreator.json
+      - operationId: Maps_ListOperations
+        exampleFile: ..\examples\GetOperations.json
+      - operationId: Maps_ListSubscriptionOperations
+        exampleFile: ..\examples\GetOperationsSubscription.json
+      - operationId: Creators_Delete
+        exampleFile: ..\examples\DeleteMapsCreator.json
+      - operationId: Accounts_Delete
+        exampleFile: ..\examples\DeleteAccount.json

@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  creatorName:
+    type: string
+    prefix: creatorn
+
+prepareSteps:
+  - operationId: Accounts_CreateOrUpdate
+    exampleFile: ..\examples\CreateAccount.json
+
+scenarios:
+# pass
+  - scenario: Accounts
+    description: Microsoft.Maps/accounts/{accountName}
+    steps:
+      - operationId: Accounts_ListBySubscription
+        exampleFile: ..\examples\ListAccountsBySubscription.json
+      - operationId: Accounts_ListByResourceGroup
+        exampleFile: ..\examples\ListAccountsByResourceGroup.json
+      - operationId: Accounts_Get
+        exampleFile: ..\examples\GetAccount.json
+      - operationId: Accounts_ListSas
+        exampleFile: ..\examples\AccountListSAS.json
+      - operationId: Accounts_RegenerateKeys
+        exampleFile: ..\examples\RegenerateKey.json
+      - operationId: Accounts_ListKeys
+        exampleFile: ..\examples\ListKeys.json
+      - operationId: Accounts_Update
+        exampleFile: ..\examples\UpdateAccount.json
+
+# No registered resource provider found for location 'eastus' and API version '2023-06-01' for type 'accounts/creators'
+# API version '2023-06-01' 还不支持
+  # - scenario: Creators
+  #   description: Microsoft.Maps/accounts/{accountName}/creators/{creatorName}
+  #   steps:
+  #     - operationId: Creators_CreateOrUpdate
+  #       exampleFile: ..\examples\CreateMapsCreator.json
+  #     - operationId: Creators_ListByAccount
+  #       exampleFile: ..\examples\ListMapsCreatorsByAccount.json
+  #     - operationId: Creators_Get
+  #       exampleFile: ..\examples\GetMapsCreator.json
+  #     - operationId: Creators_Update
+  #       exampleFile: ..\examples\UpdateMapsCreator.json
+  #     - operationId: Creators_Delete
+  #       exampleFile: ..\examples\DeleteMapsCreator.json
+
+# pass
+  - scenario: Maps
+    description: Microsoft.Maps/operations
+    steps:
+      - operationId: Maps_ListOperations
+        exampleFile: ..\examples\GetOperations.json
+      - operationId: Maps_ListSubscriptionOperations
+        exampleFile: ..\examples\GetOperationsSubscription.json
+
+cleanUpSteps:
+      - operationId: Accounts_Delete
+        exampleFile: ..\examples\DeleteAccount.json
