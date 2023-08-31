@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+  adminPassword:
+    type: string
+    
+prepareSteps:
+  - operationId: Servers_Create
+    exampleFile: ..\..\2018-06-01\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+
+scenarios:
+scenarios:
+  - scenario: QueryTexts
+    description: Microsoft.DBforMariaDB/servers/{serverName}/queryTexts/{queryId}
+    steps:
+      - operationId: QueryTexts_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\QueryTextsListByServer.json
+      - operationId: QueryTexts_Get
+        # variables:
+        #   queryId:
+        #     type: string
+        #     prefix: queryid
+        exampleFile: ..\..\2018-06-01\examples\QueryTextsGet.json
+
+  - scenario: TopQueryStatistics
+    description: Microsoft.DBforMariaDB/servers/{serverName}/topQueryStatistics/{queryStatisticId}
+    steps:
+      - operationId: TopQueryStatistics_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\TopQueryStatisticsListByServer.json
+      - operationId: TopQueryStatistics_Get
+        # variables:
+        #   queryStatisticId:
+        #     type: string
+        #     prefix: querysta
+        exampleFile: ..\..\2018-06-01\examples\TopQueryStatisticsGet.json
+
+  - scenario: WaitStatistics
+    description: Microsoft.DBforMariaDB/servers/{serverName}/waitStatistics/{waitStatisticsId}
+    steps:
+      - operationId: WaitStatistics_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\WaitStatisticsListByServer.json
+      - operationId: WaitStatistics_Get
+        # variables:
+        #   waitStatisticsId:
+        #     type: string
+        #     prefix: waitstat
+        exampleFile: ..\..\2018-06-01\examples\WaitStatisticsGet.json
+
+  - scenario: ResetQueryPerformanceInsightData
+    description: Microsoft.DBforMariaDB/servers/{serverName}/resetQueryPerformanceInsightData
+    steps:
+      - operationId: ResetQueryPerformanceInsightData
+        exampleFile: ..\..\2018-06-01\examples\QueryPerformanceInsightResetData.json

@@ -1,0 +1,168 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+  databaseName:
+    type: string
+    prefix: database
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  virtualNetworkRuleName:
+    type: string
+    prefix: virtualn
+  adminPassword:
+    type: string
+  location:
+    type: string
+
+prepareSteps:
+  - operationId: Servers_Create
+    exampleFile: ..\..\2018-06-01\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+
+scenarios:
+# pass
+  - scenario: Servers
+    description: Microsoft.DBforMariaDB/servers/{serverName}
+    steps:
+      - operationId: Servers_List
+        exampleFile: ..\..\2018-06-01\examples\ServerList.json
+      - operationId: Servers_ListByResourceGroup
+        exampleFile: ..\..\2018-06-01\examples\ServerListByResourceGroup.json
+      - operationId: Servers_Get
+        exampleFile: ..\..\2018-06-01\examples\ServerGet.json
+      - operationId: Servers_Update
+        exampleFile: ..\..\2018-06-01\examples\ServerUpdate.json
+      - operationId: Servers_Restart
+        exampleFile: ..\..\2018-06-01\examples\ServerRestart.json
+      - operationId: Servers_Stop
+        exampleFile: ..\examples\ServerStop.json
+      - operationId: Servers_Start
+        exampleFile: ..\examples\ServerStart.json
+
+# pass
+  - scenario: Replicas
+    description: Microsoft.DBforMariaDB/servers/{serverName}/replicas
+    steps:
+      - operationId: Replicas_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\ReplicasListByServer.json
+
+# pass
+  - scenario: FirewallRules
+    description: Microsoft.DBforMariaDB/servers/{serverName}/firewallRules/{firewallRuleName}
+    steps:
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\..\2018-06-01\examples\FirewallRuleCreate.json
+      - operationId: FirewallRules_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\FirewallRuleListByServer.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\..\2018-06-01\examples\FirewallRuleGet.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\..\2018-06-01\examples\FirewallRuleDelete.json
+
+# pass
+  - scenario: VirtualNetworkRules
+    description: Microsoft.DBforMariaDB/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}
+    steps:
+      - step: Create_Subnet
+        armTemplate: ./templates/Create_Subnet.json
+      - operationId: VirtualNetworkRules_CreateOrUpdate
+        exampleFile: ..\..\2018-06-01\examples\VirtualNetworkRulesCreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/virtualNetworkSubnetId
+            value: $(subnetId)
+      - operationId: VirtualNetworkRules_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\VirtualNetworkRulesList.json
+      - operationId: VirtualNetworkRules_Get
+        exampleFile: ..\..\2018-06-01\examples\VirtualNetworkRulesGet.json
+      - operationId: VirtualNetworkRules_Delete
+        exampleFile: ..\..\2018-06-01\examples\VirtualNetworkRulesDelete.json
+
+# pass
+  - scenario: Databases
+    description: Microsoft.DBforMariaDB/servers/{serverName}/databases/{databaseName}
+    steps:
+      - operationId: Databases_CreateOrUpdate
+        exampleFile: ..\..\2018-06-01\examples\DatabaseCreate.json
+      - operationId: Databases_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\DatabaseListByServer.json
+      - operationId: Databases_Get
+        exampleFile: ..\..\2018-06-01\examples\DatabaseGet.json
+      - operationId: Databases_Delete
+        exampleFile: ..\..\2018-06-01\examples\DatabaseDelete.json
+
+# pass
+  - scenario: Configurations
+    description: Microsoft.DBforMariaDB/servers/{serverName}/configurations/{configurationName}
+    steps:
+      - operationId: Configurations_CreateOrUpdate
+        exampleFile: ..\..\2018-06-01\examples\ConfigurationCreateOrUpdate.json
+      - operationId: Configurations_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\ConfigurationListByServer.json
+      - operationId: Configurations_Get
+        exampleFile: ..\..\2018-06-01\examples\ConfigurationGet.json
+
+# pass
+  - scenario: ServerParameters
+    description: Microsoft.DBforMariaDB/servers/{serverName}/updateConfigurations
+    steps:
+      - operationId: ServerParameters_ListUpdateConfigurations
+        # exampleFile: ..\..\2018-06-01\examples\ConfigurationsUpdateByServer.json
+        parameters:
+          value:
+            value:
+              - name: event_scheduler
+                properties:
+                  value: OFF
+
+# pass
+  - scenario: LogFiles
+    description: Microsoft.DBforMariaDB/servers/{serverName}/logFiles
+    steps:
+      - operationId: LogFiles_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\LogFileListByServer.json
+
+# pass
+  - scenario: RecoverableServers
+    description: Microsoft.DBforMariaDB/servers/{serverName}/recoverableServers
+    steps:
+      - operationId: RecoverableServers_Get
+        exampleFile: ..\..\2018-06-01\examples\RecoverableServersGet.json
+
+# pass
+  - scenario: ServerBasedPerformanceTier
+    description: Microsoft.DBforMariaDB/servers/{serverName}/performanceTiers
+    steps:
+      - operationId: ServerBasedPerformanceTier_List
+        exampleFile: ..\..\2018-06-01\examples\PerformanceTiersListByServer.json
+
+# pass
+  - scenario: LocationBasedPerformanceTier
+    description: Microsoft.DBforMariaDB/locations/{locationName}/performanceTiers
+    steps:
+      - operationId: LocationBasedPerformanceTier_List
+        exampleFile: ..\..\2018-06-01\examples\PerformanceTiersListByLocation.json
+
+# pass
+  - scenario: CheckNameAvailability
+    description: Microsoft.DBforMariaDB/checkNameAvailability
+    steps:
+      - operationId: CheckNameAvailability_Execute
+        exampleFile: ..\..\2018-06-01\examples\CheckNameAvailability.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.DBforMariaDB/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\..\2018-06-01\examples\OperationList.json
+
+cleanUpSteps:
+      - operationId: Servers_Delete
+        exampleFile: ..\..\2018-06-01\examples\ServerDelete.json

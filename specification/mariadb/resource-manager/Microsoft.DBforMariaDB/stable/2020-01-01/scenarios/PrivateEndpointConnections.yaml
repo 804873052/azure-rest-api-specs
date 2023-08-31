@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+  adminPassword:
+    type: string
+  location:
+    type: string
+
+prepareSteps:
+  - operationId: Servers_Create
+    exampleFile: ..\..\2018-06-01\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+    outputVariables:
+      mariadbId:
+        type: string
+        fromResponse: /id
+  - step: Create_PrivateEndpoint
+    armTemplate: ./templates/Create_PrivateEndpoint.json
+
+scenarios:
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.DBforMariaDB/servers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - operationId: PrivateEndpointConnections_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionList.json
+        # outputVariables:
+        #   privateEndpointConnectionName:
+        #     type: string
+        #     fromResponse: /value/0/name
+      # - operationId: PrivateEndpointConnections_CreateOrUpdate
+      #   exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionUpdate.json
+      #   requestUpdate:
+      #     - replace: /parameters/properties/privateLinkServiceConnectionState/status
+      #       value: Rejected
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionGet.json
+      # - operationId: PrivateEndpointConnections_UpdateTags # 405 Method Not Allowed
+      #   exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionUpdateTags.json
+      - operationId: PrivateLinkResources_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\PrivateLinkResourcesList.json
+      # - operationId: PrivateLinkResources_Get
+      #   exampleFile: ..\..\2018-06-01\examples\PrivateLinkResourcesGet.json
+      #   requestUpdate:
+      #     - replace: /groupName
+      #       value: mariadbServer
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\..\2018-06-01\examples\PrivateEndpointConnectionDelete.json

@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  serverName:
+    type: string
+    prefix: serverna
+  adminPassword:
+    type: string
+    
+prepareSteps:
+  - operationId: Servers_Create
+    exampleFile: ..\..\2018-06-01\examples\ServerCreate.json
+    requestUpdate:
+      - replace: /parameters/properties/administratorLoginPassword
+        value: $(adminPassword)
+
+scenarios:
+# pass
+  - scenario: Advisors
+    description: Microsoft.DBforMariaDB/servers/{serverName}/advisors/{advisorName}
+    steps:
+      - operationId: Advisors_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\AdvisorsListByServer.json
+      - operationId: Advisors_Get
+        exampleFile: ..\..\2018-06-01\examples\AdvisorsGet.json
+
+# pass
+  - scenario: CreateRecommendedActionSession
+    description: Microsoft.DBforMariaDB/servers/{serverName}/advisors/{advisorName}/createRecommendedActionSession
+    steps:
+      - operationId: CreateRecommendedActionSession
+        exampleFile: ..\..\2018-06-01\examples\RecommendedActionSessionCreate.json
+
+  - scenario: RecommendedActions
+    description: Microsoft.DBforMariaDB/servers/{serverName}/advisors/{advisorName}/recommendedActions/{recommendedActionName}
+    steps:
+      - operationId: RecommendedActions_ListByServer
+        exampleFile: ..\..\2018-06-01\examples\RecommendedActionsListByServer.json
+      # - operationId: RecommendedActions_Get # InternalServerError
+      #   exampleFile: ..\..\2018-06-01\examples\RecommendedActionsGet.json
+
+# unkonw operationID
+  # - scenario: LocationBasedRecommendedActionSessionsOperationStatus
+  #   description: Microsoft.DBforMariaDB/locations/{locationName}/recommendedActionSessionsAzureAsyncOperation/{operationId}
+  #   steps:
+  #     - operationId: LocationBasedRecommendedActionSessionsOperationStatus_Get
+  #       exampleFile: ..\..\2018-06-01\examples\RecommendedActionSessionOperationStatus.json
+
+  # - scenario: LocationBasedRecommendedActionSessionsResult
+  #   description: Microsoft.DBforMariaDB/locations/{locationName}/recommendedActionSessionsOperationResults/{operationId}
+  #   steps:
+  #     - operationId: LocationBasedRecommendedActionSessionsResult_List
+  #       exampleFile: ..\..\2018-06-01\examples\RecommendedActionSessionResult.json
