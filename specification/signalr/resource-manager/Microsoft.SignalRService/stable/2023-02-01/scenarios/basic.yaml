@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  resourceName:
+    type: string
+    prefix: resource
+  certificateName:
+    type: string
+    prefix: certific
+  name:
+    type: string
+    prefix: name
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  sharedPrivateLinkResourceName:
+    type: string
+    prefix: sharedpr
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: SignalR_CheckNameAvailability
+        exampleFile: ..\examples\SignalR_CheckNameAvailability.json
+      - operationId: SignalR_CreateOrUpdate
+        exampleFile: ..\examples\SignalR_CreateOrUpdate.json
+      - operationId: SignalR_ListBySubscription
+        exampleFile: ..\examples\SignalR_ListBySubscription.json
+      - operationId: SignalR_ListByResourceGroup
+        exampleFile: ..\examples\SignalR_ListByResourceGroup.json
+      - operationId: SignalR_Get
+        exampleFile: ..\examples\SignalR_Get.json
+      - operationId: SignalR_ListSkus
+        exampleFile: ..\examples\SignalR_ListSkus.json
+      - operationId: SignalR_Update
+        exampleFile: ..\examples\SignalR_Update.json
+      - operationId: SignalR_Restart
+        exampleFile: ..\examples\SignalR_Restart.json
+      - operationId: SignalR_RegenerateKey
+        exampleFile: ..\examples\SignalR_RegenerateKey.json
+      - operationId: SignalR_ListKeys
+        exampleFile: ..\examples\SignalR_ListKeys.json
+      - operationId: SignalRPrivateEndpointConnections_Update
+        exampleFile: ..\examples\SignalRPrivateEndpointConnections_Update.json
+      - operationId: SignalRPrivateEndpointConnections_List
+        exampleFile: ..\examples\SignalRPrivateEndpointConnections_List.json
+      - operationId: SignalRPrivateEndpointConnections_Get
+        exampleFile: ..\examples\SignalRPrivateEndpointConnections_Get.json
+      - operationId: SignalRSharedPrivateLinkResources_CreateOrUpdate
+        exampleFile: ..\examples\SignalRSharedPrivateLinkResources_CreateOrUpdate.json
+      - operationId: SignalRSharedPrivateLinkResources_List
+        exampleFile: ..\examples\SignalRSharedPrivateLinkResources_List.json
+      - operationId: SignalRSharedPrivateLinkResources_Get
+        exampleFile: ..\examples\SignalRSharedPrivateLinkResources_Get.json
+      - operationId: SignalRCustomDomains_CreateOrUpdate
+        exampleFile: ..\examples\SignalRCustomDomains_CreateOrUpdate.json
+      - operationId: SignalRCustomDomains_List
+        exampleFile: ..\examples\SignalRCustomDomains_List.json
+      - operationId: SignalRCustomDomains_Get
+        exampleFile: ..\examples\SignalRCustomDomains_Get.json
+      - operationId: SignalRCustomCertificates_CreateOrUpdate
+        exampleFile: ..\examples\SignalRCustomCertificates_CreateOrUpdate.json
+      - operationId: SignalRCustomCertificates_List
+        exampleFile: ..\examples\SignalRCustomCertificates_List.json
+      - operationId: SignalRCustomCertificates_Get
+        exampleFile: ..\examples\SignalRCustomCertificates_Get.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: Usages_List
+        exampleFile: ..\examples\Usages_List.json
+      - operationId: SignalRPrivateLinkResources_List
+        exampleFile: ..\examples\SignalRPrivateLinkResources_List.json
+      - operationId: SignalRCustomCertificates_Delete
+        exampleFile: ..\examples\SignalRCustomCertificates_Delete.json
+      - operationId: SignalRCustomDomains_Delete
+        exampleFile: ..\examples\SignalRCustomDomains_Delete.json
+      - operationId: SignalRSharedPrivateLinkResources_Delete
+        exampleFile: ..\examples\SignalRSharedPrivateLinkResources_Delete.json
+      - operationId: SignalRPrivateEndpointConnections_Delete
+        exampleFile: ..\examples\SignalRPrivateEndpointConnections_Delete.json
+      - operationId: SignalR_Delete
+        exampleFile: ..\examples\SignalR_Delete.json
