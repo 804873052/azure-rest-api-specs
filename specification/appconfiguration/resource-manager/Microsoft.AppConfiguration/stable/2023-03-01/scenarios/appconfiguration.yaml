@@ -1,0 +1,128 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  configStoreName:
+    type: string
+    prefix: configst
+  keyValueName:
+    type: string
+    prefix: keyvalue
+  replicaName:
+    type: string
+    prefix: replican
+  location:
+    type: string
+
+prepareSteps:
+      - operationId: ConfigurationStores_Create
+        exampleFile: ..\examples\ConfigurationStoresCreate.json
+        outputVariables:
+          configurationStoreId:
+            type: string
+            fromResponse: /id
+
+scenarios:
+# pass
+  - scenario: Operations
+    description: Microsoft.AppConfiguration/operations
+    steps:
+      - operationId: Operations_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailable.json
+      - operationId: Operations_RegionalCheckNameAvailability
+        exampleFile: ..\examples\RegionalCheckNameAvailable.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+# pass
+  - scenario: ConfigurationStores
+    description: Microsoft.AppConfiguration/configurationStores/{configStoreName}
+    steps:
+      - operationId: ConfigurationStores_List
+        exampleFile: ..\examples\ConfigurationStoresList.json
+      - operationId: ConfigurationStores_ListByResourceGroup
+        exampleFile: ..\examples\ConfigurationStoresListByResourceGroup.json
+      - operationId: ConfigurationStores_Get
+        exampleFile: ..\examples\ConfigurationStoresGet.json
+      - operationId: ConfigurationStores_Update
+        exampleFile: ..\examples\ConfigurationStoresUpdate.json
+      - operationId: ConfigurationStores_ListKeys
+        exampleFile: ..\examples\ConfigurationStoresListKeys.json
+        outputVariables:
+          keyId:
+            fromResponse: /value/0/id
+      - operationId: ConfigurationStores_RegenerateKey
+        exampleFile: ..\examples\ConfigurationStoresRegenerateKey.json
+        requestUpdate:
+          - replace: /regenerateKeyParameters/id
+            value: $(keyId)
+
+# pass
+  - scenario: Replicas
+    description: Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}
+    steps:
+      - operationId: Replicas_Create
+        # exampleFile: ..\examples\ConfigurationStoresCreateReplica.json
+        parameters:
+          replicaCreationParameters:
+            location: eastus
+        
+      - operationId: Replicas_ListByConfigurationStore
+        exampleFile: ..\examples\ConfigurationStoresListReplicas.json
+      - operationId: Replicas_Get
+        exampleFile: ..\examples\ConfigurationStoresGetReplica.json
+      - operationId: Replicas_Delete
+        exampleFile: ..\examples\ConfigurationStoresDeleteReplica.json
+
+# pass
+  - scenario: KeyValues
+    description: Microsoft.AppConfiguration/configurationStores/{configStoreName}/keyValues/{keyValueName}
+    steps:
+      - operationId: KeyValues_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationStoresCreateKeyValue.json
+      - operationId: KeyValues_Get
+        exampleFile: ..\examples\ConfigurationStoresGetKeyValue.json
+      - operationId: KeyValues_Delete
+        exampleFile: ..\examples\ConfigurationStoresDeleteKeyValue.json
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - operationId: PrivateEndpointConnections_ListByConfigurationStore
+        exampleFile: ..\examples\ConfigurationStoresListPrivateEndpointConnections.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationStoresUpdatePrivateEndpointConnection.json
+        requestUpdate:
+          - replace: /privateEndpointConnection/properties/privateLinkServiceConnectionState/status
+            value: Rejected
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\ConfigurationStoresGetPrivateEndpointConnection.json
+
+      - operationId: PrivateLinkResources_ListByConfigurationStore
+        exampleFile: ..\examples\PrivateLinkResourcesListByConfigurationStore.json
+      - operationId: PrivateLinkResources_Get
+        # variables:
+        #   groupName:
+        #     type: string
+        #     prefix: groupnam
+        exampleFile: ..\examples\PrivateLinkResourceGet.json
+
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\ConfigurationStoresDeletePrivateEndpointConnection.json
+
+cleanUpSteps:
+# pass
+      - operationId: ConfigurationStores_Delete
+        exampleFile: ..\examples\ConfigurationStoresDelete.json
+
+      - operationId: ConfigurationStores_ListDeleted
+        exampleFile: ..\examples\DeletedConfigurationStoresList.json
+      - operationId: ConfigurationStores_GetDeleted
+        exampleFile: ..\examples\DeletedConfigurationStoresGet.json
+      - operationId: ConfigurationStores_PurgeDeleted
+        exampleFile: ..\examples\DeletedConfigurationStoresPurge.json

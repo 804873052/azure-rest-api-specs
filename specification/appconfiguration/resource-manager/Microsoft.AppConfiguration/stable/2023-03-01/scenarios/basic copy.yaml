@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  configStoreName:
+    type: string
+    prefix: configst
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  keyValueName:
+    type: string
+    prefix: keyvalue
+  replicaName:
+    type: string
+    prefix: replican
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Operations_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailable.json
+      - operationId: Operations_RegionalCheckNameAvailability
+        exampleFile: ..\examples\RegionalCheckNameAvailable.json
+      - operationId: ConfigurationStores_Create
+        exampleFile: ..\examples\ConfigurationStoresCreate.json
+      - operationId: ConfigurationStores_List
+        exampleFile: ..\examples\ConfigurationStoresList.json
+      - operationId: ConfigurationStores_GetDeleted
+        exampleFile: ..\examples\DeletedConfigurationStoresGet.json
+      - operationId: ConfigurationStores_ListDeleted
+        exampleFile: ..\examples\DeletedConfigurationStoresList.json
+      - operationId: ConfigurationStores_ListByResourceGroup
+        exampleFile: ..\examples\ConfigurationStoresListByResourceGroup.json
+      - operationId: ConfigurationStores_Get
+        exampleFile: ..\examples\ConfigurationStoresGet.json
+      - operationId: ConfigurationStores_Update
+        exampleFile: ..\examples\ConfigurationStoresUpdate.json
+      - operationId: ConfigurationStores_PurgeDeleted
+        exampleFile: ..\examples\DeletedConfigurationStoresPurge.json
+      - operationId: ConfigurationStores_RegenerateKey
+        exampleFile: ..\examples\ConfigurationStoresRegenerateKey.json
+      - operationId: ConfigurationStores_ListKeys
+        exampleFile: ..\examples\ConfigurationStoresListKeys.json
+      - operationId: Replicas_Create
+        exampleFile: ..\examples\ConfigurationStoresCreateReplica.json
+      - operationId: Replicas_ListByConfigurationStore
+        exampleFile: ..\examples\ConfigurationStoresListReplicas.json
+      - operationId: Replicas_Get
+        exampleFile: ..\examples\ConfigurationStoresGetReplica.json
+      - operationId: KeyValues_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationStoresCreateKeyValue.json
+      - operationId: KeyValues_Get
+        exampleFile: ..\examples\ConfigurationStoresGetKeyValue.json
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationStoresUpdatePrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_ListByConfigurationStore
+        exampleFile: ..\examples\ConfigurationStoresListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\ConfigurationStoresGetPrivateEndpointConnection.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+      - operationId: PrivateLinkResources_ListByConfigurationStore
+        exampleFile: ..\examples\PrivateLinkResourcesListByConfigurationStore.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          groupName:
+            type: string
+            prefix: groupnam
+        exampleFile: ..\examples\PrivateLinkResourceGet.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\ConfigurationStoresDeletePrivateEndpointConnection.json
+      - operationId: KeyValues_Delete
+        exampleFile: ..\examples\ConfigurationStoresDeleteKeyValue.json
+      - operationId: Replicas_Delete
+        exampleFile: ..\examples\ConfigurationStoresDeleteReplica.json
+      - operationId: ConfigurationStores_Delete
+        exampleFile: ..\examples\ConfigurationStoresDelete.json
