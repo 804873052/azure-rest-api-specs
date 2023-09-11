@@ -29,7 +29,7 @@ variables:
 #     prefix: firewall
 
 prepareSteps:
-  - operationId: GlobalRulestack_CreateOrUpdate
+  - operationId: GlobalRulestack_CreateOrUpdate # AuthorizationFailed
     exampleFile: ..\examples\GlobalRulestack_CreateOrUpdate_MinimumSet_Gen.json
   - operationId: LocalRulestacks_CreateOrUpdate
     exampleFile: ..\examples\LocalRulestacks_CreateOrUpdate_MinimumSet_Gen.json

@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  workspaceName:
+    type: string
+    prefix: workspac
+
+scenarios:
+# pass
+  - scenario: Workspaces
+    description: Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}
+    steps:
+      - operationId: Workspaces_Create
+        exampleFile: ..\examples\Workspaces_Create_MaximumSet_Gen.json
+      - operationId: Workspaces_ListBySubscription
+        exampleFile: ..\examples\Workspaces_ListBySubscription_MaximumSet_Gen.json
+      - operationId: Workspaces_ListByResourceGroup
+        exampleFile: ..\examples\Workspaces_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\Workspaces_Get_MaximumSet_Gen.json
+      - operationId: Workspaces_Update
+        exampleFile: ..\examples\Workspaces_Update_MaximumSet_Gen.json
+      # - operationId: Workspaces_GenerateUploadUrl # need FirmwareID
+      #   exampleFile: ..\examples\Workspaces_GenerateUploadUrl_MaximumSet_Gen.json
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\Workspaces_Delete_MaximumSet_Gen.json

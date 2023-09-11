@@ -18,7 +18,7 @@ scenarios:
         #     type: string
         #     prefix: issuenam
         exampleFile: ..\examples\EmergingIssues_Get.json
-
+true
   - scenario: Events
     description: Microsoft.ResourceHealth/events
     steps:

@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  workspaceName:
+    type: string
+    prefix: workspac
+  firmwareId:
+    type: string
+    prefix: firmware
+
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Workspaces_Create
+        exampleFile: ..\examples\Workspaces_Create_MaximumSet_Gen.json
+      - operationId: Workspaces_ListBySubscription
+        exampleFile: ..\examples\Workspaces_ListBySubscription_MaximumSet_Gen.json
+      - operationId: Workspaces_ListByResourceGroup
+        exampleFile: ..\examples\Workspaces_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\Workspaces_Get_MaximumSet_Gen.json
+      - operationId: Workspaces_Update
+        exampleFile: ..\examples\Workspaces_Update_MaximumSet_Gen.json
+      - operationId: Workspaces_GenerateUploadUrl
+        exampleFile: ..\examples\Workspaces_GenerateUploadUrl_MaximumSet_Gen.json
+
+      - operationId: Firmware_Create
+        exampleFile: ..\examples\Firmware_Create_MaximumSet_Gen.json
+      - operationId: Firmware_ListByWorkspace
+        exampleFile: ..\examples\Firmware_ListByWorkspace_MaximumSet_Gen.json
+      - operationId: Firmware_Get
+        exampleFile: ..\examples\Firmware_Get_MaximumSet_Gen.json
+      - operationId: Firmware_Update
+        exampleFile: ..\examples\Firmware_Update_MaximumSet_Gen.json
+      - operationId: Firmware_GenerateComponentDetails
+        exampleFile: ..\examples\Firmware_GenerateComponentDetails_MaximumSet_Gen.json
+      - operationId: Firmware_GenerateDownloadUrl
+        exampleFile: ..\examples\Firmware_GenerateDownloadUrl_MaximumSet_Gen.json
+      - operationId: Firmware_ListGeneratePasswordHashList
+        exampleFile: ..\examples\Firmware_ListGeneratePasswordHashList_MaximumSet_Gen.json
+      - operationId: Firmware_GenerateCveSummary
+        exampleFile: ..\examples\Firmware_GenerateCveSummary_MaximumSet_Gen.json
+      - operationId: Firmware_GenerateFilesystemDownloadUrl
+        exampleFile: ..\examples\Firmware_GenerateFilesystemDownloadUrl_MaximumSet_Gen.json
+      - operationId: Firmware_ListGenerateCveList
+        exampleFile: ..\examples\Firmware_ListGenerateCveList_MaximumSet_Gen.json
+      - operationId: Firmware_GenerateCryptoKeySummary
+        exampleFile: ..\examples\Firmware_GenerateCryptoKeySummary_MaximumSet_Gen.json
+      - operationId: Firmware_GenerateSummary
+        exampleFile: ..\examples\Firmware_GenerateSummary_MaximumSet_Gen.json
+      - operationId: Firmware_GenerateCryptoCertificateSummary
+        exampleFile: >-
+          ..\examples\Firmware_GenerateCryptoCertificateSummary_MaximumSet_Gen.json
+      - operationId: Firmware_ListGenerateCryptoCertificateList
+        exampleFile: >-
+          ..\examples\Firmware_ListGenerateCryptoCertificateList_MaximumSet_Gen.json
+      - operationId: Firmware_GenerateBinaryHardeningSummary
+        exampleFile: >-
+          ..\examples\Firmware_GenerateBinaryHardeningSummary_MaximumSet_Gen.json
+      - operationId: Firmware_ListGenerateComponentList
+        exampleFile: ..\examples\Firmware_ListGenerateComponentList_MaximumSet_Gen.json
+      - operationId: Firmware_ListGenerateCryptoKeyList
+        exampleFile: ..\examples\Firmware_ListGenerateCryptoKeyList_MaximumSet_Gen.json
+      - operationId: Firmware_ListGenerateBinaryHardeningList
+        exampleFile: >-
+          ..\examples\Firmware_ListGenerateBinaryHardeningList_MaximumSet_Gen.json
+      - operationId: Firmware_GenerateBinaryHardeningDetails
+        exampleFile: >-
+          ..\examples\Firmware_GenerateBinaryHardeningDetails_MaximumSet_Gen.json
+
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List_MaximumSet_Gen.json
+
+      - operationId: Firmware_Delete
+        exampleFile: ..\examples\Firmware_Delete_MaximumSet_Gen.json
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\Workspaces_Delete_MaximumSet_Gen.json

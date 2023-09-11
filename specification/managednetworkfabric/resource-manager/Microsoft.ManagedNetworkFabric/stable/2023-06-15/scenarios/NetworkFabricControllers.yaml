@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkFabricControllerName:
+    type: string
+    prefix: networkf
+
+scenarios:
+  - scenario: NetworkFabricControllers
+    description: Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}
+    steps:
+      - operationId: NetworkFabricControllers_Create
+        exampleFile: ..\examples\NetworkFabricControllers_Create_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_ListBySubscription
+        exampleFile: ..\examples\NetworkFabricControllers_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_ListByResourceGroup
+        exampleFile: ..\examples\NetworkFabricControllers_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_Get
+        exampleFile: ..\examples\NetworkFabricControllers_Get_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_Update
+        exampleFile: ..\examples\NetworkFabricControllers_Update_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_Delete
+        exampleFile: ..\examples\NetworkFabricControllers_Delete_MaximumSet_Gen.json

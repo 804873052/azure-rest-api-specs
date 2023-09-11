@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+# The resource type 'operations' could not be found in the namespace 'Microsoft.IoTFirmwareDefense' for api version '2023-02-08-preview'. 
+# The supported api-versions are '2021-11-10-privatepreview,2022-09-15-privatepreview'.
+  - scenario: Operations
+    description: Microsoft.IoTFirmwareDefense/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List_MaximumSet_Gen.json

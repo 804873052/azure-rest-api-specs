@@ -1,0 +1,448 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+
+# List of available regions for the resource type is 'eastus,southcentralus,westus3,eastus2euap'
+
+scope: ResourceGroup
+variables:
+  l3IsolationDomainName:
+    type: string
+    prefix: l3isolat
+  networkFabricName:
+    type: string
+    prefix: networkf
+  networkDeviceName:
+    type: string
+    prefix: networkd
+  accessControlListName:
+    type: string
+    prefix: accessco
+  l2IsolationDomainName:
+    type: string
+    prefix: l2isolat
+  internalNetworkName:
+    type: string
+    prefix: internal
+  networkTapRuleName:
+    type: string
+    prefix: networkt
+  routePolicyName:
+    type: string
+    prefix: routepol
+  externalNetworkName:
+    type: string
+    prefix: external
+  networkToNetworkInterconnectName:
+    type: string
+    prefix: networkt
+  networkTapName:
+    type: string
+    prefix: networkt
+  networkInterfaceName:
+    type: string
+    prefix: networki
+  internetGatewayName:
+    type: string
+    prefix: internet
+  internetGatewayRuleName:
+    type: string
+    prefix: internet
+  ipCommunityName:
+    type: string
+    prefix: ipcommun
+  ipExtendedCommunityName:
+    type: string
+    prefix: ipextend
+  ipPrefixName:
+    type: string
+    prefix: ipprefix
+  neighborGroupName:
+    type: string
+    prefix: neighbor
+  networkFabricControllerName:
+    type: string
+    prefix: networkf
+  networkPacketBrokerName:
+    type: string
+    prefix: networkp
+  networkRackName:
+    type: string
+    prefix: networkr
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: L3IsolationDomains_Create
+        exampleFile: ..\examples\L3IsolationDomains_Create_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_ListBySubscription
+        exampleFile: ..\examples\L3IsolationDomains_ListBySubscription_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_ListByResourceGroup
+        exampleFile: ..\examples\L3IsolationDomains_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_Get
+        exampleFile: ..\examples\L3IsolationDomains_Get_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_Update
+        exampleFile: ..\examples\L3IsolationDomains_Update_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_updateAdministrativeState
+        exampleFile: >-
+          ..\examples\L3IsolationDomains_updateAdministrativeState_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_ValidateConfiguration
+        exampleFile: >-
+          ..\examples\L3IsolationDomains_ValidateConfiguration_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_CommitConfiguration
+        exampleFile: ..\examples\L3IsolationDomains_CommitConfiguration_MaximumSet_Gen.json
+
+      - operationId: NetworkFabrics_Create
+        exampleFile: ..\examples\NetworkFabrics_Create_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_ListBySubscription
+        exampleFile: ..\examples\NetworkFabrics_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_ListByResourceGroup
+        exampleFile: ..\examples\NetworkFabrics_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_Get
+        exampleFile: ..\examples\NetworkFabrics_Get_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_Update
+        exampleFile: ..\examples\NetworkFabrics_Update_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_deprovision
+        exampleFile: ..\examples\NetworkFabrics_deprovision_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_UpdateInfraManagementBfdConfiguration
+        exampleFile: >-
+          ..\examples\NetworkFabrics_UpdateInfraManagementBfdConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_upgrade
+        exampleFile: ..\examples\NetworkFabrics_upgrade_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_UpdateWorkloadManagementBfdConfiguration
+        exampleFile: >-
+          ..\examples\NetworkFabrics_UpdateWorkloadManagementBfdConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_refreshConfiguration
+        exampleFile: ..\examples\NetworkFabrics_refreshConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_GetTopology
+        exampleFile: ..\examples\NetworkFabrics_GetTopology_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_provision
+        exampleFile: ..\examples\NetworkFabrics_provision_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_CommitConfiguration
+        exampleFile: ..\examples\NetworkFabrics_CommitConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_ValidateConfiguration
+        exampleFile: ..\examples\NetworkFabrics_ValidateConfiguration_MaximumSet_Gen.json
+
+      - operationId: NetworkDevices_Create
+        exampleFile: ..\examples\NetworkDevices_Create_MaximumSet_Gen.json
+      - operationId: NetworkDevices_ListBySubscription
+        exampleFile: ..\examples\NetworkDevices_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkDevices_ListByResourceGroup
+        exampleFile: ..\examples\NetworkDevices_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkDevices_Get
+        exampleFile: ..\examples\NetworkDevices_Get_MaximumSet_Gen.json
+      - operationId: NetworkDevices_Update
+        exampleFile: ..\examples\NetworkDevices_Update_MaximumSet_Gen.json
+      - operationId: NetworkDevices_RefreshConfiguration
+        exampleFile: ..\examples\NetworkDevices_RefreshConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkDevices_UpdateAdministrativeState
+        exampleFile: >-
+          ..\examples\NetworkDevices_UpdateAdministrativeState_MaximumSet_Gen.json
+      - operationId: NetworkDevices_Upgrade
+        exampleFile: ..\examples\NetworkDevices_Upgrade_MaximumSet_Gen.json
+      - operationId: NetworkDevices_Reboot
+        exampleFile: ..\examples\NetworkDevices_Reboot_MaximumSet_Gen.json
+      - operationId: NetworkTapRules_Create
+        exampleFile: ..\examples\NetworkTapRules_Create_MaximumSet_Gen.json
+      - operationId: NetworkTapRules_ListBySubscription
+        exampleFile: ..\examples\NetworkTapRules_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkTapRules_ListByResourceGroup
+        exampleFile: ..\examples\NetworkTapRules_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkTapRules_Get
+        exampleFile: ..\examples\NetworkTapRules_Get_MaximumSet_Gen.json
+      - operationId: NetworkTapRules_Update
+        exampleFile: ..\examples\NetworkTapRules_Update_MaximumSet_Gen.json
+      - operationId: NetworkTapRules_ValidateConfiguration
+        exampleFile: ..\examples\NetworkTapRules_ValidateConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkTapRules_Resync
+        exampleFile: ..\examples\NetworkTapRules_Resync_MaximumSet_Gen.json
+      - operationId: NetworkTapRules_UpdateAdministrativeState
+        exampleFile: >-
+          ..\examples\NetworkTapRules_UpdateAdministrativeState_MaximumSet_Gen.json
+      - operationId: InternalNetworks_Create
+        exampleFile: ..\examples\InternalNetworks_Create_MaximumSet_Gen.json
+      - operationId: InternalNetworks_ListByL3IsolationDomain
+        exampleFile: >-
+          ..\examples\InternalNetworks_ListByL3IsolationDomain_MaximumSet_Gen.json
+      - operationId: InternalNetworks_Get
+        exampleFile: ..\examples\InternalNetworks_Get_MaximumSet_Gen.json
+      - operationId: InternalNetworks_Update
+        exampleFile: ..\examples\InternalNetworks_Update_MaximumSet_Gen.json
+      - operationId: InternalNetworks_UpdateAdministrativeState
+        exampleFile: >-
+          ..\examples\InternalNetworks_UpdateAdministrativeState_MaximumSet_Gen.json
+      - operationId: InternalNetworks_UpdateStaticRouteBfdAdministrativeState
+        exampleFile: >-
+          ..\examples\InternalNetworks_UpdateStaticRouteBfdAdministrativeState_MaximumSet_Gen.json
+      - operationId: InternalNetworks_UpdateBgpAdministrativeState
+        exampleFile: >-
+          ..\examples\InternalNetworks_UpdateBgpAdministrativeState_MaximumSet_Gen.json
+      - operationId: RoutePolicies_Create
+        exampleFile: ..\examples\RoutePolicies_Create_MaximumSet_Gen.json
+      - operationId: RoutePolicies_ListBySubscription
+        exampleFile: ..\examples\RoutePolicies_ListBySubscription_MaximumSet_Gen.json
+      - operationId: RoutePolicies_ListByResourceGroup
+        exampleFile: ..\examples\RoutePolicies_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: RoutePolicies_Get
+        exampleFile: ..\examples\RoutePolicies_Get_MaximumSet_Gen.json
+      - operationId: RoutePolicies_Update
+        exampleFile: ..\examples\RoutePolicies_Update_MaximumSet_Gen.json
+      - operationId: RoutePolicies_CommitConfiguration
+        exampleFile: ..\examples\RoutePolicies_CommitConfiguration_MaximumSet_Gen.json
+      - operationId: RoutePolicies_ValidateConfiguration
+        exampleFile: ..\examples\RoutePolicies_ValidateConfiguration_MaximumSet_Gen.json
+      - operationId: RoutePolicies_UpdateAdministrativeState
+        exampleFile: >-
+          ..\examples\RoutePolicies_UpdateAdministrativeState_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_Create
+        exampleFile: ..\examples\L2IsolationDomains_Create_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_ListBySubscription
+        exampleFile: ..\examples\L2IsolationDomains_ListBySubscription_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_ListByResourceGroup
+        exampleFile: ..\examples\L2IsolationDomains_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_Get
+        exampleFile: ..\examples\L2IsolationDomains_Get_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_Update
+        exampleFile: ..\examples\L2IsolationDomains_Update_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_updateAdministrativeState
+        exampleFile: >-
+          ..\examples\L2IsolationDomains_updateAdministrativeState_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_ValidateConfiguration
+        exampleFile: >-
+          ..\examples\L2IsolationDomains_ValidateConfiguration_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_CommitConfiguration
+        exampleFile: ..\examples\L2IsolationDomains_CommitConfiguration_MaximumSet_Gen.json
+
+      - operationId: AccessControlLists_Create
+        exampleFile: ..\examples\AccessControlLists_Create_MaximumSet_Gen.json
+      - operationId: AccessControlLists_ListBySubscription
+        exampleFile: ..\examples\AccessControlLists_ListBySubscription_MaximumSet_Gen.json
+      - operationId: AccessControlLists_ListByResourceGroup
+        exampleFile: ..\examples\AccessControlLists_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: AccessControlLists_Get
+        exampleFile: ..\examples\AccessControlLists_Get_MaximumSet_Gen.json
+      - operationId: AccessControlLists_Update
+        exampleFile: ..\examples\AccessControlLists_Update_MaximumSet_Gen.json
+      - operationId: AccessControlLists_ValidateConfiguration
+        exampleFile: >-
+          ..\examples\AccessControlLists_ValidateConfiguration_MaximumSet_Gen.json
+      - operationId: AccessControlLists_Resync
+        exampleFile: ..\examples\AccessControlLists_Resync_MaximumSet_Gen.json
+      - operationId: AccessControlLists_UpdateAdministrativeState
+        exampleFile: >-
+          ..\examples\AccessControlLists_UpdateAdministrativeState_MaximumSet_Gen.json
+
+      - operationId: NetworkToNetworkInterconnects_Create
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Create_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_ListByNetworkFabric
+        exampleFile: >-
+          ..\examples\NetworkToNetworkInterconnects_ListByNetworkFabric_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_Get
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Get_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_Update
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Update_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_updateAdministrativeState
+        exampleFile: >-
+          ..\examples\NetworkToNetworkInterconnects_updateAdministrativeState_MaximumSet_Gen.json
+      - operationId: >-
+          NetworkToNetworkInterconnects_updateNpbStaticRouteBfdAdministrativeState
+        exampleFile: >-
+          ..\examples\NetworkToNetworkInterconnects_updateNpbStaticRouteBfdAdministrativeState_MaximumSet_Gen.json
+
+      - operationId: ExternalNetworks_Create
+        exampleFile: ..\examples\ExternalNetworks_Create_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_ListByL3IsolationDomain
+        exampleFile: >-
+          ..\examples\ExternalNetworks_ListByL3IsolationDomain_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_Get
+        exampleFile: ..\examples\ExternalNetworks_Get_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_Update
+        exampleFile: ..\examples\ExternalNetworks_Update_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_UpdateAdministrativeState
+        exampleFile: >-
+          ..\examples\ExternalNetworks_UpdateAdministrativeState_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_UpdateStaticRouteBfdAdministrativeState
+        exampleFile: >-
+          ..\examples\ExternalNetworks_UpdateStaticRouteBfdAdministrativeState_MaximumSet_Gen.json
+      - operationId: NetworkTaps_Create
+        exampleFile: ..\examples\NetworkTaps_Create_MaximumSet_Gen.json
+      - operationId: NetworkTaps_ListBySubscription
+        exampleFile: ..\examples\NetworkTaps_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkTaps_ListByResourceGroup
+        exampleFile: ..\examples\NetworkTaps_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkTaps_Get
+        exampleFile: ..\examples\NetworkTaps_Get_MaximumSet_Gen.json
+      - operationId: NetworkTaps_Update
+        exampleFile: ..\examples\NetworkTaps_Update_MaximumSet_Gen.json
+      - operationId: NetworkTaps_Resync
+        exampleFile: ..\examples\NetworkTaps_Resync_MaximumSet_Gen.json
+      - operationId: NetworkTaps_UpdateAdministrativeState
+        exampleFile: ..\examples\NetworkTaps_UpdateAdministrativeState_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_Create
+        exampleFile: ..\examples\NetworkInterfaces_Create_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_ListByNetworkDevice
+        exampleFile: ..\examples\NetworkInterfaces_ListByNetworkDevice_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_Get
+        exampleFile: ..\examples\NetworkInterfaces_Get_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_Update
+        exampleFile: ..\examples\NetworkInterfaces_Update_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_UpdateAdministrativeState
+        exampleFile: >-
+          ..\examples\NetworkInterfaces_UpdateAdministrativeState_MaximumSet_Gen.json
+      - operationId: IpCommunities_Create
+        exampleFile: ..\examples\IpCommunities_Create_MaximumSet_Gen.json
+      - operationId: IpCommunities_ListBySubscription
+        exampleFile: ..\examples\IpCommunities_ListBySubscription_MaximumSet_Gen.json
+      - operationId: IpCommunities_ListByResourceGroup
+        exampleFile: ..\examples\IpCommunities_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: IpCommunities_Get
+        exampleFile: ..\examples\IpCommunities_Get_MaximumSet_Gen.json
+      - operationId: IpCommunities_Update
+        exampleFile: ..\examples\IpCommunities_Update_MaximumSet_Gen.json
+      - operationId: NetworkPacketBrokers_Create
+        exampleFile: ..\examples\NetworkPacketBrokers_Create_MaximumSet_Gen.json
+      - operationId: NetworkPacketBrokers_ListBySubscription
+        exampleFile: >-
+          ..\examples\NetworkPacketBrokers_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkPacketBrokers_ListByResourceGroup
+        exampleFile: >-
+          ..\examples\NetworkPacketBrokers_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkPacketBrokers_Get
+        exampleFile: ..\examples\NetworkPacketBrokers_Get_MaximumSet_Gen.json
+      - operationId: NetworkPacketBrokers_Update
+        exampleFile: ..\examples\NetworkPacketBrokers_Update_MaximumSet_Gen.json
+      - operationId: NeighborGroups_Create
+        exampleFile: ..\examples\NeighborGroups_Create_MaximumSet_Gen.json
+      - operationId: NeighborGroups_ListBySubscription
+        exampleFile: ..\examples\NeighborGroups_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NeighborGroups_ListByResourceGroup
+        exampleFile: ..\examples\NeighborGroups_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NeighborGroups_Get
+        exampleFile: ..\examples\NeighborGroups_Get_MaximumSet_Gen.json
+      - operationId: NeighborGroups_Update
+        exampleFile: ..\examples\NeighborGroups_Update_MaximumSet_Gen.json
+      - operationId: NetworkRacks_Create
+        exampleFile: ..\examples\NetworkRacks_Create_MaximumSet_Gen.json
+      - operationId: NetworkRacks_ListBySubscription
+        exampleFile: ..\examples\NetworkRacks_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkRacks_ListByResourceGroup
+        exampleFile: ..\examples\NetworkRacks_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkRacks_Get
+        exampleFile: ..\examples\NetworkRacks_Get_MaximumSet_Gen.json
+      - operationId: NetworkRacks_Update
+        exampleFile: ..\examples\NetworkRacks_Update_MaximumSet_Gen.json
+      - operationId: IpPrefixes_Create
+        exampleFile: ..\examples\IpPrefixes_Create_MaximumSet_Gen.json
+      - operationId: IpPrefixes_ListBySubscription
+        exampleFile: ..\examples\IpPrefixes_ListBySubscription_MaximumSet_Gen.json
+      - operationId: IpPrefixes_ListByResourceGroup
+        exampleFile: ..\examples\IpPrefixes_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: IpPrefixes_Get
+        exampleFile: ..\examples\IpPrefixes_Get_MaximumSet_Gen.json
+      - operationId: IpPrefixes_Update
+        exampleFile: ..\examples\IpPrefixes_Update_MaximumSet_Gen.json
+      - operationId: InternetGatewayRules_Create
+        exampleFile: ..\examples\InternetGatewayRules_Create_MaximumSet_Gen.json
+      - operationId: InternetGatewayRules_ListBySubscription
+        exampleFile: >-
+          ..\examples\InternetGatewayRules_ListBySubscription_MaximumSet_Gen.json
+      - operationId: InternetGatewayRules_Get
+        exampleFile: ..\examples\InternetGatewayRules_Get_MaximumSet_Gen.json
+      - operationId: InternetGatewayRules_ListByResourceGroup
+        exampleFile: >-
+          ..\examples\InternetGatewayRules_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: InternetGatewayRules_Update
+        exampleFile: ..\examples\InternetGatewayRules_Update_MaximumSet_Gen.json
+
+      - operationId: NetworkFabricControllers_Create
+        exampleFile: ..\examples\NetworkFabricControllers_Create_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_ListBySubscription
+        exampleFile: >-
+          ..\examples\NetworkFabricControllers_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_ListByResourceGroup
+        exampleFile: >-
+          ..\examples\NetworkFabricControllers_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_Get
+        exampleFile: ..\examples\NetworkFabricControllers_Get_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_Update
+        exampleFile: ..\examples\NetworkFabricControllers_Update_MaximumSet_Gen.json
+        
+      - operationId: InternetGateways_Create
+        exampleFile: ..\examples\InternetGateways_Create_MaximumSet_Gen.json
+      - operationId: InternetGateways_ListBySubscription
+        exampleFile: ..\examples\InternetGateways_ListBySubscription_MaximumSet_Gen.json
+      - operationId: InternetGateways_ListByResourceGroup
+        exampleFile: ..\examples\InternetGateways_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: InternetGateways_Get
+        exampleFile: ..\examples\InternetGateways_Get_MaximumSet_Gen.json
+      - operationId: InternetGateways_Update
+        exampleFile: ..\examples\InternetGateways_Update_MaximumSet_Gen.json
+      - operationId: IpExtendedCommunities_Create
+        exampleFile: ..\examples\IpExtendedCommunities_Create_MaximumSet_Gen.json
+      - operationId: IpExtendedCommunities_ListBySubscription
+        exampleFile: >-
+          ..\examples\IpExtendedCommunities_ListBySubscription_MaximumSet_Gen.json
+      - operationId: IpExtendedCommunities_Get
+        exampleFile: ..\examples\IpExtendedCommunities_Get_MaximumSet_Gen.json
+      - operationId: IpExtendedCommunities_ListByResourceGroup
+        exampleFile: >-
+          ..\examples\IpExtendedCommunities_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: IpExtendedCommunities_Update
+        exampleFile: ..\examples\IpExtendedCommunities_Update_MaximumSet_Gen.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+      - operationId: NetworkDeviceSkus_ListBySubscription
+        exampleFile: ..\examples\NetworkDeviceSkus_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkDeviceSkus_Get
+        variables:
+          networkDeviceSkuName:
+            type: string
+            prefix: networkd
+        exampleFile: ..\examples\NetworkDeviceSkus_Get_MaximumSet_Gen.json
+      - operationId: NetworkFabricSkus_ListBySubscription
+        exampleFile: ..\examples\NetworkFabricSkus_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkFabricSkus_Get
+        variables:
+          networkFabricSkuName:
+            type: string
+            prefix: networkf
+        exampleFile: ..\examples\NetworkFabricSkus_Get_MaximumSet_Gen.json
+      - operationId: IpExtendedCommunities_Delete
+        exampleFile: ..\examples\IpExtendedCommunities_Delete_MaximumSet_Gen.json
+      - operationId: InternetGateways_Delete
+        exampleFile: ..\examples\InternetGateways_Delete_MaximumSet_Gen.json
+      - operationId: NetworkFabricControllers_Delete
+        exampleFile: ..\examples\NetworkFabricControllers_Delete_MaximumSet_Gen.json
+      - operationId: InternetGatewayRules_Delete
+        exampleFile: ..\examples\InternetGatewayRules_Delete_MaximumSet_Gen.json
+      - operationId: IpPrefixes_Delete
+        exampleFile: ..\examples\IpPrefixes_Delete_MaximumSet_Gen.json
+      - operationId: NetworkRacks_Delete
+        exampleFile: ..\examples\NetworkRacks_Delete_MaximumSet_Gen.json
+      - operationId: NeighborGroups_Delete
+        exampleFile: ..\examples\NeighborGroups_Delete_MaximumSet_Gen.json
+      - operationId: NetworkPacketBrokers_Delete
+        exampleFile: ..\examples\NetworkPacketBrokers_Delete_MaximumSet_Gen.json
+      - operationId: IpCommunities_Delete
+        exampleFile: ..\examples\IpCommunities_Delete_MaximumSet_Gen.json
+      - operationId: NetworkInterfaces_Delete
+        exampleFile: ..\examples\NetworkInterfaces_Delete_MaximumSet_Gen.json
+      - operationId: NetworkTaps_Delete
+        exampleFile: ..\examples\NetworkTaps_Delete_MaximumSet_Gen.json
+      - operationId: ExternalNetworks_Delete
+        exampleFile: ..\examples\ExternalNetworks_Delete_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_Delete
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Delete_MaximumSet_Gen.json
+      - operationId: AccessControlLists_Delete
+        exampleFile: ..\examples\AccessControlLists_Delete_MaximumSet_Gen.json
+      - operationId: L2IsolationDomains_Delete
+        exampleFile: ..\examples\L2IsolationDomains_Delete_MaximumSet_Gen.json
+      - operationId: RoutePolicies_Delete
+        exampleFile: ..\examples\RoutePolicies_Delete_MaximumSet_Gen.json
+      - operationId: InternalNetworks_Delete
+        exampleFile: ..\examples\InternalNetworks_Delete_MaximumSet_Gen.json
+      - operationId: NetworkTapRules_Delete
+        exampleFile: ..\examples\NetworkTapRules_Delete_MaximumSet_Gen.json
+      - operationId: NetworkDevices_Delete
+        exampleFile: ..\examples\NetworkDevices_Delete_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_Delete
+        exampleFile: ..\examples\NetworkFabrics_Delete_MaximumSet_Gen.json
+      - operationId: L3IsolationDomains_Delete
+        exampleFile: ..\examples\L3IsolationDomains_Delete_MaximumSet_Gen.json

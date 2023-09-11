@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  catalogName: # lower case
+    type: string
+    prefix: catalogn
+  productName:
+    type: string
+    prefix: productn
+  deviceGroupName:
+    type: string
+    prefix: devicegr
+  deviceName:
+    type: string
+    prefix: devicena
+  # serialNumber:
+  #   type: string
+  #   prefix: serialnu
+  imageName:
+    type: string
+    prefix: imagenam
+  deploymentName:
+    type: string
+    prefix: deployme
+
+prepareSteps:
+  - operationId: Catalogs_CreateOrUpdate
+    # exampleFile: ..\examples\PutCatalog.json
+    parameters:
+        resource:
+          location: global
+
+scenarios:
+# "ResourceCreationFailed: Internal Server Error"
+  - scenario: Products
+    description: Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}
+    steps:
+      - operationId: Products_CreateOrUpdate 
+        # exampleFile: ..\examples\PutProduct.json
+        parameters:
+          resource:
+            properties:
+              description: Product Description
+      - operationId: Products_ListByCatalog
+        exampleFile: ..\examples\GetProducts.json
+      - operationId: Products_Get
+        exampleFile: ..\examples\GetProduct.json
+      - operationId: Products_Update
+        # exampleFile: ..\examples\PatchProduct.json
+        parameters:
+          properties:
+            properties:
+              description: Updated Product Description
+      - operationId: Products_CountDevices
+        exampleFile: ..\examples\PostCountDevicesProduct.json
+      - operationId: Products_GenerateDefaultDeviceGroups
+        exampleFile: ..\examples\PostGenerateDefaultDeviceGroups.json
+      - operationId: Products_Delete
+        exampleFile: ..\examples\DeleteProduct.json
+
+
+cleanUpSteps:
+      - operationId: Catalogs_Delete
+        exampleFile: ..\examples\DeleteCatalog.json

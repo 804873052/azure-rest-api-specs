@@ -1,0 +1,67 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkFabricName:
+    type: string
+    prefix: networkf
+  networkToNetworkInterconnectName:
+    type: string
+    prefix: networkt
+
+prepareSteps:
+  - operationId: NetworkFabrics_Create
+    exampleFile: ..\examples\NetworkFabrics_Create_MaximumSet_Gen.json
+
+scenarios:
+  - scenario: NetworkFabrics
+    description: Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}
+    steps:
+      - operationId: NetworkFabrics_ListBySubscription
+        exampleFile: ..\examples\NetworkFabrics_ListBySubscription_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_ListByResourceGroup
+        exampleFile: ..\examples\NetworkFabrics_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_Get
+        exampleFile: ..\examples\NetworkFabrics_Get_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_Update
+        exampleFile: ..\examples\NetworkFabrics_Update_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_deprovision
+        exampleFile: ..\examples\NetworkFabrics_deprovision_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_UpdateInfraManagementBfdConfiguration
+        exampleFile: ..\examples\NetworkFabrics_UpdateInfraManagementBfdConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_upgrade
+        exampleFile: ..\examples\NetworkFabrics_upgrade_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_UpdateWorkloadManagementBfdConfiguration
+        exampleFile: ..\examples\NetworkFabrics_UpdateWorkloadManagementBfdConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_refreshConfiguration
+        exampleFile: ..\examples\NetworkFabrics_refreshConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_GetTopology
+        exampleFile: ..\examples\NetworkFabrics_GetTopology_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_provision
+        exampleFile: ..\examples\NetworkFabrics_provision_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_CommitConfiguration
+        exampleFile: ..\examples\NetworkFabrics_CommitConfiguration_MaximumSet_Gen.json
+      - operationId: NetworkFabrics_ValidateConfiguration
+        exampleFile: ..\examples\NetworkFabrics_ValidateConfiguration_MaximumSet_Gen.json
+
+  - scenario: NetworkToNetworkInterconnects
+    description: Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}
+    steps:
+      - operationId: NetworkToNetworkInterconnects_Create
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Create_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_ListByNetworkFabric
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_ListByNetworkFabric_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_Get
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Get_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_Update
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Update_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_updateAdministrativeState
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_updateAdministrativeState_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_updateNpbStaticRouteBfdAdministrativeState
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_updateNpbStaticRouteBfdAdministrativeState_MaximumSet_Gen.json
+      - operationId: NetworkToNetworkInterconnects_Delete
+        exampleFile: ..\examples\NetworkToNetworkInterconnects_Delete_MaximumSet_Gen.json
+
+cleanUpSteps:
+  - operationId: NetworkFabrics_Delete
+    exampleFile: ..\examples\NetworkFabrics_Delete_MaximumSet_Gen.json

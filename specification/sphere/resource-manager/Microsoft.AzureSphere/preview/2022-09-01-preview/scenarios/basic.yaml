@@ -1,0 +1,117 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  catalogName:
+    type: string
+    prefix: catalogn
+  productName:
+    type: string
+    prefix: productn
+  deviceGroupName:
+    type: string
+    prefix: devicegr
+  deviceName:
+    type: string
+    prefix: devicena
+  serialNumber:
+    type: string
+    prefix: serialnu
+  imageName:
+    type: string
+    prefix: imagenam
+  deploymentName:
+    type: string
+    prefix: deployme
+
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Catalogs_CreateOrUpdate
+        exampleFile: ..\examples\PutCatalog.json
+      - operationId: Catalogs_ListBySubscription
+        exampleFile: ..\examples\GetCatalogsSub.json
+      - operationId: Catalogs_ListByResourceGroup
+        exampleFile: ..\examples\GetCatalogsRG.json
+      - operationId: Catalogs_Get
+        exampleFile: ..\examples\GetCatalog.json
+      - operationId: Catalogs_Update
+        exampleFile: ..\examples\PatchCatalog.json
+      - operationId: Catalogs_CountDevices
+        exampleFile: ..\examples\PostCountDevicesCatalog.json
+      - operationId: Catalogs_ListDeviceGroups
+        exampleFile: ..\examples\PostListDeviceGroupsCatalog.json
+      - operationId: Catalogs_ListDeviceInsights
+        exampleFile: ..\examples\PostListDeviceInsightsCatalog.json
+      - operationId: Catalogs_ListDevices
+        exampleFile: ..\examples\PostListDevicesByCatalog.json
+      - operationId: Catalogs_ListDeployments
+        exampleFile: ..\examples\PostListDeploymentsByCatalog.json
+      - operationId: Products_CreateOrUpdate
+        exampleFile: ..\examples\PutProduct.json
+      - operationId: Products_ListByCatalog
+        exampleFile: ..\examples\GetProducts.json
+      - operationId: Products_Get
+        exampleFile: ..\examples\GetProduct.json
+      - operationId: Products_Update
+        exampleFile: ..\examples\PatchProduct.json
+      - operationId: Products_CountDevices
+        exampleFile: ..\examples\PostCountDevicesProduct.json
+      - operationId: Products_GenerateDefaultDeviceGroups
+        exampleFile: ..\examples\PostGenerateDefaultDeviceGroups.json
+      - operationId: DeviceGroups_CreateOrUpdate
+        exampleFile: ..\examples\PutDeviceGroup.json
+      - operationId: DeviceGroups_ListByProduct
+        exampleFile: ..\examples\GetDeviceGroups.json
+      - operationId: DeviceGroups_Get
+        exampleFile: ..\examples\GetDeviceGroup.json
+      - operationId: DeviceGroups_Update
+        exampleFile: ..\examples\PatchDeviceGroup.json
+      - operationId: DeviceGroups_ClaimDevices
+        exampleFile: ..\examples\PostClaimDevices.json
+      - operationId: DeviceGroups_CountDevices
+        exampleFile: ..\examples\PostCountDevicesDeviceGroup.json
+      - operationId: Devices_CreateOrUpdate
+        exampleFile: ..\examples\PutDevice.json
+      - operationId: Devices_ListByDeviceGroup
+        exampleFile: ..\examples\GetDevices.json
+      - operationId: Devices_Get
+        exampleFile: ..\examples\GetDevice.json
+      - operationId: Devices_Update
+        exampleFile: ..\examples\PatchDevice.json
+      - operationId: Devices_GenerateCapabilityImage
+        exampleFile: ..\examples\PostGenerateDeviceCapabilityImage.json
+      - operationId: Images_CreateOrUpdate
+        exampleFile: ..\examples\PutImage.json
+      - operationId: Images_ListByCatalog
+        exampleFile: ..\examples\GetImages.json
+      - operationId: Images_Get
+        exampleFile: ..\examples\GetImage.json
+      - operationId: Deployments_CreateOrUpdate
+        exampleFile: ..\examples\PutDeployment.json
+      - operationId: Deployments_ListByDeviceGroup
+        exampleFile: ..\examples\GetDeployments.json
+      - operationId: Deployments_Get
+        exampleFile: ..\examples\GetDeployment.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\GetOperations.json
+      - operationId: Certificates_ListByCatalog
+        exampleFile: ..\examples\GetCertificates.json
+      - operationId: Certificates_Get
+        exampleFile: ..\examples\GetCertificate.json
+      - operationId: Certificates_RetrieveCertChain
+        exampleFile: ..\examples\PostRetrieveCatalogCertChain.json
+      - operationId: Certificates_RetrieveProofOfPossessionNonce
+        exampleFile: ..\examples\PostRetrieveProofOfPossessionNonce.json
+      - operationId: Deployments_Delete
+        exampleFile: ..\examples\DeleteDeployment.json
+      - operationId: Images_Delete
+        exampleFile: ..\examples\DeleteImage.json
+      - operationId: Devices_Delete
+        exampleFile: ..\examples\DeleteDevice.json
+      - operationId: DeviceGroups_Delete
+        exampleFile: ..\examples\DeleteDeviceGroup.json
+      - operationId: Products_Delete
+        exampleFile: ..\examples\DeleteProduct.json
+      - operationId: Catalogs_Delete
+        exampleFile: ..\examples\DeleteCatalog.json

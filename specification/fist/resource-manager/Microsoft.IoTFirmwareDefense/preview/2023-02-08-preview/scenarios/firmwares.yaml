@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  workspaceName:
+    type: string
+    prefix: workspac
+  firmwareId:
+    type: string
+    prefix: firmware
+
+prepareSteps:
+  - operationId: Workspaces_Create
+    exampleFile: ..\examples\Workspaces_Create_MaximumSet_Gen.json
+
+scenarios:
+# pass
+  - scenario: Firmware
+    description: Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}
+    steps:
+      - operationId: Firmware_Create
+        exampleFile: ..\examples\Firmware_Create_MaximumSet_Gen.json
+      - operationId: Firmware_ListByWorkspace
+        exampleFile: ..\examples\Firmware_ListByWorkspace_MaximumSet_Gen.json
+      - operationId: Firmware_Get
+        exampleFile: ..\examples\Firmware_Get_MaximumSet_Gen.json
+      - operationId: Firmware_Update
+        exampleFile: ..\examples\Firmware_Update_MaximumSet_Gen.json
+      - operationId: Firmware_Delete
+        exampleFile: ..\examples\Firmware_Delete_MaximumSet_Gen.json
+
+      # - operationId: Firmware_GenerateComponentDetails # HttpResponsePayloadAPISpecValidationFailed
+      #   exampleFile: ..\examples\Firmware_GenerateComponentDetails_MaximumSet_Gen.json
+
+      # - operationId: Firmware_GenerateDownloadUrl # ResourcePostActionFailed: Resource Not Found
+      #   exampleFile: ..\examples\Firmware_GenerateDownloadUrl_MaximumSet_Gen.json
+
+      # - operationId: Firmware_ListGeneratePasswordHashList # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_ListGeneratePasswordHashList_MaximumSet_Gen.json
+
+      # - operationId: Firmware_GenerateCveSummary # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_GenerateCveSummary_MaximumSet_Gen.json
+
+      # - operationId: Firmware_GenerateFilesystemDownloadUrl # ResourcePostActionFailed: Resource Not Found
+      #   exampleFile: ..\examples\Firmware_GenerateFilesystemDownloadUrl_MaximumSet_Gen.json
+
+      # - operationId: Firmware_ListGenerateCveList # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_ListGenerateCveList_MaximumSet_Gen.json
+
+      # - operationId: Firmware_GenerateCryptoKeySummary # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_GenerateCryptoKeySummary_MaximumSet_Gen.json
+
+      # - operationId: Firmware_GenerateSummary # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_GenerateSummary_MaximumSet_Gen.json
+
+      # - operationId: Firmware_GenerateCryptoCertificateSummary # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_GenerateCryptoCertificateSummary_MaximumSet_Gen.json
+
+      # - operationId: Firmware_ListGenerateCryptoCertificateList # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_ListGenerateCryptoCertificateList_MaximumSet_Gen.json
+
+      # - operationId: Firmware_GenerateBinaryHardeningSummary # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_GenerateBinaryHardeningSummary_MaximumSet_Gen.json
+
+      # - operationId: Firmware_ListGenerateComponentList # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_ListGenerateComponentList_MaximumSet_Gen.json
+
+      # - operationId: Firmware_ListGenerateCryptoKeyList # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_ListGenerateCryptoKeyList_MaximumSet_Gen.json
+
+      # - operationId: Firmware_ListGenerateBinaryHardeningList # ResourcePostActionFailed: Bad Request
+      #   exampleFile: ..\examples\Firmware_ListGenerateBinaryHardeningList_MaximumSet_Gen.json
+
+      # - operationId: Firmware_GenerateBinaryHardeningDetails # EnumCaseMismatch
+      #   exampleFile: ..\examples\Firmware_GenerateBinaryHardeningDetails_MaximumSet_Gen.json
+
+
