@@ -1,0 +1,58 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  sqlVirtualMachineGroupName:
+    type: string
+    prefix: sqlvirtu
+  sqlVirtualMachineName:
+    type: string
+    prefix: sqlvirtu
+  availabilityGroupListenerName:
+    type: string
+    prefix: availabi
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: SqlVirtualMachineGroups_CreateOrUpdate
+        exampleFile: ..\examples\CreateOrUpdateSqlVirtualMachineGroup.json
+      - operationId: SqlVirtualMachineGroups_List
+        exampleFile: ..\examples\ListSubscriptionSqlVirtualMachineGroup.json
+      - operationId: SqlVirtualMachineGroups_ListByResourceGroup
+        exampleFile: ..\examples\ListByResourceGroupSqlVirtualMachineGroup.json
+      - operationId: SqlVirtualMachineGroups_Get
+        exampleFile: ..\examples\GetSqlVirtualMachineGroup.json
+      - operationId: SqlVirtualMachineGroups_Update
+        exampleFile: ..\examples\UpdateSqlVirtualMachineGroup.json
+      - operationId: SqlVirtualMachines_CreateOrUpdate
+        exampleFile: ..\examples\CreateOrUpdateSqlVirtualMachineMIN.json
+      - operationId: SqlVirtualMachines_List
+        exampleFile: ..\examples\ListSubscriptionSqlVirtualMachine.json
+      - operationId: SqlVirtualMachines_ListBySqlVmGroup
+        exampleFile: ..\examples\ListBySqlVirtualMachineGroupSqlVirtualMachine.json
+      - operationId: SqlVirtualMachines_ListByResourceGroup
+        exampleFile: ..\examples\ListByResourceGroupSqlVirtualMachine.json
+      - operationId: SqlVirtualMachines_Get
+        exampleFile: ..\examples\GetSqlVirtualMachine.json
+      - operationId: SqlVirtualMachines_Update
+        exampleFile: ..\examples\UpdateSqlVirtualMachine.json
+      - operationId: SqlVirtualMachines_Redeploy
+        exampleFile: ..\examples\RedeploySqlVirtualMachine.json
+      - operationId: SqlVirtualMachines_StartAssessment
+        exampleFile: ..\examples\StartAssessmentOnSqlVirtualMachine.json
+      - operationId: AvailabilityGroupListeners_CreateOrUpdate
+        exampleFile: ..\examples\CreateOrUpdateAvailabilityGroupListener.json
+      - operationId: AvailabilityGroupListeners_ListByGroup
+        exampleFile: ..\examples\ListByGroupAvailabilityGroupListener.json
+      - operationId: AvailabilityGroupListeners_Get
+        exampleFile: ..\examples\GetAvailabilityGroupListener.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperation.json
+      - operationId: SqlVirtualMachineTroubleshoot_Troubleshoot
+        exampleFile: ..\examples\TroubleshootSqlVirtualMachine.json
+      - operationId: AvailabilityGroupListeners_Delete
+        exampleFile: ..\examples\DeleteAvailabilityGroupListener.json
+      - operationId: SqlVirtualMachines_Delete
+        exampleFile: ..\examples\DeleteSqlVirtualMachine.json
+      - operationId: SqlVirtualMachineGroups_Delete
+        exampleFile: ..\examples\DeleteSqlVirtualMachineGroup.json

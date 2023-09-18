@@ -1,0 +1,158 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  storageSyncServiceName:
+    type: string
+    prefix: storages
+  syncGroupName:
+    type: string
+    prefix: syncgrou
+  cloudEndpointName:
+    type: string
+    prefix: cloudend
+  serverEndpointName:
+    type: string
+    prefix: serveren
+  serverId:
+    type: string
+    prefix: serverid
+  # locationName:
+  #   type: string
+  #   prefix: location
+  # privateEndpointConnectionName:
+  #   type: string
+  #   prefix: privatee
+  # workflowId:
+  #   type: string
+  #   prefix: workflow
+  # operationId:
+  #   type: string
+  #   prefix: operatio
+
+prepareSteps:
+      - operationId: StorageSyncServices_Create
+        exampleFile: ..\examples\StorageSyncServices_Create.json
+      - operationId: SyncGroups_Create
+        exampleFile: ..\examples\SyncGroups_Create.json
+
+scenarios:
+# pass
+  - scenario: StorageSyncServices
+    description: Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}
+    steps:
+      - operationId: StorageSyncServices_CheckNameAvailability
+        exampleFile: ..\examples\StorageSyncServiceCheckNameAvailability_Available.json
+      - operationId: StorageSyncServices_ListBySubscription
+        exampleFile: ..\examples\StorageSyncServices_ListBySubscription.json
+      - operationId: StorageSyncServices_Get
+        exampleFile: ..\examples\StorageSyncServices_Get.json
+      - operationId: StorageSyncServices_ListByResourceGroup
+        exampleFile: ..\examples\StorageSyncServices_ListByResourceGroup.json
+      - operationId: StorageSyncServices_Update
+        exampleFile: ..\examples\StorageSyncServices_Update.json
+
+# pass
+  - scenario: SyncGroups
+    description: Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}
+    steps:
+      - operationId: SyncGroups_ListByStorageSyncService
+        exampleFile: ..\examples\SyncGroups_ListByStorageSyncService.json
+      - operationId: SyncGroups_Get
+        exampleFile: ..\examples\SyncGroups_Get.json
+
+
+  - scenario: CloudEndpoints
+    description: Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}
+    steps:
+      - operationId: CloudEndpoints_Create
+        exampleFile: ..\examples\CloudEndpoints_Create.json
+      - operationId: CloudEndpoints_ListBySyncGroup
+        exampleFile: ..\examples\CloudEndpoints_ListBySyncGroup.json
+      - operationId: CloudEndpoints_Get
+        exampleFile: ..\examples\CloudEndpoints_Get.json
+      - operationId: CloudEndpoints_PostBackup
+        exampleFile: ..\examples\CloudEndpoints_PostBackup.json
+      - operationId: CloudEndpoints_PostRestore
+        exampleFile: ..\examples\CloudEndpoints_PostRestore.json
+      - operationId: CloudEndpoints_PreRestore
+        exampleFile: ..\examples\CloudEndpoints_PreRestore.json
+      - operationId: CloudEndpoints_restoreheartbeat
+        exampleFile: ..\examples\CloudEndpoints_RestoreHeatbeat.json
+      - operationId: CloudEndpoints_TriggerChangeDetection
+        exampleFile: ..\examples\CloudEndpoints_TriggerChangeDetection.json
+      - operationId: CloudEndpoints_PreBackup
+        exampleFile: ..\examples\CloudEndpoints_PreBackup.json
+      - operationId: CloudEndpoints_Delete
+        exampleFile: ..\examples\CloudEndpoints_Delete.json
+
+  - scenario: ServerEndpoints
+    description: Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}
+    steps:
+      - operationId: ServerEndpoints_Create
+        exampleFile: ..\examples\ServerEndpoints_Create.json
+      - operationId: ServerEndpoints_ListBySyncGroup
+        exampleFile: ..\examples\ServerEndpoints_ListBySyncGroup.json
+      - operationId: ServerEndpoints_Get
+        exampleFile: ..\examples\ServerEndpoints_Get.json
+      - operationId: ServerEndpoints_Update
+        exampleFile: ..\examples\ServerEndpoints_Update.json
+      - operationId: ServerEndpoints_recallAction
+        exampleFile: ..\examples\ServerEndpoints_Recall.json
+      - operationId: ServerEndpoints_Delete
+        exampleFile: ..\examples\ServerEndpoints_Delete.json
+
+  - scenario: RegisteredServers
+    description: Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}
+    steps:
+      - operationId: RegisteredServers_Create
+        exampleFile: ..\examples\RegisteredServers_Create.json
+      - operationId: RegisteredServers_ListByStorageSyncService
+        exampleFile: ..\examples\RegisteredServers_ListByStorageSyncService.json
+      - operationId: RegisteredServers_Get
+        exampleFile: ..\examples\RegisteredServers_Get.json
+      - operationId: RegisteredServers_triggerRollover
+        exampleFile: ..\examples\RegisteredServers_TriggerRollover.json
+      - operationId: RegisteredServers_Delete
+        exampleFile: ..\examples\RegisteredServers_Delete.json
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - operationId: PrivateEndpointConnections_Create
+        exampleFile: ..\examples\PrivateEndpointConnections_Create.json
+      - operationId: PrivateEndpointConnections_ListByStorageSyncService
+        exampleFile: ..\examples\PrivateEndpointConnections_ListByStorageSyncService.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\PrivateEndpointConnections_Get.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\PrivateEndpointConnections_Delete.json
+
+  - scenario: Operations
+    description: Microsoft.StorageSync/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+      - operationId: LocationOperationStatus # Microsoft.StorageSync/locations/{locationName}/operations/{operationId}
+        exampleFile: ..\examples\LocationOperationStatus_Get.json
+      - operationId: OperationStatus_Get # Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}
+        exampleFile: ..\examples\OperationStatus_Get.json
+      - operationId: PrivateLinkResources_ListByStorageSyncService # Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources
+        exampleFile: ..\examples\PrivateLinkResources_List.json
+
+  # - scenario: Workflows
+  #   description: Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows
+  #   steps:
+  #     - operationId: Workflows_ListByStorageSyncService # InternalServerError
+  #       exampleFile: ..\examples\Workflows_ListByStorageSyncService.json
+  #     - operationId: Workflows_Get
+  #       exampleFile: ..\examples\Workflows_Get.json
+  #     - operationId: Workflows_Abort
+  #       exampleFile: ..\examples\Workflows_Abort.json
+
+
+cleanUpSteps:
+      - operationId: SyncGroups_Delete
+        exampleFile: ..\examples\SyncGroups_Delete.json
+      - operationId: StorageSyncServices_Delete
+        exampleFile: ..\examples\StorageSyncServices_Delete.json
