@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  deploymentStackName:
+    type: string
+    prefix: deployme
+  managementGroupId:
+    type: string
+    prefix: manageme
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: DeploymentStacks_CreateOrUpdateAtManagementGroup
+        exampleFile: ..\examples\DeploymentStackManagementGroupCreate.json
+      - operationId: DeploymentStacks_ListAtManagementGroup
+        exampleFile: ..\examples\DeploymentStackManagementGroupList.json
+      - operationId: DeploymentStacks_ListAtSubscription
+        exampleFile: ..\examples\DeploymentStackSubscriptionList.json
+      - operationId: DeploymentStacks_ListAtResourceGroup
+        exampleFile: ..\examples\DeploymentStackResourceGroupList.json
+      - operationId: DeploymentStacks_GetAtManagementGroup
+        exampleFile: ..\examples\DeploymentStackManagementGroupGet.json
+      - operationId: DeploymentStacks_ExportTemplateAtManagementGroup
+        exampleFile: ..\examples\DeploymentStackManagementGroupExportTemplate.json
+      - operationId: DeploymentStacks_CreateOrUpdateAtResourceGroup
+        exampleFile: ..\examples\DeploymentStackResourceGroupCreate.json
+      - operationId: DeploymentStacks_GetAtResourceGroup
+        exampleFile: ..\examples\DeploymentStackResourceGroupGet.json
+      - operationId: DeploymentStacks_ExportTemplateAtResourceGroup
+        exampleFile: ..\examples\DeploymentStackExportTemplate.json
+      - operationId: DeploymentStacks_CreateOrUpdateAtSubscription
+        exampleFile: ..\examples\DeploymentStackSubscriptionCreate.json
+      - operationId: DeploymentStacks_GetAtSubscription
+        exampleFile: ..\examples\DeploymentStackSubscriptionGet.json
+      - operationId: DeploymentStacks_ExportTemplateAtSubscription
+        exampleFile: ..\examples\DeploymentStackSubscriptionExportTemplate.json
+      - operationId: DeploymentStacks_DeleteAtSubscription
+        exampleFile: ..\examples\DeploymentStackSubscriptionDelete.json
+      - operationId: DeploymentStacks_DeleteAtResourceGroup
+        exampleFile: ..\examples\DeploymentStackResourceGroupDelete.json
+      - operationId: DeploymentStacks_DeleteAtManagementGroup
+        exampleFile: ..\examples\DeploymentStackManagementGroupDelete.json

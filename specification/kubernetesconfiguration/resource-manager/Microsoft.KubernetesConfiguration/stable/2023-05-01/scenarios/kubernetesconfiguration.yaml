@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  sourceControlConfigurationName:
+    type: string
+    prefix: sourceco
+    
+scenarios:
+  - scenario: SourceControlConfigurations
+    description: Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}
+    steps:
+      - operationId: SourceControlConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\CreateSourceControlConfiguration.json
+      - operationId: SourceControlConfigurations_List
+        exampleFile: ..\examples\ListSourceControlConfiguration.json
+      - operationId: SourceControlConfigurations_Get
+        exampleFile: ..\examples\GetSourceControlConfiguration.json
+      - operationId: SourceControlConfigurations_Delete
+        exampleFile: ..\examples\DeleteSourceControlConfiguration.json

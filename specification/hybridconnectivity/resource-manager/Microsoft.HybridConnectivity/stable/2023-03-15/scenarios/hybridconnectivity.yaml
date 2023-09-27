@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables: 
+  endpointName:
+    type: string
+    prefix: endpointna
+  serviceConfigurationName:
+    type: string
+    prefix: serviceconfigna
+    
+scenarios:
+  - scenario: Endpoints
+    description: Microsoft.HybridConnectivity/endpoints/{endpointName}
+    steps:
+      - operationId: Endpoints_CreateOrUpdate
+        exampleFile: ..\examples\EndpointsPutDefault.json
+      - operationId: Endpoints_List
+        exampleFile: ..\examples\EndpointsList.json
+      - operationId: Endpoints_Get
+        exampleFile: ..\examples\EndpointsGetDefault.json
+      - operationId: Endpoints_Update
+        exampleFile: ..\examples\EndpointsPatchDefault.json
+      - operationId: Endpoints_ListIngressGatewayCredentials
+        exampleFile: ..\examples\EndpointsPostListIngressGatewayCredentials.json
+      - operationId: Endpoints_ListManagedProxyDetails
+        exampleFile: ..\examples\EndpointsPostListManagedProxyDetails.json
+      - operationId: Endpoints_ListCredentials
+        exampleFile: ..\examples\EndpointsPostListCredentials.json
+        
+  - scenario: ServiceConfigurations
+    description: Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}
+    steps:
+      - operationId: ServiceConfigurations_CreateOrupdate
+        exampleFile: ..\examples\ServiceConfigurationsPutSSH.json
+      - operationId: ServiceConfigurations_ListByEndpointResource
+        exampleFile: ..\examples\ServiceConfigurationsList.json
+      - operationId: ServiceConfigurations_Get
+        exampleFile: ..\examples\ServiceConfigurationsGetSSH.json
+      - operationId: ServiceConfigurations_Update
+        exampleFile: ..\examples\ServiceConfigurationsPatchSSH.json
+      - operationId: ServiceConfigurations_Delete
+        exampleFile: ..\examples\ServiceConfigurationsDeleteSSH.json
+
+  - scenario: Operations
+    description: Microsoft.HybridConnectivity/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+      - operationId: Endpoints_Delete
+        exampleFile: ..\examples\EndpointsDeleteDefault.json
