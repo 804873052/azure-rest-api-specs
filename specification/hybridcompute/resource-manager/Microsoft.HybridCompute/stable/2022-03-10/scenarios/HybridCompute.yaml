@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  machineName:
+    type: string
+    prefix: machinen
+  extensionName:
+    type: string
+    prefix: extensio
+
+prepareSteps:
+      - operationId: Machines_CreateOrUpdate
+        exampleFile: ..\examples\Machines_CreateOrUpdate.json
+
+scenarios:
+  - scenario: Machines
+    description: Microsoft.HybridCompute/machines/{machineName}
+    steps:
+      - operationId: Machines_ListBySubscription
+        exampleFile: ..\examples\Machines_ListBySubscription.json
+      - operationId: Machines_ListByResourceGroup
+        exampleFile: ..\examples\Machines_ListByResourceGroup.json
+      - operationId: Machines_Get
+        exampleFile: ..\examples\Machines_Get.json
+      - operationId: Machines_Update
+        exampleFile: ..\examples\Machines_Update.json
+
+  - scenario: MachineExtensions
+    description: Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}
+    steps:
+      - operationId: MachineExtensions_CreateOrUpdate
+        exampleFile: ..\examples\PUTExtension.json
+      - operationId: MachineExtensions_List
+        exampleFile: ..\examples\LISTExtension.json
+      - operationId: MachineExtensions_Get
+        exampleFile: ..\examples\GETExtension.json
+      - operationId: MachineExtensions_Update
+        exampleFile: ..\examples\UpdateExtension.json
+
+      - operationId: UpgradeExtensions # Microsoft.HybridCompute/machines/{machineName}/upgradeExtensions
+        exampleFile: ..\examples\Extensions_Upgrade.json
+
+      - operationId: MachineExtensions_Delete
+        exampleFile: ..\examples\DELETEExtension.json
+  
+  - scenario: Operations
+    description: Microsoft.HybridCompute/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+  
+cleanUpSteps:
+      - operationId: Machines_Delete
+        exampleFile: ..\examples\Machines_Delete.json

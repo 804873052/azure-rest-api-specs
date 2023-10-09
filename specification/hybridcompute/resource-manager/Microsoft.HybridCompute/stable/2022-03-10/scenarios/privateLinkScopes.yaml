@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  scopeName:
+    type: string
+    prefix: scopenam
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+
+scenarios:
+  - scenario: PrivateLinkScopes
+    description: Microsoft.HybridCompute/privateLinkScopes/{scopeName}
+    steps:
+      - operationId: PrivateLinkScopes_CreateOrUpdate
+        exampleFile: ..\examples\PrivateLinkScopesCreate.json
+      - operationId: PrivateLinkScopes_GetValidationDetails
+        variables:
+          privateLinkScopeId:
+            type: string
+            prefix: privatel
+        exampleFile: ..\examples\PrivateLinkScopesGetValidation.json
+      - operationId: PrivateLinkScopes_ListByResourceGroup
+        exampleFile: ..\examples\PrivateLinkScopesListByResourceGroup.json
+      - operationId: PrivateLinkScopes_Get
+        exampleFile: ..\examples\PrivateLinkScopesGet.json
+      - operationId: PrivateLinkScopes_List
+        exampleFile: ..\examples\PrivateLinkScopesList.json
+      - operationId: PrivateLinkScopes_GetValidationDetailsForMachine
+        exampleFile: ..\examples\PrivateLinkScopesGetValidationForMachine.json
+      - operationId: PrivateLinkScopes_UpdateTags
+        exampleFile: ..\examples\PrivateLinkScopesUpdateTagsOnly.json
+      - operationId: PrivateLinkScopes_Delete
+        exampleFile: ..\examples\PrivateLinkScopesDelete.json
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\PrivateEndpointConnectionUpdate.json
+      - operationId: PrivateEndpointConnections_ListByPrivateLinkScope
+        exampleFile: ..\examples\PrivateEndpointConnectionList.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\PrivateEndpointConnectionGet.json
+
+      - operationId: PrivateLinkResources_ListByPrivateLinkScope # Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateLinkResources
+        exampleFile: ..\examples\PrivateLinkScopePrivateLinkResourceListGet.json
+      - operationId: PrivateLinkResources_Get
+        # variables:
+        #   groupName:
+        #     type: string
+        #     prefix: groupnam
+        exampleFile: ..\examples\PrivateLinkScopePrivateLinkResourceGet.json
+
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\PrivateEndpointConnectionDelete.json

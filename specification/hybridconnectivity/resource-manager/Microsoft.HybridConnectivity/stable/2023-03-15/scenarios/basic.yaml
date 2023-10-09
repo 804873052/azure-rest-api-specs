@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Endpoints_CreateOrUpdate
+        exampleFile: ..\examples\EndpointsPutDefault.json
+      - operationId: Endpoints_List
+        exampleFile: ..\examples\EndpointsList.json
+      - operationId: Endpoints_Get
+        exampleFile: ..\examples\EndpointsGetDefault.json
+      - operationId: Endpoints_Update
+        exampleFile: ..\examples\EndpointsPatchDefault.json
+      - operationId: Endpoints_ListIngressGatewayCredentials
+        exampleFile: ..\examples\EndpointsPostListIngressGatewayCredentials.json
+      - operationId: Endpoints_ListManagedProxyDetails
+        exampleFile: ..\examples\EndpointsPostListManagedProxyDetails.json
+      - operationId: Endpoints_ListCredentials
+        exampleFile: ..\examples\EndpointsPostListCredentials.json
+      - operationId: ServiceConfigurations_CreateOrupdate
+        exampleFile: ..\examples\ServiceConfigurationsPutSSH.json
+      - operationId: ServiceConfigurations_ListByEndpointResource
+        exampleFile: ..\examples\ServiceConfigurationsList.json
+      - operationId: ServiceConfigurations_Get
+        exampleFile: ..\examples\ServiceConfigurationsGetSSH.json
+      - operationId: ServiceConfigurations_Update
+        exampleFile: ..\examples\ServiceConfigurationsPatchSSH.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+      - operationId: ServiceConfigurations_Delete
+        exampleFile: ..\examples\ServiceConfigurationsDeleteSSH.json
+      - operationId: Endpoints_Delete
+        exampleFile: ..\examples\EndpointsDeleteDefault.json

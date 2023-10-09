@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  machineName:
+    type: string
+    prefix: machinen
+  scopeName:
+    type: string
+    prefix: scopenam
+  extensionName:
+    type: string
+    prefix: extensio
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Machines_CreateOrUpdate
+        exampleFile: ..\examples\Machines_CreateOrUpdate.json
+      - operationId: Machines_ListBySubscription
+        exampleFile: ..\examples\Machines_ListBySubscription.json
+      - operationId: Machines_ListByResourceGroup
+        exampleFile: ..\examples\Machines_ListByResourceGroup.json
+      - operationId: Machines_Get
+        exampleFile: ..\examples\Machines_Get.json
+      - operationId: Machines_Update
+        exampleFile: ..\examples\Machines_Update.json
+
+      - operationId: PrivateLinkScopes_CreateOrUpdate
+        exampleFile: ..\examples\PrivateLinkScopesCreate.json
+      - operationId: PrivateLinkScopes_GetValidationDetails
+        variables:
+          privateLinkScopeId:
+            type: string
+            prefix: privatel
+        exampleFile: ..\examples\PrivateLinkScopesGetValidation.json
+      - operationId: PrivateLinkScopes_ListByResourceGroup
+        exampleFile: ..\examples\PrivateLinkScopesListByResourceGroup.json
+      - operationId: PrivateLinkScopes_Get
+        exampleFile: ..\examples\PrivateLinkScopesGet.json
+      - operationId: PrivateLinkScopes_List
+        exampleFile: ..\examples\PrivateLinkScopesList.json
+      - operationId: PrivateLinkScopes_GetValidationDetailsForMachine
+        exampleFile: ..\examples\PrivateLinkScopesGetValidationForMachine.json
+      - operationId: PrivateLinkScopes_UpdateTags
+        exampleFile: ..\examples\PrivateLinkScopesUpdateTagsOnly.json
+      - operationId: MachineExtensions_CreateOrUpdate
+        exampleFile: ..\examples\PUTExtension.json
+      - operationId: MachineExtensions_List
+        exampleFile: ..\examples\LISTExtension.json
+      - operationId: MachineExtensions_Get
+        exampleFile: ..\examples\GETExtension.json
+      - operationId: MachineExtensions_Update
+        exampleFile: ..\examples\UpdateExtension.json
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\PrivateEndpointConnectionUpdate.json
+      - operationId: PrivateEndpointConnections_ListByPrivateLinkScope
+        exampleFile: ..\examples\PrivateEndpointConnectionList.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\PrivateEndpointConnectionGet.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: UpgradeExtensions
+        exampleFile: ..\examples\Extensions_Upgrade.json
+      - operationId: PrivateLinkResources_ListByPrivateLinkScope
+        exampleFile: ..\examples\PrivateLinkScopePrivateLinkResourceListGet.json
+      - operationId: PrivateLinkResources_Get
+        variables:
+          groupName:
+            type: string
+            prefix: groupnam
+        exampleFile: ..\examples\PrivateLinkScopePrivateLinkResourceGet.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\PrivateEndpointConnectionDelete.json
+      - operationId: MachineExtensions_Delete
+        exampleFile: ..\examples\DELETEExtension.json
+      - operationId: PrivateLinkScopes_Delete
+        exampleFile: ..\examples\PrivateLinkScopesDelete.json
+      - operationId: Machines_Delete
+        exampleFile: ..\examples\Machines_Delete.json

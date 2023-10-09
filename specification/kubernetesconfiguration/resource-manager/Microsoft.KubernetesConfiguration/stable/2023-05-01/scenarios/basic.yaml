@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  clusterRp:
+    type: string
+    prefix: clusterr
+  clusterResourceName:
+    type: string
+    prefix: clusterr
+  clusterName:
+    type: string
+    prefix: clustern
+  extensionName:
+    type: string
+    prefix: extensio
+  fluxConfigurationName:
+    type: string
+    prefix: fluxconf
+  sourceControlConfigurationName:
+    type: string
+    prefix: sourceco
+  operationId:
+    type: string
+    prefix: operatio
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Extensions_Create
+        exampleFile: ..\examples\CreateExtension.json
+      - operationId: Extensions_List
+        exampleFile: ..\examples\ListExtensions.json
+      - operationId: Extensions_Get
+        exampleFile: ..\examples\GetExtension.json
+      - operationId: Extensions_Update
+        exampleFile: ..\examples\PatchExtension.json
+
+      - operationId: FluxConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\CreateFluxConfiguration.json
+      - operationId: FluxConfigurations_List
+        exampleFile: ..\examples\ListFluxConfigurations.json
+      - operationId: FluxConfigurations_Get
+        exampleFile: ..\examples\GetFluxConfiguration.json
+      - operationId: FluxConfigurations_Update
+        exampleFile: ..\examples\PatchFluxConfiguration.json
+
+      - operationId: SourceControlConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\CreateSourceControlConfiguration.json
+      - operationId: SourceControlConfigurations_List
+        exampleFile: ..\examples\ListSourceControlConfiguration.json
+      - operationId: SourceControlConfigurations_Get
+        exampleFile: ..\examples\GetSourceControlConfiguration.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+      - operationId: OperationStatus_Get
+        exampleFile: ..\examples\GetExtensionAsyncOperationStatus.json
+      - operationId: FluxConfigOperationStatus_Get
+        exampleFile: ..\examples\GetFluxConfigurationAsyncOperationStatus.json
+      - operationId: OperationStatus_List
+        exampleFile: ..\examples\ListAsyncOperationStatus.json
+      - operationId: SourceControlConfigurations_Delete
+        exampleFile: ..\examples\DeleteSourceControlConfiguration.json
+      - operationId: FluxConfigurations_Delete
+        exampleFile: ..\examples\DeleteFluxConfiguration.json
+      - operationId: Extensions_Delete
+        exampleFile: ..\examples\DeleteExtension.json

@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: Operations
+    description: Microsoft.KubernetesConfiguration/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+      - operationId: OperationStatus_Get
+        exampleFile: ..\examples\GetExtensionAsyncOperationStatus.json
+      - operationId: OperationStatus_List
+        exampleFile: ..\examples\ListAsyncOperationStatus.json

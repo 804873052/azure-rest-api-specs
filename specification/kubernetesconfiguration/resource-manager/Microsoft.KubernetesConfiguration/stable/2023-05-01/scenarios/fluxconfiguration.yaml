@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  fluxConfigurationName:
+    type: string
+    prefix: fluxconf
+    
+scenarios:
+  - scenario: FluxConfigurations
+    description: Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}
+    steps:
+      - operationId: FluxConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\CreateFluxConfiguration.json
+      - operationId: FluxConfigurations_List
+        exampleFile: ..\examples\ListFluxConfigurations.json
+      - operationId: FluxConfigurations_Get
+        exampleFile: ..\examples\GetFluxConfiguration.json
+      - operationId: FluxConfigurations_Update
+        exampleFile: ..\examples\PatchFluxConfiguration.json
+
+      - operationId: FluxConfigOperationStatus_Get # Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}/operations/{operationId}
+        exampleFile: ..\examples\GetFluxConfigurationAsyncOperationStatus.json
+
+      - operationId: FluxConfigurations_Delete
+        exampleFile: ..\examples\DeleteFluxConfiguration.json

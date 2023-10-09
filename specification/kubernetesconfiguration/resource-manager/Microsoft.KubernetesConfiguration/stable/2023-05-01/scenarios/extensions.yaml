@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  extensionName:
+    type: string
+    prefix: extensio
+
+scenarios:
+  - scenario: Extensions
+    description: Microsoft.KubernetesConfiguration/extensions/{extensionName}
+    steps:
+      - operationId: Extensions_Create
+        exampleFile: ..\examples\CreateExtension.json
+      - operationId: Extensions_List
+        exampleFile: ..\examples\ListExtensions.json
+      - operationId: Extensions_Get
+        exampleFile: ..\examples\GetExtension.json
+      - operationId: Extensions_Update
+        exampleFile: ..\examples\PatchExtension.json
+      - operationId: Extensions_Delete
+        exampleFile: ..\examples\DeleteExtension.json
+
+  - scenario: OperationStatus
+    description: Microsoft.KubernetesConfiguration/extensions/{extensionName}/operations/{operationId}
+    steps:
+      - operationId: OperationStatus_Get
+        exampleFile: ..\examples\GetExtensionAsyncOperationStatus.json
