@@ -269,7 +269,7 @@
         }
       }
     },
-    "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}": {
+    "/providers/Micosoft.Capacity/reservationOrrders/{reservationOrderId}": {
       "put": {
         "summary": "Purchase `ReservationOrder`",
         "description": "Purchase `ReservationOrder` and create resource under the specified URI.",

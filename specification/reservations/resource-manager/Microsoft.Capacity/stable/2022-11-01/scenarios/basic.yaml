@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  reservationOrderId:
+    type: string
+    prefix: reservat
+  reservationId:
+    type: string
+    prefix: reservat
+  providerId:
+    type: string
+    prefix: provider
+  resourceName:
+    type: string
+    prefix: resource
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: ReservationOrder_Purchase
+        exampleFile: ..\examples\PurchaseReservationOrder.json
+      - operationId: ReservationOrder_List
+        exampleFile: ..\examples\GetReservationOrders.json
+      - operationId: ReservationOrder_Get
+        exampleFile: ..\examples\GetReservationOrderDetails.json
+      - operationId: ReservationOrder_Calculate
+        exampleFile: ..\examples\CalculateReservationOrder.json
+      - operationId: ReservationOrder_ChangeDirectory
+        exampleFile: ..\examples\ChangeDirectoryReservationOrder.json
+
+      - operationId: Quota_CreateOrUpdate
+        exampleFile: ..\..\2020-10-25\examples\putComputeOneSkuQuotaRequest.json
+      - operationId: Quota_List
+        exampleFile: ..\..\2020-10-25\examples\getComputeUsages.json
+      - operationId: Quota_Get
+        exampleFile: ..\..\2020-10-25\examples\getComputeOneSkuUsages.json
+      - operationId: Quota_Update
+        exampleFile: ..\..\2020-10-25\examples\patchComputeQuotaRequest.json
+        
+      - operationId: CalculateExchange_Post
+        exampleFile: ..\examples\CalculateExchange.json
+      - operationId: Exchange_Post
+        exampleFile: ..\examples\Exchange.json
+      - operationId: Operation_List
+        exampleFile: ..\examples\GetOperations.json
+      - operationId: CalculateRefund_Post
+        exampleFile: ..\examples\CalculateRefund.json
+
+      - operationId: Reservation_Merge
+        exampleFile: ..\examples\MergeReservations.json
+      - operationId: Reservation_List
+        exampleFile: ..\examples\GetReservationsFromOrder.json
+      - operationId: Reservation_Get
+        exampleFile: ..\examples\GetReservationDetails.json
+      - operationId: Reservation_Update
+        exampleFile: ..\examples\UpdateReservation.json
+      - operationId: Reservation_Archive
+        exampleFile: ..\examples\Archive.json
+      - operationId: Reservation_AvailableScopes
+        exampleFile: ..\examples\GetAvailableScope.json
+      - operationId: Reservation_ListRevisions
+        exampleFile: ..\examples\GetReservationRevisions.json
+      - operationId: Reservation_Unarchive
+        exampleFile: ..\examples\Unarchive.json
+      - operationId: Return_Post
+        exampleFile: ..\examples\Return.json
+      - operationId: Reservation_Split
+        exampleFile: ..\examples\SplitReservation.json
+      - operationId: Reservation_ListAll
+        exampleFile: ..\examples\GetReservations.json
+
+      - operationId: GetAppliedReservationList
+        exampleFile: ..\examples\GetAppliedReservations.json
+      - operationId: GetCatalog
+        exampleFile: ..\examples\GetCatalog.json
+      - operationId: QuotaRequestStatus_List
+        exampleFile: ..\..\2020-10-25\examples\getQuotaRequestsHistory.json
+      - operationId: QuotaRequestStatus_Get
+        variables:
+          id:
+            type: string
+            prefix: id
+        exampleFile: ..\..\2020-10-25\examples\getQuotaRequestStatusById.json

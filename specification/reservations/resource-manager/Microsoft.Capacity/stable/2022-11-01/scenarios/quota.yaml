@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: Quota
+    description: Microsoft.Capacity/resourceProviders/{providerId}/locations/{location}/serviceLimits/{resourceName}
+    steps:
+      - operationId: Quota_CreateOrUpdate
+        exampleFile: ..\..\2020-10-25\examples\putComputeOneSkuQuotaRequest.json
+      - operationId: Quota_List
+        exampleFile: ..\..\2020-10-25\examples\getComputeUsages.json
+      - operationId: Quota_Get
+        exampleFile: ..\..\2020-10-25\examples\getComputeOneSkuUsages.json
+      - operationId: Quota_Update
+        exampleFile: ..\..\2020-10-25\examples\patchComputeQuotaRequest.json
+
+  - scenario: QuotaRequestStatus
+    description: Microsoft.Capacity/resourceProviders/{providerId}/locations/{location}/serviceLimitsRequests/{id}
+    steps:
+      - operationId: QuotaRequestStatus_List
+        exampleFile: ..\..\2020-10-25\examples\getQuotaRequestsHistory.json
+      - operationId: QuotaRequestStatus_Get
+        # variables:
+        #   id:
+        #     type: string
+        #     prefix: id
+        exampleFile: ..\..\2020-10-25\examples\getQuotaRequestStatusById.json
