@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  moveCollectionName:
+    type: string
+    prefix: movecoll
+  moveResourceName:
+    type: string
+    prefix: movereso
+
+prepareSteps:
+      - operationId: MoveCollections_Create
+        exampleFile: ..\examples\MoveCollections_Create.json 
+
+scenarios:
+# pass
+  - scenario: MoveCollections
+    description: Microsoft.Migrate/moveCollections/{moveCollectionName}
+    steps:
+      - operationId: MoveCollections_ListMoveCollectionsBySubscription
+        exampleFile: ..\examples\MoveCollections_ListMoveCollectionsBySubscription.json
+      - operationId: MoveCollections_ListMoveCollectionsByResourceGroup
+        exampleFile: ..\examples\MoveCollections_ListMoveCollectionsByResourceGroup.json
+      - operationId: MoveCollections_Get
+        exampleFile: ..\examples\MoveCollections_Get.json
+      - operationId: MoveCollections_ListRequiredFor
+        exampleFile: ..\examples\RequiredFor_Get.json
+      - operationId: MoveCollections_Update
+        exampleFile: ..\examples\MoveCollections_Update.json
+
+      # - operationId: MoveCollections_ResolveDependencies
+      #   exampleFile: ..\examples\MoveCollections_ResolveDependencies.json
+      # - operationId: MoveCollections_Prepare
+      #   exampleFile: ..\examples\MoveCollections_Prepare.json
+      # - operationId: MoveCollections_InitiateMove
+      #   exampleFile: ..\examples\MoveCollections_InitiateMove.json
+#     discard orcommit
+      # - operationId: MoveCollections_Commit
+      #   exampleFile: ..\examples\MoveCollections_Commit.json
+      # - operationId: MoveCollections_Discard
+      #   exampleFile: ..\examples\MoveCollections_Discard.json
+      # - operationId: MoveCollections_BulkRemove
+      #   exampleFile: ..\examples\MoveCollections_BulkRemove.json
+
+  - scenario: MoveResources
+    description: Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}
+    steps:
+      - step: Create_VirtualNetwork
+        armTemplate: ./templates/Create_VirtualNetwork.json
+
+      - operationId: MoveResources_Create # An invalid parameter ResourceType was passed
+        exampleFile: ..\examples\MoveResources_Create.json
+        requestUpdate:
+          - replace: /body/properties/sourceId
+            value: $(virtualNetworkId)
+        
+      - operationId: MoveResources_List
+        exampleFile: ..\examples\MoveResources_List.json
+      - operationId: MoveResources_Get
+        exampleFile: ..\examples\MoveResources_Get.json
+      - operationId: MoveResources_Delete
+        exampleFile: ..\examples\MoveResources_Delete.json
+
+# The resource type 'operations' could not be found in the namespace 'Microsoft.Migrate' for api version '2023-08-01'
+  # - scenario: OperationsDiscovery
+  #   description: Microsoft.Migrate/operations
+  #   steps:
+  #     - operationId: OperationsDiscovery_Get
+  #       exampleFile: ..\examples\OperationsDiscovery_Get.json
+
+# pass
+  - scenario: UnresolvedDependencies
+    description: Microsoft.Migrate/moveCollections/{moveCollectionName}/unresolvedDependencies
+    steps:
+      - operationId: UnresolvedDependencies_Get
+        exampleFile: ..\examples\UnresolvedDependencies_Get.json
+
+cleanUpSteps:
+      - operationId: MoveCollections_Delete
+        exampleFile: ..\examples\MoveCollections_Delete.json

@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  moveCollectionName:
+    type: string
+    prefix: movecoll
+  moveResourceName:
+    type: string
+    prefix: movereso
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: MoveCollections_Create
+        exampleFile: ..\examples\MoveCollections_Create.json
+      - operationId: MoveCollections_ListMoveCollectionsBySubscription
+        exampleFile: ..\examples\MoveCollections_ListMoveCollectionsBySubscription.json
+      - operationId: MoveCollections_ListMoveCollectionsByResourceGroup
+        exampleFile: ..\examples\MoveCollections_ListMoveCollectionsByResourceGroup.json
+      - operationId: MoveCollections_Get
+        exampleFile: ..\examples\MoveCollections_Get.json
+      - operationId: MoveCollections_ListRequiredFor
+        exampleFile: ..\examples\RequiredFor_Get.json
+      - operationId: MoveCollections_Update
+        exampleFile: ..\examples\MoveCollections_Update.json
+      - operationId: MoveCollections_Commit
+        exampleFile: ..\examples\MoveCollections_Commit.json
+      - operationId: MoveCollections_ResolveDependencies
+        exampleFile: ..\examples\MoveCollections_ResolveDependencies.json
+      - operationId: MoveCollections_BulkRemove
+        exampleFile: ..\examples\MoveCollections_BulkRemove.json
+      - operationId: MoveCollections_Prepare
+        exampleFile: ..\examples\MoveCollections_Prepare.json
+      - operationId: MoveCollections_Discard
+        exampleFile: ..\examples\MoveCollections_Discard.json
+      - operationId: MoveCollections_InitiateMove
+        exampleFile: ..\examples\MoveCollections_InitiateMove.json
+      - operationId: MoveResources_Create
+        exampleFile: ..\examples\MoveResources_Create.json
+      - operationId: MoveResources_List
+        exampleFile: ..\examples\MoveResources_List.json
+      - operationId: MoveResources_Get
+        exampleFile: ..\examples\MoveResources_Get.json
+      - operationId: OperationsDiscovery_Get
+        exampleFile: ..\examples\OperationsDiscovery_Get.json
+      - operationId: UnresolvedDependencies_Get
+        exampleFile: ..\examples\UnresolvedDependencies_Get.json
+      - operationId: MoveResources_Delete
+        exampleFile: ..\examples\MoveResources_Delete.json
+      - operationId: MoveCollections_Delete
+        exampleFile: ..\examples\MoveCollections_Delete.json
