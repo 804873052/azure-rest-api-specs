@@ -1,0 +1,162 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  resourceName:
+    type: string
+    prefix: resource
+  certificateName:
+    type: string
+    prefix: certific
+  name:
+    type: string
+    prefix: customdomain
+  hubName:
+    type: string
+    prefix: hubname
+  # privateEndpointConnectionName:
+  #   type: string
+  #   prefix: privatee
+  sharedPrivateLinkResourceName:
+    type: string
+    prefix: sharedpr
+
+  serverfarmsName:
+    type: string
+    prefix: serverfarm
+  sitesName:
+    type: string
+    prefix: sitena
+
+prepareSteps:
+      - operationId: WebPubSub_CreateOrUpdate
+        exampleFile: ..\examples\WebPubSub_CreateOrUpdate.json
+        outputVariables:
+          webpubsubId:
+            type: string
+            fromResponse: /id
+
+scenarios:
+# pass
+  - scenario: WebPubSub
+    description: Microsoft.SignalRService/webPubSub/{resourceName}
+    steps:
+      - operationId: WebPubSub_CheckNameAvailability
+        exampleFile: ..\examples\WebPubSub_CheckNameAvailability.json
+      - operationId: WebPubSub_ListBySubscription
+        exampleFile: ..\examples\WebPubSub_ListBySubscription.json
+      - operationId: WebPubSub_ListByResourceGroup
+        exampleFile: ..\examples\WebPubSub_ListByResourceGroup.json
+      - operationId: WebPubSub_ListSkus
+        exampleFile: ..\examples\WebPubSub_ListSkus.json
+      - operationId: WebPubSub_Get
+        exampleFile: ..\examples\WebPubSub_Get.json
+      - operationId: WebPubSub_Update
+        exampleFile: ..\examples\WebPubSub_Update.json
+      - operationId: WebPubSub_Restart
+        exampleFile: ..\examples\WebPubSub_Restart.json
+      - operationId: WebPubSub_RegenerateKey
+        exampleFile: ..\examples\WebPubSub_RegenerateKey.json
+      - operationId: WebPubSub_ListKeys
+        exampleFile: ..\examples\WebPubSub_ListKeys.json
+
+
+# create keyvault fail
+  # - scenario: WebPubSubCustomCertificates
+  #   description: Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates/{certificateName}
+  #   steps:
+  #     - step: Create_KeyvaultSecret
+  #       armTemplate: ./templates/Create_KeyvaultSecret.json
+  #     - operationId: WebPubSubCustomCertificates_CreateOrUpdate
+  #       exampleFile: ..\examples\WebPubSubCustomCertificates_CreateOrUpdate.json
+  #       outputVariables:
+  #         customCertificateId:
+  #           type: string
+  #           fromResponse: /id
+  #     - operationId: WebPubSubCustomCertificates_List
+  #       exampleFile: ..\examples\WebPubSubCustomCertificates_List.json
+  #     - operationId: WebPubSubCustomCertificates_Get
+  #       exampleFile: ..\examples\WebPubSubCustomCertificates_Get.json
+  #     - operationId: WebPubSubCustomCertificates_Delete
+  #       exampleFile: ..\examples\WebPubSubCustomCertificates_Delete.json
+
+  # - scenario: WebPubSubCustomDomains
+  #   description: Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}
+  #   steps:
+  #     - operationId: WebPubSubCustomDomains_CreateOrUpdate
+  #       exampleFile: ..\examples\WebPubSubCustomDomains_CreateOrUpdate.json
+  #       requestUpdate:
+  #         - replace: /parameters/properties/customCertificate/id
+  #           value: $(customCertificateId)
+  #     - operationId: WebPubSubCustomDomains_List
+  #       exampleFile: ..\examples\WebPubSubCustomDomains_List.json
+  #     - operationId: WebPubSubCustomDomains_Get
+  #       exampleFile: ..\examples\WebPubSubCustomDomains_Get.json
+  #     - operationId: WebPubSubCustomDomains_Delete
+  #       exampleFile: ..\examples\WebPubSubCustomDomains_Delete.json
+
+# pass
+  - scenario:  WebPubSubPrivateEndpointConnections
+    description: Microsoft.SignalRService/webPubSub/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - operationId: WebPubSubPrivateEndpointConnections_List
+        exampleFile: ..\examples\WebPubSubPrivateEndpointConnections_List.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /name
+      - operationId: WebPubSubPrivateEndpointConnections_Update
+        exampleFile: ..\examples\WebPubSubPrivateEndpointConnections_Update.json
+      - operationId: WebPubSubPrivateEndpointConnections_Get
+        exampleFile: ..\examples\WebPubSubPrivateEndpointConnections_Get.json
+      - operationId: WebPubSubPrivateEndpointConnections_Delete
+        exampleFile: ..\examples\WebPubSubPrivateEndpointConnections_Delete.json
+
+# pass
+  - scenario:  WebPubSubSharedPrivateLinkResources
+    description: Microsoft.SignalRService/webPubSub/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}
+    steps:
+      - step: Create_WebApp
+        armTemplate: ./templates/Create_WebApp.json
+      - operationId: WebPubSubSharedPrivateLinkResources_CreateOrUpdate
+        exampleFile: ..\examples\WebPubSubSharedPrivateLinkResources_CreateOrUpdate.json
+        requestUpdate:
+          - replace: /parameters/properties/privateLinkResourceId
+            value: $(webAppId)
+      - operationId: WebPubSubSharedPrivateLinkResources_List
+        exampleFile: ..\examples\WebPubSubSharedPrivateLinkResources_List.json
+      - operationId: WebPubSubSharedPrivateLinkResources_Get
+        exampleFile: ..\examples\WebPubSubSharedPrivateLinkResources_Get.json
+      - operationId: WebPubSubSharedPrivateLinkResources_Delete
+        exampleFile: ..\examples\WebPubSubSharedPrivateLinkResources_Delete.json
+
+# pass
+  - scenario:  WebPubSubHubs
+    description: Microsoft.SignalRService/webPubSub/{resourceName}/hubs/{hubName}
+    steps:
+      - operationId: WebPubSubHubs_CreateOrUpdate
+        exampleFile: ..\examples\WebPubSubHubs_CreateOrUpdate.json
+      - operationId: WebPubSubHubs_List
+        exampleFile: ..\examples\WebPubSubHubs_List.json
+      - operationId: WebPubSubHubs_Get
+        exampleFile: ..\examples\WebPubSubHubs_Get.json
+      - operationId: WebPubSubHubs_Delete
+        exampleFile: ..\examples\WebPubSubHubs_Delete.json
+
+# pass
+  - scenario:  Operations
+    description: Microsoft.SignalRService/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: Usages_List # Microsoft.SignalRService/locations/{location}/usages
+        exampleFile: ..\examples\Usages_List.json 
+      - operationId: WebPubSubPrivateLinkResources_List # Microsoft.SignalRService/webPubSub/{resourceName}/privateLinkResources
+        exampleFile: ..\examples\WebPubSubPrivateLinkResources_List.json
+
+cleanUpSteps:
+      - operationId: WebPubSub_Delete
+        exampleFile: ..\examples\WebPubSub_Delete.json

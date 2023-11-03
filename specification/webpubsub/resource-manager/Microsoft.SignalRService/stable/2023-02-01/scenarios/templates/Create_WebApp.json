@@ -1,0 +1,61 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "serverfarmsName": {
+            "type": "string"
+        },
+        "sitesName": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2022-09-01",
+            "name": "[parameters('serverfarmsName')]",
+            "location": "East US",
+            "sku": {
+                "name": "P1v3",
+                "tier": "PremiumV3",
+                "size": "P1v3",
+                "family": "Pv3",
+                "capacity": 1
+            },
+            "kind": "linux",
+            "properties": {
+                "perSiteScaling": false,
+                "elasticScaleEnabled": false,
+                "maximumElasticWorkerCount": 1,
+                "isSpot": false,
+                "reserved": true,
+                "isXenon": false,
+                "hyperV": false,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0,
+                "zoneRedundant": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2022-09-01",
+            "name": "[parameters('sitesName')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarmsName'))]"
+            ],
+            "properties": {
+                "enabled": true,
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarmsName'))]"
+            }
+        }
+    ],
+    "outputs": {
+        "webAppId":{
+            "type": "string",
+            "value": "[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
+        }
+    }
+}
