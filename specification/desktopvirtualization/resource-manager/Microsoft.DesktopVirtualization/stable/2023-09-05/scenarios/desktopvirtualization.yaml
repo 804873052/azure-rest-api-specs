@@ -1,0 +1,261 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  hostPoolName:
+    type: string
+    prefix: hostpool
+  scalingPlanName:
+    type: string
+    prefix: scalingp
+  applicationGroupName:
+    type: string
+    prefix: applicat
+  workspaceName:
+    type: string
+    prefix: workspac
+  scalingPlanScheduleName:
+    type: string
+    prefix: scalingp
+  sessionHostName:
+    type: string
+    prefix: sessionh
+  applicationName:
+    type: string
+    prefix: applicat
+  msixPackageFullName:
+    type: string
+    prefix: msixpack
+  userSessionId:
+    type: string
+    prefix: usersess
+  desktopName:
+    type: string
+    prefix: desktopn
+
+
+#Resource 'hostpooldboZt4' was disallowed by policy. 
+# Policy identifiers: 
+# '[{\"policyAssignment\":{\"name\":\"Block WVD creation (aka.ms/avdblock)\",\"id\":\"/providers/Microsoft.Management/managementGroups/72f988bf-86f1-41af-91ab-2d7cd011db47/providers/Microsoft.Authorization/policyAssignments/Block WVD creation\"},
+# \"policyDefinition\":{\"name\":\"Deny WVD resource creation\",\"id\":\"/providers/Microsoft.Management/managementGroups/72f988bf-86f1-41af-91ab-2d7cd011db47/providers/Microsoft.Authorization/policyDefinitions/Deny WVD creation\"}}]'
+
+scenarios:
+  - scenario: Workspaces
+    description: Microsoft.DesktopVirtualization/workspaces/{workspaceName}
+    steps:
+      - operationId: Workspaces_CreateOrUpdate
+        exampleFile: ..\examples\Workspace_Create.json
+      - operationId: Workspaces_ListBySubscription
+        exampleFile: ..\examples\Workspace_ListBySubscription.json
+      - operationId: Workspaces_ListByResourceGroup
+        exampleFile: ..\examples\Workspace_ListByResourceGroup.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\Workspace_Get.json
+      - operationId: Workspaces_Update
+        exampleFile: ..\examples\Workspace_Update.json
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\Workspace_Delete.json
+
+  - scenario: HostPools
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}
+    steps:
+      - operationId: HostPools_CreateOrUpdate
+        exampleFile: ..\examples\HostPool_Create.json
+      - operationId: HostPools_List
+        exampleFile: ..\examples\HostPool_List.json
+      - operationId: HostPools_ListByResourceGroup
+        exampleFile: ..\examples\HostPool_ListByResourceGroup.json
+      - operationId: HostPools_Get
+        exampleFile: ..\examples\HostPool_Get.json
+      - operationId: HostPools_Update
+        exampleFile: ..\examples\HostPool_Update.json
+      - operationId: HostPools_RetrieveRegistrationToken
+        exampleFile: ..\examples\HostPools_RetrieveRegistrationToken_Post.json
+      - operationId: HostPools_Delete
+        exampleFile: ..\examples\HostPool_Delete.json
+
+
+  - scenario: ScalingPlans
+    description: Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}
+    steps:
+      - operationId: ScalingPlans_Create
+        exampleFile: ..\examples\ScalingPlan_Create.json
+      - operationId: ScalingPlans_ListBySubscription
+        exampleFile: ..\examples\ScalingPlan_ListBySubscription.json
+      - operationId: ScalingPlans_ListByHostPool
+        exampleFile: ..\examples\ScalingPlan_ListByHostPool.json
+      - operationId: ScalingPlans_Get
+        exampleFile: ..\examples\ScalingPlan_Get.json
+      - operationId: ScalingPlans_ListByResourceGroup
+        exampleFile: ..\examples\ScalingPlan_ListByResourceGroup.json
+      - operationId: ScalingPlans_Update
+        exampleFile: ..\examples\ScalingPlan_Update.json
+      - operationId: ScalingPlans_Delete
+        exampleFile: ..\examples\ScalingPlan_Delete.json
+
+  - scenario: ApplicationGroups
+    description: Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}
+    steps:
+      - operationId: ApplicationGroups_CreateOrUpdate
+        exampleFile: ..\examples\ApplicationGroup_Create.json
+      - operationId: ApplicationGroups_ListBySubscription
+        exampleFile: ..\examples\ApplicationGroup_ListBySubscription.json
+      - operationId: ApplicationGroups_ListByResourceGroup
+        exampleFile: ..\examples\ApplicationGroup_ListByResourceGroup.json
+      - operationId: ApplicationGroups_Get
+        exampleFile: ..\examples\ApplicationGroup_Get.json
+      - operationId: ApplicationGroups_Update
+        exampleFile: ..\examples\ApplicationGroup_Update.json
+      - operationId: ApplicationGroups_Delete
+        exampleFile: ..\examples\ApplicationGroup_Delete.json
+
+  - scenario: Applications
+    description: Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}
+    steps:
+      - operationId: Applications_CreateOrUpdate
+        exampleFile: ..\examples\Application_Create.json
+      - operationId: Applications_List
+        exampleFile: ..\examples\Application_List.json
+      - operationId: Applications_Get
+        exampleFile: ..\examples\Application_Get.json
+      - operationId: Applications_Update
+        exampleFile: ..\examples\Application_Update.json
+      - operationId: Applications_Delete
+        exampleFile: ..\examples\Application_Delete.json
+
+
+  - scenario: ScalingPlanPooledSchedules
+    description: Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}
+    steps:
+      - operationId: ScalingPlanPooledSchedules_Create
+        exampleFile: ..\examples\ScalingPlanPooledSchedule_Create.json
+      - operationId: ScalingPlanPooledSchedules_List
+        exampleFile: ..\examples\ScalingPlanPooledSchedule_List.json
+      - operationId: ScalingPlanPooledSchedules_Get
+        exampleFile: ..\examples\ScalingPlanPooledSchedule_Get.json
+      - operationId: ScalingPlanPooledSchedules_Update
+        exampleFile: ..\examples\ScalingPlanPooledSchedule_Update.json
+      - operationId: ScalingPlanPooledSchedules_Delete
+        exampleFile: ..\examples\ScalingPlanPooledSchedule_Delete.json
+
+  - scenario: ScalingPlanPersonalSchedules
+    description: Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}
+    steps:
+      - operationId: ScalingPlanPersonalSchedules_Create
+        exampleFile: ..\examples\ScalingPlanPersonalSchedule_Create.json
+      - operationId: ScalingPlanPersonalSchedules_List
+        exampleFile: ..\examples\ScalingPlanPersonalSchedule_List.json
+      - operationId: ScalingPlanPersonalSchedules_Get
+        exampleFile: ..\examples\ScalingPlanPersonalSchedule_Get.json
+      - operationId: ScalingPlanPersonalSchedules_Update
+        exampleFile: ..\examples\ScalingPlanPersonalSchedule_Update.json
+      - operationId: ScalingPlanPersonalSchedules_Delete
+        exampleFile: ..\examples\ScalingPlanPersonalSchedule_Delete.json
+
+  - scenario: MSIXPackages
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}
+    steps:
+      - operationId: MSIXPackages_CreateOrUpdate
+        exampleFile: ..\examples\MsixPackage_Create.json
+      - operationId: MSIXPackages_List
+        exampleFile: ..\examples\MsixPackage_List.json
+      - operationId: MSIXPackages_Get
+        exampleFile: ..\examples\MsixPackage_Get.json
+      - operationId: MSIXPackages_Update
+        exampleFile: ..\examples\MsixPackage_Update.json
+      - operationId: MSIXPackages_Delete
+        exampleFile: ..\examples\MsixPackage_Delete.json
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    # Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - operationId: PrivateEndpointConnections_UpdateByWorkspace
+        exampleFile: ..\examples\PrivateEndpointConnection_UpdateByWorkspace.json
+      - operationId: PrivateEndpointConnections_ListByWorkspace
+        exampleFile: ..\examples\PrivateEndpointConnection_ListByWorkspace.json
+      - operationId: PrivateEndpointConnections_GetByWorkspace
+        exampleFile: ..\examples\PrivateEndpointConnection_GetByWorkspace.json
+      - operationId: PrivateLinkResources_ListByWorkspace
+        exampleFile: ..\examples\PrivateLinkResources_ListByWorkspace.json
+      - operationId: PrivateEndpointConnections_DeleteByWorkspace
+        exampleFile: ..\examples\PrivateEndpointConnection_DeleteByWorkspace.json
+
+
+      - operationId: PrivateEndpointConnections_UpdateByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_UpdateByHostPool.json
+      - operationId: PrivateEndpointConnections_GetByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_GetByHostPool.json
+      - operationId: PrivateEndpointConnections_ListByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_ListByHostPool.json
+      - operationId: PrivateLinkResources_ListByHostPool
+        exampleFile: ..\examples\PrivateLinkResources_ListByHostPool.json
+      - operationId: PrivateEndpointConnections_DeleteByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_DeleteByHostPool.json
+
+
+
+
+  - scenario: Operations
+    description: Microsoft.DesktopVirtualization/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationDescription_List.json
+
+  - scenario: Desktops
+    description: Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/desktops/{desktopName}
+    steps:
+      - operationId: Desktops_List
+        exampleFile: ..\examples\Desktop_List.json
+      - operationId: Desktops_Get
+        exampleFile: ..\examples\Desktop_Get.json
+      - operationId: Desktops_Update
+        exampleFile: ..\examples\Desktop_Update.json
+
+  - scenario: StartMenuItems
+    description: Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/startMenuItems
+    steps:
+      - operationId: StartMenuItems_List
+        exampleFile: ..\examples\StartMenuItem_List.json
+
+  - scenario: MsixImages
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/expandMsixImage
+    steps:
+      - operationId: MsixImages_Expand
+        exampleFile: ..\examples\MsixImage_Expand_Post.json
+
+  - scenario: SessionHosts
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}
+    steps:
+      - operationId: SessionHosts_Update
+        exampleFile: ..\examples\SessionHost_Update.json
+      - operationId: SessionHosts_List
+        exampleFile: ..\examples\SessionHost_List.json
+      - operationId: SessionHosts_Get
+        exampleFile: ..\examples\SessionHost_Get.json
+      - operationId: SessionHosts_Delete
+        exampleFile: ..\examples\SessionHost_Delete.json
+
+  - scenario: UserSessions
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions
+    steps:
+      - operationId: UserSessions_List
+        exampleFile: ..\examples\UserSession_List.json
+      - operationId: UserSessions_Delete
+        exampleFile: ..\examples\UserSession_Delete.json
+      - operationId: UserSessions_Get
+        exampleFile: ..\examples\UserSession_Get.json
+      - operationId: UserSessions_Disconnect
+        exampleFile: ..\examples\UserSession_Disconnect_Post.json
+      - operationId: UserSessions_SendMessage
+        exampleFile: ..\examples\UserSession_SendMessage_Post.json
+      - operationId: UserSessions_ListByHostPool
+        exampleFile: ..\examples\UserSession_ListByHostPool.json
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  hostPoolName:
+    type: string
+    prefix: hostpool
+  scalingPlanName:
+    type: string
+    prefix: scalingp
+  applicationGroupName:
+    type: string
+    prefix: applicat
+  workspaceName:
+    type: string
+    prefix: workspac
+  scalingPlanScheduleName:
+    type: string
+    prefix: scalingp
+  sessionHostName:
+    type: string
+    prefix: sessionh
+  applicationName:
+    type: string
+    prefix: applicat
+  msixPackageFullName:
+    type: string
+    prefix: msixpack
+  userSessionId:
+    type: string
+    prefix: usersess
+  desktopName:
+    type: string
+    prefix: desktopn
+
+prepareSteps:
+      - operationId: HostPools_CreateOrUpdate
+        exampleFile: ..\examples\HostPool_Create.json
+
+scenarios:
+
+  - scenario: HostPools
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}
+    steps:
+
+      - operationId: HostPools_List
+        exampleFile: ..\examples\HostPool_List.json
+      - operationId: HostPools_ListByResourceGroup
+        exampleFile: ..\examples\HostPool_ListByResourceGroup.json
+      - operationId: HostPools_Get
+        exampleFile: ..\examples\HostPool_Get.json
+      - operationId: HostPools_Update
+        exampleFile: ..\examples\HostPool_Update.json
+      - operationId: HostPools_RetrieveRegistrationToken
+        exampleFile: ..\examples\HostPools_RetrieveRegistrationToken_Post.json
+
+
+  - scenario: MSIXPackages
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}
+    steps:
+      - operationId: MSIXPackages_CreateOrUpdate
+        exampleFile: ..\examples\MsixPackage_Create.json
+      - operationId: MSIXPackages_List
+        exampleFile: ..\examples\MsixPackage_List.json
+      - operationId: MSIXPackages_Get
+        exampleFile: ..\examples\MsixPackage_Get.json
+      - operationId: MSIXPackages_Update
+        exampleFile: ..\examples\MsixPackage_Update.json
+      - operationId: MSIXPackages_Delete
+        exampleFile: ..\examples\MsixPackage_Delete.json
+
+  - scenario: MsixImages
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/expandMsixImage
+    steps:
+      - operationId: MsixImages_Expand
+        exampleFile: ..\examples\MsixImage_Expand_Post.json
+
+  - scenario: SessionHosts
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}
+    steps:
+      - operationId: SessionHosts_Update
+        exampleFile: ..\examples\SessionHost_Update.json
+      - operationId: SessionHosts_List
+        exampleFile: ..\examples\SessionHost_List.json
+      - operationId: SessionHosts_Get
+        exampleFile: ..\examples\SessionHost_Get.json
+
+
+  # - scenario: UserSessions
+  #   description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions
+  #   steps:
+      - operationId: UserSessions_List
+        exampleFile: ..\examples\UserSession_List.json
+      - operationId: UserSessions_SendMessage
+        exampleFile: ..\examples\UserSession_SendMessage_Post.json
+      - operationId: UserSessions_Get
+        exampleFile: ..\examples\UserSession_Get.json
+      - operationId: UserSessions_ListByHostPool
+        exampleFile: ..\examples\UserSession_ListByHostPool.json
+      - operationId: UserSessions_Disconnect
+        exampleFile: ..\examples\UserSession_Disconnect_Post.json
+      - operationId: UserSessions_Delete
+        exampleFile: ..\examples\UserSession_Delete.json
+
+      - operationId: SessionHosts_Delete
+        exampleFile: ..\examples\SessionHost_Delete.json
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+
+      - step: Create_PrivateEndpointByWorkspace
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+
+      - operationId: PrivateEndpointConnections_ListByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_ListByHostPool.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+
+      - operationId: PrivateEndpointConnections_UpdateByHostPool # groupId: hostpool
+        exampleFile: ..\examples\PrivateEndpointConnection_UpdateByHostPool.json
+      - operationId: PrivateEndpointConnections_GetByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_GetByHostPool.json
+
+      - operationId: PrivateLinkResources_ListByHostPool
+        exampleFile: ..\examples\PrivateLinkResources_ListByHostPool.json
+      - operationId: PrivateEndpointConnections_DeleteByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_DeleteByHostPool.json
+
+
+cleanUpSteps:
+      - operationId: HostPools_Delete
+        exampleFile: ..\examples\HostPool_Delete.json

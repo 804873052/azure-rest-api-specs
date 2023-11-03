@@ -1,0 +1,117 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  resourceName:
+    type: string
+    prefix: resource
+  secretName:
+    type: string
+    prefix: secretna
+  machinePoolName:
+    type: string
+    prefix: machinepoolna
+  syncSetName:
+    type: string
+    prefix: syncsetna
+  syncIdentityProvider:
+    type: string
+    prefix: syncidentityproviderna
+
+# Subscription is not registered with resource provider 'Microsoft.RedHatOpenShift'.
+
+prepareSteps:
+      - operationId: OpenShiftClusters_CreateOrUpdate
+        exampleFile: ..\examples\OpenShiftClusters_CreateOrUpdate.json
+
+scenarios:
+  - scenario: OpenShiftClusters
+    description: Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}
+    steps:
+      - operationId: OpenShiftClusters_List
+        exampleFile: ..\examples\OpenShiftClusters_List.json
+      - operationId: OpenShiftClusters_ListByResourceGroup
+        exampleFile: ..\examples\OpenShiftClusters_ListByResourceGroup.json
+      - operationId: OpenShiftClusters_Get
+        exampleFile: ..\examples\OpenShiftClusters_Get.json
+      - operationId: OpenShiftClusters_Update
+        exampleFile: ..\examples\OpenShiftClusters_Update.json
+      - operationId: OpenShiftClusters_ListCredentials
+        exampleFile: ..\examples\OpenShiftClusters_ListCredentials.json
+      - operationId: OpenShiftClusters_ListAdminCredentials
+        exampleFile: ..\examples\OpenShiftClusters_ListAdminCredentials.json
+
+  - scenario: Secrets
+    description: Microsoft.RedHatOpenShift/openshiftclusters/{resourceName}/secret/{childResourceName}
+    variables:
+      childResourceName: $(secretName)
+    steps:
+      - operationId: Secrets_CreateOrUpdate
+        exampleFile: ..\examples\Secrets_CreateOrUpdate.json
+      - operationId: Secrets_List
+        exampleFile: ..\examples\Secrets_List.json
+      - operationId: Secrets_Get
+        exampleFile: ..\examples\Secrets_Get.json
+      - operationId: Secrets_Update
+        exampleFile: ..\examples\Secrets_Update.json
+      - operationId: Secrets_Delete
+        exampleFile: ..\examples\Secrets_Delete.json
+
+  - scenario: MachinePools
+    description: Microsoft.RedHatOpenShift/openshiftclusters/{resourceName}/machinePool/{childResourceName}
+    variables:
+      childResourceName: $(machinePoolName)
+    steps:
+      - operationId: MachinePools_CreateOrUpdate
+        exampleFile: ..\examples\MachinePools_CreateOrUpdate.json
+      - operationId: MachinePools_List
+        exampleFile: ..\examples\MachinePools_List.json
+      - operationId: MachinePools_Get
+        exampleFile: ..\examples\MachinePools_Get.json
+      - operationId: MachinePools_Update
+        exampleFile: ..\examples\MachinePools_Update.json
+      - operationId: MachinePools_Delete
+        exampleFile: ..\examples\MachinePools_Delete.json
+
+  - scenario: SyncSets
+    description: Microsoft.RedHatOpenShift/openshiftclusters/{resourceName}/syncSet/{childResourceName}
+    variables:
+      childResourceName: $(syncSetName)
+    steps:
+      - operationId: SyncSets_CreateOrUpdate
+        exampleFile: ..\examples\SyncSets_CreateOrUpdate.json
+      - operationId: SyncSets_List
+        exampleFile: ..\examples\SyncSets_List.json
+      - operationId: SyncSets_Get
+        exampleFile: ..\examples\SyncSets_Get.json
+      - operationId: SyncSets_Update
+        exampleFile: ..\examples\SyncSets_Update.json
+      - operationId: SyncSets_Delete
+        exampleFile: ..\examples\SyncSets_Delete.json
+
+  - scenario: SyncIdentityProviders
+    description: Microsoft.RedHatOpenShift/openshiftclusters/{resourceName}/syncIdentityProvider/{childResourceName}
+    variables:
+      childResourceName: $(syncIdentityProvider)
+    steps:
+      - operationId: SyncIdentityProviders_CreateOrUpdate
+        exampleFile: ..\examples\SyncIdentityProviders_CreateOrUpdate.json
+      - operationId: SyncIdentityProviders_List
+        exampleFile: ..\examples\SyncIdentityProviders_List.json
+      - operationId: SyncIdentityProviders_Get
+        exampleFile: ..\examples\SyncIdentityProviders_Get.json
+      - operationId: SyncIdentityProviders_Update
+        exampleFile: ..\examples\SyncIdentityProviders_Update.json
+      - operationId: SyncIdentityProviders_Delete
+        exampleFile: ..\examples\SyncIdentityProviders_Delete.json
+
+  - scenario: Operations
+    description: Microsoft.RedHatOpenShift/operations
+    steps:
+      - operationId: Operations_List 
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: OpenShiftVersions_List # Microsoft.RedHatOpenShift/locations/{location}/openshiftversions
+        exampleFile: ..\examples\OpenShiftVersions_List.json
+
+cleanUpSteps:
+      - operationId: OpenShiftClusters_Delete
+        exampleFile: ..\examples\OpenShiftClusters_Delete.json

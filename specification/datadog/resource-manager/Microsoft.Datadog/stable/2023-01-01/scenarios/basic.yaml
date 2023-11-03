@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  monitorName:
+    type: string
+    prefix: monitorn
+  configurationName:
+    type: string
+    prefix: configur
+  ruleSetName:
+    type: string
+    prefix: rulesetn
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Monitors_Create
+        exampleFile: ..\examples\Monitors_Create.json
+      - operationId: Monitors_List
+        exampleFile: ..\examples\Monitors_List.json
+      - operationId: Monitors_ListByResourceGroup
+        exampleFile: ..\examples\Monitors_ListByResourceGroup.json
+      - operationId: Monitors_Get
+        exampleFile: ..\examples\Monitors_Get.json
+      - operationId: Monitors_Update
+        exampleFile: ..\examples\Monitors_Update.json
+      - operationId: Monitors_RefreshSetPasswordLink
+        exampleFile: ..\examples\RefreshSetPassword_Get.json
+      - operationId: Monitors_SetDefaultKey
+        exampleFile: ..\examples\ApiKeys_SetDefaultKey.json
+      - operationId: Monitors_ListLinkedResources
+        exampleFile: ..\examples\LinkedResources_List.json
+      - operationId: Monitors_ListMonitoredResources
+        exampleFile: ..\examples\MonitoredResources_List.json
+      - operationId: Monitors_ListApiKeys
+        exampleFile: ..\examples\ApiKeys_List.json
+      - operationId: Monitors_ListHosts
+        exampleFile: ..\examples\Hosts_List.json
+      - operationId: Monitors_GetDefaultKey
+        exampleFile: ..\examples\ApiKeys_GetDefaultKey.json
+      - operationId: MonitoredSubscriptions_CreateorUpdate
+        exampleFile: ..\examples\MonitoredSubscriptions_CreateorUpdate.json
+      - operationId: MonitoredSubscriptions_List
+        exampleFile: ..\examples\MonitoredSubscriptions_List.json
+      - operationId: MonitoredSubscriptions_Get
+        exampleFile: ..\examples\MonitoredSubscriptions_Get.json
+      - operationId: MonitoredSubscriptions_Update
+        exampleFile: ..\examples\MonitoredSubscriptions_Update.json
+      - operationId: SingleSignOnConfigurations_CreateOrUpdate
+        exampleFile: ..\examples\SingleSignOnConfigurations_CreateOrUpdate.json
+      - operationId: SingleSignOnConfigurations_List
+        exampleFile: ..\examples\SingleSignOnConfigurations_List.json
+      - operationId: SingleSignOnConfigurations_Get
+        exampleFile: ..\examples\SingleSignOnConfigurations_Get.json
+      - operationId: TagRules_CreateOrUpdate
+        exampleFile: ..\examples\TagRules_CreateOrUpdate.json
+      - operationId: TagRules_List
+        exampleFile: ..\examples\TagRules_List.json
+      - operationId: TagRules_Get
+        exampleFile: ..\examples\TagRules_Get.json
+      - operationId: MarketplaceAgreements_CreateOrUpdate
+        exampleFile: ..\examples\MarketplaceAgreements_Create.json
+      - operationId: MarketplaceAgreements_List
+        exampleFile: ..\examples\MarketplaceAgreements_List.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: CreationSupported_List
+        exampleFile: ..\examples\CreationSupported_List.json
+      - operationId: CreationSupported_Get
+        exampleFile: ..\examples\CreationSupported_Get.json
+      - operationId: MonitoredSubscriptions_Delete
+        exampleFile: ..\examples\MonitoredSubscriptions_Delete.json
+      - operationId: Monitors_Delete
+        exampleFile: ..\examples\Monitors_Delete.json

@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  hostPoolName:
+    type: string
+    prefix: hostpool
+  scalingPlanName:
+    type: string
+    prefix: scalingp
+  applicationGroupName:
+    type: string
+    prefix: applicat
+  workspaceName:
+    type: string
+    prefix: workspac
+  scalingPlanScheduleName:
+    type: string
+    prefix: scalingp
+  sessionHostName:
+    type: string
+    prefix: sessionh
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  applicationName:
+    type: string
+    prefix: applicat
+  msixPackageFullName:
+    type: string
+    prefix: msixpack
+  userSessionId:
+    type: string
+    prefix: usersess
+  desktopName:
+    type: string
+    prefix: desktopn
+
+prepareSteps:
+      - operationId: Workspaces_CreateOrUpdate
+        exampleFile: ..\examples\Workspace_Create.json
+        outputVariables:
+          workspaceId:
+            type: string
+            fromResponse: /id
+
+
+# Resource 'workspacmUBUcY' was disallowed by policy
+scenarios:
+  - scenario: Workspaces
+    description: Microsoft.DesktopVirtualization/workspaces/{workspaceName}
+    steps:
+
+      - operationId: Workspaces_ListBySubscription
+        exampleFile: ..\examples\Workspace_ListBySubscription.json
+      - operationId: Workspaces_ListByResourceGroup
+        exampleFile: ..\examples\Workspace_ListByResourceGroup.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\Workspace_Get.json
+      - operationId: Workspaces_Update
+        exampleFile: ..\examples\Workspace_Update.json
+
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    # Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpointByWorkspace
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+
+      - operationId: PrivateEndpointConnections_UpdateByWorkspace
+        exampleFile: ..\examples\PrivateEndpointConnection_UpdateByWorkspace.json
+      - operationId: PrivateEndpointConnections_ListByWorkspace
+        exampleFile: ..\examples\PrivateEndpointConnection_ListByWorkspace.json
+      - operationId: PrivateEndpointConnections_GetByWorkspace
+        exampleFile: ..\examples\PrivateEndpointConnection_GetByWorkspace.json
+      - operationId: PrivateLinkResources_ListByWorkspace
+        exampleFile: ..\examples\PrivateLinkResources_ListByWorkspace.json
+      - operationId: PrivateEndpointConnections_DeleteByWorkspace
+        exampleFile: ..\examples\PrivateEndpointConnection_DeleteByWorkspace.json
+
+
+      - operationId: PrivateEndpointConnections_UpdateByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_UpdateByHostPool.json
+      - operationId: PrivateEndpointConnections_GetByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_GetByHostPool.json
+      - operationId: PrivateEndpointConnections_ListByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_ListByHostPool.json
+      - operationId: PrivateLinkResources_ListByHostPool
+        exampleFile: ..\examples\PrivateLinkResources_ListByHostPool.json
+      - operationId: PrivateEndpointConnections_DeleteByHostPool
+        exampleFile: ..\examples\PrivateEndpointConnection_DeleteByHostPool.json
+
+
+cleanUpSteps:
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\Workspace_Delete.json

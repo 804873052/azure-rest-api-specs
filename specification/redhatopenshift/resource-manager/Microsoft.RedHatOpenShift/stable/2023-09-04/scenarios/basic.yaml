@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  resourceName:
+    type: string
+    prefix: resource
+  childResourceName:
+    type: string
+    prefix: childres
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: OpenShiftClusters_CreateOrUpdate
+        exampleFile: ..\examples\OpenShiftClusters_CreateOrUpdate.json
+      - operationId: OpenShiftClusters_List
+        exampleFile: ..\examples\OpenShiftClusters_List.json
+      - operationId: OpenShiftClusters_ListByResourceGroup
+        exampleFile: ..\examples\OpenShiftClusters_ListByResourceGroup.json
+      - operationId: OpenShiftClusters_Get
+        exampleFile: ..\examples\OpenShiftClusters_Get.json
+      - operationId: OpenShiftClusters_Update
+        exampleFile: ..\examples\OpenShiftClusters_Update.json
+      - operationId: OpenShiftClusters_ListCredentials
+        exampleFile: ..\examples\OpenShiftClusters_ListCredentials.json
+      - operationId: OpenShiftClusters_ListAdminCredentials
+        exampleFile: ..\examples\OpenShiftClusters_ListAdminCredentials.json
+      - operationId: Secrets_CreateOrUpdate
+        exampleFile: ..\examples\Secrets_CreateOrUpdate.json
+      - operationId: Secrets_List
+        exampleFile: ..\examples\Secrets_List.json
+      - operationId: Secrets_Get
+        exampleFile: ..\examples\Secrets_Get.json
+      - operationId: Secrets_Update
+        exampleFile: ..\examples\Secrets_Update.json
+      - operationId: MachinePools_CreateOrUpdate
+        exampleFile: ..\examples\MachinePools_CreateOrUpdate.json
+      - operationId: MachinePools_List
+        exampleFile: ..\examples\MachinePools_List.json
+      - operationId: MachinePools_Get
+        exampleFile: ..\examples\MachinePools_Get.json
+      - operationId: MachinePools_Update
+        exampleFile: ..\examples\MachinePools_Update.json
+      - operationId: SyncSets_CreateOrUpdate
+        exampleFile: ..\examples\SyncSets_CreateOrUpdate.json
+      - operationId: SyncSets_List
+        exampleFile: ..\examples\SyncSets_List.json
+      - operationId: SyncSets_Get
+        exampleFile: ..\examples\SyncSets_Get.json
+      - operationId: SyncSets_Update
+        exampleFile: ..\examples\SyncSets_Update.json
+      - operationId: SyncIdentityProviders_CreateOrUpdate
+        exampleFile: ..\examples\SyncIdentityProviders_CreateOrUpdate.json
+      - operationId: SyncIdentityProviders_List
+        exampleFile: ..\examples\SyncIdentityProviders_List.json
+      - operationId: SyncIdentityProviders_Get
+        exampleFile: ..\examples\SyncIdentityProviders_Get.json
+      - operationId: SyncIdentityProviders_Update
+        exampleFile: ..\examples\SyncIdentityProviders_Update.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: OpenShiftVersions_List
+        exampleFile: ..\examples\OpenShiftVersions_List.json
+      - operationId: SyncIdentityProviders_Delete
+        exampleFile: ..\examples\SyncIdentityProviders_Delete.json
+      - operationId: SyncSets_Delete
+        exampleFile: ..\examples\SyncSets_Delete.json
+      - operationId: MachinePools_Delete
+        exampleFile: ..\examples\MachinePools_Delete.json
+      - operationId: Secrets_Delete
+        exampleFile: ..\examples\Secrets_Delete.json
+      - operationId: OpenShiftClusters_Delete
+        exampleFile: ..\examples\OpenShiftClusters_Delete.json
