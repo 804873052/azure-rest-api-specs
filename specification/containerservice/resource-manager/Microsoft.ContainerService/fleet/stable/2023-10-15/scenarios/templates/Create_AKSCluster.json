@@ -1,0 +1,103 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location":{
+            "type": "string"
+        },
+        "managedClustersName": {
+            "type": "string"
+        },
+        "azureClientId":{
+            "type": "securestring"
+        },
+        "azureClientSecret":{
+            "type": "securestring"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.ContainerService/managedClusters",
+            "apiVersion": "2023-01-02-preview",
+            "name": "[parameters('managedClustersName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Basic",
+                "tier": "Free"
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "kubernetesVersion": "1.26.6",
+                "dnsPrefix": "dnsprefix1",
+                "agentPoolProfiles": [
+                    {
+                        "name": "nodepool1",
+                        "count": 3,
+                        "vmSize": "Standard_DS2_v2",
+                        "osDiskSizeGB": 128,
+                        "osDiskType": "Managed",
+                        "kubeletDiskType": "OS",
+                        "maxPods": 110,
+                        "type": "VirtualMachineScaleSets",
+                        "maxCount": 10,
+                        "minCount": 1,
+                        "enableAutoScaling": true,
+                        "powerState": {
+                            "code": "Running"
+                        },
+                        "orchestratorVersion": "1.26.6",
+                        "enableNodePublicIP": true,
+                        "mode": "System",
+                        "osType": "Linux",
+                        "osSKU": "Ubuntu",
+                        "upgradeSettings": {},
+                        "enableFIPS": false
+                    }
+                ],
+                "servicePrincipalProfile": {
+                    "clientId": "[parameters('azureClientId')]",
+                    "secret": "[parameters('azureClientSecret')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters/agentPools",
+            "apiVersion": "2023-01-02-preview",
+            "name": "[concat(parameters('managedClustersName'), '/nodepool1')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('managedClustersName'))]"
+            ],
+            "properties": {
+                "count": 3,
+                "vmSize": "Standard_DS2_v2",
+                "osDiskSizeGB": 128,
+                "osDiskType": "Managed",
+                "kubeletDiskType": "OS",
+                "maxPods": 110,
+                "type": "VirtualMachineScaleSets",
+                "maxCount": 10,
+                "minCount": 1,
+                "enableAutoScaling": true,
+                "powerState": {
+                    "code": "Running"
+                },
+                "orchestratorVersion": "1.26.6",
+                "enableNodePublicIP": true,
+                "mode": "System",
+                "osType": "Linux",
+                "osSKU": "Ubuntu",
+                "upgradeSettings": {},
+                "enableFIPS": false
+            }
+        }
+    ],
+    "outputs": {
+        "managedClusterId":{
+            "type": "string",
+            "value": "[resourceId('Microsoft.ContainerService/managedClusters', parameters('managedClustersName'))]"
+        }
+    }
+}

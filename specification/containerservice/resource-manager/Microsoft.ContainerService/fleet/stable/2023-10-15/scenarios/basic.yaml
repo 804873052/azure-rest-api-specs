@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  fleetName:
+    type: string
+    prefix: fleetnam
+  updateRunName:
+    type: string
+    prefix: updateru
+  fleetMemberName:
+    type: string
+    prefix: fleetmem
+  updateStrategyName:
+    type: string
+    prefix: updatest
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Fleets_CreateOrUpdate
+        exampleFile: ..\examples\Fleets_CreateOrUpdate.json
+      - operationId: Fleets_ListBySubscription
+        exampleFile: ..\examples\Fleets_ListBySub.json
+      - operationId: Fleets_Get
+        exampleFile: ..\examples\Fleets_Get.json
+      - operationId: Fleets_ListByResourceGroup
+        exampleFile: ..\examples\Fleets_ListByResourceGroup.json
+      - operationId: Fleets_Update
+        exampleFile: ..\examples\Fleets_PatchTags.json
+      - operationId: Fleets_ListCredentials
+        exampleFile: ..\examples\Fleets_ListCredentialsResult.json
+      - operationId: UpdateRuns_CreateOrUpdate
+        exampleFile: ..\examples\UpdateRuns_CreateOrUpdate.json
+      - operationId: UpdateRuns_ListByFleet
+        exampleFile: ..\examples\UpdateRuns_ListByFleet.json
+      - operationId: UpdateRuns_Get
+        exampleFile: ..\examples\UpdateRuns_Get.json
+      - operationId: UpdateRuns_Stop
+        exampleFile: ..\examples\UpdateRuns_Stop.json
+      - operationId: UpdateRuns_Start
+        exampleFile: ..\examples\UpdateRuns_Start.json
+      - operationId: FleetMembers_Create
+        exampleFile: ..\examples\FleetMembers_Create.json
+      - operationId: FleetMembers_ListByFleet
+        exampleFile: ..\examples\FleetMembers_ListByFleet.json
+      - operationId: FleetMembers_Get
+        exampleFile: ..\examples\FleetMembers_Get.json
+      - operationId: FleetMembers_Update
+        exampleFile: ..\examples\FleetMembers_Update.json
+      - operationId: FleetUpdateStrategies_CreateOrUpdate
+        exampleFile: ..\examples\UpdateStrategies_CreateOrUpdate.json
+      - operationId: FleetUpdateStrategies_ListByFleet
+        exampleFile: ..\examples\UpdateStrategies_ListByFleet.json
+      - operationId: FleetUpdateStrategies_Get
+        exampleFile: ..\examples\UpdateStrategies_Get.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: FleetUpdateStrategies_Delete
+        exampleFile: ..\examples\UpdateStrategies_Delete.json
+      - operationId: FleetMembers_Delete
+        exampleFile: ..\examples\FleetMembers_Delete.json
+      - operationId: UpdateRuns_Delete
+        exampleFile: ..\examples\UpdateRuns_Delete.json
+      - operationId: Fleets_Delete
+        exampleFile: ..\examples\Fleets_Delete.json
