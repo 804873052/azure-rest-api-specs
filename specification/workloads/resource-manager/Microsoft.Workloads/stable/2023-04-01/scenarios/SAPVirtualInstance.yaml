@@ -1,0 +1,107 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  # sapVirtualInstanceName:
+  #   type: string
+  #   prefix: sapvirtu
+  centralInstanceName:
+    type: string
+    prefix: centrali
+  databaseInstanceName:
+    type: string
+    prefix: database
+  applicationInstanceName:
+    type: string
+    prefix: applicat
+  location:
+    type: string
+
+# fail
+prepareSteps:
+      - step: Create_SAPNetwork
+        armTemplate: ./templates/Create_SAPNetwork.json
+      - operationId: SAPVirtualInstances_Create
+        exampleFile: ..\examples\sapvirtualinstances\SAPVirtualInstances_Create_WithOSConfig_Distributed.json
+        requestUpdate:
+          - replace: /body/properties/configuration/infrastructureConfiguration/centralServer/subnetId
+            value: $(appsubnetId)
+          - replace: /body/properties/configuration/infrastructureConfiguration/applicationServer/subnetId
+            value: $(appsubnetId)
+          - replace: /body/properties/configuration/infrastructureConfiguration/databaseServer/subnetId
+            value: $(dbsubnetId)
+
+scenarios:
+  - scenario: SAPVirtualInstances
+    description: Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}
+    steps:
+      - operationId: SAPVirtualInstances_ListBySubscription
+        exampleFile: ..\examples\sapvirtualinstances\SAPVirtualInstances_ListBySubscription.json
+      - operationId: SAPVirtualInstances_ListByResourceGroup
+        exampleFile: ..\examples\sapvirtualinstances\SAPVirtualInstances_ListByResourceGroup.json
+      - operationId: SAPVirtualInstances_Get
+        exampleFile: ..\examples\sapvirtualinstances\SAPVirtualInstances_Get.json
+      - operationId: SAPVirtualInstances_Update
+        exampleFile: ..\examples\sapvirtualinstances\SAPVirtualInstances_Update.json
+      - operationId: SAPVirtualInstances_Stop
+        exampleFile: ..\examples\sapvirtualinstances\SAPVirtualInstances_Stop.json
+      - operationId: SAPVirtualInstances_Start
+        exampleFile: ..\examples\sapvirtualinstances\SAPVirtualInstances_Start.json
+
+  - scenario: SAPCentralInstances
+    description: Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}
+    steps:
+      - operationId: SAPCentralInstances_Create
+        exampleFile: ..\examples\sapvirtualinstances\SAPCentralInstances_Create.json
+      - operationId: SAPCentralInstances_List
+        exampleFile: ..\examples\sapvirtualinstances\SAPCentralInstances_List.json
+      - operationId: SAPCentralInstances_Get
+        exampleFile: ..\examples\sapvirtualinstances\SAPCentralInstances_Get.json
+      - operationId: SAPCentralInstances_Update
+        exampleFile: ..\examples\sapvirtualinstances\SAPCentralInstances_Update.json
+      - operationId: SAPCentralInstances_StartInstance
+        exampleFile: ..\examples\sapvirtualinstances\SAPCentralInstances_StartInstance.json
+      - operationId: SAPCentralInstances_StopInstance
+        exampleFile: ..\examples\sapvirtualinstances\SAPCentralInstances_StopInstance.json
+      - operationId: SAPCentralInstances_Delete
+        exampleFile: ..\examples\sapvirtualinstances\SAPCentralInstances_Delete.json
+
+  - scenario: SAPDatabaseInstances
+    description: Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}
+    steps:
+      - operationId: SAPDatabaseInstances_Create
+        exampleFile: ..\examples\sapvirtualinstances\SAPDatabaseInstances_Create.json
+      - operationId: SAPDatabaseInstances_List
+        exampleFile: ..\examples\sapvirtualinstances\SAPDatabaseInstances_List.json
+      - operationId: SAPDatabaseInstances_Get
+        exampleFile: ..\examples\sapvirtualinstances\SAPDatabaseInstances_Get.json
+      - operationId: SAPDatabaseInstances_Update
+        exampleFile: ..\examples\sapvirtualinstances\SAPDatabaseInstances_Update.json
+      - operationId: SAPDatabaseInstances_StartInstance
+        exampleFile: ..\examples\sapvirtualinstances\SAPDatabaseInstances_StartInstance.json
+      - operationId: SAPDatabaseInstances_StopInstance
+        exampleFile: ..\examples\sapvirtualinstances\SAPDatabaseInstances_StopInstance.json
+      - operationId: SAPDatabaseInstances_Delete
+        exampleFile: ..\examples\sapvirtualinstances\SAPDatabaseInstances_Delete.json
+
+  - scenario: SAPApplicationServerInstances
+    description: Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}
+    steps:
+      - operationId: SAPApplicationServerInstances_Create
+        exampleFile: ..\examples\sapvirtualinstances\SAPApplicationServerInstances_Create.json
+      - operationId: SAPApplicationServerInstances_List
+        exampleFile: ..\examples\sapvirtualinstances\SAPApplicationServerInstances_List.json
+      - operationId: SAPApplicationServerInstances_Get
+        exampleFile: ..\examples\sapvirtualinstances\SAPApplicationServerInstances_Get.json
+      - operationId: SAPApplicationServerInstances_Update
+        exampleFile: ..\examples\sapvirtualinstances\SAPApplicationServerInstances_Update.json
+      - operationId: SAPApplicationServerInstances_StartInstance
+        exampleFile: ..\examples\sapvirtualinstances\SAPApplicationServerInstances_StartInstance.json
+      - operationId: SAPApplicationServerInstances_StopInstance
+        exampleFile: ..\examples\sapvirtualinstances\SAPApplicationServerInstances_StopInstance.json
+      - operationId: SAPApplicationServerInstances_Delete
+        exampleFile: ..\examples\sapvirtualinstances\SAPApplicationServerInstances_Delete.json
+
+cleanUpSteps:
+      - operationId: SAPVirtualInstances_Delete
+        exampleFile: ..\examples\sapvirtualinstances\SAPVirtualInstances_Delete.json

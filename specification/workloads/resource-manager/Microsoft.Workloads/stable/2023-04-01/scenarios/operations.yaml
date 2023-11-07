@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# pass
+scenarios:
+  - scenario: Operations
+    description: Microsoft.Workloads/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+  - scenario: SAPSizingRecommendations
+    description: Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSizingRecommendations
+    steps:
+      - operationId: SAPSizingRecommendations
+        # exampleFile: ..\examples\sapvirtualinstances\SAPSizingRecommendations_S4HANA_Distributed.json
+        parameters:
+          SAPSizingRecommendation:
+            appLocation: eastus
+            environment: Prod
+            sapProduct: S4HANA
+            deploymentType: ThreeTier
+            saps: 20000
+            dbMemory: 1024
+            databaseType: HANA
+            dbScaleMethod: ScaleUp
+
+  - scenario: SAPSupportedSku
+    description: Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSapSupportedSku
+    steps:
+      - operationId: SAPSupportedSku
+        # exampleFile: ..\examples\sapvirtualinstances\SAPSupportedSkus_Distributed.json
+        parameters:
+          SAPSupportedSku:
+            appLocation: eastus
+            sapProduct: S4HANA
+            environment: Prod
+            databaseType: HANA
+            deploymentType: ThreeTier
+
+  - scenario: SAPDiskConfigurations
+    description: Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getDiskConfigurations
+    steps:
+      - operationId: SAPDiskConfigurations
+        # exampleFile: ..\examples\sapvirtualinstances\SAPDiskConfigurations_Prod.json
+        parameters:
+          SAPDiskConfigurations: 
+            appLocation: eastus
+            sapProduct: S4HANA
+            environment: Prod
+            databaseType: HANA
+            deploymentType: ThreeTier
+            dbVmSku: Standard_M32ts
+
+  - scenario: SAPAvailabilityZoneDetails
+    description: Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getAvailabilityZoneDetails
+    steps:
+      - operationId: SAPAvailabilityZoneDetails
+        # exampleFile: ..\examples\sapvirtualinstances\SAPAvailabilityZoneDetails_eastus.json
+        parameters:
+          SAPAvailabilityZoneDetails:
+            appLocation: eastus
+            sapProduct: S4HANA
+            databaseType: HANA

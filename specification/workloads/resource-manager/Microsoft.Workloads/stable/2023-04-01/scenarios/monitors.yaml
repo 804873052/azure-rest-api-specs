@@ -1,0 +1,85 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  monitorName:
+    type: string
+    prefix: monitorn
+  providerInstanceName:
+    type: string
+    prefix: provider
+
+prepareSteps:
+      - step: Create_VirtualNetwork
+        armTemplate: ./templates/Create_VirtualNetwork.json
+      - operationId: monitors_Create
+        # exampleFile: ..\examples\workloadmonitor\monitors_Create.json
+        parameters:
+          MonitorParameter:
+            location: $(location)
+            properties:
+              appLocation: eastus
+              routingPreference: RouteAll
+              zoneRedundancyPreference: Disabled
+              managedResourceGroupConfiguration:
+                name: sapmonrg-nonhaMonitor-java-2
+              monitorSubnet: $(subnetId)
+
+scenarios:
+# pass
+  # - scenario: monitors
+  #   description: Microsoft.Workloads/monitors/{monitorName}
+  #   steps:
+  #     - operationId: monitors_List
+  #       exampleFile: ..\examples\workloadmonitor\monitors_List.json
+  #     - operationId: monitors_ListByResourceGroup
+  #       exampleFile: ..\examples\workloadmonitor\monitors_ListByRG.json
+  #     - operationId: monitors_Get
+  #       exampleFile: ..\examples\workloadmonitor\monitors_Get.json
+  #     - operationId: monitors_Update
+  #       exampleFile: ..\examples\workloadmonitor\monitors_PatchTags.json
+
+  - scenario: ProviderInstances
+    description: Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}
+    steps:
+      - operationId: ProviderInstances_Create # virtualNetworks/myVnet' under resource group 'go-sdk-test-932' was not found
+        # exampleFile: ..\examples\workloadmonitor\ProviderInstances_Create.json
+        parameters:
+          providerInstanceParameter:
+            properties:
+              providerSettings:
+                sslPreference: Disabled
+                providerType: Db2
+                hostname: 10.1.21.4
+                sapSid: OPA
+                dbPort: 25000
+                dbUsername: db2admin
+                dbPassword: Sanitized
+                dbName: Sample
+      - operationId: ProviderInstances_List
+        exampleFile: ..\examples\workloadmonitor\ProviderInstances_List.json
+      - operationId: ProviderInstances_Get
+        exampleFile: ..\examples\workloadmonitor\ProviderInstances_Get.json
+      - operationId: ProviderInstances_Delete 
+        exampleFile: ..\examples\workloadmonitor\ProviderInstances_Delete.json
+
+# pass
+  # - scenario: SapLandscapeMonitor
+  #   description: Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default
+  #   steps:
+  #     - operationId: SapLandscapeMonitor_Create
+  #       exampleFile: ..\examples\workloadmonitor\SapLandscapeMonitor_Create.json
+  #     - operationId: SapLandscapeMonitor_List
+  #       exampleFile: ..\examples\workloadmonitor\SapLandscapeMonitor_List.json
+  #     - operationId: SapLandscapeMonitor_Get
+  #       exampleFile: ..\examples\workloadmonitor\SapLandscapeMonitor_Get.json
+  #     - operationId: SapLandscapeMonitor_Update
+  #       exampleFile: ..\examples\workloadmonitor\SapLandscapeMonitor_Update.json
+  #     - operationId: SapLandscapeMonitor_Delete
+  #       exampleFile: ..\examples\workloadmonitor\SapLandscapeMonitor_Delete.json
+
+cleanUpSteps:
+      - operationId: monitors_Delete
+        exampleFile: ..\examples\workloadmonitor\monitors_Delete.json
