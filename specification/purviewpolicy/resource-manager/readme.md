@@ -27,6 +27,7 @@ These are the global settings for the Purview policy API.
 ```yaml
 openapi-type: arm
 tag: package-2023-06-01-preview
+namespace: Microsoft.Purview
 ```
 
 ### Tag: package-2023-06-01-preview
