@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ContainerAppsRevisions
+    description: Microsoft.App/containerApps/{containerAppName}/revisions
+    steps:
+      - operationId: ContainerAppsRevisions_ListRevisions
+        exampleFile: ..\examples\Revisions_List.json
+      - operationId: ContainerAppsRevisions_GetRevision
+        exampleFile: ..\examples\Revisions_Get.json
+      - operationId: ContainerAppsRevisions_ActivateRevision
+        exampleFile: ..\examples\Revisions_Activate.json
+      - operationId: ContainerAppsRevisions_DeactivateRevision
+      - operationId: ContainerAppsRevisions_RestartRevision
+        exampleFile: ..\examples\Revisions_Restart.json
+
+  - scenario: ContainerAppsRevisionReplicas
+    description: Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/replicas
+    steps:
+      - operationId: ContainerAppsRevisionReplicas_ListReplicas
+        exampleFile: ..\examples\Replicas_List.json
+      - operationId: ContainerAppsRevisionReplicas_GetReplica
+        # variables:
+        #   replicaName:
+        #     type: string
+        #     prefix: replican
+        exampleFile: ..\examples\Replicas_Get.json

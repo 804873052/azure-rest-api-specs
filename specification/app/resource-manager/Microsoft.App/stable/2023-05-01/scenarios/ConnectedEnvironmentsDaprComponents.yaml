@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ConnectedEnvironmentsDaprComponents
+    description: Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}
+    steps:
+      - operationId: ConnectedEnvironmentsDaprComponents_CreateOrUpdate
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_CreateOrUpdate.json
+      - operationId: ConnectedEnvironmentsDaprComponents_List
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_List.json
+      - operationId: ConnectedEnvironmentsDaprComponents_Get
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_Get.json
+      - operationId: ConnectedEnvironmentsDaprComponents_ListSecrets
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_ListSecrets.json
+      - operationId: ConnectedEnvironmentsDaprComponents_Delete
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_Delete.json

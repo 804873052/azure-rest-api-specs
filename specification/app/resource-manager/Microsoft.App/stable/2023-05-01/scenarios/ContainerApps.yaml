@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  containerAppName:
+    type: string
+    prefix: containe
+
+scenarios:
+  - scenario: ContainerApps
+    description: Microsoft.App/containerApps/{containerAppName}
+    steps:
+      - operationId: Namespaces_CheckNameAvailability
+        exampleFile: ..\examples\ContainerApps_CheckNameAvailability.json
+
+      - operationId: ContainerApps_CreateOrUpdate
+        # exampleFile: ..\examples\ContainerApps_CreateOrUpdate.json
+        parameters:
+          containerAppEnvelope:
+            location: $(location)
+            properties:
+              template:
+                containers:
+                  - name: simple-hello-world-container
+                    image: mcr.microsoft.com/azuredocs/containerapps-helloworld
+                    resources:
+                      cpu: 0.25
+                      memory: 0.5Gi
+      - operationId: ContainerApps_ListBySubscription
+        exampleFile: ..\examples\ContainerApps_ListBySubscription.json
+      - operationId: ContainerApps_ListByResourceGroup
+        exampleFile: ..\examples\ContainerApps_ListByResourceGroup.json
+      - operationId: ContainerApps_Get
+        exampleFile: ..\examples\ContainerApps_Get.json
+      - operationId: ContainerApps_Update
+        exampleFile: ..\examples\ContainerApps_Patch.json
+      - operationId: ContainerApps_ListSecrets
+        exampleFile: ..\examples\ContainerApps_ListSecrets.json
+      - operationId: ContainerApps_GetAuthToken
+        exampleFile: ..\examples\ContainerApps_GetAuthToken.json
+      - operationId: ContainerApps_ListCustomHostNameAnalysis
+        exampleFile: ..\examples\ContainerApps_ListCustomHostNameAnalysis.json
+      - operationId: ContainerApps_Start
+        exampleFile: ..\examples\ContainerApps_Start.json
+      - operationId: ContainerApps_Stop
+        exampleFile: ..\examples\ContainerApps_Stop.json
+      - operationId: ContainerApps_Delete
+        exampleFile: ..\examples\ContainerApps_Delete.json

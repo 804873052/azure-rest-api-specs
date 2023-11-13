@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ConnectedEnvironmentsCertificates
+    description: Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates/{certificateName}
+    steps:
+      - operationId: ConnectedEnvironmentsCertificates_CreateOrUpdate
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificate_CreateOrUpdate.json
+      - operationId: ConnectedEnvironmentsCertificates_List
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificates_ListByConnectedEnvironment.json
+      - operationId: ConnectedEnvironmentsCertificates_Get
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificate_Get.json
+      - operationId: ConnectedEnvironmentsCertificates_Update
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificates_Patch.json
+      - operationId: ConnectedEnvironmentsCertificates_Delete
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificate_Delete.json

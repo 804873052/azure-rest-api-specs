@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ContainerAppsAuthConfigs
+    description: Microsoft.App/containerApps/{containerAppName}/authConfigs/{authConfigName}
+    steps:
+      - operationId: ContainerAppsAuthConfigs_CreateOrUpdate
+        exampleFile: ..\examples\AuthConfigs_CreateOrUpdate.json
+      - operationId: ContainerAppsAuthConfigs_ListByContainerApp
+        exampleFile: ..\examples\AuthConfigs_ListByContainer.json
+      - operationId: ContainerAppsAuthConfigs_Get
+        exampleFile: ..\examples\AuthConfigs_Get.json
+      - operationId: ContainerAppsAuthConfigs_Delete

@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: DaprComponents
+    description: Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}
+    steps:
+      - operationId: DaprComponents_CreateOrUpdate
+        exampleFile: ..\examples\DaprComponents_CreateOrUpdate_Secrets.json
+      - operationId: DaprComponents_List
+        exampleFile: ..\examples\DaprComponents_List.json
+      - operationId: DaprComponents_Get
+        exampleFile: ..\examples\DaprComponents_Get_Secrets.json
+      - operationId: DaprComponents_ListSecrets
+        exampleFile: ..\examples\DaprComponents_ListSecrets.json
+      - operationId: DaprComponents_Delete
+        exampleFile: ..\examples\DaprComponents_Delete.json

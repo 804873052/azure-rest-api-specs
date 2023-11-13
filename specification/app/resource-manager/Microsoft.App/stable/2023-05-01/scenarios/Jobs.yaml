@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: Jobs
+    description: Microsoft.App/jobs/{jobName}
+    steps:
+      - operationId: Jobs_CreateOrUpdate
+        exampleFile: ..\examples\Job_CreateorUpdate.json
+      - operationId: Jobs_ListBySubscription
+        exampleFile: ..\examples\Jobs_ListBySubscription.json
+      - operationId: Jobs_Get
+        exampleFile: ..\examples\Job_Get.json
+      - operationId: Jobs_ListByResourceGroup
+        exampleFile: ..\examples\Jobs_ListByResourceGroup.json
+      - operationId: Jobs_Update
+        exampleFile: ..\examples\Job_Patch.json
+      - operationId: Jobs_StopExecution
+        exampleFile: ..\examples\Job_Stop_Execution.json
+      - operationId: Jobs_ListSecrets
+        exampleFile: ..\examples\Job_ListSecrets.json
+      - operationId: Jobs_Start
+        exampleFile: ..\examples\Job_Start.json
+      - operationId: Jobs_StopMultipleExecutions
+        exampleFile: ..\examples\Job_Stop_Multiple.json
+      - operationId: Jobs_Delete
+        exampleFile: ..\examples\Job_Delete.json
+
+  - scenario: JobsExecutions
+    description: Microsoft.App/jobs/{jobName}/executions
+    steps:
+      - operationId: JobsExecutions_List
+        exampleFile: ..\examples\Job_Executions_Get.json
+      - operationId: JobExecution
+        exampleFile: ..\examples\Job_Execution_Get.json

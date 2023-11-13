@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ContainerAppsDiagnostics
+    description: Microsoft.App/containerApps/{containerAppName}/detectors
+    steps:
+      - operationId: ContainerAppsDiagnostics_ListRevisions
+        exampleFile: ..\examples\Revisions_List.json
+      - operationId: ContainerAppsDiagnostics_GetRevision
+        exampleFile: ..\examples\Revisions_Get.json
+      - operationId: ContainerAppsDiagnostics_GetRoot
+        exampleFile: ..\examples\ContainerApps_Get.json
+      - operationId: ContainerAppsDiagnostics_ListDetectors
+        exampleFile: ..\examples\ContainerAppsDiagnostics_List.json
+      - operationId: ContainerAppsDiagnostics_GetDetector
+        exampleFile: ..\examples\ContainerAppsDiagnostics_Get.json
+
+  - scenario: ManagedEnvironmentDiagnostics
+    description: Microsoft.App/managedEnvironments/{environmentName}/detectors/{detectorName}
+    steps:
+      - operationId: ManagedEnvironmentDiagnostics_ListDetectors
+        exampleFile: ..\examples\ManagedEnvironmentDiagnostics_List.json
+      - operationId: ManagedEnvironmentDiagnostics_GetDetector
+        exampleFile: ..\examples\ManagedEnvironmentDiagnostics_Get.json
+
+  - scenario: ManagedEnvironmentsDiagnostics
+    description: Microsoft.App/managedEnvironments/{environmentName}/detectorProperties/rootApi
+    steps:
+      - operationId: ManagedEnvironmentsDiagnostics_GetRoot
+        exampleFile: ..\examples\ManagedEnvironments_Get.json

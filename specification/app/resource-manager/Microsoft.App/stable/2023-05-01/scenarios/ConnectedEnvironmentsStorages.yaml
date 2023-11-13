@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ConnectedEnvironmentsStorages
+    description: Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}
+    steps:
+      - operationId: ConnectedEnvironmentsStorages_CreateOrUpdate
+        exampleFile: ..\examples\ConnectedEnvironmentsStorages_CreateOrUpdate.json
+      - operationId: ConnectedEnvironmentsStorages_List
+        exampleFile: ..\examples\ConnectedEnvironmentsStorages_List.json
+      - operationId: ConnectedEnvironmentsStorages_Get
+        exampleFile: ..\examples\ConnectedEnvironmentsStorages_Get.json
+      - operationId: ConnectedEnvironmentsStorages_Delete
+        exampleFile: ..\examples\ConnectedEnvironmentsStorages_Delete.json

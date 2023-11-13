@@ -1,0 +1,250 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  containerAppName:
+    type: string
+    prefix: containe
+  environmentName:
+    type: string
+    prefix: environm
+  connectedEnvironmentName:
+    type: string
+    prefix: connecte
+  jobName:
+    type: string
+    prefix: jobname
+  certificateName:
+    type: string
+    prefix: certific
+  componentName:
+    type: string
+    prefix: componen
+  revisionName:
+    type: string
+    prefix: revision
+  storageName:
+    type: string
+    prefix: storagen
+  managedCertificateName:
+    type: string
+    prefix: managedc
+  authConfigName:
+    type: string
+    prefix: authconf
+  sourceControlName:
+    type: string
+    prefix: sourceco
+  detectorName:
+    type: string
+    prefix: detector
+  jobExecutionName:
+    type: string
+    prefix: jobexecu
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: ConnectedEnvironments_CheckNameAvailability
+        exampleFile: >-
+          ..\examples\ConnectedEnvironmentsCertificates_CheckNameAvailability.json
+      - operationId: Namespaces_CheckNameAvailability
+        exampleFile: ..\examples\ContainerApps_CheckNameAvailability.json
+      - operationId: ContainerApps_CreateOrUpdate
+        exampleFile: ..\examples\ContainerApps_CreateOrUpdate.json
+      - operationId: ContainerApps_ListBySubscription
+        exampleFile: ..\examples\ContainerApps_ListBySubscription.json
+      - operationId: ContainerApps_ListByResourceGroup
+        exampleFile: ..\examples\ContainerApps_ListByResourceGroup.json
+      - operationId: ContainerApps_Get
+        exampleFile: ..\examples\ContainerApps_Get.json
+      - operationId: ContainerApps_Update
+        exampleFile: ..\examples\ContainerApps_Patch.json
+      - operationId: ContainerApps_Stop
+        exampleFile: ..\examples\ContainerApps_Stop.json
+      - operationId: ContainerApps_ListSecrets
+        exampleFile: ..\examples\ContainerApps_ListSecrets.json
+      - operationId: ContainerApps_GetAuthToken
+        exampleFile: ..\examples\ContainerApps_GetAuthToken.json
+      - operationId: ContainerApps_ListCustomHostNameAnalysis
+        exampleFile: ..\examples\ContainerApps_ListCustomHostNameAnalysis.json
+      - operationId: ContainerApps_Start
+        exampleFile: ..\examples\ContainerApps_Start.json
+      - operationId: ManagedEnvironments_CreateOrUpdate
+        exampleFile: ..\examples\ManagedEnvironments_CreateOrUpdate.json
+      - operationId: ManagedEnvironments_ListBySubscription
+        exampleFile: ..\examples\ManagedEnvironments_ListBySubscription.json
+      - operationId: ManagedEnvironments_ListWorkloadProfileStates
+        exampleFile: ..\examples\ManagedEnvironments_ListWorkloadProfileStates.json
+      - operationId: ManagedEnvironments_ListByResourceGroup
+        exampleFile: ..\examples\ManagedEnvironments_ListByResourceGroup.json
+      - operationId: ManagedEnvironments_Get
+        exampleFile: ..\examples\ManagedEnvironments_Get.json
+      - operationId: ManagedEnvironments_Update
+        exampleFile: ..\examples\ManagedEnvironments_Patch.json
+      - operationId: ManagedEnvironments_GetAuthToken
+        exampleFile: ..\examples\ManagedEnvironments_GetAuthToken.json
+      - operationId: ConnectedEnvironments_CreateOrUpdate
+        exampleFile: ..\examples\ConnectedEnvironments_CreateOrUpdate.json
+      - operationId: ConnectedEnvironments_ListBySubscription
+        exampleFile: ..\examples\ConnectedEnvironments_ListBySubscription.json
+      - operationId: ConnectedEnvironments_ListByResourceGroup
+        exampleFile: ..\examples\ConnectedEnvironments_ListByResourceGroup.json
+      - operationId: ConnectedEnvironments_Get
+        exampleFile: ..\examples\ConnectedEnvironments_Get.json
+      - operationId: ConnectedEnvironments_Update
+        exampleFile: ..\examples\ConnectedEnvironments_Patch.json
+      - operationId: Jobs_CreateOrUpdate
+        exampleFile: ..\examples\Job_CreateorUpdate.json
+      - operationId: Jobs_ListBySubscription
+        exampleFile: ..\examples\Jobs_ListBySubscription.json
+      - operationId: Jobs_Get
+        exampleFile: ..\examples\Job_Get.json
+      - operationId: Jobs_ListByResourceGroup
+        exampleFile: ..\examples\Jobs_ListByResourceGroup.json
+      - operationId: Jobs_Update
+        exampleFile: ..\examples\Job_Patch.json
+      - operationId: Jobs_StopExecution
+        exampleFile: ..\examples\Job_Stop_Execution.json
+      - operationId: Jobs_ListSecrets
+        exampleFile: ..\examples\Job_ListSecrets.json
+      - operationId: Jobs_Start
+        exampleFile: ..\examples\Job_Start.json
+      - operationId: Jobs_StopMultipleExecutions
+        exampleFile: ..\examples\Job_Stop_Multiple.json
+      - operationId: DaprComponents_CreateOrUpdate
+        exampleFile: ..\examples\DaprComponents_CreateOrUpdate_Secrets.json
+      - operationId: DaprComponents_List
+        exampleFile: ..\examples\DaprComponents_List.json
+      - operationId: DaprComponents_Get
+        exampleFile: ..\examples\DaprComponents_Get_Secrets.json
+      - operationId: DaprComponents_ListSecrets
+        exampleFile: ..\examples\DaprComponents_ListSecrets.json
+
+      - operationId: Certificates_CreateOrUpdate
+        exampleFile: ..\examples\Certificate_CreateOrUpdate.json
+      - operationId: Certificates_List
+        exampleFile: ..\examples\Certificates_ListByManagedEnvironment.json
+      - operationId: Certificates_Get
+        exampleFile: ..\examples\Certificate_Get.json
+      - operationId: Certificates_Update
+        exampleFile: ..\examples\Certificates_Patch.json
+
+      - operationId: ConnectedEnvironmentsCertificates_CreateOrUpdate
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificate_CreateOrUpdate.json
+      - operationId: ConnectedEnvironmentsCertificates_List
+        exampleFile: >-
+          ..\examples\ConnectedEnvironmentsCertificates_ListByConnectedEnvironment.json
+      - operationId: ConnectedEnvironmentsCertificates_Get
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificate_Get.json
+      - operationId: ConnectedEnvironmentsCertificates_Update
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificates_Patch.json
+      - operationId: ManagedCertificates_CreateOrUpdate
+        exampleFile: ..\examples\ManagedCertificate_CreateOrUpdate.json
+      - operationId: ManagedCertificates_List
+        exampleFile: ..\examples\ManagedCertificates_ListByManagedEnvironment.json
+      - operationId: ManagedCertificates_Get
+        exampleFile: ..\examples\ManagedCertificate_Get.json
+      - operationId: ManagedCertificates_Update
+        exampleFile: ..\examples\ManagedCertificates_Patch.json
+      - operationId: ConnectedEnvironmentsDaprComponents_CreateOrUpdate
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_CreateOrUpdate.json
+      - operationId: ConnectedEnvironmentsDaprComponents_List
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_List.json
+      - operationId: ConnectedEnvironmentsDaprComponents_Get
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_Get.json
+      - operationId: ConnectedEnvironmentsDaprComponents_ListSecrets
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_ListSecrets.json
+      - operationId: ContainerAppsSourceControls_CreateOrUpdate
+        exampleFile: ..\examples\SourceControls_CreateOrUpdate.json
+      - operationId: ContainerAppsSourceControls_ListByContainerApp
+        exampleFile: ..\examples\SourceControls_ListByContainer.json
+      - operationId: ContainerAppsSourceControls_Get
+        exampleFile: ..\examples\SourceControls_Get.json
+      - operationId: ManagedEnvironmentsStorages_CreateOrUpdate
+        exampleFile: ..\examples\ManagedEnvironmentsStorages_CreateOrUpdate.json
+      - operationId: ManagedEnvironmentsStorages_List
+        exampleFile: ..\examples\ManagedEnvironmentsStorages_List.json
+      - operationId: ManagedEnvironmentsStorages_Get
+        exampleFile: ..\examples\ManagedEnvironmentsStorages_Get.json
+      - operationId: ContainerAppsAuthConfigs_CreateOrUpdate
+        exampleFile: ..\examples\AuthConfigs_CreateOrUpdate.json
+      - operationId: ContainerAppsAuthConfigs_ListByContainerApp
+        exampleFile: ..\examples\AuthConfigs_ListByContainer.json
+      - operationId: ContainerAppsAuthConfigs_Get
+        exampleFile: ..\examples\AuthConfigs_Get.json
+      - operationId: ConnectedEnvironmentsStorages_CreateOrUpdate
+        exampleFile: ..\examples\ConnectedEnvironmentsStorages_CreateOrUpdate.json
+      - operationId: ConnectedEnvironmentsStorages_List
+        exampleFile: ..\examples\ConnectedEnvironmentsStorages_List.json
+      - operationId: ConnectedEnvironmentsStorages_Get
+        exampleFile: ..\examples\ConnectedEnvironmentsStorages_Get.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: AvailableWorkloadProfiles_Get
+        exampleFile: ..\examples\AvailableWorkloadProfiles_Get.json
+      - operationId: BillingMeters_Get
+        exampleFile: ..\examples\BillingMeters_Get.json
+      - operationId: ContainerAppsDiagnostics_ListRevisions
+        exampleFile: ..\examples\Revisions_List.json
+      - operationId: ContainerAppsDiagnostics_GetRevision
+        exampleFile: ..\examples\Revisions_Get.json
+      - operationId: ContainerAppsDiagnostics_GetRoot
+        exampleFile: ..\examples\ContainerApps_Get.json
+      - operationId: ContainerAppsDiagnostics_ListDetectors
+        exampleFile: ..\examples\ContainerAppsDiagnostics_List.json
+      - operationId: ContainerAppsDiagnostics_GetDetector
+        exampleFile: ..\examples\ContainerAppsDiagnostics_Get.json
+      - operationId: ContainerAppsRevisions_ListRevisions
+        exampleFile: ..\examples\Revisions_List.json
+      - operationId: ContainerAppsRevisions_GetRevision
+        exampleFile: ..\examples\Revisions_Get.json
+      - operationId: ContainerAppsRevisions_ActivateRevision
+        exampleFile: ..\examples\Revisions_Activate.json
+      - operationId: ContainerAppsRevisions_DeactivateRevision
+        exampleFile: ..\examples\Revisions_Deactivate.json
+      - operationId: ContainerAppsRevisionReplicas_ListReplicas
+        exampleFile: ..\examples\Replicas_List.json
+      - operationId: ContainerAppsRevisionReplicas_GetReplica
+        variables:
+          replicaName:
+            type: string
+            prefix: replican
+        exampleFile: ..\examples\Replicas_Get.json
+      - operationId: ContainerAppsRevisions_RestartRevision
+        exampleFile: ..\examples\Revisions_Restart.json
+      - operationId: JobsExecutions_List
+        exampleFile: ..\examples\Job_Executions_Get.json
+      - operationId: JobExecution
+        exampleFile: ..\examples\Job_Execution_Get.json
+      - operationId: ManagedEnvironmentsDiagnostics_GetRoot
+        exampleFile: ..\examples\ManagedEnvironments_Get.json
+      - operationId: ManagedEnvironmentDiagnostics_ListDetectors
+        exampleFile: ..\examples\ManagedEnvironmentDiagnostics_List.json
+      - operationId: ManagedEnvironmentDiagnostics_GetDetector
+        exampleFile: ..\examples\ManagedEnvironmentDiagnostics_Get.json
+      - operationId: ConnectedEnvironmentsStorages_Delete
+        exampleFile: ..\examples\ConnectedEnvironmentsStorages_Delete.json
+      - operationId: ContainerAppsAuthConfigs_Delete
+        exampleFile: ..\examples\AuthConfigs_Delete.json
+      - operationId: ManagedEnvironmentsStorages_Delete
+        exampleFile: ..\examples\ManagedEnvironmentsStorages_Delete.json
+      - operationId: ContainerAppsSourceControls_Delete
+        exampleFile: ..\examples\SourceControls_Delete.json
+      - operationId: ConnectedEnvironmentsDaprComponents_Delete
+        exampleFile: ..\examples\ConnectedEnvironmentsDaprComponents_Delete.json
+      - operationId: ManagedCertificates_Delete
+        exampleFile: ..\examples\ManagedCertificate_Delete.json
+      - operationId: ConnectedEnvironmentsCertificates_Delete
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificate_Delete.json
+      - operationId: Certificates_Delete
+        exampleFile: ..\examples\Certificate_Delete.json
+      - operationId: DaprComponents_Delete
+        exampleFile: ..\examples\DaprComponents_Delete.json
+      - operationId: Jobs_Delete
+        exampleFile: ..\examples\Job_Delete.json
+      - operationId: ConnectedEnvironments_Delete
+        exampleFile: ..\examples\ConnectedEnvironments_Delete.json
+      - operationId: ManagedEnvironments_Delete
+        exampleFile: ..\examples\ManagedEnvironments_Delete.json
+      - operationId: ContainerApps_Delete
+        exampleFile: ..\examples\ContainerApps_Delete.json

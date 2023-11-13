@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  connectedEnvironmentName:
+    type: string
+    prefix: connecte
+
+scenarios:
+  - scenario: ConnectedEnvironments
+    description: Microsoft.App/connectedEnvironments/{connectedEnvironmentName}
+    steps:
+      - operationId: ConnectedEnvironments_CheckNameAvailability # 抽象
+        exampleFile: ..\examples\ConnectedEnvironmentsCertificates_CheckNameAvailability.json
+      - operationId: ConnectedEnvironments_CreateOrUpdate # 需要 customLocation and Kubernetes cluster
+        exampleFile: ..\examples\ConnectedEnvironments_CreateOrUpdate.json
+      - operationId: ConnectedEnvironments_ListBySubscription
+        exampleFile: ..\examples\ConnectedEnvironments_ListBySubscription.json
+      - operationId: ConnectedEnvironments_ListByResourceGroup
+        exampleFile: ..\examples\ConnectedEnvironments_ListByResourceGroup.json
+      - operationId: ConnectedEnvironments_Get
+        exampleFile: ..\examples\ConnectedEnvironments_Get.json
+      - operationId: ConnectedEnvironments_Update
+        exampleFile: ..\examples\ConnectedEnvironments_Patch.json
+      - operationId: ConnectedEnvironments_Delete
+        exampleFile: ..\examples\ConnectedEnvironments_Delete.json

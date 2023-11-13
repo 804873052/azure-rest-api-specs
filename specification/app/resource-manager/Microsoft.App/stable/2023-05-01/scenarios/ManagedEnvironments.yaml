@@ -1,0 +1,72 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  environmentName:
+    type: string
+    prefix: environm
+  certificateName:
+    type: string
+    prefix: certific
+  managedCertificateName:
+    type: string
+    prefix: managedc
+
+prepareSteps:
+      - operationId: ManagedEnvironments_CreateOrUpdate
+        # exampleFile: ..\examples\ManagedEnvironments_CreateOrUpdate.json
+        parameters:
+          environmentEnvelope:
+            location: $(location)
+            properties:
+              zoneRedundant: false
+
+scenarios:
+# pass
+  - scenario: ManagedEnvironments
+    description: Microsoft.App/managedEnvironments/{environmentName}
+    steps:
+      - operationId: ManagedEnvironments_ListBySubscription
+        exampleFile: ..\examples\ManagedEnvironments_ListBySubscription.json
+      - operationId: ManagedEnvironments_ListWorkloadProfileStates
+        exampleFile: ..\examples\ManagedEnvironments_ListWorkloadProfileStates.json
+      - operationId: ManagedEnvironments_ListByResourceGroup
+        exampleFile: ..\examples\ManagedEnvironments_ListByResourceGroup.json
+      - operationId: ManagedEnvironments_Get
+        exampleFile: ..\examples\ManagedEnvironments_Get.json
+      # - operationId: ManagedEnvironments_Update # ManagedEnvironmentUpgradeError
+      #   exampleFile: ..\examples\ManagedEnvironments_Patch.json
+      - operationId: ManagedEnvironments_GetAuthToken
+        exampleFile: ..\examples\ManagedEnvironments_GetAuthToken.json
+
+  - scenario: Certificates
+    description: Microsoft.App/managedEnvironments/{environmentName}/certificates/{certificateName}
+    steps:
+      - operationId: Certificates_CreateOrUpdate
+        exampleFile: ..\examples\Certificate_CreateOrUpdate.json
+      - operationId: Certificates_List
+        exampleFile: ..\examples\Certificates_ListByManagedEnvironment.json
+      - operationId: Certificates_Get
+        exampleFile: ..\examples\Certificate_Get.json
+      - operationId: Certificates_Update
+        exampleFile: ..\examples\Certificates_Patch.json
+      - operationId: Certificates_Delete
+        exampleFile: ..\examples\Certificate_Delete.json
+
+  - scenario: ManagedCertificates
+    description: Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}
+    steps:
+      - operationId: ManagedCertificates_CreateOrUpdate
+        exampleFile: ..\examples\ManagedCertificate_CreateOrUpdate.json
+      - operationId: ManagedCertificates_List
+        exampleFile: ..\examples\ManagedCertificates_ListByManagedEnvironment.json
+      - operationId: ManagedCertificates_Get
+        exampleFile: ..\examples\ManagedCertificate_Get.json
+      - operationId: ManagedCertificates_Update
+        exampleFile: ..\examples\ManagedCertificates_Patch.json
+      - operationId: ManagedCertificates_Delete
+        exampleFile: ..\examples\ManagedCertificate_Delete.json
+
+cleanUpSteps:
+      - operationId: ManagedEnvironments_Delete
+        exampleFile: ..\examples\ManagedEnvironments_Delete.json

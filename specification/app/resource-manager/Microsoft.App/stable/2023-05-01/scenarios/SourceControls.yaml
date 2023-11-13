@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ContainerAppsSourceControls
+    description: Microsoft.App/containerApps/{containerAppName}/sourcecontrols/{sourceControlName}
+    steps:
+      - operationId: ContainerAppsSourceControls_CreateOrUpdate
+        exampleFile: ..\examples\SourceControls_CreateOrUpdate.json
+      - operationId: ContainerAppsSourceControls_ListByContainerApp
+        exampleFile: ..\examples\SourceControls_ListByContainer.json
+      - operationId: ContainerAppsSourceControls_Get
+        exampleFile: ..\examples\SourceControls_Get.json
+      - operationId: ContainerAppsSourceControls_Delete
+        exampleFile: ..\examples\SourceControls_Delete.json
