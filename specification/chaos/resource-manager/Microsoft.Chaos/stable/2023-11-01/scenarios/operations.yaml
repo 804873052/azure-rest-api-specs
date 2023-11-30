@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: Operation
+    description: Microsoft.Chaos/operations
+    steps:
+      - operationId: Operations_ListAll
+
+# asyncOperationId
+  # - scenario: OperationStatuses
+  #   description: Microsoft.Chaos/locations/{location}/operationsStatuses/{asyncOperationId}
+  #   steps:
+  #     - operationId: OperationStatuses_Get
+

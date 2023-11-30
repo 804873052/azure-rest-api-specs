@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  cosmosaccountName: # true
+    type: string
+    prefix: account
+  experimentName:
+    type: string
+    prefix: experiment
+
+prepareSteps:
+  - step: Create_CosmosAccount
+    armTemplate: ./templates/Create_CosmosAccount.json
+
+# pass
+scenarios:
+  - scenario: Experiments
+    description: Microsoft.Chaos/experiments/{experimentName}
+    steps:
+      - operationId: Experiments_CreateOrUpdate
+        exampleFile: ../examples/CreateUpdateExperiment.json
+        requestUpdate:
+          - replace: /experiment/properties/selectors/0/targets/0/id
+            value: $(cosmosAccountId)
+      - operationId: Experiments_Get
+        exampleFile: ../examples/GetExperiment.json
+      - operationId: Experiments_ListAll
+        exampleFile: ../examples/ListExperimentsInASubscription.json
+      - operationId: Experiments_List
+        exampleFile: ../examples/ListExperimentsInAResourceGroup.json
+      - operationId: Experiments_ListAllExecutions
+        exampleFile: ../examples/ListExperimentExecutions.json
+
+      # - operationId: Experiments_Update
+      #   exampleFile: ../examples/UpdateExperiment.json
+      # - operationId: Experiments_Start
+      #   exampleFile: ../examples/StartExperiment.json
+      # - operationId: Experiments_GetExecution
+      #   exampleFile: ../examples/GetExperimentExecution.json
+      # - operationId: Experiments_ExecutionDetails
+      #   exampleFile: ../examples/DetailsExperiment.json
+      # - operationId: Experiments_Cancel
+      #   exampleFile: ../examples/CancelExperiment.json
+
+      - operationId: Experiments_Delete
+        exampleFile: ../examples/DeleteExperiment.json

@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# passs
+scenarios:
+  - scenario: CapabilityTypes
+    description: Microsoft.Chaos/locations/{locationName}/targetTypes/{targetTypeName}/capabilityTypes/{capabilityTypeName}
+    steps:
+      - operationId: CapabilityTypes_List
+        exampleFile: ../examples/ListCapabilityTypes.json
+      - operationId: CapabilityTypes_Get
+        exampleFile: ../examples/GetCapabilityType.json
+

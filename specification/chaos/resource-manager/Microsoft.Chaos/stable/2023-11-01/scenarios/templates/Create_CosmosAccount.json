@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "cosmosaccountName": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "apiVersion": "2023-09-15",
+            "name": "[parameters('cosmosaccountName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "databaseAccountOfferType": "Standard",
+                "locations": [
+                    {
+                        "locationName": "westus",
+                        "failoverPriority": "0",
+                        "is_zone_redundant": false
+                    },
+                    {
+                        "locationName": "eastus",
+                        "failoverPriority": "1"
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+        "cosmosAccountId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosaccountName'))]"
+        }
+    }
+}

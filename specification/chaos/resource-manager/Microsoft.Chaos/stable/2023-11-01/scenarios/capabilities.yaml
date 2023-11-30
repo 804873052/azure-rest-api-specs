@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  targetName: Microsoft-CosmosDB
+    # type: string
+    # prefix: target
+# [capabilityType]-[majorVersion].[minorVersion]
+  capabilityName:  Failover-1.0
+  # *"Failover-1.0"
+  # *"OnlineRegion-1.0"
+  # *"OnlineRegion-1.0"
+  location:
+    type: string
+  cosmosaccountName: # true
+    type: string
+    prefix: account
+
+
+prepareSteps:
+  - step: Create_CosmosAccount
+    armTemplate: ./templates/Create_CosmosAccount.json
+
+# pass
+scenarios:
+  - scenario: Capabilities
+    description: Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}
+    variables:
+      parentProviderNamespace: Microsoft.DocumentDB
+      parentResourceType: databaseAccounts
+      parentResourceName: $(cosmosaccountName)
+    steps:
+      - operationId: Targets_CreateOrUpdate
+        exampleFile: ../examples/CreateUpdateTarget.json
+      - operationId: Capabilities_CreateOrUpdate
+        exampleFile: ../examples/CreateUpdateCapability.json
+      - operationId: Capabilities_Get
+        exampleFile: ../examples/GetCapability.json
+      - operationId: Capabilities_List
+        exampleFile: ../examples/ListCapabilities.json
+      - operationId: Capabilities_Delete
+        exampleFile: ../examples/DeleteCapability.json

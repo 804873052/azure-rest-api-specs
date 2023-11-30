@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  targetName: Microsoft-CosmosDB
+  location:
+    type: string
+  cosmosaccountName: # true
+    type: string
+    prefix: account
+
+prepareSteps:
+  - step: Create_CosmosAccount
+    armTemplate: ./templates/Create_CosmosAccount.json
+
+# pass
+scenarios:
+  - scenario: Targets
+    description: Microsoft.Chaos/targets/{targetName}
+    variables:
+      parentProviderNamespace: Microsoft.DocumentDB
+      parentResourceType: databaseAccounts
+      parentResourceName: $(cosmosaccountName)
+    steps:
+      - operationId: Targets_CreateOrUpdate
+        exampleFile: ../examples/CreateUpdateTarget.json
+      - operationId: Targets_List
+        exampleFile: ../examples/ListTargets.json
+      - operationId: Targets_Get
+        exampleFile: ../examples/GetTarget.json
+      - operationId: Targets_Delete
+        exampleFile: ../examples/DeleteTarget.json  

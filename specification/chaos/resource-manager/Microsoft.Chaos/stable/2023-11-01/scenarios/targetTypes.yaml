@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# pass
+scenarios:
+  - scenario: TargetTypes
+    description: Microsoft.Chaos/locations/{locationName}/targetTypes
+    steps:
+      - operationId: TargetTypes_List
+        exampleFile: ../examples/ListTargetTypes.json
+      - operationId: TargetTypes_Get
+        exampleFile: ../examples/GetTargetType.json
