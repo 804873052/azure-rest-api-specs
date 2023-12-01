@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  deploymentName:
+    type: string
+    prefix: deployme
+  certificateName:
+    type: string
+    prefix: certific
+  configurationName:
+    type: string
+    prefix: configur
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Deployments_CreateOrUpdate
+        exampleFile: ..\examples\Deployments_Create.json
+      - operationId: Deployments_List
+        exampleFile: ..\examples\Deployments_List.json
+      - operationId: Deployments_ListByResourceGroup
+        exampleFile: ..\examples\Deployments_ListByResourceGroup.json
+      - operationId: Deployments_Get
+        exampleFile: ..\examples\Deployments_Get.json
+      - operationId: Deployments_Update
+        exampleFile: ..\examples\Deployments_Update.json
+      - operationId: Configurations_CreateOrUpdate
+        exampleFile: ..\examples\Configurations_CreateOrUpdate.json
+      - operationId: Configurations_List
+        exampleFile: ..\examples\Configurations_List.json
+      - operationId: Configurations_Get
+        exampleFile: ..\examples\Configurations_Get.json
+      - operationId: Certificates_CreateOrUpdate
+        exampleFile: ..\examples\Certificates_CreateOrUpdate.json
+      - operationId: Certificates_List
+        exampleFile: ..\examples\Certificates_List.json
+      - operationId: Certificates_Get
+        exampleFile: ..\examples\Certificates_Get.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: Certificates_Delete
+        exampleFile: ..\examples\Certificates_Delete.json
+      - operationId: Configurations_Delete
+        exampleFile: ..\examples\Configurations_Delete.json
+      - operationId: Deployments_Delete
+        exampleFile: ..\examples\Deployments_Delete.json

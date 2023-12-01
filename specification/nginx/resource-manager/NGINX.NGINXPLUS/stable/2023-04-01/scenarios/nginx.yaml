@@ -1,0 +1,72 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  deploymentName:
+    type: string
+    prefix: deployme
+  certificateName:
+    type: string
+    prefix: certific
+  configurationName:
+    type: string
+    prefix: configur
+
+# "SaaS Purchase Payment Check Failed 
+# as validationResponse was 
+# {\"isEligible\":false,
+# \"errorMessage\":\"Purchase has failed because we couldn't find a valid payment method associated with your Azure subscription. 
+#Please use a different Azure subscription or add\\\\\\\\update current payment method for this subscription and retry.\"}"
+prepareSteps:
+      - step: Create_VirtualNetwork
+        armTemplate: ./templates/Create_VirtualNetwork.json
+      - operationId: Deployments_CreateOrUpdate
+        exampleFile: ..\examples\Deployments_Create.json
+
+scenarios:
+  - scenario: Deployments
+    description: Nginx.NginxPlus/nginxDeployments/{deploymentName}
+    steps:
+      - operationId: Deployments_List
+        exampleFile: ..\examples\Deployments_List.json
+      - operationId: Deployments_ListByResourceGroup
+        exampleFile: ..\examples\Deployments_ListByResourceGroup.json
+      - operationId: Deployments_Get
+        exampleFile: ..\examples\Deployments_Get.json
+      - operationId: Deployments_Update
+        exampleFile: ..\examples\Deployments_Update.json
+
+  - scenario: Configurations
+    description: Nginx.NginxPlus/nginxDeployments/{deploymentName}/configurations/{configurationName}
+    steps:
+      - operationId: Configurations_CreateOrUpdate
+        exampleFile: ..\examples\Configurations_CreateOrUpdate.json
+      - operationId: Configurations_List
+        exampleFile: ..\examples\Configurations_List.json
+      - operationId: Configurations_Get
+        exampleFile: ..\examples\Configurations_Get.json
+      - operationId: Configurations_Delete
+        exampleFile: ..\examples\Configurations_Delete.json
+
+  - scenario: Certificates
+    description: Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}
+    steps:
+      - operationId: Certificates_CreateOrUpdate
+        exampleFile: ..\examples\Certificates_CreateOrUpdate.json
+      - operationId: Certificates_List
+        exampleFile: ..\examples\Certificates_List.json
+      - operationId: Certificates_Get
+        exampleFile: ..\examples\Certificates_Get.json
+      - operationId: Certificates_Delete
+        exampleFile: ..\examples\Certificates_Delete.json
+
+  - scenario: Operations
+    description: Nginx.NginxPlus/operations
+    steps:
+      - operationId: Operations_List 
+        exampleFile: ..\examples\Operations_List.json
+
+cleanUpSteps:
+      - operationId: Deployments_Delete
+        exampleFile: ..\examples\Deployments_Delete.json
