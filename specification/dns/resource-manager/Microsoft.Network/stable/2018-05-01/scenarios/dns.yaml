@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  zoneName:
+    type: string
+    prefix: zonename
+  relativeRecordSetName:
+    type: string
+    prefix: recordsetna
+
+
+prepareSteps:
+      - operationId: Zones_CreateOrUpdate
+        # exampleFile: ..\examples\CreateOrUpdateZone.json
+        parameters:
+          parameters:
+            location: Global
+            tags:
+              key1: value1
+
+scenarios:
+  - scenario: Zones
+    description: Microsoft.Network/dnsZones/{zoneName}
+    steps:
+      - operationId: Zones_List
+        exampleFile: ..\examples\ListZonesBySubscription.json
+      - operationId: Zones_ListByResourceGroup
+        exampleFile: ..\examples\ListZonesByResourceGroup.json
+      - operationId: Zones_Get
+        exampleFile: ..\examples\GetZone.json
+      - operationId: Zones_Update
+        exampleFile: ..\examples\PatchZone.json
+
+  - scenario: RecordSets
+    description: Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}
+    steps:
+      - operationId: RecordSets_CreateOrUpdate
+        exampleFile: ..\examples\CreateOrUpdateARecordset.json
+      - operationId: RecordSets_ListAllByDnsZone
+        exampleFile: ..\examples\ListRecordSetsByZone.json
+      - operationId: RecordSets_ListByType
+        exampleFile: ..\examples\ListARecordset.json
+      - operationId: RecordSets_ListByDnsZone
+        exampleFile: ..\examples\ListRecordSetsByZone.json
+      - operationId: RecordSets_Get
+        exampleFile: ..\examples\GetARecordset.json
+      - operationId: RecordSets_Update
+        exampleFile: ..\examples\PatchARecordset.json
+      - operationId: RecordSets_Delete
+        exampleFile: ..\examples\DeleteARecordset.json
+
+  - scenario: DnsResourceReference
+    description: Microsoft.Network/getDnsResourceReference
+    steps:
+      - operationId: DnsResourceReference_GetByTargetResources
+        exampleFile: ..\examples\GetDnsResourceReference.json
+
+cleanUpSteps:
+      - operationId: Zones_Delete
+        exampleFile: ..\examples\DeleteZone.json
