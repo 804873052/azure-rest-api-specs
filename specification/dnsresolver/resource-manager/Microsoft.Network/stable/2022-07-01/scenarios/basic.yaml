@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  dnsResolverName:
+    type: string
+    prefix: dnsresol
+  dnsForwardingRulesetName:
+    type: string
+    prefix: dnsforwa
+  inboundEndpointName:
+    type: string
+    prefix: inbounde
+  outboundEndpointName:
+    type: string
+    prefix: outbound
+  forwardingRuleName:
+    type: string
+    prefix: forwardi
+  virtualNetworkLinkName:
+    type: string
+    prefix: virtualn
+  virtualNetworkName:
+    type: string
+    prefix: virtualn
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: DnsForwardingRulesets_CreateOrUpdate
+        exampleFile: ..\examples\DnsForwardingRuleset_Put.json
+      - operationId: DnsForwardingRulesets_List
+        exampleFile: ..\examples\DnsForwardingRuleset_ListBySubscription.json
+      - operationId: DnsForwardingRulesets_Get
+        exampleFile: ..\examples\DnsForwardingRuleset_Get.json
+      - operationId: DnsForwardingRulesets_ListByResourceGroup
+        exampleFile: ..\examples\DnsForwardingRuleset_ListByResourceGroup.json
+      - operationId: DnsForwardingRulesets_Update
+        exampleFile: ..\examples\DnsForwardingRuleset_Patch.json
+      - operationId: DnsForwardingRulesets_ListByVirtualNetwork
+        exampleFile: ..\examples\DnsForwardingRuleset_ListByVirtualNetwork.json
+      - operationId: DnsResolvers_CreateOrUpdate
+        exampleFile: ..\examples\DnsResolver_Put.json
+      - operationId: DnsResolvers_List
+        exampleFile: ..\examples\DnsResolver_ListBySubscription.json
+      - operationId: DnsResolvers_ListByResourceGroup
+        exampleFile: ..\examples\DnsResolver_ListByResourceGroup.json
+      - operationId: DnsResolvers_Get
+        exampleFile: ..\examples\DnsResolver_Get.json
+      - operationId: DnsResolvers_Update
+        exampleFile: ..\examples\DnsResolver_Patch.json
+      - operationId: DnsResolvers_ListByVirtualNetwork
+        exampleFile: ..\examples\DnsResolver_ListByVirtualNetwork.json
+      - operationId: ForwardingRules_CreateOrUpdate
+        exampleFile: ..\examples\ForwardingRule_Put.json
+      - operationId: ForwardingRules_List
+        exampleFile: ..\examples\ForwardingRule_List.json
+      - operationId: ForwardingRules_Get
+        exampleFile: ..\examples\ForwardingRule_Get.json
+      - operationId: ForwardingRules_Update
+        exampleFile: ..\examples\ForwardingRule_Patch.json
+      - operationId: OutboundEndpoints_CreateOrUpdate
+        exampleFile: ..\examples\OutboundEndpoint_Put.json
+      - operationId: OutboundEndpoints_List
+        exampleFile: ..\examples\OutboundEndpoint_List.json
+      - operationId: OutboundEndpoints_Get
+        exampleFile: ..\examples\OutboundEndpoint_Get.json
+      - operationId: OutboundEndpoints_Update
+        exampleFile: ..\examples\OutboundEndpoint_Patch.json
+      - operationId: VirtualNetworkLinks_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkLink_Put.json
+      - operationId: VirtualNetworkLinks_List
+        exampleFile: ..\examples\VirtualNetworkLink_List.json
+      - operationId: VirtualNetworkLinks_Get
+        exampleFile: ..\examples\VirtualNetworkLink_Get.json
+      - operationId: VirtualNetworkLinks_Update
+        exampleFile: ..\examples\VirtualNetworkLink_Patch.json
+      - operationId: InboundEndpoints_CreateOrUpdate
+        exampleFile: ..\examples\InboundEndpoint_Put.json
+      - operationId: InboundEndpoints_List
+        exampleFile: ..\examples\InboundEndpoint_List.json
+      - operationId: InboundEndpoints_Get
+        exampleFile: ..\examples\InboundEndpoint_Get.json
+      - operationId: InboundEndpoints_Update
+        exampleFile: ..\examples\InboundEndpoint_Patch.json
+      - operationId: InboundEndpoints_Delete
+        exampleFile: ..\examples\InboundEndpoint_Delete.json
+      - operationId: VirtualNetworkLinks_Delete
+        exampleFile: ..\examples\VirtualNetworkLink_Delete.json
+      - operationId: OutboundEndpoints_Delete
+        exampleFile: ..\examples\OutboundEndpoint_Delete.json
+      - operationId: ForwardingRules_Delete
+        exampleFile: ..\examples\ForwardingRule_Delete.json
+      - operationId: DnsResolvers_Delete
+        exampleFile: ..\examples\DnsResolver_Delete.json
+      - operationId: DnsForwardingRulesets_Delete
+        exampleFile: ..\examples\DnsForwardingRuleset_Delete.json

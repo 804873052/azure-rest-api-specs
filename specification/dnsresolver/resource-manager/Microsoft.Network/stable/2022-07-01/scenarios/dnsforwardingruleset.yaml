@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  dnsResolverName:
+    type: string
+    prefix: dnsresol
+  dnsForwardingRulesetName:
+    type: string
+    prefix: dnsforwa
+  outboundEndpointName:
+    type: string
+    prefix: outbound
+  forwardingRuleName:
+    type: string
+    prefix: forwardi
+  virtualNetworkLinkName:
+    type: string
+    prefix: virtualn
+  virtualNetworkName:
+    type: string
+    prefix: virtualn
+
+# pass
+prepareSteps:
+      - step: Create_VirtualNetwork
+        armTemplate: ./templates/Create_VirtualNetwork.json
+      - operationId: DnsResolvers_CreateOrUpdate
+        exampleFile: ..\examples\DnsResolver_Put.json
+        requestUpdate:
+          - replace: /parameters/properties/virtualNetwork/id
+            value: $(virtualNetworkId)
+      - operationId: OutboundEndpoints_CreateOrUpdate
+        exampleFile: ..\examples\OutboundEndpoint_Put.json
+        requestUpdate:
+          - replace: /parameters/properties/subnet/id
+            value: $(subnetId)
+        outputVariables:
+          outboundEndpointId:
+            type: string
+            fromResponse: /id
+      - operationId: DnsForwardingRulesets_CreateOrUpdate
+        # exampleFile: ..\examples\DnsForwardingRuleset_Put.json
+        parameters:
+          parameters:
+            location: $(location)
+            tags: 
+              key1: value1
+            properties:
+              dnsResolverOutboundEndpoints:
+                - id: $(outboundEndpointId)
+
+scenarios:
+  - scenario: DnsForwardingRulesets
+    description: Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}
+    steps:
+      - operationId: DnsForwardingRulesets_List
+        exampleFile: ..\examples\DnsForwardingRuleset_ListBySubscription.json
+      - operationId: DnsForwardingRulesets_Get
+        exampleFile: ..\examples\DnsForwardingRuleset_Get.json
+      - operationId: DnsForwardingRulesets_ListByResourceGroup
+        exampleFile: ..\examples\DnsForwardingRuleset_ListByResourceGroup.json
+      - operationId: DnsForwardingRulesets_Update
+        exampleFile: ..\examples\DnsForwardingRuleset_Patch.json
+      - operationId: DnsForwardingRulesets_ListByVirtualNetwork
+        exampleFile: ..\examples\DnsForwardingRuleset_ListByVirtualNetwork.json
+
+  - scenario: ForwardingRules
+    description: Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}
+    steps:
+      - operationId: ForwardingRules_CreateOrUpdate
+        exampleFile: ..\examples\ForwardingRule_Put.json
+      - operationId: ForwardingRules_List
+        exampleFile: ..\examples\ForwardingRule_List.json
+      - operationId: ForwardingRules_Get
+        exampleFile: ..\examples\ForwardingRule_Get.json
+      - operationId: ForwardingRules_Update
+        exampleFile: ..\examples\ForwardingRule_Patch.json
+      - operationId: ForwardingRules_Delete
+        exampleFile: ..\examples\ForwardingRule_Delete.json
+
+  - scenario: VirtualNetworkLinks
+    description: Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}
+    steps:
+      - operationId: VirtualNetworkLinks_CreateOrUpdate
+        exampleFile: ..\examples\VirtualNetworkLink_Put.json
+        requestUpdate:
+          - replace: /parameters/properties/virtualNetwork/id
+            value: $(virtualNetworkId)
+      - operationId: VirtualNetworkLinks_List
+        exampleFile: ..\examples\VirtualNetworkLink_List.json
+      - operationId: VirtualNetworkLinks_Get
+        exampleFile: ..\examples\VirtualNetworkLink_Get.json
+      - operationId: VirtualNetworkLinks_Update
+        exampleFile: ..\examples\VirtualNetworkLink_Patch.json
+      - operationId: VirtualNetworkLinks_Delete
+        exampleFile: ..\examples\VirtualNetworkLink_Delete.json
+
+cleanUpSteps:
+      - operationId: DnsForwardingRulesets_Delete
+        exampleFile: ..\examples\DnsForwardingRuleset_Delete.json

@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  dnsResolverName:
+    type: string
+    prefix: dnsresol
+  inboundEndpointName:
+    type: string
+    prefix: inbounde
+  outboundEndpointName:
+    type: string
+    prefix: outbound
+  virtualNetworkName:
+    type: string
+    prefix: virtualn
+
+# pass
+prepareSteps:
+      - step: Create_VirtualNetwork
+        armTemplate: ./templates/Create_VirtualNetwork.json
+
+      - operationId: DnsResolvers_CreateOrUpdate
+        exampleFile: ..\examples\DnsResolver_Put.json
+        requestUpdate:
+          - replace: /parameters/properties/virtualNetwork/id
+            value: $(virtualNetworkId)
+
+scenarios:
+  - scenario: DnsResolvers
+    description: Microsoft.Network/dnsResolvers/{dnsResolverName}
+    steps:
+      - operationId: DnsResolvers_List
+        exampleFile: ..\examples\DnsResolver_ListBySubscription.json
+      - operationId: DnsResolvers_ListByResourceGroup
+        exampleFile: ..\examples\DnsResolver_ListByResourceGroup.json
+      - operationId: DnsResolvers_Get
+        exampleFile: ..\examples\DnsResolver_Get.json
+      - operationId: DnsResolvers_Update
+        exampleFile: ..\examples\DnsResolver_Patch.json
+      - operationId: DnsResolvers_ListByVirtualNetwork
+        exampleFile: ..\examples\DnsResolver_ListByVirtualNetwork.json
+
+  - scenario: InboundEndpoints
+    description: Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}
+    steps:
+      - operationId: InboundEndpoints_CreateOrUpdate 
+        exampleFile: ..\examples\InboundEndpoint_Put.json
+        requestUpdate:
+          - replace: /parameters/properties/ipConfigurations/0/subnet/id
+            value: $(subnetId)
+      - operationId: InboundEndpoints_List
+        exampleFile: ..\examples\InboundEndpoint_List.json
+      - operationId: InboundEndpoints_Get
+        exampleFile: ..\examples\InboundEndpoint_Get.json
+      - operationId: InboundEndpoints_Update
+        exampleFile: ..\examples\InboundEndpoint_Patch.json
+      - operationId: InboundEndpoints_Delete
+        exampleFile: ..\examples\InboundEndpoint_Delete.json
+
+  - scenario: OutboundEndpoints
+    description: Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}
+    steps:
+      - operationId: OutboundEndpoints_CreateOrUpdate
+        exampleFile: ..\examples\OutboundEndpoint_Put.json
+        requestUpdate:
+          - replace: /parameters/properties/subnet/id
+            value: $(subnetId)
+      - operationId: OutboundEndpoints_List
+        exampleFile: ..\examples\OutboundEndpoint_List.json
+      - operationId: OutboundEndpoints_Get
+        exampleFile: ..\examples\OutboundEndpoint_Get.json
+      - operationId: OutboundEndpoints_Update
+        exampleFile: ..\examples\OutboundEndpoint_Patch.json
+      - operationId: OutboundEndpoints_Delete
+        exampleFile: ..\examples\OutboundEndpoint_Delete.json
+
+cleanUpSteps:
+      - operationId: DnsResolvers_Delete
+        exampleFile: ..\examples\DnsResolver_Delete.json
