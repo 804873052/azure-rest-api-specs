@@ -1,0 +1,67 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  organizationName:
+    type: string
+    prefix: organiza
+
+prepareSteps:
+      - operationId: Organization_Create
+        exampleFile: ..\examples\Organization_Create.json
+
+scenarios:
+  - scenario: Organization
+    description: Microsoft.Confluent/organizations/{organizationName}
+    steps:
+      - operationId: Organization_ListBySubscription
+        exampleFile: ..\examples\Organization_ListBySubscription.json
+      - operationId: Organization_ListByResourceGroup
+        exampleFile: ..\examples\Organization_ListByResourceGroup.json
+      - operationId: Organization_Get
+        exampleFile: ..\examples\Organization_Get.json
+      - operationId: Organization_Update
+        exampleFile: ..\examples\Organization_Update.json
+
+  - scenario: MarketplaceAgreements
+    description: Microsoft.Confluent/agreements/default
+    steps:
+      - operationId: MarketplaceAgreements_Create
+        exampleFile: ..\examples\MarketplaceAgreements_Create.json
+      - operationId: MarketplaceAgreements_List
+        exampleFile: ..\examples\MarketplaceAgreements_List.json
+
+  - scenario: OrganizationOperations
+    description: Microsoft.Confluent/operations
+    steps:
+      - operationId: OrganizationOperations_List
+        exampleFile: ..\examples\OrganizationOperations_List.json
+
+  - scenario: Access
+    description: Microsoft.Confluent/organizations/{organizationName}/access/default
+    steps:
+      - operationId: Access_InviteUser
+        exampleFile: ..\examples\Access_InviteUser.json
+      - operationId: Access_ListUsers
+        exampleFile: ..\examples\Access_UsersList.json
+      - operationId: Access_ListClusters
+        exampleFile: ..\examples\Access_ClusterList.json
+      - operationId: Access_ListEnvironments
+        exampleFile: ..\examples\Access_EnvironmentList.json
+      - operationId: Access_ListInvitations
+        exampleFile: ..\examples\Access_InvitationsList.json
+      - operationId: Access_ListRoleBindings
+        exampleFile: ..\examples\Access_RoleBindingList.json
+      - operationId: Access_ListServiceAccounts
+        exampleFile: ..\examples\Access_ServiceAccountsList.json
+
+  - scenario: Validations
+    description: Microsoft.Confluent/validations/{organizationName}
+    steps:
+      - operationId: Validations_ValidateOrganization
+        exampleFile: ..\examples\Validations_ValidateOrganizations.json
+      - operationId: Validations_ValidateOrganizationV2
+        exampleFile: ..\examples\Validations_ValidateOrganizationsV2.json
+
+cleanUpSteps:
+      - operationId: Organization_Delete
+        exampleFile: ..\examples\Organization_Delete.json
