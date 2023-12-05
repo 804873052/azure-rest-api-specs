@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  resourceName:
+    type: string
+    prefix: resource
+  federatedIdentityCredentialResourceName:
+    type: string
+    prefix: federate
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: UserAssignedIdentities_CreateOrUpdate
+        exampleFile: ..\examples\IdentityCreate.json
+      - operationId: UserAssignedIdentities_ListBySubscription
+        exampleFile: ..\examples\IdentityListBySubscription.json
+      - operationId: UserAssignedIdentities_ListByResourceGroup
+        exampleFile: ..\examples\IdentityListByResourceGroup.json
+      - operationId: UserAssignedIdentities_Get
+        exampleFile: ..\examples\IdentityGet.json
+      - operationId: UserAssignedIdentities_Update
+        exampleFile: ..\examples\IdentityUpdate.json
+      - operationId: FederatedIdentityCredentials_CreateOrUpdate
+        exampleFile: ..\examples\FederatedIdentityCredentialCreate.json
+      - operationId: FederatedIdentityCredentials_List
+        exampleFile: ..\examples\FederatedIdentityCredentialList.json
+      - operationId: FederatedIdentityCredentials_Get
+        exampleFile: ..\examples\FederatedIdentityCredentialGet.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\MsiOperationsList.json
+      - operationId: SystemAssignedIdentities_GetByScope
+        exampleFile: ..\examples\SystemAssignedIdentityGet.json
+      - operationId: FederatedIdentityCredentials_Delete
+        exampleFile: ..\examples\FederatedIdentityCredentialDelete.json
+      - operationId: UserAssignedIdentities_Delete
+        exampleFile: ..\examples\IdentityDelete.json

@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  resourceName:
+    type: string
+    prefix: resource
+  federatedIdentityCredentialResourceName:
+    type: string
+    prefix: federate
+
+prepareSteps:
+      - operationId: UserAssignedIdentities_CreateOrUpdate
+        exampleFile: ..\examples\IdentityCreate.json
+
+scenarios:
+  - scenario: UserAssignedIdentities
+    description: Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}
+    steps:
+      - operationId: UserAssignedIdentities_ListBySubscription
+        exampleFile: ..\examples\IdentityListBySubscription.json
+      - operationId: UserAssignedIdentities_ListByResourceGroup
+        exampleFile: ..\examples\IdentityListByResourceGroup.json
+      - operationId: UserAssignedIdentities_Get
+        exampleFile: ..\examples\IdentityGet.json
+      - operationId: UserAssignedIdentities_Update
+        exampleFile: ..\examples\IdentityUpdate.json
+
+  - scenario: FederatedIdentityCredentials
+    description: Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}/federatedIdentityCredentials/{federatedIdentityCredentialResourceName}
+    steps:
+      - operationId: FederatedIdentityCredentials_CreateOrUpdate
+        exampleFile: ..\examples\FederatedIdentityCredentialCreate.json
+      - operationId: FederatedIdentityCredentials_List
+        exampleFile: ..\examples\FederatedIdentityCredentialList.json
+      - operationId: FederatedIdentityCredentials_Get
+        exampleFile: ..\examples\FederatedIdentityCredentialGet.json
+      - operationId: FederatedIdentityCredentials_Delete
+        exampleFile: ..\examples\FederatedIdentityCredentialDelete.json
+
+  - scenario: Operations
+    description: Microsoft.ManagedIdentity/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\MsiOperationsList.json
+
+# The resource type could not be found in the namespace 'Microsoft.ManagedIdentity' for api version '2023-01-31'.
+  # - scenario: SystemAssignedIdentities
+  #   description: Microsoft.ManagedIdentity/identities/default
+  #   steps:
+  #     - operationId: SystemAssignedIdentities_GetByScope 
+  #       exampleFile: ..\examples\SystemAssignedIdentityGet.json
+  #       requestUpdate:
+  #         - replace: /scope
+  #           value: 
+        
+
+cleanUpSteps:
+      - operationId: UserAssignedIdentities_Delete
+        exampleFile: ..\examples\IdentityDelete.json
