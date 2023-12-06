@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: Operations
+    description: Microsoft.ChangeAnalysis/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+  - scenario: ResourceChanges
+    description: Microsoft.ChangeAnalysis/resourceChanges
+    steps:
+      - operationId: ResourceChanges_List
+        exampleFile: ..\examples\ResourceChangesList.json
+
+  - scenario: Changes
+    description: Microsoft.ChangeAnalysis/changes
+    steps:
+      - operationId: Changes_ListChangesByResourceGroup
+        exampleFile: ..\examples\ChangesListChangesByResourceGroup.json
+      - operationId: Changes_ListChangesBySubscription
+        exampleFile: ..\examples\ChangesListChangesBySubscription.json

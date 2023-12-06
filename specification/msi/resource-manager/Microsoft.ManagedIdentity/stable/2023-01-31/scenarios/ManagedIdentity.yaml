@@ -51,8 +51,7 @@ scenarios:
   #       exampleFile: ..\examples\SystemAssignedIdentityGet.json
   #       requestUpdate:
   #         - replace: /scope
-  #           value: 
-        
+  #           value: /subscriptionId/$(subscriptionId)/providers/Microsoft.ManagedIdentity/locations/eastus
 
 cleanUpSteps:
       - operationId: UserAssignedIdentities_Delete
