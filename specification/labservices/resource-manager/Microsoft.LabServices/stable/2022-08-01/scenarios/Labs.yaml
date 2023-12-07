@@ -1,0 +1,104 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  labName:
+    type: string
+    prefix: labna
+  labPlanName:
+    type: string
+    prefix: labplanna
+  adminPassword:
+    type: string
+
+prepareSteps:
+      - operationId: LabPlans_CreateOrUpdate
+        # exampleFile: ..\examples\LabPlans\putLabPlan.json
+        parameters:
+          body:
+            location: $(location)
+            properties:
+              defaultConnectionProfile:
+                webSshAccess: None
+                webRdpAccess: None
+                clientSshAccess: Public
+                clientRdpAccess: Public
+              defaultAutoShutdownProfile:
+                shutdownOnDisconnect: Enabled
+                shutdownWhenNotConnected: Enabled
+                shutdownOnIdle: UserAbsence
+                disconnectDelay: PT15M
+                noConnectDelay: PT15M
+                idleDelay: PT15M
+              supportInfo:
+                url: https://help.contoso.com
+                email: help@contoso.com
+                phone: +1-202-555-0123
+                instructions: Contact support for help.
+              allowedRegions:
+                - eastus
+                - eastus2
+        outputVariables:
+          labPlanId:
+            type: string
+            fromResponse: /id
+
+# pass
+scenarios:
+  - scenario: Labs
+    description: Microsoft.LabServices/labs/{labName}
+    steps:
+      - operationId: Labs_CreateOrUpdate
+        # exampleFile: ..\examples\Labs\putLab.json
+        parameters:
+          body:
+            location: $(location)
+            properties: 
+              title: Test Lab
+              description: This is a test lab.
+              labPlanId: $(labPlanId)
+              connectionProfile: 
+                webSshAccess: None
+                webRdpAccess: None
+                clientSshAccess: Public
+                clientRdpAccess: Public
+              autoShutdownProfile:
+                shutdownOnDisconnect: Enabled
+                shutdownWhenNotConnected: Enabled
+                shutdownOnIdle: UserAbsence
+                disconnectDelay: PT15M
+                noConnectDelay: PT15M
+                idleDelay: PT15M
+              securityProfile: 
+                openAccess: Disabled
+              virtualMachineProfile:
+                createOption: TemplateVM
+                sku: 
+                  name: Standard_Fsv2_2_4GB_64_S_SSD
+                  capacity: 0
+                additionalCapabilities: 
+                  installGpuDrivers: Disabled
+                usageQuota: 2
+                useSharedPassword: Disabled
+                adminUser:
+                  username: test-user
+                  password: $(adminPassword)
+                imageReference:
+                  offer: 0001-com-ubuntu-server-focal
+                  publisher: canonical
+                  sku: 20_04-lts
+                  version: latest
+      - operationId: Labs_ListBySubscription
+        exampleFile: ..\examples\Labs\listLabs.json
+      - operationId: Labs_Get
+        exampleFile: ..\examples\Labs\getLab.json
+      - operationId: Labs_ListByResourceGroup
+        exampleFile: ..\examples\Labs\listResourceGroupLabs.json
+      - operationId: Labs_Update
+        exampleFile: ..\examples\Labs\patchLab.json
+      # - operationId: Labs_SyncGroup
+      #   exampleFile: ..\examples\Labs\syncLab.json
+      # - operationId: Labs_Publish
+      #   exampleFile: ..\examples\Labs\publishLab.json
+      - operationId: Labs_Delete
+        exampleFile: ..\examples\Labs\deleteLab.json

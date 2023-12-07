@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# pass
+scenarios:
+  - scenario: Operation
+    description: Microsoft.LabServices/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\LabServices\listOperations.json
+
+  - scenario: Skus
+    description: Microsoft.LabServices/skus
+    steps:
+      - operationId: Skus_List
+        exampleFile: ..\examples\Skus\listSkus.json
+
+  - scenario: Usages
+    description: Microsoft.LabServices/locations/{location}/usages
+    steps:
+      - operationId: Usages_ListByLocation
+        exampleFile: ..\examples\Usages\getUsages.json
+
+# fail InvalidResourceType
+  # - scenario: OperationResults
+  #   description: Microsoft.LabServices/operationResults/{operationResultId}
+  #   steps:
+  #     - operationId: OperationResults_Get
+  #       exampleFile: ..\examples\OperationResults\getOperationResult.json

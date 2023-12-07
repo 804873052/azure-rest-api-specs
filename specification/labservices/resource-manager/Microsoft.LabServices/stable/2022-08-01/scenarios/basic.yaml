@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables: {}
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Labs_CreateOrUpdate
+        exampleFile: ..\examples\Labs\putLab.json
+      - operationId: Labs_ListBySubscription
+        exampleFile: ..\examples\Labs\listLabs.json
+      - operationId: Labs_Get
+        exampleFile: ..\examples\Labs\getLab.json
+      - operationId: Labs_ListByResourceGroup
+        exampleFile: ..\examples\Labs\listResourceGroupLabs.json
+      - operationId: Labs_Update
+        exampleFile: ..\examples\Labs\patchLab.json
+      - operationId: Labs_SyncGroup
+        exampleFile: ..\examples\Labs\syncLab.json
+      - operationId: Labs_Publish
+        exampleFile: ..\examples\Labs\publishLab.json
+      - operationId: LabPlans_CreateOrUpdate
+        exampleFile: ..\examples\LabPlans\putLabPlan.json
+      - operationId: LabPlans_ListBySubscription
+        exampleFile: ..\examples\LabPlans\listLabPlans.json
+      - operationId: LabPlans_Get
+        exampleFile: ..\examples\LabPlans\getLabPlan.json
+      - operationId: LabPlans_ListByResourceGroup
+        exampleFile: ..\examples\LabPlans\listResourceGroupLabPlans.json
+      - operationId: LabPlans_Update
+        exampleFile: ..\examples\LabPlans\patchLabPlan.json
+      - operationId: LabPlans_SaveImage
+        exampleFile: ..\examples\LabPlans\saveImageVirtualMachine.json
+      - operationId: Users_CreateOrUpdate
+        exampleFile: ..\examples\Users\putUser.json
+      - operationId: Users_ListByLab
+        exampleFile: ..\examples\Users\listUser.json
+      - operationId: Users_Get
+        exampleFile: ..\examples\Users\getUser.json
+      - operationId: Users_Update
+        exampleFile: ..\examples\Users\patchUser.json
+      - operationId: Users_Invite
+        exampleFile: ..\examples\Users\inviteUser.json
+      - operationId: Schedules_CreateOrUpdate
+        exampleFile: ..\examples\Schedules\putSchedule.json
+      - operationId: Schedules_ListByLab
+        exampleFile: ..\examples\Schedules\listSchedule.json
+      - operationId: Schedules_Get
+        exampleFile: ..\examples\Schedules\getSchedule.json
+      - operationId: Schedules_Update
+        exampleFile: ..\examples\Schedules\patchSchedule.json
+      - operationId: Images_CreateOrUpdate
+        exampleFile: ..\examples\Images\putImage.json
+      - operationId: Images_ListByLabPlan
+        exampleFile: ..\examples\Images\listImages.json
+      - operationId: Images_Get
+        exampleFile: ..\examples\Images\getImage.json
+      - operationId: Images_Update
+        exampleFile: ..\examples\Images\patchImage.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\LabServices\listOperations.json
+      - operationId: Usages_ListByLocation
+        exampleFile: ..\examples\Usages\getUsages.json
+      - operationId: OperationResults_Get
+        exampleFile: ..\examples\OperationResults\getOperationResult.json
+      - operationId: Skus_List
+        exampleFile: ..\examples\Skus\listSkus.json
+      - operationId: VirtualMachines_ListByLab
+        exampleFile: ..\examples\VirtualMachines\listVirtualMachine.json
+      - operationId: VirtualMachines_Get
+        exampleFile: ..\examples\VirtualMachines\getVirtualMachine.json
+      - operationId: VirtualMachines_Redeploy
+        exampleFile: ..\examples\VirtualMachines\redeployVirtualMachine.json
+      - operationId: VirtualMachines_Reimage
+        exampleFile: ..\examples\VirtualMachines\reimageVirtualMachine.json
+      - operationId: VirtualMachines_ResetPassword
+        exampleFile: ..\examples\VirtualMachines\resetPasswordVirtualMachine.json
+      - operationId: VirtualMachines_Start
+        exampleFile: ..\examples\VirtualMachines\startVirtualMachine.json
+      - operationId: VirtualMachines_Stop
+        exampleFile: ..\examples\VirtualMachines\stopVirtualMachine.json
+      - operationId: Schedules_Delete
+        exampleFile: ..\examples\Schedules\deleteSchedule.json
+      - operationId: Users_Delete
+        exampleFile: ..\examples\Users\deleteUser.json
+      - operationId: LabPlans_Delete
+        exampleFile: ..\examples\LabPlans\deleteLabPlan.json
+      - operationId: Labs_Delete
+        exampleFile: ..\examples\Labs\deleteLab.json

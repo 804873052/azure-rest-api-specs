@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  labPlanName:
+    type: string
+    prefix: labplanna
+
+# pass
+scenarios:
+  - scenario: LabPlans
+    description: Microsoft.LabServices/labPlans/{labPlanName}
+    steps:
+      - operationId: LabPlans_CreateOrUpdate
+        # exampleFile: ..\examples\LabPlans\putLabPlan.json
+        parameters:
+          resourceGroupName: $(resourceGroupName)
+          labPlanName: $(labPlanName)
+          body:
+            location: $(location)
+            properties:
+              defaultConnectionProfile:
+                webSshAccess: None
+                webRdpAccess: None
+                clientSshAccess: Public
+                clientRdpAccess: Public
+              defaultAutoShutdownProfile:
+                shutdownOnDisconnect: Enabled
+                shutdownWhenNotConnected: Enabled
+                shutdownOnIdle: UserAbsence
+                disconnectDelay: PT15M
+                noConnectDelay: PT15M
+                idleDelay: PT15M
+              supportInfo:
+                url: https://help.contoso.com
+                email: help@contoso.com
+                phone: +1-202-555-0123
+                instructions: Contact support for help.
+              allowedRegions:
+                - eastus
+                - eastus2
+      - operationId: LabPlans_ListBySubscription
+        exampleFile: ..\examples\LabPlans\listLabPlans.json
+      - operationId: LabPlans_Get
+        exampleFile: ..\examples\LabPlans\getLabPlan.json
+      - operationId: LabPlans_ListByResourceGroup
+        exampleFile: ..\examples\LabPlans\listResourceGroupLabPlans.json
+      - operationId: LabPlans_Update
+        exampleFile: ..\examples\LabPlans\patchLabPlan.json
+      # - operationId: LabPlans_SaveImage
+      #   exampleFile: ..\examples\LabPlans\saveImageVirtualMachine.json
+      - operationId: LabPlans_Delete
+        exampleFile: ..\examples\LabPlans\deleteLabPlan.json

@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  labPlanName:
+    type: string
+    prefix: labplanna
+
+prepareSteps:
+      - operationId: LabPlans_CreateOrUpdate
+        # exampleFile: ..\examples\LabPlans\putLabPlan.json
+        parameters:
+          resourceGroupName: $(resourceGroupName)
+          labPlanName: $(labPlanName)
+          body:
+            location: $(location)
+            properties:
+              defaultConnectionProfile:
+                webSshAccess: None
+                webRdpAccess: None
+                clientSshAccess: Public
+                clientRdpAccess: Public
+              defaultAutoShutdownProfile:
+                shutdownOnDisconnect: Enabled
+                shutdownWhenNotConnected: Enabled
+                shutdownOnIdle: UserAbsence
+                disconnectDelay: PT15M
+                noConnectDelay: PT15M
+                idleDelay: PT15M
+              supportInfo:
+                url: https://help.contoso.com
+                email: help@contoso.com
+                phone: +1-202-555-0123
+                instructions: Contact support for help.
+              allowedRegions:
+                - eastus
+                - eastus2
+# pass
+scenarios:
+  - scenario: Images
+    description: Microsoft.LabServices/labPlans/{labPlanName}/images/{imageName}
+    steps:
+      - operationId: Images_ListByLabPlan
+        exampleFile: ..\examples\Images\listImages.json
+        outputVariables:
+          imageName:
+            type: string
+            fromResponse: /value/name
+      - operationId: Images_CreateOrUpdate
+        exampleFile: ..\examples\Images\putImage.json
+      - operationId: Images_Get
+        exampleFile: ..\examples\Images\getImage.json
+      - operationId: Images_Update
+        exampleFile: ..\examples\Images\patchImage.json
