@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  resourceName:
+    type: string
+    prefix: resource
+
+scenarios:
+  - scenario: Apps
+    description: Microsoft.IoTCentral/iotApps/{resourceName}
+    steps:
+      - operationId: Apps_CheckNameAvailability
+        exampleFile: ..\examples\Apps_CheckNameAvailability.json
+      - operationId: Apps_CreateOrUpdate
+        exampleFile: ..\examples\Apps_CreateOrUpdate.json
+      - operationId: Apps_ListBySubscription
+        exampleFile: ..\examples\Apps_ListBySubscription.json
+      - operationId: Apps_ListByResourceGroup
+        exampleFile: ..\examples\Apps_ListByResourceGroup.json
+      - operationId: Apps_Get
+        exampleFile: ..\examples\Apps_Get.json
+      - operationId: Apps_Update
+        exampleFile: ..\examples\Apps_Update.json
+      - operationId: Apps_CheckSubdomainAvailability
+        exampleFile: ..\examples\Apps_CheckSubdomainAvailability.json
+      - operationId: Apps_ListTemplates
+        exampleFile: ..\examples\Apps_Templates.json
+      - operationId: Apps_Delete
+        exampleFile: ..\examples\Apps_Delete.json
+
+  - scenario: Operations
+    description: Microsoft.IoTCentral/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
