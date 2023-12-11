@@ -1,0 +1,183 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  peeringName:
+    type: string
+    prefix: peeringn
+  peeringServiceName:
+    type: string
+    prefix: peerings
+  peerAsnName:
+    type: string
+    prefix: peerasnn
+  registeredAsnName:
+    type: string
+    prefix: register
+  registeredPrefixName:
+    type: string
+    prefix: register
+  connectionMonitorTestName:
+    type: string
+    prefix: connecti
+  prefixName:
+    type: string
+    prefix: prefixna
+
+prepareSteps:
+      - operationId: PeerAsns_CreateOrUpdate
+        exampleFile: ..\examples\CreatePeerAsn.json
+        outputVariables:
+          peerasnId:
+            type: string
+            fromResponse: /id
+      - operationId: Peerings_CreateOrUpdate
+        exampleFile: ..\examples\CreateDirectPeering.json
+        requestUpdate:
+          - replace: /peering/properties/direct/peerAsn/id
+            value: $(peerasnId)
+      - operationId: PeeringServices_CreateOrUpdate
+        exampleFile: ..\examples\CreatePeeringService.json
+
+scenarios:
+  - scenario: PeerAsns
+    description: Microsoft.Peering/peerAsns/{peerAsnName}
+    steps:
+      - operationId: PeerAsns_ListBySubscription
+        exampleFile: ..\examples\ListPeerAsnsBySubscription.json
+      - operationId: PeerAsns_Get
+        exampleFile: ..\examples\GetPeerAsn.json
+
+
+  - scenario: Peerings
+    description: Microsoft.Peering/peerings/{peeringName}
+    steps:
+      - operationId: Peerings_ListBySubscription
+        exampleFile: ..\examples\ListPeeringsBySubscription.json
+      - operationId: Peerings_ListByResourceGroup
+        exampleFile: ..\examples\ListPeeringsByResourceGroup.json
+      - operationId: Peerings_Get
+        exampleFile: ..\examples\GetPeering.json
+      - operationId: Peerings_Update
+        exampleFile: ..\examples\UpdatePeeringTags.json
+
+  - scenario: RegisteredPrefixes
+    description: Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}
+    steps:
+      - operationId: RegisteredPrefixes_CreateOrUpdate
+        exampleFile: ..\examples\CreateRegisteredPrefix.json
+      - operationId: RegisteredPrefixes_ListByPeering
+        exampleFile: ..\examples\ListRegisteredPrefixesByPeering.json
+      - operationId: RegisteredPrefixes_Get
+        exampleFile: ..\examples\GetRegisteredPrefix.json
+      - operationId: RegisteredPrefixes_Delete
+        exampleFile: ..\examples\DeleteRegisteredPrefix.json
+  - scenario: RegisteredAsns
+    description: Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}
+    steps:
+      - operationId: RegisteredAsns_CreateOrUpdate
+        exampleFile: ..\examples\CreateRegisteredAsn.json
+      - operationId: RegisteredAsns_ListByPeering
+        exampleFile: ..\examples\ListRegisteredAsnsByPeering.json
+      - operationId: RegisteredAsns_Get
+        exampleFile: ..\examples\GetRegisteredAsn.json
+      - operationId: RegisteredAsns_Delete
+        exampleFile: ..\examples\DeleteRegisteredAsn.json
+
+  - scenario: PeeringServices
+    description: Microsoft.Peering/peeringServices/{peeringServiceName}
+    steps:
+      - operationId: PeeringServices_ListBySubscription
+        exampleFile: ..\examples\ListPeeringServicesBySubscription.json
+      - operationId: PeeringServices_ListByResourceGroup
+        exampleFile: ..\examples\ListPeeringServicesByResourceGroup.json
+      - operationId: PeeringServices_Get
+        exampleFile: ..\examples\GetPeeringService.json
+      - operationId: PeeringServices_Update
+        exampleFile: ..\examples\UpdatePeeringServiceTags.json
+      - operationId: PeeringServices_InitializeConnectionMonitor
+        exampleFile: ..\examples\InitializeConnectionMonitor.json
+
+
+
+  - scenario: ConnectionMonitorTests
+    description: Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}
+    steps:
+      - operationId: ConnectionMonitorTests_CreateOrUpdate
+        exampleFile: ..\examples\CreateOrUpdateConnectionMonitorTest.json
+      - operationId: ConnectionMonitorTests_ListByPeeringService
+        exampleFile: ..\examples\ListConnectionMonitorTestsByPeeringService.json
+      - operationId: ConnectionMonitorTests_Get
+        exampleFile: ..\examples\GetConnectionMonitorTest.json
+      - operationId: ConnectionMonitorTests_Delete
+        exampleFile: ..\examples\DeleteConnectionMonitorTest.json
+
+
+  - scenario: Prefixes
+    description: Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes/{prefixName}
+    steps:
+      - operationId: Prefixes_CreateOrUpdate
+        exampleFile: ..\examples\CreatePeeringServicePrefix.json
+      - operationId: Prefixes_ListByPeeringService
+        exampleFile: ..\examples\ListPrefixesByPeeringService.json
+      - operationId: Prefixes_Get
+        exampleFile: ..\examples\GetPeeringServicePrefix.json
+      - operationId: Prefixes_Delete
+        exampleFile: ..\examples\DeletePeeringServicePrefix.json
+
+
+  - scenario: Operations
+    description: Microsoft.Peering/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListPeeringOperations.json
+
+  - scenario: CdnPeeringPrefixes
+    description: Microsoft.Peering/cdnPeeringPrefixes
+    steps:
+      - operationId: CdnPeeringPrefixes_List
+        exampleFile: ..\examples\ListCdnPeeringPrefixes.json
+
+  - scenario: CheckServiceProviderAvailability
+    description: Microsoft.Peering/checkServiceProviderAvailability
+    steps:
+      - operationId: CheckServiceProviderAvailability
+        exampleFile: ..\examples\CheckServiceProviderAvailability.json
+
+  - scenario: LegacyPeerings
+    description: Microsoft.Peering/legacyPeerings
+    steps:
+      - operationId: LegacyPeerings_List
+        exampleFile: ..\examples\ListLegacyPeerings.json
+
+  - scenario: LookingGlass
+    description: Microsoft.Peering/lookingGlass
+    steps:
+      - operationId: LookingGlass_Invoke
+        exampleFile: ..\examples\LookingGlassInvokeCommand.json
+
+  - scenario: PeeringLocations
+    description: Microsoft.Peering/peeringLocations
+    steps:
+      - operationId: PeeringLocations_List
+        exampleFile: ..\examples\ListDirectPeeringLocations.json
+
+  - scenario: PeeringServiceCountries
+    description: Microsoft.Peering/peeringServiceCountries
+    steps:
+      - operationId: PeeringServiceCountries_List
+        exampleFile: ..\examples\ListPeeringServiceCountriesBySubscription.json
+      - operationId: PeeringServiceLocations_List
+        exampleFile: ..\examples\ListPeeringServiceLocationsBySubscription.json
+      - operationId: PeeringServiceProviders_List
+        exampleFile: ..\examples\ListPeeringServiceProviders.json
+      - operationId: ReceivedRoutes_ListByPeering
+        exampleFile: ..\examples\GetPeeringReceivedRoutes.json
+
+
+cleanUpSteps:
+      - operationId: PeeringServices_Delete
+        exampleFile: ..\examples\DeletePeeringService.json
+      - operationId: Peerings_Delete
+        exampleFile: ..\examples\DeletePeering.json
+      - operationId: PeerAsns_Delete
+        exampleFile: ..\examples\DeletePeerAsn.json

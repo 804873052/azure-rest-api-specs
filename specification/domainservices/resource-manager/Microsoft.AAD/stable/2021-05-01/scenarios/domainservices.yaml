@@ -1,0 +1,58 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  domainServiceName:
+    type: string
+    prefix: domainse
+
+# You cannot create a managed domain for this directory because you do not have administrative privileges to manage Microsoft Entra Domain Services.
+
+prepareSteps:
+      - operationId: DomainServices_CreateOrUpdate
+        exampleFile: ..\examples\CreateDomainService.json
+
+scenarios:
+  - scenario: DomainServices
+    description: Microsoft.AAD/domainServices/{domainServiceName}
+    steps:
+
+      - operationId: DomainServices_List
+        exampleFile: ..\examples\ListDomainServicesBySubscription.json
+      - operationId: DomainServices_ListByResourceGroup
+        exampleFile: ..\examples\ListDomainServicesByResourceGroup.json
+      - operationId: DomainServices_Get
+        exampleFile: ..\examples\GetDomainService.json
+      - operationId: DomainServices_Update
+        exampleFile: ..\examples\UpdateDomainService.json
+
+  - scenario: OuContainer
+    description: Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}
+    steps:
+      - operationId: OuContainer_Create
+        exampleFile: ..\examples\CreateOuContainer.json
+      - operationId: OuContainer_List
+        exampleFile: ..\examples\ListOuContainers.json
+      - operationId: OuContainer_Get
+        exampleFile: ..\examples\GetOuContainer.json
+      - operationId: OuContainer_Update
+        exampleFile: ..\examples\UpdateOuContainer.json
+      - operationId: OuContainer_Delete
+        exampleFile: ..\examples\DeleteOuContainer.json
+
+  - scenario: DomainServiceOperations
+    description: Microsoft.AAD/operations
+    steps:
+      - operationId: DomainServiceOperations_List
+        exampleFile: ..\examples\GetOperations.json
+
+  - scenario: OuContainerOperations
+    description: Microsoft.Aad/operations
+    steps:
+      - operationId: OuContainerOperations_List
+        exampleFile: ..\examples\GetOperations.json
+
+cleanUpSteps:
+      - operationId: DomainServices_Delete
+        exampleFile: ..\examples\DeleteDomainService.json
+

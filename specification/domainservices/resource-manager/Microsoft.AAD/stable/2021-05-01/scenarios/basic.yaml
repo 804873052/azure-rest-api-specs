@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  domainServiceName:
+    type: string
+    prefix: domainse
+  ouContainerName:
+    type: string
+    prefix: oucontai
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: DomainServices_CreateOrUpdate
+        exampleFile: ..\examples\CreateDomainService.json
+      - operationId: DomainServices_List
+        exampleFile: ..\examples\ListDomainServicesBySubscription.json
+      - operationId: DomainServices_ListByResourceGroup
+        exampleFile: ..\examples\ListDomainServicesByResourceGroup.json
+      - operationId: DomainServices_Get
+        exampleFile: ..\examples\GetDomainService.json
+      - operationId: DomainServices_Update
+        exampleFile: ..\examples\UpdateDomainService.json
+      - operationId: OuContainer_Create
+        exampleFile: ..\examples\CreateOuContainer.json
+      - operationId: OuContainer_List
+        exampleFile: ..\examples\ListOuContainers.json
+      - operationId: OuContainer_Get
+        exampleFile: ..\examples\GetOuContainer.json
+      - operationId: OuContainer_Update
+        exampleFile: ..\examples\UpdateOuContainer.json
+      - operationId: DomainServiceOperations_List
+        exampleFile: ..\examples\GetOperations.json
+      - operationId: OuContainerOperations_List
+        exampleFile: ..\examples\GetOperations.json
+      - operationId: OuContainer_Delete
+        exampleFile: ..\examples\DeleteOuContainer.json
+      - operationId: DomainServices_Delete
+        exampleFile: ..\examples\DeleteDomainService.json

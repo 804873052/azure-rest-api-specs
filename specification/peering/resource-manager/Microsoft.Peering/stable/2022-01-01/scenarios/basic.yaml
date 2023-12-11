@@ -1,0 +1,114 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  peeringName:
+    type: string
+    prefix: peeringn
+  peeringServiceName:
+    type: string
+    prefix: peerings
+  peerAsnName:
+    type: string
+    prefix: peerasnn
+  registeredAsnName:
+    type: string
+    prefix: register
+  registeredPrefixName:
+    type: string
+    prefix: register
+  connectionMonitorTestName:
+    type: string
+    prefix: connecti
+  prefixName:
+    type: string
+    prefix: prefixna
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Peerings_CreateOrUpdate
+        exampleFile: ..\examples\CreateDirectPeering.json
+      - operationId: Peerings_ListBySubscription
+        exampleFile: ..\examples\ListPeeringsBySubscription.json
+      - operationId: Peerings_ListByResourceGroup
+        exampleFile: ..\examples\ListPeeringsByResourceGroup.json
+      - operationId: Peerings_Get
+        exampleFile: ..\examples\GetPeering.json
+      - operationId: Peerings_Update
+        exampleFile: ..\examples\UpdatePeeringTags.json
+      - operationId: PeeringServices_CreateOrUpdate
+        exampleFile: ..\examples\CreatePeeringService.json
+      - operationId: PeeringServices_ListBySubscription
+        exampleFile: ..\examples\ListPeeringServicesBySubscription.json
+      - operationId: PeeringServices_ListByResourceGroup
+        exampleFile: ..\examples\ListPeeringServicesByResourceGroup.json
+      - operationId: PeeringServices_Get
+        exampleFile: ..\examples\GetPeeringService.json
+      - operationId: PeeringServices_Update
+        exampleFile: ..\examples\UpdatePeeringServiceTags.json
+      - operationId: PeeringServices_InitializeConnectionMonitor
+        exampleFile: ..\examples\InitializeConnectionMonitor.json
+      - operationId: PeerAsns_CreateOrUpdate
+        exampleFile: ..\examples\CreatePeerAsn.json
+      - operationId: PeerAsns_ListBySubscription
+        exampleFile: ..\examples\ListPeerAsnsBySubscription.json
+      - operationId: PeerAsns_Get
+        exampleFile: ..\examples\GetPeerAsn.json
+      - operationId: ConnectionMonitorTests_CreateOrUpdate
+        exampleFile: ..\examples\CreateOrUpdateConnectionMonitorTest.json
+      - operationId: ConnectionMonitorTests_ListByPeeringService
+        exampleFile: ..\examples\ListConnectionMonitorTestsByPeeringService.json
+      - operationId: ConnectionMonitorTests_Get
+        exampleFile: ..\examples\GetConnectionMonitorTest.json
+      - operationId: RegisteredPrefixes_CreateOrUpdate
+        exampleFile: ..\examples\CreateRegisteredPrefix.json
+      - operationId: RegisteredPrefixes_ListByPeering
+        exampleFile: ..\examples\ListRegisteredPrefixesByPeering.json
+      - operationId: RegisteredPrefixes_Get
+        exampleFile: ..\examples\GetRegisteredPrefix.json
+      - operationId: Prefixes_CreateOrUpdate
+        exampleFile: ..\examples\CreatePeeringServicePrefix.json
+      - operationId: Prefixes_ListByPeeringService
+        exampleFile: ..\examples\ListPrefixesByPeeringService.json
+      - operationId: Prefixes_Get
+        exampleFile: ..\examples\GetPeeringServicePrefix.json
+      - operationId: RegisteredAsns_CreateOrUpdate
+        exampleFile: ..\examples\CreateRegisteredAsn.json
+      - operationId: RegisteredAsns_ListByPeering
+        exampleFile: ..\examples\ListRegisteredAsnsByPeering.json
+      - operationId: RegisteredAsns_Get
+        exampleFile: ..\examples\GetRegisteredAsn.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListPeeringOperations.json
+      - operationId: CdnPeeringPrefixes_List
+        exampleFile: ..\examples\ListCdnPeeringPrefixes.json
+      - operationId: CheckServiceProviderAvailability
+        exampleFile: ..\examples\CheckServiceProviderAvailability.json
+      - operationId: LegacyPeerings_List
+        exampleFile: ..\examples\ListLegacyPeerings.json
+      - operationId: LookingGlass_Invoke
+        exampleFile: ..\examples\LookingGlassInvokeCommand.json
+      - operationId: PeeringLocations_List
+        exampleFile: ..\examples\ListDirectPeeringLocations.json
+      - operationId: PeeringServiceCountries_List
+        exampleFile: ..\examples\ListPeeringServiceCountriesBySubscription.json
+      - operationId: PeeringServiceLocations_List
+        exampleFile: ..\examples\ListPeeringServiceLocationsBySubscription.json
+      - operationId: PeeringServiceProviders_List
+        exampleFile: ..\examples\ListPeeringServiceProviders.json
+      - operationId: ReceivedRoutes_ListByPeering
+        exampleFile: ..\examples\GetPeeringReceivedRoutes.json
+      - operationId: RegisteredAsns_Delete
+        exampleFile: ..\examples\DeleteRegisteredAsn.json
+      - operationId: Prefixes_Delete
+        exampleFile: ..\examples\DeletePeeringServicePrefix.json
+      - operationId: RegisteredPrefixes_Delete
+        exampleFile: ..\examples\DeleteRegisteredPrefix.json
+      - operationId: ConnectionMonitorTests_Delete
+        exampleFile: ..\examples\DeleteConnectionMonitorTest.json
+      - operationId: PeerAsns_Delete
+        exampleFile: ..\examples\DeletePeerAsn.json
+      - operationId: PeeringServices_Delete
+        exampleFile: ..\examples\DeletePeeringService.json
+      - operationId: Peerings_Delete
+        exampleFile: ..\examples\DeletePeering.json
