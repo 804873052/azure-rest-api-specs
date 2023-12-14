@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  providerName:
+    type: string
+    prefix: provider
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: AttestationProviders_Create
+        exampleFile: ..\examples\Create_AttestationProvider.json
+      - operationId: AttestationProviders_List
+        exampleFile: ..\examples\Get_AttestationProvidersList.json
+      - operationId: AttestationProviders_ListDefault
+        exampleFile: ..\examples\Get_DefaultProviders.json
+      - operationId: AttestationProviders_Get
+        exampleFile: ..\examples\Get_AttestationProvider.json
+      - operationId: AttestationProviders_GetDefaultByLocation
+        exampleFile: ..\examples\Get_DefaultProviderByLocation.json
+      - operationId: AttestationProviders_ListByResourceGroup
+        exampleFile: ..\examples\Get_AttestationProvidersListByResourceGroup.json
+      - operationId: AttestationProviders_Update
+        exampleFile: ..\examples\Update_AttestationProvider.json
+      - operationId: PrivateEndpointConnections_Create
+        exampleFile: ..\examples\AttestationProviderPutPrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\AttestationProviderListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\AttestationProviderGetPrivateEndpointConnection.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\AttestationProviderDeletePrivateEndpointConnection.json
+      - operationId: AttestationProviders_Delete
+        exampleFile: ..\examples\Delete_AttestationProvider.json

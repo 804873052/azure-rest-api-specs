@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  providerName:
+    type: string
+    prefix: provider
+
+prepareSteps:
+      - operationId: AttestationProviders_Create
+        # exampleFile: ..\examples\Create_AttestationProvider.json
+        parameters:
+          creationParams:
+            location: $(location)
+        outputVariables:
+          attestationId:
+            type: string
+            fromResponse: /id
+
+scenarios:
+# pass
+  - scenario: AttestationProviders
+    description: Microsoft.Attestation/attestationProviders/{providerName}
+    steps:
+      - operationId: AttestationProviders_List
+        exampleFile: ..\examples\Get_AttestationProvidersList.json
+      - operationId: AttestationProviders_ListDefault
+        exampleFile: ..\examples\Get_DefaultProviders.json
+      - operationId: AttestationProviders_Get
+        exampleFile: ..\examples\Get_AttestationProvider.json
+      - operationId: AttestationProviders_GetDefaultByLocation
+        # exampleFile: ..\examples\Get_DefaultProviderByLocation.json
+        parameters:
+          location: Central US
+      - operationId: AttestationProviders_ListByResourceGroup
+        exampleFile: ..\examples\Get_AttestationProvidersListByResourceGroup.json
+      - operationId: AttestationProviders_Update
+        exampleFile: ..\examples\Update_AttestationProvider.json
+
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\AttestationProviderListPrivateEndpointConnections.json
+        outputVariables:
+          privateEndpointConnectionId:
+            type: string
+            fromResponse: /value/0/id
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - operationId: PrivateEndpointConnections_Create
+        # exampleFile: ..\examples\AttestationProviderPutPrivateEndpointConnection.json
+        parameters:
+          properties:
+            id: $(privateEndpointConnectionId)
+            properties:
+              privateLinkServiceConnectionState:
+                status: Rejected
+                description: rejection connection
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\AttestationProviderGetPrivateEndpointConnection.json
+      # - operationId: PrivateEndpointConnections_Delete  # Accepted 202
+      #   exampleFile: ..\examples\AttestationProviderDeletePrivateEndpointConnection.json
+
+  - scenario: Operations
+    description: Microsoft.Attestation/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+cleanUpSteps:
+      - operationId: AttestationProviders_Delete
+        exampleFile: ..\examples\Delete_AttestationProvider.json
