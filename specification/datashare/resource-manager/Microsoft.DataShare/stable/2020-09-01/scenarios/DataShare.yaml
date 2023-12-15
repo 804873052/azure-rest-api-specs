@@ -1,0 +1,228 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  shareName:
+    type: string
+    prefix: sharenam
+  shareSubscriptionName:
+    type: string
+    prefix: sharesub
+  providerShareSubscriptionId:
+    type: string
+    prefix: provider
+  dataSetName:
+    type: string
+    prefix: datasetn
+  dataSetMappingName:
+    type: string
+    prefix: datasetm
+  invitationName:
+    type: string
+    prefix: invitati
+  synchronizationSettingName:
+    type: string
+    prefix: synchron
+  triggerName:
+    type: string
+    prefix: triggern
+
+  location:
+    type: string
+  storageAccountName:
+    type: string
+    prefix: datasetacc
+
+prepareSteps:
+      - operationId: Accounts_Create
+        exampleFile: ..\examples\Accounts_Create.json
+      - operationId: Shares_Create
+        exampleFile: ..\examples\Shares_Create.json
+      # - operationId: ShareSubscriptions_Create
+      #   exampleFile: ..\examples\ShareSubscriptions_Create.json
+
+scenarios:
+# pass
+  # - scenario: Accounts
+  #   description: Microsoft.DataShare/accounts/{accountName}
+  #   steps:
+  #     - operationId: Accounts_ListBySubscription
+  #       exampleFile: ..\examples\Accounts_ListBySubscription.json
+  #     - operationId: Accounts_ListByResourceGroup
+  #       exampleFile: ..\examples\Accounts_ListByResourceGroup.json
+  #     - operationId: Accounts_Get
+  #       exampleFile: ..\examples\Accounts_Get.json
+  #     - operationId: Accounts_Update
+  #       exampleFile: ..\examples\Accounts_Update.json
+
+# pass
+  # - scenario: Shares
+  #   description: Microsoft.DataShare/accounts/{accountName}/shares/{shareName}
+  #   steps:
+  #     - operationId: Shares_ListByAccount
+  #       exampleFile: ..\examples\Shares_ListByAccount.json
+  #     - operationId: Shares_Get
+  #       exampleFile: ..\examples\Shares_Get.json
+  #     - operationId: Shares_ListSynchronizationDetails
+  #       exampleFile: ..\examples\Shares_ListSynchronizationDetails.json
+  #     - operationId: Shares_ListSynchronizations
+  #       exampleFile: ..\examples\Shares_ListSynchronizations.json
+
+  - scenario: ShareSubscriptions
+    description: Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}
+    steps:
+      - operationId: ShareSubscriptions_ListByAccount
+        exampleFile: ..\examples\ShareSubscriptions_ListByAccount.json
+      - operationId: ShareSubscriptions_Get
+        exampleFile: ..\examples\ShareSubscriptions_Get.json
+      - operationId: ShareSubscriptions_Synchronize
+        exampleFile: ..\examples\ShareSubscriptions_Synchronize.json
+      - operationId: ShareSubscriptions_ListSynchronizations
+        exampleFile: ..\examples\ShareSubscriptions_ListSynchronizations.json
+      - operationId: ShareSubscriptions_CancelSynchronization
+        exampleFile: ..\examples\ShareSubscriptions_CancelSynchronization.json
+      - operationId: ShareSubscriptions_ListSynchronizationDetails
+        exampleFile: ..\examples\ShareSubscriptions_ListSynchronizationDetails.json
+      - operationId: ShareSubscriptions_ListSourceShareSynchronizationSettings
+        exampleFile: >-
+          ..\examples\ShareSubscriptions_ListSourceShareSynchronizationSettings.json
+
+  - scenario: Triggers
+    description: Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}
+    steps:
+      - operationId: Triggers_Create
+        exampleFile: ..\examples\Triggers_Create.json
+      - operationId: Triggers_ListByShareSubscription
+        exampleFile: ..\examples\Triggers_ListByShareSubscription.json
+      - operationId: Triggers_Get
+        exampleFile: ..\examples\Triggers_Get.json
+      - operationId: Triggers_Delete
+        exampleFile: ..\examples\Triggers_Delete.json
+
+  - scenario: DataSetMappings
+    description: Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}
+    steps:
+      - operationId: DataSetMappings_Create
+        exampleFile: ..\examples\DataSetMappings_Create.json
+      - operationId: DataSetMappings_ListByShareSubscription
+        exampleFile: ..\examples\DataSetMappings_ListByShareSubscription.json
+      - operationId: DataSetMappings_Get
+        exampleFile: ..\examples\DataSetMappings_Get.json
+      - operationId: DataSetMappings_Delete
+        exampleFile: ..\examples\DataSetMappings_Delete.json
+
+  - scenario: ConsumerSourceDataSets
+    description: Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/consumerSourceDataSets
+    steps:
+      - operationId: ConsumerSourceDataSets_ListByShareSubscription
+        exampleFile: ..\examples\ConsumerSourceDataSets_ListByShareSubscription.json
+
+# pass: 修改时间
+  # - scenario: Invitations
+  #   description: Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}
+  #   steps:
+  #     - operationId: Invitations_Create
+  #       exampleFile: ..\examples\Invitations_Create.json
+  #       requestUpdate:
+  #         - replace: /invitation/properties/expirationDate
+  #           value: "2023-12-26T22:33:24.578Z"
+  #     - operationId: Invitations_ListByShare
+  #       exampleFile: ..\examples\Invitations_ListByShare.json
+  #     - operationId: Invitations_Get
+  #       exampleFile: ..\examples\Invitations_Get.json
+  #     - operationId: Invitations_Delete
+  #       exampleFile: ..\examples\Invitations_Delete.json
+
+
+# pass
+  # - scenario: SynchronizationSettings
+  #   description: Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}
+  #   steps:
+  #     - operationId: SynchronizationSettings_Create
+  #       exampleFile: ..\examples\SynchronizationSettings_Create.json
+  #     - operationId: SynchronizationSettings_ListByShare
+  #       exampleFile: ..\examples\SynchronizationSettings_ListByShare.json
+  #     - operationId: SynchronizationSettings_Get
+  #       exampleFile: ..\examples\SynchronizationSettings_Get.json
+  #     - operationId: SynchronizationSettings_Delete
+  #       exampleFile: ..\examples\SynchronizationSettings_Delete.json
+
+#  fail: Missing permissions for DataShareAccount on resource
+  # - scenario: DataSets
+  #   description: Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}
+  #   steps:
+  #   # Microsoft.Storage/storageAccounts
+  #     - step: Create_StorageAccount
+  #       armTemplate: ./templates/Create_StorageAccount.json
+  #     - operationId: DataSets_Create
+  #       exampleFile: ..\examples\DataSets_Create.json
+  #       requestUpdate:
+  #         - replace: /dataSet/properties/storageAccountName
+  #           value: $(storageAccountName)
+  #         - replace: /dataSet/properties/containerName
+  #           value: containerna
+  #     - operationId: DataSets_ListByShare
+  #       exampleFile: ..\examples\DataSets_ListByShare.json
+  #     - operationId: DataSets_Get
+  #       exampleFile: ..\examples\DataSets_Get.json
+  #     - operationId: DataSets_Delete
+  #       exampleFile: ..\examples\DataSets_Delete.json
+
+
+# fail: invitationId is not a valid GUID
+  # - scenario: ConsumerInvitations
+  #   description: Microsoft.DataShare/locations/{location}/rejectInvitation
+  #   steps:
+  #     - operationId: ConsumerInvitations_ListInvitations
+  #       exampleFile: ..\examples\ConsumerInvitations_ListInvitations.json
+  #     - operationId: ConsumerInvitations_Get
+  #       # variables:
+  #       #   invitationId:
+  #       #     type: string
+  #       #     prefix: invitati
+  #       exampleFile: ..\examples\ConsumerInvitations_Get.json
+  #     - operationId: ConsumerInvitations_RejectInvitation
+  #       exampleFile: ..\examples\ConsumerInvitations_RejectInvitation.json
+
+# fail: next stable version
+  # - scenario: EmailRegistrations
+  #   description: Microsoft.DataShare/locations/{location}/activateEmail
+  #   steps:
+  #     - operationId: EmailRegistrations_ActivateEmail
+  #       exampleFile: ..\examples\EmailRegistrations_ActivateEmail.json
+  #     - operationId: EmailRegistrations_RegisterEmail
+  #       exampleFile: ..\examples\EmailRegistrations_RegisterEmail.json
+
+# pass
+  # - scenario: Operations
+  #   description: Microsoft.DataShare/operations
+  #   steps:
+  #     - operationId: Operations_List
+  #       exampleFile: ..\examples\Operations_List.json
+
+
+# fail: waiting  providerShareSubscriptionId ProviderShareSubscriptionId is not a valid GUID
+  # - scenario: ProviderShareSubscriptions
+  #   description: Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}
+  #   steps:
+  #     - operationId: ProviderShareSubscriptions_ListByShare
+  #       exampleFile: ..\examples\ProviderShareSubscriptions_ListByShare.json
+  #     - operationId: ProviderShareSubscriptions_GetByShare
+  #       exampleFile: ..\examples\ProviderShareSubscriptions_GetByShare.json
+  #     - operationId: ProviderShareSubscriptions_Adjust
+  #       exampleFile: ..\examples\ProviderShareSubscriptions_Adjust.json
+  #     - operationId: ProviderShareSubscriptions_Reinstate
+  #       exampleFile: ..\examples\ProviderShareSubscriptions_Reinstate.json
+  #     - operationId: ProviderShareSubscriptions_Revoke
+  #       exampleFile: ..\examples\ProviderShareSubscriptions_Revoke.json
+
+cleanUpSteps:
+      # - operationId: ShareSubscriptions_Delete
+      #   exampleFile: ..\examples\ShareSubscriptions_Delete.json
+
+      - operationId: Shares_Delete
+        exampleFile: ..\examples\Shares_Delete.json
+      - operationId: Accounts_Delete
+        exampleFile: ..\examples\Accounts_Delete.json

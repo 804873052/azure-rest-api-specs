@@ -1,0 +1,114 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  shareName:
+    type: string
+    prefix: sharenam
+  shareSubscriptionName:
+    type: string
+    prefix: sharesub
+  providerShareSubscriptionId:
+    type: string
+    prefix: provider
+  dataSetName:
+    type: string
+    prefix: datasetn
+  dataSetMappingName:
+    type: string
+    prefix: datasetm
+  invitationName:
+    type: string
+    prefix: invitati
+  synchronizationSettingName:
+    type: string
+    prefix: synchron
+  triggerName:
+    type: string
+    prefix: triggern
+
+  location:
+    type: string
+  storageAccountName:
+    type: string
+    prefix: datasetacc
+
+prepareSteps:
+      - operationId: Accounts_Create
+        exampleFile: ..\examples\Accounts_Create.json
+      - operationId: Shares_Create
+        exampleFile: ..\examples\Shares_Create.json
+      - operationId: Invitations_Create
+        exampleFile: ..\examples\Invitations_Create.json
+        requestUpdate:
+          - replace: /invitation/properties/expirationDate
+            value: "2023-12-26T22:33:24.578Z"
+        outputVariables:
+          invitationId:
+            type: string
+            fromResponse: /body/properties/invitationId
+
+      - operationId: ShareSubscriptions_Create
+        exampleFile: ..\examples\ShareSubscriptions_Create.json
+        requestUpdate:
+          - replace: /shareSubscription/properties/invitationId
+            value: $(invitationId)
+        
+
+scenarios:
+  - scenario: ShareSubscriptions
+    description: Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}
+    steps:
+      - operationId: ShareSubscriptions_ListByAccount
+        exampleFile: ..\examples\ShareSubscriptions_ListByAccount.json
+      - operationId: ShareSubscriptions_Get
+        exampleFile: ..\examples\ShareSubscriptions_Get.json
+      - operationId: ShareSubscriptions_Synchronize
+        exampleFile: ..\examples\ShareSubscriptions_Synchronize.json
+      - operationId: ShareSubscriptions_ListSynchronizations
+        exampleFile: ..\examples\ShareSubscriptions_ListSynchronizations.json
+      - operationId: ShareSubscriptions_CancelSynchronization
+        exampleFile: ..\examples\ShareSubscriptions_CancelSynchronization.json
+      - operationId: ShareSubscriptions_ListSynchronizationDetails
+        exampleFile: ..\examples\ShareSubscriptions_ListSynchronizationDetails.json
+      - operationId: ShareSubscriptions_ListSourceShareSynchronizationSettings
+        exampleFile: ..\examples\ShareSubscriptions_ListSourceShareSynchronizationSettings.json
+
+  - scenario: Triggers
+    description: Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}
+    steps:
+      - operationId: Triggers_Create
+        exampleFile: ..\examples\Triggers_Create.json
+      - operationId: Triggers_ListByShareSubscription
+        exampleFile: ..\examples\Triggers_ListByShareSubscription.json
+      - operationId: Triggers_Get
+        exampleFile: ..\examples\Triggers_Get.json
+      - operationId: Triggers_Delete
+        exampleFile: ..\examples\Triggers_Delete.json
+
+  - scenario: DataSetMappings
+    description: Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}
+    steps:
+      - operationId: DataSetMappings_Create
+        exampleFile: ..\examples\DataSetMappings_Create.json
+      - operationId: DataSetMappings_ListByShareSubscription
+        exampleFile: ..\examples\DataSetMappings_ListByShareSubscription.json
+      - operationId: DataSetMappings_Get
+        exampleFile: ..\examples\DataSetMappings_Get.json
+      - operationId: DataSetMappings_Delete
+        exampleFile: ..\examples\DataSetMappings_Delete.json
+
+  - scenario: ConsumerSourceDataSets
+    description: Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/consumerSourceDataSets
+    steps:
+      - operationId: ConsumerSourceDataSets_ListByShareSubscription
+        exampleFile: ..\examples\ConsumerSourceDataSets_ListByShareSubscription.json
+
+cleanUpSteps:
+      - operationId: ShareSubscriptions_Delete
+        exampleFile: ..\examples\ShareSubscriptions_Delete.json
+
+      - operationId: Accounts_Delete
+        exampleFile: ..\examples\Accounts_Delete.json
