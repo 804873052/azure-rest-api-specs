@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  networkFunctionName:
+    type: string
+    prefix: networkf
+
+scenarios:
+  - scenario: NetworkFunctions
+    description: Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}
+    steps:
+      - operationId: NetworkFunctions_CreateOrUpdate
+        exampleFile: ..\examples\NetworkFunctionCreate.json
+      - operationId: NetworkFunctions_ListBySubscription
+        exampleFile: ..\examples\NetworkFunctionListBySubscription.json
+      - operationId: NetworkFunctions_ListByResourceGroup
+        exampleFile: ..\examples\NetworkFunctionListByResourceGroup.json
+      - operationId: NetworkFunctions_Get
+        exampleFile: ..\examples\NetworkFunctionGet.json
+      - operationId: NetworkFunctions_UpdateTags
+        exampleFile: ..\examples\NetworkFunctionUpdateTags.json
+      - operationId: NetworkFunctions_ExecuteRequest
+        exampleFile: ..\examples\NetworkFunctionsExecuteRequest.json
+      - operationId: NetworkFunctions_Delete
+        exampleFile: ..\examples\NetworkFunctionDelete.json
+
+  - scenario: Components
+    description: Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}/components/{componentName}
+    steps:
+      - operationId: Components_ListByNetworkFunction
+        exampleFile: ..\examples\ComponentListByNetworkFunction.json
+        outputVariables:
+          componentName:
+            type: string
+            fromResponse: /value/name
+      - operationId: Components_Get
+        # variables:
+        #   componentName:
+        #     type: string
+        #     prefix: componen
+        exampleFile: ..\examples\ComponentGet.json

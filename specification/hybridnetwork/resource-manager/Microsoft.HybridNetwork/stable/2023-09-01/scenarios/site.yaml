@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  siteName:
+    type: string
+    prefix: sitename
+
+# ResourceCreationValidateFailed
+scenarios:
+  - scenario: Sites
+    description: Microsoft.HybridNetwork/sites/{siteName}
+    steps:
+      - operationId: Sites_CreateOrUpdate
+        exampleFile: ..\examples\SiteCreate.json
+      - operationId: Sites_ListBySubscription
+        exampleFile: ..\examples\SiteListBySubscription.json
+      - operationId: Sites_ListByResourceGroup
+        exampleFile: ..\examples\SiteListByResourceGroup.json
+      - operationId: Sites_Get
+        exampleFile: ..\examples\SiteGet.json
+      - operationId: Sites_UpdateTags
+        exampleFile: ..\examples\SiteUpdateTags.json
+      - operationId: Sites_Delete
+        exampleFile: ..\examples\SiteDelete.json

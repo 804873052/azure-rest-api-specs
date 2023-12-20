@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: NetworkFunctionDefinitionGroups
+    description: Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}
+    steps:
+      - operationId: NetworkFunctionDefinitionGroups_CreateOrUpdate
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupCreate.json
+      - operationId: NetworkFunctionDefinitionGroups_ListByPublisher
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupsListByPublisherName.json
+      - operationId: NetworkFunctionDefinitionGroups_Get
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupGet.json
+      - operationId: NetworkFunctionDefinitionGroups_Update
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupUpdateTags.json
+      - operationId: NetworkFunctionDefinitionGroups_Delete
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupDelete.json
+
+  - scenario: NetworkFunctionDefinitionVersions
+    description: Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}
+    steps:
+      - operationId: NetworkFunctionDefinitionVersions_CreateOrUpdate
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionCreate.json
+      - operationId: NetworkFunctionDefinitionVersions_ListByNetworkFunctionDefinitionGroup
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionListByNetworkFunctionDefinitionGroup.json
+      - operationId: NetworkFunctionDefinitionVersions_Get
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionGet.json
+      - operationId: NetworkFunctionDefinitionVersions_Update
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionUpdateTags.json
+      - operationId: NetworkFunctionDefinitionVersions_updateState
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionUpdateState.json
+      - operationId: NetworkFunctionDefinitionVersions_Delete
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionDelete.json

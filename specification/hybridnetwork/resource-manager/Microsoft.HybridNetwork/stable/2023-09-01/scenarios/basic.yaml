@@ -1,0 +1,207 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  publisherName:
+    type: string
+    prefix: publishe
+  artifactStoreName:
+    type: string
+    prefix: artifact
+  networkFunctionDefinitionGroupName:
+    type: string
+    prefix: networkf
+  networkServiceDesignGroupName:
+    type: string
+    prefix: networks
+  networkFunctionName:
+    type: string
+    prefix: networkf
+  artifactManifestName:
+    type: string
+    prefix: artifact
+  configurationGroupSchemaName:
+    type: string
+    prefix: configur
+  networkFunctionDefinitionVersionName:
+    type: string
+    prefix: networkf
+  networkServiceDesignVersionName:
+    type: string
+    prefix: networks
+  configurationGroupValueName:
+    type: string
+    prefix: configur
+  siteName:
+    type: string
+    prefix: sitename
+  siteNetworkServiceName:
+    type: string
+    prefix: sitenetw
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Publishers_CreateOrUpdate
+        exampleFile: ..\examples\PublisherCreate.json
+      - operationId: Publishers_ListBySubscription
+        exampleFile: ..\examples\PublisherListBySubscription.json
+      - operationId: Publishers_ListByResourceGroup
+        exampleFile: ..\examples\PublisherListByResourceGroup.json
+      - operationId: Publishers_Get
+        exampleFile: ..\examples\PublisherGet.json
+      - operationId: Publishers_Update
+        exampleFile: ..\examples\PublisherUpdateTags.json
+      - operationId: ArtifactStores_CreateOrUpdate
+        exampleFile: ..\examples\ArtifactStoreCreate.json
+      - operationId: ArtifactStores_ListByPublisher
+        exampleFile: ..\examples\ArtifactStoresListByPublisherName.json
+      - operationId: ArtifactStores_Get
+        exampleFile: ..\examples\ArtifactStoreGet.json
+      - operationId: ArtifactStores_Update
+        exampleFile: ..\examples\ArtifactStoreUpdateTags.json
+      - operationId: NetworkFunctionDefinitionGroups_CreateOrUpdate
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupCreate.json
+      - operationId: NetworkFunctionDefinitionGroups_ListByPublisher
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupsListByPublisherName.json
+      - operationId: NetworkFunctionDefinitionGroups_Get
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupGet.json
+      - operationId: NetworkFunctionDefinitionGroups_Update
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupUpdateTags.json
+      - operationId: NetworkServiceDesignGroups_CreateOrUpdate
+        exampleFile: ..\examples\NetworkServiceDesignGroupCreate.json
+      - operationId: NetworkServiceDesignGroups_ListByPublisher
+        exampleFile: ..\examples\NetworkServiceDesignGroupsListByPublisherName.json
+      - operationId: NetworkServiceDesignGroups_Get
+        exampleFile: ..\examples\NetworkServiceDesignGroupGet.json
+      - operationId: NetworkServiceDesignGroups_Update
+        exampleFile: ..\examples\NetworkServiceDesignGroupUpdateTags.json
+      - operationId: NetworkFunctions_CreateOrUpdate
+        exampleFile: ..\examples\NetworkFunctionCreate.json
+      - operationId: NetworkFunctions_ListBySubscription
+        exampleFile: ..\examples\NetworkFunctionListBySubscription.json
+      - operationId: NetworkFunctions_ListByResourceGroup
+        exampleFile: ..\examples\NetworkFunctionListByResourceGroup.json
+      - operationId: NetworkFunctions_Get
+        exampleFile: ..\examples\NetworkFunctionGet.json
+      - operationId: NetworkFunctions_UpdateTags
+        exampleFile: ..\examples\NetworkFunctionUpdateTags.json
+      - operationId: NetworkFunctions_ExecuteRequest
+        exampleFile: ..\examples\NetworkFunctionsExecuteRequest.json
+      - operationId: ArtifactManifests_CreateOrUpdate
+        exampleFile: ..\examples\ArtifactManifestCreate.json
+      - operationId: ArtifactManifests_ListByArtifactStore
+        exampleFile: ..\examples\ArtifactManifestListByArtifactStore.json
+      - operationId: ArtifactManifests_Get
+        exampleFile: ..\examples\ArtifactManifestGet.json
+      - operationId: ArtifactManifests_Update
+        exampleFile: ..\examples\ArtifactManifestUpdateTags.json
+      - operationId: ArtifactManifests_ListCredential
+        exampleFile: ..\examples\ArtifactManifestListCredential.json
+      - operationId: ArtifactManifests_UpdateState
+        exampleFile: ..\examples\ArtifactManifestUpdateState.json
+      - operationId: ConfigurationGroupSchemas_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationGroupSchemaCreate.json
+      - operationId: ConfigurationGroupSchemas_ListByPublisher
+        exampleFile: ..\examples\ConfigurationGroupSchemaListByPublisherName.json
+      - operationId: ConfigurationGroupSchemas_Get
+        exampleFile: ..\examples\ConfigurationGroupSchemaGet.json
+      - operationId: ConfigurationGroupSchemas_Update
+        exampleFile: ..\examples\ConfigurationGroupSchemaUpdateTags.json
+      - operationId: ConfigurationGroupSchemas_updateState
+        exampleFile: ..\examples\ConfigurationGroupSchemaVersionUpdateState.json
+      - operationId: NetworkFunctionDefinitionVersions_CreateOrUpdate
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionCreate.json
+      - operationId: NetworkFunctionDefinitionVersions_ListByNetworkFunctionDefinitionGroup
+        exampleFile: >-
+          ..\examples\NetworkFunctionDefinitionVersionListByNetworkFunctionDefinitionGroup.json
+      - operationId: NetworkFunctionDefinitionVersions_Get
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionGet.json
+      - operationId: NetworkFunctionDefinitionVersions_Update
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionUpdateTags.json
+      - operationId: NetworkFunctionDefinitionVersions_updateState
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionUpdateState.json
+      - operationId: NetworkServiceDesignVersions_CreateOrUpdate
+        exampleFile: ..\examples\NetworkServiceDesignVersionCreate.json
+      - operationId: NetworkServiceDesignVersions_ListByNetworkServiceDesignGroup
+        exampleFile: >-
+          ..\examples\NetworkServiceDesignVersionListByNetworkServiceDesignGroup.json
+      - operationId: NetworkServiceDesignVersions_Get
+        exampleFile: ..\examples\NetworkServiceDesignVersionGet.json
+      - operationId: NetworkServiceDesignVersions_Update
+        exampleFile: ..\examples\NetworkServiceDesignVersionUpdateTags.json
+      - operationId: NetworkServiceDesignVersions_updateState
+        exampleFile: ..\examples\NetworkServiceDesignVersionUpdateState.json
+      - operationId: Sites_CreateOrUpdate
+        exampleFile: ..\examples\SiteCreate.json
+      - operationId: Sites_ListBySubscription
+        exampleFile: ..\examples\SiteListBySubscription.json
+      - operationId: Sites_ListByResourceGroup
+        exampleFile: ..\examples\SiteListByResourceGroup.json
+      - operationId: Sites_Get
+        exampleFile: ..\examples\SiteGet.json
+      - operationId: Sites_UpdateTags
+        exampleFile: ..\examples\SiteUpdateTags.json
+      - operationId: SiteNetworkServices_CreateOrUpdate
+        exampleFile: ..\examples\SiteNetworkServiceCreate.json
+      - operationId: SiteNetworkServices_ListBySubscription
+        exampleFile: ..\examples\SiteNetworkServiceListBySubscription.json
+      - operationId: SiteNetworkServices_ListByResourceGroup
+        exampleFile: ..\examples\SiteNetworkServiceListByResourceGroup.json
+      - operationId: SiteNetworkServices_Get
+        exampleFile: ..\examples\SiteNetworkServiceGet.json
+      - operationId: SiteNetworkServices_UpdateTags
+        exampleFile: ..\examples\SiteNetworkServiceUpdateTags.json
+      - operationId: ConfigurationGroupValues_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationGroupValueCreate.json
+      - operationId: ConfigurationGroupValues_ListBySubscription
+        exampleFile: ..\examples\ConfigurationGroupValueListBySubscription.json
+      - operationId: ConfigurationGroupValues_Get
+        exampleFile: ..\examples\ConfigurationGroupValueGet.json
+      - operationId: ConfigurationGroupValues_ListByResourceGroup
+        exampleFile: ..\examples\ConfigurationGroupValueListByResourceGroup.json
+      - operationId: ConfigurationGroupValues_UpdateTags
+        exampleFile: ..\examples\ConfigurationGroupValueUpdateTags.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\GetOperations.json
+      - operationId: Components_ListByNetworkFunction
+        exampleFile: ..\examples\ComponentListByNetworkFunction.json
+      - operationId: Components_Get
+        variables:
+          componentName:
+            type: string
+            prefix: componen
+        exampleFile: ..\examples\ComponentGet.json
+      - operationId: ProxyArtifact_Get
+        exampleFile: ..\examples\PureProxyArtifact\ArtifactGet.json
+      - operationId: ProxyArtifact_UpdateState
+        variables:
+          artifactVersionName:
+            type: string
+            prefix: artifact
+        exampleFile: ..\examples\PureProxyArtifact\ArtifactChangeState.json
+      - operationId: ProxyArtifact_List
+        exampleFile: ..\examples\PureProxyArtifact\ArtifactList.json
+      - operationId: ConfigurationGroupValues_Delete
+        exampleFile: ..\examples\ConfigurationGroupValueDelete.json
+      - operationId: SiteNetworkServices_Delete
+        exampleFile: ..\examples\SiteNetworkServiceDelete.json
+      - operationId: Sites_Delete
+        exampleFile: ..\examples\SiteDelete.json
+      - operationId: NetworkServiceDesignVersions_Delete
+        exampleFile: ..\examples\NetworkServiceDesignVersionDelete.json
+      - operationId: NetworkFunctionDefinitionVersions_Delete
+        exampleFile: ..\examples\NetworkFunctionDefinitionVersionDelete.json
+      - operationId: ConfigurationGroupSchemas_Delete
+        exampleFile: ..\examples\ConfigurationGroupSchemaDelete.json
+      - operationId: ArtifactManifests_Delete
+        exampleFile: ..\examples\ArtifactManifestDelete.json
+      - operationId: NetworkFunctions_Delete
+        exampleFile: ..\examples\NetworkFunctionDelete.json
+      - operationId: NetworkServiceDesignGroups_Delete
+        exampleFile: ..\examples\NetworkServiceDesignGroupDelete.json
+      - operationId: NetworkFunctionDefinitionGroups_Delete
+        exampleFile: ..\examples\NetworkFunctionDefinitionGroupDelete.json
+      - operationId: ArtifactStores_Delete
+        exampleFile: ..\examples\ArtifactStoreDelete.json
+      - operationId: Publishers_Delete
+        exampleFile: ..\examples\PublisherDelete.json

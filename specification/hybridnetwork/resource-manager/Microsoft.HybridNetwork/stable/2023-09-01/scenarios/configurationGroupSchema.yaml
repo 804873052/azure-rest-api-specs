@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  publisherName:
+    type: string
+    prefix: publishe
+  configurationGroupSchemaName:
+    type: string
+    prefix: configur
+  configurationGroupValueName:
+    type: string
+    prefix: configur
+
+
+prepareSteps:
+      - operationId: Publishers_CreateOrUpdate 
+        # exampleFile: ..\examples\PublisherCreate.json
+        parameters:
+          parameters:
+            location: $(location)
+            properties:
+              scope: Private
+
+      - operationId: ConfigurationGroupSchemas_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationGroupSchemaCreate.json
+        outputVariables:
+          configurationGroupSchemaId:
+            type: string
+            fromResponse: /id
+
+scenarios:
+  - scenario: ConfigurationGroupSchemas
+    description: Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}
+    steps:
+      - operationId: ConfigurationGroupSchemas_ListByPublisher
+        exampleFile: ..\examples\ConfigurationGroupSchemaListByPublisherName.json
+      - operationId: ConfigurationGroupSchemas_Get
+        exampleFile: ..\examples\ConfigurationGroupSchemaGet.json
+      - operationId: ConfigurationGroupSchemas_Update
+        exampleFile: ..\examples\ConfigurationGroupSchemaUpdateTags.json
+      - operationId: ConfigurationGroupSchemas_updateState
+        exampleFile: ..\examples\ConfigurationGroupSchemaVersionUpdateState.json
+
+
+
+  - scenario: ConfigurationGroupValues
+    description: Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}
+    steps:
+      - operationId: ConfigurationGroupValues_CreateOrUpdate   
+        exampleFile: ..\examples\ConfigurationGroupValueCreate.json
+        # requestUpdate
+        
+      - operationId: ConfigurationGroupValues_ListBySubscription
+        exampleFile: ..\examples\ConfigurationGroupValueListBySubscription.json
+      - operationId: ConfigurationGroupValues_Get
+        exampleFile: ..\examples\ConfigurationGroupValueGet.json
+      - operationId: ConfigurationGroupValues_ListByResourceGroup
+        exampleFile: ..\examples\ConfigurationGroupValueListByResourceGroup.json
+      - operationId: ConfigurationGroupValues_UpdateTags
+        exampleFile: ..\examples\ConfigurationGroupValueUpdateTags.json
+      - operationId: ConfigurationGroupValues_Delete
+        exampleFile: ..\examples\ConfigurationGroupValueDelete.json
+
+
+cleanUpSteps:
+      - operationId: ConfigurationGroupSchemas_Delete
+        exampleFile: ..\examples\ConfigurationGroupSchemaDelete.json

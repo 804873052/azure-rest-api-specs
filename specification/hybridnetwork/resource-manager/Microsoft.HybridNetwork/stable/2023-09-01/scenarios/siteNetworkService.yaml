@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  publisherName:
+    type: string
+    prefix: publishe
+  siteNetworkServiceName:
+    type: string
+    prefix: sitenetw
+
+prepareSteps:
+      - operationId: Publishers_CreateOrUpdate 
+        # exampleFile: ..\examples\PublisherCreate.json
+        parameters:
+          parameters:
+            location: $(location)
+            properties:
+              scope: Private
+        outputVariables:
+          publishId:
+            type: string
+            fromResponse: /id
+
+# ResourceCreationValidateFailed
+scenarios:
+  - scenario: SiteNetworkServices
+    description: Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}
+    steps:
+      - operationId: SiteNetworkServices_CreateOrUpdate
+        exampleFile: ..\examples\SiteNetworkServiceCreate.json
+        requestUpdate:
+          - replace: /parameters/properties/networkServiceDesignVersionResourceReference/id
+            value: $(publishId)
+      - operationId: SiteNetworkServices_ListBySubscription
+        exampleFile: ..\examples\SiteNetworkServiceListBySubscription.json
+      - operationId: SiteNetworkServices_ListByResourceGroup
+        exampleFile: ..\examples\SiteNetworkServiceListByResourceGroup.json
+      - operationId: SiteNetworkServices_Get
+        exampleFile: ..\examples\SiteNetworkServiceGet.json
+      - operationId: SiteNetworkServices_UpdateTags
+        exampleFile: ..\examples\SiteNetworkServiceUpdateTags.json
+      - operationId: SiteNetworkServices_Delete
+        exampleFile: ..\examples\SiteNetworkServiceDelete.json

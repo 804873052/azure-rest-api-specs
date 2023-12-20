@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  configurationGroupValueName:
+    type: string
+    prefix: configur
+
+scenarios:
+  - scenario: ConfigurationGroupValues
+    description: Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}
+    steps:
+      - operationId: ConfigurationGroupValues_CreateOrUpdate
+        exampleFile: ..\examples\ConfigurationGroupValueCreate.json
+      - operationId: ConfigurationGroupValues_ListBySubscription
+        exampleFile: ..\examples\ConfigurationGroupValueListBySubscription.json
+      - operationId: ConfigurationGroupValues_Get
+        exampleFile: ..\examples\ConfigurationGroupValueGet.json
+      - operationId: ConfigurationGroupValues_ListByResourceGroup
+        exampleFile: ..\examples\ConfigurationGroupValueListByResourceGroup.json
+      - operationId: ConfigurationGroupValues_UpdateTags
+        exampleFile: ..\examples\ConfigurationGroupValueUpdateTags.json
+      - operationId: ConfigurationGroupValues_Delete
+        exampleFile: ..\examples\ConfigurationGroupValueDelete.json

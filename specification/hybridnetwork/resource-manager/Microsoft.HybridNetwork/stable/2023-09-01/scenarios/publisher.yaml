@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  publisherName:
+    type: string
+    prefix: publishe
+  artifactStoreName:
+    type: string
+    prefix: artifact
+  artifactManifestName:
+    type: string
+    prefix: artifact
+
+prepareSteps:
+      - operationId: Publishers_CreateOrUpdate 
+        # exampleFile: ..\examples\PublisherCreate.json
+        parameters:
+          parameters:
+            location: $(location)
+            properties:
+              scope: Private
+      - operationId: ArtifactStores_CreateOrUpdate
+        exampleFile: ..\examples\ArtifactStoreCreate.json
+
+scenarios:
+# pass
+  - scenario: Publisher
+    description: Microsoft.HybridNetwork/publishers/{publisherName}
+    steps:
+      - operationId: Publishers_ListBySubscription
+        exampleFile: ..\examples\PublisherListBySubscription.json
+      - operationId: Publishers_ListByResourceGroup
+        exampleFile: ..\examples\PublisherListByResourceGroup.json
+      - operationId: Publishers_Get
+        exampleFile: ..\examples\PublisherGet.json
+      - operationId: Publishers_Update
+        exampleFile: ..\examples\PublisherUpdateTags.json
+
+# pass
+  - scenario: ArtifactStores
+    description: Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}
+    steps:
+      - operationId: ArtifactStores_ListByPublisher
+        exampleFile: ..\examples\ArtifactStoresListByPublisherName.json
+      - operationId: ArtifactStores_Get
+        exampleFile: ..\examples\ArtifactStoreGet.json
+      - operationId: ArtifactStores_Update
+        exampleFile: ..\examples\ArtifactStoreUpdateTags.json
+
+# pass
+  - scenario: ArtifactManifests
+    description: Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}
+    steps:
+      - operationId: ArtifactManifests_CreateOrUpdate
+        exampleFile: ..\examples\ArtifactManifestCreate.json
+      - operationId: ArtifactManifests_ListByArtifactStore
+        exampleFile: ..\examples\ArtifactManifestListByArtifactStore.json
+      - operationId: ArtifactManifests_Get
+        exampleFile: ..\examples\ArtifactManifestGet.json
+      - operationId: ArtifactManifests_Update
+        exampleFile: ..\examples\ArtifactManifestUpdateTags.json
+      - operationId: ArtifactManifests_ListCredential
+        exampleFile: ..\examples\ArtifactManifestListCredential.json
+      # - operationId: ArtifactManifests_UpdateState # the specified tag does not exist
+      #   exampleFile: ..\examples\ArtifactManifestUpdateState.json
+      - operationId: ArtifactManifests_Delete
+        exampleFile: ..\examples\ArtifactManifestDelete.json
+
+
+cleanUpSteps:
+      - operationId: ArtifactStores_Delete
+        exampleFile: ..\examples\ArtifactStoreDelete.json
+      - operationId: Publishers_Delete
+        exampleFile: ..\examples\PublisherDelete.json

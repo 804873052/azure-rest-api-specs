@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+# clean create resourcegroup
+# pass
+scenarios:
+  - scenario: Operations
+    description: Microsoft.HybridNetwork/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\GetOperations.json

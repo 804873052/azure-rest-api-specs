@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: NetworkServiceDesignGroups
+    description: Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}
+    steps:
+      - operationId: NetworkServiceDesignGroups_CreateOrUpdate
+        exampleFile: ..\examples\NetworkServiceDesignGroupCreate.json
+      - operationId: NetworkServiceDesignGroups_ListByPublisher
+        exampleFile: ..\examples\NetworkServiceDesignGroupsListByPublisherName.json
+      - operationId: NetworkServiceDesignGroups_Get
+        exampleFile: ..\examples\NetworkServiceDesignGroupGet.json
+      - operationId: NetworkServiceDesignGroups_Update
+        exampleFile: ..\examples\NetworkServiceDesignGroupUpdateTags.json
+      - operationId: NetworkServiceDesignGroups_Delete
+        exampleFile: ..\examples\NetworkServiceDesignGroupDelete.json
+
+  - scenario: NetworkServiceDesignVersions
+    description: Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}
+    steps:
+      - operationId: NetworkServiceDesignVersions_CreateOrUpdate
+        exampleFile: ..\examples\NetworkServiceDesignVersionCreate.json
+      - operationId: NetworkServiceDesignVersions_ListByNetworkServiceDesignGroup
+        exampleFile: ..\examples\NetworkServiceDesignVersionListByNetworkServiceDesignGroup.json
+      - operationId: NetworkServiceDesignVersions_Get
+        exampleFile: ..\examples\NetworkServiceDesignVersionGet.json
+      - operationId: NetworkServiceDesignVersions_Update
+        exampleFile: ..\examples\NetworkServiceDesignVersionUpdateTags.json
+      - operationId: NetworkServiceDesignVersions_updateState
+        exampleFile: ..\examples\NetworkServiceDesignVersionUpdateState.json
+      - operationId: NetworkServiceDesignVersions_Delete
+        exampleFile: ..\examples\NetworkServiceDesignVersionDelete.json

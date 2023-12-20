@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+  - scenario: ProxyArtifact
+    description: Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactVersions/{artifactVersionName}
+    steps:
+      - operationId: ProxyArtifact_List
+        exampleFile: ..\examples\PureProxyArtifact\ArtifactList.json
+      - operationId: ProxyArtifact_Get
+        exampleFile: ..\examples\PureProxyArtifact\ArtifactGet.json
+      - operationId: ProxyArtifact_UpdateState
+        variables:
+          artifactVersionName:
+            type: string
+            prefix: artifact
+        exampleFile: ..\examples\PureProxyArtifact\ArtifactChangeState.json
+
