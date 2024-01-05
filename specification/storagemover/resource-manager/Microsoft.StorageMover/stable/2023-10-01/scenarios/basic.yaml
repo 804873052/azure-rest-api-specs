@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  storageMoverName:
+    type: string
+    prefix: storagem
+  projectName:
+    type: string
+    prefix: projectn
+  jobDefinitionName:
+    type: string
+    prefix: jobdefin
+  agentName:
+    type: string
+    prefix: agentnam
+  endpointName:
+    type: string
+    prefix: endpoint
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: StorageMovers_CreateOrUpdate
+        exampleFile: ..\examples\StorageMovers_CreateOrUpdate.json
+      - operationId: StorageMovers_ListBySubscription
+        exampleFile: ..\examples\StorageMovers_ListBySubscription.json
+      - operationId: StorageMovers_Get
+        exampleFile: ..\examples\StorageMovers_Get.json
+      - operationId: StorageMovers_List
+        exampleFile: ..\examples\StorageMovers_List.json
+      - operationId: StorageMovers_Update
+        exampleFile: ..\examples\StorageMovers_Update.json
+      - operationId: Projects_CreateOrUpdate
+        exampleFile: ..\examples\Projects_CreateOrUpdate.json
+      - operationId: Projects_List
+        exampleFile: ..\examples\Projects_List.json
+      - operationId: Projects_Get
+        exampleFile: ..\examples\Projects_Get.json
+      - operationId: Projects_Update
+        exampleFile: ..\examples\Projects_Update.json
+      - operationId: JobDefinitions_CreateOrUpdate
+        exampleFile: ..\examples\JobDefinitions_CreateOrUpdate.json
+      - operationId: JobDefinitions_List
+        exampleFile: ..\examples\JobDefinitions_List.json
+      - operationId: JobDefinitions_Get
+        exampleFile: ..\examples\JobDefinitions_Get.json
+      - operationId: JobDefinitions_Update
+        exampleFile: ..\examples\JobDefinitions_Update.json
+      - operationId: JobDefinitions_StartJob
+        exampleFile: ..\examples\JobDefinitions_StartJob.json
+      - operationId: JobDefinitions_StopJob
+        exampleFile: ..\examples\JobDefinitions_StopJob.json
+      - operationId: Endpoints_CreateOrUpdate
+        exampleFile: ..\examples\Endpoints_CreateOrUpdate_AzureStorageBlobContainer.json
+      - operationId: Endpoints_List
+        exampleFile: ..\examples\Endpoints_List.json
+      - operationId: Endpoints_Get
+        exampleFile: ..\examples\Endpoints_Get_AzureStorageBlobContainer.json
+      - operationId: Endpoints_Update
+        exampleFile: ..\examples\Endpoints_Update_AzureStorageBlobContainer.json
+      - operationId: Agents_CreateOrUpdate
+        exampleFile: ..\examples\Agents_CreateOrUpdate.json
+      - operationId: Agents_List
+        exampleFile: ..\examples\Agents_List.json
+      - operationId: Agents_Get
+        exampleFile: ..\examples\Agents_Get.json
+      - operationId: Agents_Update
+        exampleFile: ..\examples\Agents_Update.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: JobRuns_List
+        exampleFile: ..\examples\JobRuns_List.json
+      - operationId: JobRuns_Get
+        variables:
+          jobRunName:
+            type: string
+            prefix: jobrunna
+        exampleFile: ..\examples\JobRuns_Get.json
+      - operationId: Agents_Delete
+        exampleFile: ..\examples\Agents_Delete.json
+      - operationId: Endpoints_Delete
+        exampleFile: ..\examples\Endpoints_Delete.json
+      - operationId: JobDefinitions_Delete
+        exampleFile: ..\examples\JobDefinitions_Delete.json
+      - operationId: Projects_Delete
+        exampleFile: ..\examples\Projects_Delete.json
+      - operationId: StorageMovers_Delete
+        exampleFile: ..\examples\StorageMovers_Delete.json
+
+(31-4-5) / 31 = 
+22 / 31 = 

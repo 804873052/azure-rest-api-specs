@@ -1,0 +1,161 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  storageMoverName:
+    type: string
+    prefix: storagem
+  projectName:
+    type: string
+    prefix: projectn
+  jobDefinitionName:
+    type: string
+    prefix: jobdefin
+  agentName:
+    type: string
+    prefix: agentnam
+  endpointName:
+    type: string
+    prefix: endpoint
+
+prepareSteps:
+      - operationId: StorageMovers_CreateOrUpdate
+        exampleFile: ..\examples\StorageMovers_CreateOrUpdate.json
+      - operationId: Projects_CreateOrUpdate
+        exampleFile: ..\examples\Projects_CreateOrUpdate.json
+
+scenarios:
+# pass
+  - scenario: StorageMovers
+    description: Microsoft.StorageMover/storageMovers/{storageMoverName}
+    steps:
+      - operationId: StorageMovers_ListBySubscription
+        exampleFile: ..\examples\StorageMovers_ListBySubscription.json
+      - operationId: StorageMovers_Get
+        exampleFile: ..\examples\StorageMovers_Get.json
+      - operationId: StorageMovers_List
+        exampleFile: ..\examples\StorageMovers_List.json
+      - operationId: StorageMovers_Update
+        exampleFile: ..\examples\StorageMovers_Update.json
+
+# pass
+  - scenario: Projects
+    description: Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}
+    steps:
+      - operationId: Projects_List
+        exampleFile: ..\examples\Projects_List.json
+      - operationId: Projects_Get
+        exampleFile: ..\examples\Projects_Get.json
+      - operationId: Projects_Update
+        # exampleFile: ..\examples\Projects_Update.json
+        parameters:
+          project: 
+            properties:
+              description: Updated Example Project Description
+  - scenario: JobDefinitions
+    description: Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}
+    steps:
+      - operationId: Endpoints_CreateOrUpdate
+        # exampleFile: ..\examples\Endpoints_CreateOrUpdate_NfsMount.json
+        parameters:
+          endpointName: examples-sourceEndpointName
+          endpoint:
+            properties: 
+              endpointType: NfsMount
+              host: 0.0.0.0
+              export: examples-exportName
+              description: Example NFS Mount Endpoint Description
+      - operationId: Endpoints_CreateOrUpdate
+        # exampleFile: ..\examples\Endpoints_CreateOrUpdate_AzureStorageBlobContainer.json
+        parameters:
+          endpointName: examples-targetEndpointName
+          endpoint:
+            properties: 
+              endpointType: AzureStorageBlobContainer
+              storageAccountResourceId: /subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.Storage/storageAccounts/examplesa
+              blobContainerName: examples-blobcontainer
+              description: Example Azure Storage Blob Container Endpoint Description
+      - operationId: JobDefinitions_CreateOrUpdate
+        exampleFile: ..\examples\JobDefinitions_CreateOrUpdate.json
+        requestUpdate:
+          - remove: /jobDefinition/properties/agentName # if need to run job, set agent
+      - operationId: JobDefinitions_List
+        exampleFile: ..\examples\JobDefinitions_List.json
+      - operationId: JobDefinitions_Get
+        exampleFile: ..\examples\JobDefinitions_Get.json
+      - operationId: JobDefinitions_Update
+        # exampleFile: ..\examples\JobDefinitions_Update.json
+        parameters:
+          jobDefinition:
+            properties: 
+              description: Updated Job Definition Description
+      # need registery agent
+      # - operationId: JobDefinitions_StartJob
+      #   exampleFile: ..\examples\JobDefinitions_StartJob.json
+      # - operationId: JobDefinitions_StopJob
+      #   exampleFile: ..\examples\JobDefinitions_StopJob.json
+      # - operationId: JobRuns_List
+      #   exampleFile: ..\examples\JobRuns_List.json
+      #   outputVariables:
+      #     jobRunName:
+      #       type: string
+      #       fromResponse: /value/0/name
+      # - operationId: JobRuns_Get
+      #   exampleFile: ..\examples\JobRuns_Get.json
+
+      - operationId: JobDefinitions_Delete
+        exampleFile: ..\examples\JobDefinitions_Delete.json
+
+# pass
+  - scenario: Endpoints
+    description: Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}
+    steps:
+      - operationId: Endpoints_CreateOrUpdate
+        exampleFile: ..\examples\Endpoints_CreateOrUpdate_AzureStorageBlobContainer.json
+      - operationId: Endpoints_List
+        exampleFile: ..\examples\Endpoints_List.json
+      - operationId: Endpoints_Get
+        exampleFile: ..\examples\Endpoints_Get_AzureStorageBlobContainer.json
+      - operationId: Endpoints_Update
+        exampleFile: ..\examples\Endpoints_Update_AzureStorageBlobContainer.json
+      - operationId: Endpoints_Delete
+        exampleFile: ..\examples\Endpoints_Delete.json
+
+# need hybridcompute
+  # - scenario: Agents
+  #   description: Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}
+  #   steps:
+  #     - operationId: Agents_CreateOrUpdate
+  #       exampleFile: ..\examples\Agents_CreateOrUpdate.json
+  #     - operationId: Agents_List
+  #       exampleFile: ..\examples\Agents_List.json
+  #     - operationId: Agents_Get
+  #       exampleFile: ..\examples\Agents_Get.json
+  #     - operationId: Agents_Update
+  #       exampleFile: ..\examples\Agents_Update.json
+  #     - operationId: Agents_Delete
+  #       exampleFile: ..\examples\Agents_Delete.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.StorageMover/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+  # - scenario: JobRuns
+  #   description: Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns
+  #   steps:
+  #     - operationId: JobRuns_List
+  #       exampleFile: ..\examples\JobRuns_List.json
+  #     - operationId: JobRuns_Get
+  #       # variables:
+  #       #   jobRunName:
+  #       #     type: string
+  #       #     prefix: jobrunna
+  #       exampleFile: ..\examples\JobRuns_Get.json
+
+cleanUpSteps:
+      - operationId: Projects_Delete
+        exampleFile: ..\examples\Projects_Delete.json
+      - operationId: StorageMovers_Delete
+        exampleFile: ..\examples\StorageMovers_Delete.json
