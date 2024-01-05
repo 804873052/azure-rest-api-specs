@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  storageMoverName:
+    type: string
+    prefix: storagem
+  agentName:
+    type: string
+    prefix: agentnam
+
+prepareSteps:
+      - operationId: StorageMovers_CreateOrUpdate
+        exampleFile: ..\examples\StorageMovers_CreateOrUpdate.json
+
+scenarios:
+# need hybridcompute
+  - scenario: Agents
+    description: Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}
+    steps:
+      - operationId: Agents_CreateOrUpdate
+        exampleFile: ..\examples\Agents_CreateOrUpdate.json
+      - operationId: Agents_List
+        exampleFile: ..\examples\Agents_List.json
+      - operationId: Agents_Get
+        exampleFile: ..\examples\Agents_Get.json
+      - operationId: Agents_Update
+        exampleFile: ..\examples\Agents_Update.json
+      - operationId: Agents_Delete
+        exampleFile: ..\examples\Agents_Delete.json
+
+cleanUpSteps:
+      - operationId: StorageMovers_Delete
+        exampleFile: ..\examples\StorageMovers_Delete.json

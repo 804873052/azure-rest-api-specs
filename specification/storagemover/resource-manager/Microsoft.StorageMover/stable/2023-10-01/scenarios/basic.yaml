@@ -86,6 +86,3 @@ scenarios:
         exampleFile: ..\examples\Projects_Delete.json
       - operationId: StorageMovers_Delete
         exampleFile: ..\examples\StorageMovers_Delete.json
-
-(31-4-5) / 31 = 
-22 / 31 = 
