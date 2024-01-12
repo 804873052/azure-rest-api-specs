@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  cacheName:
+    type: string
+    prefix: cachenam
+  storageTargetName:
+    type: string
+    prefix: storaget
+
+prepareSteps:
+      - step: Create_VirtualNetwork
+        armTemplate: ./templates/Create_VirtualNetwork.json
+      - operationId: Caches_CreateOrUpdate
+        # exampleFile: ..\examples\Caches_CreateOrUpdate.json
+        parameters:
+          cache: 
+            location: $(location)
+            properties:
+              cacheSizeGB: 3072
+              subnet: $(subnetId)
+              Zones:
+                - "1"
+            sku:
+              name: Standard_2G
+
+scenarios:
+# pass
+  - scenario: Caches
+    description: Microsoft.StorageCache/caches/{cacheName}
+    steps:
+      - operationId: Caches_List
+        exampleFile: ..\examples\Caches_List.json
+      - operationId: Caches_ListByResourceGroup
+        exampleFile: ..\examples\Caches_ListByResourceGroup.json
+      - operationId: Caches_Get
+        exampleFile: ..\examples\Caches_Get.json
+      - operationId: Caches_Update
+        # exampleFile: ..\examples\Caches_Update.json
+        parameters:
+          cache:
+            tags:
+              Dept: Contoso
+      - operationId: Caches_DebugInfo
+        exampleFile: ..\examples\Caches_DebugInfo.json
+      - operationId: Caches_Start
+        exampleFile: ..\examples\Caches_Start.json
+      - operationId: Caches_UpgradeFirmware
+        exampleFile: ..\examples\Caches_UpgradeFirmware.json
+      - operationId: Caches_Flush
+        exampleFile: ..\examples\Caches_Flush.json
+
+# # Cannot add priming jobs to a cache with no storage targets. Define at least one storage target before adding a priming job
+#       - operationId: Caches_StartPrimingJob
+#         exampleFile: ..\examples\StartPrimingJob.json
+#       - operationId: Caches_PausePrimingJob
+#         exampleFile: ..\examples\PausePrimingJob.json
+#       - operationId: Caches_StopPrimingJob
+#         exampleFile: ..\examples\StopPrimingJob.json
+# # All storage targets associated with the cache are not listed
+#       - operationId: Caches_SpaceAllocation
+#         exampleFile: ..\examples\SpaceAllocation_Post.json
+#       - operationId: Caches_ResumePrimingJob
+#         exampleFile: ..\examples\ResumePrimingJob.json
+
+
+# pass
+  - scenario: StorageTargets
+    description: Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}
+    steps:
+      - operationId: StorageTargets_CreateOrUpdate
+        exampleFile: ..\examples\StorageTargets_CreateOrUpdate_NoJunctions.json          
+      - operationId: StorageTargets_ListByCache
+        exampleFile: ..\examples\StorageTargets_ListByCache.json
+      - operationId: StorageTargets_Get
+        exampleFile: ..\examples\StorageTargets_Get.json
+# json: cannot unmarshal string into Go value of type armstoragecache.StorageTargetsClientRestoreDefaultsResponse
+      # - operationId: StorageTargets_RestoreDefaults
+      #   exampleFile: ..\examples\StorageTargets_RestoreDefaults.json
+      - operationId: StorageTargets_DnsRefresh
+        exampleFile: ..\examples\StorageTargets_DnsRefresh.json
+# Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/
+      - operationId: StorageTarget_Flush
+        exampleFile: ..\examples\StorageTargets_Flush.json
+      - operationId: StorageTarget_Invalidate
+        exampleFile: ..\examples\StorageTargets_Invalidate.json
+      - operationId: StorageTarget_Resume
+        exampleFile: ..\examples\StorageTargets_Resume.json
+      - operationId: StorageTarget_Suspend
+        exampleFile: ..\examples\StorageTargets_Suspend.json
+      - operationId: StorageTargets_Delete
+        exampleFile: ..\examples\StorageTargets_Delete.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.StorageCache/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+# pass
+  - scenario: Skus
+    description: Microsoft.StorageCache/skus
+    steps:
+      - operationId: Skus_List
+        exampleFile: ..\examples\Skus_List.json
+
+# pass
+  - scenario: UsageModels
+    description: Microsoft.StorageCache/usageModels
+    steps:
+      - operationId: UsageModels_List
+        exampleFile: ..\examples\UsageModels_List.json
+
+  # - scenario: AscOperations # begin过程调用
+  #   description: Microsoft.StorageCache/locations/{location}/ascOperations/{operationId}
+  #   steps:
+  #     - operationId: AscOperations_Get
+  #       variables:
+  #         operationId:
+  #           type: string
+  #           prefix: operatio
+  #       exampleFile: ..\examples\AscOperations_Get.json
+
+# pass
+  - scenario: AscUsages
+    description: Microsoft.StorageCache/locations/{location}/usages
+    steps:
+      - operationId: AscUsages_List
+        exampleFile: ..\examples\AscResourceUsages_Get.json
+
+
+cleanUpSteps:
+      - operationId: Caches_Stop
+        exampleFile: ..\examples\Caches_Stop.json
+      - operationId: Caches_Delete
+        exampleFile: ..\examples\Caches_Delete.json

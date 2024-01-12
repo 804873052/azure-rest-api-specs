@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  amlFilesystemName:
+    type: string
+    prefix: amlfiles
+  # storageAccountName: # low case
+  #   type: string
+  #   prefix: amlfilestana
+
+prepareSteps:
+      - step: Create_VirtualNetwork
+        armTemplate: ./templates/Create_VirtualNetwork.json
+      # - step: Create_StorageAccount # Archive
+      #   armTemplate: ./templates/Create_StorageAccount.json
+
+# pass
+scenarios:
+  - scenario: amlFilesystems
+    description: Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}
+    steps:
+      - operationId: amlFilesystems_CreateOrUpdate
+        # exampleFile: ..\examples\amlFilesystems_CreateOrUpdate.json
+        parameters:
+          amlFilesystem:
+            location: $(location)
+            sku:
+              name: AMLFS-Durable-Premium-125
+            zones: 
+              - "1"
+            properties:
+              storageCapacityTiB: 16
+              filesystemSubnet: $(subnetId)
+              maintenanceWindow:
+                dayOfWeek: Monday
+                timeOfDayUTC: 23:25
+              # hsm:
+              #   settings:
+              #     settings: 
+              #     loggingContainer:
+      - operationId: amlFilesystems_List
+        exampleFile: ..\examples\amlFilesystems_List.json
+      - operationId: amlFilesystems_Get
+        exampleFile: ..\examples\amlFilesystems_Get.json
+      - operationId: amlFilesystems_ListByResourceGroup
+        exampleFile: ..\examples\amlFilesystems_ListByResourceGroup.json
+      - operationId: amlFilesystems_Update
+        # exampleFile: ..\examples\amlFilesystems_Update.json
+        parameters:
+          amlFilesystem:
+            tags:
+              Dept: ContosoAds
+      # - operationId: amlFilesystems_Archive
+      #   exampleFile: ..\examples\amlFilesystems_Archive.json
+      # - operationId: amlFilesystems_CancelArchive
+      #   exampleFile: ..\examples\amlFilesystems_CancelArchive.json
+
+      # write code manually
+      - operationId: checkAmlFSSubnets
+        exampleFile: ..\examples\checkAmlFSSubnets.json
+      - operationId: getRequiredAmlFSSubnetsSize
+        exampleFile: ..\examples\getRequiredAmlFSSubnetsSize.json
+
+      - operationId: amlFilesystems_Delete
+        exampleFile: ..\examples\amlFilesystems_Delete.json
+

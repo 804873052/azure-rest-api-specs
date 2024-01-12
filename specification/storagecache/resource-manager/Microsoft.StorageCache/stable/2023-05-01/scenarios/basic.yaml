@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  cacheName:
+    type: string
+    prefix: cachenam
+  storageTargetName:
+    type: string
+    prefix: storaget
+  amlFilesystemName:
+    type: string
+    prefix: amlfiles
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Caches_CreateOrUpdate
+        exampleFile: ..\examples\Caches_CreateOrUpdate.json
+      - operationId: Caches_List
+        exampleFile: ..\examples\Caches_List.json
+      - operationId: Caches_ListByResourceGroup
+        exampleFile: ..\examples\Caches_ListByResourceGroup.json
+      - operationId: Caches_Get
+        exampleFile: ..\examples\Caches_Get.json
+      - operationId: Caches_Update
+        exampleFile: ..\examples\Caches_Update.json
+      - operationId: Caches_DebugInfo
+        exampleFile: ..\examples\Caches_DebugInfo.json
+      - operationId: Caches_Stop
+        exampleFile: ..\examples\Caches_Stop.json
+      - operationId: Caches_StartPrimingJob
+        exampleFile: ..\examples\StartPrimingJob.json
+      - operationId: Caches_Start
+        exampleFile: ..\examples\Caches_Start.json
+      - operationId: Caches_StopPrimingJob
+        exampleFile: ..\examples\StopPrimingJob.json
+      - operationId: Caches_PausePrimingJob
+        exampleFile: ..\examples\PausePrimingJob.json
+      - operationId: Caches_UpgradeFirmware
+        exampleFile: ..\examples\Caches_UpgradeFirmware.json
+      - operationId: Caches_SpaceAllocation
+        exampleFile: ..\examples\SpaceAllocation_Post.json
+      - operationId: Caches_ResumePrimingJob
+        exampleFile: ..\examples\ResumePrimingJob.json
+      - operationId: Caches_Flush
+        exampleFile: ..\examples\Caches_Flush.json
+      - operationId: StorageTargets_CreateOrUpdate
+        exampleFile: ..\examples\StorageTargets_CreateOrUpdate.json
+      - operationId: StorageTargets_ListByCache
+        exampleFile: ..\examples\StorageTargets_ListByCache.json
+      - operationId: StorageTargets_Get
+        exampleFile: ..\examples\StorageTargets_Get.json
+      - operationId: StorageTargets_RestoreDefaults
+        exampleFile: ..\examples\StorageTargets_RestoreDefaults.json
+      - operationId: StorageTargets_DnsRefresh
+        exampleFile: ..\examples\StorageTargets_DnsRefresh.json
+      - operationId: amlFilesystems_CreateOrUpdate
+        exampleFile: ..\examples\amlFilesystems_CreateOrUpdate.json
+      - operationId: amlFilesystems_List
+        exampleFile: ..\examples\amlFilesystems_List.json
+      - operationId: amlFilesystems_Get
+        exampleFile: ..\examples\amlFilesystems_Get.json
+      - operationId: amlFilesystems_ListByResourceGroup
+        exampleFile: ..\examples\amlFilesystems_ListByResourceGroup.json
+      - operationId: amlFilesystems_Update
+        exampleFile: ..\examples\amlFilesystems_Update.json
+      - operationId: amlFilesystems_Archive
+        exampleFile: ..\examples\amlFilesystems_Archive.json
+      - operationId: amlFilesystems_CancelArchive
+        exampleFile: ..\examples\amlFilesystems_CancelArchive.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: checkAmlFSSubnets
+        exampleFile: ..\examples\checkAmlFSSubnets.json
+      - operationId: getRequiredAmlFSSubnetsSize
+        exampleFile: ..\examples\getRequiredAmlFSSubnetsSize.json
+      - operationId: AscOperations_Get
+        variables:
+          operationId:
+            type: string
+            prefix: operatio
+        exampleFile: ..\examples\AscOperations_Get.json
+      - operationId: AscUsages_List
+        exampleFile: ..\examples\AscResourceUsages_Get.json
+      - operationId: Skus_List
+        exampleFile: ..\examples\Skus_List.json
+      - operationId: UsageModels_List
+        exampleFile: ..\examples\UsageModels_List.json
+      - operationId: StorageTarget_Flush
+        exampleFile: ..\examples\StorageTargets_Flush.json
+      - operationId: StorageTarget_Invalidate
+        exampleFile: ..\examples\StorageTargets_Invalidate.json
+      - operationId: StorageTarget_Resume
+        exampleFile: ..\examples\StorageTargets_Resume.json
+      - operationId: StorageTarget_Suspend
+        exampleFile: ..\examples\StorageTargets_Suspend.json
+      - operationId: amlFilesystems_Delete
+        exampleFile: ..\examples\amlFilesystems_Delete.json
+      - operationId: StorageTargets_Delete
+        exampleFile: ..\examples\StorageTargets_Delete.json
+      - operationId: Caches_Delete
+        exampleFile: ..\examples\Caches_Delete.json
