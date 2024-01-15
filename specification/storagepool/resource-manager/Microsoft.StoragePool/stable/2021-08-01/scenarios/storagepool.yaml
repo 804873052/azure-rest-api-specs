@@ -1,0 +1,93 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  diskPoolName:
+    type: string
+    prefix: diskpool
+  iscsiTargetName:
+    type: string
+    prefix: iscsitar
+
+# The resource namespace 'Microsoft.StoragePool' is invalid.
+prepareSteps:
+      - step: Create_VirtualNetwork
+        armTemplate: ./templates/Create_VirtualNetwork.json
+      - step: Create_Disk
+        armTemplate: ./templates/Create_Disk.json
+      - operationId: DiskPools_CreateOrUpdate
+        # exampleFile: ..\examples\DiskPools_Put.json
+        parameters:
+          diskPoolCreatePayload:
+            location: $(location)
+            sku:
+              name: Basic_V1
+              tier: Basic
+            properties:
+              availabilityZones:
+                - "1"
+              subnetId: $(subnetId)
+              disks:
+                - id: $(diskId)
+
+scenarios:
+  - scenario: DiskPools
+    description: Microsoft.StoragePool/diskPools/{diskPoolName}
+    steps:
+      - operationId: DiskPools_ListBySubscription
+        exampleFile: ..\examples\DiskPools_ListBySubscription.json
+      - operationId: DiskPools_ListByResourceGroup
+        exampleFile: ..\examples\DiskPools_ListByResourceGroup.json
+      - operationId: DiskPools_ListOutboundNetworkDependenciesEndpoints
+        exampleFile: ..\examples\DiskPools_GetOutboundNetworkDependencies.json
+      - operationId: DiskPools_Get
+        exampleFile: ..\examples\DiskPools_Get.json
+      - operationId: DiskPools_Update
+        # exampleFile: ..\examples\DiskPools_Patch.json
+        parameters:
+          diskPoolUpdatePayload:
+            tags:
+              key: value
+      - operationId: DiskPools_Upgrade
+        exampleFile: ..\examples\DiskPools_Upgrade.json
+      - operationId: DiskPools_Start
+        exampleFile: ..\examples\DiskPools_Start.json
+      - operationId: DiskPools_Deallocate
+        exampleFile: ..\examples\DiskPools_Deallocate.json
+
+  - scenario: IscsiTargets
+    description: Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}
+    steps:
+      - operationId: IscsiTargets_CreateOrUpdate
+        exampleFile: ..\examples\IscsiTargets_Put.json
+      - operationId: IscsiTargets_ListByDiskPool
+        exampleFile: ..\examples\IscsiTargets_ListByDiskPool.json
+      - operationId: IscsiTargets_Get
+        exampleFile: ..\examples\IscsiTargets_Get.json
+      - operationId: IscsiTargets_Update
+        exampleFile: ..\examples\IscsiTargets_Patch.json
+      - operationId: IscsiTargets_Delete
+        exampleFile: ..\examples\IscsiTargets_Delete.json
+
+  - scenario: Operations
+    description: Microsoft.StoragePool/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+  - scenario: DiskPoolZones
+    description: Microsoft.StoragePool/locations/{location}/diskPoolZones
+    steps:
+      - operationId: DiskPoolZones_List
+        exampleFile: ..\examples\DiskPoolZones_List.json
+
+  - scenario: ResourceSkus
+    description: Microsoft.StoragePool/locations/{location}/skus
+    steps:
+      - operationId: ResourceSkus_List
+        exampleFile: ..\examples\Skus_List.json
+
+cleanUpSteps:
+      - operationId: DiskPools_Delete
+        exampleFile: ..\examples\DiskPools_Delete.json

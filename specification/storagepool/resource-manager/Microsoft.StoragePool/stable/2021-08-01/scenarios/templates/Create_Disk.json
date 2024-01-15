@@ -1,0 +1,39 @@
+
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "diskName": {
+            "type": "string",
+            "defaultValue": "mydisk"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/disks",
+            "apiVersion": "2023-01-02",
+            "name": "[parameters('diskName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "properties": {
+                "creationData": {
+                    "createOption": "Empty"
+                },
+                "diskSizeGB": 200
+            }
+        }
+    ],
+    "outputs": {
+        "diskId":{
+            "type": "string",
+            "value": "[resourceId('Microsoft.Compute/disks', parameters('diskName'))]"
+        }
+    }
+}

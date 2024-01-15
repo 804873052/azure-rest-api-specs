@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  diskPoolName:
+    type: string
+    prefix: diskpool
+  iscsiTargetName:
+    type: string
+    prefix: iscsitar
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: DiskPools_CreateOrUpdate
+        exampleFile: ..\examples\DiskPools_Put.json
+      - operationId: DiskPools_ListBySubscription
+        exampleFile: ..\examples\DiskPools_ListBySubscription.json
+      - operationId: DiskPools_ListByResourceGroup
+        exampleFile: ..\examples\DiskPools_ListByResourceGroup.json
+      - operationId: DiskPools_ListOutboundNetworkDependenciesEndpoints
+        exampleFile: ..\examples\DiskPools_GetOutboundNetworkDependencies.json
+      - operationId: DiskPools_Get
+        exampleFile: ..\examples\DiskPools_Get.json
+      - operationId: DiskPools_Update
+        exampleFile: ..\examples\DiskPools_Patch.json
+      - operationId: DiskPools_Upgrade
+        exampleFile: ..\examples\DiskPools_Upgrade.json
+      - operationId: DiskPools_Start
+        exampleFile: ..\examples\DiskPools_Start.json
+      - operationId: DiskPools_Deallocate
+        exampleFile: ..\examples\DiskPools_Deallocate.json
+      - operationId: IscsiTargets_CreateOrUpdate
+        exampleFile: ..\examples\IscsiTargets_Put.json
+      - operationId: IscsiTargets_ListByDiskPool
+        exampleFile: ..\examples\IscsiTargets_ListByDiskPool.json
+      - operationId: IscsiTargets_Get
+        exampleFile: ..\examples\IscsiTargets_Get.json
+      - operationId: IscsiTargets_Update
+        exampleFile: ..\examples\IscsiTargets_Patch.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: DiskPoolZones_List
+        exampleFile: ..\examples\DiskPoolZones_List.json
+      - operationId: ResourceSkus_List
+        exampleFile: ..\examples\Skus_List.json
+      - operationId: IscsiTargets_Delete
+        exampleFile: ..\examples\IscsiTargets_Delete.json
+      - operationId: DiskPools_Delete
+        exampleFile: ..\examples\DiskPools_Delete.json
