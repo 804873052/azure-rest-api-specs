@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  communicationsGatewayName:
+    type: string
+    prefix: communic
+  testLineName:
+    type: string
+    prefix: testline
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: CommunicationsGateways_CreateOrUpdate
+        exampleFile: ..\examples\CommunicationsGateways_CreateOrUpdate.json
+      - operationId: CommunicationsGateways_ListBySubscription
+        exampleFile: ..\examples\CommunicationsGateways_ListBySubscription.json
+      - operationId: CommunicationsGateways_ListByResourceGroup
+        exampleFile: ..\examples\CommunicationsGateways_ListByResourceGroup.json
+      - operationId: CommunicationsGateways_Get
+        exampleFile: ..\examples\CommunicationsGateways_Get.json
+      - operationId: CommunicationsGateways_Update
+        exampleFile: ..\examples\CommunicationsGateways_Update.json
+      - operationId: TestLines_CreateOrUpdate
+        exampleFile: ..\examples\TestLines_CreateOrUpdate.json
+      - operationId: TestLines_ListByCommunicationsGateway
+        exampleFile: ..\examples\TestLines_ListByCommunicationsGateway.json
+      - operationId: TestLines_Get
+        exampleFile: ..\examples\TestLines_Get.json
+      - operationId: TestLines_Update
+        exampleFile: ..\examples\TestLines_Update.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: NameAvailability_CheckLocal
+        exampleFile: ..\examples\NameAvailability_CheckLocal.json
+      - operationId: TestLines_Delete
+        exampleFile: ..\examples\TestLines_Delete.json
+      - operationId: CommunicationsGateways_Delete
+        exampleFile: ..\examples\CommunicationsGateways_Delete.json

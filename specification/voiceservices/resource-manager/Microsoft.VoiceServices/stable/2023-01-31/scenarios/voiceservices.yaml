@@ -1,0 +1,58 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  communicationsGatewayName:
+    type: string
+    prefix: communic
+  testLineName:
+    type: string
+    prefix: testline
+
+# InvalidResourceType
+# The resource type could not be found in the namespace 'Microsoft.VoiceServices' for api version '2023-01-31'.
+prepareSteps:
+      - operationId: CommunicationsGateways_CreateOrUpdate
+        exampleFile: ..\examples\CommunicationsGateways_CreateOrUpdate.json
+
+scenarios:
+  - scenario: CommunicationsGateways
+    description: Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}
+    steps:
+      - operationId: CommunicationsGateways_ListBySubscription
+        exampleFile: ..\examples\CommunicationsGateways_ListBySubscription.json
+      - operationId: CommunicationsGateways_ListByResourceGroup
+        exampleFile: ..\examples\CommunicationsGateways_ListByResourceGroup.json
+      - operationId: CommunicationsGateways_Get
+        exampleFile: ..\examples\CommunicationsGateways_Get.json
+      - operationId: CommunicationsGateways_Update
+        exampleFile: ..\examples\CommunicationsGateways_Update.json
+
+  - scenario: TestLines
+    description: Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/testLines/{testLineName}
+    steps:
+      - operationId: TestLines_CreateOrUpdate
+        exampleFile: ..\examples\TestLines_CreateOrUpdate.json
+      - operationId: TestLines_ListByCommunicationsGateway
+        exampleFile: ..\examples\TestLines_ListByCommunicationsGateway.json
+      - operationId: TestLines_Get
+        exampleFile: ..\examples\TestLines_Get.json
+      - operationId: TestLines_Update
+        exampleFile: ..\examples\TestLines_Update.json
+      - operationId: TestLines_Delete
+        exampleFile: ..\examples\TestLines_Delete.json
+
+  - scenario: Operations
+    description: Microsoft.VoiceServices/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+  - scenario: NameAvailability
+    description: Microsoft.VoiceServices/locations/{location}/checkNameAvailability
+    steps:
+      - operationId: NameAvailability_CheckLocal
+        exampleFile: ..\examples\NameAvailability_CheckLocal.json
+
+cleanUpSteps:
+      - operationId: CommunicationsGateways_Delete
+        exampleFile: ..\examples\CommunicationsGateways_Delete.json
