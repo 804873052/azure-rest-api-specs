@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  imageTemplateName:
+    type: string
+    prefix: imagetem
+  triggerName:
+    type: string
+    prefix: triggern
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: VirtualMachineImageTemplates_CreateOrUpdate
+        exampleFile: ..\examples\CreateImageTemplateLinux.json
+      - operationId: VirtualMachineImageTemplates_List
+        exampleFile: ..\examples\ListImageTemplates.json
+      - operationId: VirtualMachineImageTemplates_ListByResourceGroup
+        exampleFile: ..\examples\ListImageTemplatesByRg.json
+      - operationId: VirtualMachineImageTemplates_GetRunOutput
+        variables:
+          runOutputName:
+            type: string
+            prefix: runoutpu
+        exampleFile: ..\examples\GetRunOutput.json
+      - operationId: VirtualMachineImageTemplates_Get
+        exampleFile: ..\examples\GetImageTemplate.json
+      - operationId: VirtualMachineImageTemplates_ListRunOutputs
+        exampleFile: ..\examples\ListRunOutputs.json
+      - operationId: VirtualMachineImageTemplates_Update
+        exampleFile: ..\examples\UpdateImageTemplateTags.json
+      - operationId: VirtualMachineImageTemplates_Run
+        exampleFile: ..\examples\RunImageTemplate.json
+      - operationId: VirtualMachineImageTemplates_Cancel
+        exampleFile: ..\examples\CancelImageBuild.json
+      - operationId: Triggers_CreateOrUpdate
+        exampleFile: ..\examples\CreateSourceImageTrigger.json
+      - operationId: Triggers_ListByImageTemplate
+        exampleFile: ..\examples\ListTriggers.json
+      - operationId: Triggers_Get
+        exampleFile: ..\examples\GetTrigger.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+      - operationId: Triggers_Delete
+        exampleFile: ..\examples\DeleteTrigger.json
+      - operationId: VirtualMachineImageTemplates_Delete
+        exampleFile: ..\examples\DeleteImageTemplate.json

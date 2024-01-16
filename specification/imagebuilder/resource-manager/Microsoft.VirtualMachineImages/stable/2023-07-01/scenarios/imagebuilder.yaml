@@ -1,0 +1,71 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  imageTemplateName:
+    type: string
+    prefix: imagetem
+  triggerName:
+    type: string
+    prefix: triggern
+
+# ref: https://github.com/Azure/azure-sdk-for-js/blob/ec166a2c0282cf4bcf76a368700b90d4c0738c05/sdk/imagebuilder/arm-imagebuilder/test/imagebuilder_examples.ts
+
+# Not authorized to access the resource: /subscriptions//resourceGroups//providers/Microsoft.Compute/images/myimage. 
+# Please check the user assigned identity has the correct permissions. For more details, go to https://aka.ms/azvmimagebuilderts.
+
+prepareSteps:
+      - operationId: VirtualMachineImageTemplates_CreateOrUpdate
+        exampleFile: ..\examples\CreateImageTemplateLinux.json
+
+scenarios:
+  - scenario: VirtualMachineImageTemplates
+    description: Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}
+    steps:
+      - operationId: VirtualMachineImageTemplates_List
+        exampleFile: ..\examples\ListImageTemplates.json
+      - operationId: VirtualMachineImageTemplates_ListByResourceGroup
+        exampleFile: ..\examples\ListImageTemplatesByRg.json
+      - operationId: VirtualMachineImageTemplates_Get
+        exampleFile: ..\examples\GetImageTemplate.json
+      - operationId: VirtualMachineImageTemplates_Update
+        exampleFile: ..\examples\UpdateImageTemplateTags.json
+      - operationId: VirtualMachineImageTemplates_Run
+        exampleFile: ..\examples\RunImageTemplate.json
+      - operationId: VirtualMachineImageTemplates_ListRunOutputs
+        exampleFile: ..\examples\ListRunOutputs.json
+        outputVariables:
+          runOutputName:
+            type: string
+            fromResponse: /value/name
+      - operationId: VirtualMachineImageTemplates_GetRunOutput
+        # variables:
+        #   runOutputName:
+        #     type: string
+        #     prefix: runoutpu
+        exampleFile: ..\examples\GetRunOutput.json
+      - operationId: VirtualMachineImageTemplates_Cancel
+        exampleFile: ..\examples\CancelImageBuild.json
+
+  - scenario: Triggers
+    description: Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}
+    steps:
+      - operationId: Triggers_CreateOrUpdate
+        exampleFile: ..\examples\CreateSourceImageTrigger.json
+      - operationId: Triggers_ListByImageTemplate
+        exampleFile: ..\examples\ListTriggers.json
+      - operationId: Triggers_Get
+        exampleFile: ..\examples\GetTrigger.json
+      - operationId: Triggers_Delete
+        exampleFile: ..\examples\DeleteTrigger.json
+
+  - scenario: Operations
+    description: Microsoft.VirtualMachineImages/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+cleanUpSteps:
+      - operationId: VirtualMachineImageTemplates_Delete
+        exampleFile: ..\examples\DeleteImageTemplate.json
