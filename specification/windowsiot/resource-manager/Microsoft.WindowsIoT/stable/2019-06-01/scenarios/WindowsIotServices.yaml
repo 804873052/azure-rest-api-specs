@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  deviceName:
+    type: string
+    prefix: devicena
+
+scenarios:
+# Host name resolution failed for 'Microsoft.WindowsIoT'; cannot fulfill the request
+  - scenario: Operations
+    description: Microsoft.WindowsIoT/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+# InternalServerError 500
+  - scenario: Services
+    description: Microsoft.WindowsIoT/deviceServices/{deviceName}
+    steps:
+      - operationId: Services_CheckDeviceServiceNameAvailability
+        exampleFile: ..\examples\Service_CheckNameAvailability.json
+      - operationId: Services_CreateOrUpdate
+        exampleFile: ..\examples\Service_Create.json
+      - operationId: Services_List
+        exampleFile: ..\examples\Service_List.json
+      - operationId: Services_ListByResourceGroup
+        exampleFile: ..\examples\Service_ListByResourceGroup.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\Service_GetProperties.json
+      - operationId: Services_Update
+        exampleFile: ..\examples\Service_Update.json
+      - operationId: Services_Delete
+        exampleFile: ..\examples\Service_Delete.json
