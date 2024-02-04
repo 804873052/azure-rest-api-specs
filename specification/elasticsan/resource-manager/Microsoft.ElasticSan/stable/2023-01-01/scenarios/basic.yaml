@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  elasticSanName:
+    type: string
+    prefix: elastics
+  volumeGroupName:
+    type: string
+    prefix: volumegr
+  volumeName:
+    type: string
+    prefix: volumena
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  snapshotName:
+    type: string
+    prefix: snapshot
+scenarios:
+sceanrios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: ElasticSans_Create
+        exampleFile: ..\examples\ElasticSans_Create_MaximumSet_Gen.json
+      - operationId: ElasticSans_ListBySubscription
+        exampleFile: ..\examples\ElasticSans_ListBySubscription_MaximumSet_Gen.json
+      - operationId: ElasticSans_ListByResourceGroup
+        exampleFile: ..\examples\ElasticSans_ListByResourceGroup_MaximumSet_Gen.json
+      - operationId: ElasticSans_Get
+        exampleFile: ..\examples\ElasticSans_Get_MaximumSet_Gen.json
+      - operationId: ElasticSans_Update
+        exampleFile: ..\examples\ElasticSans_Update_MaximumSet_Gen.json
+      - operationId: VolumeGroups_Create
+        exampleFile: ..\examples\VolumeGroups_Create_MaximumSet_Gen.json
+      - operationId: VolumeGroups_ListByElasticSan
+        exampleFile: ..\examples\VolumeGroups_ListByElasticSan_MaximumSet_Gen.json
+      - operationId: VolumeGroups_Get
+        exampleFile: ..\examples\VolumeGroups_Get_MaximumSet_Gen.json
+      - operationId: VolumeGroups_Update
+        exampleFile: ..\examples\VolumeGroups_Update_MaximumSet_Gen.json
+      - operationId: Volumes_Create
+        exampleFile: ..\examples\Volumes_Create_MaximumSet_Gen.json
+      - operationId: Volumes_ListByVolumeGroup
+        exampleFile: ..\examples\Volumes_ListByVolumeGroup_MaximumSet_Gen.json
+      - operationId: Volumes_Get
+        exampleFile: ..\examples\Volumes_Get_MaximumSet_Gen.json
+      - operationId: Volumes_Update
+        exampleFile: ..\examples\Volumes_Update_MaximumSet_Gen.json
+      - operationId: PrivateEndpointConnections_Create
+        exampleFile: ..\examples\PrivateEndpointConnections_Create_MaximumSet_Gen.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\PrivateEndpointConnections_List_MaximumSet_Gen.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\PrivateEndpointConnections_Get_MaximumSet_Gen.json
+      - operationId: VolumeSnapshots_Create
+        exampleFile: ..\examples\VolumeSnapshots_Create_MaximumSet_Gen.json
+      - operationId: VolumeSnapshots_ListByVolumeGroup
+        exampleFile: ..\examples\VolumeSnapshots_ListByVolumeGroup_MaximumSet_Gen.json
+      - operationId: VolumeSnapshots_Get
+        exampleFile: ..\examples\VolumeSnapshots_Get_MaximumSet_Gen.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List_MaximumSet_Gen.json
+      - operationId: Skus_List
+        exampleFile: ..\examples\Skus_List_MaximumSet_Gen.json
+      - operationId: PrivateLinkResources_ListByElasticSan
+        exampleFile: ..\examples\PrivateLinkResources_ListByElasticSan_MaximumSet_Gen.json
+      - operationId: VolumeSnapshots_Delete
+        exampleFile: ..\examples\VolumeSnapshots_Delete_MaximumSet_Gen.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\PrivateEndpointConnections_Delete_MaximumSet_Gen.json
+      - operationId: Volumes_Delete
+        exampleFile: ..\examples\Volumes_Delete_MaximumSet_Gen.json
+      - operationId: VolumeGroups_Delete
+        exampleFile: ..\examples\VolumeGroups_Delete_MaximumSet_Gen.json
+      - operationId: ElasticSans_Delete
+        exampleFile: ..\examples\ElasticSans_Delete_MaximumSet_Gen.json
