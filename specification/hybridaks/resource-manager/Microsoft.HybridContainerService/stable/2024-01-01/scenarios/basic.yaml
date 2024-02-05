@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  virtualNetworkName:
+    type: string
+    prefix: virtualn
+  agentPoolName:
+    type: string
+    prefix: agentpoo
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: virtualNetworks_CreateOrUpdate
+        exampleFile: ..\examples\PutVirtualNetwork.json
+      - operationId: virtualNetworks_ListBySubscription
+        exampleFile: ..\examples\ListVirtualNetworkBySubscription.json
+      - operationId: virtualNetworks_ListByResourceGroup
+        exampleFile: ..\examples\ListVirtualNetworkByResourceGroup.json
+      - operationId: virtualNetworks_Retrieve
+        exampleFile: ..\examples\GetVirtualNetwork.json
+      - operationId: virtualNetworks_Update
+        exampleFile: ..\examples\UpdateVirtualNetwork.json
+      - operationId: agentPool_CreateOrUpdate
+        exampleFile: ..\examples\PutAgentPool.json
+      - operationId: agentPool_ListByProvisionedCluster
+        exampleFile: ..\examples\ListAgentPoolByProvisionedClusterInstance.json
+      - operationId: agentPool_Get
+        exampleFile: ..\examples\GetAgentPool.json
+      - operationId: provisionedClusterInstances_CreateOrUpdate
+        exampleFile: ..\examples\PutProvisionedClusterInstance.json
+      - operationId: provisionedClusterInstances_List
+        exampleFile: ..\examples\ListProvisionedClusterInstances.json
+      - operationId: provisionedClusterInstances_Get
+        exampleFile: ..\examples\GetProvisionedClusterInstance.json
+      - operationId: provisionedClusterInstances_GetUpgradeProfile
+        exampleFile: ..\examples\ProvisionedClusterInstanceGetUpgradeProfile.json
+      - operationId: provisionedClusterInstances_ListAdminKubeconfig
+        exampleFile: ..\examples\ProvisionedClusterInstanceListAdminKubeconfig.json
+      - operationId: provisionedClusterInstances_ListUserKubeconfig
+        exampleFile: ..\examples\ProvisionedClusterInstanceListUserKubeconfig.json
+      - operationId: HybridIdentityMetadata_Put
+        exampleFile: ..\examples\CreateHybridIdentityMetadata.json
+      - operationId: HybridIdentityMetadata_ListByCluster
+        exampleFile: ..\examples\HybridIdentityMetadataListByCluster.json
+      - operationId: HybridIdentityMetadata_Get
+        exampleFile: ..\examples\GetHybridIdentityMetadata.json
+      - operationId: PutKubernetesVersions
+        exampleFile: ..\examples\PutKubernetesVersions.json
+      - operationId: PutVMSkus
+        exampleFile: ..\examples\PutVmSkus.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+      - operationId: KubernetesVersions_List
+        exampleFile: ..\examples\ListKubernetesVersions.json
+      - operationId: DeleteKubernetesVersions
+        exampleFile: ..\examples\DeleteKubernetesVersions.json
+      - operationId: GetKubernetesVersions
+        exampleFile: ..\examples\GetKubernetesVersions.json
+      - operationId: VMSkus_List
+        exampleFile: ..\examples\ListVmSkus.json
+      - operationId: DeleteVMSkus
+        exampleFile: ..\examples\DeleteVmSkus.json
+      - operationId: GetVMSkus
+        exampleFile: ..\examples\GetVmSkus.json
+      - operationId: HybridIdentityMetadata_Delete
+        exampleFile: ..\examples\DeleteHybridIdentityMetadata.json
+      - operationId: provisionedClusterInstances_Delete
+        exampleFile: ..\examples\DeleteProvisionedClusterInstance.json
+      - operationId: agentPool_Delete
+        exampleFile: ..\examples\DeleteAgentPool.json
+      - operationId: virtualNetworks_Delete
+        exampleFile: ..\examples\DeleteVirtualNetwork.json

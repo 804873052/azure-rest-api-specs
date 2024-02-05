@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  virtualNetworkName:
+    type: string
+    prefix: virtualn
+
+scenarios:
+  - scenario: virtualNetworks
+    description: Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}
+    steps:
+      - operationId: virtualNetworks_CreateOrUpdate
+        exampleFile: ..\examples\PutVirtualNetwork.json
+      - operationId: virtualNetworks_ListBySubscription
+        exampleFile: ..\examples\ListVirtualNetworkBySubscription.json
+      - operationId: virtualNetworks_ListByResourceGroup
+        exampleFile: ..\examples\ListVirtualNetworkByResourceGroup.json
+      - operationId: virtualNetworks_Retrieve
+        exampleFile: ..\examples\GetVirtualNetwork.json
+      - operationId: virtualNetworks_Update
+        exampleFile: ..\examples\UpdateVirtualNetwork.json
+      - operationId: virtualNetworks_Delete
+        exampleFile: ..\examples\DeleteVirtualNetwork.json
