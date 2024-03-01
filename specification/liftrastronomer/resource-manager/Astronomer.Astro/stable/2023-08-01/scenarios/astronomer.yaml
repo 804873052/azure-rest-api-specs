@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  organizationName:
+    type: string
+    prefix: astroorg
+
+# Error occurred while performing marketplace payment validation 
+# 需要给人支付
+scenarios:
+  - scenario: Organizations
+    description: Astronomer.Astro/organizations/{organizationName}
+    steps:
+     - operationId: Organizations_CreateOrUpdate
+       exampleFile: ../examples/Organizations_CreateOrUpdate_MaximumSet_Gen.json
+     - operationId: Organizations_Get
+       exampleFile: ../examples/Organizations_Get_MaximumSet_Gen.json
+     - operationId: Organizations_Update
+      #  exampleFile: ../examples/Organizations_Update_MaximumSet_Gen.json
+       parameters:
+          properties:
+            tags:
+              astrokey: astrovalue
+     - operationId: Organizations_ListBySubscription
+       exampleFile: ../examples/Organizations_ListBySubscription_MaximumSet_Gen.json
+     - operationId: Organizations_ListByResourceGroup
+       exampleFile: ../examples/Organizations_ListByResourceGroup_MaximumSet_Gen.json
+     - operationId: Organizations_Delete
+       exampleFile: ../examples/Organizations_Delete_MaximumSet_Gen.json
+
+  - scenario: Operations
+    description: Astronomer.Astro/operations
+    steps:
+     - operationId: Operations_List
+       exampleFile: ../examples/Operations_List_MaximumSet_Gen.json
