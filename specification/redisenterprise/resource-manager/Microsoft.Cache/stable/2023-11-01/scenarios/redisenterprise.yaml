@@ -1,0 +1,143 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  clusterName:
+    type: string
+    prefix: clustern
+  databaseName: default
+
+prepareSteps:
+      - operationId: RedisEnterprise_Create
+        # exampleFile: ..\examples\RedisEnterpriseCreate.json
+        parameters:
+          parameters:
+            location: $(location)
+            tags:
+              tag1: value1
+            sku:
+              name: EnterpriseFlash_F300
+              capacity: 3
+            zones:
+              - "1"
+              - "2"
+              - "3"
+            identity:
+              type: SystemAssigned
+            properties:
+              minimumTlsVersion: "1.2"
+        outputVariables:
+          redisEnterpriseId:
+            type: string
+            fromResponse: /id
+      
+
+scenarios:
+# pass
+  - scenario: RedisEnterprise
+    description: Microsoft.Cache/redisEnterprise/{clusterName}
+    steps:
+      - operationId: RedisEnterprise_List
+        exampleFile: ..\examples\RedisEnterpriseList.json
+      - operationId: RedisEnterprise_ListByResourceGroup
+        exampleFile: ..\examples\RedisEnterpriseListByResourceGroup.json
+      - operationId: RedisEnterprise_Get
+        exampleFile: ..\examples\RedisEnterpriseGet.json
+      - operationId: RedisEnterprise_Update
+        # exampleFile: ..\examples\RedisEnterpriseUpdate.json
+        parameters:
+          parameters:
+            tags:
+              tag1: value1
+
+  - scenario: Databases
+    description: Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}
+    steps:
+      - operationId: Databases_Create
+        # exampleFile: ..\examples\RedisEnterpriseDatabasesCreate.json
+        parameters:
+          parameters:
+            properties:
+              clientProtocol: Encrypted
+              clusteringPolicy: OSSCluster
+              evictionPolicy: NoEviction
+              persistence:
+                aofEnabled: false
+                rdbEnabled: false
+        # outputVariables:
+        #   databaseId:
+        #     type: string
+        #     fromResponse: /id
+      - operationId: OperationsStatus_Get
+        exampleFile: ..\examples\OperationsStatusGet.json
+      - operationId: Databases_ListByCluster
+        exampleFile: ..\examples\RedisEnterpriseDatabasesListByCluster.json
+      - operationId: Databases_Get
+        exampleFile: ..\examples\RedisEnterpriseDatabasesGet.json
+        # The requested operation is not currently supported
+      # - operationId: Databases_Update
+      #   exampleFile: ..\examples\RedisEnterpriseDatabasesUpdate.json
+      - operationId: Databases_RegenerateKey
+        exampleFile: ..\examples\RedisEnterpriseDatabasesRegenerateKey.json
+      - operationId: Databases_ListKeys
+        exampleFile: ..\examples\RedisEnterpriseDatabasesListKeys.json
+        # The database default is not geo-replicated.
+      # - operationId: Databases_Flush
+      #   # exampleFile: ..\examples\RedisEnterpriseDatabasesFlush.json
+      #   parameters:
+      #     parameters:
+      #       ids:
+      #         - $(databaseId)
+      # - operationId: Databases_Export
+      #   exampleFile: ..\examples\RedisEnterpriseDatabasesExport.json
+      # - operationId: Databases_Import
+      #   exampleFile: ..\examples\RedisEnterpriseDatabasesImport.json
+      # The database default is not geo-replicated. 
+      # - operationId: Databases_ForceUnlink
+      #   # exampleFile: ..\examples\RedisEnterpriseDatabasesForceUnlink.json
+      #   parameters:
+      #     parameters:
+      #       ids:
+      #         - $(databaseId)
+      - operationId: Databases_Delete
+        exampleFile: ..\examples\RedisEnterpriseDatabasesDelete.json
+
+# pass: 200 -> 201
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\RedisEnterpriseListPrivateEndpointConnections.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+      - operationId: PrivateEndpointConnections_Put
+        # exampleFile: ..\examples\RedisEnterprisePutPrivateEndpointConnection.json
+        parameters:
+          properties:
+            properties:
+              privateLinkServiceConnectionState:
+                description: Auto-Approved
+                status: Rejected
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\RedisEnterpriseGetPrivateEndpointConnection.json
+      - operationId: PrivateLinkResources_ListByCluster
+        exampleFile: ..\examples\RedisEnterpriseListPrivateLinkResources.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\RedisEnterpriseDeletePrivateEndpointConnection.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.Cache/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+cleanUpSteps:
+      - operationId: RedisEnterprise_Delete
+        exampleFile: ..\examples\RedisEnterpriseDelete.json

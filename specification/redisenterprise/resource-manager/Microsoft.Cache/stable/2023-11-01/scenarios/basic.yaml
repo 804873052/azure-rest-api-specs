@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  clusterName:
+    type: string
+    prefix: clustern
+  databaseName:
+    type: string
+    prefix: database
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: RedisEnterprise_Create
+        exampleFile: ..\examples\RedisEnterpriseCreate.json
+      - operationId: RedisEnterprise_List
+        exampleFile: ..\examples\RedisEnterpriseList.json
+      - operationId: RedisEnterprise_ListByResourceGroup
+        exampleFile: ..\examples\RedisEnterpriseListByResourceGroup.json
+      - operationId: RedisEnterprise_Get
+        exampleFile: ..\examples\RedisEnterpriseGet.json
+      - operationId: RedisEnterprise_Update
+        exampleFile: ..\examples\RedisEnterpriseUpdate.json
+      - operationId: Databases_Create
+        exampleFile: ..\examples\RedisEnterpriseDatabasesCreate.json
+      - operationId: Databases_ListByCluster
+        exampleFile: ..\examples\RedisEnterpriseDatabasesListByCluster.json
+      - operationId: Databases_Get
+        exampleFile: ..\examples\RedisEnterpriseDatabasesGet.json
+      - operationId: Databases_Update
+        exampleFile: ..\examples\RedisEnterpriseDatabasesUpdate.json
+      - operationId: Databases_ForceUnlink
+        exampleFile: ..\examples\RedisEnterpriseDatabasesForceUnlink.json
+      - operationId: Databases_RegenerateKey
+        exampleFile: ..\examples\RedisEnterpriseDatabasesRegenerateKey.json
+      - operationId: Databases_Flush
+        exampleFile: ..\examples\RedisEnterpriseDatabasesFlush.json
+      - operationId: Databases_Export
+        exampleFile: ..\examples\RedisEnterpriseDatabasesExport.json
+      - operationId: Databases_Import
+        exampleFile: ..\examples\RedisEnterpriseDatabasesImport.json
+      - operationId: Databases_ListKeys
+        exampleFile: ..\examples\RedisEnterpriseDatabasesListKeys.json
+      - operationId: PrivateEndpointConnections_Put
+        exampleFile: ..\examples\RedisEnterprisePutPrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\RedisEnterpriseListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\RedisEnterpriseGetPrivateEndpointConnection.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+      - operationId: OperationsStatus_Get
+        variables:
+          operationId:
+            type: string
+            prefix: operatio
+        exampleFile: ..\examples\OperationsStatusGet.json
+      - operationId: PrivateLinkResources_ListByCluster
+        exampleFile: ..\examples\RedisEnterpriseListPrivateLinkResources.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\RedisEnterpriseDeletePrivateEndpointConnection.json
+      - operationId: Databases_Delete
+        exampleFile: ..\examples\RedisEnterpriseDatabasesDelete.json
+      - operationId: RedisEnterprise_Delete
+        exampleFile: ..\examples\RedisEnterpriseDelete.json
