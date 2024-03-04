@@ -1,0 +1,93 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  namespaceName:
+    type: string
+    prefix: namespac
+  notificationHubName:
+    type: string
+    prefix: notifica
+  authorizationRuleName:
+    type: string
+    prefix: authoriz
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Namespaces_CreateOrUpdate
+        exampleFile: ..\examples\Namespaces\CreateOrUpdate.json
+      - operationId: Namespaces_ListAll
+        exampleFile: ..\examples\Namespaces\ListBySubscription.json
+      - operationId: Namespaces_List
+        exampleFile: ..\examples\Namespaces\ListByResourceGroup.json
+      - operationId: Namespaces_Get
+        exampleFile: ..\examples\Namespaces\Get.json
+      - operationId: Namespaces_ListAuthorizationRules
+        exampleFile: ..\examples\Namespaces\AuthorizationRuleList.json
+      - operationId: Namespaces_Update
+        exampleFile: ..\examples\Namespaces\Update.json
+      - operationId: Namespaces_CheckAvailability
+        exampleFile: ..\examples\Namespaces\CheckAvailability.json
+      - operationId: Namespaces_GetPnsCredentials
+        exampleFile: ..\examples\Namespaces\PnsCredentialsGet.json
+      - operationId: NotificationHubs_CreateOrUpdate
+        exampleFile: ..\examples\NotificationHubs\CreateOrUpdate.json
+      - operationId: NotificationHubs_List
+        exampleFile: ..\examples\NotificationHubs\List.json
+      - operationId: NotificationHubs_Get
+        exampleFile: ..\examples\NotificationHubs\Get.json
+      - operationId: NotificationHubs_ListAuthorizationRules
+        exampleFile: ..\examples\NotificationHubs\AuthorizationRuleList.json
+      - operationId: NotificationHubs_Update
+        exampleFile: ..\examples\NotificationHubs\Update.json
+      - operationId: NotificationHubs_GetPnsCredentials
+        exampleFile: ..\examples\NotificationHubs\PnsCredentialsGet.json
+      - operationId: NotificationHubs_DebugSend
+        exampleFile: ..\examples\NotificationHubs\DebugSend.json
+      - operationId: NotificationHubs_CheckNotificationHubAvailability
+        exampleFile: ..\examples\NotificationHubs\CheckAvailability.json
+      - operationId: Namespaces_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\Namespaces\AuthorizationRuleCreateOrUpdate.json
+      - operationId: Namespaces_GetAuthorizationRule
+        exampleFile: ..\examples\Namespaces\AuthorizationRuleGet.json
+      - operationId: Namespaces_ListKeys
+        exampleFile: ..\examples\Namespaces\AuthorizationRuleListKeys.json
+      - operationId: Namespaces_RegenerateKeys
+        exampleFile: ..\examples\Namespaces\AuthorizationRuleRegenerateKey.json
+      - operationId: NotificationHubs_CreateOrUpdateAuthorizationRule
+        exampleFile: ..\examples\NotificationHubs\AuthorizationRuleCreateOrUpdate.json
+      - operationId: NotificationHubs_GetAuthorizationRule
+        exampleFile: ..\examples\NotificationHubs\AuthorizationRuleGet.json
+      - operationId: NotificationHubs_ListKeys
+        exampleFile: ..\examples\NotificationHubs\AuthorizationRuleListKeys.json
+      - operationId: NotificationHubs_RegenerateKeys
+        exampleFile: ..\examples\NotificationHubs\AuthorizationRuleRegenerateKey.json
+      - operationId: PrivateEndpointConnections_Update
+        exampleFile: ..\examples\Namespaces\PrivateEndpointConnectionUpdate.json
+      - operationId: PrivateEndpointConnections_List
+        exampleFile: ..\examples\Namespaces\PrivateEndpointConnectionList.json
+      - operationId: PrivateEndpointConnections_ListGroupIds
+        exampleFile: ..\examples\Namespaces\PrivateLinkResourceList.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\Namespaces\PrivateEndpointConnectionGet.json
+      - operationId: PrivateEndpointConnections_GetGroupId
+        variables:
+          subResourceName:
+            type: string
+            prefix: subresou
+        exampleFile: ..\examples\Namespaces\PrivateLinkResourceGet.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\NHOperationsList.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\Namespaces\PrivateEndpointConnectionDelete.json
+      - operationId: NotificationHubs_DeleteAuthorizationRule
+        exampleFile: ..\examples\NotificationHubs\AuthorizationRuleDelete.json
+      - operationId: Namespaces_DeleteAuthorizationRule
+        exampleFile: ..\examples\Namespaces\AuthorizationRuleDelete.json
+      - operationId: NotificationHubs_Delete
+        exampleFile: ..\examples\NotificationHubs\Delete.json
+      - operationId: Namespaces_Delete
+        exampleFile: ..\examples\Namespaces\Delete.json
