@@ -1,0 +1,253 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  serviceName:
+    type: string
+    prefix: servicen
+  workspaceName:
+    type: string
+    prefix: workspac
+  apiName:
+    type: string
+    prefix: apiname
+  versionName:
+    type: string
+    prefix: versionn
+  definitionName:
+    type: string
+    prefix: definiti
+  metadataSchemaName:
+    type: string
+    prefix: metadata
+  deploymentName:
+    type: string
+    prefix: deployme
+  environmentName:
+    type: string
+    prefix: environm
+
+  environmentId:
+    type: string
+  definitionId:
+    type: string
+
+
+prepareSteps:
+      - operationId: Services_CreateOrUpdate
+        # exampleFile: ..\examples\Services_CreateOrUpdate.json
+        parameters:
+          resource:
+            location: $(location)
+            identity:
+              type: SystemAssigned
+      - operationId: Workspaces_CreateOrUpdate
+        # exampleFile: ..\examples\Workspaces_CreateOrUpdate.json
+        parameters:
+          # resource:
+          parameters:
+            properties:
+              title: default
+      - operationId: Apis_CreateOrUpdate
+        # exampleFile: ..\examples\Apis_CreateOrUpdate.json
+        parameters:
+          resource:
+            properties:
+              title: Echo API
+              description: A simple HTTP request/response service.
+              lifecycleStage: design
+              kind: rest
+              termsOfService:
+                url: https://contoso.com/terms-of-service
+              license:
+                url: https://contoso.com/license
+              externalDocumentation:
+                - title: Onboarding docs
+                  url: https://docs.contoso.com
+      - operationId: ApiVersions_CreateOrUpdate
+        # exampleFile: ..\examples\ApiVersions_CreateOrUpdate.json
+        parameters:
+          resource:
+            properties:
+              title: "2023-01-01"
+              lifecycleStage: production
+
+      - operationId: ApiDefinitions_CreateOrUpdate
+        # exampleFile: ..\examples\ApiDefinitions_CreateOrUpdate.json
+        parameters:
+          resource:
+            properties:
+              title: OpenAPI
+              description: Default spec
+        # outputVariables:
+        #   definitionId:
+        #     type: string
+        #     fromResponse: /id
+
+      - operationId: Environments_CreateOrUpdate
+        # exampleFile: ..\examples\Environments_CreateOrUpdate.json
+        parameters:
+          resource:
+            properties:
+              title: Contoso Europe Azure API Management
+              description: The primary Azure API Management service for the European division of Contoso.
+              kind: production
+              server: 
+                type: Azure API Management
+                managementPortalUri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-resources/providers/Microsoft.ApiManagement/service/contoso
+              onboarding: 
+                instructions: Sign in or sign up in the specified developer portal to request API access. You must complete the internal privacy training for your account to be approved.
+                developerPortalUri:
+                  - https://developer.contoso.com
+        # outputVariables:
+        #   environmentId:
+        #     type: string
+        #     fromResponse: /id
+
+scenarios:
+  - scenario: Services
+    description: Microsoft.ApiCenter/services/{serviceName}
+    steps:
+        # 404 Not Found
+      # - operationId: Services_ListBySubscription
+      #   exampleFile: ..\examples\Services_ListBySubscription.json
+      - operationId: Services_ListByResourceGroup
+        exampleFile: ..\examples\Services_ListByResourceGroup.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\Services_Get.json
+      - operationId: Services_Update
+        exampleFile: ..\examples\Services_Update.json
+
+# pass
+  - scenario: MetadataSchemas
+    description: Microsoft.ApiCenter/services/{serviceName}/metadataSchemas/{metadataSchemaName}
+    steps:
+      - operationId: MetadataSchemas_CreateOrUpdate
+        # exampleFile: ..\examples\MetadataSchemas_CreateOrUpdate.json
+        parameters:
+          resource:
+            properties:
+              assignedTo:
+                - entity: api
+                  deprecated: true
+              schema: "{\"type\":\"string\", \"title\":\"Author\", pattern: \"^[a-zA-Z]+$\"}"
+      - operationId: MetadataSchemas_Head
+        exampleFile: ..\examples\MetadataSchemas_Head.json
+      - operationId: MetadataSchemas_Get
+        exampleFile: ..\examples\MetadataSchemas_Get.json
+      - operationId: MetadataSchemas_List
+        exampleFile: ..\examples\MetadataSchemas_List.json
+      - operationId: Services_ExportMetadataSchema
+        exampleFile: ..\examples\Services_ExportMetadataSchema.json
+      - operationId: MetadataSchemas_Delete
+        exampleFile: ..\examples\MetadataSchemas_Delete.json
+
+# pass
+  - scenario: Workspaces
+    description: Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}
+    steps:
+      - operationId: Workspaces_Head
+        exampleFile: ..\examples\Workspaces_Head.json
+      - operationId: Workspaces_List
+        exampleFile: ..\examples\Workspaces_List.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\Workspaces_Get.json
+
+# pass
+  - scenario: Environments
+    description: Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/environments/{environmentName}
+    steps:
+      - operationId: Environments_Head
+        exampleFile: ..\examples\Environments_Head.json
+      - operationId: Environments_Get
+        exampleFile: ..\examples\Environments_Get.json
+      - operationId: Environments_List
+        exampleFile: ..\examples\Environments_List.json
+
+
+# pass
+  - scenario: Apis
+    description: Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}
+    steps:
+      - operationId: Apis_Head
+        exampleFile: ..\examples\Apis_Head.json
+      - operationId: Apis_List
+        exampleFile: ..\examples\Apis_List.json
+      - operationId: Apis_Get
+        exampleFile: ..\examples\Apis_Get.json
+
+# pass
+  - scenario: ApiVersions
+    description: Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}
+    steps:
+      - operationId: ApiVersions_Head
+        exampleFile: ..\examples\ApiVersions_Head.json
+      - operationId: ApiVersions_List
+        exampleFile: ..\examples\ApiVersions_List.json
+      - operationId: ApiVersions_Get
+        exampleFile: ..\examples\ApiVersions_Get.json
+
+  - scenario: ApiDefinitions
+    description: Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}
+    steps:
+      - operationId: ApiDefinitions_Head
+        exampleFile: ..\examples\ApiDefinitions_Head.json
+      - operationId: ApiDefinitions_List
+        exampleFile: ..\examples\ApiDefinitions_List.json
+      - operationId: ApiDefinitions_Get
+        exampleFile: ..\examples\ApiDefinitions_Get.json
+      # The API definition doesn't have a specification document
+      # - operationId: ApiDefinitions_ExportSpecification
+      #   exampleFile: ..\examples\ApiDefinitions_ExportSpecification.json
+      # 404
+      # - operationId: ApiDefinitions_ImportSpecification 
+      #   exampleFile: ..\examples\ApiDefinitions_ImportSpecification.json
+
+# fail: 404 Not Found
+  # - scenario: Deployments
+  #   description: Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/deployments/{deploymentName}
+  #   steps:
+  #     - operationId: Deployments_CreateOrUpdate
+  #       # exampleFile: ..\examples\Deployments_CreateOrUpdate.json
+  #       parameters:
+  #         resource:
+  #           properties:
+  #             title: Production deployment
+  #             description: Public cloud production deployment.
+  #             environmentId: $(environmentId)
+  #             definitionId: $(definitionId)
+  #             state: active
+  #             server: 
+  #               runtimeUri:
+  #                 - https://api.contoso.com
+  #     - operationId: Deployments_Head
+  #       exampleFile: ..\examples\Deployments_Head.json
+  #     - operationId: Deployments_List
+  #       exampleFile: ..\examples\Deployments_List.json
+  #     - operationId: Deployments_Get
+  #       exampleFile: ..\examples\Deployments_Get.json
+  #     - operationId: Deployments_Delete
+  #       exampleFile: ..\examples\Deployments_Delete.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.ApiCenter/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+cleanUpSteps:
+      - operationId: Environments_Delete
+        exampleFile: ..\examples\Environments_Delete.json
+      - operationId: ApiDefinitions_Delete
+        exampleFile: ..\examples\ApiDefinitions_Delete.json
+      - operationId: ApiVersions_Delete
+        exampleFile: ..\examples\ApiVersions_Delete.json
+      - operationId: Apis_Delete
+        exampleFile: ..\examples\Apis_Delete.json
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\Workspaces_Delete.json
+      - operationId: Services_Delete
+        exampleFile: ..\examples\Services_Delete.json

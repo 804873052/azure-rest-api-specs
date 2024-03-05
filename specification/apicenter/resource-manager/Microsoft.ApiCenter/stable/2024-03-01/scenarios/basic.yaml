@@ -1,0 +1,122 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  serviceName:
+    type: string
+    prefix: servicen
+  workspaceName:
+    type: string
+    prefix: workspac
+  apiName:
+    type: string
+    prefix: apiname
+  versionName:
+    type: string
+    prefix: versionn
+  definitionName:
+    type: string
+    prefix: definiti
+  metadataSchemaName:
+    type: string
+    prefix: metadata
+  deploymentName:
+    type: string
+    prefix: deployme
+  environmentName:
+    type: string
+    prefix: environm
+    
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Services_CreateOrUpdate
+        exampleFile: ..\examples\Services_CreateOrUpdate.json
+      - operationId: Services_ListBySubscription
+        exampleFile: ..\examples\Services_ListBySubscription.json
+      - operationId: Services_ListByResourceGroup
+        exampleFile: ..\examples\Services_ListByResourceGroup.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\Services_Get.json
+      - operationId: Services_Update
+        exampleFile: ..\examples\Services_Update.json
+      - operationId: Services_ExportMetadataSchema
+        exampleFile: ..\examples\Services_ExportMetadataSchema.json
+      - operationId: Workspaces_CreateOrUpdate
+        exampleFile: ..\examples\Workspaces_CreateOrUpdate.json
+      - operationId: Workspaces_Head
+        exampleFile: ..\examples\Workspaces_Head.json
+      - operationId: Workspaces_List
+        exampleFile: ..\examples\Workspaces_List.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\Workspaces_Get.json
+      - operationId: Apis_CreateOrUpdate
+        exampleFile: ..\examples\Apis_CreateOrUpdate.json
+      - operationId: Apis_Head
+        exampleFile: ..\examples\Apis_Head.json
+      - operationId: Apis_List
+        exampleFile: ..\examples\Apis_List.json
+      - operationId: Apis_Get
+        exampleFile: ..\examples\Apis_Get.json
+      - operationId: ApiVersions_CreateOrUpdate
+        exampleFile: ..\examples\ApiVersions_CreateOrUpdate.json
+      - operationId: ApiVersions_Head
+        exampleFile: ..\examples\ApiVersions_Head.json
+      - operationId: ApiVersions_List
+        exampleFile: ..\examples\ApiVersions_List.json
+      - operationId: ApiVersions_Get
+        exampleFile: ..\examples\ApiVersions_Get.json
+      - operationId: ApiDefinitions_CreateOrUpdate
+        exampleFile: ..\examples\ApiDefinitions_CreateOrUpdate.json
+      - operationId: ApiDefinitions_Head
+        exampleFile: ..\examples\ApiDefinitions_Head.json
+      - operationId: ApiDefinitions_List
+        exampleFile: ..\examples\ApiDefinitions_List.json
+      - operationId: ApiDefinitions_Get
+        exampleFile: ..\examples\ApiDefinitions_Get.json
+      - operationId: ApiDefinitions_ExportSpecification
+        exampleFile: ..\examples\ApiDefinitions_ExportSpecification.json
+      - operationId: ApiDefinitions_ImportSpecification
+        exampleFile: ..\examples\ApiDefinitions_ImportSpecification.json
+      - operationId: Deployments_CreateOrUpdate
+        exampleFile: ..\examples\Deployments_CreateOrUpdate.json
+      - operationId: Deployments_Head
+        exampleFile: ..\examples\Deployments_Head.json
+      - operationId: Deployments_List
+        exampleFile: ..\examples\Deployments_List.json
+      - operationId: Deployments_Get
+        exampleFile: ..\examples\Deployments_Get.json
+      - operationId: MetadataSchemas_CreateOrUpdate
+        exampleFile: ..\examples\MetadataSchemas_CreateOrUpdate.json
+      - operationId: MetadataSchemas_Head
+        exampleFile: ..\examples\MetadataSchemas_Head.json
+      - operationId: MetadataSchemas_Get
+        exampleFile: ..\examples\MetadataSchemas_Get.json
+      - operationId: MetadataSchemas_List
+        exampleFile: ..\examples\MetadataSchemas_List.json
+      - operationId: Environments_CreateOrUpdate
+        exampleFile: ..\examples\Environments_CreateOrUpdate.json
+      - operationId: Environments_Head
+        exampleFile: ..\examples\Environments_Head.json
+      - operationId: Environments_Get
+        exampleFile: ..\examples\Environments_Get.json
+      - operationId: Environments_List
+        exampleFile: ..\examples\Environments_List.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: Environments_Delete
+        exampleFile: ..\examples\Environments_Delete.json
+      - operationId: MetadataSchemas_Delete
+        exampleFile: ..\examples\MetadataSchemas_Delete.json
+      - operationId: Deployments_Delete
+        exampleFile: ..\examples\Deployments_Delete.json
+      - operationId: ApiDefinitions_Delete
+        exampleFile: ..\examples\ApiDefinitions_Delete.json
+      - operationId: ApiVersions_Delete
+        exampleFile: ..\examples\ApiVersions_Delete.json
+      - operationId: Apis_Delete
+        exampleFile: ..\examples\Apis_Delete.json
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\Workspaces_Delete.json
+      - operationId: Services_Delete
+        exampleFile: ..\examples\Services_Delete.json
