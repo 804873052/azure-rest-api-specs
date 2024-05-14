@@ -1,0 +1,108 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  supportTicketName:
+    type: string
+    prefix: supportt
+  fileWorkspaceName:
+    type: string
+    prefix: filework
+  fileName:
+    type: string
+    prefix: filename
+  communicationName:
+    type: string
+    prefix: communic
+  serviceName:
+    type: string
+    prefix: servicen
+  chatTranscriptName:
+    type: string
+    prefix: chattran
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: SupportTicketsNoSubscription_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailability.json
+      - operationId: CommunicationsNoSubscription_CheckNameAvailability
+        exampleFile: >-
+          ..\examples\CheckNameAvailabilityForNoSubscriptionSupportTicketCommunication.json
+      - operationId: SupportTickets_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailabilityWithSubscription.json
+      - operationId: Communications_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailabilityForSupportTicketCommunication.json
+      - operationId: SupportTicketsNoSubscription_Create
+        exampleFile: ..\examples\CreateBillingSupportTicket.json
+      - operationId: SupportTicketsNoSubscription_List
+        exampleFile: ..\examples\ListSupportTickets.json
+      - operationId: SupportTicketsNoSubscription_Get
+        exampleFile: ..\examples\GetSupportTicketDetails.json
+      - operationId: SupportTicketsNoSubscription_Update
+        exampleFile: ..\examples\UpdateSeverityOfSupportTicket.json
+      - operationId: SupportTickets_Create
+        exampleFile: ..\examples\CreateBillingSupportTicketForSubscription.json
+      - operationId: SupportTickets_List
+        exampleFile: ..\examples\ListSupportTicketsBySubscription.json
+      - operationId: SupportTickets_Get
+        exampleFile: ..\examples\GetSubscriptionSupportTicketDetails.json
+      - operationId: SupportTickets_Update
+        exampleFile: ..\examples\UpdateSeverityOfSupportTicketForSubscription.json
+      - operationId: FileWorkspaces_Create
+        exampleFile: ..\examples\CreateFileWorkspaceForSubscription.json
+      - operationId: FileWorkspaces_Get
+        exampleFile: ..\examples\GetFileWorkspaceDetailsForSubscription.json
+      - operationId: FileWorkspacesNoSubscription_Create
+        exampleFile: ..\examples\CreateFileWorkspace.json
+      - operationId: FileWorkspacesNoSubscription_Get
+        exampleFile: ..\examples\GetFileWorkspaceDetails.json
+      - operationId: Files_Create
+        exampleFile: ..\examples\CreateFileForSubscription.json
+      - operationId: Files_List
+        exampleFile: ..\examples\ListFilesForSubscriptionUnderFileWorkspace.json
+      - operationId: Files_Get
+        exampleFile: ..\examples\GetFileDetailsForSubscription.json
+      - operationId: Files_Upload
+        exampleFile: ..\examples\UploadFileForSubscription.json
+      - operationId: FilesNoSubscription_Create
+        exampleFile: ..\examples\CreateFile.json
+      - operationId: FilesNoSubscription_List
+        exampleFile: ..\examples\ListFilesUnderFileWorkspace.json
+      - operationId: FilesNoSubscription_Get
+        exampleFile: ..\examples\GetFileDetails.json
+      - operationId: FilesNoSubscription_Upload
+        exampleFile: ..\examples\UploadFile.json
+      - operationId: CommunicationsNoSubscription_Create
+        exampleFile: ..\examples\CreateNoSubscriptionSupportTicketCommunication.json
+      - operationId: CommunicationsNoSubscription_List
+        exampleFile: ..\examples\ListCommunicationsForSupportTicket.json
+      - operationId: CommunicationsNoSubscription_Get
+        exampleFile: ..\examples\GetCommunicationDetailsForSupportTicket.json
+      - operationId: Communications_Create
+        exampleFile: ..\examples\CreateSupportTicketCommunication.json
+      - operationId: Communications_List
+        exampleFile: ..\examples\ListCommunicationsForSubscriptionSupportTicket.json
+      - operationId: Communications_Get
+        exampleFile: ..\examples\GetCommunicationDetailsForSubscriptionSupportTicket.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\ListOperations.json
+      - operationId: Services_List
+        exampleFile: ..\examples\ListServices.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\GetService.json
+      - operationId: ProblemClassifications_List
+        exampleFile: ..\examples\ListProblemClassifications.json
+      - operationId: ProblemClassifications_Get
+        variables:
+          problemClassificationName:
+            type: string
+            prefix: problemc
+        exampleFile: ..\examples\GetProblemClassification.json
+      - operationId: ChatTranscriptsNoSubscription_List
+        exampleFile: ..\examples\ListChatTranscriptsForSupportTicket.json
+      - operationId: ChatTranscriptsNoSubscription_Get
+        exampleFile: ..\examples\GetchatTranscriptDetailsForSupportTicket.json
+      - operationId: ChatTranscripts_List
+        exampleFile: ..\examples\ListChatTranscriptsForSubscriptionSupportTicket.json
+      - operationId: ChatTranscripts_Get
+        exampleFile: ..\examples\GetchatTranscriptDetailsForSubscriptionSupportTicket.json

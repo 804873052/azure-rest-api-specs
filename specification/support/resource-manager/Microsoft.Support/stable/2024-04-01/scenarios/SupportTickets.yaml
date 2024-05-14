@@ -1,0 +1,109 @@
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  supportTicketName:
+    type: string
+    prefix: go_support_test
+  fileWorkspaceName:
+    type: string
+    prefix: filework
+  fileName: gotest.txt
+    # type: string
+    # prefix: filename
+  communicationName: communic
+    # type: string
+    # prefix: communic
+  chatTranscriptName: chattran
+    # type: string
+    # prefix: chattran
+
+# pass
+scenarios:
+  - scenario: SupportTickets
+    description: Microsoft.Support/supportTickets/{supportTicketName}
+    steps:
+      - operationId: SupportTickets_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailabilityWithSubscription.json
+      - operationId: SupportTickets_Create
+        # exampleFile: ..\examples\CreateBillingSupportTicketForSubscription.json
+        parameters: 
+          createSupportTicketParameters:
+            properties:
+              title: go sdk live test, please close
+              description: go sdk live test, please close
+              serviceId: /providers/microsoft.support/services/376afb21-6bd3-91aa-fd58-39fd84d8c201
+              problemClassificationId: /providers/microsoft.support/services/376afb21-6bd3-91aa-fd58-39fd84d8c201/problemclassifications/03014459-4572-f8f0-32b0-88833f234f25
+              severity: Minimal
+              advancedDiagnosticConsent: No
+              contactDetails: 
+                firstName: test
+                lastName: test
+                preferredContactMethod: email
+                primaryEmailAddress: test@microsoft.com
+                preferredTimeZone: Dateline Standard Time
+                country: USA
+                preferredSupportLanguage: en-us
+
+      - operationId: SupportTickets_List
+        exampleFile: ..\examples\ListSupportTicketsBySubscription.json
+      - operationId: SupportTickets_Get
+        exampleFile: ..\examples\GetSubscriptionSupportTicketDetails.json
+      - operationId: SupportTickets_Update
+        # exampleFile: ..\examples\UpdateSeverityOfSupportTicketForSubscription.json
+        parameters:
+          updateSupportTicket:
+              contactDetails:
+                firstName: update_test
+
+  # - scenario: Communications
+  #   description: Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}
+  #   steps:
+      - operationId: Communications_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailabilityForSupportTicketCommunication.json
+      - operationId: Communications_Create
+        exampleFile: ..\examples\CreateSupportTicketCommunication.json
+      - operationId: Communications_List
+        exampleFile: ..\examples\ListCommunicationsForSubscriptionSupportTicket.json
+      - operationId: Communications_Get
+        exampleFile: ..\examples\GetCommunicationDetailsForSubscriptionSupportTicket.json
+
+  # - scenario: FileWorkspaces
+  #   description: Microsoft.Support/fileWorkspaces/{fileWorkspaceName}
+  #   steps:
+      - operationId: FileWorkspaces_Create
+        exampleFile: ..\examples\CreateFileWorkspaceForSubscription.json
+      - operationId: FileWorkspaces_Get
+        exampleFile: ..\examples\GetFileWorkspaceDetailsForSubscription.json
+
+  # - scenario: Files
+  #   description: Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}
+  #   steps:
+      - operationId: Files_Create
+        # exampleFile: ..\examples\CreateFileForSubscription.json
+        parameters:
+          createFileParameters:
+            properties:
+              chunkSize: 4
+              fileSize: 4
+              numberOfChunks: 1
+      - operationId: Files_List
+        exampleFile: ..\examples\ListFilesForSubscriptionUnderFileWorkspace.json
+      - operationId: Files_Get
+        exampleFile: ..\examples\GetFileDetailsForSubscription.json
+      - operationId: Files_Upload
+        # exampleFile: ..\examples\UploadFileForSubscription.json
+        parameters:
+          uploadFile:
+            content: VGVzdA==
+
+  # - scenario: ChatTranscripts
+  #   description: Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}
+  #   steps:
+      - operationId: ChatTranscripts_List
+        exampleFile: ..\examples\ListChatTranscriptsForSubscriptionSupportTicket.json
+
+        # We could not locate a chat transcript for this support request
+      - operationId: ChatTranscripts_Get
+        exampleFile: ..\examples\GetchatTranscriptDetailsForSubscriptionSupportTicket.json
