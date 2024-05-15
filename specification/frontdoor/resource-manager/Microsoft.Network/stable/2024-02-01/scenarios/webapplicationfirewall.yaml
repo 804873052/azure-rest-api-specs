@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  policyName:
+    type: string
+    prefix: policyna
+
+# pass
+scenarios:
+  - scenario: Policies
+    description: Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}
+    steps:
+      - operationId: Policies_CreateOrUpdate
+        exampleFile: ..\examples\WafPolicyCreateOrUpdate.json
+      - operationId: Policies_ListBySubscription
+        exampleFile: ..\examples\WafListPoliciesUnderSubscription.json
+      - operationId: Policies_Get
+        exampleFile: ..\examples\WafPolicyGet.json
+      - operationId: Policies_List
+        exampleFile: ..\examples\WafListPolicies.json
+      - operationId: Policies_Update
+        exampleFile: ..\examples\WafPolicyPatch.json
+      - operationId: Policies_Delete
+        exampleFile: ..\examples\WafPolicyDelete.json
+
+  - scenario: ManagedRuleSets
+    description: Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets
+    steps:
+      - operationId: ManagedRuleSets_List
+        exampleFile: ..\examples\WafListManagedRuleSets.json

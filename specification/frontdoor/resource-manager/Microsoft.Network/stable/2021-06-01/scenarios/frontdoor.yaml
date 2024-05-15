@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  frontDoorName:
+    type: string
+    prefix: frontdoo
+
+prepareSteps:
+      - operationId: FrontDoors_CreateOrUpdate # Frontdoor location must be global
+        exampleFile: ..\examples\FrontdoorCreate.json
+
+# fail
+scenarios:
+  - scenario: FrontDoors
+    description: Microsoft.Network/frontDoors/{frontDoorName}
+    steps:
+      - operationId: FrontDoorNameAvailability_Check
+        exampleFile: ..\examples\CheckFrontdoorNameAvailability.json
+      - operationId: FrontDoorNameAvailabilityWithSubscription_Check
+        exampleFile: ..\examples\CheckFrontdoorNameAvailabilityWithSubscription.json
+
+
+      - operationId: FrontDoors_List
+        exampleFile: ..\examples\FrontdoorListAll.json
+      - operationId: FrontDoors_Get
+        exampleFile: ..\examples\FrontdoorGet.json
+      - operationId: FrontDoors_ListByResourceGroup
+        exampleFile: ..\examples\FrontdoorList.json
+
+      - operationId: FrontDoors_ValidateCustomDomain
+        exampleFile: ..\examples\FrontdoorValidateCustomDomain.json
+
+  - scenario: FrontendEndpoints
+    description: Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}
+    steps:
+      - operationId: FrontendEndpoints_ListByFrontDoor
+        exampleFile: ..\examples\FrontdoorFrontendEndpointList.json
+      - operationId: FrontendEndpoints_Get
+        exampleFile: ..\examples\FrontdoorFrontendEndpointGet.json
+      - operationId: FrontendEndpoints_DisableHttps
+        exampleFile: ..\examples\FrontdoorDisableHttps.json
+      - operationId: FrontendEndpoints_EnableHttps
+        exampleFile: ..\examples\FrontdoorEnableHttps.json
+
+  - scenario: Endpoints
+    description: Microsoft.Network/frontDoors/{frontDoorName}/purge
+    steps:
+      - operationId: Endpoints_PurgeContent
+        exampleFile: ..\examples\FrontdoorPurgeContent.json
+
+  - scenario: RulesEngines
+    description: Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}
+    steps:
+      - operationId: RulesEngines_CreateOrUpdate
+        exampleFile: ..\examples\FrontdoorRulesEngineCreate.json
+      - operationId: RulesEngines_ListByFrontDoor
+        exampleFile: ..\examples\FrontdoorRulesEngineList.json
+      - operationId: RulesEngines_Get
+        exampleFile: ..\examples\FrontdoorRulesEngineGet.json
+      - operationId: RulesEngines_Delete
+        exampleFile: ..\examples\FrontdoorRulesEngineDelete.json
+
+cleanUpSteps:
+      - operationId: FrontDoors_Delete
+        exampleFile: ..\examples\FrontdoorDelete.json

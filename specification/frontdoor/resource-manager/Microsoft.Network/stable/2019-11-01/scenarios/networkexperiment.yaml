@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  profileName:
+    type: string
+    prefix: profilen
+  experimentName:
+    type: string
+    prefix: experime
+
+prepareSteps:
+       # The Internet Analyzer profile did not pass validation checks.
+      - operationId: NetworkExperimentProfiles_CreateOrUpdate
+        exampleFile: ..\examples\NetworkExperimentCreateProfile.json
+
+scenarios:
+  - scenario: NetworkExperimentProfiles
+    description: Microsoft.Network/NetworkExperimentProfiles/{profileName}
+    steps:
+
+      - operationId: NetworkExperimentProfiles_List
+        exampleFile: ..\examples\NetworkExperimentListProfiles.json
+      - operationId: NetworkExperimentProfiles_Get
+        exampleFile: ..\examples\NetworkExperimentGetProfile.json
+      - operationId: NetworkExperimentProfiles_ListByResourceGroup
+        exampleFile: ..\examples\NetworkExperimentListProfiles.json
+      - operationId: NetworkExperimentProfiles_Update
+        exampleFile: ..\examples\NetworkExperimentUpdateProfile.json
+
+
+  - scenario: PreconfiguredEndpoints
+    description: Microsoft.Network/NetworkExperimentProfiles/{profileName}/PreconfiguredEndpoints
+    steps:
+      - operationId: PreconfiguredEndpoints_List
+        exampleFile: ..\examples\NetworkExperimentGetPreconfiguredEndpoints.json
+
+  - scenario: Experiments
+    description: Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}
+    steps:
+      - operationId: Experiments_CreateOrUpdate
+        exampleFile: ..\examples\NetworkExperimentCreateExperiment.json
+      - operationId: Experiments_ListByProfile
+        exampleFile: ..\examples\NetworkExperimentListExperiments.json
+      - operationId: Experiments_Get
+        exampleFile: ..\examples\NetworkExperimentGetExperiment.json
+      - operationId: Experiments_Update
+        exampleFile: ..\examples\NetworkExperimentUpdateExperiment.json
+
+
+  # - scenario: Reports
+  #   description: Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/LatencyScorecard
+  #   steps:
+      - operationId: Reports_GetLatencyScorecards
+        exampleFile: ..\examples\NetworkExperimentGetLatencyScorecard.json
+      - operationId: Reports_GetTimeseries
+        exampleFile: ..\examples\NetworkExperimentGetTimeseries.json
+
+      - operationId: Experiments_Delete
+        exampleFile: ..\examples\NetworkExperimentDeleteExperiment.json
+
+
+cleanUpSteps:
+      - operationId: NetworkExperimentProfiles_Delete
+        exampleFile: ..\examples\NetworkExperimentDeleteProfile.json

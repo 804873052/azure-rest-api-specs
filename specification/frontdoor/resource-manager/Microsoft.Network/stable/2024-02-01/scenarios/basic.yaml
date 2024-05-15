@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  frontDoorName:
+    type: string
+    prefix: frontdoo
+  profileName:
+    type: string
+    prefix: profilen
+  experimentName:
+    type: string
+    prefix: experime
+  policyName:
+    type: string
+    prefix: policyna
+  frontendEndpointName:
+    type: string
+    prefix: frontend
+  rulesEngineName:
+    type: string
+    prefix: ruleseng
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: FrontDoors_CreateOrUpdate
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorCreate.json
+      - operationId: FrontDoors_List
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorListAll.json
+      - operationId: FrontDoors_Get
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorGet.json
+      - operationId: FrontDoors_ListByResourceGroup
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorList.json
+      - operationId: FrontDoors_ValidateCustomDomain
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorValidateCustomDomain.json
+      - operationId: NetworkExperimentProfiles_CreateOrUpdate
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentCreateProfile.json
+      - operationId: NetworkExperimentProfiles_List
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentListProfiles.json
+      - operationId: NetworkExperimentProfiles_Get
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentGetProfile.json
+      - operationId: NetworkExperimentProfiles_ListByResourceGroup
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentListProfiles.json
+      - operationId: NetworkExperimentProfiles_Update
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentUpdateProfile.json
+      - operationId: Experiments_CreateOrUpdate
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentCreateExperiment.json
+      - operationId: Experiments_ListByProfile
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentListExperiments.json
+      - operationId: Experiments_Get
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentGetExperiment.json
+      - operationId: Experiments_Update
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentUpdateExperiment.json
+      - operationId: Policies_CreateOrUpdate
+        exampleFile: ..\examples\WafPolicyCreateOrUpdate.json
+      - operationId: Policies_ListBySubscription
+        exampleFile: ..\examples\WafListPoliciesUnderSubscription.json
+      - operationId: Policies_Get
+        exampleFile: ..\examples\WafPolicyGet.json
+      - operationId: Policies_List
+        exampleFile: ..\examples\WafListPolicies.json
+      - operationId: Policies_Update
+        exampleFile: ..\examples\WafPolicyPatch.json
+      - operationId: RulesEngines_CreateOrUpdate
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorRulesEngineCreate.json
+      - operationId: RulesEngines_ListByFrontDoor
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorRulesEngineList.json
+      - operationId: RulesEngines_Get
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorRulesEngineGet.json
+      - operationId: FrontDoorNameAvailability_Check
+        exampleFile: ..\..\2021-06-01\examples\CheckFrontdoorNameAvailability.json
+      - operationId: ManagedRuleSets_List
+        exampleFile: ..\examples\WafListManagedRuleSets.json
+      - operationId: FrontDoorNameAvailabilityWithSubscription_Check
+        exampleFile: >-
+          ..\..\2021-06-01\examples\CheckFrontdoorNameAvailabilityWithSubscription.json
+      - operationId: Reports_GetLatencyScorecards
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentGetLatencyScorecard.json
+      - operationId: Reports_GetTimeseries
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentGetTimeseries.json
+      - operationId: PreconfiguredEndpoints_List
+        exampleFile: >-
+          ..\..\2019-11-01\examples\NetworkExperimentGetPreconfiguredEndpoints.json
+      - operationId: FrontendEndpoints_ListByFrontDoor
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorFrontendEndpointList.json
+      - operationId: FrontendEndpoints_Get
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorFrontendEndpointGet.json
+      - operationId: FrontendEndpoints_DisableHttps
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorDisableHttps.json
+      - operationId: FrontendEndpoints_EnableHttps
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorEnableHttps.json
+      - operationId: Endpoints_PurgeContent
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorPurgeContent.json
+      - operationId: RulesEngines_Delete
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorRulesEngineDelete.json
+      - operationId: Policies_Delete
+        exampleFile: ..\examples\WafPolicyDelete.json
+      - operationId: Experiments_Delete
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentDeleteExperiment.json
+      - operationId: NetworkExperimentProfiles_Delete
+        exampleFile: ..\..\2019-11-01\examples\NetworkExperimentDeleteProfile.json
+      - operationId: FrontDoors_Delete
+        exampleFile: ..\..\2021-06-01\examples\FrontdoorDelete.json
