@@ -15,7 +15,7 @@ variables:
   communicationName: communic
     # type: string
     # prefix: communic
-  chatTranscriptName: chattran
+  # chatTranscriptName: chattran
     # type: string
     # prefix: chattran
 
@@ -35,7 +35,7 @@ scenarios:
               description: go sdk live test, please close
               serviceId: /providers/microsoft.support/services/376afb21-6bd3-91aa-fd58-39fd84d8c201
               problemClassificationId: /providers/microsoft.support/services/376afb21-6bd3-91aa-fd58-39fd84d8c201/problemclassifications/03014459-4572-f8f0-32b0-88833f234f25
-              severity: Minimal
+              severity: minimal
               advancedDiagnosticConsent: No
               contactDetails: 
                 firstName: test
@@ -102,8 +102,18 @@ scenarios:
   #   description: Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}
   #   steps:
       - operationId: ChatTranscripts_List
-        exampleFile: ..\examples\ListChatTranscriptsForSubscriptionSupportTicket.json
+        # exampleFile: ..\examples\ListChatTranscriptsForSubscriptionSupportTicket.json
+        parameters:
+          supportTicketName: 2310200010003188
+        # outputVariables:
+        #   chatTranscriptName:
+        #     type: string
+        #     fromResponse: /value/name
 
         # We could not locate a chat transcript for this support request
-      - operationId: ChatTranscripts_Get
-        exampleFile: ..\examples\GetchatTranscriptDetailsForSubscriptionSupportTicket.json
+        # AuthorizationError
+      # - operationId: ChatTranscripts_Get
+      #   # exampleFile: ..\examples\GetchatTranscriptDetailsForSubscriptionSupportTicket.json
+      #   parameters:
+      #     supportTicketName: 2310200010003188
+      #     chatTranscriptName: $(chatTranscriptName)
