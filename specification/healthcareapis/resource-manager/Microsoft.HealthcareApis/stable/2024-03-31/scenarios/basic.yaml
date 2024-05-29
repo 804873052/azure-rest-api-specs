@@ -1,0 +1,130 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  workspaceName:
+    type: string
+    prefix: workspac
+  resourceName:
+    type: string
+    prefix: resource
+  iotConnectorName:
+    type: string
+    prefix: iotconne
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+  dicomServiceName:
+    type: string
+    prefix: dicomser
+  fhirServiceName:
+    type: string
+    prefix: fhirserv
+  fhirDestinationName:
+    type: string
+    prefix: fhirdest
+  groupName:
+    type: string
+    prefix: groupnam
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: Services_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailabilityPost.json
+      - operationId: Workspaces_CreateOrUpdate
+        exampleFile: ..\examples\workspaces\Workspaces_Create.json
+      - operationId: Workspaces_ListBySubscription
+        exampleFile: ..\examples\workspaces\Workspaces_ListBySubscription.json
+      - operationId: Workspaces_ListByResourceGroup
+        exampleFile: ..\examples\workspaces\Workspaces_ListByResourceGroup.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\workspaces\Workspaces_Get.json
+      - operationId: Workspaces_Update
+        exampleFile: ..\examples\workspaces\Workspaces_Patch.json
+      - operationId: Services_CreateOrUpdate
+        exampleFile: ..\examples\legacy\ServiceCreate.json
+      - operationId: Services_List
+        exampleFile: ..\examples\legacy\ServiceList.json
+      - operationId: Services_ListByResourceGroup
+        exampleFile: ..\examples\legacy\ServiceListByResourceGroup.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\legacy\ServiceGet.json
+      - operationId: Services_Update
+        exampleFile: ..\examples\legacy\ServicePatch.json
+      - operationId: IotConnectors_CreateOrUpdate
+        exampleFile: ..\examples\iotconnectors\iotconnector_Create.json
+      - operationId: IotConnectors_ListByWorkspace
+        exampleFile: ..\examples\iotconnectors\iotconnector_List.json
+      - operationId: IotConnectors_Get
+        exampleFile: ..\examples\iotconnectors\iotconnector_Get.json
+      - operationId: IotConnectors_Update
+        exampleFile: ..\examples\iotconnectors\iotconnector_Patch.json
+      - operationId: FhirServices_CreateOrUpdate
+        exampleFile: ..\examples\fhirservices\FhirServices_Create.json
+      - operationId: FhirServices_ListByWorkspace
+        exampleFile: ..\examples\fhirservices\FhirServices_List.json
+      - operationId: FhirServices_Get
+        exampleFile: ..\examples\fhirservices\FhirServices_Get.json
+      - operationId: FhirServices_Update
+        exampleFile: ..\examples\fhirservices\FhirServices_Patch.json
+      - operationId: DicomServices_CreateOrUpdate
+        exampleFile: ..\examples\dicomservices\DicomServices_Create.json
+      - operationId: DicomServices_ListByWorkspace
+        exampleFile: ..\examples\dicomservices\DicomServices_List.json
+      - operationId: DicomServices_Get
+        exampleFile: ..\examples\dicomservices\DicomServices_Get.json
+      - operationId: DicomServices_Update
+        exampleFile: ..\examples\dicomservices\DicomServices_Patch.json
+      - operationId: WorkspacePrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\privatelink\WorkspaceCreatePrivateEndpointConnection.json
+      - operationId: WorkspacePrivateEndpointConnections_ListByWorkspace
+        exampleFile: ..\examples\privatelink\WorkspaceListPrivateEndpointConnections.json
+      - operationId: WorkspacePrivateEndpointConnections_Get
+        exampleFile: ..\examples\privatelink\WorkspaceGetPrivateEndpointConnection.json
+      - operationId: IotConnectorFhirDestination_CreateOrUpdate
+        exampleFile: ..\examples\iotconnectors\iotconnector_fhirdestination_Create.json
+      - operationId: IotConnectorFhirDestination_Get
+        exampleFile: ..\examples\iotconnectors\iotconnector_fhirdestination_Get.json
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\legacy\ServiceCreatePrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_ListByService
+        exampleFile: ..\examples\legacy\ServiceListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\legacy\ServiceGetPrivateEndpointConnection.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+      - operationId: OperationResults_Get
+        variables:
+          locationName:
+            type: string
+            prefix: location
+          operationResultId:
+            type: string
+            prefix: operatio
+        exampleFile: ..\examples\OperationResultsGet.json
+      - operationId: PrivateLinkResources_ListByService
+        exampleFile: ..\examples\legacy\PrivateLinkResourcesListByService.json
+      - operationId: PrivateLinkResources_Get
+        exampleFile: ..\examples\legacy\PrivateLinkResourceGet.json
+      - operationId: FhirDestinations_ListByIotConnector
+        exampleFile: ..\examples\iotconnectors\iotconnector_fhirdestination_List.json
+      - operationId: WorkspacePrivateLinkResources_ListByWorkspace
+        exampleFile: ..\examples\privatelink\PrivateLinkResourcesListByWorkspace.json
+      - operationId: WorkspacePrivateLinkResources_Get
+        exampleFile: ..\examples\privatelink\WorkspacePrivateLinkResourceGet.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\legacy\ServiceDeletePrivateEndpointConnection.json
+      - operationId: IotConnectorFhirDestination_Delete
+        exampleFile: ..\examples\iotconnectors\iotconnector_fhirdestination_Delete.json
+      - operationId: WorkspacePrivateEndpointConnections_Delete
+        exampleFile: ..\examples\privatelink\WorkspaceDeletePrivateEndpointConnection.json
+      - operationId: DicomServices_Delete
+        exampleFile: ..\examples\dicomservices\DicomServices_Delete.json
+      - operationId: FhirServices_Delete
+        exampleFile: ..\examples\fhirservices\FhirServices_Delete.json
+      - operationId: IotConnectors_Delete
+        exampleFile: ..\examples\iotconnectors\iotconnector_Delete.json
+      - operationId: Services_Delete
+        exampleFile: ..\examples\legacy\ServiceDelete.json
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\workspaces\Workspaces_Delete.json

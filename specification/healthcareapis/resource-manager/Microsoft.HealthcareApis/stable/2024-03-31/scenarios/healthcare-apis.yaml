@@ -1,0 +1,209 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  workspaceName: # lowercase
+    type: string
+    prefix: workspac
+  iotConnectorName: # lowercase
+    type: string
+    prefix: iotconne
+  # privateEndpointConnectionName:
+  #   type: string
+  #   prefix: privatee
+  dicomServiceName:
+    type: string
+    prefix: dicomser
+  fhirServiceName:
+    type: string
+    prefix: fhirserv
+  fhirDestinationName:
+    type: string
+    prefix: fhirdest
+
+  workspaceId:
+    type: string
+  azureTenantId: # AZURE_TENANT_ID
+    type: string
+  namespacesName:
+    type: string
+    prefix: eventhubns
+
+prepareSteps:
+      - operationId: Workspaces_CreateOrUpdate
+        exampleFile: ..\examples\workspaces\Workspaces_Create.json
+        # outputVariables: # TypeError: parentObject.properties is not iterable
+        #   workspaceId: 
+        #     type: string
+        #     fromResponse: /body/id
+
+      # fail
+      # - operationId: OperationResults_Get # LRO
+      #   variables:
+      #     locationName: $(location)
+      #     operationResultId: operationId
+      #   exampleFile: ..\examples\OperationResultsGet.json
+
+      # need storageaccount and eventhub
+      - step: Create_Eventhub
+        armTemplate: ./templates/Create_EventhubNamespace.json
+
+      - operationId: IotConnectors_CreateOrUpdate # long time
+      #   exampleFile: ..\examples\iotconnectors\iotconnector_Create.json
+        parameters:
+          iotConnector:
+            location: $(location)
+            identity:
+              type: SystemAssigned
+            properties:
+              ingestionEndpointConfiguration:
+                eventHubName: $(eventHubName)
+                consumerGroup: $Default
+                fullyQualifiedEventHubNamespace: $(eventHubName).servicesbus.windows.net
+              deviceMapping:
+                content:
+                  templateType: CollectionContent
+                  template: {}
+
+scenarios:
+# pass
+  - scenario: Workspaces
+    description: Microsoft.HealthcareApis/workspaces/{workspaceName}
+    steps:
+      - operationId: Workspaces_ListBySubscription
+        exampleFile: ..\examples\workspaces\Workspaces_ListBySubscription.json
+      - operationId: Workspaces_ListByResourceGroup
+        exampleFile: ..\examples\workspaces\Workspaces_ListByResourceGroup.json
+      - operationId: Workspaces_Get
+        exampleFile: ..\examples\workspaces\Workspaces_Get.json
+      - operationId: Workspaces_Update
+        exampleFile: ..\examples\workspaces\Workspaces_Patch.json
+
+
+  # - scenario: DicomServices
+  #   description: Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}
+  #   steps:
+  #     # HTTP Error 400. The size of the request headers is too long
+  #     # 服务端错误
+  #     - operationId: DicomServices_CreateOrUpdate
+  #       # exampleFile: ..\examples\dicomservices\DicomServices_Create.json
+  #       parameters:
+  #         dicomservice:
+  #           location: $(location)
+  #           properties:
+  #             enableDataPartitions: false
+  #     - operationId: DicomServices_ListByWorkspace
+  #       exampleFile: ..\examples\dicomservices\DicomServices_List.json
+  #     - operationId: DicomServices_Get
+  #       exampleFile: ..\examples\dicomservices\DicomServices_Get.json
+  #     - operationId: DicomServices_Update
+  #       exampleFile: ..\examples\dicomservices\DicomServices_Patch.json
+  #     - operationId: DicomServices_Delete
+  #       exampleFile: ..\examples\dicomservices\DicomServices_Delete.json
+
+
+  - scenario: IotConnectors
+    description: Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}
+    steps:
+      - operationId: IotConnectors_ListByWorkspace
+        exampleFile: ..\examples\iotconnectors\iotconnector_List.json
+      - operationId: IotConnectors_Get
+        exampleFile: ..\examples\iotconnectors\iotconnector_Get.json
+      - operationId: IotConnectors_Update
+        exampleFile: ..\examples\iotconnectors\iotconnector_Patch.json
+
+
+  - scenario: IotConnectorFhirDestination
+    description: Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}
+    steps:
+      - operationId: IotConnectorFhirDestination_CreateOrUpdate
+        # exampleFile: ..\examples\iotconnectors\iotconnector_fhirdestination_Create.json
+        parameters:
+           iotFhirDestination:
+             location: $(location)
+             properties:
+               fhirMapping:
+                 content:
+                   templateType: CollectionFhirTemplate
+                   template: {}
+      - operationId: IotConnectorFhirDestination_Get
+        exampleFile: ..\examples\iotconnectors\iotconnector_fhirdestination_Get.json
+      # Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations
+      - operationId: FhirDestinations_ListByIotConnector
+        exampleFile: ..\examples\iotconnectors\iotconnector_fhirdestination_List.json
+      - operationId: IotConnectorFhirDestination_Delete
+        exampleFile: ..\examples\iotconnectors\iotconnector_fhirdestination_Delete.json
+
+# pass
+  - scenario: FhirServices
+    description: Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}
+    steps:
+      - operationId: FhirServices_CreateOrUpdate
+        # exampleFile: ..\examples\fhirservices\FhirServices_Create.json
+        parameters:
+          fhirservice:
+            location: $(location)
+            kind: fhir-R4
+            identity:
+              type: None
+            properties:
+              authenticationConfiguration:
+                audience: $(fhirServiceName)
+                authority: https://login.microsoftonline.com/$(azureTenantId)
+                smartProxyEnabled: false
+      - operationId: FhirServices_ListByWorkspace
+        exampleFile: ..\examples\fhirservices\FhirServices_List.json
+      - operationId: FhirServices_Get
+        exampleFile: ..\examples\fhirservices\FhirServices_Get.json
+      - operationId: FhirServices_Update
+        exampleFile: ..\examples\fhirservices\FhirServices_Patch.json
+      - operationId: FhirServices_Delete
+        exampleFile: ..\examples\fhirservices\FhirServices_Delete.json
+
+  - scenario: WorkspacePrivateEndpointConnections
+    description: Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    # variables:
+    #   privateEndpointConnectionName: ""
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+
+      - operationId: WorkspacePrivateEndpointConnections_ListByWorkspace
+        exampleFile: ..\examples\privatelink\WorkspaceListPrivateEndpointConnections.json
+        outputVariables:
+        # split := strings.Split(*nextResult.Value[0].ID, "/")
+        # privateEndpointConnectionName = split[len(split)-1]
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/0/name
+
+      - operationId: WorkspacePrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\privatelink\WorkspaceCreatePrivateEndpointConnection.json
+
+      - operationId: WorkspacePrivateEndpointConnections_Get
+        exampleFile: ..\examples\privatelink\WorkspaceGetPrivateEndpointConnection.json
+
+      # Microsoft.HealthcareApis/workspaces/{workspaceName}/privateLinkResources/{groupName}
+      - operationId: WorkspacePrivateLinkResources_ListByWorkspace
+        exampleFile: ..\examples\privatelink\PrivateLinkResourcesListByWorkspace.json
+      - operationId: WorkspacePrivateLinkResources_Get
+        exampleFile: ..\examples\privatelink\WorkspacePrivateLinkResourceGet.json
+
+      - operationId: WorkspacePrivateEndpointConnections_Delete
+        exampleFile: ..\examples\privatelink\WorkspaceDeletePrivateEndpointConnection.json
+
+# pass
+  - scenario: Operations
+    description: Microsoft.HealthcareApis/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationsList.json
+
+cleanUpSteps:
+      # - operationId: IotConnectors_Delete
+      #   exampleFile: ..\examples\iotconnectors\iotconnector_Delete.json
+
+      - operationId: Workspaces_Delete
+        exampleFile: ..\examples\workspaces\Workspaces_Delete.json

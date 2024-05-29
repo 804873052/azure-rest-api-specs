@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+scenarios:
+scenarios:
+# retired on September 30, 2026.
+  - scenario: Services
+    description: Microsoft.HealthcareApis/services/{resourceName}
+    steps:
+      - operationId: Services_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailabilityPost.json
+      - operationId: Services_CreateOrUpdate
+        exampleFile: ..\examples\legacy\ServiceCreate.json
+      - operationId: Services_List
+        exampleFile: ..\examples\legacy\ServiceList.json
+      - operationId: Services_ListByResourceGroup
+        exampleFile: ..\examples\legacy\ServiceListByResourceGroup.json
+      - operationId: Services_Get
+        exampleFile: ..\examples\legacy\ServiceGet.json
+      - operationId: Services_Update
+        exampleFile: ..\examples\legacy\ServicePatch.json
+      - operationId: Services_Delete
+        exampleFile: ..\examples\legacy\ServiceDelete.json
+# retired on September 30, 2026.
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - operationId: PrivateEndpointConnections_CreateOrUpdate
+        exampleFile: ..\examples\legacy\ServiceCreatePrivateEndpointConnection.json
+      - operationId: PrivateEndpointConnections_ListByService
+        exampleFile: ..\examples\legacy\ServiceListPrivateEndpointConnections.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\legacy\ServiceGetPrivateEndpointConnection.json
+      # Microsoft.HealthcareApis/services/{resourceName}/privateLinkResources/{groupName}
+      - operationId: PrivateLinkResources_ListByService
+        exampleFile: ..\examples\legacy\PrivateLinkResourcesListByService.json
+      - operationId: PrivateLinkResources_Get 
+        exampleFile: ..\examples\legacy\PrivateLinkResourceGet.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\legacy\ServiceDeletePrivateEndpointConnection.json
