@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  communicationServiceName:
+    type: string
+    prefix: communic
+
+scenarios:
+# pass
+  - scenario: Operations
+    description: Microsoft.Communication/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\communicationServices\operationsList.json
+
+# pass
+  - scenario: CommunicationServices
+    description: Microsoft.Communication/communicationServices/{communicationServiceName}
+    steps:
+      - operationId: CommunicationServices_CheckNameAvailability
+        exampleFile: ..\examples\communicationServices\checkNameAvailabilityAvailable.json
+      - operationId: CommunicationServices_CreateOrUpdate
+        # exampleFile: ..\examples\communicationServices\createOrUpdate.json
+        parameters:
+          parameters:
+            location: Global
+            properties:
+              dataLocation: United States
+      - operationId: CommunicationServices_ListBySubscription
+        exampleFile: ..\examples\communicationServices\listBySubscription.json
+      - operationId: CommunicationServices_ListByResourceGroup
+        exampleFile: ..\examples\communicationServices\listByResourceGroup.json
+      - operationId: CommunicationServices_Get
+        exampleFile: ..\examples\communicationServices\get.json
+      - operationId: CommunicationServices_Update
+        exampleFile: ..\examples\communicationServices\update.json
+      - operationId: CommunicationServices_RegenerateKey
+        exampleFile: ..\examples\communicationServices\regenerateKey.json
+      - operationId: CommunicationServices_ListKeys
+        exampleFile: ..\examples\communicationServices\listKeys.json
+      # - operationId: CommunicationServices_LinkNotificationHub
+      #   exampleFile: ..\examples\communicationServices\linkNotificationHub.json
+      - operationId: CommunicationServices_Delete
+        exampleFile: ..\examples\communicationServices\delete.json
+

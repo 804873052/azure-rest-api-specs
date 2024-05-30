@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  emailServiceName:
+    type: string
+    prefix: emailser
+  domainName: # fmt.Sprintf("%s.com", testsuite.domainName)
+    type: string
+    prefix: domainna
+  senderUsername:
+    type: string
+    prefix: senderus
+
+prepareSteps:
+      - operationId: EmailServices_CreateOrUpdate
+        # exampleFile: ..\examples\emailServices\createOrUpdate.json
+        parameters:
+          parameters:
+            location: Global
+            properties:
+              dataLocation: United States
+      - operationId: Domains_CreateOrUpdate
+        # exampleFile: ..\examples\domains\createOrUpdate.json
+        parameters:
+          parameters:
+            location: Global
+            properties:
+              domainManagement: CustomerManaged
+
+scenarios:
+# pass
+  - scenario: EmailServices
+    description: Microsoft.Communication/emailServices/{emailServiceName}
+    steps:
+      - operationId: EmailServices_ListBySubscription
+        exampleFile: ..\examples\emailServices\listBySubscription.json
+      - operationId: EmailServices_Get
+        exampleFile: ..\examples\emailServices\get.json
+      - operationId: EmailServices_ListByResourceGroup
+        exampleFile: ..\examples\emailServices\listByResourceGroup.json
+      - operationId: EmailServices_Update
+        exampleFile: ..\examples\emailServices\update.json
+      # The resource type could not be found in the namespace 'Microsoft.Communication' for api version '2023-04-01'
+      # 2023-03-31 available
+      # - operationId: EmailServices_ListVerifiedExchangeOnlineDomains
+      #   exampleFile: ..\examples\emailServices\getVerifiedExchangeOnlineDomains.json
+
+# pass
+  - scenario: Domains
+    description: Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}
+    steps:
+      - operationId: Domains_ListByEmailServiceResource
+        exampleFile: ..\examples\domains\listByEmailService.json
+      - operationId: Domains_Get
+        exampleFile: ..\examples\domains\get.json
+      - operationId: Domains_Update
+        exampleFile: ..\examples\domains\update.json
+      - operationId: Domains_InitiateVerification
+        exampleFile: ..\examples\domains\initiateVerification.json
+      - operationId: Domains_CancelVerification
+        exampleFile: ..\examples\domains\cancelVerification.json
+
+# pass
+  - scenario: SenderUsernames
+    description: Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}
+    steps:
+      - operationId: SenderUsernames_CreateOrUpdate
+        exampleFile: ..\examples\senderUsernames\createOrUpdate.json
+      - operationId: SenderUsernames_ListByDomains
+        exampleFile: ..\examples\senderUsernames\listByDomain.json
+      - operationId: SenderUsernames_Get
+        exampleFile: ..\examples\senderUsernames\get.json
+      - operationId: SenderUsernames_Delete
+        exampleFile: ..\examples\senderUsernames\delete.json
+
+cleanUpSteps:
+      - operationId: Domains_Delete
+        exampleFile: ..\examples\domains\delete.json
+      - operationId: EmailServices_Delete
+        exampleFile: ..\examples\emailServices\delete.json

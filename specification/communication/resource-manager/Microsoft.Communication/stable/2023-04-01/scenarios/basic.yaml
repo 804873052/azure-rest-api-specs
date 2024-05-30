@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  emailServiceName:
+    type: string
+    prefix: emailser
+  domainName:
+    type: string
+    prefix: domainna
+  communicationServiceName:
+    type: string
+    prefix: communic
+  senderUsername:
+    type: string
+    prefix: senderus
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: CommunicationServices_CheckNameAvailability
+        exampleFile: ..\examples\communicationServices\checkNameAvailabilityAvailable.json
+      - operationId: EmailServices_CreateOrUpdate
+        exampleFile: ..\examples\emailServices\createOrUpdate.json
+      - operationId: EmailServices_ListBySubscription
+        exampleFile: ..\examples\emailServices\listBySubscription.json
+      - operationId: EmailServices_Get
+        exampleFile: ..\examples\emailServices\get.json
+      - operationId: EmailServices_ListByResourceGroup
+        exampleFile: ..\examples\emailServices\listByResourceGroup.json
+      - operationId: EmailServices_Update
+        exampleFile: ..\examples\emailServices\update.json
+      - operationId: EmailServices_ListVerifiedExchangeOnlineDomains
+        exampleFile: ..\examples\emailServices\getVerifiedExchangeOnlineDomains.json
+      - operationId: Domains_CreateOrUpdate
+        exampleFile: ..\examples\domains\createOrUpdate.json
+      - operationId: Domains_ListByEmailServiceResource
+        exampleFile: ..\examples\domains\listByEmailService.json
+      - operationId: Domains_Get
+        exampleFile: ..\examples\domains\get.json
+      - operationId: Domains_Update
+        exampleFile: ..\examples\domains\update.json
+      - operationId: Domains_CancelVerification
+        exampleFile: ..\examples\domains\cancelVerification.json
+      - operationId: Domains_InitiateVerification
+        exampleFile: ..\examples\domains\initiateVerification.json
+      - operationId: CommunicationServices_CreateOrUpdate
+        exampleFile: ..\examples\communicationServices\createOrUpdate.json
+      - operationId: CommunicationServices_ListBySubscription
+        exampleFile: ..\examples\communicationServices\listBySubscription.json
+      - operationId: CommunicationServices_ListByResourceGroup
+        exampleFile: ..\examples\communicationServices\listByResourceGroup.json
+      - operationId: CommunicationServices_Get
+        exampleFile: ..\examples\communicationServices\get.json
+      - operationId: CommunicationServices_Update
+        exampleFile: ..\examples\communicationServices\update.json
+      - operationId: CommunicationServices_ListKeys
+        exampleFile: ..\examples\communicationServices\listKeys.json
+      - operationId: CommunicationServices_RegenerateKey
+        exampleFile: ..\examples\communicationServices\regenerateKey.json
+      - operationId: CommunicationServices_LinkNotificationHub
+        exampleFile: ..\examples\communicationServices\linkNotificationHub.json
+      - operationId: SenderUsernames_CreateOrUpdate
+        exampleFile: ..\examples\senderUsernames\createOrUpdate.json
+      - operationId: SenderUsernames_ListByDomains
+        exampleFile: ..\examples\senderUsernames\listByDomain.json
+      - operationId: SenderUsernames_Get
+        exampleFile: ..\examples\senderUsernames\get.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\communicationServices\operationsList.json
+      - operationId: SenderUsernames_Delete
+        exampleFile: ..\examples\senderUsernames\delete.json
+      - operationId: CommunicationServices_Delete
+        exampleFile: ..\examples\communicationServices\delete.json
+      - operationId: Domains_Delete
+        exampleFile: ..\examples\domains\delete.json
+      - operationId: EmailServices_Delete
+        exampleFile: ..\examples\emailServices\delete.json
