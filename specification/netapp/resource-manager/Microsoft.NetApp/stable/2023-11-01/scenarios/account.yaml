@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+
+variables:
+  location:
+    type: string
+  accountName:
+    type: string
+    prefix: accountn
+  poolName:
+    type: string
+    prefix: poolname
+
+prepareSteps:
+      - operationId: Accounts_CreateOrUpdate
+        exampleFile: ..\examples\Accounts_CreateOrUpdate.json
+
+scenarios:
+# pass
+  - scenario: Accounts
+    description: Microsoft.NetApp/netAppAccounts/{accountName}
+    steps:
+      - operationId: Accounts_ListBySubscription
+        exampleFile: ..\examples\Accounts_List.json
+      - operationId: Accounts_List
+        exampleFile: ..\examples\Accounts_List.json
+      - operationId: Accounts_Get
+        exampleFile: ..\examples\Accounts_Get.json
+      - operationId: Accounts_Update
+        exampleFile: ..\examples\Accounts_Update.json
+      # NetApp account does not have an MSI credentials, therefore it is ineligible for renewal of credentials.
+      # - operationId: Accounts_RenewCredentials 
+      #   exampleFile: ..\examples\Accounts_RenewCredentials.json
+
+# pass
+  - scenario: Pools
+    description: Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}
+    steps:
+      - operationId: Pools_CreateOrUpdate
+        exampleFile: ..\examples\Pools_CreateOrUpdate.json
+      - operationId: Pools_List
+        exampleFile: ..\examples\Pools_List.json
+      - operationId: Pools_Get
+        exampleFile: ..\examples\Pools_Get.json
+      - operationId: Pools_Update
+        exampleFile: ..\examples\Pools_Update.json
+      - operationId: Pools_Delete
+        exampleFile: ..\examples\Pools_Delete.json
+
+cleanUpSteps:
+      - operationId: Accounts_Delete
+        exampleFile: ..\examples\Accounts_Delete.json

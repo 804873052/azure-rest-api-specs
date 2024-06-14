@@ -1,0 +1,228 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  accountName:
+    type: string
+    prefix: accountn
+  poolName:
+    type: string
+    prefix: poolname
+  volumeName:
+    type: string
+    prefix: volumena
+  backupVaultName:
+    type: string
+    prefix: backupva
+  snapshotName:
+    type: string
+    prefix: snapshot
+  snapshotPolicyName:
+    type: string
+    prefix: snapshot
+  subvolumeName:
+    type: string
+    prefix: subvolum
+  backupName:
+    type: string
+    prefix: backupna
+  backupPolicyName:
+    type: string
+    prefix: backuppo
+  volumeQuotaRuleName:
+    type: string
+    prefix: volumequ
+  volumeGroupName:
+    type: string
+    prefix: volumegr
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: NetAppResource_CheckNameAvailability
+        exampleFile: ..\examples\CheckNameAvailability.json
+      - operationId: Accounts_CreateOrUpdate
+        exampleFile: ..\examples\Accounts_CreateOrUpdate.json
+      - operationId: Accounts_ListBySubscription
+        exampleFile: ..\examples\Accounts_List.json
+      - operationId: Accounts_List
+        exampleFile: ..\examples\Accounts_List.json
+      - operationId: Accounts_Get
+        exampleFile: ..\examples\Accounts_Get.json
+      - operationId: Accounts_Update
+        exampleFile: ..\examples\Accounts_Update.json
+      - operationId: Accounts_RenewCredentials
+        exampleFile: ..\examples\Accounts_RenewCredentials.json
+      - operationId: Pools_CreateOrUpdate
+        exampleFile: ..\examples\Pools_CreateOrUpdate.json
+      - operationId: Pools_List
+        exampleFile: ..\examples\Pools_List.json
+      - operationId: Pools_Get
+        exampleFile: ..\examples\Pools_Get.json
+      - operationId: Pools_Update
+        exampleFile: ..\examples\Pools_Update.json
+      - operationId: Volumes_CreateOrUpdate
+        exampleFile: ..\examples\Volumes_CreateOrUpdate.json
+      - operationId: Volumes_List
+        exampleFile: ..\examples\Volumes_List.json
+      - operationId: Volumes_Get
+        exampleFile: ..\examples\Volumes_Get.json
+      - operationId: Volumes_ReplicationStatus
+        exampleFile: ..\examples\Volumes_ReplicationStatus.json
+      - operationId: Volumes_Update
+        exampleFile: ..\examples\Volumes_Update.json
+      - operationId: Volumes_BreakFileLocks
+        exampleFile: ..\examples\Volumes_BreakFileLocks.json
+      - operationId: Volumes_DeleteReplication
+        exampleFile: ..\examples\Volumes_DeleteReplication.json
+      - operationId: Volumes_FinalizeRelocation
+        exampleFile: ..\examples\Volumes_FinalizeRelocation.json
+      - operationId: Volumes_BreakReplication
+        exampleFile: ..\examples\Volumes_BreakReplication.json
+      - operationId: Volumes_Revert
+        exampleFile: ..\examples\Volumes_Revert.json
+      - operationId: Volumes_ResyncReplication
+        exampleFile: ..\examples\Volumes_ResyncReplication.json
+      - operationId: Volumes_ReInitializeReplication
+        exampleFile: ..\examples\Volumes_ReInitializeReplication.json
+      - operationId: Volumes_ResetCifsPassword
+        exampleFile: ..\examples\Volumes_ResetCifsPassword.json
+      - operationId: Volumes_PopulateAvailabilityZone
+        exampleFile: ..\examples\Volumes_PopulateAvailabilityZones.json
+      - operationId: Volumes_AuthorizeReplication
+        exampleFile: ..\examples\Volumes_AuthorizeReplication.json
+      - operationId: Volumes_RevertRelocation
+        exampleFile: ..\examples\Volumes_RevertRelocation.json
+      - operationId: Volumes_Relocate
+        exampleFile: ..\examples\Volumes_Relocate.json
+      - operationId: Volumes_ReestablishReplication
+        exampleFile: ..\examples\Volumes_ReestablishReplication.json
+      - operationId: Volumes_ListGetGroupIdListForLdapUser
+        exampleFile: ..\examples\GroupIdListForLDAPUser.json
+      - operationId: Volumes_PoolChange
+        exampleFile: ..\examples\Volumes_PoolChange.json
+      - operationId: Volumes_ListReplications
+        exampleFile: ..\examples\Volumes_ListReplications.json
+      - operationId: BackupVaults_CreateOrUpdate
+        exampleFile: ..\examples\BackupVaults_Create.json
+      - operationId: BackupVaults_ListByNetAppAccount
+        exampleFile: ..\examples\BackupVaults_List.json
+      - operationId: BackupVaults_Get
+        exampleFile: ..\examples\BackupVaults_Get.json
+      - operationId: BackupVaults_Update
+        exampleFile: ..\examples\BackupVaults_Update.json
+      - operationId: Snapshots_Create
+        exampleFile: ..\examples\Snapshots_Create.json
+      - operationId: Snapshots_List
+        exampleFile: ..\examples\Snapshots_List.json
+      - operationId: Snapshots_Get
+        exampleFile: ..\examples\Snapshots_Get.json
+      - operationId: Snapshots_Update
+        exampleFile: ..\examples\Snapshots_Update.json
+      - operationId: Snapshots_RestoreFiles
+        exampleFile: ..\examples\Snapshots_SingleFileRestore.json
+      - operationId: Backups_Create
+        exampleFile: ..\examples\BackupsUnderBackupVault_Create.json
+      - operationId: Backups_ListByVault
+        exampleFile: ..\examples\BackupsUnderBackupVault_List.json
+      - operationId: Backups_Get
+        exampleFile: ..\examples\BackupsUnderBackupVault_Get.json
+      - operationId: Backups_GetLatestStatus
+        exampleFile: ..\examples\Volumes_LatestBackupStatus.json
+      - operationId: Backups_GetVolumeLatestRestoreStatus
+        exampleFile: ..\examples\Volumes_LatestRestoreStatus.json
+      - operationId: Backups_Update
+        exampleFile: ..\examples\BackupsUnderBackupVault_Update.json
+      - operationId: Subvolumes_Create
+        exampleFile: ..\examples\Subvolumes_Create.json
+      - operationId: Subvolumes_ListByVolume
+        exampleFile: ..\examples\Subvolumes_List.json
+      - operationId: Subvolumes_Get
+        exampleFile: ..\examples\Subvolumes_Get.json
+      - operationId: Subvolumes_Update
+        exampleFile: ..\examples\Subvolumes_Update.json
+      - operationId: Subvolumes_GetMetadata
+        exampleFile: ..\examples\Subvolumes_Metadata.json
+      - operationId: SnapshotPolicies_Create
+        exampleFile: ..\examples\SnapshotPolicies_Create.json
+      - operationId: SnapshotPolicies_List
+        exampleFile: ..\examples\SnapshotPolicies_List.json
+      - operationId: SnapshotPolicies_ListVolumes
+        exampleFile: ..\examples\SnapshotPolicies_ListVolumes.json
+      - operationId: SnapshotPolicies_Get
+        exampleFile: ..\examples\SnapshotPolicies_Get.json
+      - operationId: SnapshotPolicies_Update
+        exampleFile: ..\examples\SnapshotPolicies_Update.json
+      - operationId: VolumeQuotaRules_Create
+        exampleFile: ..\examples\VolumeQuotaRules_Create.json
+      - operationId: VolumeQuotaRules_ListByVolume
+        exampleFile: ..\examples\VolumeQuotaRules_List.json
+      - operationId: VolumeQuotaRules_Get
+        exampleFile: ..\examples\VolumeQuotaRules_Get.json
+      - operationId: VolumeQuotaRules_Update
+        exampleFile: ..\examples\VolumeQuotaRules_Update.json
+      - operationId: BackupPolicies_Create
+        exampleFile: ..\examples\BackupPolicies_Create.json
+      - operationId: BackupPolicies_List
+        exampleFile: ..\examples\BackupPolicies_List.json
+      - operationId: BackupPolicies_Get
+        exampleFile: ..\examples\BackupPolicies_Get.json
+      - operationId: BackupPolicies_Update
+        exampleFile: ..\examples\BackupPolicies_Update.json
+      - operationId: VolumeGroups_Create
+        exampleFile: ..\examples\VolumeGroups_Create_SapHana.json
+      - operationId: VolumeGroups_ListByNetAppAccount
+        exampleFile: ..\examples\VolumeGroups_List_SapHana.json
+      - operationId: VolumeGroups_Get
+        exampleFile: ..\examples\VolumeGroups_Get_SapHana.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\OperationList.json
+      - operationId: NetAppResource_CheckFilePathAvailability
+        exampleFile: ..\examples\CheckFilePathAvailability.json
+      - operationId: NetAppResource_CheckQuotaAvailability
+        exampleFile: ..\examples\CheckQuotaAvailability.json
+      - operationId: NetAppResource_QueryNetworkSiblingSet
+        exampleFile: ..\examples\NetworkSiblingSet_Query.json
+      - operationId: NetAppResourceQuotaLimits_List
+        exampleFile: ..\examples\QuotaLimits_List.json
+      - operationId: NetAppResourceQuotaLimits_Get
+        variables:
+          quotaLimitName:
+            type: string
+            prefix: quotalim
+        exampleFile: ..\examples\QuotaLimits_Get.json
+      - operationId: NetAppResource_QueryRegionInfo
+        exampleFile: ..\examples\RegionInfo.json
+      - operationId: NetAppResourceRegionInfos_List
+        exampleFile: ..\examples\RegionInfos_List.json
+      - operationId: NetAppResourceRegionInfos_Get
+        exampleFile: ..\examples\RegionInfos_Get.json
+      - operationId: NetAppResource_UpdateNetworkSiblingSet
+        exampleFile: ..\examples\NetworkSiblingSet_Update.json
+      - operationId: BackupsUnderBackupVault_RestoreFiles
+        exampleFile: ..\examples\BackupsUnderBackupVault_SingleFileRestore.json
+      - operationId: BackupsUnderVolume_MigrateBackups
+        exampleFile: ..\examples\BackupsUnderVolume_Migrate.json
+      - operationId: BackupsUnderAccount_MigrateBackups
+        exampleFile: ..\examples\BackupsUnderAccount_Migrate.json
+      - operationId: VolumeGroups_Delete
+        exampleFile: ..\examples\VolumeGroups_Delete.json
+      - operationId: BackupPolicies_Delete
+        exampleFile: ..\examples\BackupPolicies_Delete.json
+      - operationId: VolumeQuotaRules_Delete
+        exampleFile: ..\examples\VolumeQuotaRules_Delete.json
+      - operationId: SnapshotPolicies_Delete
+        exampleFile: ..\examples\SnapshotPolicies_Delete.json
+      - operationId: Subvolumes_Delete
+        exampleFile: ..\examples\Subvolumes_Delete.json
+      - operationId: Backups_Delete
+        exampleFile: ..\examples\BackupsUnderBackupVault_Delete.json
+      - operationId: Snapshots_Delete
+        exampleFile: ..\examples\Snapshots_Delete.json
+      - operationId: BackupVaults_Delete
+        exampleFile: ..\examples\BackupVaults_Delete.json
+      - operationId: Volumes_Delete
+        exampleFile: ..\examples\Volumes_Delete.json
+      - operationId: Pools_Delete
+        exampleFile: ..\examples\Pools_Delete.json
+      - operationId: Accounts_Delete
+        exampleFile: ..\examples\Accounts_Delete.json
