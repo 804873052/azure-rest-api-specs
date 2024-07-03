@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  mongoClusterName:
+    type: string
+    prefix: mongoclu
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  privateEndpointConnectionName:
+    type: string
+    prefix: privatee
+scenarios:
+scenarios:
+  - scenario: GeneratedScenario
+    steps:
+      - operationId: MongoClusters_CheckNameAvailability
+        exampleFile: ..\examples\MongoClusters_NameAvailability.json
+      - operationId: MongoClusters_CreateOrUpdate
+        exampleFile: ..\examples\MongoClusters_CreatePITR.json
+      - operationId: MongoClusters_List
+        exampleFile: ..\examples\MongoClusters_List.json
+      - operationId: MongoClusters_ListByResourceGroup
+        exampleFile: ..\examples\MongoClusters_ListByResourceGroup.json
+      - operationId: MongoClusters_Get
+        exampleFile: ..\examples\MongoClusters_Get.json
+      - operationId: MongoClusters_Update
+        exampleFile: ..\examples\MongoClusters_PatchPrivateNetworkAccess.json
+      - operationId: MongoClusters_ListConnectionStrings
+        exampleFile: ..\examples\MongoClusters_ListConnectionStrings.json
+      - operationId: PrivateEndpointConnections_Create
+        exampleFile: ..\examples\MongoClusters_PrivateEndpointConnectionPut.json
+      - operationId: PrivateEndpointConnections_ListByMongoCluster
+        exampleFile: ..\examples\MongoClusters_PrivateEndpointConnectionList.json
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\MongoClusters_PrivateEndpointConnectionGet.json
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\examples\MongoClusters_FirewallRuleCreate.json
+      - operationId: FirewallRules_ListByMongoCluster
+        exampleFile: ..\examples\MongoClusters_FirewallRuleList.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\examples\MongoClusters_FirewallRuleGet.json
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+      - operationId: PrivateLinks_ListByMongoCluster
+        exampleFile: ..\examples\MongoClusters_PrivateLinkResourceList.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\examples\MongoClusters_FirewallRuleDelete.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\MongoClusters_PrivateEndpointConnectionDelete.json
+      - operationId: MongoClusters_Delete
+        exampleFile: ..\examples\MongoClusters_Delete.json

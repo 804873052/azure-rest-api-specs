@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/documentation/api-scenario/references/v1.2/schema.json
+scope: ResourceGroup
+variables:
+  location:
+    type: string
+  adminPassword:
+    type: string
+  mongoClusterName:
+    type: string
+    prefix: mongoclu
+  firewallRuleName:
+    type: string
+    prefix: firewall
+  # privateEndpointConnectionName:
+  #   type: string
+  #   prefix: privatee
+
+# pass
+prepareSteps:
+      - operationId: MongoClusters_CreateOrUpdate
+        exampleFile: ..\examples\MongoClusters_Create.json
+        requestUpdate:
+          - replace: /resource/properties/administratorLoginPassword
+            value: $(adminPassword)
+        outputVariables:
+          mongoClusterId:
+            type: string
+            fromResponse: /id
+
+scenarios:
+  - scenario: MongoClusters
+    description: Microsoft.DocumentDB/mongoClusters/{mongoClusterName}
+    steps:
+      - operationId: MongoClusters_CheckNameAvailability
+        exampleFile: ..\examples\MongoClusters_NameAvailability.json
+      - operationId: MongoClusters_List
+        exampleFile: ..\examples\MongoClusters_List.json
+      - operationId: MongoClusters_ListByResourceGroup
+        exampleFile: ..\examples\MongoClusters_ListByResourceGroup.json
+      - operationId: MongoClusters_Get
+        exampleFile: ..\examples\MongoClusters_Get.json
+      - operationId: MongoClusters_Update
+        # exampleFile: ..\examples\MongoClusters_PatchPrivateNetworkAccess.json
+        parameters:
+          properties:
+            tags:
+              mongoClusterTag: mongoClusterTagValue
+      - operationId: MongoClusters_ListConnectionStrings
+        exampleFile: ..\examples\MongoClusters_ListConnectionStrings.json
+
+  - scenario: FirewallRules
+    description: Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}
+    steps:
+      - operationId: FirewallRules_CreateOrUpdate
+        exampleFile: ..\examples\MongoClusters_FirewallRuleCreate.json
+      - operationId: FirewallRules_ListByMongoCluster
+        exampleFile: ..\examples\MongoClusters_FirewallRuleList.json
+      - operationId: FirewallRules_Get
+        exampleFile: ..\examples\MongoClusters_FirewallRuleGet.json
+      - operationId: FirewallRules_Delete
+        exampleFile: ..\examples\MongoClusters_FirewallRuleDelete.json
+
+  - scenario: PrivateEndpointConnections
+    description: Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}
+    steps:
+      - step: Create_PrivateEndpoint
+        armTemplate: ./templates/Create_PrivateEndpoint.json
+      - operationId: PrivateEndpointConnections_ListByMongoCluster
+        exampleFile: ..\examples\MongoClusters_PrivateEndpointConnectionList.json
+        outputVariables:
+          privateEndpointConnectionName:
+            type: string
+            fromResponse: /value/name
+
+      - operationId: PrivateEndpointConnections_Create
+        # exampleFile: ..\examples\MongoClusters_PrivateEndpointConnectionPut.json
+        parameters:
+          resource:
+            properties:
+              privateLinkServiceConnectionState:
+                status: Rejected
+                description: Auto-Approved
+      - operationId: PrivateEndpointConnections_Get
+        exampleFile: ..\examples\MongoClusters_PrivateEndpointConnectionGet.json
+      - operationId: PrivateLinks_ListByMongoCluster
+        exampleFile: ..\examples\MongoClusters_PrivateLinkResourceList.json
+      - operationId: PrivateEndpointConnections_Delete
+        exampleFile: ..\examples\MongoClusters_PrivateEndpointConnectionDelete.json
+
+  - scenario: Operation
+    description: Microsoft.DocumentDB/operations
+    steps:
+      - operationId: Operations_List
+        exampleFile: ..\examples\Operations_List.json
+
+cleanUpSteps:
+      - operationId: MongoClusters_Delete
+        exampleFile: ..\examples\MongoClusters_Delete.json
