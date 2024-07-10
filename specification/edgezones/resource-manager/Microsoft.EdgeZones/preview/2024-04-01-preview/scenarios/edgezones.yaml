@@ -2,20 +2,19 @@
 scope: ResourceGroup
 
 variables:
-  extendedZoneName:
-    type: string
-    prefix: edgezonena
+  extendedZoneName: losangeles
 
+# pass
 scenarios:
   - scenario: ExtendedZones
     description: Microsoft.EdgeZones/extendedZones/{extendedZoneName}
     steps:
+      - operationId: ExtendedZones_Register
+        exampleFile: ..\examples\ExtendedZones_Register.json
       - operationId: ExtendedZones_ListBySubscription
         exampleFile: ..\examples\ExtendedZones_ListBySubscription.json
       - operationId: ExtendedZones_Get
         exampleFile: ..\examples\ExtendedZones_Get.json
-      - operationId: ExtendedZones_Register
-        exampleFile: ..\examples\ExtendedZones_Register.json
       - operationId: ExtendedZones_Unregister
         exampleFile: ..\examples\ExtendedZones_Unregister.json
 
